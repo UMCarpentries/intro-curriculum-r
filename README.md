@@ -22,9 +22,10 @@ It is under active development and is not yet ready to be used to teach a worksh
 
 1. `_extras/`
 
-    - `about.md` - General notes about the lesson.
+    - `about.md` - General notes about the curriculum.
     - `discussion.md` - For learners who would like to learn more.
-    - `guide.md` - The instructor's guide for the lesson.
+    - `guide.md` - The instructor's guide for the curriculum.
+    - `bonus_exercises.md` - Bonus exercises for learners who want to practice more.
 
 ## Helpful links
 
