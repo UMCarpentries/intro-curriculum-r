@@ -27,8 +27,20 @@ It is under active development and is not yet ready to be used to teach a worksh
     - `guide.md` - The instructor's guide for the curriculum.
     - `bonus_exercises.md` - Bonus exercises for learners who want to practice more.
 
+## Lessons
+
+|   | Title | Source File |
+|---|-------|------|
+| 0 | Intro to SWC | `_episodes/00-intro-swc.md` |
+| 1 | R for Plotting | `_episodes_rmd/01-r-plotting.Rmd` |
+| 2 | The Unix Shell | `_episodes/02-unix-shell.md` |
+| 3 | Intro to git & GitHub | `_episodes_rmd/03-intro-git-github.md` |
+| 4 | R for Data Analysis | `_episodes_rmd/04-r-data-analysis.Rmd` |
+| 5 | R Markdown | `_episodes_rmd/05-r-markdown.Rmd` |
+| 6 | Conclusion | `_episodes/05-conclusion.md` |
+
 ## Helpful links
 
-- How to format lesson files: https://carpentries.github.io/lesson-example/04-formatting/index.html
-- How to write lessons in R Markdown: https://carpentries.github.io/lesson-example/05-rmarkdown-example/index.html
+- How to format markdown lesson files: https://carpentries.github.io/lesson-example/04-formatting/index.html
+- How to format R Markdown lesson files: https://carpentries.github.io/lesson-example/05-rmarkdown-example/index.html
 - Style guide: https://carpentries.github.io/lesson-example/06-style-guide/index.html
