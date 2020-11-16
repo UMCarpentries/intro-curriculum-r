@@ -34,29 +34,29 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 |   | Title | Source File |
 |---|-------|-------------|
 | **Day 1** |   |
-| 09:00 - 09:15 | Welcome to the workshop | `_episodes/00-welcome.md` |
-| 09:15 - 10:30 | **R for Plotting (Part I)** | `_episodes_rmd/01-r-plotting.Rmd` |
-| 10:30 - 10:45 | Break |  |
-| 10:45 - 12:00 | **R for Plotting (Part II)** | continuation of `01-r-plotting` |
-| 12:00 - 13:00 | Lunch Break |  |
-| 13:00 - 14:15 | **The Unix Shell** | `_episodes/02-unix-shell.md` |
-| 14:15 - 14:30 | Break |  |
-| 14:30 - 16:00 | **Intro to git & GitHub** | `_episodes_rmd/03-intro-git-github.md` |
+| 09:00 | Welcome to the workshop | `_episodes/00-welcome.md` |
+| 09:15 | **R for Plotting (Part I)** | `_episodes_rmd/01-r-plotting.Rmd` |
+| 10:30 | Break |  |
+| 10:45 | **R for Plotting (Part II)** | continuation of `01-r-plotting` |
+| 12:00 | Lunch Break |  |
+| 13:00 | **The Unix Shell** | `_episodes/02-unix-shell.md` |
+| 14:15 | Break |  |
+| 14:30 | **Intro to git & GitHub** | `_episodes_rmd/03-intro-git-github.md` |
 | **Day 2** |   |
-| 09:00 - 10:30 | **R for Data Analysis (Part I)** | `_episodes_rmd/04-r-data-analysis.Rmd` |
-| 10:30 - 10:45 | Break |  |
-| 10:45 - 12:00 | **R for Data Analysis (Part II)** | continuation of `04-r-data-analysis` |
-| 12:00 - 13:00 | Lunch Break |  |
-| 13:00 - 14:30 | **R Markdown** | `_episodes_rmd/05-r-markdown.Rmd` |
-| 14:30 - 14:45 | Break |  |
-| 14:45 - 15:30 | Collaborative Exercise | at end of `05-r-markdown` |
-| 15:30 - 15:50 | **Conclusions** |  `_episodes/05-conclusion.md` |
-| 15:50 - 16:00 | Exit Survey |   |
+| 09:00 | **R for Data Analysis (Part I)** | `_episodes_rmd/04-r-data-analysis.Rmd` |
+| 10:30 | Break |  |
+| 10:45 | **R for Data Analysis (Part II)** | continuation of `04-r-data-analysis` |
+| 12:00 | Lunch Break |  |
+| 13:00 | **R Markdown** | `_episodes_rmd/05-r-markdown.Rmd` |
+| 14:30 | Break |  |
+| 14:45 | Collaborative Exercise | at end of `05-r-markdown` |
+| 15:30 | **Conclusions** |  `_episodes/05-conclusion.md` |
+| 15:50 | Exit Survey |   |
 
 ## Helpful links
 
 - Already-established SWC curricula: https://github.com/swcarpentry/swcarpentry#lesson-repositories
 - The Carpentries lesson example repo: https://github.com/carpentries/lesson-example
-- How to format markdown lesson files: https://carpentries.github.io/lesson-example/04-formatting/index.html
-- How to format R Markdown lesson files: https://carpentries.github.io/lesson-example/05-rmarkdown-example/index.html
+- How to format lesson files: https://carpentries.github.io/lesson-example/04-formatting/index.html
+- Additional instructions for formatting R Markdown lesson files: https://carpentries.github.io/lesson-example/05-rmarkdown-example/index.html
 - Lesson style guide: https://carpentries.github.io/lesson-example/06-style-guide/index.html
