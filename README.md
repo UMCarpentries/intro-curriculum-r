@@ -55,8 +55,8 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 
 ## Helpful links
 
-- Already-established SWC curricula: https://github.com/swcarpentry/swcarpentry#lesson-repositories
-- The Carpentries lesson example repo: https://github.com/carpentries/lesson-example
 - How to format lesson files: https://carpentries.github.io/lesson-example/04-formatting/index.html
 - Additional instructions for formatting R Markdown lesson files: https://carpentries.github.io/lesson-example/05-rmarkdown-example/index.html
+- Already-established SWC curricula: https://github.com/swcarpentry/swcarpentry#lesson-repositories
+- The Carpentries lesson example repo: https://github.com/carpentries/lesson-example
 - Lesson style guide: https://carpentries.github.io/lesson-example/06-style-guide/index.html
