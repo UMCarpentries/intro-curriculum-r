@@ -47,7 +47,7 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 | 10:30 | Break |  |
 | 10:45 | **R for Data Analysis (Part II)** | continuation of `04-r-data-analysis` |
 | 12:00 | Lunch Break |  |
-| 13:00 | **R Markdown** | `_episodes_rmd/05-r-markdown.Rmd` |
+| 13:00 | **Writing Reports with R Markdown** | `_episodes_rmd/05-r-markdown.Rmd` |
 | 14:30 | Break |  |
 | 14:45 | Collaborative Exercise | at end of `05-r-markdown` |
 | 15:30 | **Conclusions** |  `_episodes/05-conclusion.md` |
