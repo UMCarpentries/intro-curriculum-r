@@ -1,0 +1,14 @@
+---
+source: Rmd
+title: 
+teaching: 
+exercises:
+questions:
+objectives:
+keypoints:
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("04-")
+```
