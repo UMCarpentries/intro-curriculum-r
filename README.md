@@ -17,6 +17,9 @@ It is under active development and is not yet ready to be used to teach a worksh
 
     - `_episodes/` - Source files in markdown. Episode order is determined by the filename.
     - `_episodes_rmd/` - Source files in R Markdown. A lesson should be written in one or the other markdown style, not both. To convert R Markdown files to markdown episodes, run `make lesson-rmd`.
+    
+    Run `make lesson-check` at any time
+    to check that the lesson files follow the formatting rules
 
 1. Figures are stored in `fig/`, data sets in `data/`, source code in `code/`, and miscellaneous files in `files/`.
 
