@@ -540,7 +540,9 @@ man less
 
 TODO: maybe add screenshot of man page?
 
-Another way to get more information about a command is to run the command with the option `-h or --help` which will print brief documentation for the command.
+TODO: write about options (You'll see in the man page all the options for the command. These commands are used)
+
+One very helpful flag that is available for any command is `-h or --help` which will print brief documentation for the command.
 
 ```
 less -h
@@ -550,9 +552,11 @@ less --help
 
 TODO: maybe add screenshot of help output?
 
+TODO: add exercise practicing options with ls command
+
 ## Editing Files
 
-Beyond viewing the content of files, we may want to be able to edit or write files on the command line. There are many different text editors you can use to edit files on the command line, but we will talk about `nano` since it is a bit easier to learn. To edit a file with nano type `nano file.txt`. If the file exists, it will open the file in a nano window, if the file does not exist it will be created. One nice feature of nano is that it has a cheat sheet along the bottom with some common commands you’ll need. When you are ready to save (write) your file, you type `ctrl-o`. Along the bottom will appear a prompt for the file name to write to. The current name of the file will appear here, to keep the name as it is hit `enter` otherwise you can change the name of the file then hit `enter`. To exit nano, press `ctrl-x`. If you forget to save before exiting, no worries nano will prompt you to first save the file.
+Beyond viewing the content of files, we may want to be able to edit or write files on the command line. There are many different text editors you can use to edit files on the command line, but we will talk about `nano` since it is a bit easier to learn. To edit a file with nano type `nano file.txt`. If the file exists, it will open the file in a nano window, if the file does not exist it will be created. One nice feature of nano is that it has a cheat sheet along the bottom with some common commands you’ll need. When you are ready to save (write) your file, you type <kbd>Ctrl</kbd>+<kbd>O</kbd>. Along the bottom will appear a prompt for the file name to write to. The current name of the file will appear here, to keep the name as it is hit `enter` otherwise you can change the name of the file then hit `enter`. To exit nano, press <kbd>Ctrl</kbd>+<kbd>X</kbd>. If you forget to save before exiting, no worries nano will prompt you to first save the file.
 
 Since we moved around files when we organized our project directory we will have to update our R script. The path we use to read in our dataset is no longer correct. We will use nano to update the path to our new directory structure. 
 
