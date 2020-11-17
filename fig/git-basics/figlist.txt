@@ -1,55 +1,15 @@
-before initializing:
-	fig/git-basics/20201117-git-01-opt1.png 
-
-`git init`:
-	fig/git-basics/20201117-git-01-opt2.png 
-	fig/git-basics/20201117-git-02.png
-	fig/git-basics/20201117-git-03.png
-
-`git add`:
-	fig/git-basics/20201117-git-04.png
-
-`git commit`:
-	fig/git-basics/20201117-git-05.png
-	fig/git-basics/20201117-git-06.png
-	fig/git-basics/20201117-git-07.png
-	fig/git-basics/20201117-git-08=05.png
-
-edits:
-	fig/git-basics/20201117-git-09.png
-
-`git diff`:
-	fig/git-basics/20201117-git-10.png
-
-second round of add, commit, status:
-	fig/git-basics/20201117-git-11=9.png
-	fig/git-basics/20201117-git-12.png
-	fig/git-basics/20201117-git-13.png
-
-`git log` & `git shortlog`:
-	fig/git-basics/20201117-git-14.png
-
-`git diff <commit>..<commit>`:
-
-	fig/git-basics/20201117-git-15.png
-
-reprise:
-	fig/git-basics/20201117-git-16=13.png
-
-`git remote` & `git push` & `git pull` & `git log`:
-	fig/git-basics/20201117-git-17.png
-	fig/git-basics/20201117-git-18.png
-	fig/git-basics/20201117-git-19.png
-	fig/git-basics/20201117-git-20.png
-	fig/git-basics/20201117-git-21=19.png
-	fig/git-basics/20201117-git-22.png
-	fig/git-basics/20201117-git-23.png
-
-third round of editing & add & commit + working with remote
-	fig/git-basics/20201117-git-24=22.png
-	fig/git-basics/20201117-git-25.png
-	fig/git-basics/20201117-git-26.png
-	fig/git-basics/20201117-git-27.png
-
-wrap-up:
-	fig/git-basics/20201117-git-28.png
+before initializing: 01-opt1
+`git init`: 01-opt2, 02-03
+`git add`: 04
+`git commit`: 05-08
+edits: 09
+`git diff`: 10
+second round of add, commit, status: 11-13
+`git log` & `git shortlog`: 14
+`git diff <commit>..<commit>`: 15
+reprise: 16
+`git remote` & `git push` & `git pull` & `git log`: 17-23
+third round of editing & add & commit + working with remote: 24-27
+wrap-up so far: 28
+`git revert`: 29-33
+`git restore` (or `git checkout`): 34-35
