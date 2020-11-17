@@ -33,8 +33,8 @@ NOTE (from RD): this image only applicable when the starting working directory i
 
 ```
 git init
-{: .language-bash}
 ```
+{: .language-bash}
 
 NOTE (from RD): if starting from a working directory that is not empty (which is likely the case when we get to this part on the basis of R plotting materials)
 
@@ -43,8 +43,8 @@ NOTE (from RD): if starting from a working directory that is not empty (which is
 
 ```
 git init
-{: .language-bash}
 ```
+{: .language-bash}
 
 NOTE (from RD): use this image if initiating an empty directory
 
@@ -54,24 +54,24 @@ NOTE (from RD): Make edits to the initiated directory, or initiating from an exi
 
 ```
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-03](../fig/git-basics/20201117-git-03.png) 
 
 ```
 git add
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-04](../fig/git-basics/20201117-git-04.png) 
 
 ```
 git commit
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-05](../fig/git-basics/20201117-git-05.png) 
 
@@ -88,15 +88,15 @@ NOTE (from RD): usually between this two diagrams, I would walk through adding a
 ```
 git add
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-09](../fig/git-basics/20201117-git-09.png) 
 
 ```
 git diff
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-10](../fig/git-basics/20201117-git-10.png) 
 
@@ -107,16 +107,16 @@ NOTE (from RD): just an optional reprise of diagram before the showing the diffe
 ```
 git add
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-12](../fig/git-basics/20201117-git-12.png) 
 
 ```
 git commit
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-13](../fig/git-basics/20201117-git-13.png) 
 
@@ -125,15 +125,15 @@ NOTE (from RD): an optional reprise of the effects of committing
 ```
 git log
 git shortlog
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-14](../fig/git-basics/20201117-git-14.png) 
 
 ```
 git diff <commit>..<commit>
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-15](../fig/git-basics/20201117-git-15.png) 
 
@@ -143,15 +143,15 @@ NOTE (from RD): an optional reprise. This exists only because I personally like 
 
 ```
 git remote add
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-17](../fig/git-basics/20201117-git-17.png) 
 
 ```
 git push -u origin master
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-18](../fig/git-basics/20201117-git-18.png) 
 
@@ -162,8 +162,8 @@ NOTE (frome RD): this might be a good place to add some collaborative contents t
 ```
 git remote update
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-20](../fig/git-basics/20201117-git-20.png) 
 
@@ -172,8 +172,8 @@ git status
 ```
 git pull
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-22](../fig/git-basics/20201117-git-22.png) 
 
@@ -182,8 +182,8 @@ NOTE (from RD): I used to show the log again and emphasize on the difference in 
 ```
 git log
 git status
-{: .language-bash}
 ```
+{: .language-bash}
 
 ![git-basics-flow-23](../fig/git-basics/20201117-git-23.png) 
 
