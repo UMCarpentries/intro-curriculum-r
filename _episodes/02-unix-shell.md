@@ -333,20 +333,26 @@ However, it can start to get crazy if you have too many different files of diffe
 We’re going to create a better project directory structure that will help us organize our files. This is really important, particularly for larger projects. 
 If you’re interested in learning more about structuring computational biology projects in particular, [here](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424) is a useful article.
 
-What do you think good would be a good way to organize our files?
+> ## Creating directories and moving files
+> 
+> What do you think good would be a good way to organize our files?
 
-One way is the following (TODO: fix names):
-```
-.
-├── code
-│   └── plotting.R
-├── data
-│   └── gapminder.csv
-└── figures
-    ├── fig1.pdf
-    └── fig2.pdf
-```
-{: .language-bash}
+> > From the `my_project` directory:
+> > One way is the following (TODO: fix names):
+> > ```
+> > .
+> > ├── code
+> > │   └── plotting.R
+> > ├── data
+> > │   └── gapminder.csv
+> > └── figures
+> >     ├── fig1.pdf
+> >     └── fig2.pdf
+> > ```
+> > {: .language-bash}
+> > ```
+> {: .solution}
+{: .challenge}
 
 The R script goes in the code directory, the gapminder dataset goes in the data directory, and the figures go in the figures directory. 
 This way, all of the files are organized into a clearer overall structure. 
@@ -378,7 +384,6 @@ ls
 TODO: Add files!
 ```
 {: .output}
-
 
 How can we check to see if there’s anything in the `code` directory?
 
@@ -521,6 +526,8 @@ nano <name of rscript>
 - `pwd`: Print working directory - prints the _absolute path_ from the _root_ directory to the directory where you currently are.
 - `ls`: List files - lists files in the current directory. You can provide a path to list files to another directory as well (`ls [path]`).
 - `cd [path]`: Change directories to another folder.
+- `..`: One directory _up_ the directory tree. 
+
 - less
 - man
 - -h/--help
