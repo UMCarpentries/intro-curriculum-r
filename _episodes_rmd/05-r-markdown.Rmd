@@ -1,14 +1,18 @@
 ---
 source: Rmd
-title: 
-teaching: 
-exercises:
-questions:
-objectives:
-keypoints:
+title: ""
+teaching: 0 
+exercises: 0
+questions: ""
+objectives: ""
+keypoints: ""
 ---
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("05-")
+knitr_fig_path("01-")
+```
+
+```{r}
+print("Hello, World!")
 ```

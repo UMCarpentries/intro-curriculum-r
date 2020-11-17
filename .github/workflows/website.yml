@@ -5,7 +5,7 @@ on:
   pull_request: []
 jobs:
   build-website:
-    if: github.repository != 'carpentries/styles' && (github.repository_owner == 'swcarpentry' || github.repository_owner == 'datacarpentry' || github.repository_owner == 'librarycarpentry' || github.repository_owner == 'carpentries')
+    if: github.repository != 'carpentries/styles' && (github.repository_owner == 'UMSWC' || github.repository_owner == 'swcarpentry' || github.repository_owner == 'datacarpentry' || github.repository_owner == 'librarycarpentry' || github.repository_owner == 'carpentries')
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -79,7 +79,15 @@ jobs:
           done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "18.04"), sep = "\n")')
 
       - run: make site
-      - run: make lesson-check
-        if: always()
-      - run: make lesson-check-all
-        if: always()
+      - run: |
+          git config --local user.email "noreply@github.com"
+          git config --local user.name "GitHub"
+          git add .
+          git commit \
+            --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" \
+            -m '🤖 Build site' || echo "No changes to commit"
+      - name: Push final
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
