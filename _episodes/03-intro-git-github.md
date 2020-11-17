@@ -3,9 +3,10 @@ title: "Intro to Git & GitHub"
 teaching: 0
 exercises: 0
 questions:
+- "Why use version control?"
 - "How do I share my changes with others on the web?"
 objectives:
-- "Explain what repositories are and why they are useful."
+- "Explain what version control is and why it's useful."
 - "Push to or pull from a remote repository."
 keypoints: ""
 ---
@@ -78,21 +79,6 @@ The home page of the repository on GitHub includes the string we need to
 identify it:
 
 ![Where to Find Repository URL on GitHub](../fig/git/github-find-repo-string.png)
-
-Click on the 'HTTPS' link to change the [protocol]({{ page.root }}{% link reference.md %}#protocol) from SSH to HTTPS.
-
-> ## HTTPS vs. SSH
->
-> We use HTTPS here because it does not require additional configuration.  After
-> the workshop you may want to set up SSH access, which is a bit more secure, by
-> following one of the great tutorials from
-> [GitHub](https://help.github.com/articles/generating-ssh-keys),
-> [Atlassian/Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html)
-> and [GitLab](https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/)
-> (this one has a screencast).
-{: .callout}
-
-![Changing the Repository URL on GitHub](../fig/git/github-change-repo-string.png)
 
 Copy that URL from the browser, go into the local `umswc-project` repository, and run
 this command:
