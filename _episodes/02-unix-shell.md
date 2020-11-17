@@ -42,19 +42,9 @@ Keypoints:
 
 TODOs: 
 - Potentially concicify questions, objectives, key points (and make them non-redundant with the glossary)
-- Add outputs (see hello world example)
+- Add outputs / fix paths
 - Tree structure / navigating files and directories.
 
-
-```
-echo "Hello World"
-```
-{: .language-bash}
-
-```
-Hello World
-```
-{: .output}
 
 ## Introducing the Shell 
 
@@ -528,6 +518,9 @@ nano <name of rscript>
 
 ## Glossary of terms
 
+- `pwd`: Print working directory - prints the _absolute path_ from the _root_ directory to the directory where you currently are.
+- `ls`: List files - lists files in the current directory. You can provide a path to list files to another directory as well (`ls [path]`).
+- `cd [path]`: Change directories to another folder.
 - less
 - man
 - -h/--help
