@@ -196,21 +196,6 @@ GitHub, though, this command would download them to our local repository.
 > tree. You can read more about this [on this GitHub page](https://help.github.com/articles/adding-a-file-to-a-repository/)
 {: .callout}
 
-> ## GitHub Timestamp
->
-> Create a remote repository on GitHub. Push the contents of your local
-> repository to the remote. Make changes to your local repository and push these
-> changes. Go to the repo you just created on GitHub and check the
-> [timestamps]({{ page.root }}{% link reference.md %}#timestamp) of the files. How does GitHub
-> record times, and why?
->
-> > ## Solution
-> > GitHub displays timestamps in a human readable relative format (i.e. "22 hours ago" or "three
-> > weeks ago"). However, if you hover over the timestamp, you can see the exact time at which the
-> > last change to the file occurred.
-> {: .solution}
-{: .challenge}
-
 > ## Push vs. Commit
 >
 > In this lesson, we introduced the "git push" command.
