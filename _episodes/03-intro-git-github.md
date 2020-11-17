@@ -65,19 +65,6 @@ metadata make up a [repository]({{ page.root }}{% link reference.md %}#repositor
 Repositories can be kept in sync across different computers, facilitating
 collaboration among different people.
 
-> ## The Long History of Version Control Systems
->
-> Automated version control systems are nothing new.
-> Tools like RCS, CVS, or Subversion have been around since the early 1980s and are used by 
-> many large companies.
-> However, many of these are now considered legacy systems (i.e., outdated) due to various 
-> limitations in their capabilities.
-> More modern systems, such as Git and [Mercurial](https://swcarpentry.github.io/hg-novice/),
-> are *distributed*, meaning that they do not need a centralized server to host the repository.
-> These modern systems also include powerful merging tools that make it possible for 
-> multiple authors to work on
-> the same files concurrently.
-{: .callout}
 
 > ## Paper Writing
 >
@@ -123,15 +110,15 @@ of configurations we will set as we get started with Git:
 
 On a command line, Git commands are written as `git verb options`,
 where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how
-Dracula sets up his new laptop:
+Riley sets up his new laptop:
 
 ~~~
-$ git config --global user.name "Vlad Dracula"
-$ git config --global user.email "vlad@tran.sylvan.ia"
+$ git config --global user.name "Riley Shor"
+$ git config --global user.email "Riley.Shor@fake.email.address"
 ~~~
 {: .language-bash}
 
-Please use your own name and email address instead of Dracula's. This user name and email will be associated with your subsequent Git activity,
+Please use your own name and email address instead of Riley's. This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to
 [GitHub](https://github.com/),
 [BitBucket](https://bitbucket.org/),
@@ -179,7 +166,7 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 > 
 
 
-Dracula also has to set his favorite text editor, following this table:
+Riley also has to set his favorite text editor, following this table:
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|
