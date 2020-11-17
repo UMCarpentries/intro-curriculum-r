@@ -271,7 +271,7 @@ cd c/USERNAME/Desktop/my_project
 {: .language-bask}
 
 We have been using _relative paths_, meaning you use your current location to get to where you are.
-You can also use the _absolute path_, or the entire path tfrom the root directory. What's listed when you use the `pwd` command is the absoute path:
+You can also use the _absolute path_, or the entire path from the root directory. What's listed when you use the `pwd` command is the absoute path:
 
 ```
 pwd
