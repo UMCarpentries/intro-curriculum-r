@@ -1,0 +1,15 @@
+before initializing: 01-opt1
+`git init`: 01-opt2, 02-03
+`git add`: 04
+`git commit`: 05-08
+edits: 09
+`git diff`: 10
+second round of add, commit, status: 11-13
+`git log` & `git shortlog`: 14
+`git diff <commit>..<commit>`: 15
+reprise: 16
+`git remote` & `git push` & `git pull` & `git log`: 17-23
+third round of editing & add & commit + working with remote: 24-27
+wrap-up so far: 28
+`git revert`: 29-33
+`git restore` (or `git checkout`): 34-35
