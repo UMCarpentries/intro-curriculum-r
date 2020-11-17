@@ -271,7 +271,7 @@ cd c/USERNAME/Desktop/my_project
 {: .language-bask}
 
 We have been using _relative paths_, meaning you use your current location to get to where you are.
-You can also use the _absolute path_, or the entire path tfrom the root directory. What's listed when you use the `pwd` command is the absoute path:
+You can also use the _absolute path_, or the entire path from the root directory. What's listed when you use the `pwd` command is the absoute path:
 
 ```
 pwd
@@ -333,20 +333,26 @@ However, it can start to get crazy if you have too many different files of diffe
 We’re going to create a better project directory structure that will help us organize our files. This is really important, particularly for larger projects. 
 If you’re interested in learning more about structuring computational biology projects in particular, [here](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424) is a useful article.
 
-What do you think good would be a good way to organize our files?
+> ## Creating directories and moving files
+> 
+> What do you think good would be a good way to organize our files?
 
-One way is the following (TODO: fix names):
-```
-.
-├── code
-│   └── plotting.R
-├── data
-│   └── gapminder.csv
-└── figures
-    ├── fig1.pdf
-    └── fig2.pdf
-```
-{: .language-bash}
+> > From the `my_project` directory:
+> > One way is the following (TODO: fix names):
+> > ```
+> > .
+> > ├── code
+> > │   └── plotting.R
+> > ├── data
+> > │   └── gapminder.csv
+> > └── figures
+> >     ├── fig1.pdf
+> >     └── fig2.pdf
+> > ```
+> > {: .language-bash}
+> > ```
+> {: .solution}
+{: .challenge}
 
 The R script goes in the code directory, the gapminder dataset goes in the data directory, and the figures go in the figures directory. 
 This way, all of the files are organized into a clearer overall structure. 
@@ -378,7 +384,6 @@ ls
 TODO: Add files!
 ```
 {: .output}
-
 
 How can we check to see if there’s anything in the `code` directory?
 
@@ -483,26 +488,7 @@ TODO: Add exercise about wildcards.
 
 ## Viewing Files
 
-To view and navigate the contents of a file we can use the command `less`. This will open a full screen view of the file. 
-
-TODO: maybe add screenshot of less?
-
-To navigate, press `spacebar` to scroll to the next page and `b` to scroll up to the previous page. You can also use the up and down arrows to scroll line-by-line. Note that `less` defaults to line wrapping, meaning that any lines longer than the width of the screen will be wrapped to the next line, (to disable this use the option `-S` when running `less`, ex `less -S file.txt`). To exit less, press the letter `q`. 
-
-We should note that not all file types can be viewed with `less`. While we can open PDFs and excel spreadsheets easily with programs on our computer, `less` doesn't render them well on the command line. For example, if we try to less a .pdf file we will see a warning.
-
-```
-less file.pdf
-```
-{: .language-bash}
-```
-file.pdf may be a binary file.  See it anyway?
-```
-{: .output}
-
-If we say "yes", less will render the file but it will appear as a seemingly random display of characters that wont make much sense to us. 
-
-TODO: maybe add screenshot of less on a .pdf?
+To view and navigate the contents of a file we can use the command `less`. This will open a full screen view of the file. To navigate, press `spacebar` to scroll to the next page and `b` to scroll up to the previous page. You can also use the up and down arrows to scroll line-by-line. Note that `less` defaults to line wrapping, meaning that any lines longer than the width of the screen will be wrapped to the next line, (to disable this use the option `-S` when running `less`, ex `less -S file.txt`). To exit less, press the letter `q`. 
 
 ## Man and Help
 
@@ -527,20 +513,22 @@ Beyond viewing the content of files, we may want to be able to edit or write fil
 
 Since we moved around files when we organized our project directory we will have to update our R script. The path we use to read in our dataset is no longer correct. We will use nano to update the path to our new 
 
+TODO use nano to edit the path to read in gapminder data. Add exercise to change paths to write out figures
+
 ```
-TODO use nano to edit the path to read in gapminder data
+nano <name of rscript>
 ```
 {: .language-bash}
 
-Great! Now as an exercise we can change the paths to write out figures. 
-
-TODO: add exercise to change figure output paths.
 
 ## Glossary of terms
 
 - `pwd`: Print working directory - prints the _absolute path_ from the _root_ directory to the directory where you currently are.
 - `ls`: List files - lists files in the current directory. You can provide a path to list files to another directory as well (`ls [path]`).
 - `cd [path]`: Change directories to another folder.
+- `..`: One directory _up_ the directory tree. 
+- `mkdir`: 
+
 - less
 - man
 - -h/--help
