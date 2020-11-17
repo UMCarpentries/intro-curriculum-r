@@ -571,11 +571,19 @@ TODO: add exercise to change figure output paths.
 
 ## Glossary of terms
 
+- root: the very top of the file system tree
+- absolute path: the location of a specific file or directory starting from the root of the file system tree
+- relative path: the location of a specific file or directory starting from where you currently are in the file system tree
+
 - `pwd`: Print working directory - prints the _absolute path_ from the _root_ directory to the directory where you currently are.
 - `ls`: List files - lists files in the current directory. You can provide a path to list files to another directory as well (`ls [path]`).
-- `cd [path]`: Change directories to another folder.
-- less
-- man
-- -h/--help
-- nano
+- `cd [path]`: Change directories - move to another folder.
+- `mkdir`: Make directory - creates a new directory 
+- `..`: This will move you up one level in the file system tree
+- `mv`: Move - move a file to a new location (`mv [file] [/path/to/new/location]`) OR remaning a file (`mv [oldfilename] [newfilename]`)
+- `less`: - quick way to view a document without using a full text editor
+- `man`: Manual - allows you to view the bash manual for another command (e.g. `man ls`)
+- `-h/--help`: Help - argument that pulls up the help manual for a program
+- `nano`: a user-friendly text editor 
+- `*`: Wildcard - matches zero of more charaters in a filename
 
