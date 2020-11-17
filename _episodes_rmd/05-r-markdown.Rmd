@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: ""
+title: "Writing Reports with R Markdown"
 teaching: 0 
 exercises: 0
 questions: ""

@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: ""
+title: "R for Data Analysis"
 teaching: 0 
 exercises: 0
 questions: ""
