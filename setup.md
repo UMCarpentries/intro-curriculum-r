@@ -36,7 +36,24 @@ For Windows, there are two main ways to setup your system to be able to render t
 ### macOS
 
 > ## Setup for Mac OS
-> Placeholder
+> You will need a recent version of R (>= 4.0). To install R on your Mac, follow instructions at 
+> the following link [R](https://cloud.r-project.org/bin/macosx/).  Click the link for the 
+> installer file, this is the file with the .pkg extension (e.g. R-4.0.3.pkg), to download it to your computer.
+> Once downloaded, double-click the installer file to install and follow the guided instructions.
+>
+> To install Rstudio  [RStudio](https://rstudio.com/products/rstudio/download/#download).  Click the
+> DOWNLOAD RSTUDIO FOR MAC button. Double-click the downloaded installer.  It will open a window with
+> the Applications folder and an icon for the RStudio app.  Click the RStudio app and drag it into the
+> Applications folder.
+> 
+> Open a Terminal
+> Confirm git is installed
+> which git
+> git --version
+> which R
+> R --version
+> Get the zip file.  Save to Desktop and unzip, will create a new folder called un-report.
+> RStudio (`which RStudio` and `rstudio --version` do not work on a Mac) 
 {: .solution}
 
 ### Linux (Ubuntu)
@@ -50,7 +67,7 @@ For Windows, there are two main ways to setup your system to be able to render t
 
 ### For R-based lessons
 
-You will need a recent version of R (>= 3.5.0). Installation instructions are available from the [CRAN website](https://cran.r-project.org).
+You will need a recent version of R (>= 4.0). Installation instructions are available from the [CRAN website](https://cran.r-project.org).
 
 We use the [knitr][cran-knitr], and [remotes](https://cran.r-project.org/package=remotes) to format
 lessons written in R Markdown and figure out needed packages to execute the code in the lesson. You
