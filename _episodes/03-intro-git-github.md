@@ -15,14 +15,15 @@ keypoints:
 - "Version control also allows many people to work in parallel."
 ---
 
-Contents:
+### Contents
 1. [Background](#background)
+1. [Setting up git](#setting-up-Git)
 1. [Basic Workflow](#basic-workflow)
 1. [Intro to GitHub](#intro-to-github)
 1. [Collaborating with GitHub](#collaborating-with-github)
 
 ## Background
-
+_[Back to top](#contents)_
 
 We'll start by exploring how version control can be used
 to keep track of what one person did and when.
@@ -104,6 +105,7 @@ collaboration among different people.
 
 
 ## Setting up Git
+_[Back to top](#contents)_
 
 When we use Git on a new computer for the first time,
 we need to configure a few things. Below are a few examples
@@ -239,6 +241,7 @@ same commands to choose another editor or update your email address.
 [git-privacy]: https://help.github.com/articles/keeping-your-email-address-private/
 
 ## Basic Workflow
+_[Back to top](#contents)_
 
 TODO:
 
@@ -429,6 +432,7 @@ NOTE (from RD): final remark on the importance of having a remote backup of the 
 ![git-basics-flow-28]({{ page.root }}/fig/git-basics/20201117-git-28.png)
 
 ## Intro to GitHub
+_[Back to top](#contents)_
 
 - TODO: make sure they've created GitHub account already
 (part of setup instructions?) and use that same email in the config steps.
@@ -670,5 +674,6 @@ GitHub, though, this command would download them to our local repository.
 {: .challenge}
 
 ## Collaborating with GitHub
+_[Back to top](#contents)_
 
 ## More Commands
