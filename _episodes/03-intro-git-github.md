@@ -2,8 +2,11 @@
 title: "Intro to Git & GitHub"
 teaching: 0
 exercises: 0
-questions: ""
-objectives: ""
+questions:
+- "How do I share my changes with others on the web?"
+objectives:
+- "Explain what repositories are and why they are useful."
+- "Push to or pull from a remote repository."
 keypoints: ""
 ---
 
@@ -31,7 +34,7 @@ Let's start by sharing the changes we've made to our current project with the
 world. Log in to GitHub, then click on the icon in the top right corner to
 create a new repository called `umswc-project`.
 
-![Creating a Repository on GitHub (Step 1)](../fig/github-create-repo-01.png)
+![Creating a Repository on GitHub (Step 1)](../fig/git/github-create-repo-01.png)
 
 Name your repository `umswc-project` and then click `Create Repository`.
 
@@ -40,12 +43,12 @@ Note: Since this repository will be connected to a local repository, it needs to
 .gitignore" and "Add a license." See the "GitHub License and README files" exercise below for a full
 explanation of why the repository needs to be empty.
 
-![Creating a Repository on GitHub (Step 2)](../fig/github-create-repo-02.png)
+![Creating a Repository on GitHub (Step 2)](../fig/git/github-create-repo-02.png)
 
 As soon as the repository is created, GitHub displays a page with a URL and some
 information on how to configure your local repository:
 
-![Creating a Repository on GitHub (Step 3)](../fig/github-create-repo-03.png)
+![Creating a Repository on GitHub (Step 3)](../fig/git/github-create-repo-03.png)
 
 This effectively does the following on GitHub's servers:
 
@@ -60,11 +63,11 @@ If you remember back to the earlier [lesson](../04-changes/) where we added and
 committed our earlier work on `mars.txt`, we had a diagram of the local repository
 which looked like this:
 
-![The Local Repository with Git Staging Area](../fig/git-staging-area.svg)
+![The Local Repository with Git Staging Area](../fig/git/git-staging-area.svg)
 
 Now that we have two repositories, we need a diagram like this:
 
-![Freshly-Made GitHub Repository](../fig/git-freshly-made-github-repo.svg)
+![Freshly-Made GitHub Repository](../fig/git/git-freshly-made-github-repo.svg)
 
 Note that our local repository still contains our earlier work on `mars.txt`, but the
 remote repository on GitHub appears empty as it doesn't contain any files yet.
@@ -74,7 +77,7 @@ GitHub repository a [remote]({{ page.root}}{% link reference.md %}#remote) for t
 The home page of the repository on GitHub includes the string we need to
 identify it:
 
-![Where to Find Repository URL on GitHub](../fig/github-find-repo-string.png)
+![Where to Find Repository URL on GitHub](../fig/git/github-find-repo-string.png)
 
 Click on the 'HTTPS' link to change the [protocol]({{ page.root }}{% link reference.md %}#protocol) from SSH to HTTPS.
 
@@ -89,18 +92,18 @@ Click on the 'HTTPS' link to change the [protocol]({{ page.root }}{% link refere
 > (this one has a screencast).
 {: .callout}
 
-![Changing the Repository URL on GitHub](../fig/github-change-repo-string.png)
+![Changing the Repository URL on GitHub](../fig/git/github-change-repo-string.png)
 
 Copy that URL from the browser, go into the local `umswc-project` repository, and run
 this command:
 
 ```
-$ git remote add origin https://github.com/username/umswc-project.git
+$ git remote add origin https://github.com/USERNAME/umswc-project.git
 ```
 {: .language-bash}
 
-Make sure to use the URL for your repository rather than `username`;
-that should be the only difference.
+Make sure to replace `USERNAME` with your actual GitHub username so it will use
+the correct URL for your repository; that should be the only difference.
 
 `origin` is a local name used to refer to the remote repository. It could be called
 anything, but `origin` is a convention that is often used by default in git
@@ -114,13 +117,10 @@ $ git remote -v
 {: .language-bash}
 
 ```
-origin   https://github.com/username/umswc-project.git (push)
-origin   https://github.com/username/umswc-project.git (fetch)
+origin   https://github.com/USERNAME/umswc-project.git (push)
+origin   https://github.com/USERNAME/umswc-project.git (fetch)
 ```
 {: .output}
-
-We'll discuss remotes in more detail in the next episode, while
-talking about how they might be used for collaboration.
 
 Once the remote is set up, this command will push the changes from
 our local repository to the repository on GitHub:
@@ -138,59 +138,14 @@ Compressing objects: 100% (11/11), done.
 Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/username/umswc-project.git
+To https://github.com/USERNAME/umswc-project.git
  * [new branch]      master -> master
 ```
 {: .output}
 
-> ## Proxy
->
-> If the network you are connected to uses a proxy, there is a chance that your
-> last command failed with "Could not resolve hostname" as the error message. To
-> solve this issue, you need to tell Git about the proxy:
->
-> ```
-> $ git config --global http.proxy http://user:password@proxy.url
-> $ git config --global https.proxy http://user:password@proxy.url
-> ```
-> {: .language-bash}
->
-> When you connect to another network that doesn't use a proxy, you will need to
-> tell Git to disable the proxy using:
->
-> ```
-> $ git config --global --unset http.proxy
-> $ git config --global --unset https.proxy
-> ```
-> {: .language-bash}
-{: .callout}
-
-> ## Password Managers
->
-> If your operating system has a password manager configured, `git push` will
-> try to use it when it needs your username and password.  For example, this
-> is the default behavior for Git Bash on Windows. If you want to type your
-> username and password at the terminal instead of using a password manager,
-> type:
->
-> ```
-> $ unset SSH_ASKPASS
-> ```
-> {: .language-bash}
->
-> in the terminal, before you run `git push`.  Despite the name, [Git uses
-> `SSH_ASKPASS` for all credential
-> entry](https://git-scm.com/docs/gitcredentials#_requesting_credentials), so
-> you may want to unset `SSH_ASKPASS` whether you are using Git via SSH or
-> https.
->
-> You may also want to add `unset SSH_ASKPASS` at the end of your `~/.bashrc`
-> to make Git default to using the terminal for usernames and passwords.
-{: .callout}
-
 Our local and remote repositories are now in this state:
 
-![GitHub Repository After First Push](../fig/github-repo-after-first-push.svg)
+![GitHub Repository After First Push](../fig/git/github-repo-after-first-push.svg)
 
 > ## The '-u' Flag
 >
@@ -209,7 +164,7 @@ $ git pull origin master
 {: .language-bash}
 
 ```
-From https://github.com/username/umswc-project
+From https://github.com/USERNAME/umswc-project
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ```
@@ -304,7 +259,7 @@ GitHub, though, this command would download them to our local repository.
 > > remote: Counting objects: 100% (3/3), done.
 > > remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
-> > From https://github.com/username/umswc-project
+> > From https://github.com/USERNAME/umswc-project
 > >  * branch            master     -> FETCH_HEAD
 > >  * [new branch]      master     -> origin/master
 > > fatal: refusing to merge unrelated histories
@@ -320,7 +275,7 @@ GitHub, though, this command would download them to our local repository.
 > > {: .language-bash}
 > >
 > > ```
-> > From https://github.com/username/umswc-project
+> > From https://github.com/USERNAME/umswc-project
 > >  * branch            master     -> FETCH_HEAD
 > > Merge made by the 'recursive' strategy.
 > > README.md | 1 +
