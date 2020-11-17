@@ -515,7 +515,9 @@ man less
 
 TODO: maybe add screenshot of man page?
 
-Another way to get more information about a command is to run the command with the option `-h or --help` which will print brief documentation for the command.
+TODO: write about options (You'll see in the man page all the options for the command. These commands are used)
+
+One very helpful flag that is available for any command is `-h or --help` which will print brief documentation for the command.
 
 ```
 less -h
@@ -524,6 +526,8 @@ less --help
 {: .language-bash}
 
 TODO: maybe add screenshot of help output?
+
+TODO: add exercise practicing options with ls command
 
 ## Editing Files
 
