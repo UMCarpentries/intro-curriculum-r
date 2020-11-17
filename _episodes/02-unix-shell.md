@@ -95,7 +95,7 @@ The shell folder (directory) structure is the same file structure as you're used
 We call the way that different directories are nested the "directory tree".
 You start at the root directory (`/`) and you can move "up" and "down" the tree. Here's an example:
 
-[Insert Image]
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/directory_tree_blank.png"/>
 
 Now that we understand directory trees a bit, let's check it out from the command line. 
 We can see where we are by using the command `pwd` which stands for "print working directory", or the directory we are currently in:
