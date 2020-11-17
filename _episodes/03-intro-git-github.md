@@ -251,8 +251,3 @@ same commands to choose another editor or update your email address.
 ## Collaborating with GitHub
 
 ## More Commands
-
-
-Daisie Huang and Ivan Gonzalez (eds): "Software Carpentry: Version
-Control with Git."  Version 2016.06, June 2016,
-https://github.com/swcarpentry/git-novice, 10.5281/zenodo.57467.
