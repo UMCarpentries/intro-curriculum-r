@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: ""
+title: "R for Plotting"
 teaching: 0 
 exercises: 0
 questions: ""
