@@ -17,7 +17,7 @@ objectives:
 - “Create a directory hierarchy that matches a given diagram.”
 - “Create files in the directory hierarchy using an editor or by copying and renaming existing files.”
 - “Delete, copy, and move specified files and/or directories.”
-Keypoints:
+keypoints:
 - “A shell is a program whose primary purpose is to read commands and run other programs.”
 - “Tab completion can help you save a lot of time and frustration.”
 - “The shell’s main advantages are its support for automating repetitive tasks and its capacity to access network machines.”
@@ -107,7 +107,7 @@ The output is a file path to a location (a directory) on your computer.
 The output will look a little different depending on what operating system you're using:
 - Mac: `/Users/USERNAME`
 - Linux: `/home/USERNAME`
-- Windows: `C:\Users\USERNAME` (or maybe `/mnt` for Windows 10 -- TODO: check)
+- Windows: `C:\Users\USERNAME` (or maybe `/mnt/c/Users/USERNAME` for Windows 10 -- TODO: check)
 
 Usually you start in your home directory, but for Unix subsystem for Windows, it's a bit different.
 
@@ -291,10 +291,34 @@ pwd
 ```
 {: .output}
 
-Exercise: 
-TODO: copy-paste from here (haven't found code yet)
-https://swcarpentry.github.io/shell-novice/02-filedir/index.html
-/Users/amanda/data....home dir exercise
+> ## Absolute vs Relative Paths
+>
+> Starting from `/Users/amanda/data`,
+> which of the following commands could Amanda use to navigate to her home directory,
+> which is `/Users/amanda`?
+>
+> 1. `cd .`
+> 2. `cd /`
+> 3. `cd /home/amanda`
+> 4. `cd ../..`
+> 5. `cd ~`
+> 6. `cd home`
+> 7. `cd ~/data/..`
+> 8. `cd`
+> 9. `cd ..`
+>
+> > ## Solution
+> > 1. No: `.` stands for the current directory.
+> > 2. No: `/` stands for the root directory.
+> > 3. No: Amanda's home directory is `/Users/amanda`.
+> > 4. No: this goes up two levels, i.e. ends in `/Users`.
+> > 5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.
+> > 6. No: this would navigate into a directory `home` in the current directory if it exists.
+> > 7. Yes: unnecessarily complicated, but correct.
+> > 8. Yes: shortcut to go back to the user's home directory.
+> > 9. Yes: goes up one level.
+> {: .solution}
+{: .challenge}
 
 ## Working with files and directories
 
@@ -429,6 +453,7 @@ Great, now for an exercise:
 > ## Creating directories and moving files
 > 
 > Create a `data` directory and move `gapminder.csv` into the newly created `data` directory.
+> > ## Solution
 > > From the `my_project` directory:
 > >  ```
 > > mkdir data
