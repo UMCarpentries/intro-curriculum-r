@@ -17,7 +17,7 @@ keypoints:
 
 ### Contents
 1. [Background](#background)
-1. [Setting up git](#setting-up-Git)
+1. [Setting up git](#setting-up-git)
 1. [Basic Workflow](#basic-workflow)
 1. [Intro to GitHub](#intro-to-github)
 1. [Collaborating with GitHub](#collaborating-with-github)
