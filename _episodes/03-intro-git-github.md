@@ -22,7 +22,7 @@ TODO:
 - [ ] walk through to check flow of diagrams with `git` commands
 - [ ] add example code (including outputs) to commands
 - [ ] if time allows / needed, adjust diagram image dimensions
-
+- [ ] write text to explain commands, essentially a script for instructors to improvise from.
 Diagrams to go with the basic commands.
 
 (starting with only a working directory, coordinate with R plotting contents)
