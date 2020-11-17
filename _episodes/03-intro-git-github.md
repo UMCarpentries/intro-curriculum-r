@@ -15,15 +15,19 @@ keypoints: ""
 
 TODO:
 
-[ ] intersperse `git` commands corresponding to each diagram part
+- [x] list diagram images
 
-[ ] make diagram for `git revert`
+- [ ] intersperse `git` commands corresponding to each diagram part
 
-[ ] make example for `git revert`
+- [ ] make diagram for `git revert`
 
-[ ] walk through to check flow of diagrams with `git` commands
+- [ ] make example for `git revert`
 
-[ ] add example code (including outputs) to commands
+- [ ] walk through to check flow of diagrams with `git` commands
+
+- [ ] add example code (including outputs) to commands
+
+- [ ] if time allows / needed, adjust diagram image dimensions
 
 Diagrams to go with the basic commands.
 
