@@ -431,6 +431,36 @@ NOTE (from RD): final remark on the importance of having a remote backup of the 
 
 ![git-basics-flow-28]({{ page.root }}/fig/git-basics/20201117-git-28.png)
 
+
+```
+git revert
+```
+{: .language-bash}
+
+NOTE (from RD): these first two diagrams for `git revert` essentially is just the second (i.e. diagram #30). I separated the two to indicate a step of inferring that since the bug / unintended change has been committed, it would be part of the .git history.
+
+![git-basics-flow-29]({{ page.root }}/fig/git-basics/20201117-git-29.png)
+
+![git-basics-flow-30]({{ page.root }}/fig/git-basics/20201117-git-30.png)
+
+![git-basics-flow-31]({{ page.root }}/fig/git-basics/20201117-git-31.png)
+
+![git-basics-flow-32]({{ page.root }}/fig/git-basics/20201117-git-32.png)
+
+NOTE (from RD): I added a box in the diagram to emphasize how git does not deletion information while reverting. No new operation for this step.
+
+![git-basics-flow-33]({{ page.root }}/fig/git-basics/20201117-git-33.png)
+
+```
+git restore
+git checkout <file>
+```
+{: .language-bash}
+
+![git-basics-flow-34]({{ page.root }}/fig/git-basics/20201117-git-34.png)
+
+![git-basics-flow-35]({{ page.root }}/fig/git-basics/20201117-git-35.png)
+
 ## Intro to GitHub
 _[Back to top](#contents)_
 
