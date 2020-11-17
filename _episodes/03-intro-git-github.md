@@ -122,10 +122,10 @@ On a command line, Git commands are written as `git verb options`,
 where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how
 Riley sets up their new laptop:
 
-~~~
+```
 $ git config --global user.name "Riley Shor"
 $ git config --global user.email "Riley.Shor@fake.email.address"
-~~~
+```
 {: .language-bash}
 
 Please use your own name and email address instead of Riley's. This user name and email will be associated with your subsequent Git activity,
@@ -162,16 +162,16 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 >
 > On macOS and Linux:
 >
-> ~~~
+> ```
 > $ git config --global core.autocrlf input
-> ~~~
+> ```
 > {: .language-bash}
 >
 > And on Windows:
 >
-> ~~~
+> ```
 > $ git config --global core.autocrlf true
-> ~~~
+> ```
 > {: .language-bash}
 >
 
@@ -198,9 +198,9 @@ to use the settings for every project, in your user account, on this computer.
 
 You can check your settings at any time:
 
-~~~
+```
 $ git config --list
-~~~
+```
 {: .language-bash}
 
 You can change your configuration as many times as you want: use the
@@ -212,18 +212,18 @@ same commands to choose another editor or update your email address.
 > [proxy](https://en.wikipedia.org/wiki/Proxy_server). If this is the case, you
 > may also need to tell Git about the proxy:
 >
-> ~~~
+> ```
 > $ git config --global http.proxy proxy-url
 > $ git config --global https.proxy proxy-url
-> ~~~
+> ```
 > {: .language-bash}
 >
 > To disable the proxy, use
 >
-> ~~~
+> ```
 > $ git config --global --unset http.proxy
 > $ git config --global --unset https.proxy
-> ~~~
+> ```
 > {: .language-bash}
 {: .callout}
 
@@ -231,10 +231,10 @@ same commands to choose another editor or update your email address.
 >
 > Always remember that if you forget a `git` command, you can access the list of commands by using `-h` and access the Git manual by using `--help` :
 >
-> ~~~
+> ```
 > $ git config -h
 > $ git config --help
-> ~~~
+> ```
 > {: .language-bash}
 >
 > While viewing the manual, remember the `:` is a prompt waiting for commands and you can press <kbd>Q</kbd> to exit the manual.
@@ -679,6 +679,9 @@ GitHub, though, this command would download them to our local repository.
 ## Collaborating with GitHub
 _[Back to top](#contents)_
 
+- TODO: replace vlad/planets references to USERNAME/un-report
+- TODO: replace screenshots
+- TODO: edit README instead of planets files
 
 For the next step, get into pairs.  One person will be the "Owner" and the other
 will be the "Collaborator". The goal is that the Collaborator add changes into
@@ -707,9 +710,9 @@ Next, the Collaborator needs to download a copy of the Owner's repository to her
  machine. This is called "cloning a repo". To clone the Owner's repo into
 her `Desktop` folder, the Collaborator enters:
 
-~~~
+```
 $ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
-~~~
+```
 {: .language-bash}
 
 Replace 'vlad' with the Owner's username.
@@ -719,38 +722,38 @@ Replace 'vlad' with the Owner's username.
 The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
 
-~~~
+```
 $ cd ~/Desktop/vlad-planets
 $ nano pluto.txt
 $ cat pluto.txt
-~~~
+```
 {: .language-bash}
 
-~~~
+```
 It is so a planet!
-~~~
+```
 {: .output}
 
-~~~
+```
 $ git add pluto.txt
 $ git commit -m "Add notes about Pluto"
-~~~
+```
 {: .language-bash}
 
-~~~
+```
  1 file changed, 1 insertion(+)
  create mode 100644 pluto.txt
-~~~
+```
 {: .output}
 
 Then push the change to the *Owner's repository* on GitHub:
 
-~~~
+```
 $ git push origin master
-~~~
+```
 {: .language-bash}
 
-~~~
+```
 Enumerating objects: 4, done.
 Counting objects: 4, done.
 Delta compression using up to 4 threads.
@@ -759,7 +762,7 @@ Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/vlad/planets.git
    9272da5..29aba7c  master -> master
-~~~
+```
 {: .output}
 
 Note that we didn't have to create a remote called `origin`: Git uses this
@@ -804,12 +807,12 @@ Collaborator.
 
 To download the Collaborator's changes from GitHub, the Owner now enters:
 
-~~~
+```
 $ git pull origin master
-~~~
+```
 {: .language-bash}
 
-~~~
+```
 remote: Enumerating objects: 4, done.
 remote: Counting objects: 100% (4/4), done.
 remote: Compressing objects: 100% (2/2), done.
@@ -823,7 +826,7 @@ Fast-forward
  pluto.txt | 1 +
  1 file changed, 1 insertion(+)
  create mode 100644 pluto.txt
-~~~
+```
 {: .output}
 
 Now the three repositories (Owner's local, Collaborator's local, and Owner's on
