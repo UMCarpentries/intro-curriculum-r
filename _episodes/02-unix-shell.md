@@ -95,6 +95,7 @@ The shell folder (directory) structure is the same file structure as you're used
 We call the way that different directories are nested the "directory tree".
 You start at the root directory (`/`) and you can move "up" and "down" the tree. Here's an example:
 
+TODO - update the file structure of this tree after we know where things will actually be.
 <img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/directory_tree_blank.png"/>
 
 Now that we understand directory trees a bit, let's check it out from the command line. 
