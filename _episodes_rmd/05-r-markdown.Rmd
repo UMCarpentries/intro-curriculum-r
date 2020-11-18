@@ -252,7 +252,10 @@ filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeE
 
 #### Previews of data
 
-TODO: check with R analysis team for the CO2 data format after that part of workshop
+TODO: 
+- [ ] check with R analysis team for the CO2 data format after that part of workshop
+- [ ] cut down number of questions (there is likely not enough time for all of the followings)
+- [ ] check with R plotting and stats to make sure the contents has been covered before the exercises
 
 Data: Gross domestic expenditure on R & D
 
