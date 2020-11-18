@@ -4,7 +4,9 @@ title: Discussion
 
 # Where to go from here?: Departing on your own coding journey
 
-We have come to the end of this workshop. You learned some basic procedures for importing, processing, managing and visualizing your data. 
+![](fig-next-steps.001.jpeg){width=400}
+
+We have come to the end of this workshop. You learned some basic procedures for importing, managing, visualizing and reporting your data. 
 
 As you continue on your coding journey, two things will happen: 
 
@@ -20,9 +22,9 @@ Even well seasoned coders run into bugs all the time. Here are some strategies o
 * Read the error message that your program issues and see if that helps you figure out the problem. The error message may give you a hint which particular line in your code, i.e., function call, is failing.
 * Check your code syntax. For example, are all parentheses correctly closed?
 * Check out in-built help tools and documentation. 
-  * __R__: Typing a question mark immediately followed by a function name (e.g., "?paste") pulls up the R documentation for that function. This provides  a function description, as well as in-depth information about each function argument including its purpose, default and other available options.
+  * __R__: Typing a question mark immediately followed by a function name, i.e., `?<command>`, pulls up the R documentation for that function. This provides  a function description, as well as in-depth information about each function argument including its purpose, default and other available options.
   * __Shell__: Use `man <command>` or `<command> --help` pulls up the manual page with more information. To quit, click `q`.
-  * __Git__: <git help> displays help information about git. Read more [here](https://git-scm.com/docs/git-help).
+  * __Git__: `git help` displays help information about git. Read more [here](https://git-scm.com/docs/git-help).
 * Search online for the error message along with the function that is not working. Most likely, someone encountered this error before you  and the examples online will help you figure out your own issue.
 * Perform a general online search for what you are trying to do, e.g., "how to import a comma separated spreadsheet into R", "how to delete a directory from the command line", "how to merge conflicts in git". Typically, you will find step-by-step online documentation that you can adapt for your own purposes.
 * Ask for help. If you are unable to solve your issue with existing online documentation, take your problem to a user forum. Typically, R users provide a piece of sample data along with the function call and error message  to request feedback from other users.
