@@ -30,7 +30,7 @@ to keep track of what one person did and when.
 Even if you aren't collaborating with other people,
 automated version control is much better than this situation:
 
-[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531](../fig/git/phd101212s.png)](http://www.phdcomics.com)
+[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531]({{ page.root }}/fig/git/phd101212s.png)](http://www.phdcomics.com)
 
 "Piled Higher and Deeper" by Jorge Cham, http://www.phdcomics.com
 
@@ -48,19 +48,19 @@ think of it as a recording of your progress: you can rewind to start at the base
 document and play back each change you made, eventually arriving at your
 more recent version.
 
-![Changes Are Saved Sequentially](../fig/git/play-changes.svg)
+![Changes Are Saved Sequentially]({{ page.root }}/fig/git/play-changes.svg)
 
 Once you think of changes as separate from the document itself, you
 can then think about "playing back" different sets of changes on the base document, ultimately
 resulting in different versions of that document. For example, two users can make independent
 sets of changes on the same document.
 
-![Different Versions Can be Saved](../fig/git/versions.svg)
+![Different Versions Can be Saved]({{ page.root }}/fig/git/versions.svg)
 
 Unless multiple users make changes to the same section of the document - a conflict - you can
 incorporate two sets of changes into the same base document.
 
-![Multiple Versions Can be Merged](../fig/git/merge.svg)
+![Multiple Versions Can be Merged]({{ page.root }}/fig/git/merge.svg)
 
 A version control system is a tool that keeps track of these changes for us,
 effectively creating different versions of our files. It allows us to decide
@@ -119,10 +119,10 @@ On a command line, Git commands are written as `git verb options`,
 where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how
 Riley sets up their new laptop:
 
-```
+~~~
 $ git config --global user.name "Riley Shor"
 $ git config --global user.email "Riley.Shor@fake.email.address"
-```
+~~~
 {: .language-bash}
 
 Please use your own name and email address instead of Riley's. This user name and email will be associated with your subsequent Git activity,
@@ -159,16 +159,16 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 >
 > On macOS and Linux:
 >
-> ```
+> ~~~
 > $ git config --global core.autocrlf input
-> ```
+> ~~~
 > {: .language-bash}
 >
 > And on Windows:
 >
-> ```
+> ~~~
 > $ git config --global core.autocrlf true
-> ```
+> ~~~
 > {: .language-bash}
 >
 
@@ -195,9 +195,9 @@ to use the settings for every project, in your user account, on this computer.
 
 You can check your settings at any time:
 
-```
+~~~
 $ git config --list
-```
+~~~
 {: .language-bash}
 
 You can change your configuration as many times as you want: use the
@@ -209,18 +209,18 @@ same commands to choose another editor or update your email address.
 > [proxy](https://en.wikipedia.org/wiki/Proxy_server). If this is the case, you
 > may also need to tell Git about the proxy:
 >
-> ```
+> ~~~
 > $ git config --global http.proxy proxy-url
 > $ git config --global https.proxy proxy-url
-> ```
+> ~~~
 > {: .language-bash}
 >
 > To disable the proxy, use
 >
-> ```
+> ~~~
 > $ git config --global --unset http.proxy
 > $ git config --global --unset https.proxy
-> ```
+> ~~~
 > {: .language-bash}
 {: .callout}
 
@@ -228,10 +228,10 @@ same commands to choose another editor or update your email address.
 >
 > Always remember that if you forget a `git` command, you can access the list of commands by using `-h` and access the Git manual by using `--help` :
 >
-> ```
+> ~~~
 > $ git config -h
 > $ git config --help
-> ```
+> ~~~
 > {: .language-bash}
 >
 > While viewing the manual, remember the `:` is a prompt waiting for commands and you can press <kbd>Q</kbd> to exit the manual.
@@ -253,49 +253,49 @@ TODO:
 - [ ] add example code (including outputs) to commands
 - [ ] if time allows / needed, adjust diagram image dimensions
 - [ ] write text to explain commands, essentially a script for instructors to improvise from.
-- [ ] update outputs from `git status` and `ls` to include other files previously created in the `un-report` directory
+- [ ] update outputs from `git status` and `ls` to include other files previously created in the `my_project` directory
 Diagrams to go with the basic commands.
 
 (starting with only a working directory, coordinate with R plotting contents)
 
-NOTE (from RD): this image only applicable when the starting working directory is currently empty
+
 
 
 Once Git is configured, we can start using it.
 
 
-First, let's make sure we are in our `un-report` directory, if not we need to move into that directory:
+First, let's make sure we are in our `my_project` directory, if not we need to move into that directory:
 
-```
+~~~
 $ pwd
-```
+~~~
 {: .language-bash}
 
-```
-$ /home/USERNAME/Desktop/un-report
-```
+~~~
+$ /home/USERNAME/Desktop/my_project
+~~~
 {: .output}
 
-> To get back to your `un-report` directory you can use the following command:
+> To get back to your `my_projects` directory you can use the following command:
 >
 >Mac/git-bash:
 >```
->cd Desktop/un-report
+>cd Desktop/my_project
 >```
 >{: .language-bash}
 >
->Windows Subsystem for Linux:
+>Unix subsystem for Windows:
 >```
->cd c/USERNAME/Desktop/un-report
+>cd c/USERNAME/Desktop/my_project
 >```
 >{: .language-bask}
 {: .callout}
 
 What is currently in our directory?
 
-```
+~~~
 $ ls
-```
+~~~
 {: .language-bash}
 
 ```
@@ -304,41 +304,41 @@ code    data    figures
 {: .output}
 
 
-Now we tell Git to make `un-report` a [repository]({{ page.root }}{% link reference.md %}#repository)
+Now we tell Git to make `my_project` a [repository]({{ page.root }}{% link reference.md %}#repository)
 -- a place where Git can store versions of our files:
 
 
-```
+~~~
 $ git init
-```
+~~~
 {: .language-bash}
 
 It is important to note that `git init` will create a repository that
 includes subdirectories and their files---there is no need to create
-separate repositories nested within the `un-report` repository, whether
+separate repositories nested within the `my_project` repository, whether
 subdirectories are present from the beginning or added later. Also, note
-that the creation of the `un-report` directory and its initialization as a
+that the creation of the `my_project` directory and its initialization as a
 repository are completely separate processes.
 
 If we use `ls` to show the directory's contents,
 it appears that nothing has changed:
 
-```
+~~~
 $ ls
-```
+~~~
 {: .language-bash}
 
 But if we add the `-a` flag to show everything,
-we can see that Git has created a hidden directory within `un-report` called `.git`:
+we can see that Git has created a hidden directory within `my_project` called `.git`:
 
-```
+~~~
 $ ls -a
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 .	..	.git
-```
+~~~
 {: .output}
 
 Git uses this special subdirectory to store all the information about the project,
@@ -349,18 +349,18 @@ we will lose the project's history.
 We can check that everything is set up correctly
 by asking Git to tell us the status of our project:
 
-```
+~~~
 $ git status
-```
+~~~
 {: .language-bash}
-```
+~~~
 On branch master
 
 No commits yet
 
 nothing to commit (create/copy files and use "git add" to track)
 TODO: UPDATE WITH EXPECTED OUTPUT
-```
+~~~
 {: .output}
 
 If you are using a different version of `git`, the exact
@@ -368,20 +368,20 @@ wording of the output might be slightly different.
 
 > ## Places to Create Git Repositories
 >
-> Along with tracking information about un-report (the project we have already created),
+> Along with tracking information about my_project (the project we have already created),
 > Riley would also like to track information about moons.
-> Despite our concerns, Riley creates a `moons` project inside his `un-report`
+> Despite our concerns, Riley creates a `moons` project inside his `my_project`
 > project with the following sequence of commands:
 >
-> ```
+> ~~~
 > $ cd ~/Desktop   # return to Desktop directory
-> $ cd un-report     # go into un-report directory, which is already a Git repository
-> $ ls -a          # ensure the .git subdirectory is still present in the un-report directory
-> $ mkdir moons    # make a subdirectory un-report/moons
+> $ cd my_project     # go into my_project directory, which is already a Git repository
+> $ ls -a          # ensure the .git subdirectory is still present in the my_project directory
+> $ mkdir moons    # make a subdirectory my_project/moons
 > $ cd moons       # go into moons subdirectory
 > $ git init       # make the moons subdirectory a Git repository
 > $ ls -a          # ensure the .git subdirectory is present indicating we have created a new Git repository
-> ```
+> ~~~
 > {: .language-bash}
 >
 > Is the `git init` command, run inside the `moons` subdirectory, required for
@@ -390,10 +390,10 @@ wording of the output might be slightly different.
 > > ## Solution
 > >
 > > No. Riley does not need to make the `moons` subdirectory a Git repository
-> > because the `un-report` repository will track all files, sub-directories, and
-> > subdirectory files under the `un-report` directory.  Thus, in order to track
+> > because the `my_project` repository will track all files, sub-directories, and
+> > subdirectory files under the `my_project` directory.  Thus, in order to track
 > > all information about moons, Riley only needed to add the `moons` subdirectory
-> > to the `un-report` directory.
+> > to the `my_project` directory.
 > >
 > > Additionally, Git repositories can interfere with each other if they are "nested":
 > > the outer repository will try to version-control
@@ -403,13 +403,13 @@ wording of the output might be slightly different.
 > > like the following, you are good to go to create a new repository as shown
 > > above:
 > >
-> > ```
+> > ~~~
 > > $ git status
-> > ```
+> > ~~~
 > > {: .language-bash}
-> > ```
+> > ~~~
 > > fatal: Not a git repository (or any of the parent directories): .git
-> > ```
+> > ~~~
 > > {: .output}
 > {: .solution}
 {: .challenge}
@@ -422,9 +422,9 @@ wording of the output might be slightly different.
 > >
 > > ### Background
 > > Removing files from a git repository needs to be done with caution. To remove files from the working tree and not from your working directory, use
-> > ```
+> > ~~~
 > > $ rm filename
-> > ```
+> > ~~~
 > > {: .language-bash}
 > >
 > > The file being removed has to be in sync with the branch head with no updates. If there are updates, the file can be removed by force by using the `-f` option. Similarly a directory can be removed from git using `rm -r dirname` or `rm -rf dirname`.
@@ -432,11 +432,11 @@ wording of the output might be slightly different.
 > > ### Solution
 > > Git keeps all of its files in the `.git` directory.
 > > To recover from this little mistake, Riley can just remove the `.git`
-> > folder in the moons subdirectory by running the following command from inside the `un-report` directory:
+> > folder in the moons subdirectory by running the following command from inside the `my_project` directory:
 > >
-> > ```
+> > ~~~
 > > $ rm -rf moons/.git
-> > ```
+> > ~~~
 > > {: .language-bash}
 > >
 > > But be careful! Running this command in the wrong directory, will remove
@@ -447,11 +447,11 @@ wording of the output might be slightly different.
 
 
 First let's make sure we're still in the right directory.
-You should be in the `un-report` directory.
+You should be in the `my_project` directory.
 
-```
-$ cd ~/Desktop/un-report
-```
+~~~
+$ cd ~/Desktop/my_project
+~~~
 {: .language-bash}
 
 Let's create a file called `analysis.txt` that contains some notes
@@ -460,52 +460,52 @@ We'll use `nano` to edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
 
-```
+~~~
 $ nano analysis.txt
-```
+~~~
 {: .language-bash}
 
 Type the text below into the `analysis.txt` file:
 
-```
+~~~
 We plotted life expectancy over time.
-```
+~~~
 
 Let's first verify that the file was properly created by running the list command (`ls`):
 
 
-```
+~~~
 $ ls
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 analysis.txt
-```
+~~~
 {: .output}
 
 
 `analysis.txt` contains a single line, which we can see by running:
 
-```
+~~~
 $ cat analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 We plotted life expectancy over time.
-```
+~~~
 {: .output}
 
 If we check the status of our project again,
 Git tells us that it's noticed the new file:
 
-```
+~~~
 $ git status
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 On branch master
 
 No commits yet
@@ -516,26 +516,26 @@ Untracked files:
 	analysis.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
-```
+~~~
 {: .output}
 
 The "untracked files" message means that there's a file in the directory
 that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
-```
+~~~
 $ git add analysis.txt
-```
+~~~
 {: .language-bash}
 
 and then check that the right thing happened:
 
-```
+~~~
 $ git status
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 On branch master
 
 No commits yet
@@ -545,7 +545,7 @@ Changes to be committed:
 
 	new file:   analysis.txt
 
-```
+~~~
 {: .output}
 
 Git now knows that it's supposed to keep track of `analysis.txt`,
@@ -553,16 +553,16 @@ but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
 
-```
+~~~
 $ git commit -m "Start notes on analysis"
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 [master (root-commit) f22b25e] Start notes on analysis
  1 file changed, 1 insertion(+)
  create mode 100644 analysis.txt
-```
+~~~
 {: .output}
 
 When we run `git commit`,
@@ -583,33 +583,33 @@ If you want to go into more detail, add a blank line between the summary line an
 
 If we run `git status` now:
 
-```
+~~~
 $ git status
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 On branch master
 nothing to commit, working directory clean
-```
+~~~
 {: .output}
 
 it tells us everything is up to date.
 If we want to know what we've done recently,
 we can ask Git to show us the project's history using `git log`:
 
-```
+~~~
 $ git log
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Riley Shor <Riley.Shor@fake.email.address>
 Date:   Thu Aug 22 09:51:46 2020 -0400
 
     Start notes on analysis
-```
+~~~
 {: .output}
 
 `git log` lists all commits  made to a repository in reverse chronological order.
@@ -634,27 +634,27 @@ Now suppose Riley adds more information to the file.
 (Again, we'll edit with `nano` and then `cat` the file to show its contents;
 you may use a different editor, and don't need to `cat`.)
 
-```
+~~~
 $ nano analysis.txt
 $ cat analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 We plotted life expectancy over time.
 Each point represents a country.
-```
+~~~
 {: .output}
 
 When we run `git status` now,
 it tells us that a file it already knows about has been modified:
 
-```
+~~~
 $ git status
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 On branch master
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -663,7 +663,7 @@ Changes not staged for commit:
 	modified:   analysis.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
-```
+~~~
 {: .output}
 
 The last line is the key phrase:
@@ -677,12 +677,12 @@ our changes before saving them. We do this using `git diff`.
 This shows us the differences between the current state
 of the file and the most recently saved version:
 
-```
+~~~
 $ git diff
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 diff --git a/analysis.txt b/analysis.txt
 index df0654a..315bf3a 100644
 --- a/analysis.txt
@@ -690,7 +690,7 @@ index df0654a..315bf3a 100644
 @@ -1 +1,2 @@
  We plotted life expectancy over time.
 +Each point represents a country.
-```
+~~~
 {: .output}
 
 The output is cryptic because
@@ -711,13 +711,13 @@ If we break it down into pieces:
 
 After reviewing our change, it's time to commit it:
 
-```
+~~~
 $ git commit -m "Add information on points"
 $ git status
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 On branch master
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -726,23 +726,23 @@ Changes not staged for commit:
 	modified:   analysis.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
-```
+~~~
 {: .output}
 
 Whoops:
 Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
-```
+~~~
 $ git add analysis.txt
 $ git commit -m "Add information on points"
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 [master 34961b1] Add information on points
  1 file changed, 1 insertion(+)
-```
+~~~
 {: .output}
 
 Git insists that we add files to the set we want to commit
@@ -790,25 +790,25 @@ and into long-term storage.
 First,
 we'll add another line to the file:
 
-```
+~~~
 $ nano analysis.txt
 $ cat analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 We plotted life expectancy over time.
 Each point represents a country.
 Continents are grouped by color.
-```
+~~~
 {: .output}
 
-```
+~~~
 $ git diff
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 diff --git a/analysis.txt b/analysis.txt
 index 315bf3a..b36abfd 100644
 --- a/analysis.txt
@@ -817,7 +817,7 @@ index 315bf3a..b36abfd 100644
  We plotted life expectancy over time.
  Each point represents a country.
 +Continents are grouped by color.
-```
+~~~
 {: .output}
 
 So far, so good:
@@ -826,10 +826,10 @@ we've added one line to the end of the file
 Now let's put that change in the staging area
 and see what `git diff` reports:
 
-```
+~~~
 $ git add analysis.txt
 $ git diff
-```
+~~~
 {: .language-bash}
 
 There is no output:
@@ -839,12 +839,12 @@ and what's currently in the directory.
 However,
 if we do this:
 
-```
+~~~
 $ git diff --staged
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 diff --git a/analysis.txt b/analysis.txt
 index 315bf3a..b36abfd 100644
 --- a/analysis.txt
@@ -853,7 +853,7 @@ index 315bf3a..b36abfd 100644
  We plotted life expectancy over time.
  Each point represents a country.
 +Continents are grouped by color.
-```
+~~~
 {: .output}
 
 it shows us the difference between
@@ -861,38 +861,38 @@ the last committed change
 and what's in the staging area.
 Let's save our changes:
 
-```
+~~~
 $ git commit -m "Add note about point color"
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 [master 005937f] Add note about point color
  1 file changed, 1 insertion(+)
-```
+~~~
 {: .output}
 
 check our status:
 
-```
+~~~
 $ git status
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 On branch master
 nothing to commit, working directory clean
-```
+~~~
 {: .output}
 
 and look at the history of what we've done so far:
 
-```
+~~~
 $ git log
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
 Author: Riley Shor <Riley.Shor@fake.email.address>
 Date:   Thu Aug 22 10:14:07 2020 -0400
@@ -910,7 +910,7 @@ Author: Riley Shor <Riley.Shor@fake.email.address>
 Date:   Thu Aug 22 09:51:46 2020 -0400
 
     Start notes on analysis
-```
+~~~
 {: .output}
 
 > ## Word-based diffing
@@ -943,32 +943,32 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 > commits that you want to view. For example, if you only want information from
 > the last commit you can use:
 >
-> ```
+> ~~~
 > $ git log -1
-> ```
+> ~~~
 > {: .language-bash}
 >
-> ```
+> ~~~
 > commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
 > Author: Riley Shor <Riley.Shor@fake.email.address>
 > Date:   Thu Aug 22 10:14:07 2020 -0400
 >
 >    Add note about point color
-> ```
+> ~~~
 > {: .output}
 >
 > You can also reduce the quantity of information using the
 > `--oneline` option:
 >
-> ```
+> ~~~
 > $ git log --oneline
-> ```
+> ~~~
 > {: .language-bash}
-> ```
+> ~~~
 > 005937f Add note about point color
 > 34961b1 Add information on points
 > f22b25e Start notes on analysis
-> ```
+> ~~~
 > {: .output}
 >
 > You can also combine the `--oneline` option with others. One useful
@@ -977,15 +977,15 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 > current `HEAD`, the current branch `master`, or
 > [other Git references][git-references]:
 >
-> ```
+> ~~~
 > $ git log --oneline --graph
-> ```
+> ~~~
 > {: .language-bash}
-> ```
+> ~~~
 > * 005937f (HEAD -> master) Add note about point color
 > * 34961b1 Add information on points
 > * f22b25e Start notes on analysis
-> ```
+> ~~~
 > {: .output}
 {: .callout}
 
@@ -996,12 +996,12 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 > 1. Git does not track directories on their own, only files within them.
 >    Try it for yourself:
 >
->    ```
+>    ~~~
 >    $ mkdir analysis
 >    $ git status
 >    $ git add analysis
 >    $ git status
->    ```
+>    ~~~
 >    {: .language-bash}
 >
 >    Note, our newly created empty directory `analysis` does not appear in
@@ -1014,26 +1014,26 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 > 2. If you create a directory in your Git repository and populate it with files,
 >    you can add all files in the directory at once by:
 >
->    ```
+>    ~~~
 >    git add <directory-with-files>
->    ```
+>    ~~~
 >    {: .language-bash}
 >
 >    Try it for yourself:
 >
->    ```
+>    ~~~
 >    $ touch analysis/plot-1 analysis/plot-2
 >    $ git status
 >    $ git add analysis
 >    $ git status
->    ```
+>    ~~~
 >    {: .language-bash}
 >
 >    Before moving on, we will commit these changes.
 >
->    ```
+>    ~~~
 >    $ git commit -m "Add some initial thoughts on analysis"
->    ```
+>    ~~~
 >    {: .language-bash}
 >
 {: .callout}
@@ -1066,23 +1066,23 @@ repository (`git commit`):
 > Which command(s) below would save the changes of `myfile.txt`
 > to my local Git repository?
 >
-> 1. ```
+> 1. ~~~
 >    $ git commit -m "my recent changes"
->    ```
+>    ~~~
 >    {: .language-bash}
-> 2. ```
+> 2. ~~~
 >    $ git init myfile.txt
 >    $ git commit -m "my recent changes"
->    ```
+>    ~~~
 >    {: .language-bash}
-> 3. ```
+> 3. ~~~
 >    $ git add myfile.txt
 >    $ git commit -m "my recent changes"
->    ```
+>    ~~~
 >    {: .language-bash}
-> 4. ```
+> 4. ~~~
 >    $ git commit -m myfile.txt "my recent changes"
->    ```
+>    ~~~
 >    {: .language-bash}
 >
 > > ## Solution
@@ -1109,47 +1109,47 @@ repository (`git commit`):
 > > ## Solution
 > >
 > > First we make our changes to the `analysis.txt` and `manuscript.txt` files:
-> > ```
+> > ~~~
 > > $ nano analysis.txt
 > > $ cat analysis.txt
-> > ```
+> > ~~~
 > > {: .language-bash}
-> > ```
+> > ~~~
 > > Maybe I should start with a draft manuscript.
-> > ```
+> > ~~~
 > > {: .output}
-> > ```
+> > ~~~
 > > $ nano manuscript.txt
 > > $ cat manuscript.txt
-> > ```
+> > ~~~
 > > {: .language-bash}
-> > ```
+> > ~~~
 > > manuscript is a good start and I definitely should consider it.
-> > ```
+> > ~~~
 > > {: .output}
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
-> > ```
+> > ~~~
 > > $ git add analysis.txt manuscript.txt
-> > ```
+> > ~~~
 > > {: .language-bash}
 > > Or with multiple commands:
-> > ```
+> > ~~~
 > > $ git add analysis.txt
 > > $ git add manuscript.txt
-> > ```
+> > ~~~
 > > {: .language-bash}
 > > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
-> > ```
+> > ~~~
 > > $ git commit -m "Write plans to start a draft manuscript"
-> > ```
+> > ~~~
 > > {: .language-bash}
-> > ```
+> > ~~~
 > > [master cc127c2]
 > >  Write plans to start a draft manuscript
 > >  2 files changed, 2 insertions(+)
 > >  create mode 100644 manuscript.txt
-> > ```
+> > ~~~
 > > {: .output}
 > {: .solution}
 {: .challenge}
@@ -1165,44 +1165,44 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > If needed, move out of the `un-report` folder:
+> > If needed, move out of the `my_project` folder:
 > >
-> > ```
+> > ~~~
 > > $ cd ..
-> > ```
+> > ~~~
 > > {: .language-bash}
 > >
 > > Create a new folder called `workshop` and 'move' into it:
 > >
-> > ```
+> > ~~~
 > > $ mkdir workshop
 > > $ cd workshop
-> > ```
+> > ~~~
 > > {: .language-bash}
 > >
 > > Initialise git:
 > >
-> > ```
+> > ~~~
 > > $ git init
-> > ```
+> > ~~~
 > > {: .language-bash}
 > >
 > > Create your biography file `notes.txt` using `nano` or another text editor.
 > > Once in place, add and commit it to the repository:
 > >
-> > ```
+> > ~~~
 > > $ git add notes.txt
 > > $ git commit -m "Add notes file"
-> > ```
+> > ~~~
 > > {: .language-bash}
 > >
 > > Modify the file as described (modify one line, add a fourth line).
 > > To display the differences
 > > between its updated state and its original state, use `git diff`:
 > >
-> > ```
+> > ~~~
 > > $ git diff notes.txt
-> > ```
+> > ~~~
 > > {: .language-bash}
 > >
 > {: .solution}
@@ -1222,28 +1222,28 @@ We've been adding one line at a time to `analysis.txt`, so it's easy to track ou
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
 let's make a change to `analysis.txt`, adding yet another line.
 
-```
+~~~
 $ nano analysis.txt
 $ cat analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 We plotted life expectancy over time.
 Each point represents a country.
 Continents are grouped by color.
 An ill-considered change
-```
+~~~
 {: .output}
 
 Now, let's see what we get.
 
-```
+~~~
 $ git diff HEAD analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 diff --git a/analysis.txt b/analysis.txt
 index b36abfd..0848c8d 100644
 --- a/analysis.txt
@@ -1253,7 +1253,7 @@ index b36abfd..0848c8d 100644
  Each point represents a country.
  Continents are grouped by color.
 +An ill-considered change.
-```
+~~~
 {: .output}
 
 which is the same as what you would get if you leave out `HEAD` (try it).  The
@@ -1262,21 +1262,21 @@ that by adding `~1`
 (where "~" is "tilde", pronounced [**til**-d*uh*])
 to refer to the commit one before `HEAD`.
 
-```
+~~~
 $ git diff HEAD~1 analysis.txt
-```
+~~~
 {: .language-bash}
 
 If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
 
-```
+~~~
 $ git diff HEAD~3 analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 diff --git a/analysis.txt b/analysis.txt
 index df0654a..b36abfd 100644
 --- a/analysis.txt
@@ -1286,19 +1286,19 @@ index df0654a..b36abfd 100644
 +Each point represents a country.
 +Continents are grouped by color.
 +An ill-considered change
-```
+~~~
 {: .output}
 
 We could also use `git show` which shows us what changes we made at an older commit as
 well as the commit message, rather than the _differences_ between a commit and our
 working directory that we see by using `git diff`.
 
-```
+~~~
 $ git show HEAD~3 analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Riley Shor <Riley.Shor@fake.email.address>
 Date:   Thu Aug 22 09:51:46 2020 -0400
@@ -1312,7 +1312,7 @@ index 0000000..df0654a
 +++ b/analysis.txt
 @@ -0,0 +1 @@
 +We plotted life expectancy over time.
-```
+~~~
 {: .output}
 
 In this way,
@@ -1334,12 +1334,12 @@ Our first commit was given the ID
 `f22b25e3233b4645dabd0d81e651fe074bd8e73b`,
 so let's try this:
 
-```
+~~~
 $ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 diff --git a/analysis.txt b/analysis.txt
 index df0654a..93a3e13 100644
 --- a/analysis.txt
@@ -1349,19 +1349,19 @@ index df0654a..93a3e13 100644
 +Each point represents a country.
 +Continents are grouped by color.
 +An ill-considered change
-```
+~~~
 {: .output}
 
 That's the right answer,
 but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters (typically seven for normal size projects):
 
-```
+~~~
 $ git diff f22b25e analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 diff --git a/analysis.txt b/analysis.txt
 index df0654a..93a3e13 100644
 --- a/analysis.txt
@@ -1371,7 +1371,7 @@ index df0654a..93a3e13 100644
 +Each point represents a country.
 +Continents are grouped by color.
 +An ill-considered change
-```
+~~~
 {: .output}
 
 All right! So
@@ -1383,12 +1383,12 @@ Let's suppose we change our mind about the last update to
 `git status` now tells us that the file has been changed,
 but those changes haven't been staged:
 
-```
+~~~
 $ git status
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 On branch master
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -1397,23 +1397,23 @@ Changes not staged for commit:
     modified:   analysis.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
-```
+~~~
 {: .output}
 
 We can put things back the way they were
 by using `git checkout`:
 
-```
+~~~
 $ git checkout HEAD analysis.txt
 $ cat analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 We plotted life expectancy over time.
 Each point represents a country.
 Continents are grouped by color.
-```
+~~~
 {: .output}
 
 As you might guess from its name,
@@ -1424,52 +1424,52 @@ which is the last saved commit.
 If we want to go back even further,
 we can use a commit identifier instead:
 
-```
+~~~
 $ git checkout f22b25e analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 $ cat analysis.txt
-```
+~~~
 {: .language-bash}
 
-```
+~~~
  We plotted life expectancy over time.
-```
+~~~
 {: .output}
 
-```
+~~~
 $ git status
-```
+~~~
 {: .language-bash}
 
-```
+~~~
 On branch master
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
     modified:   analysis.txt
 
-```
+~~~
 {: .output}
 
 Notice that the changes are currently in the staging area.
 Again, we can put things back the way they were
 by using `git checkout`:
 
-```
+~~~
 $ git checkout HEAD analysis.txt
-```
+~~~
 {: .language-bash}
 
 > ## Don't Lose Your HEAD
 >
 > Above we used
 >
-> ```
+> ~~~
 > $ git checkout f22b25e analysis.txt
-> ```
+> ~~~
 > {: .language-bash}
 >
 > to revert `analysis.txt` to its state after the commit `f22b25e`. But be careful!
@@ -1477,11 +1477,11 @@ $ git checkout HEAD analysis.txt
 > your intentions if you are not accurate with the typing. For example,
 > if you forget `analysis.txt` in the previous command.
 >
-> ```
+> ~~~
 > $ git checkout f22b25e
-> ```
+> ~~~
 > {: .language-bash}
-> ```
+> ~~~
 > Note: checking out 'f22b25e'.
 >
 > You are in 'detached HEAD' state. You can look around, make experimental
@@ -1494,7 +1494,7 @@ $ git checkout HEAD analysis.txt
 >  git checkout -b <new-branch-name>
 >
 > HEAD is now at f22b25e Start notes on analysis as a base
-> ```
+> ~~~
 > {: .error}
 >
 > The "detached HEAD" is like "look, but don't touch" here,
@@ -1515,16 +1515,120 @@ recent commit (`HEAD~1`), which is commit `f22b25e`:
 So, to put it all together,
 here's how Git works in cartoon form:
 
-![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](../fig/git/git_staging.svg)
+
+We start by creating a local working directory. Our working directory is `my_project`
+
+![git-basics-flow-01-opt1]({{ page.root }}/fig/git-basics/20201117-git-01-opt1.png =400x)  
+
+Then we initialize git
+
+```
+git init
+```
+{: .language-bash}
+
+Now our working directory also is being tracked by the git repo
+
+![git-basics-flow-02]({{ page.root }}/fig/git-basics/20201117-git-02.png =400x)  
+
+Then if we add a file to our working directory, it is only in our working directory.
+
+![git-basics-flow-03]({{ page.root }}/fig/git-basics/20201117-git-03.png =400x)  
+
+If we want to begin tracking this file, we need to add it to the staging area
+
+```
+git add NEWFILE
+git status
+```
+{: .language-bash}
+
+![git-basics-flow-04]({{ page.root }}/fig/git-basics/20201117-git-04.png =400x)  
+
+Now we can commit this file to our git repository for the changes to be saved.
+
+```
+git commit -m "Added NEWFILE"
+git status
+```
+{: .language-bash}
+
+![git-basics-flow-05]({{ page.root }}/fig/git-basics/20201117-git-05.png =400x)  
+
+If we make changes to the file now, we can see the differences between the commited file and the new edits.
+
+```
+git diff
+```
+{: .language-bash}
+
+![git-basics-flow-10]({{ page.root }}/fig/git-basics/20201117-git-10.png =400x)  
+
+Let's commit this change
+
+```
+git add NEWFILE
+git status
+```
+{: .language-bash}
+
+![git-basics-flow-12]({{ page.root }}/fig/git-basics/20201117-git-12.png =400x)  
+
+Now we can commit this file to our git repository for the changes to be saved.
+
+```
+git commit -m "editted NEWFILE"
+git status
+```
+{: .language-bash}
+
+![git-basics-flow-13]({{ page.root }}/fig/git-basics/20201117-git-13.png =400x)  
+
+We can check the history of our commits
+
+```
+git log
+```
+{: .language-bash}
+
+![git-basics-flow-14]({{ page.root }}/fig/git-basics/20201117-git-14.png =400x)  
+
+
+We can also check the differences between commits
+
+```
+git diff <commit>..<commit>
+```
+{: .language-bash}
+
+![git-basics-flow-15]({{ page.root }}/fig/git-basics/20201117-git-15.png =400x)  
+
+If we introduce a bug and break our code, no problem! We can `revert` to a previous commit.
+
+![git-basics-flow-30]({{ page.root }}/fig/git-basics/20201117-git-30.png =400x)  
+
+```
+git revert
+```
+{: .language-bash}
+
+![git-basics-flow-32]({{ page.root }}/fig/git-basics/20201117-git-32.png =400x)  
+
+We have now reverted our current file and commit to the latest version without the bug. But we have kept the commit and history from the commit that had the error.
+
+In the next section, we will learn how to share our git repository across networks. We can do this by creating a link to another location, like Github (remote repository) which we can `push` and `pull` our repository to and from to share our files with others as well as backing up our local repository.
+
+![git-basics-flow-27]({{ page.root }}/fig/git-basics/20201117-git-27.png =400x)  
+
 
 > ## Simplifying the Common Case
 >
 > If you read the output of `git status` carefully,
 > you'll see that it includes this hint:
 >
-> ```
+> ~~~
 > (use "git checkout -- <file>..." to discard changes in working directory)
-> ```
+> ~~~
 > {: .language-bash}
 >
 > As it says,
@@ -1613,7 +1717,7 @@ moving backward and forward in time becomes much easier.
 >
 > What is the output of the last command in
 >
-> ```
+> ~~~
 > $ cd planets
 > $ echo "Venus is beautiful and full of love" > venus.txt
 > $ git add venus.txt
@@ -1621,25 +1725,25 @@ moving backward and forward in time becomes much easier.
 > $ git commit -m "Comment on Venus as an unsuitable base"
 > $ git checkout HEAD venus.txt
 > $ cat venus.txt #this will print the contents of venus.txt to the screen
-> ```
+> ~~~
 > {: .language-bash}
 >
-> 1. ```
+> 1. ~~~
 >    Venus is too hot to be suitable as a base
->    ```
+>    ~~~
 >    {: .output}
-> 2. ```
+> 2. ~~~
 >    Venus is beautiful and full of love
->    ```
+>    ~~~
 >    {: .output}
-> 3. ```
+> 3. ~~~
 >    Venus is beautiful and full of love
 >    Venus is too hot to be suitable as a base
->    ```
+>    ~~~
 >    {: .output}
-> 4. ```
+> 4. ~~~
 >    Error because you have changed venus.txt without committing the changes
->    ```
+>    ~~~
 >    {: .output}
 >
 > > ## Solution
@@ -1659,9 +1763,9 @@ moving backward and forward in time becomes much easier.
 > >  replaces the working copy with the most recently committed version of `venus.txt`.
 > >  
 > >  So, `cat venus.txt` will output
-> >  ```
+> >  ~~~
 > >  Venus is beautiful and full of love.
-> > ```
+> > ~~~
 > > {: .output}
 > {: .solution}
 {: .challenge}
@@ -1697,9 +1801,9 @@ moving backward and forward in time becomes much easier.
 > Recall that the `git diff` command allows us to explore one specific file,
 > e.g., `git diff analysis.txt`. We can apply a similar idea here.
 >
-> ```
+> ~~~
 > $ git log analysis.txt
-> ```
+> ~~~
 > {: .language-bash}
 >
 > Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
@@ -1709,9 +1813,9 @@ moving backward and forward in time becomes much easier.
 > for you.
 > Is it possible to combine both? Let's try the following:
 >
-> ```
+> ~~~
 > $ git log --patch analysis.txt
-> ```
+> ~~~
 > {: .language-bash}
 >
 > You should get a long list of output, and you should be able to see both commit messages and
@@ -1719,215 +1823,11 @@ moving backward and forward in time becomes much easier.
 >
 > Question: What does the following command do?
 >
-> ```
+> ~~~
 > $ git log --patch HEAD~9 *.txt
-> ```
+> ~~~
 > {: .language-bash}
 {: .challenge}
-
-### TODO collate these diagrams from Rucheng with the text above
-
-![git-basics-flow-01-opt1](../fig/git-basics/20201117-git-01-opt1.png)  
-
-```
-git init
-```
-{: .language-bash}
-
-NOTE (from RD): if starting from a working directory that is not empty (which is likely the case when we get to this part on the basis of R plotting materials)
-
-![git-basics-flow-01-opt2](../fig/git-basics/20201117-git-01-opt2.png)  
-
-
-```
-git init
-```
-{: .language-bash}
-
-NOTE (from RD): use this image if initiating an empty directory
-
-![git-basics-flow-02](../fig/git-basics/20201117-git-02.png)
-
-NOTE (from RD): Make edits to the initiated directory, or initiating from an existing, non-empty directory. I personally use a lot of `git status` to show changes and progresses and they are not necessary.
-
-```
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-03](../fig/git-basics/20201117-git-03.png)
-
-```
-git add
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-04](../fig/git-basics/20201117-git-04.png)
-
-```
-git commit
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-05](../fig/git-basics/20201117-git-05.png)
-
-NOTE (from RD): this two diagrams are optional. I used to emphasize 1) the `.git` directory is changed but not the working directory and 2) the committed changes are "official" in the git "memory" at this point if presenting in-person
-
-![git-basics-flow-06](../fig/git-basics/20201117-git-06.png)
-
-![git-basics-flow-07](../fig/git-basics/20201117-git-07.png)
-
-NOTE (from RD): usually between this two diagrams, I would walk through adding another edits to the directory (e.g. adding another line in a text file) so that we can repeat the `git status`, `git add`, and `git commit` to familiarize the usage of these three specific commands. (Because in my opinion they are the most frequently used commands. This part can be adjusted accordingly.) Since we usually take a "detour" to make edits that are not directly relevant to `git`, I have included a repeated image below to pick up from where we are before the editing.
-
-![git-basics-flow-08](../fig/git-basics/20201117-git-08=05.png)
-
-```
-git add
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-09](../fig/git-basics/20201117-git-09.png)
-
-```
-git diff
-```
-{: .language-bash}
-
-![git-basics-flow-10](../fig/git-basics/20201117-git-10.png)
-
-NOTE (from RD): just an optional reprise of diagram before the showing the differences.
-
-![git-basics-flow-11](../fig/git-basics/20201117-git-11=9.png)
-
-```
-git add
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-12](../fig/git-basics/20201117-git-12.png)
-
-```
-git commit
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-13](../fig/git-basics/20201117-git-13.png)
-
-NOTE (from RD): an optional reprise of the effects of committing
-
-```
-git log
-git shortlog
-```
-{: .language-bash}
-
-![git-basics-flow-14](../fig/git-basics/20201117-git-14.png)
-
-```
-git diff <commit>{{ page.root }}<commit>
-```
-{: .language-bash}
-
-![git-basics-flow-15](../fig/git-basics/20201117-git-15.png)
-
-NOTE (from RD): an optional reprise. This exists only because I personally like to pause and touch base on some of the "theory" or backgound info or best practices (e.g. writing informative and concise commit messages) and therefore need to pick up again.
-
-![git-basics-flow-16](../fig/git-basics/20201117-git-16=13.png)
-
-```
-git remote add
-```
-{: .language-bash}
-
-![git-basics-flow-17](../fig/git-basics/20201117-git-17.png)
-
-```
-git push -u origin master
-```
-{: .language-bash}
-
-![git-basics-flow-18](../fig/git-basics/20201117-git-18.png)
-
-NOTE (frome RD): this might be a good place to add some collaborative contents too. If needed can reuse the figure above for a refresher.
-
-![git-basics-flow-19](../fig/git-basics/20201117-git-19.png)
-
-```
-git remote update
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-20](../fig/git-basics/20201117-git-20.png)
-
-![git-basics-flow-21](../fig/git-basics/20201117-git-21=19.png)
-
-```
-git pull
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-22](../fig/git-basics/20201117-git-22.png)
-
-NOTE (from RD): I used to show the log again and emphasize on the difference in user names if the new edits are collaborative, or just to show that the history can pick up edits done "somewhere else".
-
-```
-git log
-git status
-```
-{: .language-bash}
-
-![git-basics-flow-23](../fig/git-basics/20201117-git-23.png)
-
-NOTE (from RD): the next 4 images (i.e. 24 to 27) were made for a third round of `git add`, `commit`, `status`, now also `push` for a small exercise for practicing themselves.
-
-![git-basics-flow-24](../fig/git-basics/20201117-git-24=22.png)
-
-![git-basics-flow-25](../fig/git-basics/20201117-git-25.png)
-
-![git-basics-flow-26](../fig/git-basics/20201117-git-26.png)
-
-![git-basics-flow-27](../fig/git-basics/20201117-git-27.png)
-
-NOTE (from RD): final remark on the importance of having a remote backup of the work and how keeping history can help reproducing the work.
-
-![git-basics-flow-28](../fig/git-basics/20201117-git-28.png)
-
-
-```
-git revert
-```
-{: .language-bash}
-
-NOTE (from RD): these first two diagrams for `git revert` essentially is just the second (i.e. diagram #30). I separated the two to indicate a step of inferring that since the bug / unintended change has been committed, it would be part of the .git history.
-
-![git-basics-flow-29](../fig/git-basics/20201117-git-29.png)
-
-![git-basics-flow-30](../fig/git-basics/20201117-git-30.png)
-
-![git-basics-flow-31](../fig/git-basics/20201117-git-31.png)
-
-![git-basics-flow-32](../fig/git-basics/20201117-git-32.png)
-
-NOTE (from RD): I added a box in the diagram to emphasize how git does not deletion information while reverting. No new operation for this step.
-
-![git-basics-flow-33](../fig/git-basics/20201117-git-33.png)
-
-```
-git restore
-git checkout <file>
-```
-{: .language-bash}
-
-![git-basics-flow-34](../fig/git-basics/20201117-git-34.png)
-
-![git-basics-flow-35](../fig/git-basics/20201117-git-35.png)
 
 ## Intro to GitHub
 _[Back to top](#contents)_
