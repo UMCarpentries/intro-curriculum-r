@@ -158,9 +158,47 @@ cat('ggplot(data = gapminder_1997) + \n
 cat('```\n')
 ```
 
-Now we can knit our document to see how our report looks!
+Now we can knit our document to see how our report looks
+TODO: add in using the knit button and changing knit directory or rmarkdown::render('file.rmd', output_dir = "dirpath/")
 
-TODO: maybe include screen shot of markdown so far?
+![](../fig/r-markdown/first_report_render.png)
+
+Amazing! We've created a report! Lets push this to github to make sure we preserve this document. 
+
+TODO: instructions for pushing to github
+
+It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages. 
+
+![](../fig/r-markdown/tidyverse_messages.png)
+
+To get rid of this, we can revise our packages code chunk by adding `include=FALSE` like in the setup chunk to prevent code and messages in this chunk from showing up in our report. 
+
+```{r,comment=NA,echo=F,collapse=T}
+cat('```{r packages, include=FALSE}\n')
+cat('library(tidyverse)\n')
+cat('```\n')
+```
+
+We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk too?
+
+![](../fig/r-markdown/includeFalse.png)
+
+Oops! Now the plot doesn't show up in our report. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE` for the code chunk to tell it that we don't want to see the code but we want to see the output.
+
+```{r,comment=NA,echo=F,collapse=T}
+cat('```{r gdp_lifeexp_1997, echo=FALSE}\n')
+cat('ggplot(data = gapminder_1997) + \n
+  aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +\n
+  geom_point() +\n
+  labs(x = "GDP Per Capita", y = "Life Expectancy",\n
+       title= "Do people in wealthy countries live longer?", size="Population (in millions)")\n')
+cat('```\n')
+```
+
+When we knit this again, we can see the plot again!
+
+![](../fig/r-markdown/echoFalse.png)
+Now that we have a report we are happy with, let's push the changes to git hub. 
 
 ## Integrating it all together: Paired exercise
 
