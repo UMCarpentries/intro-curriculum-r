@@ -13,7 +13,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
-Remember that our goal is to generate a report about how a country's life expectancy is related to GDP.
+Recall that our ultimate goal is to generate a report on how a country's life expectancy is related to GDP.
 
 ## Creating a reports directory
 
@@ -32,11 +32,11 @@ TODO make this input and output look like SWC website.
 
 To start, I have a question for you:
 How do you usually share data analyses with your collaborators? 
-Many people share them through Word document, spreadsheets, attachments, etc. 
+Many people share them through a Word document, a spreadsheet, slides, a  graphic, etc. 
 
 ## Why use R Markdown?
 
-We're going to learn a way to create a report in R using something called R markdown. 
+We're going to learn a way to create a report in R using something called R Markdown. 
 This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html or PDF file and share with others. 
 The text can be experimental methods, an analysis and discussion of the results, or whatever else you want to include.
 :We use this for writing reproducible analysis reports, publication, sharing work with collaborators, writing up homework, and keeping a computational notebook of our work, among other things.
@@ -50,11 +50,11 @@ R Markdown combines Markdown (which renders plain text) with R code, which you c
 
 Now that we have a better understanding of what we can use R Markdown files for, let's start writing a report!
 
-To create an R Markdown file: (TODO: Include screen shots or is that overkill?)
+To create an R Markdown file: (TODO: Include screen shots or is that overkill? If you demo live, i (Jule) don't think you need screenshots.)
 - Open RStudio
 - Go to File &rarr; New File &rarr; R Markdown
-- Give your document a title (Q for learners: what should we call it? - TODO: choose name - un-report?)
-- Keep the default output format as HTML. You need TeX installed if you want to generate PDF documents. (TODO: Add link to how to install TeX/render PDFs)
+- Give your document a title (Q for learners: what should we call it? - TODO: choose name - un-report? Maybe: "A UN Report on the Relationship between GDP and Life Expectancy") ## i think it is important to make clear here that this title is different from a file or directory name?
+- Keep the default output format as HTML. You need TeX installed if you want to generate PDF documents. (TODO: Add link to [how to install TeX](https://www.latex-project.org/get/)/[render PDFs](https://rmarkdown.rstudio.com/pdf_document_format.html%2F), general link on [R Markdown output formats](https://rmarkdown.rstudio.com/lesson-9.html))
 - R Markdown files always end in `.Rmd`
 
 ## Basic components of R Markdown
@@ -100,7 +100,7 @@ Inside the code chunk, you can put any R code that you want to run, and you can 
 As we mentioned above, in the first code chunk you set options for the entire file. 
 `echo = TRUE` means that you want your code to be shown in the output file. 
 There are also many other options that you can change, but we won't go into those details in this workshop. 
-TODO: Add link to where can learn more.
+TODO: Check link on where we can learn more: [See here on code chunks in R Markdown](https://rmarkdown.rstudio.com/lesson-3.html)
 
 ### Text
 
@@ -117,7 +117,7 @@ You can do this by clicking the save icon in the top left.
 
 There's one other thing that we need to do before we get started with our report.
 To render our documents into html format, we can "knit" them in R Studio. 
-Usually, R markdown renders documents from the directory where the document is saved (the location of the `.Rmd` file), but we want it to render from the main project directory where our `.Rproj` file is.
+Usually, R Markdown renders documents from the directory where the document is saved (the location of the `.Rmd` file), but we want it to render from the main project directory where our `.Rproj` file is.
 This is because that's where all of our relative paths are from and it's good practice to have all of your relative paths from the main project directory.
 To change this default, click on the down arrow next to the "Knit" button at the top left of R Studio, go to "Knit Directory" and click "Project Directory". 
 Now it will assume all of your relative paths for reading and writing files are from the `un-report` directory, rather than the `reports` directory.
@@ -163,9 +163,17 @@ TODO: add in using the knit button and changing knit directory or rmarkdown::ren
 
 ![](../fig/r-markdown/first_report_render.png)
 
-Amazing! We've created a report! Lets push this to github to make sure we preserve this document. 
+Amazing! We've created a report! Lets push this to GitHub to make sure we preserve this document. 
 
-TODO: instructions for pushing to github
+TODO: check below instructions for pushing to GitHub
+Now all we need to do is commit our recent changes and update our remote repository using Git.
+
+Returning to the command line, type
+`git status` ##to get an idea of which files just changed`
+`git add <filename(s)>` ##to add any file(s) that you just created and that are not yet version controlled
+`git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
+`git push` ##to update your changes to the git directory on the remote server
+
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages. 
 
@@ -179,7 +187,7 @@ cat('library(tidyverse)\n')
 cat('```\n')
 ```
 
-We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk too?
+We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk, too?
 
 ![](../fig/r-markdown/includeFalse.png)
 
@@ -198,7 +206,9 @@ cat('```\n')
 When we knit this again, we can see the plot again!
 
 ![](../fig/r-markdown/echoFalse.png)
-Now that we have a report we are happy with, let's push the changes to git hub. 
+Now that we have a report we are happy with, let's push the changes to GitHub. 
+
+TODO: Add a list of conclusions, possibly with some bold/italicized text to the end to learn more Markdown formatting. 
 
 ## Integrating it all together: Paired exercise
 
