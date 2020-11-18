@@ -4,7 +4,7 @@ title: Discussion
 
 # Where to go from here?: Departing on your own coding journey
 
-![](fig-next-steps.001.jpeg){width=400}
+![Learning and debugging throughout the data progamming process.](fig-next-steps.001.jpeg){width=600}
 
 We have come to the end of this workshop. You learned some basic procedures for importing, managing, visualizing and reporting your data. 
 
