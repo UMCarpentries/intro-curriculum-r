@@ -161,3 +161,7 @@ cat('```\n')
 Now we can knit our document to see how our report looks!
 
 TODO: maybe include screen shot of markdown so far?
+
+## Integrating it all together: Paired exercise
+
+
