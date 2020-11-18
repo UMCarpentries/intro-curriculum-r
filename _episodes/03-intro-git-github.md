@@ -729,7 +729,7 @@ The Owner needs to give the Collaborator access. On GitHub, click the settings
 button on the right, select Manage access, click Invite a collaborator, and
 then enter your partner's username.
 
-![Adding Collaborators on GitHub](../fig/gitgithub-add-collaborators.png)
+![Adding Collaborators on GitHub](../fig/git/github-add-collaborators.png)
 
 To accept access to the Owner's repo, the Collaborator
 needs to go to [https://github.com/notifications](https://github.com/notifications).
@@ -746,7 +746,7 @@ $ git clone https://github.com/USERNAME/un-report.git ~/Desktop/USERNAME-un-repo
 
 Replace `USERNAME` with the Owner's username.
 
-![After Creating Clone of Repository](../fig/gitgithub-collaboration.svg)
+![After Creating Clone of Repository](../fig/git/github-collaboration.svg)
 
 The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
