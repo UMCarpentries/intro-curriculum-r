@@ -200,6 +200,8 @@ When we knit this again, we can see the plot again!
 ![](../fig/r-markdown/echoFalse.png)
 Now that we have a report we are happy with, let's push the changes to git hub. 
 
+TODO: Add a list of conclusions, possibly with some bold/italicized text to the end to learn more Markdown formatting. 
+
 ## Integrating it all together: Paired exercise
 
 
