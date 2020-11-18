@@ -55,26 +55,26 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ─────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
 ~~~
 {: .output}
 
 
 
 ~~~
-✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-✔ tibble  3.0.4     ✔ dplyr   1.0.2
-✔ tidyr   1.1.2     ✔ stringr 1.4.0
-✔ readr   1.4.0     ✔ forcats 0.5.0
+[32m✔[39m [34mggplot2[39m 3.3.2     [32m✔[39m [34mpurrr  [39m 0.3.4
+[32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
+[32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
+[32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
 ~~~
 {: .output}
 
 
 
 ~~~
-── Conflicts ────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
+── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
 ~~~
 {: .output}
 
@@ -88,7 +88,7 @@ gapminder_data <- read_csv("data/gapminder_data.csv")
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 Let's say we would like to know what is the mean (average) life expecteny in the dataset. R has a built in function function called `mean()` that will calculate this value for us. We can apply that function to our *lifeExp* column using the `summarize` function. Here's what that looks like
@@ -375,7 +375,7 @@ read_csv("data/co2-un-data.csv")
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -390,7 +390,7 @@ read_csv("data/co2-un-data.csv", skip=1)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -406,7 +406,7 @@ col_names=c("region", "country", "year", "series", "value", "footnotes", "source
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -422,7 +422,7 @@ rename(country=X2)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -438,7 +438,7 @@ rename_all(tolower)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -454,7 +454,7 @@ col_names=c("region", "country", "year", "series", "value", "footnotes", "source
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -471,7 +471,7 @@ select(country, year, series, value)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -490,7 +490,7 @@ mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxid
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -510,7 +510,7 @@ pivot_wider(names_from=series, values_from=value)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -531,7 +531,7 @@ count(year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -553,7 +553,7 @@ select(-year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -575,7 +575,7 @@ select(-year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -595,7 +595,7 @@ gapminder_data <- read_csv("data/gapminder_data.csv") %>%
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -695,7 +695,7 @@ mutate(country=recode(country,
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -733,7 +733,7 @@ pop = sum(pop)
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/Users/pschloss/Desktop/curriculum/_episodes_rmd').
+Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
