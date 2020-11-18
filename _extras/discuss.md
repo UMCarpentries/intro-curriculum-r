@@ -37,7 +37,7 @@ In the following, we list some strategies and resources we find useful. As you m
 ### General 
 * [Stack Overflow](https://stackoverflow.com/): Users post questions or errors and other users respond.
 * Cheat Sheets!! You can find many different cheat sheets for entire languages or specific libraries or even functions online. Just search for "<something> cheat sheet" to see what is available. We have listed a few below.
-* Study other people's code. Increasingly, people publish their code (e.g., in a Github repository) to facilitate reproducible research. You can take someone else' code as a starting point and adapt it to your own needs.
+* Study other people's code. Increasingly, people publish their code (e.g., in a GitHub repository) to facilitate reproducible research. You can take someone else's code as a starting point and adapt it to your own needs.
 
 ### Bash/Shell
 * [Bash Scripting Cheat Sheet](https://devhints.io/bash)
