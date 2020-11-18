@@ -212,4 +212,21 @@ TODO: Add a list of conclusions, possibly with some bold/italicized text to the 
 
 ## Integrating it all together: Paired exercise
 
+## Formatting
+Now that we know how to create a report, we might want to format it in a way that structures our thought process in a useful way (e.g., sections) and makes it visually appealing.
+Markdown is a very simple programming language when it comes to syntax.
+Let's try to figure out some syntax together. What would be a formatting style you might want to use?
+Cool, let's google "this student example" together (e.g., how create sections by using headers and subheaders).
 
+See, we can easily create headers and subheaders by using the `#` pound/hash sign.
+
+OK, now that we know how to make headers, let's practice some more Markdown syntax.
+
+Go ahead and do some online searches on how to do the following:
+
+* create a bullet point list with three items
+* as the first item, write the name of your currently favorite programming language in bold
+* as the second item, write  the name of a function you have so far found most useful in italics
+* as the third item, write one thing you want to learn next on your programming journey in bold and italics
+* turn your bullet point list into a numbered list
+* create a fourth list item and find an online guide and/or cheat sheet for basic Markdown syntax, write its name down here and hyperlink its url 
