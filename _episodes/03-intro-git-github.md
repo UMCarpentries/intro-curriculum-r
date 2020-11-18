@@ -24,6 +24,7 @@ keypoints:
 1. [Basic Workflow](#basic-workflow)
 1. [Intro to GitHub](#intro-to-github)
 1. [Collaborating with GitHub](#collaborating-with-github)
+1. [Glossary of terms](#glossary)
 
 ## Background
 _[Back to top](#contents)_
@@ -128,7 +129,8 @@ $ git config --global user.email "Riley.Shor@fake.email.address"
 ```
 {: .language-bash}
 
-Please use your own name and email address instead of Riley's. This user name and email will be associated with your subsequent Git activity,
+Please use your own name and email address instead of Riley's.
+This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to
 [GitHub](https://github.com/),
 [BitBucket](https://bitbucket.org/),
@@ -138,11 +140,19 @@ in a later lesson will include this information.
 
 For these lessons, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy].
 
->## Keeping your email private
+> ## GitHub, GitLab, & BitBucket
 >
->If you elect to use a private email address with GitHub, then use that same email address for the `user.email` value, e.g. `username@users.noreply.github.com` replacing `username` with your GitHub one.
+> GitHub, GitLab, & BitBucket are websites where you can store your git
+> repositories, share them with the world, and collaborate with others.
+> You can think of them like email applications. You may have a gmail address,
+> and you can choose to manage your email through one of many services such as
+> the Gmail app, Microsoft Outlook, Apple's Mail app, etc.
+> They have different interfaces and features, but all of them allow you to
+> manage your email. Similarly, GitHub, GitLab, & BitBucket have different
+> interfaces and features, but they all allow you to store, share, and
+> collaborate with others on your git repos.
+>
 {: .callout}
-
 
 > ## Line Endings
 >
@@ -174,7 +184,6 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 > ```
 > {: .language-bash}
 >
-
 
 Riley also has to set their favorite text editor, nano.
 
@@ -464,6 +473,36 @@ git checkout <file>
 
 ![git-basics-flow-35](../fig/git-basics/20201117-git-35.png)
 
+
+```
+git revert
+```
+{: .language-bash}
+
+NOTE (from RD): these first two diagrams for `git revert` essentially is just the second (i.e. diagram #30). I separated the two to indicate a step of inferring that since the bug / unintended change has been committed, it would be part of the .git history.
+
+![git-basics-flow-29]({{ page.root }}/fig/git-basics/20201117-git-29.png)
+
+![git-basics-flow-30]({{ page.root }}/fig/git-basics/20201117-git-30.png)
+
+![git-basics-flow-31]({{ page.root }}/fig/git-basics/20201117-git-31.png)
+
+![git-basics-flow-32]({{ page.root }}/fig/git-basics/20201117-git-32.png)
+
+NOTE (from RD): I added a box in the diagram to emphasize how git does not deletion information while reverting. No new operation for this step.
+
+![git-basics-flow-33]({{ page.root }}/fig/git-basics/20201117-git-33.png)
+
+```
+git restore
+git checkout <file>
+```
+{: .language-bash}
+
+![git-basics-flow-34]({{ page.root }}/fig/git-basics/20201117-git-34.png)
+
+![git-basics-flow-35]({{ page.root }}/fig/git-basics/20201117-git-35.png)
+
 ## Intro to GitHub
 _[Back to top](#contents)_
 
@@ -710,7 +749,6 @@ GitHub, though, this command would download them to our local repository.
 _[Back to top](#contents)_
 
 - TODO: replace screenshots
-- TODO: edit README instead of un-report files
 
 For the next step, get into pairs.  One person will be the "Owner" and the other
 will be the "Collaborator". The goal is that the Collaborator add changes into
@@ -915,3 +953,6 @@ GitHub) are back in sync!
 > * `git remote rename [oldname] [newname]` changes the local alias by which a remote
 > is known - its name. For example, one could use this to change `upstream` to `fred`.
 {: .callout}
+
+## Glossary
+
