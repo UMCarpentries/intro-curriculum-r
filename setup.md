@@ -12,26 +12,106 @@ title: Setup
 
 ### Windows
 
-For Windows, there are two main ways to setup your system to be able to render the lessons.
+### Option 1 - Using the Windows Subsystem for Linux (WSL)
 
-- Option 1 relies on the Windows Subsystem for Linux (WSL). WSL allows you to run a Linux
-  environment directly from Windows.
-- Option 2 relies on using Windows built-in applications.
+If your version of Windows supports it, using the WSL will make the
+installation of the tools needed easier. Instructions to install Linux
+distributions from Windows 10/Windows Server are available from the
+Microsoft article [Windows Subsystem for Linux Installation Guide for
+Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
-> ## Option 1 - Using the Windows Subsystem for Linux (WSL)
+We recommend that you install Ubuntu.
+
+If you install a distribution other than Ubuntu, you will need to adjust
+the commands that install the packages.
+TODO:  Outline installing R and Git
+TODO:  If WSL is used, then probably you want to still use the native
+       R and RStudio applications.  So, if people install R in WSL, there
+       is some chance they will be different versions.  I suspect that
+       installing an X desktop may be beyond the scope of this workshop?
+
+> ### Installing Bash
 >
-> If your version of Windows supports it, using the WSL will make the installation of the tools
-> needed easier. Instructions to install Linux distributions from Windows 10/Windows Server are
-> available from the [Microsoft website](https://docs.microsoft.com/en-us/windows/wsl/about).
+> Software Carpentry provides this video that walks through the process of
+> installing Git Bash 
 >
-> Once you have installed a Linux distribution, you can follow the installation instructions for
-> [Linux](#linux-ubuntu) listed below. If you install a distribution other than Ubuntu, you will
-> need to adjust the commands that install the packages.
+> Steps outlined
+>
+> 1. Download the [Git for Windows installer](https://git-scm.com/download/win).
+> 
+> 2. Run the installer and follow the steps below:
+> 
+>    * Click on `Next` to get through the license screen.
+>
+>    * Click on `Next` to accept the default installation path of
+>    `C:\Program Files\R/R-4.0.3`.
+>    * On the Select Components screen, you may wish to check the box to
+>    create Desktop icons.  Please do not change the other selections.
+>    Click `Next`.
+>    * Click on `Next` to accept `Git` as the name of the Start Menu folder.
+>    * 
+>    * On the "Choosing the default edit used by Git" panel, please select
+>    * from the dropdown menu "Use the nano editor by default" -- you may
+>    need to scroll _up_ in the list to find it.  Click on `Next`.
+> 
+>    * Ensure that "Git from the command line and also from 3rd-party
+>    software" is selected and click on "Next". (If you don't do this Git
+>    Bash will not work properly, requiring you to remove the Git Bash
+>    installation, re-run the installer and to select the "Git from the
+>    command line and also from 3rd-party software" option.)
+>
+>    * Keep the OpenSSH option if it gives you an option to change that.
+> 
+>    * Ensure that "Use the native Windows Secure Channel library" is
+>    selected and click on "Next".
+> 
+>    * Ensure that "Checkout Windows-style, commit Unix-style line endings"
+>    is selected and click on "Next".
+> 
+>    * Ensure that "Use Windows' default console window" is selected and
+>    click on "Next".
+>
+>    * Choose the default behavior of git pull to be Default (fast-forward
+>    or merge).
+>
+>    * From Choose a credential manager, choose Git Credential Manager Core
+>
+>    * Ensure that Enable file system caching is selected
+>
+>    * Do _NOT_ enable experimental support for pseudo consoles.  Clicking
+>    Next here shuld start the installation with no further selection
+>    screens.
+> 
+>    * This should bring you to a screen where you can click `Finish`.
+>    Unless you are really interested, you should uncheck the box to view
+>    the release notes.
+> 
+> 3. If your `HOME` environment variable is not set (or you don't know
+>    what this is):
+> 
+>     * Open command prompt (Open Start Menu then type cmd and press [Enter])
+>     * Type the following line into the command prompt window exactly as shown:
+>     ```
+>     setx HOME "%USERPROFILE%"
+>     ```
+>     * Press [Enter], you should see SUCCESS: Specified value was saved.
+>     * Quit command prompt by typing exit then pressing [Enter]
+> 
+> Completing those steps will provide you with both Git and Bash in the Git
+> Bash program.
 {: .solution}
 
-> ## Option 2 - Using Windows built-in applications
-> Placeholder
-{: .solution}
+> ### Installing R
+>
+> Download the R installer. [Link to the
+installer](https://cran.r-project.org/bin/windows/base/release.htm)
+> Run the downloaded file.  When prompted, you do want to allow it to make
+> changes to your system.
+> Please accept the default installation location of
+> `C:\Program Files\R\R-4.0.3`.  Subsequent steps will use that installation
+> path to make R avaiable from the command line, which you will need.
+> Accepting all of the default choices and clicking Next at each choice will
+> result in a working R.
 
 ### macOS
 
