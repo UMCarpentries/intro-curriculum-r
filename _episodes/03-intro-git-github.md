@@ -1,6 +1,6 @@
 ---
 title: "Intro to Git & GitHub"
-teaching: 10
+teaching: 0
 exercises: 0
 questions:
 - "What is version control and why should I use it?"
@@ -370,30 +370,30 @@ wording of the output might be slightly different.
 > ## Places to Create Git Repositories
 >
 > Along with tracking information about un-report (the project we have already created),
-> Riley would also like to track information about moons.
-> Despite our concerns, Riley creates a `moons` project inside his `un-report`
+> Riley would also like to track information about countries.
+> Despite our concerns, Riley creates a `countries` project inside his `un-report`
 > project with the following sequence of commands:
 >
 > ```
 > $ cd ~/Desktop   # return to Desktop directory
 > $ cd un-report     # go into un-report directory, which is already a Git repository
 > $ ls -a          # ensure the .git subdirectory is still present in the un-report directory
-> $ mkdir moons    # make a subdirectory un-report/moons
-> $ cd moons       # go into moons subdirectory
-> $ git init       # make the moons subdirectory a Git repository
+> $ mkdir countries    # make a subdirectory un-report/countries
+> $ cd countries       # go into countries subdirectory
+> $ git init       # make the countries subdirectory a Git repository
 > $ ls -a          # ensure the .git subdirectory is present indicating we have created a new Git repository
 > ```
 > {: .language-bash}
 >
-> Is the `git init` command, run inside the `moons` subdirectory, required for
-> tracking files stored in the `moons` subdirectory?
+> Is the `git init` command, run inside the `countries` subdirectory, required for
+> tracking files stored in the `countries` subdirectory?
 >
 > > ## Solution
 > >
-> > No. Riley does not need to make the `moons` subdirectory a Git repository
+> > No. Riley does not need to make the `countries` subdirectory a Git repository
 > > because the `un-report` repository will track all files, sub-directories, and
 > > subdirectory files under the `un-report` directory.  Thus, in order to track
-> > all information about moons, Riley only needed to add the `moons` subdirectory
+> > all information about countries, Riley only needed to add the `countries` subdirectory
 > > to the `un-report` directory.
 > >
 > > Additionally, Git repositories can interfere with each other if they are "nested":
@@ -417,7 +417,7 @@ wording of the output might be slightly different.
 > ## Correcting `git init` Mistakes
 > We explain to Riley how a nested repository is redundant and may cause confusion
 > down the road. Riley would like to remove the nested repository. How can Riley undo
-> his last `git init` in the `moons` subdirectory?
+> his last `git init` in the `countries` subdirectory?
 >
 > > ## Solution -- USE WITH CAUTION!
 > >
@@ -433,10 +433,10 @@ wording of the output might be slightly different.
 > > ### Solution
 > > Git keeps all of its files in the `.git` directory.
 > > To recover from this little mistake, Riley can just remove the `.git`
-> > folder in the moons subdirectory by running the following command from inside the `un-report` directory:
+> > folder in the countries subdirectory by running the following command from inside the `un-report` directory:
 > >
 > > ```
-> > $ rm -rf moons/.git
+> > $ rm -rf countries/.git
 > > ```
 > > {: .language-bash}
 > >
