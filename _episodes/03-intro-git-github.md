@@ -21,6 +21,7 @@ keypoints:
 1. [Basic Workflow](#basic-workflow)
 1. [Intro to GitHub](#intro-to-github)
 1. [Collaborating with GitHub](#collaborating-with-github)
+1. [Glossary of terms](#glossary)
 
 ## Background
 _[Back to top](#contents)_
@@ -706,4 +707,4 @@ GitHub, though, this command would download them to our local repository.
 ## Collaborating with GitHub
 _[Back to top](#contents)_
 
-## More Commands
+## Glossary
