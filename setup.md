@@ -153,6 +153,7 @@ and click Open on the pop up window. After installing Git, there will not be any
 most recent available installer labelled "snow-leopard" [available here](http://sourceforge.net/projects/git-osx-installer/files/).
 </details>
 
+<details>
 <summary><strong>Installing R</summary></strong>
 [R](https://www.r-project.org/) is a programming language that is especially powerful for data 
 exploration, visualization, and statistical analysis. You will need a recent version of R (>= 4.0).
