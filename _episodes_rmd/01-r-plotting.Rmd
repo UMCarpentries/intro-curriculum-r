@@ -15,34 +15,34 @@ knitr_fig_path("01-")
 
 ## Introduction to R and RStudio
 
-In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP). 
-To test this hypothesis, we'll need two things: data and a platform to analyze the data. 
+In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP).
+To test this hypothesis, we'll need two things: data and a platform to analyze the data.
 
 You already [downloaded the data](setup_instructions). But what platform will we use to analyze the data? We have many options!
 
 TODO: *Add link to information about reprodcible research or leave discussion for later?*
 
-We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexiblity, and don't easily allow for things that are criticial to "reproducible" research, like easily sharing the steps used to explore and make changes to the original data. 
+We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexiblity, and don't easily allow for things that are criticial to "reproducible" research, like easily sharing the steps used to explore and make changes to the original data.
 
-Instead, we'll use the a programming language to test our hypothesis. Today we will use R, but we could have also used Python for the same reasons we chose R (and we teach workshops for both languages). Both R and Python are freely available, the instructions you use to do the analysis are easily shared, and by using reproducible practices, it's straightforward to add more data or to change settings like colors or the size of a plotting symbol. 
+Instead, we'll use the a programming language to test our hypothesis. Today we will use R, but we could have also used Python for the same reasons we chose R (and we teach workshops for both languages). Both R and Python are freely available, the instructions you use to do the analysis are easily shared, and by using reproducible practices, it's straightforward to add more data or to change settings like colors or the size of a plotting symbol.
 
 TODO: *Check or update text to become an expandable discussion box*
-> ## But why R and not Python? 
+> ## But why R and not Python?
 >>
-[There's no great reason](http://www.academichermit.com/2020/03/23/Why-R.html). 
->>Although there are subtle differences between the languages, it's ultimately a matter of personal preference. Both are powerful and popular languages that have very well developed and welcoming communities of scientists that use them. As you learn more about R you may find things that are annoying in R that aren't so annoying in Python; the same could be said of learning Python. If the community you work in use R, then you're in the right place.
+[There's no great reason](http://www.academichermit.com/2020/03/23/Why-R.html).
+>>Although there are subtle differences between the languages, it's ultimately a matter of personal preference. Both are powerful and popular languages that have very well developed and welcoming communities of scientists that use them. As you learn more about R you may find things that are annoying in R that aren't so annoying in Python; the same could be said of learning Python. If the community you work in uses R, then you're in the right place.
 >
 > {: .source}
 {: .discussion}
 
-To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up](setup_instructions) for this workshop. 
+To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up](setup_instructions) for this workshop.
 
-To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio. 
+To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
 TODO: Change exercise to .md format blocks & add resources to use Rstudio on GreatLakes
 > ## Exercise
 > **Question:** Can you think of a reason you might not want to use RStudio?
-> 
+>
 > **Answer:** On some high performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](broken link) to run RStudio on Great Lakes.
 
 To get started, we'll spend a little time getting familiar with the RStudio environment and setting it up to suit your tastes. When you start RStudio, you'll have three panels.
@@ -53,23 +53,23 @@ On the left you'll have a panel with three tabs - Console, Terminal, and Jobs. T
 
 ![](01-r-plotting-assets/history.png)
 
-In the lower right panel are tabs for Files, Plots, Packages, Help, and Viewer. You used the Packages tab to install tidyverse. 
+In the lower right panel are tabs for Files, Plots, Packages, Help, and Viewer. You used the Packages tab to install tidyverse.
 
-We'll spend more time in each of these tabs as we go through the workshop so we won't spend a lot of time discussing them now. 
+We'll spend more time in each of these tabs as we go through the workshop so we won't spend a lot of time discussing them now.
 
 You might want to alter the appearance of your RStudio window. The default appearance has a white background with black text. If you go to the Tools menu at the top of your screen, you'll see a "Global options" menu at the bottom of the drop down; select that.
 
 ![](01-r-plotting-assets/global_options.png)
 
-From there you will see the ability to alter numerous things about RStudio. Under the Appearances tab you can select the theme you like most. As you can see there's a lot in Global options that you can set to improve your experience in RStudio. Most of these settings are a matter of personal preference. 
+From there you will see the ability to alter numerous things about RStudio. Under the Appearances tab you can select the theme you like most. As you can see there's a lot in Global options that you can set to improve your experience in RStudio. Most of these settings are a matter of personal preference.
 
 However, you can update settings to help you to insure the reproducibility of your code. In the General tab, none of the selectors in the R Sessions, Workspace, and History should be selected. In additon, the toggle next to "Save workspace to .RData on exit" should be set to never. These setting will help ensure that things you worked on previously don't carry over between sessions.
 
 ![](01-r-plotting-assets/general_options.png)
 
-Let's get going on our analysis! 
+Let's get going on our analysis!
 
-One of the helpful features in RStudio is the ability to create a project. A project is a special directory that contains all of the code and data that you will need to run an analysis. 
+One of the helpful features in RStudio is the ability to create a project. A project is a special directory that contains all of the code and data that you will need to run an analysis.
 
 At the top of your screen you'll see the "File" menu. Select that menu and then the menu for "New Project...".
 
@@ -88,30 +88,30 @@ Then click the "Create Project" button.
 
 ![](01-r-plotting-assets/create_project.png)
 
-Did you notice anything change? 
+Did you notice anything change?
 
-In the lower right corner of your RStudio session, you should notice that your Files tab is now your project directory. You'll also see a file called my_project.Rproj in that directory. 
+In the lower right corner of your RStudio session, you should notice that your Files tab is now your project directory. You'll also see a file called my_project.Rproj in that directory.
 
 From now on, you should start RStudio by double clicking on that file. This will make sure you are in the correct directory when you run your analysis.
 
 ![](01-r-plotting-assets/files_with_rproj.png)
 
-We'd like to create a file where we can keep track of our R code. 
+We'd like to create a file where we can keep track of our R code.
 
-Back in the "File" menu, you'll see the first option is "New File". Selecting "New File" opens another menu to the right and the first option is "R Script". Select "R Script". 
+Back in the "File" menu, you'll see the first option is "New File". Selecting "New File" opens another menu to the right and the first option is "R Script". Select "R Script".
 
 TODO: *Confirm paths with larger group/unix group*
-Now we have a fourth panel in the upper left corner of RStudio that includes an **Editor** tab with an untitled R Script. Let's save this file as gdp_population.R in our project directory. 
+Now we have a fourth panel in the upper left corner of RStudio that includes an **Editor** tab with an untitled R Script. Let's save this file as `gdp_population.R` in our project directory.
 
-We will be entering R code into the **Editor** tab to run in our **Console** panel. 
+We will be entering R code into the **Editor** tab to run in our **Console** panel.
 
-On line 1 of gdp_population.R, type `2+2`. 
+On line 1 of `gdp_population.R`, type `2+2`.
 
-With your cursor on the line with the `2+2`, click the button that says "Run". You should be able to see that `2+2` was run in the Console. 
+With your cursor on the line with the `2+2`, click the button that says "Run". You should be able to see that `2+2` was run in the Console.
 
-As you write more code, you can highlight multiple lines and then click "Run" to run all of the lines you have selected. 
+As you write more code, you can highlight multiple lines and then click "Run" to run all of the lines you have selected.
 
-Let's delete the line with 2+2 and replace it with `library(tidyverse)`. 
+Let's delete the line with 2+2 and replace it with `library(tidyverse)`.
 
 Go ahead and run that line in the **Console** by clicking the <kbd>Run</kbd> button on the top right of the **Editor** tab and choosing <kbd>Run Selected Lines</kbd>
 
@@ -123,7 +123,7 @@ TODO: *Add example output from loading library and/or discuss messages get when 
 
 TODO: *Change to testimonal or other highlighted box?*
 ## Hint / Pro-tip
-Those of us that use R on a daily basis use cheat sheets to help us remember how to use various R functions. If you haven't already, print out the PDF versions of the cheat sheets that were in the setup instructions. 
+Those of us that use R on a daily basis use cheat sheets to help us remember how to use various R functions. If you haven't already, print out the PDF versions of the cheat sheets that were in the setup instructions.
 
 You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2" and "Data Transformation with dplyr".
 
@@ -132,32 +132,32 @@ You can also find them in RStudio by going to the "Help" menu and selecting "Che
 
 # Loading and reviewing data
 
-We will import a subset file from the gapminder dataset called `gap1997.csv`. There are many ways to import data into R but for your first plot we will use RStudio's file menu to import and display this data. As we move through this process, RStudio will translate these *point and click* commands into code for us.
+We will import a subset file from the gapminder dataset called `gapminder_1997.csv`. There are many ways to import data into R but for your first plot we will use RStudio's file menu to import and display this data. As we move through this process, RStudio will translate these *point and click* commands into code for us.
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
 TODO: *Update '<<data directory>> to match the directory structure from setup*
-The file is located in the directory <<data directory>>, click the "browse" button and select the file named *gapminder_1997.csv*. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
+The file is located in the directory <<data directory>>, click the "browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
 
 We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
 
 After you've imported your data, you will a table open in a new tab in the top left corner of RStudio. This is a quick way to browse your data to make sure everything looks like it has been imported correctly. To review the data, click on the new tab.
 
-We see that our data has 6 columns (variables). 
+We see that our data has 5 columns (variables).
 
-Each row contains the year of observation ("year"), life expectancy ("lifeExp"), the total population ("pop"), and the per capita gross domestic product ("gdpPercap") for a given country ("country"). 
+Each row contains life expectancy ("lifeExp"), the total population ("pop"), and the per capita gross domestic product ("gdpPercap") for a given country ("country").
 
 There is also a column that says which continent each country is in ("continent"). Note that both North America and South America are combined into one category called "Americas".
 
-After we've reviewed the data, you'll want to make sure to click the tab in the upper left to return to your "gdp_population.R" file so we can start writing some code.
+After we've reviewed the data, you'll want to make sure to click the tab in the upper left to return to your `gdp_population.R` file so we can start writing some code.
 
-Now look in the **Environment** tab in the upper right corner of RStudio. Here you will see a list of all the objects you've created or imported during your R session. You will now see "gapminder_1997" listed here as well. 
+Now look in the **Environment** tab in the upper right corner of RStudio. Here you will see a list of all the objects you've created or imported during your R session. You will now see `gapminder_1997` listed here as well.
 
 Finally, take a look at the **Console** at the bottom left part of the RStudio screen. Here you will see the commands that were run for you to import your data in addition to associated metadata and warnings.
 
 # Understanding commands
 
-Let's start by looking at the code RStudio ran for us by copying and pasting the firstline from console into our "gdp_population.R" file that is open in the **Editor** window.
+Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
 
 TODO: *Confirm that this is the example output*
 ```
@@ -165,17 +165,17 @@ gapminder_1997 <- read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myDa
 
 ```
 
-You should now have a line of text in your code file that started with `gapminder` and ends with a `)` symbol. 
+You should now have a line of text in your code file that started with `gapminder` and ends with a `)` symbol.
 
 What if we want to run this command from our code file?
 
-In order to run code that you've typed in the editor, you have a few options. We can click <kbd>Run</kbd> again from the right side of the *Editor* tab but the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard. 
+In order to run code that you've typed in the editor, you have a few options. We can click <kbd>Run</kbd> again from the right side of the **Editor** tab but the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard.
 
-This will run the line of code that currently contains your cursor and will move your cursor to the next line. Note that when Rstudio runs your code, it basically just copies your code from the Editor window to the Console window, just like what happened when we selected <kbd>Run Selected Line(s)</kbd>.
+This will run the line of code that currently contains your cursor and will move your cursor to the next line. Note that when Rstudio runs your code, it basically just copies your code from the **Editor** window to the **Console** window, just like what happened when we selected <kbd>Run Selected Line(s)</kbd>.
 
-Let's take a closer look at the parts of this command. 
+Let's take a closer look at the parts of this command.
 
-Starting from the left, the first thing we see is `gapminder_1997`. From looking at the tab of the data, we know that `gapminder_1997` acts as a placeholder for a table of data. 
+Starting from the left, the first thing we see is `gapminder_1997`. We viewed the contents of this file after it was imported so we know that `gapminder_1997` acts as a placeholder for a table of data.
 
 TODO: *Create exercise here*
 > # Running parts of our code
@@ -193,11 +193,11 @@ TODO: *Update to be a collapsable option & determine how exhaustive to be*
 >> - There are some names that cannot be used because they are the names of fundamental functions in R (e.g., if, else, for, see [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html) for a complete list). If in doubt, check the help to see if the name is already in use.
 >> - It's best to avoid dots (.) within names. Many function names in R itself have them and dots also have a special meaning (methods) in R and other programming languages.
 >> - It is recommended to use nouns for object names and verbs for function names.
->> - Be consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. One popular style guide can be found through the [tidyverse](https://style.tidyverse.org/). 
+>> - Be consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. One popular style guide can be found through the [tidyverse](https://style.tidyverse.org/).
 > {: .source}
 {: .keypoint}
 
-Looking back at the command in our code file, the second thing we see if a `<-` symbol, which is the **assignment operator**. It assigns values generated or typed on the right to objects on the left. An alternative symbol that you might see used as an **assignment operator** is the `=` but it is clearer to only use `<-` for assignment.
+Looking back at the command in our code file, the second thing we see if a `<-` symbol, which is the **assignment operator**. It assigns values generated or typed on the right to objects on the left. An alternative symbol that you might see used as an **assignment operator** is the `=` but it is clearer to only use `<-` for assignment. We use this symbol so often that RStudio has a keyboard short cut for it: <kbd>Alt</kbd>+<kbd>-</kbd> on Windows, and <kbd>Option</kbd>+<kbd>-</kbd> on Mac.
 
 TODO: *Add optional exercise to use 'bad' object names and try to assign values to those?*
 > ## Challenge - Assign values to objects
@@ -206,28 +206,29 @@ TODO: *Add optional exercise to use 'bad' object names and try to assign values 
 > 1number <- 3
 > Flower <- "marigold"
 > flower <- "rose"
+> favorite number <- 12
 > ```
 > {: .source}
 {: .challenge}
 
-The next part of the command is `read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")`. This has a few differnt key parts. The first part `
+The next part of the command is `read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")`. This has a few different key parts. The first part `
 
 You call a function in R by typing it's name followed by opening then closing parenthesis.  Let's try to run the function without anything inside the parenthesis.
 ```{r FunctionAlone}
 read_csv()
 ```
 
-We get an error message! 
+We get an error message!
 ```
-Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_types,  : 
+Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_types,  :
   argument "file" is missing, with no default
 ```
 { .error: error messages.}
 
 
-Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters." 
+Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters."
 
-You pass **arguments** to a function by placing values in between the parenthesis. Argument names precede their values but most are optional if you pass them in a certain order. 
+You pass **arguments** to a function by placing values in between the parenthesis. Argument names precede their values but most are optional if you pass them in a certain order.
 
 When you need to pass in multiple arguments to a function you will separate those values with commas. But that's just a quick summary -- we will see examples of those later.
 
@@ -235,43 +236,41 @@ TODO: *Add challenge showing a function that doesn't need arguments*
 > ## Challenge: Do all functions need arguments
 >> Let's test some other functions
 >>```{r Functions}
->> 
+>>  Sys.Date()
 >>```
 >>
-> 
+>
 > {: .source}
 {: .callout}
 
-TODO: *Add `?` operator and how to get help with functions within R studio*
-How can we find out the requirements of different functions?
-
+Each function has a help page that documents what arguments the function expects and what value it will return. You can bring up the help page a few different ways. If you have typed the function name in the **Editor** windows, you can put your cursor on the function name and press <kbd>F1</kbd> to open help page in the **Help** viewer in the lower right corner of RStudio. You can also type `?` followed by the function name in the console. For example `?read_csv`. The help pages often have useful examples of the function in action.
 
 - Touch on data types (will go into more detail later??) TODO: *Touch on data types? Determine about of detail to include for types of data in R at this stage*
 
 # Creating our first plot
 
-We will be using the *ggplot2* package today to make our plots. This is a very powerful package that creates professional looking plots and is one of the reasons people like using R so much. All plots made using the *ggplot2* package start by calling the `ggplot()` function. So in your in the tab you created for the "gdp_population.R" file, type the following:
+We will be using the `ggplot2` package today to make our plots. This is a very powerful package that creates professional looking plots and is one of the reasons people like using R so much. All plots made using the `ggplot2` package start by calling the `ggplot()` function. So in the tab you created for the `gdp_population.R` file, type the following:
 ```{r}
 ggplot(data=gapminder_1997)
 ```
-In order to run code that you've typed in the editor, you have a few options. Rememeber that the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard. This will run the line of code that currently contains your cursor or any highlgihted code.
+In order to run code that you've typed in the editor, you have a few options. Remember that the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard. This will run the line of code that currently contains your cursor or any highlighted code.
 
-When we run this code, the Plots tab will pop to the front in the lower right corner of the RStudio screen. Right now, we just see a big grey rectangle.
+When we run this code, the **Plots** tab will pop to the front in the lower right corner of the RStudio screen. Right now, we just see a big grey rectangle.
 
-What we've done is created a ggplot object and told it we will be using the data from the `gapminder_1997` object that we've loaded into R. We've done this by calling the `ggplot()` function. 
+What we've done is created a ggplot object and told it we will be using the data from the `gapminder_1997` object that we've loaded into R. We've done this by calling the `ggplot()` function with `gapminder_1997` as the `data=` argument.
 
-So we've made a plot object, now we need to start telling it what we actually want to draw in this plot. With ggplot, we start connecting our data to different plot elements by creating an "aesthetic mapping", which we do with the `aes()` function. 
+So we've made a plot object, now we need to start telling it what we actually want to draw in this plot. With ggplot, we start connecting our data to different plot elements by creating an "aesthetic mapping", which we do with the `aes()` function.
 
-The elements of a plot have a bunch of properties like an x and y position, a color, a size, etc and we need to match those up to values inside our `gapminder_1997` object. When we pass our data values to the `aes()` function, we do so as if the column names of our data object are variables that exist in R. This means that what we type much match exactly (upper and lowercase). 
+The elements of a plot have a bunch of properties like an x and y position, a color, a size, etc and we need to match those up to values inside our `gapminder_1997` object. When we pass our data values to the `aes()` function, we do so as if the column names of our data object are variables that exist in R. This means that what we type much match the comlumn names exactly (upper and lowercase).
 
-The plot object will look those values up in the value that we passed so we can start by telling our plot object that we want to map our GDP values to the x axis of our plot. We do this by adding (`+`) information to our plot object. Add this new line to your code and run both lines by highlighting them and pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard:
+The plot object will look those values up in the data object that we supplied so we can start by telling our plot object that we want to map our GDP values to the x axis of our plot. We do this by adding (`+`) information to our plot object. Add this new line to your code and run both lines by highlighting them and pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard:
 ```{r}
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap)
 ```
-Note that we've added this new function call to a second line just to make it easier to read. But note that the `+` needs to be at the end of the first line otherwise R will assume your command ends when it starts the next row. The `+` sign indicates not only that we are adding information, but that there is more to come.
+Note that we've added this new function call to a second line just to make it easier to read. To do this we make sure that the `+` is at the end of the first line otherwise R will assume your command ends when it starts the next row. The `+` sign indicates not only that we are adding information, but that there is more to come.
 
-Notice that our Plot window is no longer a grey square. We now see that we've mapped the "gdpPercap" column to the x axis of our plot. Note that that column name isn't very pretty as a label, so let's use the `labs()` function to make a nicer label for the x axis
+Observe that our **Plot** window is no longer a grey square. We now see that we've mapped the `gdpPercap` column to the x axis of our plot. Note that that column name isn't very pretty as a label, so let's use the `labs()` function to make a nicer label for the x axis
 
 ```{r FirstPlotAddXLabel}
 ggplot(data = gapminder_1997) +
@@ -279,7 +278,10 @@ ggplot(data = gapminder_1997) +
   labs(x = "GDP Per Capita")
 ```
 
-OK. That looks better. Let's now map our lifeExp values to the y axis and give them a nice label.
+OK. That looks better. Notice that when we added the label value we did so by placing the values inside quotes. This is because we are not using a value from inside our data object and we are providing the name directly. When you need to include actual text values in R, they will be placed inside quotes to tell them apart from other object names.
+
+Let's now map our `lifeExp` values to the y axis and give them a nice label.
+
 ```{r FirstPlotAddY}
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap) +
@@ -287,7 +289,9 @@ ggplot(data = gapminder_1997) +
   aes(y = lifeExp) +
   labs(y = "Life Expectancy")
 ```
+
 Excellent. We've now told our plot object where the x and y values are coming from and what they stand for. But we haven't told our object how we want it to draw the data. There are many different plot types (bar charts, scatter plots, histograms, etc). We tell our plot object what to draw by adding a "geometry" ("geom" for short) to our object. We will talk about many different geometries today, but for our first plot, let's draw our data using points for each value in the data set. So we will add `geom_point()` to our plot object
+
 ```{r FirstPlotAddPoints}
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap) +
@@ -296,7 +300,9 @@ ggplot(data = gapminder_1997) +
   labs(y = "Life Expectancy") +
   geom_point()
 ```
+
 Now we're really getting somewhere. It finally looks like a proper plot!  We can now see a trend in the data. It looks like countries with a larger GDP tend to have a higher life expectancy. Let's add a title to our plot to make that more clear. Again, we will use the `labs()` function, but this time we will get the `title=` argument.
+
 ```{r FirstPlotAddTitle}
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap) +
@@ -306,7 +312,9 @@ ggplot(data = gapminder_1997) +
   geom_point() +
   labs(title= "Do people in wealthy countries live longer?")
 ```
-No one can deny we've made a very handsome plot. But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data that we've imported that we haven't used yet. Maybe we are curious if there are any different patterns for the different continents. One thing we could do is use a different color for each of the continents. To map the color of each point, to a continent, we will again use the `aes()` function
+
+No one can deny we've made a very handsome plot. But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data that we've imported that we haven't used yet. Maybe we are curious if there are any different patterns for the different continents. One thing we could do is use a different color for each of the continents. To map the color of each point to a continent, we will again use the `aes()` function
+
 ```{r FirstPlotAddColor}
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap) +
@@ -314,10 +322,27 @@ ggplot(data = gapminder_1997) +
   aes(y = lifeExp) +
   labs(y = "Life Expectancy") +
   geom_point() +
-  labs(title= "Do people in wealthy countries live longer?") +
+  labs(title = "Do people in wealthy countries live longer?") +
   aes(color=continent)
 ```
-Here we can see that in 1997 the African countries had much lower life expectancy values than many of the other groups. Notice that when we adding a mapping for color, ggplot automatically provided a legend for us. It took care of assigning different colors to each of our unique values of continent. (Note that when we mapped the x and y values, those drew the actual axis labels, so in a way the axes are like the legends for the x and y values). Since we have the data for population, we might be curious what effect the population of a country might have on the life expectancy and the GDP per capita. Do you think larger countires will have a longer or shorter life expectancy? Let's find out by mapping the size of our points to the population values in our data
+
+Here we can see that in 1997 the African countries had much lower life expectancy values than many of the other groups. Notice that when we adding a mapping for color, ggplot automatically provided a legend for us. It took care of assigning different colors to each of our unique values of continent. (Note that when we mapped the x and y values, those drew the actual axis labels, so in a way the axes are like the legends for the x and y values). The colors that ggplot uses are determined by the color "scale". Each aesthetic value we can supply (x, y, color, etc) has a corresponding scale. Let's change the colors to make them a bit pritter
+
+```{r FirstPlotAddColorScale}
+ggplot(data = gapminder_1997) +
+  aes(x = gdpPercap) +
+  labs(x = "GDP Per Capita") +
+  aes(y = lifeExp) +
+  labs(y = "Life Expectancy") +
+  geom_point() +
+  labs(title = "Do people in wealthy countries live longer?") +
+  aes(color = continent) +
+  scale_color_brewer(palette = "Set1")
+```
+
+The `scale_color_brewer()` function is just one of many you can use to change colors. There are bunch of "palettes" that are build in. You can view them all by running `RColorBrewer::display.brewer.all()` or check out the [Color Brewer website](https://colorbrewer2.org/) for more info about choosing plot colors.
+
+Since we have the data for population, we might be curious what effect the population of a country might have on the life expectancy and the GDP per capita. Do you think larger countires will have a longer or shorter life expectancy? Let's find out by mapping the size of our points to the population values in our data
 
 ```{r FirstPlotAddSize}
 ggplot(data = gapminder_1997) +
@@ -326,10 +351,12 @@ ggplot(data = gapminder_1997) +
   aes(y = lifeExp) +
   labs(y = "Life Expectancy") +
   geom_point() +
-  labs(title= "Do people in wealthy countries live longer?") +
-  aes(color=continent) +
-  aes(size=pop)
+  labs(title = "Do people in wealthy countries live longer?") +
+  aes(color = continent) +
+  scale_color_brewer(palette = "Set1") +
+  aes(size = pop)
 ```
+
 There doesn't seem to be a very strong association with population size. We can see two very large countries with relatively low GDP per capita (but since the per capita value is already dividied by the total population, there is some problems with separating those two values). We got another legend here for size which is nice, but the values look a bit ugly in scientific notation. Let's divide all the values by 1,000,000 and label our legend "Population (in millions)"
 
 ```{r FirstPlotAddPop}
@@ -339,10 +366,11 @@ ggplot(data = gapminder_1997) +
   aes(y = lifeExp) +
   labs(y = "Life Expectancy") +
   geom_point() +
-  labs(title= "Do people in wealthy countries live longer?") +
-  aes(color=continent) +
-  aes(size=pop/1000000) +
-  labs(size="Population (in millions)")
+  labs(title = "Do people in wealthy countries live longer?") +
+  aes(color = continent) +
+  scale_color_brewer(palette = "Set1") +
+  aes(size = pop/1000000) +
+  labs(size = "Population (in millions)")
 ```
 This works because you can treat the columns in the aesthetic mappings just like any other variables and can use functions to transform or change them at plot time rather than having to transform your data first.
 
@@ -350,49 +378,12 @@ Good work. Take a moment to appreciate what a cool plot you made with a few line
 
 ```{r FirstPlotCondensed}
 ggplot(data = gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
+  aes(x = gdpPercap, y = lifeExp, color = continent, size = pop/1000000) +
   geom_point() +
+  scale_color_brewer(palette = "Set1") +
   labs(x = "GDP Per Capita", y = "Life Expectancy",
     title= "Do people in wealthy countries live longer?", size="Population (in millions)")
 ```
-
-Once imported the table should be displayed in the Source window.
-
-
-What do we want them to plot:
-0. form hypothesis and how can we build a plot that helps us look at this question (draw sketch?)
-1. file import/read.csv (read_csv is the tidyverse) 1997 only data subset (provided file)
-Use GUI to import csv file
-library(tidyverse)?
-library(ggplot2)?
-Look that object appeared in environment panel
-Notice that code was in console
-Editor where we write code
-Add line of code to script copying from console
-What's a function
-What are the parts of a function
-Arguments
-Options
-2. examine/explore imported data
-Use GUI to examine data
-View() - notice that code is executed in console
-Functions that are helpful to explore data
-head()
-str()/glimpse() -- point out data types
-Relevant data types: numeric, character strings,
-4. introduce ggplot and build up plot (library ggplot vs. tidyverse) line by line (example: https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html ) +1
-5. ggplot(data = gap1997) tell ggplot where to get it's data from
-6 Tell ggplot where to get the values for the x axis aes(x = gdpPercap) mapping plot properties to column in your data (needs to match column names)
-7. Make human friendly names labs(x = "GDP per capita") +
-8 repeat for y
-9. How to you want ggplot to draw your data geom_point()
-10. Are there differences by continents aes(color=continent) +
-11. Adding main title
-12. Change themes
-Basic theme usage
-Resources for updating themes/general ggplot resources
-How much effort to put into formatting plots
-13. ggsave - how to save plot that put so much work into
 
 # Plotting for data exploration
 
@@ -400,27 +391,27 @@ Many datasets are much more complex than the example we used for the first plot.
 
 ## Importing datasets
 
-In the first plot, we looked at a smaller slice of a large dataset. To gain a better understanding of the kinds of patterns we might observe in our own data, we will now used the full dataset, which is stored in a called "gapminder.csv". **NOTE: gapminder data file is already in repository for curriculum so will need to rename this file to match**
+In the first plot, we looked at a smaller slice of a large dataset. To gain a better understanding of the kinds of patterns we might observe in our own data, we will now used the full dataset, which is stored in a called "gapminder_data.csv".
 
 To start, we will read in the data without using the interactive RStudio file navigation.
 ```{r ImportFullData, eval = FALSE}
-gapminderAll <- read_csv() # what argument (including file path) should be provided here to read in the full dataset?
+gapminder_data <- read_csv() # what argument (including file path) should be provided here to read in the full dataset?
 ```
 
 Let's take a look at the full dataset.
 ```{r InitialExploration, eval = FALSE}
-dim(gapminderAll) # how can we find out what the data's _dim_ensions are?
-head(gapminderAll) # how can we look at a snapshot of the data via the command line?
+dim(gapminder_data) # how can we find out what the data's _dim_ensions are?
+head(gapminder_data) # how can we look at a snapshot of the data via the command line?
 ```
 Why not use View() like we did for the smaller dataset? You can but if a data frame is too big, might take too long too long to load, so easier to look at part of it.
 
 Notice that this table has an additional column `Year` compared to the smaller dataset we started with.
 
-Now that we have the full dataset read into our R session, let's plot the data. Notice that we've collapsed the plotting function options to be
+Now that we have the full dataset read into our R session, let's plot the data. Notice that we've collapsed the plotting function options and left off some of the labels so there's not as much to work with. Here's our code
 ```{r PlotFullGapminder, eval = FALSE}
-gapminderAll %>%
-  ggplot() +
-  aes(x=year, y=lifeExp, group=country, color=continent)**NOTE: added in simplified plotting function from near end of last plot build up
+  ggplot(data = gapminder_data) +
+  aes(x=year, y=lifeExp, color=continent) +
+  geom_point()
 ```
 Hm, this isn't a very clear plot. What's going on?
 
@@ -428,7 +419,7 @@ Since the dataset is more complex, the plotting options we used for the smaller 
 
 Let's review the columns and the type of data stored in the full table to decide how we should group things together.
 ```{r DataExploration, eval=FALSE}
-str(gapminderAll) # a quick way to get an overview of the data
+str(gapminder_data) # a quick way to get an overview of the data
 ```
 
 So, what do we see? The column names are listed after a `$` symbol, and then we have a `:` followed by a text label. These labels correspond to the type of data stored in each column.
@@ -440,44 +431,22 @@ What kind of data do we see?
 
 We can look at columns that store factors in more detail.
 ```{r Factors}
-levels(gapminderAll$country) ## **NOTE: How to write this in a tidyr way?
+levels(gapminder_data$country) ## **NOTE: How to write this in a tidyr way?
 ```
 
-Let's use the `country` column as a way to group the data to make it more readable
-
-```{r GapMinderCountryPlot, eval=FALSE}
-library(tidyverse) # make sure that the tidyverse packages are loaded if not in the same R session
-
-gapminderAll %>%
-  ggplot() +
-  aes(x=year, y=lifeExp, group=country, color=continent) +
-    geom_point()
-```
-
-This is a little better, but its hard to see trends over time. A better way to view the data is to use a plot that is better at showing changes over time, a [line plot](http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization).
+Our plot has a lot of points in columns which makes it hard to see trends over time. A better way to view the data showing changes over time is to use a [line plot](http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization).
 
 ```{r GapMinderLinePlot, eval=FALSE}
-library(tidyverse) # make sure that the tidyverse packages are loaded if not in the same R session
-
-gapminderAll %>%
-  ggplot() +
+  ggplot(data = gapminder_data)
   aes(x=year, y=lifeExp, group=country, color=continent) +
     geom_line()
 ```
 
-? Get full dataset?
-read_csv in full data from code (no gui and pipes) - change file name to full data set
-rerun ggplot with full data... yuck! What's going on?  - need to use line plot
-geom_line
-
-facet_wrap
+TODO: facet_wrap
 
 introduce filter and output from filter plot or use filter to find countries with dips in life expectancy
 Discuss dip sources/history + sensitivity to data science/ethics
 
-*Extra exercise*
-How would you recreate the smaller dataset we started with using `filter()`?
-How would you generate a data table where at least one year had a life expectancy of greater than
 
 # Glossary of terms
 
@@ -485,8 +454,7 @@ How would you generate a data table where at least one year had a life expectanc
 
 library(tidyverse)
 
-gapminder %>%
-  ggplot() +
+  ggplot(data = gapminder_data) +
   aes(x=year, y=lifeExp, group=country, color=continent) +
     geom_line()
 
@@ -554,26 +522,3 @@ Plot Themes - classic, bw, grey
 Explaining Factors using a real example
 blank session -> making their own plot (make their own script that is well commented and tidy from
 
-
-ggplot(data = gapminder) +
-  aes(x = gdpPercap) +
-  labs(x = "GDP per capita") +
-  aes(y = lifeExp) +
-  labs(y = "Life Expectancy") +
-  geom_point() +
-  geom_point(size = 5) +
-  geom_point(color = "red") +   #(geom_jitter,geom_boxplot, ?)
-  aes(color=continent) +
-  aes(size = pop) +
-  facet_wrap(vars(year)) +
-  labs(title = "")
-
-  Collapsed:
-
-
-ggplot(data = gapminder) +
-geom_point(mapping = aes(
-    x = gdpPercap, y = lifeExp,
-    color=continent, size = pop)) +
-  facet_wrap(vars(year), nrow=2) +
-  labs(x = "GDP per capita", y = "Life Expectancy", title="")
