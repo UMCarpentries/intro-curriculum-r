@@ -202,7 +202,7 @@ Looking back at the command in our code file, the second thing we see if a `<-` 
 TODO: *Add optional exercise to use 'bad' object names and try to assign values to those?*
 > ## Challenge - Assign values to objects
 > Try to assign values to some new objects
-> ```{r Objects}
+> ```
 > 1number <- 3
 > Flower <- "marigold"
 > flower <- "rose"
@@ -236,7 +236,7 @@ TODO: *Add challenge showing a function that doesn't need arguments*
 > ## Challenge: Do all functions need arguments
 >> Let's test some other functions
 >>```{r Functions}
->>  Sys.Date()
+>>Sys.Date()
 >>```
 >>
 >
@@ -521,4 +521,3 @@ Plot Themes - classic, bw, grey
 
 Explaining Factors using a real example
 blank session -> making their own plot (make their own script that is well commented and tidy from
-
