@@ -163,7 +163,7 @@ pwd
 {: .language-bash}
 
 ```
-/home/USERNAME/Desktop/my_project
+/home/USERNAME/Desktop
 ```
 {: .output}
 
@@ -176,11 +176,14 @@ ls
 {: .language-bash}
 
 ```
-TODO: Example output?
+list.txt
+my_project
+notes.pdf
+Untitled.png
 ```
 {: .output}
 
-Next, we want to get to the folder that we worked in for the R plotting lesson.
+Your Desktop will likely look different, but the important thing is that you see the folder we worked in for the R plotting lesson.
 Is the `my_project` directory listed on your Desktop?
 
 How can we get into the `my_project` directory?
@@ -256,7 +259,10 @@ ls ..
 {: .language-bash}
 
 ```
-TODO: Example output?
+list.txt
+my_project
+notes.pdf
+Untitled.png
 ```
 {: .output}
 
@@ -580,7 +586,9 @@ This output shows each directory name, followed by its contents on the next line
 
 To view and navigate the contents of a file we can use the command `less`. This will open a full screen view of the file.
 
-TODO: maybe add screenshot of less?
+Here is what we should expect to see when running the command `less` on our `gapminder.csv` file:
+
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/less_example.png"/>
 
 To navigate, press `spacebar` to scroll to the next page and `b` to scroll up to the previous page. You can also use the up and down arrows to scroll line-by-line. Note that `less` defaults to line wrapping, meaning that any lines longer than the width of the screen will be wrapped to the next line, (to disable this use the option `-S` when running `less`, ex `less -S file.txt`). To exit less, press the letter `q`.
 
@@ -597,7 +605,7 @@ file.pdf may be a binary file.  See it anyway?
 
 If we say "yes", less will render the file but it will appear as a seemingly random display of characters that wont make much sense to us.
 
-TODO: maybe add screenshot of less on a .pdf?
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/less_pdf_example.png"/>
 
 ## Man and Help
 
@@ -608,7 +616,7 @@ man less
 ```
 {: .language-bash}
 
-TODO: maybe add screenshot of man page?
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/man_less.png"/>
 
 On the manual page for `less`, we see a section titled **options**. These options, also called **flags**, allow us to customize how `less` runs.
 
@@ -620,7 +628,7 @@ less --help
 ```
 {: .language-bash}
 
-TODO: maybe add screenshot of help output?
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/less_help.png"/>
 
 Sometimes, commands will have multiple flags that we want to use at the same time. For example, `less` has a flag `-w` which highlights unread text, and `-S` which cuts off really long lines (rather than having the text wrap around). There are two ways to run `less` using both of these flags:
 
