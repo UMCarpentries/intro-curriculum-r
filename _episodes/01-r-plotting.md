@@ -14,16 +14,37 @@ keypoints: ""
 
 ## Introduction to R and RStudio
 
-In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP). To test this hypothesis, we'll need two things: data and a platform to analyze the data. You already [downloaded the data](setup_instructions). But what platform will we use to analyze the data? We have many options! We could use a spreadsheet program like Microsoft Excel, Numbers, or Google sheets. There are several challenges with these platforms including using proprietary software that not everyone has access to, the instructions you provide to analyze the data aren't readily transparent, and adjusting settings or adding more data isn't always straightforward. Instead, we'll use the R programming language to test our hypothesis. We could have also used Python for the same reasons we chose R. Both R and Python are freely available, the instructions you use to do the analysis are easily shared as we'll see in later sessions, and by using reproducible practices it's straightforward to add more data or to change settings like colors or the size of a plotting symbol. But why R and not Python? [There's no great reason](http://www.academichermit.com/2020/03/23/Why-R.html). We also teach workshops using Python. Although there are subtle differences between the languages, it's ultimately a matter of personal preference. Both are powerful and popular languages that have very well developed and welcoming communities of scientists that use them. As you learn more about R you may find things that are annoying in R that aren't so annoying in Python; the same could be said of learning Python. If the community you work in use R, then you're in the right place.
+In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP). 
+To test this hypothesis, we'll need two things: data and a platform to analyze the data. 
 
-To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up](setup_instructions) for this workshop. Running R code directly in the R console can be a bit tedious. To make your life in R easier, there is a great (and free!) program called RStudio for running R. Along the way, we'll see features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. You've already seen in the [setup instructions](setup_instructions) how you can use RStudio to install the tidyverse package, enter code, and generate a plot. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio. Later, we'll see how to run R directly from the command line without using RStudio.
+You already [downloaded the data](setup_instructions). But what platform will we use to analyze the data? We have many options!
 
-### Exercise
-**Question:**Can you think of a reason you might not want to use RStudio?
+TODO: *Add link to information about reprodcible research or leave discussion for later?*
 
-**Answer:** On some high performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about ... which will allow you to run RStudio on Great Lakes.
+We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexiblity, and don't easily allow for things that are criticial to "reproducible" research, like easily sharing the steps used to explore and make changes to the original data. 
 
-You're likely to spend a lot of time in RStudio so it is worth spending a little time getting familiar with the environment and setting it up to suit your tastes. When you start RStudio, you'll have three panels.
+Instead, we'll use the a programming language to test our hypothesis. Today we will use R, but we could have also used Python for the same reasons we chose R (and we teach workshops for both languages). Both R and Python are freely available, the instructions you use to do the analysis are easily shared, and by using reproducible practices, it's straightforward to add more data or to change settings like colors or the size of a plotting symbol. 
+
+TODO: *Check or update text to become an expandable discussion box*
+> ## But why R and not Python? 
+>>
+[There's no great reason](http://www.academichermit.com/2020/03/23/Why-R.html). 
+>>Although there are subtle differences between the languages, it's ultimately a matter of personal preference. Both are powerful and popular languages that have very well developed and welcoming communities of scientists that use them. As you learn more about R you may find things that are annoying in R that aren't so annoying in Python; the same could be said of learning Python. If the community you work in use R, then you're in the right place.
+>
+> {: .source}
+{: .discussion}
+
+To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up](setup_instructions) for this workshop. 
+
+To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio. 
+
+TODO: Change exercise to .md format blocks & add resources to use Rstudio on GreatLakes
+> ## Exercise
+> **Question:** Can you think of a reason you might not want to use RStudio?
+> 
+> **Answer:** On some high performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](broken link) to run RStudio on Great Lakes.
+
+To get started, we'll spend a little time getting familiar with the RStudio environment and setting it up to suit your tastes. When you start RStudio, you'll have three panels.
 
 ![](01-r-plotting-assets/initial_rstudio.png)
 
@@ -31,15 +52,25 @@ On the left you'll have a panel with three tabs - Console, Terminal, and Jobs. T
 
 ![](01-r-plotting-assets/history.png)
 
-In the lower right panel are tabs for Files, Plots, Packages, Help, and Viewer. You used the Packages tab to install tidyverse. We'll spend more time in each of these tabs as we go through the workshop so we won't spend a lot of time discussing them now. You might want to alter the appearance of your RStudio window. The default appearance has a white background with black text. If you go to the Tools menu at the top of your screen, you'll see a "Global options" menu at the bottom of the drop down; select that.
+In the lower right panel are tabs for Files, Plots, Packages, Help, and Viewer. You used the Packages tab to install tidyverse. 
+
+We'll spend more time in each of these tabs as we go through the workshop so we won't spend a lot of time discussing them now. 
+
+You might want to alter the appearance of your RStudio window. The default appearance has a white background with black text. If you go to the Tools menu at the top of your screen, you'll see a "Global options" menu at the bottom of the drop down; select that.
 
 ![](01-r-plotting-assets/global_options.png)
 
-From there you will see the ability to alter numerous things about RStudio. Under the Appearances tab you can select the theme you like most. As you can see there's a lot in Global options that you can set to improve your experience in RStudio. Most of these settings are a matter of personal preference. There are a couple of exceptions to this. In the General tab, none of the selectors in the R Sessions, Workspace, and History should be selected. In additon, the toggle next to "Save workspace to .RData on exit" should be set to never. These recommendations are generally agreed upon by people who work in R a lot and will help you to insure the reproducibility of your code.
+From there you will see the ability to alter numerous things about RStudio. Under the Appearances tab you can select the theme you like most. As you can see there's a lot in Global options that you can set to improve your experience in RStudio. Most of these settings are a matter of personal preference. 
+
+However, you can update settings to help you to insure the reproducibility of your code. In the General tab, none of the selectors in the R Sessions, Workspace, and History should be selected. In additon, the toggle next to "Save workspace to .RData on exit" should be set to never. These setting will help ensure that things you worked on previously don't carry over between sessions.
 
 ![](01-r-plotting-assets/general_options.png)
 
-Let's get going on our analysis! One of the helpful features in RStudio is the ability to create a project. A project is a special directory that contains all of the code and data that you will need to run an analysis. At the top of your screen you'll see the "File" menu. Select that menu and then the menu for "New Project...".
+Let's get going on our analysis! 
+
+One of the helpful features in RStudio is the ability to create a project. A project is a special directory that contains all of the code and data that you will need to run an analysis. 
+
+At the top of your screen you'll see the "File" menu. Select that menu and then the menu for "New Project...".
 
 ![](01-r-plotting-assets/new_project_menu.png)
 
@@ -56,11 +87,32 @@ Then click the "Create Project" button.
 
 ![](01-r-plotting-assets/create_project.png)
 
-Did you notice anything change? In the lower right corner of your RStudio session, you should notice that your Files tab is now your project directory. You'll also see a file called my_project.Rproj in that directory. From now on, you should start RStudio by double clicking on that file. This will make sure you are in the correct directory when you run your analysis.
+Did you notice anything change? 
+
+In the lower right corner of your RStudio session, you should notice that your Files tab is now your project directory. You'll also see a file called my_project.Rproj in that directory. 
+
+From now on, you should start RStudio by double clicking on that file. This will make sure you are in the correct directory when you run your analysis.
 
 ![](01-r-plotting-assets/files_with_rproj.png)
 
-We'd like to create a file where we can keep track of our R code. Back in the "File" menu, you'll see the first option is "New File". Selecting "New File" opens another menu to the right and the first option is "R Script". Select "R Script". Now we have a fourth panel in the upper left corner of RStudio. Go ahead and save this file as gdp_population.R in our project directory. We will be entering R code into this window to run in our Console window. On line 1 of gdp_population.R, type 2+2. With your cursor on the line with the 2+2, click the button that says "Run". You should be able to see that 2+2 was run in the Console. As you write more code, you can highlight multiple lines and then click "Run" to run all of the lines you have selected. Let's delete the line with 2+2 and replace it with `library(tidyverse)`. Go ahead and run that line in the Console using the Run button. If you like keyboard shortcuts, you can also use Command-Enter.
+We'd like to create a file where we can keep track of our R code. 
+
+Back in the "File" menu, you'll see the first option is "New File". Selecting "New File" opens another menu to the right and the first option is "R Script". Select "R Script". 
+
+TODO: *Confirm paths with larger group/unix group*
+Now we have a fourth panel in the upper left corner of RStudio that includes an **Editor** tab with an untitled R Script. Let's save this file as gdp_population.R in our project directory. 
+
+We will be entering R code into the **Editor** tab to run in our **Console** panel. 
+
+On line 1 of gdp_population.R, type `2+2`. 
+
+With your cursor on the line with the `2+2`, click the button that says "Run". You should be able to see that `2+2` was run in the Console. 
+
+As you write more code, you can highlight multiple lines and then click "Run" to run all of the lines you have selected. 
+
+Let's delete the line with 2+2 and replace it with `library(tidyverse)`. 
+
+Go ahead and run that line in the **Console** by clicking the <kbd>Run</kbd> button on the top right of the **Editor** tab and choosing <kbd>Run Selected Lines</kbd>
 
 
 ~~~
@@ -94,65 +146,156 @@ library(tidyverse)
 ~~~
 {: .output}
 
+TODO: *Add example output from loading library and/or discuss messages get when loading a package?*
 
-### Hint / Pro-tip
-We want to share a secret with you. Those of us that use R on a daily basis use cheat sheets to help us remember how to use various R functions. If you haven't already, be sure to print out the PDF versions of the cheat sheets that were in the setup instructions. You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2" and "Data Transformation with dplyr".
+TODO: *Change to testimonal or other highlighted box?*
+## Hint / Pro-tip
+Those of us that use R on a daily basis use cheat sheets to help us remember how to use various R functions. If you haven't already, print out the PDF versions of the cheat sheets that were in the setup instructions. 
 
-
-
-RStudio orientation- (briefly) what do we see - will review in more detail as work through plotting:
- RStudio projects - current working directory ( getwd() )
-Consoles
-Scripts/Rmarkdown
-Environment
-File/Plot/Help viewer
-What is the difference between R and RStudio?
-Getting started with R/Rstudio - opening a new script file
-Within script- how to type commands and send to console
-Simple command examples: Adding numbers together
-Reminder for printing out/having access to ggplot2 cheatsheet w/ message that experienced coders use references/cheatsheets constantly.
-Preferences to (un)set and reasons for reproducibility purposes
-saving session (don't)
-loading previous session (don't)
-can someone run something from scratch - if not can lead to issues
-
-? We'll have them setwd in the intro, can we also use the intro to introduce packages/library and have them loaded before we import data? Specific issue, not sure if Import Dataset will show "From Text (readr) if Tidyverse not installed? - we will make a project in the intro (above) rather than using setwd
-
-# Creating your first plot
+You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2" and "Data Transformation with dplyr".
 
 
-##Loading Data
-We will import a subset file from the gapminder dataset call *gap1997.csv*. There are many ways to import data into R but for your first plot we will use RStudio's file menu to import and display this data. As we move through this process, RStudio will translate these *point and click* commands into code chunks that can be reused or repurposed for future work.
+---
+
+# Loading and reviewing data
+
+We will import a subset file from the gapminder dataset called `gap1997.csv`. There are many ways to import data into R but for your first plot we will use RStudio's file menu to import and display this data. As we move through this process, RStudio will translate these *point and click* commands into code for us.
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
-The file is located in the directory "?", click the "browse" button and select the file named *gapminder_1997.csv*. A preview of the data will appear in the window. You can see there are a lot of Import Options listed at the bottom for different settings, but R has chosen the correct defaults for this particular file. We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
+TODO: *Update '<<data directory>> to match the directory structure from setup*
+The file is located in the directory <<data directory>>, click the "browse" button and select the file named *gapminder_1997.csv*. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
 
-After you've imported your data, you will see an Excel-like view of your data open in a new tab in the top left corner of RStudio. This is a quick way to browse the data to make sure everything looks like it has been imported correctly. Now look in the **Environment** tab in the upper right corner of RStudio. Here you will see a list of all the objects you've created or imported during your R session. You will now see "gapminder_1997" listed here as well. Finally, take a look at the **Console** at the bottom left part of the RStudio screen. Here you will see the commands that were run for you to import your data in addition to associated metadata and warnings .
+We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
 
-We see that our data has 6 columns (variables). Each row contains the year of observation ("year"), life expectancy ("lifeExp"), the total population ("pop"), and the per capita gross domestic product ("gdpPercap")  for a given country ("country"). There is also a column that says which continent each country is in ("continent"). Note that both North America and South America are combined into one category called "Americas".
+After you've imported your data, you will a table open in a new tab in the top left corner of RStudio. This is a quick way to browse your data to make sure everything looks like it has been imported correctly. To review the data, click on the new tab.
 
-After you've reviewed your data, you'll want to make sure to click the tab in the upper left to return to your "gdp_population.R" file so we can start writing some code. NOTE: I'm not seeing the creation of this file, we should put this in the INTRO
+We see that our data has 6 columns (variables). 
 
-We will be using the *ggplot2* package today to make our plots. This is a very powerful package that makes it easy to quickly create professional looking plots and is one of the reasons people like using R so much. All plots made using the *ggplot2* package start by calling the `ggplot()` function. So in your in the tab you created for the "gdp_population.R" file, type the following
+Each row contains the year of observation ("year"), life expectancy ("lifeExp"), the total population ("pop"), and the per capita gross domestic product ("gdpPercap") for a given country ("country"). 
+
+There is also a column that says which continent each country is in ("continent"). Note that both North America and South America are combined into one category called "Americas".
+
+After we've reviewed the data, you'll want to make sure to click the tab in the upper left to return to your "gdp_population.R" file so we can start writing some code.
+
+Now look in the **Environment** tab in the upper right corner of RStudio. Here you will see a list of all the objects you've created or imported during your R session. You will now see "gapminder_1997" listed here as well. 
+
+Finally, take a look at the **Console** at the bottom left part of the RStudio screen. Here you will see the commands that were run for you to import your data in addition to associated metadata and warnings.
+
+# Understanding commands
+
+Let's start by looking at the code RStudio ran for us by copying and pasting the firstline from console into our "gdp_population.R" file that is open in the **Editor** window.
+
+TODO: *Confirm that this is the example output*
 ```
-ggplot(data=gapminder_1997)
-```
-In order to run code that you've typed in the editor, you have a few options. The quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard. This will run the line of code that currently contains your cursor (additionally it will also move your cursor to the next line). Note that when Rstudio runs your code, it basically just copies your code from the Editor window to the Console window. (You can also click the "Run" button located just to the top right of the Editor window but below the tab bar.) If we look in the console now, we'll see we've got our first error message! This is probably just one of many that we will see today so it's good to get the first one out of the way early.
+gapminder_1997 <- read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")
 
-The message says
 ```
-Error in ggplot(gapminder_1997) : could not find function "ggplot"
-```
-What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. As was stated before, `ggplot()` is a function from the *ggplot2* package. And the *ggplot2* package is a part of the *tidyverse* package which contains many other functions that we will find useful today. So we could load just the *ggplot2* package, but today will load the *tidyverse* package instead to get some extra functions as well. We do that with the following
+
+You should now have a line of text in your code file that started with `gapminder` and ends with a `)` symbol. 
+
+What if we want to run this command from our code file?
+
+In order to run code that you've typed in the editor, you have a few options. We can click <kbd>Run</kbd> again from the right side of the *Editor* tab but the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard. 
+
+This will run the line of code that currently contains your cursor and will move your cursor to the next line. Note that when Rstudio runs your code, it basically just copies your code from the Editor window to the Console window, just like what happened when we selected <kbd>Run Selected Line(s)</kbd>.
+
+Let's take a closer look at the parts of this command. 
+
+Starting from the left, the first thing we see is `gapminder_1997`. From looking at the tab of the data, we know that `gapminder_1997` acts as a placeholder for a table of data. 
+
+TODO: *Create exercise here*
+> # Running parts of our code
+> If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
+>> Solution: we see an output with a similar format to what we saw in the Viewer tab
+
+TODO: *Clarify/correct wording here*
+In R terms, `gapminder_1997` is a named **object** that references or stores something, in this case that's a specific table of data.
+
+TODO: *Update to be a collapsable option & determine how exhaustive to be*
+> # Guidelines on naming objects:
+>> - You want your object names to be explicit and not too long.
+>> - They cannot start with a number (2x is not valid, but x2 is).
+>> - R is case sensitive, so for example, weight_kg is different from Weight_kg.
+>> - There are some names that cannot be used because they are the names of fundamental functions in R (e.g., if, else, for, see [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html) for a complete list). If in doubt, check the help to see if the name is already in use.
+>> - It's best to avoid dots (.) within names. Many function names in R itself have them and dots also have a special meaning (methods) in R and other programming languages.
+>> - It is recommended to use nouns for object names and verbs for function names.
+>> - Be consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. One popular style guide can be found through the [tidyverse](https://style.tidyverse.org/). 
+> {: .source}
+{: .keypoint}
+
+Looking back at the command in our code file, the second thing we see if a `<-` symbol, which is the **assignment operator**. It assigns values generated or typed on the right to objects on the left. An alternative symbol that you might see used as an **assignment operator** is the `=` but it is clearer to only use `<-` for assignment.
+
+TODO: *Add optional exercise to use 'bad' object names and try to assign values to those?*
+> ## Challenge - Assign values to objects
+> Try to assign values to some new objects
+> 
+> ~~~
+> 1number <- 3
+> Flower <- "marigold"
+> flower <- "rose"
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error: <text>:1:2: unexpected symbol
+> 1: 1number
+>      ^
+> ~~~
+> {: .error}
+> {: .source}
+{: .challenge}
+
+The next part of the command is `read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")`. This has a few differnt key parts. The first part `
+
+You call a function in R by typing it's name followed by opening then closing parenthesis.  Let's try to run the function without anything inside the parenthesis.
 
 ~~~
-library(tidyverse)
+read_csv()
 ~~~
 {: .language-r}
-Even though we had you all install this package before you arrived at the workshop, you still need to load it into R each time you want to use it. When you load the *tidyverse* package it will show you a list of all the packages that were loaded for you. (It will also list a few conflicts but that's completely normal and expected).
 
-Now we can try our plotting code again
+
+
+~~~
+Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_types, : argument "file" is missing, with no default
+~~~
+{: .error}
+
+We get an error message! 
+```
+Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_types,  : 
+  argument "file" is missing, with no default
+```
+{ .error: error messages.}
+
+
+Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters." 
+
+You pass **arguments** to a function by placing values in between the parenthesis. Argument names precede their values but most are optional if you pass them in a certain order. 
+
+When you need to pass in multiple arguments to a function you will separate those values with commas. But that's just a quick summary -- we will see examples of those later.
+
+TODO: *Add challenge showing a function that doesn't need arguments*
+> ## Challenge: Do all functions need arguments
+>> Let's test some other functions
+>>
+>>
+> 
+> {: .source}
+{: .callout}
+
+TODO: *Add `?` operator and how to get help with functions within R studio*
+How can we find out the requirements of different functions?
+
+
+- Touch on data types (will go into more detail later??) TODO: *Touch on data types? Determine about of detail to include for types of data in R at this stage*
+
+# Creating our first plot
+
+We will be using the *ggplot2* package today to make our plots. This is a very powerful package that creates professional looking plots and is one of the reasons people like using R so much. All plots made using the *ggplot2* package start by calling the `ggplot()` function. So in your in the tab you created for the "gdp_population.R" file, type the following:
 
 ~~~
 ggplot(data=gapminder_1997)
@@ -165,11 +308,17 @@ ggplot(data=gapminder_1997)
 Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
-When we run this now, we should see the code executed in the Console but no error message will appear this time. Additionally when we run this code, the Plots tab will pop to the front in the lower right corner of the RStudio screen. Right now, we just see a big grey rectangle. It's not much to look at yet, but it's an interested start.
+In order to run code that you've typed in the editor, you have a few options. Rememeber that the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard. This will run the line of code that currently contains your cursor or any highlgihted code.
 
-What we've done is created a ggplot object and told it we will be using the data from the `gapminder_1997` object that we've loaded into R. We've done this by calling the `ggplot()` function. You call a function in R by typing it's name followed by opening then closing parenthesis.  Some functions require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters." You pass arguments to a function by placing values in between the parenthesis. Here are are passing in the name of the object were we imported our data to an argument named "data". Argument names precede their values and are separated by commas. Most argument names are optional if you pass them in a certain order. When you need to pass in multiple arguments to a function you will separate those values with commas. But that's just a quick summary -- we will see examples of those later.
+When we run this code, the Plots tab will pop to the front in the lower right corner of the RStudio screen. Right now, we just see a big grey rectangle.
 
-So we've made a plot object, now we need to start telling it what we actually want to draw in this plot. With ggplot, we start connecting our data to different plot elements by creating an "aesthetic mapping", which we do with the `aes()` function. The elements of a plot have a bunch of properties like an x and y position, a color, a size, etc and we need to match those up to values inside our `gapminder_1997` object. When we pass our data values tot he `aes() function, we do so as if the column names of our data object are variables that exist in R. This means that what we type much match exactly (upper and lowercase). The plot object will look those values up in the value that we passed So we can start by telling our plot object that we want to map our GDP values to the x axis of our plot. We do this by adding (`+`) information to our plot object. Add this new line to your code and run it
+What we've done is created a ggplot object and told it we will be using the data from the `gapminder_1997` object that we've loaded into R. We've done this by calling the `ggplot()` function. 
+
+So we've made a plot object, now we need to start telling it what we actually want to draw in this plot. With ggplot, we start connecting our data to different plot elements by creating an "aesthetic mapping", which we do with the `aes()` function. 
+
+The elements of a plot have a bunch of properties like an x and y position, a color, a size, etc and we need to match those up to values inside our `gapminder_1997` object. When we pass our data values to the `aes()` function, we do so as if the column names of our data object are variables that exist in R. This means that what we type much match exactly (upper and lowercase). 
+
+The plot object will look those values up in the value that we passed so we can start by telling our plot object that we want to map our GDP values to the x axis of our plot. We do this by adding (`+`) information to our plot object. Add this new line to your code and run both lines by highlighting them and pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard:
 
 ~~~
 ggplot(data = gapminder_1997) +
