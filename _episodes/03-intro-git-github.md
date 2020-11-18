@@ -746,8 +746,6 @@ $ git clone https://github.com/USERNAME/un-report.git ~/Desktop/USERNAME-un-repo
 
 Replace `USERNAME` with the Owner's username.
 
-![After Creating Clone of Repository](../fig/git/github-collaboration.svg)
-
 The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
 
@@ -758,14 +756,19 @@ $ cat README.md
 ```
 {: .language-bash}
 
+You can write anything you like. Now might be a good time to list the
+**dependencies** of the project -- the tools and packages that are needed
+to run the code.
 ```
-It is so a planet!
+Dependencies:
+- R >= 4.0
+- tidyverse
 ```
 {: .output}
 
 ```
 $ git add README.md
-$ git commit -m "Add notes about Pluto"
+$ git commit -m "List dependencies"
 ```
 {: .language-bash}
 
@@ -798,7 +801,7 @@ Note that we didn't have to create a remote called `origin`: Git uses this
 name by default when we clone a repository.  (This is why `origin` was a
 sensible choice earlier when we were setting up remotes by hand.)
 
-Take a look to the Owner's repository on its GitHub website now (maybe you need
+Take a look at the Owner's repository on its GitHub website now (you may need
 to refresh your browser.) You should be able to see the new commit made by the
 Collaborator.
 
@@ -854,13 +857,9 @@ GitHub) are back in sync.
 >
 > The Owner pushed commits to the repository without giving any information
 > to the Collaborator. How can the Collaborator find out what has changed with
-> command line? And on GitHub?
+> on GitHub?
 >
 > > ## Solution
-> > On the command line, the Collaborator can use ```git fetch origin master```
-> > to get the remote changes into the local repository, but without merging
-> > them. Then by running ```git diff master origin/master``` the Collaborator
-> > will see the changes output in the terminal.
 > >
 > > On GitHub, the Collaborator can go to the repository and click on
 > > "commits" to view the most recent commits pushed to the repository.
