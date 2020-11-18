@@ -215,15 +215,18 @@ Only one of the people in your pair is going to create the R Markdown file. The 
 1. Save it to the `reports` directory using an informative file name.
 
 **For the person who is going to collaborate with the host of the R Markdown file:**
-1. If you don't already have your partner's GitHub repo cloned, clone their repo to your Desktop under the name `USERNAME-un-report`. If you don't remember how to do this, you can review the git lesson (LINK). 
 
-If you have the same pair, you will alread have their directory 
+If you don't already have your partner's GitHub repo cloned from the git/GitHub lesson, clone their repo to your Desktop under the name `USERNAME-un-report`. If you don't remember how to do this, you can review the git lesson (LINK). 
 
-
-
-
-
-Now you're ready to 
+The way you will collaborate with each other is as follows:
+1. For each exercise, both people will be thinking about how to answer the question, but only one person will be writing the code.
+This is called _paired programming_.
+1. Once you have completed an exercise, the person working on the exercise will add, commit, and push the changes to GitHub.
+1. Then the other person will pull the changes from GitHub.
+1. The person who pulled changes will code for the next exercise. 
+1. Repeat the process for as many exercises as you can finish in the remaining time. 
+Don't worry if you don't finish all of the exercises, and it's not a race between groups! 
+This is just a way for you to practice what you've learned.
 
 ### Exercises using the gapminder data
 
