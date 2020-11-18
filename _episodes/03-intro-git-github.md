@@ -830,7 +830,7 @@ Fast-forward
 {: .output}
 
 Now the three repositories (Owner's local, Collaborator's local, and Owner's on
-GitHub) are back in sync.
+GitHub) are back in sync!
 
 > ## A Basic Collaborative Workflow
 >
@@ -838,10 +838,10 @@ GitHub) are back in sync.
 > repository you are collaborating on, so you should `git pull` before making
 > our changes. The basic collaborative workflow would be:
 >
-> * update your local repo with `git pull origin master`,
+> * update your local repo with `git pull`,
 > * make your changes and stage them with `git add`,
 > * commit your changes with `git commit -m`, and
-> * upload the changes to GitHub with `git push origin master`
+> * upload the changes to GitHub with `git push`
 >
 > It is better to make many commits with smaller changes rather than
 > of one commit with massive changes: small commits are easier to
@@ -874,7 +874,7 @@ GitHub) are back in sync.
 > With GitHub, it is possible to comment the diff of a commit. Over the line of
 > code to comment, a blue comment icon appears to open a comment window.
 >
-> The Collaborator posts its comments and suggestions using GitHub interface.
+> The Collaborator posts comments and suggestions using GitHub interface.
 {: .challenge}
 
 > ## Version History, Backup, and Version Control
