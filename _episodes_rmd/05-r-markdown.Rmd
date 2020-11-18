@@ -229,6 +229,49 @@ Don't worry if you don't finish all of the exercises, and it's not a race betwee
 This is just a way for you to practice what you've learned.
 
 ### Exercises using the gapminder data
+
+First we're going to start out with a few questions about the gapminder dataset.
+
+#### Investigating population over time.
+
+1. Make a scatter plot of year vs. population, separated into a plot for each contient.
+
+```{r}
+ggplot(gapminder, aes(x=year,y=pop)) + geom_point() + facet_wrap(~continent)
+```
+
+1. It seems like there are 2 outliers - which countries are those?
+
+```{r}
+gapminder %>% filter(pop > 1e9) %>% select(country) %>% unique()
+```
+
+1. Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries. 
+
+```{r}
+gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop)) + geom_point() + facet_wrap(~continent)
+```
+
+1. What's the outlier country now?
+
+```{r}
+gapminder %>% filter(pop > 2.5e8) %>% select(country) %>% unique()
+```
+
+1. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do it!
+
+```{r}
+gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop)) + geom_point() + facet_wrap(~continent) + theme(axis.text.x=element_text(angle=90))
+```
+
+1. It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? HINT: This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
+
+```{r}
+gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop,group=country)) + geom_line() + facet_wrap(~continent) + theme(axis.text.x=element_text(angle=90))
+```
+
+#### Looking into life expectancy a bit more.
+
 What country had the highest life expectancy in 1982?
 
 ```{r,comment=NA,echo=F,collapse=T}
