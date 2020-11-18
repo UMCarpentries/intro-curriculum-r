@@ -299,7 +299,7 @@ $ ls
 {: .language-bash}
 
 ```
-$ TODO: Update with expected output
+code    data    figures
 ```
 {: .output}
 
@@ -782,7 +782,7 @@ but not yet committed.
 > than you would like!
 {: .callout}
 
-![The Git Staging Area](../fig/git-staging-area.svg)
+![The Git Staging Area](../fig/git/git-staging-area.svg)
 
 Let's watch as our changes to a file move from our editor
 to the staging area
@@ -1043,7 +1043,7 @@ we first need to add the changed files to the staging area
 (`git add`) and then commit the staged changes to the
 repository (`git commit`):
 
-![The Git Commit Workflow](../fig/git-committing.svg)
+![The Git Commit Workflow](../fig/git/git-committing.svg)
 
 > ## Choosing a Commit Message
 >
@@ -1510,12 +1510,12 @@ the commit in which we made the change we're trying to discard.
 In the example below, we want to retrieve the state from before the most
 recent commit (`HEAD~1`), which is commit `f22b25e`:
 
-![Git Checkout](../fig/git-basics/git-checkout.svg)
+![Git Checkout](../fig/git/git-checkout.svg)
 
 So, to put it all together,
 here's how Git works in cartoon form:
 
-![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](../fig/git-basics/git_staging.svg)
+![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](../fig/git/git_staging.svg)
 
 > ## Simplifying the Common Case
 >
@@ -1725,7 +1725,7 @@ moving backward and forward in time becomes much easier.
 > {: .language-bash}
 {: .challenge}
 
-
+### TODO collate these diagrams from Rucheng with the text above
 
 ![git-basics-flow-01-opt1](../fig/git-basics/20201117-git-01-opt1.png)  
 
