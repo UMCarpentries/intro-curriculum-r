@@ -124,3 +124,40 @@ Now it will assume all of your relative paths for reading and writing files are 
 
 Now that we have that set up, let's start on the report!
 
+We're going to use the code you generated yesterday to plot GDP vs Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to library the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference. We can specify `include=FALSE` like the setup chuck so we dont see the messages from loading packages in the report output. 
+
+```{r,comment=NA,echo=F,collapse=T}
+cat('```{r packages, include=FALSE}\n')
+cat('library(tidyverse)\n')
+cat('```\n')
+```
+
+Now in a real report this is when we would type out the background and purpose of the report to provide context to the readers of the report. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the text below into your report below the package code chunk.
+
+```
+(couple sentances with purpose/question/hypothesis for the report that can be copied and pasted into the report)
+```
+
+Now since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data. 
+
+```{r,comment=NA,echo=F,collapse=T}
+cat('```{r data}\n')
+cat('gapminder_1997 <- read.csv("./data/gapminder_1997.csv")\n')
+cat('```\n')
+```
+
+Now that we have the data we need to produce the plot, let's create it!
+
+```{r,comment=NA,echo=F,collapse=T}
+cat('```{r gdp_lifeexp_1997}\n')
+cat('ggplot(data = gapminder_1997) + \n
+  aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +\n
+  geom_point() +\n
+  labs(x = "GDP Per Capita", y = "Life Expectancy",\n
+       title= "Do people in wealthy countries live longer?", size="Population (in millions)")\n')
+cat('```\n')
+```
+
+Now we can knit our document to see how our report looks!
+
+TODO: maybe include screen shot of markdown so far?
