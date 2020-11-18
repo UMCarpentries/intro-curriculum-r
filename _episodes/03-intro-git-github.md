@@ -1932,10 +1932,6 @@ git checkout <file>
 ## Intro to GitHub
 _[Back to top](#contents)_
 
-- TODO: make sure they've created GitHub account already
-(part of setup instructions?) and use that same email in the config steps.
-- TODO: replace images to use correct repo name.
-
 Now that you've created a git repo and gotten the hang of the basic git workflow,
 it's time to share your repo with the world.
 Systems like Git allow us to move work between any two repositories. In
@@ -1952,12 +1948,15 @@ create a new repository called `un-report`.
 
 Name your repository `un-report` and then click `Create Repository`.
 
-Note: Since this repository will be connected to a local repository, it needs to be empty. Leave
-"Initialize this repository with a README" unchecked, and keep "None" as options for both "Add
-.gitignore" and "Add a license." See the "GitHub License and README files" exercise below for a full
-explanation of why the repository needs to be empty.
+> ## Important options
+>
+> Since this repository will be connected to a local repository, it needs to be empty. Leave
+> "Initialize this repository with a README" unchecked, and keep "None" as options for both "Add
+> .gitignore" and "Add a license." See the "GitHub License and README files" exercise below for a full
+> explanation of why the repository needs to be empty.
+{: .checklist}
 
-Note: in the screenshots below, the Owner is 'mkuzak' and the Repository name is 'planets'.
+In the screenshots below, the Owner is 'mkuzak' and the Repository name is 'planets'.
 You should instead see your own username for the Owner and you should name the
 repository `un-report`.
 
