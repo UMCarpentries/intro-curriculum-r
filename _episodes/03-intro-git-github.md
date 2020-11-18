@@ -458,8 +458,7 @@ $ cd ~/Desktop/un-report
 Let's create a file called `analysis.txt` that contains some notes
 about the plot we have made so far.
 We'll use `nano` to edit the file;
-you can use whatever editor you like.
-In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
+you can use whatever text editor you like.
 
 ```
 $ nano analysis.txt
