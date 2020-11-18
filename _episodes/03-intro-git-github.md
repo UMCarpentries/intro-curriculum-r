@@ -139,8 +139,16 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 
 > ## GitHub, GitLab, & BitBucket
 >
-> TODO: analogy of git hosting server (GitHub, BitBucket, etc.) is like picking
-> an email app (Gmail website, Microsoft Outlook, Apple's Mail app...)
+> GitHub, GitLab, & BitBucket are websites where you can store your git
+> repositories, share them with the world, and collaborate with others.
+> You can think of them like email applications. You may have a gmail address,
+> and you can choose to manage your email through one of many services such as
+> the Gmail app, Microsoft Outlook, Apple's Mail app, etc.
+> They have different interfaces and features, but all of them allow you to
+> manage your email. Similarly, GitHub, GitLab, & BitBucket have different
+> interfaces and features, but they all allow you to store, share, and
+> collaborate with others on your git repos.
+>
 {: .callout}
 
 > ## Line Endings
