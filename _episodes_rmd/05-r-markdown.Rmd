@@ -229,7 +229,24 @@ Don't worry if you don't finish all of the exercises, and it's not a race betwee
 This is just a way for you to practice what you've learned.
 
 ### Exercises using the gapminder data
+What country had the highest life expectancy in 1982?
 
+```{r,comment=NA,echo=F,collapse=T}
+gap1982 <- filter(gapminder, year==1982)
+gap1982 %>% slice_max(lifeExp)
+```
+
+Make a boxplot for the life expectancies of the countries in each continent
+
+```{r,comment=NA,echo=F,collapse=T}
+ggplot(gapminder,aes(x=continent,y=lifeExp)) + geom_boxplot()
+```
+
+Challenge question: Which country has had the greatest increase in life expectancy from 1952 to 2007?
+
+```{r,comment=NA,echo=F,collapse=T}
+filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeExp) %>% pivot_wider(names_from=year,values_from=lifeExp) %>% mutate(diff=`2007`-`1952`) %>% slice_max(diff)
+```
 
 ### Exercises integrating a new dataset
 
