@@ -89,7 +89,7 @@ Bash program.
 </details>
 
 <details>
-<summary><strong>Installing R</summary></strong>
+<summary><strong>Installing R</strong></summary>
 
 Download the R installer. [Link to the
 installer](https://cran.r-project.org/bin/windows/base/release.htm)
@@ -105,7 +105,7 @@ result in a working R.
 ## macOS
 
 <details>
-<summary><strong>The Unix Shell</summary></strong>
+<summary><strong>The Unix Shell</strong></summary>
 
 The shell is a program that enables us to send commands to the computer and receive output. It is 
 also referred to as the terminal or command line.  For a Mac computer running macOS Mojave or 
@@ -122,7 +122,7 @@ To see which Unix shell your Mac is running, type echo $SHELL in your terminal w
 </details>
 
 <details>
-<summary><strong>Installing Git</summary></strong>
+<summary><strong>Installing Git</strong></summary>
 
 Git is a version control system that lets you track who made changes to what when and has options 
 for easily updating a shared or public version of your code on github.com. You will need a [supported web 
@@ -154,7 +154,7 @@ most recent available installer labelled "snow-leopard" [available here](http://
 </details>
 
 <details>
-<summary><strong>Installing R</summary></strong>
+<summary><strong>Installing R</strong></summary>
 [R](https://www.r-project.org/) is a programming language that is especially powerful for data 
 exploration, visualization, and statistical analysis. You will need a recent version of R (>= 4.0).
 Install R by downloading and running [this .pkg file](https://cran.r-project.org/bin/macosx/R-latest.pkg)
@@ -165,7 +165,7 @@ Typing `R --version` will print the installed version number.
 </details>
 
 <details>
-<summary><strong>Installing RStudio</summary></strong>
+<summary><strong>Installing RStudio</strong></summary>
 
 To interact with R, we use RStudio.  RStudio is an integrated development environment for R.
 To install [RStudio](https://rstudio.com/products/rstudio/download/#download).  Click the
