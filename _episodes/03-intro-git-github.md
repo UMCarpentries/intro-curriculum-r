@@ -6,10 +6,13 @@ questions:
 - "What is version control and why should I use it?"
 - "How do I get set up to use Git?"
 - "How do I share my changes with others on the web?"
+- "How can I use version control to collaborate with other people?"
 objectives:
 - "Explain what version control is and why it's useful."
 - "Configure `git` the first time it is used on a computer."
-- "Push to or pull from a remote repository."
+- "Learn the basic git workflow."
+- "Push, pull, or clone a remote repository."
+- "Describe the basic collaborative workflow with GitHub."
 keypoints:
 - "Version control is like an unlimited 'undo'."
 - "Version control also allows many people to work in parallel."
@@ -21,6 +24,7 @@ keypoints:
 1. [Basic Workflow](#basic-workflow)
 1. [Intro to GitHub](#intro-to-github)
 1. [Collaborating with GitHub](#collaborating-with-github)
+1. [Glossary of terms](#glossary)
 
 ## Background
 _[Back to top](#contents)_
@@ -30,7 +34,7 @@ to keep track of what one person did and when.
 Even if you aren't collaborating with other people,
 automated version control is much better than this situation:
 
-[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531]({{ page.root }}/fig/git/phd101212s.png)](http://www.phdcomics.com)
+[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531](../fig/git/phd101212s.png)](http://www.phdcomics.com)
 
 "Piled Higher and Deeper" by Jorge Cham, http://www.phdcomics.com
 
@@ -48,19 +52,19 @@ think of it as a recording of your progress: you can rewind to start at the base
 document and play back each change you made, eventually arriving at your
 more recent version.
 
-![Changes Are Saved Sequentially]({{ page.root }}/fig/git/play-changes.svg)
+![Changes Are Saved Sequentially](../fig/git/play-changes.svg)
 
 Once you think of changes as separate from the document itself, you
 can then think about "playing back" different sets of changes on the base document, ultimately
 resulting in different versions of that document. For example, two users can make independent
 sets of changes on the same document.
 
-![Different Versions Can be Saved]({{ page.root }}/fig/git/versions.svg)
+![Different Versions Can be Saved](../fig/git/versions.svg)
 
 Unless multiple users make changes to the same section of the document - a conflict - you can
 incorporate two sets of changes into the same base document.
 
-![Multiple Versions Can be Merged]({{ page.root }}/fig/git/merge.svg)
+![Multiple Versions Can be Merged](../fig/git/merge.svg)
 
 A version control system is a tool that keeps track of these changes for us,
 effectively creating different versions of our files. It allows us to decide
@@ -119,13 +123,14 @@ On a command line, Git commands are written as `git verb options`,
 where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how
 Riley sets up their new laptop:
 
-~~~
+```
 $ git config --global user.name "Riley Shor"
 $ git config --global user.email "Riley.Shor@fake.email.address"
-~~~
+```
 {: .language-bash}
 
-Please use your own name and email address instead of Riley's. This user name and email will be associated with your subsequent Git activity,
+Please use your own name and email address instead of Riley's.
+This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to
 [GitHub](https://github.com/),
 [BitBucket](https://bitbucket.org/),
@@ -135,11 +140,19 @@ in a later lesson will include this information.
 
 For these lessons, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy].
 
->## Keeping your email private
+> ## GitHub, GitLab, & BitBucket
 >
->If you elect to use a private email address with GitHub, then use that same email address for the `user.email` value, e.g. `username@users.noreply.github.com` replacing `username` with your GitHub one.
+> GitHub, GitLab, & BitBucket are websites where you can store your git
+> repositories, share them with the world, and collaborate with others.
+> You can think of them like email applications. You may have a gmail address,
+> and you can choose to manage your email through one of many services such as
+> the Gmail app, Microsoft Outlook, Apple's Mail app, etc.
+> They have different interfaces and features, but all of them allow you to
+> manage your email. Similarly, GitHub, GitLab, & BitBucket have different
+> interfaces and features, but they all allow you to store, share, and
+> collaborate with others on your git repos.
+>
 {: .callout}
-
 
 > ## Line Endings
 >
@@ -159,19 +172,18 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 >
 > On macOS and Linux:
 >
-> ~~~
+> ```
 > $ git config --global core.autocrlf input
-> ~~~
+> ```
 > {: .language-bash}
 >
 > And on Windows:
 >
-> ~~~
+> ```
 > $ git config --global core.autocrlf true
-> ~~~
+> ```
 > {: .language-bash}
 >
-
 
 Riley also has to set their favorite text editor, nano.
 
@@ -195,9 +207,9 @@ to use the settings for every project, in your user account, on this computer.
 
 You can check your settings at any time:
 
-~~~
+```
 $ git config --list
-~~~
+```
 {: .language-bash}
 
 You can change your configuration as many times as you want: use the
@@ -209,18 +221,18 @@ same commands to choose another editor or update your email address.
 > [proxy](https://en.wikipedia.org/wiki/Proxy_server). If this is the case, you
 > may also need to tell Git about the proxy:
 >
-> ~~~
+> ```
 > $ git config --global http.proxy proxy-url
 > $ git config --global https.proxy proxy-url
-> ~~~
+> ```
 > {: .language-bash}
 >
 > To disable the proxy, use
 >
-> ~~~
+> ```
 > $ git config --global --unset http.proxy
 > $ git config --global --unset https.proxy
-> ~~~
+> ```
 > {: .language-bash}
 {: .callout}
 
@@ -228,10 +240,10 @@ same commands to choose another editor or update your email address.
 >
 > Always remember that if you forget a `git` command, you can access the list of commands by using `-h` and access the Git manual by using `--help` :
 >
-> ~~~
+> ```
 > $ git config -h
 > $ git config --help
-> ~~~
+> ```
 > {: .language-bash}
 >
 > While viewing the manual, remember the `:` is a prompt waiting for commands and you can press <kbd>Q</kbd> to exit the manual.
@@ -258,8 +270,7 @@ Diagrams to go with the basic commands.
 
 (starting with only a working directory, coordinate with R plotting contents)
 
-
-
+![git-basics-flow-01-opt1](../fig/git-basics/20201117-git-01-opt1.png)  
 
 Once Git is configured, we can start using it.
 
@@ -1213,7 +1224,6 @@ repository (`git commit`):
 
 {% include links.md %}
 
-
 As we saw in the previous lesson, we can refer to commits by their
 identifiers.  You can refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
@@ -1269,7 +1279,6 @@ $ git diff HEAD~1 analysis.txt
 
 If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
-
 
 ~~~
 $ git diff HEAD~3 analysis.txt
@@ -1602,6 +1611,7 @@ git diff <commit>..<commit>
 {: .language-bash}
 
 ![git-basics-flow-15]({{ page.root }}/fig/git-basics/20201117-git-15.png =400x)  
+
 
 If we introduce a bug and break our code, no problem! We can `revert` to a previous commit.
 
@@ -2077,4 +2087,211 @@ GitHub, though, this command would download them to our local repository.
 ## Collaborating with GitHub
 _[Back to top](#contents)_
 
-## More Commands
+- TODO: replace screenshots
+
+For the next step, get into pairs.  One person will be the "Owner" and the other
+will be the "Collaborator". The goal is that the Collaborator add changes into
+the Owner's repository. We will switch roles at the end, so both persons will
+play Owner and Collaborator.
+
+> ## Practicing By Yourself
+>
+> If you're working through this lesson on your own, you can carry on by opening
+> a second terminal window.
+> This window will represent your partner, working on another computer. You
+> won't need to give anyone access on GitHub, because both 'partners' are you.
+{: .callout}
+
+The Owner needs to give the Collaborator access. On GitHub, click the settings
+button on the right, select Manage access, click Invite a collaborator, and
+then enter your partner's username.
+
+![Adding Collaborators on GitHub](../fig/git/github-add-collaborators.png)
+
+To accept access to the Owner's repo, the Collaborator
+needs to go to [https://github.com/notifications](https://github.com/notifications).
+Once there she can accept access to the Owner's repo.
+
+Next, the Collaborator needs to download a copy of the Owner's repository to her
+ machine. This is called "cloning a repo". To clone the Owner's repo into
+her `Desktop` folder, the Collaborator enters:
+
+```
+$ git clone https://github.com/USERNAME/un-report.git ~/Desktop/USERNAME-un-report
+```
+{: .language-bash}
+
+Replace `USERNAME` with the Owner's username.
+
+The Collaborator can now make a change in her clone of the Owner's repository,
+exactly the same way as we've been doing before:
+
+```
+$ cd ~/Desktop/USERNAME-un-report
+$ nano README.md
+$ cat README.md
+```
+{: .language-bash}
+
+You can write anything you like. Now might be a good time to list the
+**dependencies** of the project -- the tools and packages that are needed
+to run the code.
+```
+Dependencies:
+- R >= 4.0
+- tidyverse
+```
+{: .output}
+
+```
+$ git add README.md
+$ git commit -m "List dependencies"
+```
+{: .language-bash}
+
+```
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+```
+{: .output}
+
+Then push the change to the *Owner's repository* on GitHub:
+
+```
+$ git push origin master
+```
+{: .language-bash}
+
+```
+Enumerating objects: 4, done.
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 306 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/USERNAME/un-report.git
+   9272da5..29aba7c  master -> master
+```
+{: .output}
+
+Note that we didn't have to create a remote called `origin`: Git uses this
+name by default when we clone a repository.  (This is why `origin` was a
+sensible choice earlier when we were setting up remotes by hand.)
+
+Take a look at the Owner's repository on its GitHub website now (you may need
+to refresh your browser.) You should be able to see the new commit made by the
+Collaborator.
+
+To download the Collaborator's changes from GitHub, the Owner now enters:
+
+```
+$ git pull origin master
+```
+{: .language-bash}
+
+```
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/USERNAME/un-report
+ * branch            master     -> FETCH_HEAD
+   9272da5..29aba7c  master     -> origin/master
+Updating 9272da5..29aba7c
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+```
+{: .output}
+
+Now the three repositories (Owner's local, Collaborator's local, and Owner's on
+GitHub) are back in sync!
+
+> ## A Basic Collaborative Workflow
+>
+> In practice, it is good to be sure that you have an updated version of the
+> repository you are collaborating on, so you should `git pull` before making
+> our changes. The basic collaborative workflow would be:
+>
+> * update your local repo with `git pull`,
+> * make your changes and stage them with `git add`,
+> * commit your changes with `git commit -m`, and
+> * upload the changes to GitHub with `git push`
+>
+> It is better to make many commits with smaller changes rather than
+> of one commit with massive changes: small commits are easier to
+> read and review.
+{: .callout}
+
+> ## Switch Roles and Repeat
+>
+> Switch roles and repeat the whole process.
+{: .challenge}
+
+> ## Review Changes
+>
+> The Owner pushed commits to the repository without giving any information
+> to the Collaborator. How can the Collaborator find out what has changed with
+> on GitHub?
+>
+> > ## Solution
+> >
+> > On GitHub, the Collaborator can go to the repository and click on
+> > "commits" to view the most recent commits pushed to the repository.
+> {: .solution}
+{: .challenge}
+
+> ## Comment Changes in GitHub
+>
+> The Collaborator has some questions about one line change made by the Owner and
+> has some suggestions to propose.
+>
+> With GitHub, it is possible to comment the diff of a commit. Over the line of
+> code to comment, a blue comment icon appears to open a comment window.
+>
+> The Collaborator posts comments and suggestions using GitHub interface.
+{: .challenge}
+
+> ## Version History, Backup, and Version Control
+>
+> Some backup software can keep a history of the versions of your files. They also
+> allows you to recover specific versions. How is this functionality different from version control?
+> What are some of the benefits of using version control, Git and GitHub?
+{: .challenge}
+
+> ## Some more about remotes
+>
+> In this episode and the previous one, our local repository has had
+> a single "remote", called `origin`. A remote is a copy of the repository
+> that is hosted somewhere else, that we can push to and pull from, and
+> there's no reason that you have to work with only one. For example,
+> on some large projects you might have your own copy in your own GitHub
+> account (you'd probably call this `origin`) and also the main "upstream"
+> project repository (let's call this `upstream` for the sake of examples).
+> You would pull from `upstream` from time to
+> time to get the latest updates that other people have committed.
+>
+> Remember that the name you give to a remote only exists locally. It's
+> an alias that you choose - whether `origin`, or `upstream`, or `fred` -
+> and not something intrinstic to the remote repository.
+>
+> The `git remote` family of commands is used to set up and alter the remotes
+> associated with a repository. Here are some of the most useful ones:
+>
+> * `git remote -v` lists all the remotes that are configured (we already used
+> this in the last episode)
+> * `git remote add [name] [url]` is used to add a new remote
+> * `git remote remove [name]` removes a remote. Note that it doesn't affect the
+> remote repository at all - it just removes the link to it from the local repo.
+> * `git remote set-url [name] [newurl]` changes the URL that is associated
+> with the remote. This is useful if it has moved, e.g. to a different GitHub
+> account, or from GitHub to a different hosting service. Or, if we made a typo when
+> adding it!
+> * `git remote rename [oldname] [newname]` changes the local alias by which a remote
+> is known - its name. For example, one could use this to change `upstream` to `fred`.
+{: .callout}
+
+## Glossary
+
