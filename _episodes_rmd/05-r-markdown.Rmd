@@ -164,4 +164,5 @@ TODO: maybe include screen shot of markdown so far?
 
 ## Integrating it all together: Paired exercise
 
+You've learned so much in the past two days - how to use the Unix Shell to move around your computer, how to use git for version control and GitHub for collaborating with others on code, how to make pretty plots and do data analysis in R, and how to incorporate it all into a report. 
 
