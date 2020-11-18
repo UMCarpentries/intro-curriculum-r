@@ -272,23 +272,38 @@ gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=y
 
 #### Looking into life expectancy a bit more.
 
-What country had the highest life expectancy in 1982?
+1. What country had the highest life expectancy in 1982? Hint: use the `slice_max` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
 
 ```{r,comment=NA,echo=F,collapse=T}
-gap1982 <- filter(gapminder, year==1982)
-gap1982 %>% slice_max(lifeExp)
+filter(gapminder, year==1982) %>% slice_max(lifeExp)
 ```
 
-Make a boxplot for the life expectancies of the countries in each continent
+1. Now, do the same thing but for all years! (How many years are there?) 
+
+```{r}
+
+gapminder %>% select(year) %>% unique() %>% nrow()
+
+gapminder %>% group_by(year) %>% select(country,year,lifeExp) %>% slice_max(lifeExp) %>% print(n=Inf)
+```
+
+1. Make a boxplot for the life expectancies of the countries in each continent for 2007.
 
 ```{r,comment=NA,echo=F,collapse=T}
-ggplot(gapminder,aes(x=continent,y=lifeExp)) + geom_boxplot()
+gapminder %>% filter(year==2007) %>% ggplot(aes(x=continent,y=lifeExp)) + geom_boxplot()
 ```
 
-Challenge question: Which country has had the greatest increase in life expectancy from 1952 to 2007?
+1. **Challenge question:** Which country has had the greatest increase in life expectancy from 1952 to 2007? HINT: You might want to use the `pivot_wider` function to get your data in a format with the columns for : country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy. 
+TODO: Move this to the end? 
 
 ```{r,comment=NA,echo=F,collapse=T}
 filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeExp) %>% pivot_wider(names_from=year,values_from=lifeExp) %>% mutate(diff=`2007`-`1952`) %>% slice_max(diff)
+```
+
+1. What countries had a decrease in life expectancy from 1952 to 2007?
+
+```{r,comment=NA,echo=F,collapse=T}
+filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeExp) %>% pivot_wider(names_from=year,values_from=lifeExp) %>% mutate(diff=`2007`-`1952`) %>% filter(diff < 0)
 ```
 
 ### Exercises integrating a new dataset
