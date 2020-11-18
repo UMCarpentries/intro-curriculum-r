@@ -12,15 +12,316 @@ keypoints: ""
 
 
 
+Recall that our ultimate goal is to generate a report on how a country's life expectancy is related to GDP.
+
+## Creating a reports directory
+
+Let's start by using the Unix Shell to create a directory within `un-report` called `reports` where we will write our reports to the UN.
+First, open the Unix Shell and `cd` to `un-report`
+
+```
+pwd
+mkdir reports
+```
+
+```
+/home/USERNAME/Desktop/un-report/reports/
+```
+TODO make this input and output look like SWC website.
+
+To start, I have a question for you:
+How do you usually share data analyses with your collaborators? 
+Many people share them through a Word document, a spreadsheet, slides, a  graphic, etc. 
+
+## Why use R Markdown?
+
+We're going to learn a way to create a report in R using something called R Markdown. 
+This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html or PDF file and share with others. 
+The text can be experimental methods, an analysis and discussion of the results, or whatever else you want to include.
+:We use this for writing reproducible analysis reports, publication, sharing work with collaborators, writing up homework, and keeping a computational notebook of our work, among other things.
+If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can even hide the code. 
+We call these types of reports *reproducible* reports because the code is embedded in the document and anyone can take the report and re-run the code to get the same output. 
+It's also useful because if you change any of your code or text because you found an error or want to modify the text or a figure, you can just re-run the report to get the updated output! 
+
+R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures.
+
+## Creating an R Markdown file
+
+Now that we have a better understanding of what we can use R Markdown files for, let's start writing a report!
+
+To create an R Markdown file: (TODO: Include screen shots or is that overkill? If you demo live, i (Jule) don't think you need screenshots.)
+- Open RStudio
+- Go to File &rarr; New File &rarr; R Markdown
+- Give your document a title (Q for learners: what should we call it? - TODO: choose name - un-report? Maybe: "A UN Report on the Relationship between GDP and Life Expectancy") ## i think it is important to make clear here that this title is different from a file or directory name?
+- Keep the default output format as HTML. You need TeX installed if you want to generate PDF documents. (TODO: Add link to [how to install TeX](https://www.latex-project.org/get/)/[render PDFs](https://rmarkdown.rstudio.com/pdf_document_format.html%2F), general link on [R Markdown output formats](https://rmarkdown.rstudio.com/lesson-9.html))
+- R Markdown files always end in `.Rmd`
+
+## Basic components of R Markdown
+
+### Header
+
+The first part is a *header* at the top of the file between the lines of `---`. This contains instructions for R to specify the type of document to be created and options to choose (ex. title, author, date). These are in the form of key-value pairs (`key: value`; YAML).
+
+Here's an example:
+
+```
+---
+title: 'Writing Reports with R Markdown'
+author: "Zena Lapp"
+date: "11/18/2020"
+output: html_document
+---
+```
+
+### Code chunks
+
+The next section is a *code chunk*, or embedded R code, that sets up options for all code chunks. Here is the default when you create a new R Markdown file:
+
 
 ~~~
-print("Hello, World!")
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] "Hello, World!"
+```{r setup, include=FALSE}
 ~~~
 {: .output}
+
+
+
+~~~
+knitr::opts_chunk$set(echo = TRUE)
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+All code chunks have this format:
+
+
+~~~
+```{r}
+# Your code here
+```
+~~~
+{: .output}
+
+All of the code is enclosed in 3 backticks (`cat('```')`), and the `{r}` part indicates that it's a chunk of R code. 
+
+You can also include other information within the curly brackets to indicate different information about that code chunk. 
+For instance, the first code block is named "setup", and `include=FALSE` prevents code and results from showing up in the output file.
+
+Inside the code chunk, you can put any R code that you want to run, and you can have as many code chunks as you want in your file.
+
+As we mentioned above, in the first code chunk you set options for the entire file. 
+`echo = TRUE` means that you want your code to be shown in the output file. 
+There are also many other options that you can change, but we won't go into those details in this workshop. 
+TODO: Check link on where we can learn more: [See here on code chunks in R Markdown](https://rmarkdown.rstudio.com/lesson-3.html)
+
+### Text
+
+Finally, you can include text in your R Markdown file. 
+This is any text or explanation you want to include, and it's formatted with Markdown. 
+We'll learn more about Markdown formatting soon!
+
+## Starting the report
+
+First, let's delete everything below the setup code chunk.
+
+Next, let's save our R markdown file to the `reports` directory. 
+You can do this by clicking the save icon in the top left. 
+
+There's one other thing that we need to do before we get started with our report.
+To render our documents into html format, we can "knit" them in R Studio. 
+Usually, R Markdown renders documents from the directory where the document is saved (the location of the `.Rmd` file), but we want it to render from the main project directory where our `.Rproj` file is.
+This is because that's where all of our relative paths are from and it's good practice to have all of your relative paths from the main project directory.
+To change this default, click on the down arrow next to the "Knit" button at the top left of R Studio, go to "Knit Directory" and click "Project Directory". 
+Now it will assume all of your relative paths for reading and writing files are from the `un-report` directory, rather than the `reports` directory.
+
+Now that we have that set up, let's start on the report!
+
+We're going to use the code you generated yesterday to plot GDP vs Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to library the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference. We can specify `include=FALSE` like the setup chuck so we dont see the messages from loading packages in the report output. 
+
+
+~~~
+```{r packages, include=FALSE}
+~~~
+{: .output}
+
+
+
+~~~
+library(tidyverse)
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+Now in a real report this is when we would type out the background and purpose of the report to provide context to the readers of the report. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the text below into your report below the package code chunk.
+
+```
+(couple sentances with purpose/question/hypothesis for the report that can be copied and pasted into the report)
+```
+
+Now since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data. 
+
+
+~~~
+```{r data}
+~~~
+{: .output}
+
+
+
+~~~
+gapminder_1997 <- read.csv("./data/gapminder_1997.csv")
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+Now that we have the data we need to produce the plot, let's create it!
+
+
+~~~
+```{r gdp_lifeexp_1997}
+~~~
+{: .output}
+
+
+
+~~~
+ggplot(data = gapminder_1997) + 
+
+  aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
+
+  geom_point() +
+
+  labs(x = "GDP Per Capita", y = "Life Expectancy",
+
+       title= "Do people in wealthy countries live longer?", size="Population (in millions)")
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+Now we can knit our document to see how our report looks
+TODO: add in using the knit button and changing knit directory or rmarkdown::render('file.rmd', output_dir = "dirpath/")
+
+![](../fig/r-markdown/first_report_render.png)
+
+Amazing! We've created a report! Lets push this to GitHub to make sure we preserve this document. 
+
+TODO: check below instructions for pushing to GitHub
+Now all we need to do is commit our recent changes and update our remote repository using Git.
+
+Returning to the command line, type
+`git status` ##to get an idea of which files just changed`
+`git add <filename(s)>` ##to add any file(s) that you just created and that are not yet version controlled
+`git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
+`git push` ##to update your changes to the git directory on the remote server
+
+
+It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages. 
+
+![](../fig/r-markdown/tidyverse_messages.png)
+
+To get rid of this, we can revise our packages code chunk by adding `include=FALSE` like in the setup chunk to prevent code and messages in this chunk from showing up in our report. 
+
+
+~~~
+```{r packages, include=FALSE}
+~~~
+{: .output}
+
+
+
+~~~
+library(tidyverse)
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk, too?
+
+![](../fig/r-markdown/includeFalse.png)
+
+Oops! Now the plot doesn't show up in our report. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE` for the code chunk to tell it that we don't want to see the code but we want to see the output.
+
+
+~~~
+```{r gdp_lifeexp_1997, echo=FALSE}
+~~~
+{: .output}
+
+
+
+~~~
+ggplot(data = gapminder_1997) + 
+
+  aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
+
+  geom_point() +
+
+  labs(x = "GDP Per Capita", y = "Life Expectancy",
+
+       title= "Do people in wealthy countries live longer?", size="Population (in millions)")
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+When we knit this again, we can see the plot again!
+
+![](../fig/r-markdown/echoFalse.png)
+Now that we have a report we are happy with, let's push the changes to GitHub. 
+
+TODO: Add a list of conclusions, possibly with some bold/italicized text to the end to learn more Markdown formatting. 
+
+## Integrating it all together: Paired exercise
+
+## Formatting
+Now that we know how to create a report, we might want to format it in a way that structures our thought process in a useful way (e.g., sections) and makes it visually appealing.
+Markdown is a very simple programming language when it comes to syntax.
+Let's try to figure out some syntax together. What would be a formatting style you might want to use?
+Cool, let's google "this student example" together (e.g., how create sections by using headers and subheaders).
+
+See, we can easily create headers and subheaders by using the `#` pound/hash sign.
+
+OK, now that we know how to make headers, let's practice some more Markdown syntax.
+
+Go ahead and do some online searches on how to do the following:
+
+* create a bullet point list with three items
+* as the first item, write the name of your currently favorite programming language in bold
+* as the second item, write  the name of a function you have so far found most useful in italics
+* as the third item, write one thing you want to learn next on your programming journey in bold and italics
+* turn your bullet point list into a numbered list
+* create a fourth list item and find an online guide and/or cheat sheet for basic Markdown syntax, write its name down here and hyperlink its url 
