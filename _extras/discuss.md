@@ -52,9 +52,13 @@ In the following, we list some strategies and resources we find useful. As you m
 ### R
 * [R package library](https://cran.r-project.org/)
 * [Base R Cheat Sheet](https://rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
-* [R Markdown Cheat Sheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
 * [R Tidyverse Cheat Sheet](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Tidyverse+Cheat+Sheet.pdf)
 * [R ggplot2 Cheat Sheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
+
+### R Markdown
+* [Getting started with R Markdown Online Tutorial](https://rmarkdown.rstudio.com/lesson-1.html)
+* [R Markdown Cheat Sheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
+* [R Markdown Reference Guide](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 
 ## Writing code  at the University of Michigan
 
