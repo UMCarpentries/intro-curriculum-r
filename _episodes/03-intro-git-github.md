@@ -48,7 +48,7 @@ think of it as a recording of your progress: you can rewind to start at the base
 document and play back each change you made, eventually arriving at your
 more recent version.
 
-![Changes Are Saved Sequentially](../fig/git/play-changes.svg)
+![Changes Are Saved Sequentially]({{ page.root }}/fig/git/play-changes.svg)
 
 Once you think of changes as separate from the document itself, you
 can then think about "playing back" different sets of changes on the base document, ultimately
