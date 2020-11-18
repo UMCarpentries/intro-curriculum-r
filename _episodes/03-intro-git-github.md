@@ -481,11 +481,11 @@ services like [GitHub](https://github.com), [Bitbucket](https://bitbucket.org) o
 
 Let's start by sharing the changes we've made to our current project with the
 world. Log in to GitHub, then click on the icon in the top right corner to
-create a new repository called `umswc-project`.
+create a new repository called `un-report`.
 
 ![Creating a Repository on GitHub (Step 1)](../fig/git/github-create-repo-01.png)
 
-Name your repository `umswc-project` and then click `Create Repository`.
+Name your repository `un-report` and then click `Create Repository`.
 
 Note: Since this repository will be connected to a local repository, it needs to be empty. Leave
 "Initialize this repository with a README" unchecked, and keep "None" as options for both "Add
@@ -502,8 +502,8 @@ information on how to configure your local repository:
 This effectively does the following on GitHub's servers:
 
 ```
-$ mkdir umswc-project
-$ cd umswc-project
+$ mkdir un-report
+$ cd un-report
 $ git init
 ```
 {: .language-bash}
@@ -528,11 +528,11 @@ identify it:
 
 ![Where to Find Repository URL on GitHub](../fig/git/github-find-repo-string.png)
 
-Copy that URL from the browser, go into the local `umswc-project` repository, and run
+Copy that URL from the browser, go into the local `un-report` repository, and run
 this command:
 
 ```
-$ git remote add origin https://github.com/USERNAME/umswc-project.git
+$ git remote add origin https://github.com/USERNAME/un-report.git
 ```
 {: .language-bash}
 
@@ -551,8 +551,8 @@ $ git remote -v
 {: .language-bash}
 
 ```
-origin   https://github.com/USERNAME/umswc-project.git (push)
-origin   https://github.com/USERNAME/umswc-project.git (fetch)
+origin   https://github.com/USERNAME/un-report.git (push)
+origin   https://github.com/USERNAME/un-report.git (fetch)
 ```
 {: .output}
 
@@ -572,7 +572,7 @@ Compressing objects: 100% (11/11), done.
 Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/USERNAME/umswc-project.git
+To https://github.com/USERNAME/un-report.git
  * [new branch]      master -> master
 ```
 {: .output}
@@ -598,7 +598,7 @@ $ git pull origin master
 {: .language-bash}
 
 ```
-From https://github.com/USERNAME/umswc-project
+From https://github.com/USERNAME/un-report
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ```
@@ -610,7 +610,7 @@ GitHub, though, this command would download them to our local repository.
 
 > ## GitHub GUI
 >
-> Browse to your `umswc-project` repository on GitHub.
+> Browse to your `un-report` repository on GitHub.
 > Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number).
 > Hover over, and click on, the three buttons to the right of each commit.
 > What information can you gather/explore from these buttons?
@@ -678,7 +678,7 @@ GitHub, though, this command would download them to our local repository.
 > > remote: Counting objects: 100% (3/3), done.
 > > remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
-> > From https://github.com/USERNAME/umswc-project
+> > From https://github.com/USERNAME/un-report
 > >  * branch            master     -> FETCH_HEAD
 > >  * [new branch]      master     -> origin/master
 > > fatal: refusing to merge unrelated histories
@@ -694,7 +694,7 @@ GitHub, though, this command would download them to our local repository.
 > > {: .language-bash}
 > >
 > > ```
-> > From https://github.com/USERNAME/umswc-project
+> > From https://github.com/USERNAME/un-report
 > >  * branch            master     -> FETCH_HEAD
 > > Merge made by the 'recursive' strategy.
 > > README.md | 1 +
@@ -741,7 +741,7 @@ Next, the Collaborator needs to download a copy of the Owner's repository to her
 her `Desktop` folder, the Collaborator enters:
 
 ```
-$ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
+$ git clone https://github.com/USERNAME/planets.git ~/Desktop/vlad-planets
 ```
 {: .language-bash}
 
