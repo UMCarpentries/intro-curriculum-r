@@ -33,7 +33,7 @@ to keep track of what one person did and when.
 Even if you aren't collaborating with other people,
 automated version control is much better than this situation:
 
-[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531]({{ page.root }}/fig/git/phd101212s.png)](http://www.phdcomics.com)
+[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531](../fig/git/phd101212s.png)](http://www.phdcomics.com)
 
 "Piled Higher and Deeper" by Jorge Cham, http://www.phdcomics.com
 
@@ -51,19 +51,19 @@ think of it as a recording of your progress: you can rewind to start at the base
 document and play back each change you made, eventually arriving at your
 more recent version.
 
-![Changes Are Saved Sequentially]({{ page.root }}/fig/git/play-changes.svg)
+![Changes Are Saved Sequentially](../fig/git/play-changes.svg)
 
 Once you think of changes as separate from the document itself, you
 can then think about "playing back" different sets of changes on the base document, ultimately
 resulting in different versions of that document. For example, two users can make independent
 sets of changes on the same document.
 
-![Different Versions Can be Saved]({{ page.root }}/fig/git/versions.svg)
+![Different Versions Can be Saved](../fig/git/versions.svg)
 
 Unless multiple users make changes to the same section of the document - a conflict - you can
 incorporate two sets of changes into the same base document.
 
-![Multiple Versions Can be Merged]({{ page.root }}/fig/git/merge.svg)
+![Multiple Versions Can be Merged](../fig/git/merge.svg)
 
 A version control system is a tool that keeps track of these changes for us,
 effectively creating different versions of our files. It allows us to decide
@@ -262,7 +262,7 @@ Diagrams to go with the basic commands.
 
 NOTE (from RD): this image only applicable when the starting working directory is currently empty
 
-![git-basics-flow-01-opt1]({{ page.root }}/fig/git-basics/20201117-git-01-opt1.png)  
+![git-basics-flow-01-opt1](../fig/git-basics/20201117-git-01-opt1.png)  
 
 ```
 git init
@@ -271,7 +271,7 @@ git init
 
 NOTE (from RD): if starting from a working directory that is not empty (which is likely the case when we get to this part on the basis of R plotting materials)
 
-![git-basics-flow-01-opt2]({{ page.root }}/fig/git-basics/20201117-git-01-opt2.png)  
+![git-basics-flow-01-opt2](../fig/git-basics/20201117-git-01-opt2.png)  
 
 
 ```
@@ -281,7 +281,7 @@ git init
 
 NOTE (from RD): use this image if initiating an empty directory
 
-![git-basics-flow-02]({{ page.root }}/fig/git-basics/20201117-git-02.png)
+![git-basics-flow-02](../fig/git-basics/20201117-git-02.png)
 
 NOTE (from RD): Make edits to the initiated directory, or initiating from an existing, non-empty directory. I personally use a lot of `git status` to show changes and progresses and they are not necessary.
 
@@ -290,7 +290,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-03]({{ page.root }}/fig/git-basics/20201117-git-03.png)
+![git-basics-flow-03](../fig/git-basics/20201117-git-03.png)
 
 ```
 git add
@@ -298,7 +298,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-04]({{ page.root }}/fig/git-basics/20201117-git-04.png)
+![git-basics-flow-04](../fig/git-basics/20201117-git-04.png)
 
 ```
 git commit
@@ -306,17 +306,17 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-05]({{ page.root }}/fig/git-basics/20201117-git-05.png)
+![git-basics-flow-05](../fig/git-basics/20201117-git-05.png)
 
 NOTE (from RD): this two diagrams are optional. I used to emphasize 1) the `.git` directory is changed but not the working directory and 2) the committed changes are "official" in the git "memory" at this point if presenting in-person
 
-![git-basics-flow-06]({{ page.root }}/fig/git-basics/20201117-git-06.png)
+![git-basics-flow-06](../fig/git-basics/20201117-git-06.png)
 
-![git-basics-flow-07]({{ page.root }}/fig/git-basics/20201117-git-07.png)
+![git-basics-flow-07](../fig/git-basics/20201117-git-07.png)
 
 NOTE (from RD): usually between this two diagrams, I would walk through adding another edits to the directory (e.g. adding another line in a text file) so that we can repeat the `git status`, `git add`, and `git commit` to familiarize the usage of these three specific commands. (Because in my opinion they are the most frequently used commands. This part can be adjusted accordingly.) Since we usually take a "detour" to make edits that are not directly relevant to `git`, I have included a repeated image below to pick up from where we are before the editing.
 
-![git-basics-flow-08]({{ page.root }}/fig/git-basics/20201117-git-08=05.png)
+![git-basics-flow-08](../fig/git-basics/20201117-git-08=05.png)
 
 ```
 git add
@@ -324,18 +324,18 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-09]({{ page.root }}/fig/git-basics/20201117-git-09.png)
+![git-basics-flow-09](../fig/git-basics/20201117-git-09.png)
 
 ```
 git diff
 ```
 {: .language-bash}
 
-![git-basics-flow-10]({{ page.root }}/fig/git-basics/20201117-git-10.png)
+![git-basics-flow-10](../fig/git-basics/20201117-git-10.png)
 
 NOTE (from RD): just an optional reprise of diagram before the showing the differences.
 
-![git-basics-flow-11]({{ page.root }}/fig/git-basics/20201117-git-11=9.png)
+![git-basics-flow-11](../fig/git-basics/20201117-git-11=9.png)
 
 ```
 git add
@@ -343,7 +343,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-12]({{ page.root }}/fig/git-basics/20201117-git-12.png)
+![git-basics-flow-12](../fig/git-basics/20201117-git-12.png)
 
 ```
 git commit
@@ -351,7 +351,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-13]({{ page.root }}/fig/git-basics/20201117-git-13.png)
+![git-basics-flow-13](../fig/git-basics/20201117-git-13.png)
 
 NOTE (from RD): an optional reprise of the effects of committing
 
@@ -361,36 +361,36 @@ git shortlog
 ```
 {: .language-bash}
 
-![git-basics-flow-14]({{ page.root }}/fig/git-basics/20201117-git-14.png)
+![git-basics-flow-14](../fig/git-basics/20201117-git-14.png)
 
 ```
 git diff <commit>{{ page.root }}<commit>
 ```
 {: .language-bash}
 
-![git-basics-flow-15]({{ page.root }}/fig/git-basics/20201117-git-15.png)
+![git-basics-flow-15](../fig/git-basics/20201117-git-15.png)
 
 NOTE (from RD): an optional reprise. This exists only because I personally like to pause and touch base on some of the "theory" or backgound info or best practices (e.g. writing informative and concise commit messages) and therefore need to pick up again.
 
-![git-basics-flow-16]({{ page.root }}/fig/git-basics/20201117-git-16=13.png)
+![git-basics-flow-16](../fig/git-basics/20201117-git-16=13.png)
 
 ```
 git remote add
 ```
 {: .language-bash}
 
-![git-basics-flow-17]({{ page.root }}/fig/git-basics/20201117-git-17.png)
+![git-basics-flow-17](../fig/git-basics/20201117-git-17.png)
 
 ```
 git push -u origin master
 ```
 {: .language-bash}
 
-![git-basics-flow-18]({{ page.root }}/fig/git-basics/20201117-git-18.png)
+![git-basics-flow-18](../fig/git-basics/20201117-git-18.png)
 
 NOTE (frome RD): this might be a good place to add some collaborative contents too. If needed can reuse the figure above for a refresher.
 
-![git-basics-flow-19]({{ page.root }}/fig/git-basics/20201117-git-19.png)
+![git-basics-flow-19](../fig/git-basics/20201117-git-19.png)
 
 ```
 git remote update
@@ -398,9 +398,9 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-20]({{ page.root }}/fig/git-basics/20201117-git-20.png)
+![git-basics-flow-20](../fig/git-basics/20201117-git-20.png)
 
-![git-basics-flow-21]({{ page.root }}/fig/git-basics/20201117-git-21=19.png)
+![git-basics-flow-21](../fig/git-basics/20201117-git-21=19.png)
 
 ```
 git pull
@@ -408,7 +408,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-22]({{ page.root }}/fig/git-basics/20201117-git-22.png)
+![git-basics-flow-22](../fig/git-basics/20201117-git-22.png)
 
 NOTE (from RD): I used to show the log again and emphasize on the difference in user names if the new edits are collaborative, or just to show that the history can pick up edits done "somewhere else".
 
@@ -418,21 +418,51 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-23]({{ page.root }}/fig/git-basics/20201117-git-23.png)
+![git-basics-flow-23](../fig/git-basics/20201117-git-23.png)
 
 NOTE (from RD): the next 4 images (i.e. 24 to 27) were made for a third round of `git add`, `commit`, `status`, now also `push` for a small exercise for practicing themselves.
 
-![git-basics-flow-24]({{ page.root }}/fig/git-basics/20201117-git-24=22.png)
+![git-basics-flow-24](../fig/git-basics/20201117-git-24=22.png)
 
-![git-basics-flow-25]({{ page.root }}/fig/git-basics/20201117-git-25.png)
+![git-basics-flow-25](../fig/git-basics/20201117-git-25.png)
 
-![git-basics-flow-26]({{ page.root }}/fig/git-basics/20201117-git-26.png)
+![git-basics-flow-26](../fig/git-basics/20201117-git-26.png)
 
-![git-basics-flow-27]({{ page.root }}/fig/git-basics/20201117-git-27.png)
+![git-basics-flow-27](../fig/git-basics/20201117-git-27.png)
 
 NOTE (from RD): final remark on the importance of having a remote backup of the work and how keeping history can help reproducing the work.
 
-![git-basics-flow-28]({{ page.root }}/fig/git-basics/20201117-git-28.png)
+![git-basics-flow-28](../fig/git-basics/20201117-git-28.png)
+
+
+```
+git revert
+```
+{: .language-bash}
+
+NOTE (from RD): these first two diagrams for `git revert` essentially is just the second (i.e. diagram #30). I separated the two to indicate a step of inferring that since the bug / unintended change has been committed, it would be part of the .git history.
+
+![git-basics-flow-29](../fig/git-basics/20201117-git-29.png)
+
+![git-basics-flow-30](../fig/git-basics/20201117-git-30.png)
+
+![git-basics-flow-31](../fig/git-basics/20201117-git-31.png)
+
+![git-basics-flow-32](../fig/git-basics/20201117-git-32.png)
+
+NOTE (from RD): I added a box in the diagram to emphasize how git does not deletion information while reverting. No new operation for this step.
+
+![git-basics-flow-33](../fig/git-basics/20201117-git-33.png)
+
+```
+git restore
+git checkout <file>
+```
+{: .language-bash}
+
+![git-basics-flow-34](../fig/git-basics/20201117-git-34.png)
+
+![git-basics-flow-35](../fig/git-basics/20201117-git-35.png)
 
 ## Intro to GitHub
 _[Back to top](#contents)_
@@ -453,7 +483,7 @@ Let's start by sharing the changes we've made to our current project with the
 world. Log in to GitHub, then click on the icon in the top right corner to
 create a new repository called `umswc-project`.
 
-![Creating a Repository on GitHub (Step 1)]({{ page.root }}/fig/git/github-create-repo-01.png)
+![Creating a Repository on GitHub (Step 1)](../fig/git/github-create-repo-01.png)
 
 Name your repository `umswc-project` and then click `Create Repository`.
 
@@ -462,12 +492,12 @@ Note: Since this repository will be connected to a local repository, it needs to
 .gitignore" and "Add a license." See the "GitHub License and README files" exercise below for a full
 explanation of why the repository needs to be empty.
 
-![Creating a Repository on GitHub (Step 2)]({{ page.root }}/fig/git/github-create-repo-02.png)
+![Creating a Repository on GitHub (Step 2)](../fig/git/github-create-repo-02.png)
 
 As soon as the repository is created, GitHub displays a page with a URL and some
 information on how to configure your local repository:
 
-![Creating a Repository on GitHub (Step 3)]({{ page.root }}/fig/git/github-create-repo-03.png)
+![Creating a Repository on GitHub (Step 3)](../fig/git/github-create-repo-03.png)
 
 This effectively does the following on GitHub's servers:
 
@@ -478,15 +508,15 @@ $ git init
 ```
 {: .language-bash}
 
-If you remember back to the earlier [lesson]({{ page.root }}/04-changes/) where we added and
+If you remember back to the earlier [lesson](../04-changes/) where we added and
 committed our earlier work on `mars.txt`, we had a diagram of the local repository
 which looked like this:
 
-![The Local Repository with Git Staging Area]({{ page.root }}/fig/git/git-staging-area.svg)
+![The Local Repository with Git Staging Area](../fig/git/git-staging-area.svg)
 
 Now that we have two repositories, we need a diagram like this:
 
-![Freshly-Made GitHub Repository]({{ page.root }}/fig/git/git-freshly-made-github-repo.svg)
+![Freshly-Made GitHub Repository](../fig/git/git-freshly-made-github-repo.svg)
 
 Note that our local repository still contains our earlier work on `mars.txt`, but the
 remote repository on GitHub appears empty as it doesn't contain any files yet.
@@ -496,7 +526,7 @@ GitHub repository a [remote]({{ page.root}}{% link reference.md %}#remote) for t
 The home page of the repository on GitHub includes the string we need to
 identify it:
 
-![Where to Find Repository URL on GitHub]({{ page.root }}/fig/git/github-find-repo-string.png)
+![Where to Find Repository URL on GitHub](../fig/git/github-find-repo-string.png)
 
 Copy that URL from the browser, go into the local `umswc-project` repository, and run
 this command:
@@ -549,7 +579,7 @@ To https://github.com/USERNAME/umswc-project.git
 
 Our local and remote repositories are now in this state:
 
-![GitHub Repository After First Push]({{ page.root }}/fig/git/github-repo-after-first-push.svg)
+![GitHub Repository After First Push](../fig/git/github-repo-after-first-push.svg)
 
 > ## The '-u' Flag
 >
@@ -700,7 +730,7 @@ The Owner needs to give the Collaborator access. On GitHub, click the settings
 button on the right, select Manage access, click Invite a collaborator, and
 then enter your partner's username.
 
-![Adding Collaborators on GitHub]({{ page.root }}/fig/gitgithub-add-collaborators.png)
+![Adding Collaborators on GitHub](../fig/gitgithub-add-collaborators.png)
 
 To accept access to the Owner's repo, the Collaborator
 needs to go to [https://github.com/notifications](https://github.com/notifications).
@@ -717,7 +747,7 @@ $ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
 
 Replace 'vlad' with the Owner's username.
 
-![After Creating Clone of Repository]({{ page.root }}/fig/gitgithub-collaboration.svg)
+![After Creating Clone of Repository](../fig/gitgithub-collaboration.svg)
 
 The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
