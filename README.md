@@ -47,6 +47,7 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 | 13:00 | **The Unix Shell** | `_episodes/02-unix-shell.md` |
 | 14:15 | Break |  |
 | 14:30 | **Intro to git & GitHub** | `_episodes_rmd/03-intro-git-github.md` |
+| 16:00 | Wrap-up Day 1 |  |
 | **Day 2** |   |
 | 09:00 | **R for Data Analysis (Part I)** | `_episodes_rmd/04-r-data-analysis.Rmd` |
 | 10:30 | Break |  |
@@ -57,6 +58,7 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 | 14:45 | Collaborative Exercise | at end of `05-r-markdown` |
 | 15:30 | **Conclusions** |  `_episodes/06-conclusion.md` |
 | 15:50 | Exit Survey |   |
+| 16:00 | End | |
 
 ## Helpful links
 
