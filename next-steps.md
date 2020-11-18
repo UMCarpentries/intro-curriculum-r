@@ -4,8 +4,8 @@ We have come to the end of this workshop. You learned some basic procedures for 
 
 As you continue on your coding journey, two things will happen: 
 
-1. you will encounter bugs and need to figure out how to solve them ("debugging"), and
-2. you will want to learn new data processing and analysis techniques.
+1. You will encounter bugs and need to figure out how to solve them ("debugging"), and
+2. You will want to learn new data processing and analysis techniques.
 
 As we complete the course, we want to  share with you some  tips and tricks that have helped us on our own programming journeys.
 
@@ -16,8 +16,8 @@ Even well seasoned coders run into bugs all the time. Here are some strategies o
 * Read the error message that your program issues and see if that helps you figure out the problem. The error message may give you a hint which particular line in your code, i.e., function call, is failing.
 * Check your code syntax. For example, are all parentheses correctly closed?
 * Check out in-built help tools and documentation. 
-  * __R__: Typing a question mark immediately followed by a function name (e.g., "?read.csv") pulls up the R documentation for that function. This provides  a function description, as well as in-depth information about each function argument including its purpose, default and other available options.
-  * __Shell__:
+  * __R__: Typing a question mark immediately followed by a function name (e.g., "?paste") pulls up the R documentation for that function. This provides  a function description, as well as in-depth information about each function argument including its purpose, default and other available options.
+  * __Shell__: Use `man <command>` or `<command> --help` pulls up the manual page with more information. To quit, click `q`.
   * __Git__: <git help> displays help information about git. Read more [here](https://git-scm.com/docs/git-help).
 * Search online for the error message along with the function that is not working. Most likely, someone encountered this error before you  and the examples online will help you figure out your own issue.
 * Perform a general online search for what you are trying to do, e.g., "how to import a comma separated spreadsheet into R", "how to delete a directory from the command line", "how to merge conflicts in git". Typically, you will find step-by-step online documentation that you can adapt for your own purposes.
@@ -64,4 +64,3 @@ There are many local opportunities at the University of Michigan or around the A
 ### Free learning platforms available at U-M
 * [Michigan Online](https://online.umich.edu/)
 * [LinkedIn Learning](https://hr.umich.edu/working-u-m/organizational-learning-resources-faculty-staff/professional-development-courses-resources/linkedin-learning)
-* [DataCamp for the Classroom](https://www.datacamp.com/groups/education): If you have a class that requires you to write code, ask your professor to request a  DataCamp for the Classroom subscription. This will give your entire class six months of free access to all DataCamp content.
