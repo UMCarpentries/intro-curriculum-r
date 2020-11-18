@@ -253,7 +253,7 @@ TODO:
 - [ ] add example code (including outputs) to commands
 - [ ] if time allows / needed, adjust diagram image dimensions
 - [ ] write text to explain commands, essentially a script for instructors to improvise from.
-- [ ] update outputs from `git status` and `ls` to include other files previously created in the `my_project` directory 
+- [ ] update outputs from `git status` and `ls` to include other files previously created in the `my_project` directory
 Diagrams to go with the basic commands.
 
 (starting with only a working directory, coordinate with R plotting contents)
@@ -341,7 +341,7 @@ $ ls -a
 ~~~
 {: .output}
 
-Git uses this special subdirectory to store all the information about the project, 
+Git uses this special subdirectory to store all the information about the project,
 including all files and sub-directories located within the project's directory.
 If we ever delete the `.git` subdirectory,
 we will lose the project's history.
@@ -368,9 +368,9 @@ wording of the output might be slightly different.
 
 > ## Places to Create Git Repositories
 >
-> Along with tracking information about my_project (the project we have already created), 
+> Along with tracking information about my_project (the project we have already created),
 > Riley would also like to track information about moons.
-> Despite our concerns, Riley creates a `moons` project inside his `my_project` 
+> Despite our concerns, Riley creates a `moons` project inside his `my_project`
 > project with the following sequence of commands:
 >
 > ~~~
@@ -384,17 +384,17 @@ wording of the output might be slightly different.
 > ~~~
 > {: .language-bash}
 >
-> Is the `git init` command, run inside the `moons` subdirectory, required for 
+> Is the `git init` command, run inside the `moons` subdirectory, required for
 > tracking files stored in the `moons` subdirectory?
-> 
+>
 > > ## Solution
 > >
-> > No. Riley does not need to make the `moons` subdirectory a Git repository 
-> > because the `my_project` repository will track all files, sub-directories, and 
-> > subdirectory files under the `my_project` directory.  Thus, in order to track 
+> > No. Riley does not need to make the `moons` subdirectory a Git repository
+> > because the `my_project` repository will track all files, sub-directories, and
+> > subdirectory files under the `my_project` directory.  Thus, in order to track
 > > all information about moons, Riley only needed to add the `moons` subdirectory
 > > to the `my_project` directory.
-> > 
+> >
 > > Additionally, Git repositories can interfere with each other if they are "nested":
 > > the outer repository will try to version-control
 > > the inner repository. Therefore, it's best to create each new Git
@@ -415,7 +415,7 @@ wording of the output might be slightly different.
 {: .challenge}
 > ## Correcting `git init` Mistakes
 > We explain to Riley how a nested repository is redundant and may cause confusion
-> down the road. Riley would like to remove the nested repository. How can Riley undo 
+> down the road. Riley would like to remove the nested repository. How can Riley undo
 > his last `git init` in the `moons` subdirectory?
 >
 > > ## Solution -- USE WITH CAUTION!
@@ -426,7 +426,7 @@ wording of the output might be slightly different.
 > > $ rm filename
 > > ~~~
 > > {: .language-bash}
-> > 
+> >
 > > The file being removed has to be in sync with the branch head with no updates. If there are updates, the file can be removed by force by using the `-f` option. Similarly a directory can be removed from git using `rm -r dirname` or `rm -rf dirname`.
 > >
 > > ### Solution
@@ -1192,7 +1192,7 @@ repository (`git commit`):
 > >
 > > ~~~
 > > $ git add notes.txt
-> > $ git commit -m "Add notes file" 
+> > $ git commit -m "Add notes file"
 > > ~~~
 > > {: .language-bash}
 > >
@@ -1258,8 +1258,8 @@ index b36abfd..0848c8d 100644
 
 which is the same as what you would get if you leave out `HEAD` (try it).  The
 real goodness in all this is when you can refer to previous commits.  We do
-that by adding `~1` 
-(where "~" is "tilde", pronounced [**til**-d*uh*]) 
+that by adding `~1`
+(where "~" is "tilde", pronounced [**til**-d*uh*])
 to refer to the commit one before `HEAD`.
 
 ~~~
@@ -1289,8 +1289,8 @@ index df0654a..b36abfd 100644
 ~~~
 {: .output}
 
-We could also use `git show` which shows us what changes we made at an older commit as 
-well as the commit message, rather than the _differences_ between a commit and our 
+We could also use `git show` which shows us what changes we made at an older commit as
+well as the commit message, rather than the _differences_ between a commit and our
 working directory that we see by using `git diff`.
 
 ~~~
@@ -1472,9 +1472,9 @@ $ git checkout HEAD analysis.txt
 > ~~~
 > {: .language-bash}
 >
-> to revert `analysis.txt` to its state after the commit `f22b25e`. But be careful! 
+> to revert `analysis.txt` to its state after the commit `f22b25e`. But be careful!
 > The command `checkout` has other important functionalities and Git will misunderstand
-> your intentions if you are not accurate with the typing. For example, 
+> your intentions if you are not accurate with the typing. For example,
 > if you forget `analysis.txt` in the previous command.
 >
 > ~~~
@@ -1567,20 +1567,20 @@ moving backward and forward in time becomes much easier.
 >
 > > ## Solution
 > >
-> > The answer is (5)-Both 2 and 4. 
-> > 
-> > The `checkout` command restores files from the repository, overwriting the files in your working 
-> > directory. Answers 2 and 4 both restore the *latest* version *in the repository* of the file 
-> > `data_cruncher.py`. Answer 2 uses `HEAD` to indicate the *latest*, whereas answer 4 uses the 
-> > unique ID of the last commit, which is what `HEAD` means. 
-> > 
-> > Answer 3 gets the version of `data_cruncher.py` from the commit *before* `HEAD`, which is NOT 
+> > The answer is (5)-Both 2 and 4.
+> >
+> > The `checkout` command restores files from the repository, overwriting the files in your working
+> > directory. Answers 2 and 4 both restore the *latest* version *in the repository* of the file
+> > `data_cruncher.py`. Answer 2 uses `HEAD` to indicate the *latest*, whereas answer 4 uses the
+> > unique ID of the last commit, which is what `HEAD` means.
+> >
+> > Answer 3 gets the version of `data_cruncher.py` from the commit *before* `HEAD`, which is NOT
 > > what we wanted.
-> > 
-> > Answer 1 can be dangerous! Without a filename, `git checkout` will restore **all files** 
-> > in the current directory (and all directories below it) to their state at the commit specified. 
-> > This command will restore `data_cruncher.py` to the latest commit version, but it will also 
-> > restore *any other files that are changed* to that version, erasing any changes you may 
+> >
+> > Answer 1 can be dangerous! Without a filename, `git checkout` will restore **all files**
+> > in the current directory (and all directories below it) to their state at the commit specified.
+> > This command will restore `data_cruncher.py` to the latest commit version, but it will also
+> > restore *any other files that are changed* to that version, erasing any changes you may
 > > have made to those files!
 > > As discussed above, you are left in a *detached* `HEAD` state, and you don't want to be there.
 > {: .solution}
@@ -1590,7 +1590,7 @@ moving backward and forward in time becomes much easier.
 >
 > Jennifer is collaborating on her Python script with her colleagues and
 > realizes her last commit to the project's repository contained an error and
-> she wants to undo it.  `git revert [erroneous commit ID]` will create a new 
+> she wants to undo it.  `git revert [erroneous commit ID]` will create a new
 > commit that reverses Jennifer's erroneous commit. Therefore `git revert` is
 > different to `git checkout [commit ID]` because `git checkout` returns the
 > files within the local repository to a previous state, whereas `git revert`
@@ -1644,21 +1644,21 @@ moving backward and forward in time becomes much easier.
 >
 > > ## Solution
 > >
-> > The answer is 2. 
-> > 
-> > The command `git add venus.txt` places the current version of `venus.txt` into the staging area. 
-> > The changes to the file from the second `echo` command are only applied to the working copy, 
+> > The answer is 2.
+> >
+> > The command `git add venus.txt` places the current version of `venus.txt` into the staging area.
+> > The changes to the file from the second `echo` command are only applied to the working copy,
 > > not the version in the staging area.
-> > 
-> > So, when `git commit -m "Comment on Venus as an unsuitable base"` is executed, 
+> >
+> > So, when `git commit -m "Comment on Venus as an unsuitable base"` is executed,
 > > the version of `venus.txt` committed to the repository is the one from the staging area and
 > > has only one line.
 > >  
-> >  At this time, the working copy still has the second line (and 
-> >  `git status` will show that the file is modified). However, `git checkout HEAD venus.txt` 
+> >  At this time, the working copy still has the second line (and
+> >  `git status` will show that the file is modified). However, `git checkout HEAD venus.txt`
 > >  replaces the working copy with the most recently committed version of `venus.txt`.
 > >  
-> >  So, `cat venus.txt` will output 
+> >  So, `cat venus.txt` will output
 > >  ~~~
 > >  Venus is beautiful and full of love.
 > > ~~~
@@ -1705,7 +1705,7 @@ moving backward and forward in time becomes much easier.
 > Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
 > How can you search through these files?
 >
-> Both `git diff` and `git log` are very useful and they summarize a different part of the history 
+> Both `git diff` and `git log` are very useful and they summarize a different part of the history
 > for you.
 > Is it possible to combine both? Let's try the following:
 >
@@ -1714,7 +1714,7 @@ moving backward and forward in time becomes much easier.
 > ~~~
 > {: .language-bash}
 >
-> You should get a long list of output, and you should be able to see both commit messages and 
+> You should get a long list of output, and you should be able to see both commit messages and
 > the difference between each commit.
 >
 > Question: What does the following command do?
@@ -1946,16 +1946,20 @@ services like [GitHub](https://github.com), [Bitbucket](https://bitbucket.org) o
 
 Let's start by sharing the changes we've made to our current project with the
 world. Log in to GitHub, then click on the icon in the top right corner to
-create a new repository called `umswc-project`.
+create a new repository called `un-report`.
 
 ![Creating a Repository on GitHub (Step 1)]({{ page.root }}/fig/git/github-create-repo-01.png)
 
-Name your repository `umswc-project` and then click `Create Repository`.
+Name your repository `un-report` and then click `Create Repository`.
 
 Note: Since this repository will be connected to a local repository, it needs to be empty. Leave
 "Initialize this repository with a README" unchecked, and keep "None" as options for both "Add
 .gitignore" and "Add a license." See the "GitHub License and README files" exercise below for a full
 explanation of why the repository needs to be empty.
+
+Note: in the screenshots below, the Owner is 'mkuzak' and the Repository name is 'planets'.
+You should instead see your own username for the Owner and you should name the
+repository `un-report`.
 
 ![Creating a Repository on GitHub (Step 2)]({{ page.root }}/fig/git/github-create-repo-02.png)
 
@@ -1967,8 +1971,8 @@ information on how to configure your local repository:
 This effectively does the following on GitHub's servers:
 
 ```
-$ mkdir umswc-project
-$ cd umswc-project
+$ mkdir un-report
+$ cd un-report
 $ git init
 ```
 {: .language-bash}
@@ -1993,11 +1997,11 @@ identify it:
 
 ![Where to Find Repository URL on GitHub]({{ page.root }}/fig/git/github-find-repo-string.png)
 
-Copy that URL from the browser, go into the local `umswc-project` repository, and run
+Copy that URL from the browser, go into the local `un-report` repository, and run
 this command:
 
 ```
-$ git remote add origin https://github.com/USERNAME/umswc-project.git
+$ git remote add origin https://github.com/USERNAME/un-report.git
 ```
 {: .language-bash}
 
@@ -2016,8 +2020,8 @@ $ git remote -v
 {: .language-bash}
 
 ```
-origin   https://github.com/USERNAME/umswc-project.git (push)
-origin   https://github.com/USERNAME/umswc-project.git (fetch)
+origin   https://github.com/USERNAME/un-report.git (push)
+origin   https://github.com/USERNAME/un-report.git (fetch)
 ```
 {: .output}
 
@@ -2037,7 +2041,7 @@ Compressing objects: 100% (11/11), done.
 Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/USERNAME/umswc-project.git
+To https://github.com/USERNAME/un-report.git
  * [new branch]      master -> master
 ```
 {: .output}
@@ -2063,7 +2067,7 @@ $ git pull origin master
 {: .language-bash}
 
 ```
-From https://github.com/USERNAME/umswc-project
+From https://github.com/USERNAME/un-report
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ```
@@ -2075,7 +2079,7 @@ GitHub, though, this command would download them to our local repository.
 
 > ## GitHub GUI
 >
-> Browse to your `umswc-project` repository on GitHub.
+> Browse to your `un-report` repository on GitHub.
 > Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number).
 > Hover over, and click on, the three buttons to the right of each commit.
 > What information can you gather/explore from these buttons?
@@ -2143,7 +2147,7 @@ GitHub, though, this command would download them to our local repository.
 > > remote: Counting objects: 100% (3/3), done.
 > > remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
-> > From https://github.com/USERNAME/umswc-project
+> > From https://github.com/USERNAME/un-report
 > >  * branch            master     -> FETCH_HEAD
 > >  * [new branch]      master     -> origin/master
 > > fatal: refusing to merge unrelated histories
@@ -2159,7 +2163,7 @@ GitHub, though, this command would download them to our local repository.
 > > {: .language-bash}
 > >
 > > ```
-> > From https://github.com/USERNAME/umswc-project
+> > From https://github.com/USERNAME/un-report
 > >  * branch            master     -> FETCH_HEAD
 > > Merge made by the 'recursive' strategy.
 > > README.md | 1 +
