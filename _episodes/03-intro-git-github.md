@@ -253,7 +253,7 @@ TODO:
 - [ ] add example code (including outputs) to commands
 - [ ] if time allows / needed, adjust diagram image dimensions
 - [ ] write text to explain commands, essentially a script for instructors to improvise from.
-- [ ] update outputs from `git status` and `ls` to include other files previously created in the `my_project` directory
+- [ ] update outputs from `git status` and `ls` to include other files previously created in the `un-report` directory
 Diagrams to go with the basic commands.
 
 (starting with only a working directory, coordinate with R plotting contents)
@@ -264,7 +264,7 @@ NOTE (from RD): this image only applicable when the starting working directory i
 Once Git is configured, we can start using it.
 
 
-First, let's make sure we are in our `my_project` directory, if not we need to move into that directory:
+First, let's make sure we are in our `un-report` directory, if not we need to move into that directory:
 
 ~~~
 $ pwd
@@ -272,21 +272,21 @@ $ pwd
 {: .language-bash}
 
 ~~~
-$ /home/USERNAME/Desktop/my_project
+$ /home/USERNAME/Desktop/un-report
 ~~~
 {: .output}
 
-> To get back to your `my_projects` directory you can use the following command:
+> To get back to your `un-report` directory you can use the following command:
 >
 >Mac/git-bash:
 >```
->cd Desktop/my_project
+>cd Desktop/un-report
 >```
 >{: .language-bash}
 >
->Unix subsystem for Windows:
+>Windows Subsystem for Linux:
 >```
->cd c/USERNAME/Desktop/my_project
+>cd c/USERNAME/Desktop/un-report
 >```
 >{: .language-bask}
 {: .callout}
@@ -304,7 +304,7 @@ $ TODO: Update with expected output
 {: .output}
 
 
-Now we tell Git to make `my_project` a [repository]({{ page.root }}{% link reference.md %}#repository)
+Now we tell Git to make `un-report` a [repository]({{ page.root }}{% link reference.md %}#repository)
 -- a place where Git can store versions of our files:
 
 
@@ -315,9 +315,9 @@ $ git init
 
 It is important to note that `git init` will create a repository that
 includes subdirectories and their files---there is no need to create
-separate repositories nested within the `my_project` repository, whether
+separate repositories nested within the `un-report` repository, whether
 subdirectories are present from the beginning or added later. Also, note
-that the creation of the `my_project` directory and its initialization as a
+that the creation of the `un-report` directory and its initialization as a
 repository are completely separate processes.
 
 If we use `ls` to show the directory's contents,
@@ -329,7 +329,7 @@ $ ls
 {: .language-bash}
 
 But if we add the `-a` flag to show everything,
-we can see that Git has created a hidden directory within `my_project` called `.git`:
+we can see that Git has created a hidden directory within `un-report` called `.git`:
 
 ~~~
 $ ls -a
@@ -368,16 +368,16 @@ wording of the output might be slightly different.
 
 > ## Places to Create Git Repositories
 >
-> Along with tracking information about my_project (the project we have already created),
+> Along with tracking information about un-report (the project we have already created),
 > Riley would also like to track information about moons.
-> Despite our concerns, Riley creates a `moons` project inside his `my_project`
+> Despite our concerns, Riley creates a `moons` project inside his `un-report`
 > project with the following sequence of commands:
 >
 > ~~~
 > $ cd ~/Desktop   # return to Desktop directory
-> $ cd my_project     # go into my_project directory, which is already a Git repository
-> $ ls -a          # ensure the .git subdirectory is still present in the my_project directory
-> $ mkdir moons    # make a subdirectory my_project/moons
+> $ cd un-report     # go into un-report directory, which is already a Git repository
+> $ ls -a          # ensure the .git subdirectory is still present in the un-report directory
+> $ mkdir moons    # make a subdirectory un-report/moons
 > $ cd moons       # go into moons subdirectory
 > $ git init       # make the moons subdirectory a Git repository
 > $ ls -a          # ensure the .git subdirectory is present indicating we have created a new Git repository
@@ -390,10 +390,10 @@ wording of the output might be slightly different.
 > > ## Solution
 > >
 > > No. Riley does not need to make the `moons` subdirectory a Git repository
-> > because the `my_project` repository will track all files, sub-directories, and
-> > subdirectory files under the `my_project` directory.  Thus, in order to track
+> > because the `un-report` repository will track all files, sub-directories, and
+> > subdirectory files under the `un-report` directory.  Thus, in order to track
 > > all information about moons, Riley only needed to add the `moons` subdirectory
-> > to the `my_project` directory.
+> > to the `un-report` directory.
 > >
 > > Additionally, Git repositories can interfere with each other if they are "nested":
 > > the outer repository will try to version-control
@@ -432,7 +432,7 @@ wording of the output might be slightly different.
 > > ### Solution
 > > Git keeps all of its files in the `.git` directory.
 > > To recover from this little mistake, Riley can just remove the `.git`
-> > folder in the moons subdirectory by running the following command from inside the `my_project` directory:
+> > folder in the moons subdirectory by running the following command from inside the `un-report` directory:
 > >
 > > ~~~
 > > $ rm -rf moons/.git
@@ -447,10 +447,10 @@ wording of the output might be slightly different.
 
 
 First let's make sure we're still in the right directory.
-You should be in the `my_project` directory.
+You should be in the `un-report` directory.
 
 ~~~
-$ cd ~/Desktop/my_project
+$ cd ~/Desktop/un-report
 ~~~
 {: .language-bash}
 
@@ -1165,7 +1165,7 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > If needed, move out of the `my_project` folder:
+> > If needed, move out of the `un-report` folder:
 > >
 > > ~~~
 > > $ cd ..
