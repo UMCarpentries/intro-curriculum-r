@@ -120,13 +120,14 @@ On a command line, Git commands are written as `git verb options`,
 where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how
 Riley sets up their new laptop:
 
-~~~
+```
 $ git config --global user.name "Riley Shor"
 $ git config --global user.email "Riley.Shor@fake.email.address"
-~~~
+```
 {: .language-bash}
 
-Please use your own name and email address instead of Riley's. This user name and email will be associated with your subsequent Git activity,
+Please use your own name and email address instead of Riley's.
+This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to
 [GitHub](https://github.com/),
 [BitBucket](https://bitbucket.org/),
@@ -136,11 +137,11 @@ in a later lesson will include this information.
 
 For these lessons, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy].
 
->## Keeping your email private
+> ## GitHub, GitLab, & BitBucket
 >
->If you elect to use a private email address with GitHub, then use that same email address for the `user.email` value, e.g. `username@users.noreply.github.com` replacing `username` with your GitHub one.
+> TODO: analogy of git hosting server (GitHub, BitBucket, etc.) is like picking
+> an email app (Gmail website, Microsoft Outlook, Apple's Mail app...)
 {: .callout}
-
 
 > ## Line Endings
 >
@@ -160,19 +161,18 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 >
 > On macOS and Linux:
 >
-> ~~~
+> ```
 > $ git config --global core.autocrlf input
-> ~~~
+> ```
 > {: .language-bash}
 >
 > And on Windows:
 >
-> ~~~
+> ```
 > $ git config --global core.autocrlf true
-> ~~~
+> ```
 > {: .language-bash}
 >
-
 
 Riley also has to set their favorite text editor, nano.
 
@@ -196,9 +196,9 @@ to use the settings for every project, in your user account, on this computer.
 
 You can check your settings at any time:
 
-~~~
+```
 $ git config --list
-~~~
+```
 {: .language-bash}
 
 You can change your configuration as many times as you want: use the
@@ -210,18 +210,18 @@ same commands to choose another editor or update your email address.
 > [proxy](https://en.wikipedia.org/wiki/Proxy_server). If this is the case, you
 > may also need to tell Git about the proxy:
 >
-> ~~~
+> ```
 > $ git config --global http.proxy proxy-url
 > $ git config --global https.proxy proxy-url
-> ~~~
+> ```
 > {: .language-bash}
 >
 > To disable the proxy, use
 >
-> ~~~
+> ```
 > $ git config --global --unset http.proxy
 > $ git config --global --unset https.proxy
-> ~~~
+> ```
 > {: .language-bash}
 {: .callout}
 
@@ -229,10 +229,10 @@ same commands to choose another editor or update your email address.
 >
 > Always remember that if you forget a `git` command, you can access the list of commands by using `-h` and access the Git manual by using `--help` :
 >
-> ~~~
+> ```
 > $ git config -h
 > $ git config --help
-> ~~~
+> ```
 > {: .language-bash}
 >
 > While viewing the manual, remember the `:` is a prompt waiting for commands and you can press <kbd>Q</kbd> to exit the manual.
