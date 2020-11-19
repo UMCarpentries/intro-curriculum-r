@@ -540,7 +540,7 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 
 ## TODO Bonus exercise?
 What happens if you run
-```{r GapViolinFillMap}
+```{r GapViolinAesFillMap}
 ggplot(data = gapminder_1997) +
   aes(x = continent, y = lifeExp) +
   geom_violin(aes(fill="springgreen"))
