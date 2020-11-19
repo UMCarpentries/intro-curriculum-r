@@ -1,6 +1,4 @@
----
-title: Setup
----
+# Setup instructions
 
 ## Requirements
 
