@@ -15,8 +15,7 @@ title: Setup
 Each of the following sections contains installation instructions.  Click the
 triangle to unfold each section as you get to it.
 
-<details>
-<summary><strong>Installing Bash</strong></summary>
+### Installing Bash
 
 Software Carpentry provides this video that walks through the process of
 installing Git Bash [SWC install Git Bash and SWC Installer on
@@ -86,10 +85,8 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
 
 Completing those steps will provide you with both Git and Bash in the Git
 Bash program.
-</details>
 
-<details>
-<summary><strong>Installing R</strong></summary>
+### Installing R
 
 Download the R installer. [Link to the
 installer](https://cran.r-project.org/bin/windows/base/release.htm)
@@ -100,12 +97,10 @@ Please accept the default installation location of
 path to make R avaiable from the command line, which you will need.
 Accepting all of the default choices and clicking Next at each choice will
 result in a working R.
-</details>
 
 ## macOS
 
-<details>
-<summary><strong>The Unix Shell</strong></summary>
+### The Unix Shell
 
 The shell is a program that enables us to send commands to the computer and receive output. It is 
 also referred to as the terminal or command line.  For a Mac computer running macOS Mojave or 
@@ -119,10 +114,8 @@ Terminal, try one of the following:
 * Use the Mac ‘Spotlight’ computer search function. Search for: Terminal and press Return.
 
 To see which Unix shell your Mac is running, type echo $SHELL in your terminal window.
-</details>
 
-<details>
-<summary><strong>Installing Git</strong></summary>
+### Installing Git
 
 Git is a version control system that lets you track who made changes to what when and has options 
 for easily updating a shared or public version of your code on github.com. You will need a [supported web 
@@ -151,10 +144,8 @@ not signed by the developer, you may have to right click (control click) on the 
 and click Open on the pop up window. After installing Git, there will not be anything in your 
 /Applications folder, as Git is a command line program. For older versions of OS X (10.5-10.8) use the 
 most recent available installer labelled "snow-leopard" [available here](http://sourceforge.net/projects/git-osx-installer/files/).
-</details>
 
-<details>
-<summary><strong>Installing R</strong></summary>
+### Installing R
 [R](https://www.r-project.org/) is a programming language that is especially powerful for data 
 exploration, visualization, and statistical analysis. You will need a recent version of R (>= 4.0).
 Install R by downloading and running [this .pkg file](https://cran.r-project.org/bin/macosx/R-latest.pkg)
@@ -162,17 +153,14 @@ from [CRAN](https://cran.r-project.org/index.html).
 
 Once the package is installed, open a terminal and type `which R` to see the installation location.
 Typing `R --version` will print the installed version number.
-</details>
 
-<details>
-<summary><strong>Installing RStudio</strong></summary>
+### Installing RStudio
 
 To interact with R, we use RStudio.  RStudio is an integrated development environment for R.
 To install [RStudio](https://rstudio.com/products/rstudio/download/#download).  Click the
 DOWNLOAD RSTUDIO FOR MAC button. Double-click the downloaded installer.  It will open a window with
 the Applications folder and an icon for the RStudio app.  Drag the RStudio icon into the
 Applications folder.
-</details>
 
 ### Download the data and validation scripts
 
