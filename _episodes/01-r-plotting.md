@@ -291,7 +291,7 @@ TODO: *Add challenge showing a function that doesn't need arguments*
 >>
 >>
 >>~~~
->>[1] "2020-11-18"
+>>[1] "2020-11-19"
 >>~~~
 >>{: .output}
 >>
@@ -520,7 +520,9 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 {: .error}
 This works because you can treat the columns in the aesthetic mappings just like any other variables and can use functions to transform or change them at plot time rather than having to transform your data first.
 
-Good work. Take a moment to appreciate what a cool plot you made with a few lines of code. We added each line one at a time so you could see the effect that it had on the output. But note, you can actually combine many of these steps if you like so you don't have to type as much. For example, you can collect all the `aes()` statements and all the `labs()` together. A more condensed version of the exact same plot would look like this
+Good work. Take a moment to appreciate what a cool plot you made with a few lines of code. In order to fully view it's beauty you can click the "Zoom" button in the **Plots** tab in order break free from the lower right corner and open the plot in it's own window.
+
+For out first plot we added each line of oode one at a time so you could see the exact effect it had on the output. But when you start to make a bunch of plots, we can actually combine many of these steps so you don't have to type as much. For example, you can collect all the `aes()` statements and all the `labs()` together. A more condensed version of the exact same plot would look like this
 
 
 ~~~
@@ -564,9 +566,10 @@ head(gapminder_data) # how can we look at a snapshot of the data via the command
 {: .language-r}
 Why not use View() like we did for the smaller dataset? You can but if a data frame is too big, might take too long too long to load, so easier to look at part of it.
 
-Notice that this table has an additional column `Year` compared to the smaller dataset we started with.
+Notice that this table has an additional column `year` compared to the smaller dataset we started with.
 
-Now that we have the full dataset read into our R session, let's plot the data. Notice that we've collapsed the plotting function options and left off some of the labels so there's not as much to work with. Here's our code
+Now that we have the full dataset read into our R session, let's plot the data plaing our new `year` variable on the x axis and life expeceny on the y axis. Notice that we've collapsed the plotting function options and left off some of the labels so there's not as much code to work with. Here's our code
+
 
 ~~~
   ggplot(data = gapminder_data) +
@@ -584,6 +587,7 @@ Let's review the columns and the type of data stored in the full table to decide
 str(gapminder_data) # a quick way to get an overview of the data
 ~~~
 {: .language-r}
+(You can also review the structure of your data in the **Environment** tab by clicking on the blue circle with the arrow in it next to your data object name.)
 
 So, what do we see? The column names are listed after a `$` symbol, and then we have a `:` followed by a text label. These labels correspond to the type of data stored in each column.
 
@@ -592,84 +596,334 @@ What kind of data do we see?
 * "num" = Numeric (or non-whole number)
 * "Factor" = [special data object](https://www.tutorialspoint.com/r/r_factors.htm) that are used to store categorical data and have limited numbers of unique values
 
-We can look at columns that store factors in more detail.
+The unique values of a factor are tracked via the "levels" of a factor. A factor will always remember all of its levels even if the values don't actually appear in your data. The factor will also remember the order of the levels and will always print values out in the same order (by default this order is alphabetical). Here's one way to take a look at all the factors of a variable in a data object
 
 ~~~
-levels(gapminder_data$country) ## **NOTE: How to write this in a tidyr way?
+levels(pull(gapminder_data, continent))
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in levels(gapminder_data$country): object 'gapminder_data' not found
+Error in pull(gapminder_data, continent): object 'gapminder_data' not found
+~~~
+{: .error}
+If your columns are stored as character values, ggplot will convert them to factors for you as needed.
+
+Our plot has a lot of points in columns which makes it hard to see trends over time. A better way to view the data showing changes over time is to use a [line plot](http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization). Let's try changing the geom to a line and see what happens.
+
+
+~~~
+  ggplot(data = gapminder_data) +
+  aes(x = year, y = lifeExp, color = continent) +
+    geom_line()
+~~~
+{: .language-r}
+
+Hmm. This doesn't look right. By setting the color value, we got a line for each continent, but we really wanted a line for each country. We need to tell ggplot that we want to connect the values for each "country" value instead. To do this, we need to use the `group=` aesthetic.
+
+
+~~~
+  ggplot(data = gapminder_data) +
+  aes(x = year, y = lifeExp, group = country, color = continent) +
+    geom_line()
+~~~
+{: .language-r}
+Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
+
+## Discrete Plots
+
+So far we've looked at two plot types (`geom_point` and `geom_line`) which work when both the x and y values are numeric. But sometimes you may have one of your values be discrete (a factor or character).
+
+We've previously used the discrete values of the `continent` column to color in our points and lines. But now let's try moving that varible to the `x` axis. Let's say we are curious about comparing the distribution of the life expectency values for each of the different continents for the `gapminder_1997` data. We can do so using a box plot. Here's what that code would look like
+
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_boxplot()
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+This type of visualiztion makes it easy to compare the range and spread of values aross groups. The "middle" 50% of the data is located inside the box and points that are far away from the central mass of the data are drawn as points.
+
+## TODO Exercise:
+Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other values
+
+## Layers
+
+So far we've only been adding one geom to each plot, but each plot object can actually contain multiple layers and each layer has it's own geom. Let's start with a basic violin plot
+
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_violin()
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+Violin plots are similar to box plots, but they show the range and spread of values with curves rather than boxes (wider curves = more observations) and they do not include outliers. Also note you need a minimum number of points so they can be drawn and because Ociania only has two values, it doesn't get a curve. What we fix that by adding a layer of points on top that will show us the "raw" data
+
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_violin() +
+  geom_point()
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+OK, we've drawn the points but most of them stack up on top of each other. One way to make it easier to see all the data is to "jitter" the points, or move them around randomly so they don't stack up on top of each other. To do this, we use `geom_jitter` rather than `geom_point`
+
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_violin() +
+  geom_jitter()
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+Be aware that these movements are random so your plot will look a bit different each time you run it!
+
+# TODO possibly make a "bonus" topic
+Note that each layer can have it's own set of aestheitc mappings. So far we've been using `aes()` outside of the other functions. When we do this, we are setting the "default" ashetic mappings for the plot. It's also the same as if we had passed the values to the `ggplot()` function call as is sometimes more common: `gplot(data = gapminder_1997, aes(continent, lifeExp))` -- show how the function is inside the other function. If you want to set an aesthetic value for only one later, you an place an additioal `aes()` inside of that layer. For example, what if we wanted to change the size for just the points so they are scaled by population. We can do
+
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_violin() +
+  geom_jitter(aes(size = pop))
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(continent, lifeExp)` but only `geom_jitter` will also use `aes(size = pop)`
+
+# TODO: Exercise
+Try switching the order of `geom_violin` and `geom_jitter`. What happens? Does this make sense?
+
+## Color vs Fill
+ Let's say we want to spice up our plot a bit by adding some color. Let's say we want our violin color to a facny color like "darkolivegreen". We can do this by excplitly setting the color aestheic inside the `geom_violin` function. Note that because we are assigning a color directly and not using any values from our data to do so, we do not need to use the `aes()` mapping function. Let's try it out
+
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_violin(color="darkolivegreen")
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+Well, that didn't get all that colorful. That's because objects like these violins have two different parts that have a color: the shape outline, and the inner part of the shape. For geoms that have an inner part, you change the fill color with `fill=` rather than `color=`, so let's try that instead
+
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_violin(fill="darkolivegreen")
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+That's some plot now isn't it. Compare this to what you see when you map the fill property to your data rather than setting a specific value.
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_violin(aes(fill=continent))
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
 
-Our plot has a lot of points in columns which makes it hard to see trends over time. A better way to view the data showing changes over time is to use a [line plot](http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization).
+## TODO turn into exercise
+So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color names. You can see the full list if you run `colors()` in the console. Since there are so many, you can randomly choose 10 if you run `sample(colors(), size=10)`. Do that a few times until you get an interesting sounding color name and swap that out for "darkolivegreen" in the violin plot example.
 
+## TODO Bonus exercise?
+What happens if you run
 
 ~~~
-  ggplot(data = gapminder_data)
-  aes(x=year, y=lifeExp, group=country, color=continent) +
-    geom_line()
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_violin(aes(fill="springgreen"))
 ~~~
 {: .language-r}
 
-TODO: facet_wrap
-
-introduce filter and output from filter plot or use filter to find countries with dips in life expectancy
-Discuss dip sources/history + sensitivity to data science/ethics
 
 
-# Glossary of terms
+~~~
+Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+Why doesn't the color work? How can you fix it? Where does that color come from? (Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values)
 
-**Needs to be added after curriculum is more complete.
+## Univariate Plots
 
-library(tidyverse)
-
-  ggplot(data = gapminder_data) +
-  aes(x=year, y=lifeExp, group=country, color=continent) +
-    geom_line()
+We jumped right into make plots with multiple columns. But what if we wanted to take a look at just one column? In that case, we only need to specify a mapping for `x` and choose an appropriate geom. Let's start with a [histogram](https://www.thoughtco.com/what-is-a-histogram-3126359) to see the range and spread of the life expectency values
 
 
-** NOTE: Should modify these plots to be assessments for skills learned - removing information & allowing learne
-gapminder %>%
-  filter(continent == "Oceania") %>%
-  ggplot() +
-  aes(x=year, y=lifeExp, color=country) +
-    geom_line()
-
-PLOT 3 (Categorical)
-
-gap1997 <- gapminder %>% filter(year==1997)
-ggplot(gap1997) +
-  aes(continent, lifeExp) +
-  geom_boxplot()
-
-ggplot(gap1997) +
-  aes(continent, lifeExp) +
-  geom_jitter()
-
-ggplot(gap1997) +
-  aes(continent, lifeExp) +
-  geom_violin() +
-  geom_jitter(width=0.25)
-
-PLOT 4 (univariate)
-
-ggplot(gap1997) +
-  aes(lifeExp) +
+~~~
+ggplot(gapminder_1997) +
+  aes(x = lifeExp) +
   geom_histogram()
-
-ggplot(gap1995) +
-  aes(lifeExp) +
-  geom_density(fill="redbrick") # talk about difference between color/fill
-
-SAVING PLOTS
-ggsave()
+~~~
+{: .language-r}
 
 
+
+~~~
+Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+You should not only see the plot in the plot window, but also a message telling you to choose a better bin value. Histograms can look very different depending on the number of bars you decide to draw. The default is 30. Let's try setting a higher value by explicitly passing a `bin=` argument to the `geom_histogram` later.
+
+
+~~~
+ggplot(gapminder_1997) +
+  aes(x = lifeExp) +
+  geom_histogram(bins=20)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+Try different values like 5 or 50 to see how the plot changes.
+
+## TODO make exercise
+Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continous values. If you want to try the discrete options, try mapping `continent` to x instead.
+
+## Facets
+
+If you have a lot of different columns to try to plot or have distinguishable subgruops in your data, a powerful plotting technique called faceting might some in handy. When you facet your plot, you basically make a much of smaller plots and combine them together into a single image. Let's start with a simplified version of our first plot
+
+
+~~~
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y=lifeExp) +
+  geom_point()
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+
+The first time we made this plot, we colored the points differently for each of the continents. This time let's actually draw a separate box for each continent. We can do this with `facet_wrap()`
+
+
+~~~
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y=lifeExp) +
+  geom_point() +
+  facet_wrap(vars(continent))
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+Note that `facet_wrap` requires this extra helper function called `vars()` in order to pass in the column names. It's a lot like the `aes()` function but it doesn't require an aesthetic name. But we can see in this output we get a separate box with a label for each continent so that only the points for that continent are in that box.
+
+The other faceting function ggplot provides is `facet_grid()`. The main difference is that `facet_grid()` will make sure all of your smaller boxes share a common axis. In this example, we will stack all the boxes on top of each other into rows so that their x axes all line up.
+
+~~~
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y=lifeExp) +
+  geom_point() +
+  facet_grid(rows=vars(continent))
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
+~~~
+{: .error}
+Unlike the `facet_wrap` output where each box got it's own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
+
+## Saving plots
+
+We've made a bunch of plots today, but we never talked about how to share them with your friends who aren't running R! It's wise to keep all the code you used to draw the plot, but sometimes you need to make a PNG or PDF version of the plot so you can share it with your PI or post it to your Instagram story.
+
+One what's easy if you are working in RStudio interactively is to use "Export" menu on the **Plots** tab. Clicking that button gives you three options "Save as Image", "Save as PDF", and "Copy To Clipboard". These options will bring up a window that will let you resize and name the plot however you like.
+
+A better option if you will be running your code as a script from the command line or just need your code to be more reproduicble is to use the `ggsave()` function. When you call this function, it will write the last plot printed to a file in your local directory. It will determine the file type based on the name you provide. So if you call `ggsave("plot.png")` you'll get a PNG file or if you call `ggsave("plot.pdf")` you'll get a PDF file. By default the size will match the size of the **Plots** tab. To change that you can also supply `width=` and `height=` arguments. By default these values are interpreted as inches. So if you want a wide 4x6 image you could do something like
+
+
+~~~
+ggsave("awsome_plot.jpg", width=6, height=4)
+~~~
+{: .language-r}
+
+## Glossary of terms
+
+- Aesthetic: a visual property of the objects (geoms) drawn in your plot (like x position, y position, color, size, etc)
+- Aesthetic mapping (aes): This is how we connect a visual property of the plot to a column of our data
+- Geometry (geom): this describes the things that are actually drawn on the plot (like points or lines)
+- Facets: Dividing your data into non-overlapping groups and making a small plot for each subgroup
+- Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
+- Factor: a way of storing data to let R know the values are discrete so they get special treatment
+
+
+# Extra ideas
 
 PLOT MAYBE (map)
 mapdata <- map_data("world") %>%
@@ -689,10 +943,3 @@ PLOT MAYBE (animation)
 gganimation -- recreate Hans Rosling's moving plot
 
 Plot Themes - classic, bw, grey
-
-
-?. Now looking at the data again and what other hypothesis or question come up for you?
-
-Explaining Factors using a real example
-blank session -> making their own plot (make their own script that is well commented and tidy from
-
