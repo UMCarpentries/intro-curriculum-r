@@ -30,42 +30,47 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
    * Click on `Next` to get through the license screen.
 
    * Click on `Next` to accept the default installation path of
-   `C:\Program Files\R/R-4.0.3`.
+   `C:\Program Files\R/R-4.0.3`. (If a new version has been released,
+   the number may change.)
+
    * On the Select Components screen, you may wish to check the box to
    create Desktop icons.  Please do not change the other selections.
    Click `Next`.
+
    * Click on `Next` to accept `Git` as the name of the Start Menu folder.
-   * 
-   * On the "Choosing the default edit used by Git" panel, please select
-   * from the dropdown menu "Use the nano editor by default" -- you may
+
+   * On the **Choosing the default edit used by Git** panel, please select
+
+   * from the dropdown menu **Use the nano editor by default** -- you may
    need to scroll _up_ in the list to find it.  Click on `Next`.
 
-   * Ensure that "Git from the command line and also from 3rd-party
-   software" is selected and click on "Next". (If you don't do this Git
+   * Ensure that **Git from the command line and also from 3rd-party
+   software** is selected and click on `Next`. (If you don't do this Git
    Bash will not work properly, requiring you to remove the Git Bash
-   installation, re-run the installer and to select the "Git from the
-   command line and also from 3rd-party software" option.)
+   installation, re-run the installer and to select the **Git from the
+   command line and also from 3rd-party software** option.)
 
    * Keep the OpenSSH option if it gives you an option to change that.
 
-   * Ensure that "Use the native Windows Secure Channel library" is
-   selected and click on "Next".
+   * Ensure that **Use the native Windows Secure Channel library** is
+   selected and click on `Next`.
 
-   * Ensure that "Checkout Windows-style, commit Unix-style line endings"
-   is selected and click on "Next".
+   * Ensure that **Checkout Windows-style, commit Unix-style line endings**
+   is selected and click on `Next`.
 
-   * Ensure that "Use Windows' default console window" is selected and
-   click on "Next".
+   * Ensure that **Use Windows' default console window** is selected and
+   click on `Next`.
 
-   * Choose the default behavior of git pull to be Default (fast-forward
-   or merge).
+   * Choose the **Default behavior of git pull** to be **Default (fast-forward
+   or merge)**.
 
-   * From Choose a credential manager, choose Git Credential Manager Core
+   * From **Choose a credential manager**, choose **Git Credential Manager
+   Core**.
 
-   * Ensure that Enable file system caching is selected
+   * Ensure that **Enable file system caching** is selected
 
    * Do _NOT_ enable experimental support for pseudo consoles.  Clicking
-   Next here shuld start the installation with no further selection
+   `Next` here should start the installation with no further selection
    screens.
 
    * This should bring you to a screen where you can click `Finish`.
@@ -73,15 +78,21 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
    the release notes.
 
 3. If your `HOME` environment variable is not set (or you don't know
-   what this is):
+   what this is), then
 
     * Open command prompt (Open Start Menu then type cmd and press [Enter])
+
     * Type the following line into the command prompt window exactly as shown:
     ```
     setx HOME "%USERPROFILE%"
     ```
-    * Press [Enter], you should see SUCCESS: Specified value was saved.
-    * Quit command prompt by typing exit then pressing [Enter]
+
+    * Press `Enter`, you should see output that indicates
+    ```
+    SUCCESS: Specified value was saved.
+    ```
+
+    * Quit command prompt by typing `exit` then pressing `Enter`
 
 Completing those steps will provide you with both Git and Bash in the Git
 Bash program.
@@ -90,13 +101,27 @@ Bash program.
 
 Download the R installer. [Link to the
 installer](https://cran.r-project.org/bin/windows/base/release.htm)
+
 Run the downloaded file.  When prompted, you do want to allow it to make
 changes to your system.
-Please accept the default installation location of
-`C:\Program Files\R\R-4.0.3`.  Subsequent steps will use that installation
-path to make R avaiable from the command line, which you will need.
-Accepting all of the default choices and clicking Next at each choice will
+
+Please accept the default installation location for R; for version 4.0.3
+that will be `C:\Program Files\R\R-4.0.3`.  Subsequent steps will use that
+installation path to make R avaiable from the command line, which you
+will need.
+
+Accepting all of the default choices and clicking `Next` at each choice will
 result in a working R.
+
+### Installing RStudio
+
+Note that you _must_ install R before RStudio.
+
+Please see the
+<a href="https://rstudio.com/products/rstudio/download/#download">download
+page at the RStudio web site</a>.  There is only one Windows installercw
+available for Windows 10, 8, and 7 as of 19 Nov, 2020.  You should be
+able to run it once downloaded and it will install properly.
 
 ## macOS
 
