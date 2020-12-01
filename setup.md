@@ -30,7 +30,7 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
    * Click on `Next` to get through the license screen.
 
    * Click on `Next` to accept the default installation path of
-   `C:\Program Files\R/R-4.0.3`. (If a new version has been released,
+   `C:\Program Files\Git`. (If a new version has been released,
    the number may change.)
 
    * On the Select Components screen, you may wish to check the box to
