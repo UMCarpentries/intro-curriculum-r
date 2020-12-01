@@ -56,7 +56,7 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 | 13:00 | **Writing Reports with R Markdown** | `_episodes_rmd/05-r-markdown.Rmd` |
 | 14:30 | Break |  |
 | 14:45 | **Writing Reports with R Markdown (Continued)** | at end of `05-r-markdown` |
-| 15:30 | **Conclusions & Wrap-up** |  `_episodes/06-conclusion.md` |
+| 15:30 | Conclusions & Wrap-up |  `_episodes/06-conclusion.md` |
 | 16:15 | Exit Survey |   |
 | 16:30 | End | |
 
