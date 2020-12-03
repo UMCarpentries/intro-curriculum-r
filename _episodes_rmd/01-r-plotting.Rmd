@@ -13,6 +13,9 @@ source("../bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
+
+TODO: *Somewhere (maybe not this lesson) tips on googling things*
+
 ## Introduction to R and RStudio
 
 In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP).
@@ -26,20 +29,17 @@ We could try to use a spreadsheet program like Microsoft Excel or Google sheets 
 
 Instead, we'll use the a programming language to test our hypothesis. Today we will use R, but we could have also used Python for the same reasons we chose R (and we teach workshops for both languages). Both R and Python are freely available, the instructions you use to do the analysis are easily shared, and by using reproducible practices, it's straightforward to add more data or to change settings like colors or the size of a plotting symbol.
 
-TODO: *Check or update text to become an expandable discussion box*
 > ## But why R and not Python?
->>
-[There's no great reason](http://www.academichermit.com/2020/03/23/Why-R.html).
->> Although there are subtle differences between the languages, it's ultimately a matter of personal preference. Both are powerful and popular languages that have very well developed and welcoming communities of scientists that use them. As you learn more about R you may find things that are annoying in R that aren't so annoying in Python; the same could be said of learning Python. If the community you work in uses R, then you're in the right place.
+> [There's no great reason](http://www.academichermit.com/2020/03/23/Why-R.html).
+> Although there are subtle differences between the languages, it's ultimately a matter of personal preference. Both are powerful and popular languages that have very well developed and welcoming communities of scientists that use them. As you learn more about R you may find things that are annoying in R that aren't so annoying in Python; the same could be said of learning Python. If the community you work in uses R, then you're in the right place.
 >
-> {: .source}
-{: .discussion}
+{: .solution}
 
 To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up](setup_instructions) for this workshop.
 
 To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
-TODO: *Change exercise to .md format blocks & add resources to use Rstudio on GreatLakes*
+TODO: *Change exercise to .md format blocks & add resources to use Rstudio on GreatLakes - ???*
 > ## Exercise
 > Can you think of a reason you might not want to use RStudio?
 >
@@ -123,6 +123,7 @@ library(tidyverse)
 ```
 
 TODO: *Add example output from loading library and/or discuss messages get when loading a package?*
+TODO: *will they have tidyverse installed already?* 
 
 > ## Hint / Pro-tip
 > 
@@ -139,7 +140,7 @@ We will import a subset file from the gapminder dataset called `gapminder_1997.c
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
-TODO: *Update '<<data directory>> to match the directory structure from setup*
+TODO: *Update <<data directory>> to match the directory structure from setup*
 The file is located in the directory <<data directory>>, click the "browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
 
 We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
@@ -162,7 +163,7 @@ Finally, take a look at the **Console** at the bottom left part of the RStudio s
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
 
-TODO: *Check which (if either) of these is correct - then edit all places where this is used again later in lesson*
+TODO: *Check output - then edit all places where this is used again later in lesson*
 ```
 gapminder_1997 <- read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")
 gapminder_1997 <- read_csv("data/gapminder_1997.csv")
@@ -224,7 +225,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 
 
 
-> ## Challenge: Bad names for objects 
+> ## Challenge (optional): Bad names for objects 
 > Try to assign values to some new objects. What do you notice? After running all four lines of code bellow, what value do you think the object `Flower` holds? 
 >
 > ```{r Objects}
@@ -240,9 +241,6 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > {: .solution}
 {: .challenge}
 
-TODO: *Touch on data types? Determine about of detail to include for types of data in R at this stage*
-TODO: *Explain how to add comments that are not run?* 
-
 The next part of the command is `read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")`. This has a few different key parts. The first part is the `read_csv` function. You call a function in R by typing it's name followed by opening then closing parenthesis.  Let's try to run the function without anything inside the parenthesis.
 
 ```{r FunctionAlone}
@@ -251,40 +249,45 @@ read_csv()
 
 We get an error message!
 
-TODO: *I think delete bellow error message - should appear automatically from above code chunk?* 
+TODO: *Delete bellow error message - should appear automatically from above code chunk?* 
 ```
 Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_types,  :
   argument "file" is missing, with no default
 ```
 {: .error}
 
+TODO: *reread functions section to see if it makes sense* 
+Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in. 
 
-Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters."
+For example, when we loaded in our data, the command contained `file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` inside the `read_csv()` function. Here `file` is the argument name, and `"SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` is the value we assigned to that argument. The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R dataframe with the data stored in that csv file. All that, with one short line of code! 
 
-TODO: *Reread this paragraph* 
-You pass **arguments** to a function by placing values in between the parenthesis. Notice in our example, our command contained `file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` inside the `read_csv()` function parenthasis. Here `file` is the argument name, and `"SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` is the value we assigned to that argument. 
+Do all functions need arguments? Let's test some other functions: 
+ 
+```{r Functions}
+  Sys.Date()
+  getwd()
+```
 
-TODO: *skip this and talk about it later?* 
-When you need to pass in multiple arguments to a function you will separate those values with commas. Often we can skip the argument name, if the argument values are passed in a certain order. But that's just a quick summary -- if that all sounds confusing, we will see examples of those later.
-
-TODO: *keep as exercise or just regular text?* 
-> ## Exercise: Do all functions need arguments? 
-> Let's test some other functions. What happens when we run the following lines of code? 
-> 
->```{r Functions}
->  Sys.Date()
->  getwd()
+> ## Comments
+> Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do: 
+> ```{r Functions}
+>  Sys.Date()  # outputs the current date
+>  getwd()     # outputs our current working directory 
 >```
->
->> ## Solution 
->>
->> The first line of code should output the current date, and the second line of code gives your working directory. 
->>
-> {: .solution}
-{: .challenge}
+{: .callout}
 
+While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together: 
 
-Each function has a help page that documents what arguments the function expects and what value it will return. You can bring up the help page a few different ways. If you have typed the function name in the **Editor** windows, you can put your cursor on the function name and press <kbd>F1</kbd> to open help page in the **Help** viewer in the lower right corner of RStudio. You can also type `?` followed by the function name in the console. For example, try running `?read_csv`. A help page should pop up with information about what the function is used for and how to use it, as well as useful examples of the function in action.
+```{r}
+sum(5, 6)
+```
+
+Notice how in this example, we didn't include any argument names. Sometimes it is helpful - or even necessary - to include the argument name, but often we can skip the argument name, if the argument values are passed in a certain order. If all thisi function stuff sounds confusing, don't worry! We'll see a bunch of examples as we go that will make things clearer. 
+
+> ## Hint/Pro-tip 
+> Each function has a help page that documents what arguments the function expects and what value it will return. You can bring up the help page a few different ways. If you have typed the function name in the **Editor** windows, you can put your cursor on the function name and press <kbd>F1</kbd> to open help page in the **Help** viewer in the lower right corner of RStudio. You can also type `?` followed by the function name in the console. 
+> For example, try running `?read_csv`. A help page should pop up with information about what the function is used for and how to use it, as well as useful examples of the function in action.
+{: .callout}
 
 
 # Creating our first plot
@@ -299,15 +302,9 @@ When we run this code, the **Plots** tab will pop to the front in the lower righ
 
 What we've done is created a ggplot object and told it we will be using the data from the `gapminder_1997` object that we've loaded into R. We've done this by calling the `ggplot()` function with `gapminder_1997` as the `data=` argument.
 
-So we've made a plot object, now we need to start telling it what we actually want to draw in this plot. With ggplot, we start connecting our data to different plot elements by creating an "aesthetic mapping", which we do with the `aes()` function.
+So we've made a plot object, now we need to start telling it what we actually want to draw in this plot. The elements of a plot have a bunch of properties like an x and y position, a size, a color, etc. These properties are called **aesthetics**. When creating a data visualization, we  map a variable in our dataset to an aesthetic in our plot. In ggplot, we can do this by creating an "aesthetic mapping", which we do with the `aes()` function.
 
-TODO: *Keep or cut?*
-> ## What are **aesthetics**? 
-> The elements of a plot have a bunch of properties like an x and y position, a size, a color, etc.These properties are called **aesthetics**. When creating a data visualization, we must map a variable in our dataset to an aesthetic in our plot. For example, in a scatterplot of US universities, we may map the `student_population` variable of the university to the size aesthetic of our points, so that universities with a large population have larger points. 
->
-{: .callout}
-
-To create our plot, we need to map variables from our `gapminder_1997` object to ggplot aesthetics using the `aes()` funtion. Since we have already told `ggplot` that we are using the data in the `gapminder_1997` object, we can access the columns of `gapminder_1997` using the object's column names. (Remember, R is case-senstitive, so we must be careful to match the comlumn names exactly!) 
+To create our plot, we need to map variables from our `gapminder_1997` object to ggplot aesthetics using the `aes()` funtion. Since we have already told `ggplot` that we are using the data in the `gapminder_1997` object, we can access the columns of `gapminder_1997` using the object's column names. (Remember, R is case-senstitive, so we have to be careful to match the comlumn names exactly!) 
 
 We are interested in whether there is a relationship between GDP and life expectancy, so let's start by telling our plot object that we want to map our GDP values to the x axis of our plot. We do this by adding (`+`) information to our plot object. Add this new line to your code and run both lines by highlighting them and pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard:
 
@@ -360,7 +357,7 @@ ggplot(data = gapminder_1997) +
   labs(title = "Do people in wealthy countries live longer?")
 ```
 
-No one can deny we've made a very handsome plot. But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data in the `gapminder_1997` object that we haven't used yet. Maybe we are curious if the different continents show different patterns in GDP and life expectancy. One thing we could do is use a different color for each of the continents. To map the continent of each point to a color, we will again use the `aes()` function: 
+No one can deny we've made a very handsome plot! But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data in the `gapminder_1997` object that we haven't used yet. Maybe we are curious if the different continents show different patterns in GDP and life expectancy. One thing we could do is use a different color for each of the continents. To map the continent of each point to a color, we will again use the `aes()` function: 
 
 ```{r FirstPlotAddColor}
 ggplot(data = gapminder_1997) +
@@ -420,8 +417,6 @@ ggplot(data = gapminder_1997) +
   labs(size = "Population (in millions)")
 ```
 This works because you can treat the columns in the aesthetic mappings just like any other variables and can use functions to transform or change them at plot time rather than having to transform your data first.
-
-TODO: *Do they know about doing math with vectors/objects yet?*
 
 Good work! Take a moment to appreciate what a cool plot you made with a few lines of code. In order to fully view it's beauty you can click the "Zoom" button in the **Plots** tab in order break free from the lower right corner and open the plot in it's own window.
 
@@ -672,6 +667,18 @@ Try different values like 5 or 50 to see how the plot changes.
 > Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continous values. If you want to try the discrete options, try mapping `continent` to x instead.
 {: .challenge}
 
+## Plot Themes
+Our plots are looking pretty nice, but what's with that grey background? While you can change various elements of a `ggplot` object manually (background color, grid lines, etc.) the `ggplot` package also has a bunch of nice built-in themes to change the look of your graph. For example, let's try adding `theme_classic()` to our histogram: 
+
+```{r GapLifeHistBinsClassicTheme}
+ggplot(gapminder_1997) +
+  aes(x = lifeExp) +
+  geom_histogram(bins = 20)+
+  theme_classic()
+```
+Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw()`, `theme_minimal()`. 
+
+
 TODO: *cut this if lesson is too long?* 
 ## Facets
 
@@ -702,6 +709,7 @@ ggplot(gapminder_1997) +
 ```
 Unlike the `facet_wrap` output where each box got it's own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
 
+
 ## Saving plots
 
 We've made a bunch of plots today, but we never talked about how to share them with your friends who aren't running R! It's wise to keep all the code you used to draw the plot, but sometimes you need to make a PNG or PDF version of the plot so you can share it with your PI or post it to your Instagram story.
@@ -711,7 +719,7 @@ One what's easy if you are working in RStudio interactively is to use "Export" m
 A better option if you will be running your code as a script from the command line or just need your code to be more reproduicble is to use the `ggsave()` function. When you call this function, it will write the last plot printed to a file in your local directory. It will determine the file type based on the name you provide. So if you call `ggsave("plot.png")` you'll get a PNG file or if you call `ggsave("plot.pdf")` you'll get a PDF file. By default the size will match the size of the **Plots** tab. To change that you can also supply `width=` and `height=` arguments. By default these values are interpreted as inches. So if you want a wide 4x6 image you could do something like: 
 
 ```{r ggsave, eval=FALSE}
-ggsave("awsome_plot.jpg", width=6, height=4)
+ggsave("awesome_plot.jpg", width=6, height=4)
 ```
 
 > ## Exercise: Saving a plot
@@ -719,10 +727,45 @@ ggsave("awsome_plot.jpg", width=6, height=4)
 > Try rerunning one of your plots and then saving it using `ggsave()`. Find and open the plot to see if it worked!
 {: .challenge}
 
+TODO: *Added the following section - keep?* 
+
+You also might want to just temporarily save a plot while you're using R, so that you can come back to it later. Luckily, a plot is just an object, like any other object we've been working with! Let's try storing our violin plot from earlier in an object called `violin_plot`: 
+
+```{r store GapViolinFillMap}
+violin_plot <- ggplot(data = gapminder_1997) +
+                  aes(x = continent, y = lifeExp) +
+                  geom_violin(aes(fill=continent))
+```
+
+Now if we want to see our plot again, we can just run: 
+```{r outputViolinPlot}
+violin_plot
+```
+
+We can also add changes to the plot. Let's say we want our violin plot to have the black-and-white theme: 
+```{r violinPlotBWTheme}
+violin_plot + theme_bw()
+```
+Watch out! Adding the theme does not change the `violin_plot` object! If we want to change the object, we need to store our changes: 
+```{r violinPlotBWTheme}
+violin_plot <- violin_plot + theme_bw()
+```
+
+We can also save any plot object we have named, even if they were not the plot that we ran most recently. We just have to tell `ggsave()` which plot we want to save: 
+```{r ggsaveObject, eval=FALSE}
+ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
+```
+
+> ## Exercise: create and save a plot
+> Now try it yourself! Create your own plot using `ggplot()`, store it in an object named `my_plot`, and save the plot using `ggsave()`. 
+{: .challenge}
+
+
 ## Glossary of terms
 
 - Aesthetic: a visual property of the objects (geoms) drawn in your plot (like x position, y position, color, size, etc)
 - Aesthetic mapping (aes): This is how we connect a visual property of the plot to a column of our data
+- Comments: lines of text in our code code after a `#` that are ignored (not evaluated) by R
 - Geometry (geom): this describes the things that are actually drawn on the plot (like points or lines)
 - Facets: Dividing your data into non-overlapping groups and making a small plot for each subgroup
 - Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
@@ -748,7 +791,3 @@ gapminder %>% filter(year==2007) %>%
 PLOT MAYBE (animation)
 gganimation -- recreate Hans Rosling's moving plot
 
-******* Plot Themes - classic, bw, grey
-saving plot and adding things to it 
-myplot <- ggplot(gapminder_data, aes(x = lifeExp, y = gdpPercap)) + geom_point()
-myplot + theme_bw()
