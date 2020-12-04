@@ -1,31 +1,72 @@
 ---
 source: Rmd
 title: "R for Plotting"
-teaching: 0
-exercises: 0
-questions: ""
-objectives: ""
-keypoints: ""
+teaching: 120
+exercises: 30
+questions: 
+- "What are R and R Studio?" 
+- "How do I read data in R?"
+- "What are geometries and aesthetics?"
+- "How can I use R to create and save professional data visualizations?" 
+objectives: 
+- "To become oriented with R and R Studio."
+- "To be able to read in data from cvs files."
+- "To create plots with both discrete and continuous variables."
+- "To understand mapping and layering using `ggplot`." 
+- "To be able to modify a plot's color, theme, and axes labels." 
+- "To be able to save plots to a local directory." 
+keypoints: 
+- "R is a free programming language used by many for reproducible data analyis." 
+- "Use `read_csv` to read tabular data in R."
+- "Geometries are the visual elements drawn on data visualizations (lines, points, etc.), and aesthetics are the visual properties of those geometries (color, position, etc.)."
+- "Use `ggplot()` and geoms to create data visualizations, and save them using `ggsave()`." 
+
 ---
+
+*Key of notes to editors:* 
+TODO - things that still need to be completed
+ZENA - areas Maya has edited/added and wants Zena to read over and edit 
+TODO_fp - "File path to dos" - places to check/create file paths 
+
+ZENA: *Read and edit questions, objectives, keypoints above*
+
+
+TODO: *add words to glossary, and links to words in glossary?*
+TODO: *introduce and link to googling lesson/extra* curriculum/_episodes/06-conclusion.md
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
+TODO: *confirm all headers are in table of contents* 
+### Contents
+1. [Introduction to R and RStudio](#introduction-to-r-and-rstudio)
+1. [Loading and reviewing data](#loading-and-reviewing-data)
+1. [Understanding commands](#understanding-commands)
+1. [Creating our first plot](#creating-our-first-plot)
+1. [Plotting for data exploration](#plotting-for-data-exploration)
+    + [Importing datasets](#importing-datasets)
+    + [Discrete plots](#discrete-plots)
+    + [Layers](#layers)
+    + [Color vs. Fill](#color-vs.-fill)
+    + [Univariate plots](#univariate-plots)
+    + [Plot themes](#plot-themes)
+    + [Saving plots](#saving-plots)
+1. [Bonus topics: Creating complex plots](#bonus-topics:-creating-complex-plots)
+    + [Facets](#facets)
+1. [Glossary of terms](#glossary-of-terms)
 
-TODO: *Somewhere (maybe not this lesson) tips on googling things*
 
-## Introduction to R and RStudio
-
+# Introduction to R and RStudio
+_[Back to top](#contents)_
 In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP).
 To test this hypothesis, we'll need two things: data and a platform to analyze the data.
 
 You already [downloaded the data](setup_instructions). But what platform will we use to analyze the data? We have many options!
 
-TODO: *Add link to information about reprodcible research or leave discussion for later?*
-
-We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexiblity, and don't easily allow for things that are criticial to "reproducible" research, like easily sharing the steps used to explore and make changes to the original data.
+TODO: *Add link to information about reprodcible research - link to rmarkdown lesson*
+We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexiblity, and don't easily allow for things that are criticial to ["reproducible" research](add link here), like easily sharing the steps used to explore and make changes to the original data.
 
 Instead, we'll use the a programming language to test our hypothesis. Today we will use R, but we could have also used Python for the same reasons we chose R (and we teach workshops for both languages). Both R and Python are freely available, the instructions you use to do the analysis are easily shared, and by using reproducible practices, it's straightforward to add more data or to change settings like colors or the size of a plotting symbol.
 
@@ -39,7 +80,7 @@ To run R, all you really need is the R program, which is available for computers
 
 To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
-TODO: *Change exercise to .md format blocks & add resources to use Rstudio on GreatLakes - ???*
+TODO: *add resources to use Rstudio on GreatLakes*
 > ## Exercise
 > Can you think of a reason you might not want to use RStudio?
 >
@@ -103,7 +144,7 @@ We'd like to create a file where we can keep track of our R code.
 
 Back in the "File" menu, you'll see the first option is "New File". Selecting "New File" opens another menu to the right and the first option is "R Script". Select "R Script".
 
-TODO: *Confirm paths with larger group/unix group*
+TODO_fp: *Confirm paths with larger group/unix group*
 Now we have a fourth panel in the upper left corner of RStudio that includes an **Editor** tab with an untitled R Script. Let's save this file as `gdp_population.R` in our project directory.
 
 We will be entering R code into the **Editor** tab to run in our **Console** panel.
@@ -118,12 +159,27 @@ Let's delete the line with 2+2 and replace it with `library(tidyverse)`.
 
 Go ahead and run that line in the **Console** by clicking the <kbd>Run</kbd> button on the top right of the **Editor** tab and choosing <kbd>Run Selected Lines</kbd>. This loads a set of useful functions and sample data that makes it easier for us to do complex analyses and create professional visualizations in R. 
 
-```{r}
+```{r loadTidyverse, message=TRUE}
 library(tidyverse)
 ```
 
-TODO: *Add example output from loading library and/or discuss messages get when loading a package?*
-TODO: *will they have tidyverse installed already?* 
+ZENA: *this what you were thinking for the messages?*
+> ## What's with all those messages???
+> 
+> When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
+TODO: *check link to R for data analysis lesson (above)* 
+
+> The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that: 
+
+> ~~~
+> dplyr::filter() masks stats::filter()
+> ~~~
+> {: .output}
+
+> This means that two different packages (`dyplr` from `tidyverse` and `stats` from base R) have a function named `filter()`. By default, R uses the function that was most recently loaded, so if we try using the `filter()` function after loading `tidyverse`, we will be using the `dyplr::filter()` function. 
+>
+{: .callout}
+
 
 > ## Hint / Pro-tip
 > 
@@ -140,7 +196,7 @@ We will import a subset file from the gapminder dataset called `gapminder_1997.c
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
-TODO: *Update <<data directory>> to match the directory structure from setup*
+TODO_fp: *Update <<data directory>> to match the directory structure from setup*
 The file is located in the directory <<data directory>>, click the "browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
 
 We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
@@ -163,7 +219,7 @@ Finally, take a look at the **Console** at the bottom left part of the RStudio s
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
 
-TODO: *Check output - then edit all places where this is used again later in lesson*
+TODO_fp: *Check output - then edit all places where this is used again later in lesson*
 ```
 gapminder_1997 <- read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")
 gapminder_1997 <- read_csv("data/gapminder_1997.csv")
@@ -228,7 +284,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > ## Challenge (optional): Bad names for objects 
 > Try to assign values to some new objects. What do you notice? After running all four lines of code bellow, what value do you think the object `Flower` holds? 
 >
-> ```{r Objects}
+> ```{r Objects, eval = FALSE}
 > 1number <- 3
 > Flower <- "marigold"
 > flower <- "rose"
@@ -256,7 +312,7 @@ Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_
 ```
 {: .error}
 
-TODO: *reread functions section to see if it makes sense* 
+ZENA: *reread functions section to see if it makes sense* 
 Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in. 
 
 For example, when we loaded in our data, the command contained `file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` inside the `read_csv()` function. Here `file` is the argument name, and `"SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` is the value we assigned to that argument. The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R dataframe with the data stored in that csv file. All that, with one short line of code! 
@@ -278,7 +334,7 @@ Do all functions need arguments? Let's test some other functions:
 
 While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together: 
 
-```{r}
+```{r sumFunctionExample}
 sum(5, 6)
 ```
 
@@ -291,6 +347,7 @@ Notice how in this example, we didn't include any argument names. Sometimes it i
 
 
 # Creating our first plot
+_[Back to top](#contents)_
 
 We will be using the `ggplot2` package today to make our plots. This is a very powerful package that creates professional looking plots and is one of the reasons people like using R so much. All plots made using the `ggplot2` package start by calling the `ggplot()` function. So in the tab you created for the `gdp_population.R` file, type the following:
 ```{r}
@@ -432,16 +489,18 @@ ggplot(data = gapminder_1997) +
 ```
 
 # Plotting for data exploration
+_[Back to top](#contents)_
 
 Many datasets are much more complex than the example we used for the first plot. How can we find meaningful patterns in complex data and create visualizations to convey those patterns?
 
 ## Importing datasets
+_[Back to top](#contents)_
 
 In the first plot, we looked at a smaller slice of a large dataset. To gain a better understanding of the kinds of patterns we might observe in our own data, we will now used the full dataset, which is stored in a called "gapminder_data.csv".
 
 To start, we will read in the data without using the interactive RStudio file navigation.
 
-TODO: *Check file path* 
+TODO_fp: *Check file path* 
 
 > ## Exercise: Read in your own data
 > 
@@ -519,6 +578,7 @@ Hmm. This doesn't look right. By setting the color value, we got a line for each
 Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
 
 ## Discrete Plots
+_[Back to top](#contents)_
 
 So far we've looked at two plot types (`geom_point` and `geom_line`) which work when both the x and y values are numeric. But sometimes you may have one of your values be discrete (a factor or character).
 
@@ -537,6 +597,7 @@ This type of visualiztion makes it easy to compare the range and spread of value
 {: .challenge}
 
 ## Layers
+_[Back to top](#contents)_
 
 So far we've only been adding one geom to each plot, but each plot object can actually contain multiple layers and each layer has it's own geom. Let's start with a basic violin plot: 
 
@@ -581,7 +642,6 @@ Be aware that these movements are random so your plot will look a bit different 
 
 
 Note that each layer can have it's own set of aesthetic mappings. So far we've been using `aes()` outside of the other functions. When we do this, we are setting the "default" ashetic mappings for the plot. We could do the same thing by passing the values to the `ggplot()` function call as is sometimes more common: 
-TODO: *show how the function is inside the other function?*. 
 
 ```{r GapViolinJitter}
 ggplot(data = gapminder_1997, mapping = aes(x = continent, y = lifeExp)) +
@@ -599,7 +659,26 @@ ggplot(data = gapminder_1997) +
 ```
 Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(continent, lifeExp)` but only `geom_jitter` will also use `aes(size = pop)`. 
 
+> ## Functions within functions
+> 
+> In the two examples above, we placed the `aes()` function inside another function - see how in the line of code `geom_jitter(aes(size = pop))`, `aes()` is nested **inside** `geom_jitter()`? When this happens, R evaluates the inner function first, then passes the output of that function as an argument to the outter function. 
+> 
+> Take a look at this simpler example. Suppose we have: 
+>
+> ```{r, eval = FALSE}
+> sum(2, max(6,8))
+> ```
+> First R calculates the maximum of the numbers 6 and 8 and returns the value 8. It passes the output 8 into the sum function and evaluates: 
+> ```{r}
+> sum(2, 8)
+> ```
+>
+{: .callout}
+
+
 ## Color vs Fill
+_[Back to top](#contents)_
+
 Let's say we want to spice up our plot a bit by adding some color. Maybe we want our violin color to a facny color like "darkolivegreen." We can do this by explicitly setting the color aesthetic inside the `geom_violin` function. Note that because we are assigning a color directly and not using any values from our data to do so, we do not need to use the `aes()` mapping function. Let's try it out: 
 
 ```{r GapViolinColor}
@@ -645,6 +724,7 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 
 
 ## Univariate Plots
+_[Back to top](#contents)_
 
 We jumped right into make plots with multiple columns. But what if we wanted to take a look at just one column? In that case, we only need to specify a mapping for `x` and choose an appropriate geom. Let's start with a [histogram](https://www.thoughtco.com/what-is-a-histogram-3126359) to see the range and spread of the life expectency values
 
@@ -668,6 +748,8 @@ Try different values like 5 or 50 to see how the plot changes.
 {: .challenge}
 
 ## Plot Themes
+_[Back to top](#contents)_
+
 Our plots are looking pretty nice, but what's with that grey background? While you can change various elements of a `ggplot` object manually (background color, grid lines, etc.) the `ggplot` package also has a bunch of nice built-in themes to change the look of your graph. For example, let's try adding `theme_classic()` to our histogram: 
 
 ```{r GapLifeHistBinsClassicTheme}
@@ -679,38 +761,8 @@ ggplot(gapminder_1997) +
 Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw()`, `theme_minimal()`. 
 
 
-TODO: *cut this if lesson is too long?* 
-## Facets
-
-If you have a lot of different columns to try to plot or have distinguishable subgroups in your data, a powerful plotting technique called faceting might some in handy. When you facet your plot, you basically make a much of smaller plots and combine them together into a single image. Let's start with a simplified version of our first plot
-
-```{r GapNoFacet}
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point()
-```
-
-The first time we made this plot, we colored the points differently for each of the continents. This time let's actually draw a separate box for each continent. We can do this with `facet_wrap()`
-
-```{r GapFacetWrap}
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point() +
-  facet_wrap(vars(continent))
-```
-Note that `facet_wrap` requires this extra helper function called `vars()` in order to pass in the column names. It's a lot like the `aes()` function, but it doesn't require an aesthetic name.We can see in this output we get a separate box with a label for each continent so that only the points for that continent are in that box.
-
-The other faceting function ggplot provides is `facet_grid()`. The main difference is that `facet_grid()` will make sure all of your smaller boxes share a common axis. In this example, we will stack all the boxes on top of each other into rows so that their x axes all line up.
-```{r GapFacetGrid}
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point() +
-  facet_grid(rows = vars(continent))
-```
-Unlike the `facet_wrap` output where each box got it's own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
-
-
 ## Saving plots
+_[Back to top](#contents)_
 
 We've made a bunch of plots today, but we never talked about how to share them with your friends who aren't running R! It's wise to keep all the code you used to draw the plot, but sometimes you need to make a PNG or PDF version of the plot so you can share it with your PI or post it to your Instagram story.
 
@@ -726,8 +778,6 @@ ggsave("awesome_plot.jpg", width=6, height=4)
 > 
 > Try rerunning one of your plots and then saving it using `ggsave()`. Find and open the plot to see if it worked!
 {: .challenge}
-
-TODO: *Added the following section - keep?* 
 
 You also might want to just temporarily save a plot while you're using R, so that you can come back to it later. Luckily, a plot is just an object, like any other object we've been working with! Let's try storing our violin plot from earlier in an object called `violin_plot`: 
 
@@ -761,7 +811,42 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 {: .challenge}
 
 
+# Bonus topics: creating complex plots 
+
+## Facets
+_[Back to top](#contents)_
+
+If you have a lot of different columns to try to plot or have distinguishable subgroups in your data, a powerful plotting technique called faceting might some in handy. When you facet your plot, you basically make a much of smaller plots and combine them together into a single image. Let's start with a simplified version of our first plot
+
+```{r GapNoFacet}
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point()
+```
+
+The first time we made this plot, we colored the points differently for each of the continents. This time let's actually draw a separate box for each continent. We can do this with `facet_wrap()`
+
+```{r GapFacetWrap}
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point() +
+  facet_wrap(vars(continent))
+```
+Note that `facet_wrap` requires this extra helper function called `vars()` in order to pass in the column names. It's a lot like the `aes()` function, but it doesn't require an aesthetic name.We can see in this output we get a separate box with a label for each continent so that only the points for that continent are in that box.
+
+The other faceting function ggplot provides is `facet_grid()`. The main difference is that `facet_grid()` will make sure all of your smaller boxes share a common axis. In this example, we will stack all the boxes on top of each other into rows so that their x axes all line up.
+```{r GapFacetGrid}
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point() +
+  facet_grid(rows = vars(continent))
+```
+Unlike the `facet_wrap` output where each box got it's own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
+
+
+
 ## Glossary of terms
+_[Back to top](#contents)_
 
 - Aesthetic: a visual property of the objects (geoms) drawn in your plot (like x position, y position, color, size, etc)
 - Aesthetic mapping (aes): This is how we connect a visual property of the plot to a column of our data
@@ -771,6 +856,9 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 - Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
 - Factor: a way of storing data to let R know the values are discrete so they get special treatment
 
+
+TODO: *Do we need/have time for these?* 
+TODO: *Add as bonus topics?* 
 
 # Extra ideas
 
