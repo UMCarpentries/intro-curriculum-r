@@ -27,12 +27,12 @@ keypoints:
 TODO - things that still need to be completed
 ZENA - areas Maya has edited/added and wants Zena to read over and edit 
 TODO_fp - "File path to dos" - places to check/create file paths 
+TODO_link - add link between lessons
 
 ZENA: *Read and edit questions, objectives, keypoints above*
 
 
-TODO: *add words to glossary, and links to words in glossary?*
-TODO: *introduce and link to googling lesson/extra* curriculum/_episodes/06-conclusion.md
+TODO: *add links to words in glossary?*
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
@@ -65,7 +65,7 @@ To test this hypothesis, we'll need two things: data and a platform to analyze t
 
 You already [downloaded the data](setup_instructions). But what platform will we use to analyze the data? We have many options!
 
-TODO: *Add link to information about reprodcible research - link to rmarkdown lesson*
+TODO_link: *Add link to information about reprodcible research - link to rmarkdown lesson*
 We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexiblity, and don't easily allow for things that are criticial to ["reproducible" research](add link here), like easily sharing the steps used to explore and make changes to the original data.
 
 Instead, we'll use the a programming language to test our hypothesis. Today we will use R, but we could have also used Python for the same reasons we chose R (and we teach workshops for both languages). Both R and Python are freely available, the instructions you use to do the analysis are easily shared, and by using reproducible practices, it's straightforward to add more data or to change settings like colors or the size of a plotting symbol.
@@ -167,7 +167,7 @@ ZENA: *this what you were thinking for the messages?*
 > ## What's with all those messages???
 > 
 > When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
-TODO: *check link to R for data analysis lesson (above)* 
+TODO_link: *check link to R for data analysis lesson (above)* 
 
 > The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that: 
 
@@ -181,11 +181,15 @@ TODO: *check link to R for data analysis lesson (above)*
 {: .callout}
 
 
+TODO_link: *add link to googling in conclusion "lesson"* curriculum/_episodes/06-conclusion.md
 > ## Hint / Pro-tip
 > 
 > Those of us that use R on a daily basis use cheat sheets to help us remember how to use various R functions. If you haven't already, print out the PDF versions of the cheat sheets that were in the setup instructions.
 >
 > You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2" and "Data Transformation with dplyr".
+>
+> For things that aren't on the cheat sheets, [Google is your best friend](broken link). Even expert coders use Google when they're stuck or trying something new! 
+>
 {: .testimonial}
 
 ---
@@ -303,17 +307,11 @@ The next part of the command is `read_csv(file = "SoftwareCarpentry/SoftwareCarp
 read_csv()
 ```
 
-We get an error message!
-
-TODO: *Delete bellow error message - should appear automatically from above code chunk?* 
-```
-Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_types,  :
-  argument "file" is missing, with no default
-```
-{: .error}
-
 ZENA: *reread functions section to see if it makes sense* 
-Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in. 
+
+We get an error message! Don't panic! Error messages pop all the time, and can be super helpful in debugging code. 
+
+In this case, the message tells us "argument "file" is missing, with no defualt." Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in. 
 
 For example, when we loaded in our data, the command contained `file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` inside the `read_csv()` function. Here `file` is the argument name, and `"SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` is the value we assigned to that argument. The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R dataframe with the data stored in that csv file. All that, with one short line of code! 
 
@@ -844,6 +842,70 @@ ggplot(gapminder_1997) +
 Unlike the `facet_wrap` output where each box got it's own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
 
 
+## Animated plots
+
+Sometimes it can be cool (and useful) to create animated graphs, like [this famous one](https://www.youtube.com/watch?v=FTu4dDHpfdU&feature=youtu.be) by Hans Rosling using the Gapminder dataset that plots GDP vs. Life Expectancy over time. Let's try to recreate this plot! 
+
+First, we need to install and load the `gganimate` package, which allows us to use ggplot to create animated visuals: 
+```{r installGGanimate, eval=FALSE}
+install.packages("gganimate")
+```
+```{r}
+library(gganimate)
+```
+
+> ## Exercise: Reviewing how to create a scatter plot
+> **Part 1:** 
+> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent. 
+> 
+>> ## Solution
+>>
+>> ```{r hansGraphStatic}
+>> ggplot(data = gapminder_data)+
+>>  aes(x = log(gdpPercap), y = lifeExp, size = pop, color = continent)+
+>>  geom_point() 
+>> ```
+>{: .solution}
+
+> **Part 2:** 
+> Before we start to animate our plot, let's make sure it looks pretty. Add some better axis and legend labels, change the plot theme, and otherwise fix up the plot so it looks nice. Then save the plot into an object called `staticHansPlot`. When you're ready, check out how we've edited our plot, below. 
+>
+>> ## A pretty plot (yours may look different)
+>> ```{r hansGraphStatic}
+>> staticHansPlot <- ggplot(data = gapminder_data)+
+>>  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
+>>  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points 
+>>  scale_color_brewer(palette = "Set1") +
+>>  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
+>> theme_classic()
+>> 
+>> staticHansPlot
+>> ```
+> {: .solution}
+{: .challenge}
+
+Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot. 
+
+```{r hansGraphAnimated}
+animatedHansPlot <- staticHansPlot +
+  transition_states(year,  transition_length = 1, state_length = 1)+
+  #geom_text(aes(x = 7.5, y = 80, label = year), size = 14, color = 'lightgrey')
+  ggtitle("{closest_state}")
+
+animatedHansPlot
+```
+Awesome! This is looking sweet! Let's make sure we understand the code above: 
+1. The first argument of the `transition_states()` function tells `ggplot()` which variable should be different in each frame of our animation: in this case, we want each frame to be a different `year`. 
+1. The `transition_length` and `state_length` arguments are just some of the `gganimate` arguments you can use to adjust how the animation progresses from one frame to the next. Feel free to play around with those parameters, to see how they affect the animation (or check out more `gganmiate` options [here](https://gganimate.com/articles/gganimate.html)!). 
+1. Finally, we want the title of our plot to tell us which year our animation is currently showing. Using "{closest_state}" as our title allows the title of our plot to show which `year` is currently beign plotted. 
+
+So we've made this cool animated plot - how do we save it? For `gganimate` objects, we can use the `anim_save()` function. It works just like `ggsave()`, but for animated objects. 
+
+```{r}
+anim_save("hansAnimatedPlot.gif", plot = animatedHansPlot)
+```
+
+
 
 ## Glossary of terms
 _[Back to top](#contents)_
@@ -875,7 +937,4 @@ gapminder %>% filter(year==2007) %>%
   expand_limits(x = mapdata$long, y = mapdata$lat) +
   coord_map(projection = "mollweide", xlim = c(-180, 180)) +
   ggthemes::theme_map()
-
-PLOT MAYBE (animation)
-gganimation -- recreate Hans Rosling's moving plot
 
