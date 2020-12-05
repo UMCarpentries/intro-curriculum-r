@@ -226,7 +226,7 @@ Only one of the people in your pair is going to create the R Markdown file. The 
 
 **For the person who is going to collaborate with the host of the R Markdown file:**
 
-If you don't already have your partner's GitHub repo cloned from the git/GitHub lesson, clone their repo to your Desktop under the name `USERNAME-un-report`. If you don't remember how to do this, you can review the git lesson (LINK). 
+If you don't already have your partner's GitHub repo cloned from the git/GitHub lesson, clone their repo to your Desktop under the name `USERNAME-un-report`. If you don't remember how to do this, you can review the [git lesson](_episodes/03-intro-git-github.md). 
 
 The way you will collaborate with each other is as follows:
 1. For each exercise, both people will be thinking about how to answer the question, but only one person will be writing the code.
@@ -238,11 +238,19 @@ This is called _paired programming_.
 Don't worry if you don't finish all of the exercises, and it's not a race between groups! 
 This is just a way for you to practice what you've learned.
 
+**One note:** You can copy and paste the questions into the R markdown file as you go.
+
 ### Exercises using the gapminder data
 
 First we're going to start out with a few questions about the gapminder dataset.
 
-TODO: Add reading in gapminder dataset 
+1. The very first step is to read in the gapminder dataset, so do that first! Also load the `tidyverse` package.
+
+```{r}
+library(tidyverse)
+gapminder <- read_csv('data/gapminder_data.csv')
+```
+
 
 #### Investigating population over time.
 
@@ -328,14 +336,18 @@ filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeE
 
 ### Exercises integrating a new dataset
 
-#### Preview of the data
+Now that you've practiced what you've learned with the gapminder data, you're going to start using a new dataset. 
 
 TODO: 
 - [ ] check with R analysis team for the CO2 data format after that part of workshop
 - [ ] cut down number of questions (there is likely not enough time for all of the followings)
 - [ ] check with R plotting and stats to make sure the contents has been covered before the exercises
 
-_Data:_ Gross domestic expenditure on R & D
+#### Preview of the data
+
+This dataset has information on the gross domestic expenditure on research and development (R&D) for different countries. We're going to use it to practice the data analysis workflow that you learned over the course of the workshop.
+
+_Data:_ Gross domestic expenditure onresearch and development (R & D)
 
 _Data source:_ [UN data](data.un.org), under "Science and technology"
 
@@ -377,18 +389,66 @@ Region/Country/Area,,Year,Series,Value,Footnotes,Source
 8,Albania,1985,Emissions (thousand metric tons of carbon dioxide),6929.9260,,"International Energy Agency, IEA World Energy Balances 2019 and 2006 IPCC Guidelines for Greenhouse Gas Inventories, last accessed June 2020."
 ```
 
-#### Questions for exercise
+#### Reading in and cleaning the data
 
-1. (Cleaning and preparing new data set) Goal: setting up the long-form `.csv` file for raw data
-  1. reading in data e.g. with `read_tsv`. note: need to skip the first line when using the function
-  2. subsetting #1: country-specific (instead of regions like "Sub-Saharan African") data started at row 49 (with the first country being "Albania"), subset the data by the row index range, and see how many contries have at least one data entry in this data set (`unique()`)
-  3. subsetting #2: as an alternative, we know that the codes (first column) in this dataset of regions not cuntries are: 1, 15, 202, 21, 419, 143, 30, 35, 34, 145, 150, 53. therefore we can filter *out* the data for regions by removing according to region code
+1. First, read in the data. Note that you need to skip the first line of the file because that's just a title for the whole dataset (see above). Also rename the columns to something more informative (as you learned, there are lots of ways to do this, and different preferences - feel free to use whichever method you want!).
+
+```{r}
+rnd <- read_csv('data/rnd-un-data.csv', skip = 1) %>% rename(country=X2) %>% rename_all(tolower)
+```
+
+1. Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
+
+```{r}
+rnd <- rnd %>% mutate(series=recode(series,
+               "Gross domestic expenditure on R & D: as a percentage of GDP (%)" = 'gdp_pct', 
+"Gross domestic expenditure on R & D: Business enterprises (%)" = 'business', 
+"Gross domestic expenditure on R & D: Government (%)" = 'government', 
+"Gross domestic expenditure on R & D: Higher education (%)" = 'higher_ed', 
+"Gross domestic expenditure on R & D: Funds from abroad (%)" = 'abroad', 
+"Gross domestic expenditure on R & D: Not distributed (%)" = 'not_distributed', 
+"Gross domestic expenditure on R & D: Private non-profit (%)" = 'non_profit'))
+```
+
+1. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This shoudl give you the following columns: conuntry name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
+
+```{r}
+rnd <- rnd %>% pivot_wider(names_from=series,values_from=value)
+```
+
+Note that there is a lot of missing data.  
+
+Now we have our data set up in a way that makes it easier to work with. Feel free to clean up the data more before moving on to the next step if you'd like.
+
+#### Plotting with the R & D dataset
+
+1. Plot the distribution of percent expenditure using a histogram. Observe the range and how heavy the "tails" are. **Note:** you will likely get a note and a warning. Feel free to change the number of bins as the note describes. Why do you get warnings? (Hint: Look at the column you're plotting.). **Bonus:** Plot the same exact data in a way in which you don't get warnings. 
+
+```{r}
+rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=gdp_pct)) + geom_histogram(bins=30)
+```
+
+1. Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want. 
+
+```{r}
+rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) + geom_point(alpha=0.5) + xlab('')
+```
+
+1. Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
+
+```{r}
+rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) + geom_violin() + xlab('')
+```
+
+#### Plotting with the new, gapminder and CO2 datasets together
+
+1. First, merge the dataframes by country.
+
+
+
   4. [extra] exploring the data: each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many counties there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
-  5. wrangling the format of data: from a long-form table to a more squared one with the following columns: conuntry name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
-2. (Plotting within the new dataset)
-   1. plot the distribution of expenditure (histogram), and observe (e.g. range and how heavy "tails" are)
-   2. plot the expenditure by year (discrete x vs continuous y), scatter plot
-   3. plot the expenditure by year (discrete x vs continuous y), violin plot / boxplot
+
+
 3. (Combining the new data set with gapminder and CO2 sets)
    1. merging data frames (by country)
 4. (Plotting with the newly combined dataset)
@@ -403,3 +463,4 @@ Region/Country/Area,,Year,Series,Value,Footnotes,Source
 6. (Open-ended questions)
    1. exploring missing data: after merging the data sets, there are some missing data, how many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive obsevation in a plot and/or summary statistics? (e.g. `ggplot` removes `NA`s but stat functions (e.g. `median()` often ask for specific input regarding to how to deal with `NA`s))
    2. exploring differences in data availability: what contients have the highest data availabilities (first discuss how they want to measure "data availability", e.g. by numbers of years that have data points, by number of non-empty columns of expenditure info)
+   3. Create an R Markdown report with all of the information you found from these exercises. 
