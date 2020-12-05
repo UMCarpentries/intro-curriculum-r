@@ -2,18 +2,28 @@
 title: Setup
 ---
 
-## Requirements
+## Pre-workshop setup checklist
 
-* A Unix shell
-* A [GitHub](https://github.com/) account
-* [Git](https://git-scm.com/), software for tracking changes in source code (i.e. version control)
-* A recent version of [R](https://www.r-project.org/) (>=4.0)
-* [RStudio](https://rstudio.com/), an integrated development environment for R
+1. [ ] Zoom (if this is a virtual workshop)
+1. [ ] A Unix shell (instructions below)
+1. [ ] [git](https://git-scm.com/), (instructions below)
+1. [ ] A [GitHub](https://github.com/) account
+1. [ ] A recent version of [R](https://www.r-project.org/) (instructions below)
+1. [ ] [RStudio](https://rstudio.com/), an integrated development environment for R (instructions below)
+1. [ ] R packages:
+    - tidyverse
+    - rmarkdown
+
+After you have installed everything, download [un-report.zip](https://github.com/UMSWC/curriculum/raw/setup-zip/files/un-report.zip).
+Move it to your Desktop and unzip it (usually double-clicking it will work).
+Then, inside the `un-report/` folder, click on the file `check_packages.R` and
+open it with RStudio.
+In the upper right corner, click the `Source` button to run the script.
+You should see output printed to the console.
+Take a screenshot or copy & paste the console output and send it to the
+lead instructor.
 
 ## Windows installations
-
-Each of the following sections contains installation instructions.  Click the
-triangle to unfold each section as you get to it.
 
 ### Installing Bash
 
@@ -119,20 +129,20 @@ Note that you _must_ install R before RStudio.
 
 Please see the
 <a href="https://rstudio.com/products/rstudio/download/#download">download
-page at the RStudio web site</a>.  There is only one Windows installercw
-available for Windows 10, 8, and 7 as of 19 Nov, 2020.  You should be
+page at the RStudio web site</a>. There is only one Windows installer
+available for Windows 10, 8, and 7 as of 19 Nov, 2020. You should be
 able to run it once downloaded and it will install properly.
 
 ## macOS
 
 ### The Unix Shell
 
-The shell is a program that enables us to send commands to the computer and receive output. It is 
-also referred to as the terminal or command line.  For a Mac computer running macOS Mojave or 
-earlier releases, the default Unix Shell is Bash.  For a Mac computer running macOS Catalina or 
-later releases, the default Unix Shell is Zsh. 
+The shell is a program that enables us to send commands to the computer and receive output. It is
+also referred to as the terminal or command line.  For a Mac computer running macOS Mojave or
+earlier releases, the default Unix Shell is Bash.  For a Mac computer running macOS Catalina or
+later releases, the default Unix Shell is Zsh.
 
-Your default shell is available via the Terminal program within your Utilities folder.  To open 
+Your default shell is available via the Terminal program within your Utilities folder.  To open
 Terminal, try one of the following:
 
 * In Finder, select the Go menu, then select Utilities. Locate Terminal in the Utilities folder and open it.
@@ -142,36 +152,36 @@ To see which Unix shell your Mac is running, type echo $SHELL in your terminal w
 
 ### Installing Git
 
-Git is a version control system that lets you track who made changes to what when and has options 
-for easily updating a shared or public version of your code on github.com. You will need a [supported web 
+Git is a version control system that lets you track who made changes to what when and has options
+for easily updating a shared or public version of your code on github.com. You will need a [supported web
 browser](https://help.github.com/articles/supported-browsers/).
 
-You will need an account at [GitHub](https://github.com/) for parts of the Git lesson. Basic GitHub 
-accounts are free. We encourage you to create a GitHub account if you don't have one already. Please 
-consider what personal information you'd like to reveal. For example, you may want to review these 
+You will need an account at [GitHub](https://github.com/) for parts of the Git lesson. Basic GitHub
+accounts are free. We encourage you to create a GitHub account if you don't have one already. Please
+consider what personal information you'd like to reveal. For example, you may want to review these
 [instructions for keeping your email address private](https://help.github.com/articles/keeping-your-email-address-private/)
 provided at GitHub.
 
 Git may be installed on Macs as part of XCode.  To check whether git is installed, type
-`which git` in a Terminal and hit enter.  If installed, the installation path will print on the 
+`which git` in a Terminal and hit enter.  If installed, the installation path will print on the
 next line in your terminal.  The default installation path for Apple installed git is `/usr/bin/git`.
 
-If git is installed, you can see which version is installed by typing `git --version` into the 
+If git is installed, you can see which version is installed by typing `git --version` into the
 terminal and hitting enter.  If you receive an error regarding an `invalid active developer path`,
 you may need to (re-)install XCode.  Try doing this by typing `xcode-select --install` and enter
 in the Terminal.  The `git --version` command should then return the number of the installed
 version of git.
 
 You should have git version >=2.24.  If not, please install the latest
-version of Git for Mac by downloading and running the most recent "mavericks" installer from 
-[this list](http://sourceforge.net/projects/git-osx-installer/files/).  Because this installer is 
-not signed by the developer, you may have to right click (control click) on the .pkg file, click Open, 
-and click Open on the pop up window. After installing Git, there will not be anything in your 
-/Applications folder, as Git is a command line program. For older versions of OS X (10.5-10.8) use the 
+version of Git for Mac by downloading and running the most recent "mavericks" installer from
+[this list](http://sourceforge.net/projects/git-osx-installer/files/).  Because this installer is
+not signed by the developer, you may have to right click (control click) on the .pkg file, click Open,
+and click Open on the pop up window. After installing Git, there will not be anything in your
+/Applications folder, as Git is a command line program. For older versions of OS X (10.5-10.8) use the
 most recent available installer labelled "snow-leopard" [available here](http://sourceforge.net/projects/git-osx-installer/files/).
 
 ### Installing R
-[R](https://www.r-project.org/) is a programming language that is especially powerful for data 
+[R](https://www.r-project.org/) is a programming language that is especially powerful for data
 exploration, visualization, and statistical analysis. You will need a recent version of R (>= 4.0).
 Install R by downloading and running [this .pkg file](https://cran.r-project.org/bin/macosx/R-latest.pkg)
 from [CRAN](https://cran.r-project.org/index.html).
