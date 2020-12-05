@@ -337,6 +337,8 @@ This is just a way for you to practice what you've learned.
 
 First we're going to start out with a few questions about the gapminder dataset.
 
+TODO: Add reading in gapminder dataset 
+
 #### Investigating population over time.
 
 1. Make a scatter plot of year vs. population, separated into a plot for each contient.
@@ -384,20 +386,7 @@ Error in gapminder %>% filter(country != "China" & country != "India") %>% : cou
 ~~~
 {: .error}
 
-1. What's the outlier country now?
-
-
-~~~
-gapminder %>% filter(pop > 2.5e8) %>% select(country) %>% unique()
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in gapminder %>% filter(pop > 2.5e+08) %>% select(country) %>% unique(): could not find function "%>%"
-~~~
-{: .error}
+##### Bonus questions: come back to these if you have time at the end
 
 1. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do it!
 
@@ -439,21 +428,8 @@ Error in filter(gapminder, year == 1982) %>% slice_max(lifeExp): could not find 
 ~~~
 {: .error}
 
-1. Now, do the same thing but for all years! (How many years are there?) 
-
-
-~~~
-gapminder %>% select(year) %>% unique() %>% nrow()
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in gapminder %>% select(year) %>% unique() %>% nrow(): could not find function "%>%"
-~~~
-{: .error}
-
+1. Now, do the same thing but for all years! *HINT:* Use the `group_by` function. 
+TODO: See if they learn `group_by`.
 
 
 ~~~
@@ -468,15 +444,40 @@ Error in gapminder %>% group_by(year) %>% select(country, year, lifeExp) %>% : c
 ~~~
 {: .error}
 
-1. Make a boxplot for the life expectancies of the countries in each continent for 2007.
+1. Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
 
 
 ~~~
-Error in gapminder %>% filter(year == 2007) %>% ggplot(aes(x = continent, : could not find function "%>%"
+Error in gapminder %>% filter(continent == "Asia") %>% ggplot(aes(x = as.character(year), : could not find function "%>%"
 ~~~
 {: .error}
 
-1. **Challenge question:** Which country has had the greatest increase in life expectancy from 1952 to 2007? HINT: You might want to use the `pivot_wider` function to get your data in a format with the columns for : country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy. 
+##### Bonus questions: come back to these if you have time at the end
+
+1. What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
+
+
+~~~
+gapminder %>% filter(continent == 'Asia') %>% group_by(year) %>% slice_min(lifeExp)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in gapminder %>% filter(continent == "Asia") %>% group_by(year) %>% : could not find function "%>%"
+~~~
+{: .error}
+
+1. Make a boxplot for the life expectancies of the countries over time for each continent separately. Try to fix the x and y axis labels and text too. Feel free to change the theme if you'd like.
+
+
+~~~
+Error in gapminder %>% ggplot(aes(x = as.character(year), y = lifeExp)): could not find function "%>%"
+~~~
+{: .error}
+
+1. Which country has had the greatest increase in life expectancy from 1952 to 2007? _HINT:_ You might want to use the `pivot_wider` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy. 
 TODO: Move this to the end? 
 
 
@@ -495,18 +496,18 @@ Error in filter(gapminder, year == 1952 | year == 2007) %>% select("country", : 
 
 ### Exercises integrating a new dataset
 
-#### Previews of data
+#### Preview of the data
 
 TODO: 
 - [ ] check with R analysis team for the CO2 data format after that part of workshop
 - [ ] cut down number of questions (there is likely not enough time for all of the followings)
 - [ ] check with R plotting and stats to make sure the contents has been covered before the exercises
 
-Data: Gross domestic expenditure on R & D
+_Data:_ Gross domestic expenditure on R & D
 
-Data source: [UN data](data.un.org), under "Science and technology"
+_Data source:_ [UN data](data.un.org), under "Science and technology"
 
-Data path: `data/SYB63_286_202009_GDP_on_RnD.csv`
+_Data path:_ `data/SYB63_286_202009_GDP_on_RnD.csv`
 
 Raw csv file:
 
@@ -547,7 +548,7 @@ Region/Country/Area,,Year,Series,Value,Footnotes,Source
 #### Questions for exercise
 
 1. (Cleaning and preparing new data set) Goal: setting up the long-form `.csv` file for raw data
-  1. reading in data e.g. with `read.table`. note: need to skip the first line when using the function
+  1. reading in data e.g. with `read_tsv`. note: need to skip the first line when using the function
   2. subsetting #1: country-specific (instead of regions like "Sub-Saharan African") data started at row 49 (with the first country being "Albania"), subset the data by the row index range, and see how many contries have at least one data entry in this data set (`unique()`)
   3. subsetting #2: as an alternative, we know that the codes (first column) in this dataset of regions not cuntries are: 1, 15, 202, 21, 419, 143, 30, 35, 34, 145, 150, 53. therefore we can filter *out* the data for regions by removing according to region code
   4. [extra] exploring the data: each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many counties there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
