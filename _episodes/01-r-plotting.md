@@ -280,7 +280,7 @@ TODO: *Add challenge showing a function that doesn't need arguments*
 >>
 >>
 >>~~~
->>[1] "2020-11-18"
+>>[1] "2020-12-05"
 >>~~~
 >>{: .output}
 >>
