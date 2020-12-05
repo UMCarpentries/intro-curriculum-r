@@ -4,7 +4,7 @@ title: Discussion
 
 # Where to go from here?: Departing on your own coding journey
 
-![Learning and debugging throughout the data progamming process.](fig-next-steps.001.jpeg){width=600}
+![Learning and debugging throughout the data programming process.](fig-next-steps.001.jpeg){width=600}
 
 We have come to the end of this workshop. You learned some basic procedures for importing, managing, visualizing and reporting your data. 
 
@@ -50,15 +50,15 @@ In the following, we list some strategies and resources we find useful. As you m
 * [GitHub Help Documentation](https://docs.github.com/en/free-pro-team@latest/github)
 
 ### R
+* [RStudio Community Forum](https://community.rstudio.com/). This is a site that is welcoming to new R users where you can ask R programming questions.
+* [Search R Package Documentation](https://rdrr.io/). This site is very useful when you see someone using a function but don't know which package it comes from. This site lets you search across the help pages for all R packages.
 * [R package library](https://cran.r-project.org/)
-* [Base R Cheat Sheet](https://rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
-* [R Tidyverse Cheat Sheet](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Tidyverse+Cheat+Sheet.pdf)
-* [R ggplot2 Cheat Sheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
+* [RStudio Cheat Sheets](https://rstudio.com/resources/cheatsheets/). A good collection of cheat sheets to print out and hang at your desk. For example: [base R](https://rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf), [tidyverse](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Tidyverse+Cheat+Sheet.pdf), and [ggplot](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 
 ### R Markdown
 * [Getting started with R Markdown Online Tutorial](https://rmarkdown.rstudio.com/lesson-1.html)
-* [R Markdown Cheat Sheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
-* [R Markdown Reference Guide](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+* [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+* [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 
 ## Writing code  at the University of Michigan
 
