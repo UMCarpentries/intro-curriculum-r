@@ -254,7 +254,7 @@ gapminder <- read_csv('data/gapminder_data.csv')
 
 #### Investigating population over time.
 
-1. Make a scatter plot of year vs. population, separated into a plot for each contient.
+1. Make a scatter plot of year vs. population, separated into a plot for each contient. **HINT:** you can use `facet_wrap(~column_name)` to separate into different plots based on that column.
 
 ```{r}
 ggplot(gapminder, aes(x=year,y=pop)) + geom_point() + facet_wrap(~continent)
@@ -335,6 +335,8 @@ filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeE
 ```
 
 ### Exercises integrating a new dataset
+
+**If you finished the questions involving the gapminder datset (Bonus questions are optional), move on to these questions next. Note that we don't expect you to finish all of these! You can also use them as practice after the workshop if you'd like.**
 
 Now that you've practiced what you've learned with the gapminder data, you're going to start using a new dataset. 
 
@@ -440,27 +442,84 @@ rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct))
 rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) + geom_violin() + xlab('')
 ```
 
-#### Plotting with the new, gapminder and CO2 datasets together
+### Combining the CO2 and R&D datasets datasets together
 
-1. First, merge the dataframes by country.
+Now we're going to work with the C)2 and R&D datasets together. 
+
+Unfortunately, we don't have the exact same dates for all of them. 
+
+1. First, read in the CO2 dataset. You can use the code from the [R for data analysis](_episodes/04-r-data-analysis.md) lesson to clean the C02 data.
+
+```{r}
+# read in and clean CO2 data
+co2 <- read_csv("data/co2-un-data.csv", skip=2,
+col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+select(country, year, series, value) %>%
+mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+"Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+pivot_wider(names_from=series, values_from=value)
+```
+
+1. Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D. 
+
+```{r}
+co2_rnd <- full_join(co2, rnd) %>% select(country, year, total, per_capita, gdp_pct)
+```
+
+1. You might have noticed that we don't have both C02 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have bot C02 and R&D data.
+
+```{r}
+co2_rnd <- co2_rnd %>% filter(!is.na(total) & !is.na(gdp_pct))
+```
+
+1. How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out. 
+
+```{r}
+co2_rnd %>% group_by(year) %>% summarize(count=n()) 
+```
+
+#### Plotting with the CO2 and R&D datasets together
+
+1. Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
+
+```{r}
+ggplot(co2_rnd, aes(x=gdp_pct,y=per_capita)) + geom_point() + ylab('Per-capita CO2 emissiosn') + xlab('Percent of GDP spent on R&D')
+```
+
+1. Next, facet the above plot by year.
+
+```{r}
+ggplot(co2_rnd, aes(x=gdp_pct,y=per_capita)) + geom_point() + ylab('Per-capita CO2 emissiosn') + xlab('Percent of GDP spent on R&D') + facet_wrap(~year)
+```
+
+1. Identify the countries that have 5 time points for both C02 emissions and R&D.
+
+```{r}
+co2_rnd %>% group_by(country) %>% summarize(count=n()) %>% filter(count==5)
+```
+
+**BONUS**
+
+1. For the 3 countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINT:** Use `pivot_longer` to get the data in the right format. 
+
+TODO: Fix names of colors?
+
+```{r}
+co2_rnd %>% filter(country %in% c('Azerbaijan','Cuba','Panama')) %>% pivot_longer(c(per_capita,gdp_pct)) %>% ggplot(aes(x=year,y=value,col=name)) + geom_point() + facet_wrap(~country)
+```
 
 
+#### Bonus questions
 
-  4. [extra] exploring the data: each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many counties there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
+1. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
 
+1. After merging the data sets, there is some missing data, how many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive obsevation in a plot and/or summary statistics? (e.g. `ggplot` removes `NA`s but stat functions (e.g. `median()` often ask for specific input regarding to how to deal with `NA`s)).
 
-3. (Combining the new data set with gapminder and CO2 sets)
-   1. merging data frames (by country)
-4. (Plotting with the newly combined dataset)
-   1. CO2 emission vs R&D expenditure for each country (scatter plot)
-   2. on the basis of the plot above, color the data points by continent (`aes(color)`)
-   3. (there are ~ 150 countries in total) for a specific contient (e.g. Europe), show the importance of business and government funding for R&D (filter data frame, stacked bar plot)
-   4. [extra, not sure if covered] facet the scatter plot by continent
-5. (Analysis)
-   1. the summary statistics of expenditure, by continents and in total (`summary`)
-   2. the correlation between CO2 emission vs R&D expenditure
-   3. [extra] if correlated, linear model? how good the linear model is? (`lm()` and checking R-squared)
-6. (Open-ended questions)
-   1. exploring missing data: after merging the data sets, there are some missing data, how many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive obsevation in a plot and/or summary statistics? (e.g. `ggplot` removes `NA`s but stat functions (e.g. `median()` often ask for specific input regarding to how to deal with `NA`s))
-   2. exploring differences in data availability: what contients have the highest data availabilities (first discuss how they want to measure "data availability", e.g. by numbers of years that have data points, by number of non-empty columns of expenditure info)
-   3. Create an R Markdown report with all of the information you found from these exercises. 
+1. What countries have the highest and lowest data availabilities? (How would you measure data availability?) 
+
+1. Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
+
+1. For a specific contient (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
+
+1. Create an R Markdown report with some of the information from these exercises. Decide excatly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
+   
