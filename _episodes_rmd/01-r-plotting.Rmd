@@ -55,6 +55,7 @@ TODO: *confirm all headers are in table of contents*
     + [Saving plots](#saving-plots)
 1. [Bonus topics: Creating complex plots](#bonus-topics:-creating-complex-plots)
     + [Facets](#facets)
+    + [Animated plots](#animated-plots)
 1. [Glossary of terms](#glossary-of-terms)
 
 
@@ -884,12 +885,22 @@ library(gganimate)
 > {: .solution}
 {: .challenge}
 
+```{r hansGraphStatic}
+ staticHansPlot <- ggplot(data = gapminder_data)+
+  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
+  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points 
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
+ theme_classic()
+ 
+ staticHansPlot
+```
+
 Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot. 
 
 ```{r hansGraphAnimated}
 animatedHansPlot <- staticHansPlot +
   transition_states(year,  transition_length = 1, state_length = 1)+
-  #geom_text(aes(x = 7.5, y = 80, label = year), size = 14, color = 'lightgrey')
   ggtitle("{closest_state}")
 
 animatedHansPlot
@@ -919,8 +930,7 @@ _[Back to top](#contents)_
 - Factor: a way of storing data to let R know the values are discrete so they get special treatment
 
 
-TODO: *Do we need/have time for these?* 
-TODO: *Add as bonus topics?* 
+TODO: *Add as bonus topic or delete* 
 
 # Extra ideas
 
