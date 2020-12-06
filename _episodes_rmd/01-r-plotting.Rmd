@@ -641,7 +641,7 @@ Be aware that these movements are random so your plot will look a bit different 
 
 Note that each layer can have it's own set of aesthetic mappings. So far we've been using `aes()` outside of the other functions. When we do this, we are setting the "default" ashetic mappings for the plot. We could do the same thing by passing the values to the `ggplot()` function call as is sometimes more common: 
 
-```{r GapViolinJitter}
+```{r GapViolinJitter2}
 ggplot(data = gapminder_1997, mapping = aes(x = continent, y = lifeExp)) +
   geom_violin() +
   geom_jitter()
