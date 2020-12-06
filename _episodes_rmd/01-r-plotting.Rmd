@@ -288,7 +288,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > ## Challenge (optional): Bad names for objects 
 > Try to assign values to some new objects. What do you notice? After running all four lines of code bellow, what value do you think the object `Flower` holds? 
 >
-> ```{r Objects, eval = FALSE}
+> ```{r BadObjects, eval = FALSE}
 > 1number <- 3
 > Flower <- "marigold"
 > flower <- "rose"
@@ -317,14 +317,14 @@ For example, when we loaded in our data, the command contained `file = "Software
 
 Do all functions need arguments? Let's test some other functions: 
  
-```{r Functions}
+```{r FunctionsNoArgs}
   Sys.Date()
   getwd()
 ```
 
 > ## Comments
 > Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do: 
-> ```{r Functions}
+> ```{r FunctionsComments}
 >  Sys.Date()  # outputs the current date
 >  getwd()     # outputs our current working directory 
 >```
@@ -510,7 +510,7 @@ TODO_fp: *Check file path*
 >
 >> ## Solution
 >> 
->> ```{r ImportFullData}
+>> ```{r ImportFullDataSolution}
 >> gapminder_data <- read_csv("data/gapminder_data.csv")
 >> ```
 > {: .solution}
@@ -627,7 +627,7 @@ Be aware that these movements are random so your plot will look a bit different 
 >
 >> ## Solution: 
 >> 
->>```{r GapViolinJitter}
+>>```{r GapViolinJitterSolution}
 >> ggplot(data = gapminder_1997) +
 >>  aes(x = continent, y = lifeExp) +
 >>  geom_jitter() +
@@ -779,7 +779,7 @@ ggsave("awesome_plot.jpg", width=6, height=4)
 
 You also might want to just temporarily save a plot while you're using R, so that you can come back to it later. Luckily, a plot is just an object, like any other object we've been working with! Let's try storing our violin plot from earlier in an object called `violin_plot`: 
 
-```{r store GapViolinFillMap}
+```{r storeGapViolinFillMap}
 violin_plot <- ggplot(data = gapminder_1997) +
                   aes(x = continent, y = lifeExp) +
                   geom_violin(aes(fill=continent))
@@ -795,7 +795,7 @@ We can also add changes to the plot. Let's say we want our violin plot to have t
 violin_plot + theme_bw()
 ```
 Watch out! Adding the theme does not change the `violin_plot` object! If we want to change the object, we need to store our changes: 
-```{r violinPlotBWTheme}
+```{r violinPlotBWThemeUpdated}
 violin_plot <- violin_plot + theme_bw()
 ```
 
@@ -871,7 +871,7 @@ library(gganimate)
 > Before we start to animate our plot, let's make sure it looks pretty. Add some better axis and legend labels, change the plot theme, and otherwise fix up the plot so it looks nice. Then save the plot into an object called `staticHansPlot`. When you're ready, check out how we've edited our plot, below. 
 >
 >> ## A pretty plot (yours may look different)
->> ```{r hansGraphStatic}
+>> ```{r hansGraphStaticPretty}
 >> staticHansPlot <- ggplot(data = gapminder_data)+
 >>  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
 >>  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points 
