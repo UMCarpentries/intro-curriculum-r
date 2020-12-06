@@ -54,7 +54,7 @@ Free open-source programming languages such as bash, Git and R are constantly ev
 In the following, we list some strategies and resources we find useful. As you move forward, you are likely to identify other resources that fit your own learning style.
 
 ### General 
-* [Stack Overflow](https://stackoverflow.com/): Users post questions or errors and other users respond.
+* [Stack Overflow](https://stackoverflow.com/): Users post questions or errors and other users respond. (This is a great place to search for help but might not be the best place to ask a question if you are a beginner.)
 * Cheat Sheets!! You can find many different cheat sheets for entire languages or specific libraries or even functions online. Just search for "<something> cheat sheet" to see what is available. We have listed a few below.
 * Study other people's code. Increasingly, people publish their code (e.g., in a GitHub repository) to facilitate reproducible research. You can take someone else's code as a starting point and adapt it to your own needs.
 
