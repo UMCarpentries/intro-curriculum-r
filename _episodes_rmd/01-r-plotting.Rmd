@@ -85,8 +85,8 @@ TODO: *add resources to use Rstudio on GreatLakes*
 > ## Exercise
 > Can you think of a reason you might not want to use RStudio?
 >
->> ## Solution: 
->> On some high performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](broken link) to run RStudio on Great Lakes.
+> > ## Solution: 
+> > On some high performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](broken link) to run RStudio on Great Lakes.
 > {: .solution}
 {: challenge}
 
@@ -245,8 +245,9 @@ Starting from the left, the first thing we see is `gapminder_1997`. We viewed th
 
 > ## Exercise: Running parts of our code
 > If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
->> ## Solution
->> We see a data table outputted, similar to what we saw in the Viewer tab. 
+>
+> > ## Solution
+> > We see a data table outputted, similar to what we saw in the Viewer tab. 
 >{: .solution}
 {: .challenge}
 
@@ -258,18 +259,18 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > Try to assign values to some objects and observe each object after you have assigned a new value. What do you notice? 
 >
 > ```{r Objects}
- name <- "Ben" 
- name
- age <- 26
- age 
- name <- "Harry Potter" 
- name
- age
- ```
+> name <- "Ben" 
+> name
+> age <- 26
+> age 
+> name <- "Harry Potter" 
+> name
+> age
+> ```
 > {: .source}
 >
->> ## Solution
->> When we assign a value to an object, the object stores that value so we can access it later. However, if we store a new value in an object we have already created (like when we stored "Harry Potter" in the `name` object), it replaces the old value. The `age` object does not change, because we never assign it a new value. 
+> > ## Solution
+> > When we assign a value to an object, the object stores that value so we can access it later. However, if we store a new value in an object we have already created (like when we stored "Harry Potter" in the `name` object), it replaces the old value. The `age` object does not change, because we never assign it a new value. 
 > {: .solution}
 {: .challenge}
 
@@ -297,8 +298,8 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > ```
 > {: .source}
 >
->> ## Solution
->> Notice that we get an error when we try to assign values to `1number` and `favorite number`. This is because we cannot start an object name with a numeral and we cannot have spaces in object names. The object `Flower` still holds "marigold." This is because R is case-sensitive, so running `flower <- "rose"` does NOT change the `Flower` object. This can get confusing, and is why we generally avoid having objects with the same name and different capitalization. 
+> > ## Solution
+> > Notice that we get an error when we try to assign values to `1number` and `favorite number`. This is because we cannot start an object name with a numeral and we cannot have spaces in object names. The object `Flower` still holds "marigold." This is because R is case-sensitive, so running `flower <- "rose"` does NOT change the `Flower` object. This can get confusing, and is why we generally avoid having objects with the same name and different capitalization. 
 > {: .solution}
 {: .challenge}
 
@@ -509,11 +510,11 @@ TODO_fp: *Check file path*
 > gapminder_data <- read_csv() 
 > ```
 >
->> ## Solution
->> 
->> ```{r ImportFullDataSolution}
->> gapminder_data <- read_csv("data/gapminder_data.csv")
->> ```
+> > ## Solution
+> > 
+> > ```{r ImportFullDataSolution}
+> > gapminder_data <- read_csv("data/gapminder_data.csv")
+> > ```
 > {: .solution}
 {: .challenge}
 
@@ -626,16 +627,16 @@ Be aware that these movements are random so your plot will look a bit different 
 > ## Exercise: Ordering `ggplot` layers
 > Try switching the order of `geom_violin` and `geom_jitter`. What happens? Why? 
 >
->> ## Solution: 
->> 
->>```{r GapViolinJitterSolution}
->> ggplot(data = gapminder_1997) +
->>  aes(x = continent, y = lifeExp) +
->>  geom_jitter() +
->>  geom_violin() 
->>```
->>
->> Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points. 
+> > ## Solution: 
+> > 
+> >```{r GapViolinJitterSolution}
+> > ggplot(data = gapminder_1997) +
+> >  aes(x = continent, y = lifeExp) +
+> >  geom_jitter() +
+> >  geom_violin() 
+> >```
+> >
+> > Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points. 
 >{: .solution}
 {: .challenge}
 
@@ -716,8 +717,8 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > ```
 > Why doesn't this work? How can you fix it? Where does that color come from? 
 >
->> Solution
->> In this example, you placed the fill inside the `aes()` function. Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values - in this case, you only have one value: the word "springgreen." Instead, try `geom_violin(fill = "springgreen")`. 
+> > Solution
+> > In this example, you placed the fill inside the `aes()` function. Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values - in this case, you only have one value: the word "springgreen." Instead, try `geom_violin(fill = "springgreen")`. 
 > {: .solution}
 {: .challenge}
 
@@ -859,29 +860,29 @@ library(gganimate)
 > **Part 1:** 
 > Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent. 
 > 
->> ## Solution
->>
->> ```{r hansGraphStatic}
->> ggplot(data = gapminder_data)+
->>  aes(x = log(gdpPercap), y = lifeExp, size = pop, color = continent)+
->>  geom_point() 
->> ```
+> > ## Solution
+> >
+> > ```{r hansGraphStatic}
+> > ggplot(data = gapminder_data)+
+> >  aes(x = log(gdpPercap), y = lifeExp, size = pop, color = continent)+
+> >  geom_point() 
+> > ```
 >{: .solution}
 
 > **Part 2:** 
 > Before we start to animate our plot, let's make sure it looks pretty. Add some better axis and legend labels, change the plot theme, and otherwise fix up the plot so it looks nice. Then save the plot into an object called `staticHansPlot`. When you're ready, check out how we've edited our plot, below. 
 >
->> ## A pretty plot (yours may look different)
->> ```{r hansGraphStaticPretty}
->> staticHansPlot <- ggplot(data = gapminder_data)+
->>  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
->>  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points 
->>  scale_color_brewer(palette = "Set1") +
->>  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
->> theme_classic()
->> 
->> staticHansPlot
->> ```
+> > ## A pretty plot (yours may look different)
+> > ```{r hansGraphStaticPretty}
+> > staticHansPlot <- ggplot(data = gapminder_data)+
+> >  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
+> >  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points 
+> >  scale_color_brewer(palette = "Set1") +
+> >  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
+> > theme_classic()
+> > 
+> > staticHansPlot
+> > ```
 > {: .solution}
 {: .challenge}
 
