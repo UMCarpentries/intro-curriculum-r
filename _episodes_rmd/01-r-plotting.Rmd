@@ -5,14 +5,14 @@ teaching: 120
 exercises: 30
 questions: 
 - "What are R and R Studio?" 
-- "How do I read data in R?"
+- "How do I read data into R?"
 - "What are geometries and aesthetics?"
 - "How can I use R to create and save professional data visualizations?" 
 objectives: 
 - "To become oriented with R and R Studio."
-- "To be able to read in data from cvs files."
+- "To be able to read in data from csv files."
 - "To create plots with both discrete and continuous variables."
-- "To understand mapping and layering using `ggplot`." 
+- "To understand mapping and layering using `ggplot2`." 
 - "To be able to modify a plot's color, theme, and axes labels." 
 - "To be able to save plots to a local directory." 
 keypoints: 
@@ -28,11 +28,6 @@ TODO - things that still need to be completed
 ZENA - areas Maya has edited/added and wants Zena to read over and edit 
 TODO_fp - "File path to dos" - places to check/create file paths 
 TODO_link - add link between lessons
-
-ZENA: *Read and edit questions, objectives, keypoints above*
-
-
-TODO: *add links to words in glossary?*
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
@@ -66,14 +61,13 @@ To test this hypothesis, we'll need two things: data and a platform to analyze t
 
 You already [downloaded the data](setup_instructions). But what platform will we use to analyze the data? We have many options!
 
-TODO_link: *Add link to information about reprodcible research - link to rmarkdown lesson*
-We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexiblity, and don't easily allow for things that are criticial to ["reproducible" research](add link here), like easily sharing the steps used to explore and make changes to the original data.
+We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexiblity, and don't easily allow for things that are criticial to ["reproducible" research](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285), like easily sharing the steps used to explore and make changes to the original data.
 
 Instead, we'll use the a programming language to test our hypothesis. Today we will use R, but we could have also used Python for the same reasons we chose R (and we teach workshops for both languages). Both R and Python are freely available, the instructions you use to do the analysis are easily shared, and by using reproducible practices, it's straightforward to add more data or to change settings like colors or the size of a plotting symbol.
 
 > ## But why R and not Python?
 > [There's no great reason](http://www.academichermit.com/2020/03/23/Why-R.html).
-> Although there are subtle differences between the languages, it's ultimately a matter of personal preference. Both are powerful and popular languages that have very well developed and welcoming communities of scientists that use them. As you learn more about R you may find things that are annoying in R that aren't so annoying in Python; the same could be said of learning Python. If the community you work in uses R, then you're in the right place.
+> Although there are subtle differences between the languages, it's ultimately a matter of personal preference. Both are powerful and popular languages that have very well developed and welcoming communities of scientists that use them. As you learn more about R, you may find things that are annoying in R that aren't so annoying in Python; the same could be said of learning Python. If the community you work in uses R, then you're in the right place.
 >
 {: .solution}
 
@@ -81,12 +75,11 @@ To run R, all you really need is the R program, which is available for computers
 
 To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
-TODO: *add resources to use Rstudio on GreatLakes*
 > ## Exercise
 > Can you think of a reason you might not want to use RStudio?
 >
 >> ## Solution: 
->> On some high performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](broken link) to run RStudio on Great Lakes.
+>> On some high performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](https://arc-ts.umich.edu/greatlakes/user-guide/#document-3) to run RStudio on Great Lakes.
 > {: .solution}
 {: challenge}
 
@@ -135,7 +128,7 @@ Then click the "Create Project" button.
 
 Did you notice anything change?
 
-In the lower right corner of your RStudio session, you should notice that your Files tab is now your project directory. You'll also see a file called my_project.Rproj in that directory.
+In the lower right corner of your RStudio session, you should notice that your Files tab is now your project directory. You'll also see a file called un-report.Rproj in that directory.
 
 From now on, you should start RStudio by double clicking on that file. This will make sure you are in the correct directory when you run your analysis.
 
@@ -145,16 +138,15 @@ We'd like to create a file where we can keep track of our R code.
 
 Back in the "File" menu, you'll see the first option is "New File". Selecting "New File" opens another menu to the right and the first option is "R Script". Select "R Script".
 
-TODO_fp: *Confirm paths with larger group/unix group*
 Now we have a fourth panel in the upper left corner of RStudio that includes an **Editor** tab with an untitled R Script. Let's save this file as `gdp_population.R` in our project directory.
 
 We will be entering R code into the **Editor** tab to run in our **Console** panel.
 
 On line 1 of `gdp_population.R`, type `2+2`.
 
-With your cursor on the line with the `2+2`, click the button that says "Run". You should be able to see that `2+2` was run in the Console.
+With your cursor on the line with the `2+2`, click the button that says <kbd>Run</kbd>. You should be able to see that `2+2` was run in the Console.
 
-As you write more code, you can highlight multiple lines and then click "Run" to run all of the lines you have selected.
+As you write more code, you can highlight multiple lines and then click <kbd>Run</kbd> to run all of the lines you have selected.
 
 Let's delete the line with 2+2 and replace it with `library(tidyverse)`.
 
@@ -164,11 +156,9 @@ Go ahead and run that line in the **Console** by clicking the <kbd>Run</kbd> but
 library(tidyverse)
 ```
 
-ZENA: *this what you were thinking for the messages?*
 > ## What's with all those messages???
 > 
 > When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
-TODO_link: *check link to R for data analysis lesson (above)* 
 
 > The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that: 
 
@@ -177,36 +167,36 @@ TODO_link: *check link to R for data analysis lesson (above)*
 > ~~~
 > {: .output}
 
-> This means that two different packages (`dyplr` from `tidyverse` and `stats` from base R) have a function named `filter()`. By default, R uses the function that was most recently loaded, so if we try using the `filter()` function after loading `tidyverse`, we will be using the `dyplr::filter()` function. 
+> This means that two different packages (`dyplr` from `tidyverse` and `stats` from base R) have a function named `filter()`. By default, R uses the function that was most recently loaded, so if we try using the `filter()` function after loading `tidyverse`, we will be using the `filter()` function from `dplyr()`. 
 >
 {: .callout}
 
 
-TODO_link: *add link to googling in conclusion "lesson"* curriculum/_episodes/06-conclusion.md
 > ## Hint / Pro-tip
 > 
 > Those of us that use R on a daily basis use cheat sheets to help us remember how to use various R functions. If you haven't already, print out the PDF versions of the cheat sheets that were in the setup instructions.
 >
 > You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2" and "Data Transformation with dplyr".
 >
-> For things that aren't on the cheat sheets, [Google is your best friend](broken link). Even expert coders use Google when they're stuck or trying something new! 
+> For things that aren't on the cheat sheets, [Google is your best friend](../_episodes/06-conclusion.md). Even expert coders use Google when they're stuck or trying something new! 
 >
 {: .testimonial}
 
 ---
 
 # Loading and reviewing data
+_[Back to top](#contents)_
 
-We will import a subset file from the gapminder dataset called `gapminder_1997.csv`. There are many ways to import data into R but for your first plot we will use RStudio's file menu to import and display this data. As we move through this process, RStudio will translate these *point and click* commands into code for us.
+We will import a subsetted file from the gapminder dataset called `gapminder_1997.csv`. There are many ways to import data into R but for your first plot we will use RStudio's file menu to import and display this data. As we move through this process, RStudio will translate these *point and click* commands into code for us.
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
 TODO_fp: *Update <<data directory>> to match the directory structure from setup*
-The file is located in the directory <<data directory>>, click the "browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
+The file is located in the main directory, click the "Browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
 
 We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
 
-After you've imported your data, a table will getwopen in a new tab in the top left corner of RStudio. This is a quick way to browse your data to make sure everything looks like it has been imported correctly. To review the data, click on the new tab.
+After you've imported your data, a table will open in a new tab in the top left corner of RStudio. This is a quick way to browse your data to make sure everything looks like it has been imported correctly. To review the data, click on the new tab.
 
 We see that our data has 5 columns (variables).
 
@@ -224,9 +214,7 @@ Finally, take a look at the **Console** at the bottom left part of the RStudio s
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
 
-TODO_fp: *Check output - then edit all places where this is used again later in lesson*
 ```
-gapminder_1997 <- read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")
 gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 
 ```
@@ -278,7 +266,8 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > - You want your object names to be explicit and not too long.
 > - They cannot start with a number (2x is not valid, but x2 is).
 > - R is case sensitive, so for example, weight_kg is different from Weight_kg.
-> - There are some names that cannot be used because they are the names of fundamental functions in R (e.g., if, else, for, see [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html) for a complete list). If in doubt, check the help to see if the name is already in use.
+> - You cannot use spaces in the name.
+> - There are some names that cannot be used because they are the names of fundamental functions in R (e.g., if, else, for; see [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html) for a complete list). If in doubt, check the help to see if the name is already in use (`?function_name`).
 > - It's best to avoid dots (.) within names. Many function names in R itself have them and dots also have a special meaning (methods) in R and other programming languages.
 > - It is recommended to use nouns for object names and verbs for function names.
 > - Be consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. One popular style guide can be found through the [tidyverse](https://style.tidyverse.org/).
@@ -302,7 +291,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > {: .solution}
 {: .challenge}
 
-The next part of the command is `read_csv(file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv")`. This has a few different key parts. The first part is the `read_csv` function. You call a function in R by typing it's name followed by opening then closing parenthesis.  Let's try to run the function without anything inside the parenthesis.
+The next part of the command is `read_csv(file = "gapminder_1997.csv")`. This has a few different key parts. The first part is the `read_csv` function. You call a function in R by typing it's name followed by opening then closing parenthesis. Each function has a purpose, which is often hinted at by the name of the function. Let's try to run the function without anything inside the parenthesis.
 
 ```{r FunctionAlone}
 read_csv()
@@ -310,9 +299,9 @@ read_csv()
 
 ZENA: *reread functions section to see if it makes sense* 
 
-We get an error message! Don't panic! Error messages pop all the time, and can be super helpful in debugging code. 
+We get an error message. Don't panic! Error messages pop all the time, and can be super helpful in debugging code. 
 
-In this case, the message tells us "argument "file" is missing, with no defualt." Some functions like `read_csv` require additional pieces of information in order to do their job, we call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in. 
+In this case, the message tells us "argument "file" is missing, with no defualt." Many functions, including `read_csv`, require additional pieces of information to do their job. We call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in. 
 
 For example, when we loaded in our data, the command contained `file = "SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` inside the `read_csv()` function. Here `file` is the argument name, and `"SoftwareCarpentry/SoftwareCarpentry09_05/myData/gapminder_data.csv"` is the value we assigned to that argument. The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R dataframe with the data stored in that csv file. All that, with one short line of code! 
 
