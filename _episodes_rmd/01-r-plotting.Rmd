@@ -258,14 +258,14 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > Try to assign values to some objects and observe each object after you have assigned a new value. What do you notice? 
 >
 > ```{r Objects}
-> name <- "Ben" 
-> name
-> age <- 26
-> age 
-> name <- "Harry Potter" 
-> name
-> age
-> ```
+ name <- "Ben" 
+ name
+ age <- 26
+ age 
+ name <- "Harry Potter" 
+ name
+ age
+ ```
 > {: .source}
 >
 >> ## Solution
