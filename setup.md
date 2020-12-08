@@ -24,13 +24,13 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
 
 2. Run the installer and follow the steps below:
 
-   * **Information** 
+   * **Information**
       * Click on `Next` to get through the license screen.
 
-   * **Select Destination Location** 
+   * **Select Destination Location**
       * Click on `Next` to accept the default installation path of `C:\Program Files\Git`. (If a new version has been released, the number may change.)
 
-   * **Select Components** 
+   * **Select Components**
       * You may wish to check the box to create Desktop icons.  Please do not change the other selections. Click on `Next`.
 
    * **Select Start Menu Folder**
@@ -38,23 +38,23 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
 
    * **Choosing the default editor used by Git**
       * Select **Use the nano editor by default** from the dropdown menu -- NOTE: you may need to scroll _up_ in the list to find it. Click on `Next`.
-   
+
    * **Adjusting the name of the initial branch in new repositories**
       * Select **Let Git decide**
- 
+
    * **Adjusting your PATH environment**
       * Ensure that **Git from the command line and also from 3rd-party software** is selected and click on `Next`. (If you don't do this Git Bash will not work properly, requiring you to remove the Git Bash installation, re-run the installer and to select the **Git from the command line and also from 3rd-party software** option.)
 
    * **Choosing the SSH exeutable**
       * Keep the OpenSSH option (if it gives you an option to change that) and click on `Next`.
 
-   * **Choosing HTTPS transport backend** 
+   * **Choosing HTTPS transport backend**
       *Ensure that **Use the native Windows Secure Channel library** is selected and click on `Next`.
 
-   * **Configuring the line ending conversions** 
+   * **Configuring the line ending conversions**
       * Ensure that **Checkout Windows-style, commit Unix-style line endings** is selected and click on `Next`.
 
-   * **Configuring the terminal emulator to use with Git Bash** 
+   * **Configuring the terminal emulator to use with Git Bash**
       * Ensure that **Use Windows' default console window** is selected and click on `Next`.
 
    * **Choose the default behavior of 'git pull'**
@@ -68,7 +68,10 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
       * If you have an option to **Enable symbolic links**, ensure that it is selected as well.
       * Click on `Next`.
 
-   * **Configuring experimental options** 
+   * **Configuring extra options**
+      * Ensure that **Enable file system caching** is selected and click on `Next`.
+
+   * **Configuring experimental options**
       * Do _NOT_ enable experimental support for pseudo consoles.  Clicking `Next` here should start the installation with no further selection screens.
 
    * This should bring you to a screen where you can click `Finish`. Unless you are really interested, you should uncheck the box to view the release notes.
@@ -123,12 +126,12 @@ able to run it once downloaded and it will install properly.
 
 ### The Unix Shell
 
-The shell is a program that enables us to send commands to the computer and receive output. It is 
-also referred to as the terminal or command line.  For a Mac computer running macOS Mojave or 
-earlier releases, the default Unix Shell is Bash.  For a Mac computer running macOS Catalina or 
-later releases, the default Unix Shell is Zsh. 
+The shell is a program that enables us to send commands to the computer and receive output. It is
+also referred to as the terminal or command line.  For a Mac computer running macOS Mojave or
+earlier releases, the default Unix Shell is Bash.  For a Mac computer running macOS Catalina or
+later releases, the default Unix Shell is Zsh.
 
-Your default shell is available via the Terminal program within your Utilities folder.  To open 
+Your default shell is available via the Terminal program within your Utilities folder.  To open
 Terminal, try one of the following:
 
 * In Finder, select the Go menu, then select Utilities. Locate Terminal in the Utilities folder and open it.
@@ -138,36 +141,36 @@ To see which Unix shell your Mac is running, type echo $SHELL in your terminal w
 
 ### Installing Git
 
-Git is a version control system that lets you track who made changes to what when and has options 
-for easily updating a shared or public version of your code on github.com. You will need a [supported web 
+Git is a version control system that lets you track who made changes to what when and has options
+for easily updating a shared or public version of your code on github.com. You will need a [supported web
 browser](https://help.github.com/articles/supported-browsers/).
 
-You will need an account at [GitHub](https://github.com/) for parts of the Git lesson. Basic GitHub 
-accounts are free. We encourage you to create a GitHub account if you don't have one already. Please 
-consider what personal information you'd like to reveal. For example, you may want to review these 
+You will need an account at [GitHub](https://github.com/) for parts of the Git lesson. Basic GitHub
+accounts are free. We encourage you to create a GitHub account if you don't have one already. Please
+consider what personal information you'd like to reveal. For example, you may want to review these
 [instructions for keeping your email address private](https://help.github.com/articles/keeping-your-email-address-private/)
 provided at GitHub.
 
 Git may be installed on Macs as part of XCode.  To check whether git is installed, type
-`which git` in a Terminal and hit enter.  If installed, the installation path will print on the 
+`which git` in a Terminal and hit enter.  If installed, the installation path will print on the
 next line in your terminal.  The default installation path for Apple installed git is `/usr/bin/git`.
 
-If git is installed, you can see which version is installed by typing `git --version` into the 
+If git is installed, you can see which version is installed by typing `git --version` into the
 terminal and hitting enter.  If you receive an error regarding an `invalid active developer path`,
 you may need to (re-)install XCode.  Try doing this by typing `xcode-select --install` and enter
 in the Terminal.  The `git --version` command should then return the number of the installed
 version of git.
 
 You should have git version >=2.24.  If not, please install the latest
-version of Git for Mac by downloading and running the most recent "mavericks" installer from 
-[this list](http://sourceforge.net/projects/git-osx-installer/files/).  Because this installer is 
-not signed by the developer, you may have to right click (control click) on the .pkg file, click Open, 
-and click Open on the pop up window. After installing Git, there will not be anything in your 
-/Applications folder, as Git is a command line program. For older versions of OS X (10.5-10.8) use the 
+version of Git for Mac by downloading and running the most recent "mavericks" installer from
+[this list](http://sourceforge.net/projects/git-osx-installer/files/).  Because this installer is
+not signed by the developer, you may have to right click (control click) on the .pkg file, click Open,
+and click Open on the pop up window. After installing Git, there will not be anything in your
+/Applications folder, as Git is a command line program. For older versions of OS X (10.5-10.8) use the
 most recent available installer labelled "snow-leopard" [available here](http://sourceforge.net/projects/git-osx-installer/files/).
 
 ### Installing R
-[R](https://www.r-project.org/) is a programming language that is especially powerful for data 
+[R](https://www.r-project.org/) is a programming language that is especially powerful for data
 exploration, visualization, and statistical analysis. You will need a recent version of R (>= 4.0).
 Install R by downloading and running [this .pkg file](https://cran.r-project.org/bin/macosx/R-latest.pkg)
 from [CRAN](https://cran.r-project.org/index.html).
