@@ -12,9 +12,6 @@ title: Setup
 
 ## Windows installations
 
-Each of the following sections contains installation instructions.  Click the
-triangle to unfold each section as you get to it.
-
 ### Installing Bash
 
 Software Carpentry provides this video that walks through the process of
@@ -67,7 +64,9 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
       * Choose **Git Credential Manager Core** and click on `Next`.
 
    * **Configuring extra options** 
-      * Ensure that **Enable file system caching** is selected and click on `Next`.
+      * Ensure that **Enable file system caching** is selected.
+      * If you have an option to **Enable symbolic links**, ensure that it is selected as well.
+      * Click on `Next`.
 
    * **Configuring experimental options** 
       * Do _NOT_ enable experimental support for pseudo consoles.  Clicking `Next` here should start the installation with no further selection screens.
