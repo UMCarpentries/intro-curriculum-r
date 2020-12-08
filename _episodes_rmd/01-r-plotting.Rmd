@@ -239,64 +239,6 @@ In R terms, `gapminder_1997` is a named **object** that references or stores som
 
 Looking back at the command in our code file, the second thing we see is a `<-` symbol, which is the **assignment operator**. It assigns values generated or typed on the right to objects on the left. An alternative symbol that you might see used as an **assignment operator** is the `=` but it is clearer to only use `<-` for assignment. We use this symbol so often that RStudio has a keyboard short cut for it: <kbd>Alt</kbd>+<kbd>-</kbd> on Windows, and <kbd>Option</kbd>+<kbd>-</kbd> on Mac.
 
-TESTING
-> ## TESTING
-> test test test 
-> 
-> ```{r TESTING}
-name <- "Ben" 
-name
-```
-> {: .source}
-{: .challenge}
-
-> ## TESTING 2
-> test test test 
-> 
-> ```{r TESTING}
-name <- "Ben" 
-name
-> ```
-> {: .source}
-{: .challenge}
-
-> ## TESTING 3
-> test test test 
-> 
-```{r TESTING}
-name <- "Ben" 
-name
-```
-> {: .source}
-{: .challenge}
-
-> ## TESTING
-> test test test 
-> 
-> ```{r TESTING}
-name <- "Ben" 
-name
-```
-{: .challenge}
-
-> ## TESTING 2
-> test test test 
-> 
-> ```{r TESTING}
-name <- "Ben" 
-name
-> ```
-{: .challenge}
-
-> ## TESTING 3
-> test test test 
-> 
-```{r TESTING}
-name <- "Ben" 
-name
-```
-{: .challenge}
-
 
 > ## Exercise: Assigning values to objects
 > Try to assign values to some objects and observe each object after you have assigned a new value. What do you notice? 
