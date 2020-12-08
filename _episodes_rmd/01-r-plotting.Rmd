@@ -25,7 +25,6 @@ keypoints:
 
 *Key of notes to editors:* 
 TODO - things that still need to be completed
-ZENA - areas Maya has edited/added and wants Zena to read over and edit 
 TODO_fp - "File path to dos" - places to check/create file paths 
 TODO_link - add link between lessons
 
@@ -34,7 +33,6 @@ source("../bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
-TODO: *confirm all headers are in table of contents* 
 ### Contents
 1. [Introduction to R and RStudio](#introduction-to-r-and-rstudio)
 1. [Loading and reviewing data](#loading-and-reviewing-data)
@@ -191,7 +189,6 @@ We will import a subsetted file from the gapminder dataset called `gapminder_199
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
-TODO_fp: *Update <<data directory>> to match the directory structure from setup*
 The file is located in the main directory, click the "Browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
 
 We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
@@ -332,7 +329,7 @@ sum(5, 6)
 > ## Exercise: Learning more about functions
 > Look up the function `round`. What does it do? What will you get as output for the following lines of code?
 >
-> ```{r Objects}
+> ```{r Objects, eval = FALSE}
 > round(3.1415)
 > round(3.1415,3)
 > ```
@@ -653,7 +650,19 @@ Hmm. This doesn't look right. By setting the color value, we got a line for each
 
 Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
 
-TODO: Add exercise about line plot with population and/or GDP instead of year
+> Exercise: More line plots
+> Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007? 
+
+> > ## Solution
+> > ```{r}
+> > ggplot(data = gapminder_data) +
+> >  aes(x = pop, y = lifeExp, group = country, color = continent) +
+> >  geom_line()
+> > ```
+> > (China and India are the two Asian countries that have experience massive population growth from 1952-2007.)
+> {: .solution}
+{: .challenge}
+
 
 ## Discrete Plots
 _[Back to top](#contents)_
@@ -670,12 +679,20 @@ ggplot(data = gapminder_1997) +
 
 This type of visualization makes it easy to compare the range and spread of values across groups. The "middle" 50% of the data is located inside the box and outliers that are far away from the central mass of the data are drawn as points.
 
-TODO: Add solution to exercise
 
 > ## Exercise: 
-> Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other funtions 
+> Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other funtions. 
 >
+> > ## Example solution
+> > ```{r GapBox}
+> > ggplot(data = gapminder_1997) +
+> >   aes(x = continent, y = lifeExp) +
+> >   geom_violin()
+> > ```
+> {: .solution}
 {: .challenge}
+
+
 
 ## Layers
 _[Back to top](#contents)_
@@ -759,7 +776,6 @@ Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(con
 >
 {: .callout}
 
-TODO: Add exercise about changing the transparency of the violin plot 
 
 ## Color vs. Fill
 _[Back to top](#contents)_
@@ -791,9 +807,23 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 
 > ## Exercise: choosing a color 
 >  Use `sample(colors(), size = 10)` a few times until you get an interesting sounding color name and swap that out for "darkolivegreen" in the violin plot example.
+> 
 {: .challenge}
 
-> ## Challenge
+> ## Exercise: transparency
+> Another aesthetic that can be changed is how transparent our colors/fills are. The `alpha` parameter decides how transparent to make the colors. By default, `alpha = 1`, and our colors are completely opaque. Decreaing `alpha` increases the transparancy of our colors/fills. Try changing the transparency of our violin plot. (**Hint:** Should alpha be inside or outside `aes()`?)
+> > ## Solution
+> > ```{r GapViolinFill}
+> > ggplot(data = gapminder_1997) +
+> >   aes(x = continent, y = lifeExp) +
+> >   geom_violin(fill="darkblue", alpha = 0.5)
+> > ```
+> {: .solution}
+{: .challenge}
+
+
+
+> ## Exercise (optional): changing colors 
 > What happens if you run: 
 > ```{r GapViolinAesFillMap}
 >  ggplot(data = gapminder_1997) +
@@ -829,10 +859,16 @@ ggplot(gapminder_1997) +
 
 Try different values like 5 or 50 to see how the plot changes.
 
-TODO: Add solution to exercise.
-
 > ## Exercise: One variable plots 
 > Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continous values. If you want to try the discrete options, try mapping `continent` to x instead.
+>
+> > ## Example solution
+> > ```{r GapLifeHistBins}
+> > ggplot(gapminder_1997) +
+> >   aes(x = lifeExp) +
+> >   geom_density()
+> > ```
+> {: .solution}
 {: .challenge}
 
 ## Plot Themes
@@ -862,11 +898,22 @@ A better option if you will be running your code as a script from the command li
 ggsave("awesome_plot.jpg", width=6, height=4)
 ```
 
-TODO: Add solution
-
 > ## Exercise: Saving a plot
 > 
 > Try rerunning one of your plots and then saving it using `ggsave()`. Find and open the plot to see if it worked!
+> 
+> > ## Example solution
+> > ```{r savingPlotExercise}
+> > ggplot(gapminder_1997) +
+> >   aes(x = lifeExp) +
+> >   geom_histogram(bins = 20)+
+> >   theme_classic()
+> > 
+> > ggsave("awesome_histogram.jpg", width=6, height=4)
+> > ```
+> > 
+> > Check your current working directory to find the plot! 
+> {: .solution}
 {: .challenge}
 
 You also might want to just temporarily save a plot while you're using R, so that you can come back to it later. Luckily, a plot is just an object, like any other object we've been working with! Let's try storing our violin plot from earlier in an object called `violin_plot`: 
@@ -901,10 +948,20 @@ We can also save any plot object we have named, even if they were not the plot t
 ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 ```
 
-TODO: Add solution
-
 > ## Exercise: create and save a plot
 > Now try it yourself! Create your own plot using `ggplot()`, store it in an object named `my_plot`, and save the plot using `ggsave()`. 
+> 
+> > ## Example solution
+> > ```{r}
+> > my_plot <- ggplot(data = gapminder_1997)+
+> >   aes(x = continent, y = gdpPercap)+
+> >   geom_boxplot(fill = "orange")+
+> >   theme_bw()+
+> >   labs(x = "Continent", y = "GDP Per Capita")
+> > 
+> > ggsave("my_awesome_plot.jpg", plot = my_plot, width=6, height=4)
+> > ```
+> {: .solution}
 {: .challenge}
 
 
@@ -942,6 +999,7 @@ ggplot(gapminder_1997) +
 Unlike the `facet_wrap` output where each box got it's own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
 
 ## Animated plots
+_[Back to top](#contents)_
 
 Sometimes it can be cool (and useful) to create animated graphs, like [this famous one](https://www.youtube.com/watch?v=FTu4dDHpfdU&feature=youtu.be) by Hans Rosling using the Gapminder dataset that plots GDP vs. Life Expectancy over time. Let's try to recreate this plot! 
 
