@@ -27,60 +27,57 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
 
 2. Run the installer and follow the steps below:
 
-   * Click on `Next` to get through the license screen.
+   * **Information** 
+      * Click on `Next` to get through the license screen.
 
-   * Click on `Next` to accept the default installation path of
-   `C:\Program Files\Git`. (If a new version has been released,
-   the number may change.)
+   * **Select Destination Location** 
+      * Click on `Next` to accept the default installation path of `C:\Program Files\Git`. (If a new version has been released, the number may change.)
 
-   * On the Select Components screen, you may wish to check the box to
-   create Desktop icons.  Please do not change the other selections.
-   Click `Next`.
+   * **Select Components** 
+      * You may wish to check the box to create Desktop icons.  Please do not change the other selections. Click on `Next`.
 
-   * Click on `Next` to accept `Git` as the name of the Start Menu folder.
+   * **Select Start Menu Folder**
+      * Click on `Next` to accept `Git` as the name of the Start Menu folder.
 
-   * On the **Choosing the default edit used by Git** panel, please select
+   * **Choosing the default editor used by Git**
+      * Select **Use the nano editor by default** from the dropdown menu -- NOTE: you may need to scroll _up_ in the list to find it. Click on `Next`.
+   
+   * **Adjusting the name of the initial branch in new repositories**
+      * Select **Let Git decide**
+ 
+   * **Adjusting your PATH environment**
+      * Ensure that **Git from the command line and also from 3rd-party software** is selected and click on `Next`. (If you don't do this Git Bash will not work properly, requiring you to remove the Git Bash installation, re-run the installer and to select the **Git from the command line and also from 3rd-party software** option.)
 
-   * from the dropdown menu **Use the nano editor by default** -- you may
-   need to scroll _up_ in the list to find it.  Click on `Next`.
+   * **Choosing the SSH exeutable**
+      * Keep the OpenSSH option (if it gives you an option to change that) and click on `Next`.
 
-   * Ensure that **Git from the command line and also from 3rd-party
-   software** is selected and click on `Next`. (If you don't do this Git
-   Bash will not work properly, requiring you to remove the Git Bash
-   installation, re-run the installer and to select the **Git from the
-   command line and also from 3rd-party software** option.)
+   * **Choosing HTTPS transport backend** 
+      *Ensure that **Use the native Windows Secure Channel library** is selected and click on `Next`.
 
-   * Keep the OpenSSH option if it gives you an option to change that.
+   * **Configuring the line ending conversions** 
+      * Ensure that **Checkout Windows-style, commit Unix-style line endings** is selected and click on `Next`.
 
-   * Ensure that **Use the native Windows Secure Channel library** is
-   selected and click on `Next`.
+   * **Configuring the terminal emulator to use with Git Bash** 
+      * Ensure that **Use Windows' default console window** is selected and click on `Next`.
 
-   * Ensure that **Checkout Windows-style, commit Unix-style line endings**
-   is selected and click on `Next`.
+   * **Choose the default behavior of 'git pull'**
+      * Select **Default (fast-forward or merge)** and click on `Next`.
 
-   * Ensure that **Use Windows' default console window** is selected and
-   click on `Next`.
+   * **Choose a credential manager**
+      * Choose **Git Credential Manager Core** and click on `Next`.
 
-   * Choose the **Default behavior of git pull** to be **Default (fast-forward
-   or merge)**.
+   * **Configuring extra options** 
+      * Ensure that **Enable file system caching** is selected and click on `Next`.
 
-   * From **Choose a credential manager**, choose **Git Credential Manager
-   Core**.
+   * **Configuring experimental options** 
+      * Do _NOT_ enable experimental support for pseudo consoles.  Clicking `Next` here should start the installation with no further selection screens.
 
-   * Ensure that **Enable file system caching** is selected
-
-   * Do _NOT_ enable experimental support for pseudo consoles.  Clicking
-   `Next` here should start the installation with no further selection
-   screens.
-
-   * This should bring you to a screen where you can click `Finish`.
-   Unless you are really interested, you should uncheck the box to view
-   the release notes.
+   * This should bring you to a screen where you can click `Finish`. Unless you are really interested, you should uncheck the box to view the release notes.
 
 3. If your `HOME` environment variable is not set (or you don't know
    what this is), then
 
-    * Open command prompt (Open Start Menu then type cmd and press [Enter])
+    * Open command prompt (In the Windows search box, type cmd and press [Enter])
 
     * Type the following line into the command prompt window exactly as shown:
     ```
@@ -215,4 +212,3 @@ dnf install R
 You will need to install RStudio using the instruction found at the [RStudio
 page](https://www.rstudio.com/products/rstudio/download/#download) that are
 appropriate for your Linux.
-
