@@ -238,46 +238,53 @@ This is called _paired programming_.
 Don't worry if you don't finish all of the exercises, and it's not a race between groups! 
 This is just a way for you to practice what you've learned.
 
-**One note:** It may be helpful to copy and paste the questions into the R markdown file as you go.
+**One note:** It may be helpful to copy and paste the questions into the R Markdown file as you go.
+
+
+TODO: *check if numbers reset after solution blocks*
+TODO: *make sure r code works in solution blocks* 
 
 ### Exercises using the gapminder data
 
-TODO: *check format of code in exercises* 
 First we're going to start out with a few questions about the gapminder dataset.
 
-1. The very first step is to read in the gapminder dataset, so do don't forget that step! Also load the `tidyverse` package.
+1. The very first step is to read in the gapminder dataset, so don't forget! Also load the `tidyverse` package.
 
-> Solution
-```{r}
-library(tidyverse)
-gapminder <- read_csv('data/gapminder_data.csv')
-```
+> ## Solution
+> ```{r}
+> library(tidyverse)
+> gapminder <- read_csv('data/gapminder_data.csv')
+> ```
 {: .solution}
 
 #### Investigating population over time.
 
 1. Make a scatter plot of year vs. population, separated into a plot for each contient. **HINT:** you can use `facet_wrap(~column_name)` to separate into different plots based on that column.
 
-> Solution
-```{r}
-ggplot(gapminder, aes(x=year,y=pop)) + geom_point() + facet_wrap(~continent)
-```
+> ## Solution
+> ```{r}
+> ggplot(gapminder, aes(x=year,y=pop)) + 
+> geom_point() + 
+> facet_wrap(~continent)
+> ```
 {: .solution}
 
 1. It seems like there are 2 outliers - which countries are those?
 
-> Solution
-```{r}
-gapminder %>% filter(pop > 1e9) %>% select(country) %>% unique()
-```
+> ## Solution
+>```{r}
+> gapminder %>% filter(pop > 1e9) %>% select(country) %>% unique()
+> ```
 {: .solution}
 
 1. Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries. 
 
-> Solution
-```{r}
-gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop)) + geom_point() + facet_wrap(~continent)
-```
+> ## Solution
+> ```{r}
+> gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop)) + 
+> geom_point() + 
+> facet_wrap(~continent)
+> ```
 {: .solution}
 
 
@@ -293,72 +300,84 @@ gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=y
 
 1. It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? HINT: This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
 
-> Solution
-```{r}
-gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop,group=country)) + geom_line() + facet_wrap(~continent) + theme(axis.text.x=element_text(angle=90))
-```
+> ## Solution
+> ```{r}
+> gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop,group=country)) + 
+> geom_line() + 
+> facet_wrap(~continent) + 
+> theme(axis.text.x=element_text(angle=90))
+> ```
 {: .solution}
 
 #### Looking into life expectancy a bit more.
 
 1. What country had the highest life expectancy in 1982? Hint: use the `slice_max` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
 
-> Solution
-```{r,comment=NA,echo=F,collapse=T}
-filter(gapminder, year==1982) %>% slice_max(lifeExp)
-```
+> ## Solution
+> ```{r,comment=NA,echo=F,collapse=T}
+> filter(gapminder, year==1982) %>% slice_max(lifeExp)
+> ```
 {: .solution}
 
 1. Now, do the same thing but for all years! *HINT:* Use the `group_by` function. 
 TODO: See if they learn `group_by`.
 
-> Solution
-```{r}
-gapminder %>% group_by(year) %>% select(country,year,lifeExp) %>% slice_max(lifeExp) %>% print(n=Inf)
-```
+> ## Solution
+> ```{r}
+> gapminder %>% group_by(year) %>% select(country,year,lifeExp) %>% slice_max(lifeExp) %>% print(n=Inf)
+> ```
 {: .solution}
 
 1. Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
 
-> Solution
-```{r,comment=NA,echo=F,collapse=T}
-gapminder %>% filter(continent=='Asia') %>% ggplot(aes(x=as.character(year),y=lifeExp)) + geom_boxplot() + ylab('Life expectancy') + xlab('')
-```
+> ## Solution
+> ```{r,comment=NA,echo=F,collapse=T}
+> gapminder %>% filter(continent=='Asia') %>% > ggplot(aes(x=as.character(year),y=lifeExp)) + 
+> geom_boxplot() + 
+> ylab('Life expectancy') + 
+> xlab('')
+> ```
 {: .solution}
 
 ##### Bonus questions: come back to these if you have time at the end
 
 1. What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
 
-> Solution
-```{r}
-gapminder %>% filter(continent == 'Asia') %>% group_by(year) %>% slice_min(lifeExp)
-```
+> ## Solution
+> ```{r}
+> gapminder %>% filter(continent == 'Asia') %>% group_by(year) %>% slice_min(lifeExp)
+> ```
 {: .solution}
 
 1. Make a boxplot for the life expectancies of the countries over time for each continent separately. Try to fix the x and y axis labels and text too. Feel free to change the theme if you'd like.
 
-> Solution
-```{r,comment=NA,echo=F,collapse=T}
-gapminder %>% ggplot(aes(x=as.character(year),y=lifeExp)) + geom_boxplot() + facet_wrap(~continent) + theme_bw() + theme(axis.text.x=element_text(angle=90)) + xlab('') + ylab('Life expectancy')
-```
+> ## Solution
+> ```{r,comment=NA,echo=F,collapse=T}
+> gapminder %>% ggplot(aes(x=as.character(year),y=lifeExp)) + 
+> geom_boxplot() + 
+> facet_wrap(~continent) + 
+> theme_bw() + 
+> theme(axis.text.x=element_text(angle=90)) + 
+> xlab('') + 
+> ylab('Life expectancy')
+> ```
 {: .solution}
 
 1. Which country has had the greatest increase in life expectancy from 1952 to 2007? _HINT:_ You might want to use the `pivot_wider` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy. 
 TODO: Move this to the end? 
 
-> Solution
-```{r,comment=NA,echo=F,collapse=T}
-filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeExp) %>% pivot_wider(names_from=year,values_from=lifeExp) %>% mutate(diff=`2007`-`1952`) %>% slice_max(diff)
-```
+> ## Solution
+> ```{r,comment=NA,echo=F,collapse=T}
+> filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeExp) %>% pivot_wider(names_from=year,values_from=lifeExp) %>% mutate(diff=`2007`-`1952`) %>% slice_max(diff)
+> ```
 {: .solution}
 
 1. What countries had a decrease in life expectancy from 1952 to 2007?
 
-> Solution
-```{r,comment=NA,echo=F,collapse=T}
-filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeExp) %>% pivot_wider(names_from=year,values_from=lifeExp) %>% mutate(diff=`2007`-`1952`) %>% filter(diff < 0)
-```
+> ## Solution
+> ```{r,comment=NA,echo=F,collapse=T}
+> filter(gapminder, year == 1952 | year == 2007) %>% select('country','year',lifeExp) %>% pivot_wider(names_from=year,values_from=lifeExp) %>% mutate(diff=`2007`-`1952`) %>% filter(diff < 0)
+> ```
 {: .solution}
 
 ### Exercises integrating a new dataset
@@ -422,17 +441,17 @@ Region/Country/Area,,Year,Series,Value,Footnotes,Source
 
 1. First, read in the data. Note that you need to skip the first line of the file because that's just a title for the whole dataset (see above). Also rename the columns to something more informative (as you learned, there are lots of ways to do this, and different preferences - feel free to use whichever method you want!).
 
-> Solution
-```{r}
-rnd <- read_csv('data/rnd-un-data.csv', skip = 1) %>% rename(country=X2) %>% rename_all(tolower)
-```
+> ## Solution
+> ```{r}
+> rnd <- read_csv('data/rnd-un-data.csv', skip = 1) %>% rename(country=X2) %>% rename_all(tolower)
+> ```
 {: .solution}
 
 1. Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
 
-> Solution
-```{r}
-rnd <- rnd %>% mutate(series=recode(series,
+> ## Solution
+> ```{r}
+> rnd <- rnd %>% mutate(series=recode(series,
                "Gross domestic expenditure on R & D: as a percentage of GDP (%)" = 'gdp_pct', 
 "Gross domestic expenditure on R & D: Business enterprises (%)" = 'business', 
 "Gross domestic expenditure on R & D: Government (%)" = 'government', 
@@ -440,15 +459,15 @@ rnd <- rnd %>% mutate(series=recode(series,
 "Gross domestic expenditure on R & D: Funds from abroad (%)" = 'abroad', 
 "Gross domestic expenditure on R & D: Not distributed (%)" = 'not_distributed', 
 "Gross domestic expenditure on R & D: Private non-profit (%)" = 'non_profit'))
-```
+> ```
 {: .solution}
 
 1. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This shoudl give you the following columns: conuntry name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
 
-> Solution
-```{r}
-rnd <- rnd %>% pivot_wider(names_from=series,values_from=value)
-```
+> ## Solution
+> ```{r}
+> rnd <- rnd %>% pivot_wider(names_from=series,values_from=value)
+> ```
 {: .solution}
 
 Note that there is a lot of missing data.  
@@ -459,26 +478,31 @@ Now we have our data set up in a way that makes it easier to work with. Feel fre
 
 1. Plot the distribution of percent expenditure using a histogram. Observe the range and how heavy the "tails" are. **Note:** you will likely get a note and a warning. Feel free to change the number of bins as the note describes. Why do you get warnings? (Hint: Look at the column you're plotting.). **Bonus:** Plot the same exact data in a way in which you don't get warnings. 
 
-> Solution
-```{r}
-rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=gdp_pct)) + geom_histogram(bins=30)
-```
+> ## Solution
+> ```{r}
+> rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=gdp_pct)) + 
+> geom_histogram(bins=30)
+> ```
 {: .solution}
 
 1. Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want. 
 
-> Solution
-```{r}
-rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) + geom_point(alpha=0.5) + xlab('')
-```
+> ## Solution
+> ```{r}
+> rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) + 
+> geom_point(alpha=0.5) + 
+> xlab('')
+> ```
 {: .solution}
 
 1. Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
 
-> Solution
-```{r}
-rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) + geom_violin() + xlab('')
-```
+> ## Solution
+> ```{r}
+> rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) + 
+> geom_violin() + 
+> xlab('')
+> ```
 {: .solution}
 
 ### Combining the CO2 and R&D datasets datasets together
@@ -489,66 +513,73 @@ Unfortunately, we don't have the exact same dates for all of them.
 
 1. First, read in the CO2 dataset. You can use the code from the [R for data analysis](_episodes/04-r-data-analysis.md) lesson to clean the C02 data.
 
-> Solution
-```{r}
-# read in and clean CO2 data
-co2 <- read_csv("data/co2-un-data.csv", skip=2,
+> ## Solution
+> ```{r}
+> # read in and clean CO2 data
+> co2 <- read_csv("data/co2-un-data.csv", skip=2,
 col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
 select(country, year, series, value) %>%
 mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
 "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
 pivot_wider(names_from=series, values_from=value)
-```
+> ```
 {: .solution}
 
 1. Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D. 
 
-> Solution
-```{r}
-co2_rnd <- full_join(co2, rnd) %>% select(country, year, total, per_capita, gdp_pct)
-```
+> ## Solution
+> ```{r}
+> co2_rnd <- full_join(co2, rnd) %>% select(country, year, total, per_capita, gdp_pct)
+> ```
 {: .solution}
 
 1. You might have noticed that we don't have both C02 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have bot C02 and R&D data.
 
-> Solution
-```{r}
-co2_rnd <- co2_rnd %>% filter(!is.na(total) & !is.na(gdp_pct))
-```
+> ## Solution
+> ```{r}
+> co2_rnd <- co2_rnd %>% filter(!is.na(total) & !is.na(gdp_pct))
+> ```
 {: .solution}
 
 1. How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out. 
 
-> Solution
-```{r}
-co2_rnd %>% group_by(year) %>% summarize(count=n()) 
-```
+> ## Solution
+> ```{r}
+> co2_rnd %>% group_by(year) %>% summarize(count=n()) 
+> ```
 {: .solution}
 
 #### Plotting with the CO2 and R&D datasets together
 
 1. Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
 
-> Solution
-```{r}
-ggplot(co2_rnd, aes(x=gdp_pct,y=per_capita)) + geom_point() + ylab('Per-capita CO2 emissiosn') + xlab('Percent of GDP spent on R&D')
-```
+> ## Solution
+> ```{r}
+> ggplot(co2_rnd, aes(x=gdp_pct,y=per_capita)) + 
+> geom_point() + 
+> ylab('Per-capita CO2 emissiosn') + 
+> xlab('Percent of GDP spent on R&D')
+> ```
 {: .solution}
 
 1. Next, facet the above plot by year.
 
-> Solution
-```{r}
-ggplot(co2_rnd, aes(x=gdp_pct,y=per_capita)) + geom_point() + ylab('Per-capita CO2 emissiosn') + xlab('Percent of GDP spent on R&D') + facet_wrap(~year)
-```
+> ## Solution
+> ```{r}
+> ggplot(co2_rnd, aes(x=gdp_pct,y=per_capita)) + 
+> geom_point() + 
+> ylab('Per-capita CO2 emissiosn') + 
+> xlab('Percent of GDP spent on R&D') + 
+> facet_wrap(~year)
+> ```
 {: .solution}
 
 1. Identify the countries that have 5 time points for both C02 emissions and R&D.
 
-> Solution
-```{r}
-co2_rnd %>% group_by(country) %>% summarize(count=n()) %>% filter(count==5)
-```
+> ## Solution
+> ```{r}
+> co2_rnd %>% group_by(country) %>% summarize(count=n()) %>% filter(count==5)
+> ```
 {: .solution}
 
 **BONUS**
@@ -557,10 +588,12 @@ co2_rnd %>% group_by(country) %>% summarize(count=n()) %>% filter(count==5)
 
 TODO: Fix names of colors?
 
-> Solution
-```{r}
-co2_rnd %>% filter(country %in% c('Azerbaijan','Cuba','Panama')) %>% pivot_longer(c(per_capita,gdp_pct)) %>% ggplot(aes(x=year,y=value,col=name)) + geom_point() + facet_wrap(~country)
-```
+> ## Solution
+> ```{r}
+> co2_rnd %>% filter(country %in% c('Azerbaijan','Cuba','Panama')) %>% pivot_longer(c(per_capita,gdp_pct)) %>% ggplot(aes(x=year,y=value,col=name)) + 
+> geom_point() + 
+> facet_wrap(~country)
+> ```
 {: .solution}
 
 
