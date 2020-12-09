@@ -330,7 +330,7 @@ sum(5, 6)
 > ## Exercise: Learning more about functions
 > Look up the function `round`. What does it do? What will you get as output for the following lines of code?
 >
-> ```{r Objects, eval = FALSE}
+> ```{r functionExercise, eval = FALSE}
 > round(3.1415)
 > round(3.1415,3)
 > ```
@@ -350,7 +350,7 @@ read_csv(file = 'gapminder_1997.csv')
 > ## Exercise: Position of the arguments in functions
 > Which of the following lines of code will give you an output of 3.14? For the one(s) that don't give you 3.14, what do they give you?
 >
-> ```{r Objects}
+> ```{r functionPositionExercise}
 > round(x = 3.1415)
 > round(x = 3.1415, digits = 2)
 > round(digits = 2, x = 3.1415)
@@ -386,7 +386,7 @@ To create our plot, we need to map variables from our `gapminder_1997` object to
 
 We are interested in whether there is a relationship between GDP and life expectancy, so let's start by telling our plot object that we want to map our GDP values to the x axis of our plot. We do this by adding (`+`) information to our plot object. Add this new line to your code and run both lines by highlighting them and pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard:
 
-```{r}
+```{r, ggplotX}
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap)
 ```
@@ -536,7 +536,7 @@ Good work! Take a moment to appreciate what a cool plot you made with a few line
 >
 >> ## Solution
 >> You'll want to use the `aes` aesthetic function to change the shape:
->> ```{r Color}
+>> ```{r Shape}
 >> ggplot(data = gapminder_1997) +
 >>   aes(x = gdpPercap) +
 >>   labs(x = "GDP Per Capita") +
@@ -655,7 +655,7 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 > Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007? 
 
 > > ## Solution
-> > ```{r}
+> > ```{r gapminderMoreLines}
 > > ggplot(data = gapminder_data) +
 > >  aes(x = pop, y = lifeExp, group = country, color = continent) +
 > >  geom_line()
@@ -685,7 +685,7 @@ This type of visualization makes it easy to compare the range and spread of valu
 > Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other funtions. 
 >
 > > ## Example solution
-> > ```{r GapBox}
+> > ```{r GapViol}
 > > ggplot(data = gapminder_1997) +
 > >   aes(x = continent, y = lifeExp) +
 > >   geom_violin()
@@ -814,7 +814,7 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > ## Exercise: transparency
 > Another aesthetic that can be changed is how transparent our colors/fills are. The `alpha` parameter decides how transparent to make the colors. By default, `alpha = 1`, and our colors are completely opaque. Decreaing `alpha` increases the transparancy of our colors/fills. Try changing the transparency of our violin plot. (**Hint:** Should alpha be inside or outside `aes()`?)
 > > ## Solution
-> > ```{r GapViolinFill}
+> > ```{r GapViolinFillSoln}
 > > ggplot(data = gapminder_1997) +
 > >   aes(x = continent, y = lifeExp) +
 > >   geom_violin(fill="darkblue", alpha = 0.5)
@@ -864,7 +864,7 @@ Try different values like 5 or 50 to see how the plot changes.
 > Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continous values. If you want to try the discrete options, try mapping `continent` to x instead.
 >
 > > ## Example solution
-> > ```{r GapLifeHistBins}
+> > ```{r GapLifeDens}
 > > ggplot(gapminder_1997) +
 > >   aes(x = lifeExp) +
 > >   geom_density()
@@ -953,7 +953,7 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 > Now try it yourself! Create your own plot using `ggplot()`, store it in an object named `my_plot`, and save the plot using `ggsave()`. 
 > 
 > > ## Example solution
-> > ```{r}
+> > ```{r createPlotSave}
 > > my_plot <- ggplot(data = gapminder_1997)+
 > >   aes(x = continent, y = gdpPercap)+
 > >   geom_boxplot(fill = "orange")+
@@ -1068,7 +1068,7 @@ Awesome! This is looking sweet! Let's make sure we understand the code above:
 
 So we've made this cool animated plot - how do we save it? For `gganimate` objects, we can use the `anim_save()` function. It works just like `ggsave()`, but for animated objects. 
 
-```{r}
+```{r, saveAnim}
 anim_save("hansAnimatedPlot.gif", plot = animatedHansPlot)
 ```
 
@@ -1085,11 +1085,11 @@ _[Back to top](#contents)_
 - Factor: a way of storing data to let R know the values are discrete so they get special treatment
 
 
-TODO: *Add as bonus topic or delete* 
+# Bonus topics we haven't expanded on yet
 
-# Extra ideas
+## Map plot
 
-PLOT MAYBE (map)
+```{r mapPlots}
 mapdata <- map_data("world") %>%
   mutate(region = recode(region,
                          USA="United States",
@@ -1102,4 +1102,5 @@ gapminder %>% filter(year==2007) %>%
   expand_limits(x = mapdata$long, y = mapdata$lat) +
   coord_map(projection = "mollweide", xlim = c(-180, 180)) +
   ggthemes::theme_map()
+```
 
