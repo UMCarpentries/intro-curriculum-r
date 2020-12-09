@@ -63,7 +63,7 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
    * **Choose a credential manager**
       * Choose **Git Credential Manager Core** and click on `Next`.
 
-   * **Configuring extra options** 
+   * **Configuring extra options**
       * Ensure that **Enable file system caching** is selected.
       * If you have an option to **Enable symbolic links**, ensure that it is selected as well.
       * Click on `Next`.
