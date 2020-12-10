@@ -1016,7 +1016,7 @@ library(gganimate)
 > 
 >> ## Solution
 >>
->> ```{r hansGraphStatic}
+>> ```{r hansGraphStaticSolution}
 >> ggplot(data = gapminder_data)+
 >>  aes(x = log(gdpPercap), y = lifeExp, size = pop, color = continent)+
 >>  geom_point() 
@@ -1027,7 +1027,7 @@ library(gganimate)
 > Before we start to animate our plot, let's make sure it looks pretty. Add some better axis and legend labels, change the plot theme, and otherwise fix up the plot so it looks nice. Then save the plot into an object called `staticHansPlot`. When you're ready, check out how we've edited our plot, below. 
 >
 >> ## A pretty plot (yours may look different)
->> ```{r hansGraphStaticPretty}
+>> ```{r hansGraphStaticPrettySolution}
 >> staticHansPlot <- ggplot(data = gapminder_data)+
 >>  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
 >>  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points 
