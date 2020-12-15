@@ -1,4 +1,4 @@
----
+awesome_plot.jpg---
 title: “The Unix Shell”
 teaching: 1hr15min
 exercises: n
@@ -61,7 +61,7 @@ Since then, I’ve learned that it’s just another way to navigate your compute
 For instance, you can use it to combine existing tools into a pipeline to automate analyses, you can write a script to do things for you and improve reproducibility, you can interact with remote machines and supercomputers that are far away from you, and sometimes it’s the only option for the program you want to run.
 
 We’re going to use it to:
-1. Organize our R code and plots from the R plotting lesson (**LINK**).
+1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html) (TODO: confirm correct link).
 1. Perform version control using git during the rest of the workshop.
 
 ## What the Shell looks like
@@ -202,10 +202,12 @@ ls
 {: .language-bash}
 
 ```
-fig1.pdf
-fig2.pdf
-gapminder.csv
-plotting.R
+awesome_plot.jpg
+awesome_violin_plot.jpg
+gapminder_1997.csv
+gapminder_data.csv
+gdp_population.R
+hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -245,10 +247,12 @@ ls my_project
 {: .language-bash}
 
 ```
-fig1.pdf
-fig2.pdf
-gapminder.csv
-plotting.R
+awesome_plot.jpg
+awesome_violin_plot.jpg
+gapminder_1997.csv
+gapminder_data.csv
+gdp_population.R
+hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -350,7 +354,7 @@ pwd
 
 ## Working with files and directories
 
-Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the R plotting lesson (**LINK**).
+Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html) (TODO: confirm correct link).
 You might ask: why would I use the command line when I could just use the GUI?
 My best response is that if you ever need to use a high-performance computing cluster (such as Great Lakes at the University of Michigan), you’ll have no other option.
 You might also come to like it more than clicking around to get places once you get comfortable, because it’s a lot faster!
@@ -376,10 +380,12 @@ ls
 ```
 {: .language-bash}
 ```
-fig1.pdf
-fig2.pdf
-gapminder.csv
-plotting.R
+awesome_plot.jpg
+awesome_violin_plot.jpg
+gapminder_1997.csv
+gapminder_data.csv
+gdp_population.R
+hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -390,20 +396,22 @@ If you’re interested in learning more about structuring computational biology 
 
 What do you think good would be a good way to organize our files?
 
-One way is the following (TODO: fix names):
+One way is the following (TODO: check names):
 ```
 .
 ├── code
-│   └── plotting.R
+│   └── gdp_population.R
 ├── data
-│   └── gapminder.csv
+│   ├── gapminder_1997.csv
+    └── gapminder_data.csv
 └── figures
-    ├── fig1.pdf
-    └── fig2.pdf
+    ├── awesome_plot.jpg
+    ├── awesome_violin_plot.jpg
+    └── hansAnimatedPlot.gif
 ```
 {: .language-bash}
 
-The R script goes in the code directory, the gapminder dataset goes in the data directory, and the figures go in the figures directory.
+The R script goes in the code directory, the gapminder datasets go in the data directory, and the figures go in the figures directory.
 This way, all of the files are organized into a clearer overall structure.
 
 A few notes about naming files and directories:
@@ -430,11 +438,13 @@ ls
 ```
 {: .language-bash}
 ```
+awesome_plot.jpg
+awesome_violin_plot.jpg
 code
-fig1.pdf
-fig2.pdf
-gapminder.csv
-plotting.R
+gapminder_1997.csv
+gapminder_data.csv
+gdp_population.R
+hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -455,7 +465,7 @@ Nothing in there yet, which is expected since we just made the directory.
 The next step is to move the `.R` file into the code directory. To do this, we use the `mv` command. The first argument after `mv` is the file you want to move, and the second argument is the place you want to move it:
 
 ```
-mv plotting.R code
+mv gdp_population.R code
 ```
 {: .language-bash}
 
@@ -466,21 +476,23 @@ ls
 ```
 {: .language-bash}
 ```
+awesome_plot.jpg
+awesome_violin_plot.jpg
 code
-fig1.pdf
-fig2.pdf
-gapminder.csv
+gapminder_1997.csv
+gapminder_data.csv
+hansAnimatedPlot.gif
 ```
 {: .output}
 
-`plotting.R` is no longer there! Where did it go? Let’s check the code directory, where we moved it to:
+`gdp_population.R` is no longer there! Where did it go? Let’s check the code directory, where we moved it to:
 
 ```
 ls code
 ```
 {: .language-bash}
 ```
-plotting.R
+gdp_population.R
 ```
 {: .output}
 
@@ -490,12 +502,13 @@ Great, now for an exercise:
 
 > ## Creating directories and moving files
 >
-> Create a `data` directory and move `gapminder.csv` into the newly created `data` directory.
+> Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
 > > ## Solution
 > > From the `my_project` directory:
 > >  ```
 > > mkdir data
-> > mv gapminder.csv data
+> > mv gapminder_data.csv data
+> > mv gapminder_1997.csv data
 > > ```
 > {: .solution}
 {: .challenge}
@@ -513,22 +526,22 @@ Next, we have to move the figures. But we have so many figures! It’d be annoyi
 
 One example of a wildcard is the asterisk, `*`. This special character is interpreted as "multiple characters of any kind".
 
-Let’s see how we can use a wildcard to list only files with the extension `.pdf`:
+Let’s see how we can use a wildcard to list only files with the extension `.jpg`:
 
 ```
-ls *.pdf
+ls *.jpg
 ```
 {: .language-bash}
 ```
-fig1.pdf
-fig2.pdf
+awesome_plot.jpg
+awesome_violin_plot.jpg
 ```
 {: .output}
 
-See how only the files ending in `.pdf` were listed? The shell expands the wildcard to create a list of matching file names before running the commands. Can you guess how we move all of these files at once to the figures directory?
+See how only the files ending in `.jpg` were listed? The shell expands the wildcard to create a list of matching file names before running the commands. Can you guess how we move all of these files at once to the figures directory?
 
 ```
-mv *.pdf figures
+mv *jpg figures
 ```
 {: .language-bash}
 
@@ -540,13 +553,13 @@ ls *
 {: .language-bash}
 ```
 code:
-plotting.R
+gdp_population.R
 
 data:
-gapminder.csv
+gapminder_1997.csv  gapminder_data.csv
 
 figures:
-fig1.pdf	fig2.pdf
+awesome_plot.jpg    awesome_violin_plot.jpg
 ```
 {: .output}
 
@@ -586,7 +599,7 @@ This output shows each directory name, followed by its contents on the next line
 
 To view and navigate the contents of a file we can use the command `less`. This will open a full screen view of the file.
 
-Here is what we should expect to see when running the command `less` on our `gapminder.csv` file:
+Here is what we should expect to see when running the command `less` on our `gapminder_data.csv` file:
 
 <img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/less_example.png"/>
 
@@ -664,13 +677,35 @@ Beyond viewing the content of files, we may want to be able to edit or write fil
 Since we moved around files when we organized our project directory we will have to update our R script. The path we use to read in our dataset is no longer correct. We will use nano to update the path to our new directory structure.
 
 ```
-TODO use nano to edit the path to read in gapminder data
+nano code/gdp_population.R
 ```
 {: .language-bash}
 
+```
+gapminder_data <- read_csv("data/gapminder_data.csv")
+```
+{: .output}
+
 Great! Now as an exercise we can change the paths to write out figures.
 
-TODO: add exercise to change figure output paths.
+> ## Editing file paths with nano
+>
+> Use nano to edit the file paths of the figures saved in `code/gdp_population.R` to match our new directory structure.
+> > ## Solution
+> > ```
+> > nano code/gdp_population.R
+> > ```
+> > {: .language-bash}
+> > Edit the lines in `code/gdp_population.R` where plots are saved:
+> >  ```
+> > ggsave("figures/awesome_plot.jpg", width=6, height=4)
+> > ggsave("figures/awesome_histogram.jpg", width=6, height=4)
+> > anim_save("figures/hansAnimatedPlot.gif", plot = animatedHansPlot)
+> > ```
+> > {: .output}
+> {: .solution}
+{: .challenge}
+TODO: Confirm figure output paths.
 
 ## Glossary of terms
 
