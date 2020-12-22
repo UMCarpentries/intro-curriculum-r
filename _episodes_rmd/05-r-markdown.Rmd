@@ -3,10 +3,34 @@ source: Rmd
 title: "Writing Reports with R Markdown"
 teaching: 0 
 exercises: 0
-questions: ""
-objectives: ""
-keypoints: ""
+questions: 
+- "How can I make reproducible reports using R Markdown?" 
+- "How do I format text using Markdown?"
+objectives: 
+- "To create a report in R Markdown that combines text, code, and figures."
+- "To use Markdown to format our report."
+- "To understand how to use R code chunks to include or hide code, figures, and messages." 
+- "To be aware of the various report formats that can be rendered using R Markdown." 
+- "To practice using the Unix Shell, Github, and R through paired programming exercises. "
+keypoints:
+  - "R Markdown is an easy way to create a report that integrates text, code, and figures."
+  - "Options such as `include` and `echo` determine what parts of an R code chunk are included in the R Markdown report. "
+  - "R Markdown can render HTML, PDF, and Microsoft Word outputs." 
 ---
+
+TODO: Complete Table of Contents and back to top links (for excercises)
+
+### Contents
+1. [Creating a reports directory](#creating-a-reports-directory)
+1. [Why use R Markdown?](#why-use-r-markdown?)
+1. [Creating an R Markdown file](#creating-an-r-markdown-file)
+1. [Basic components of R Markdown](#basic-components-of-r-markdown)
+    + [Header](#header)
+    + [Code chunks](#code-chunks)
+    + [Text](#text)
+1. [Starting the report](#starting-the-report)
+1. [Formatting](#formatting)
+1. [Integrating it all together: Paired exercise](#integrating-it-all-together:-paired-exercise)
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
@@ -16,50 +40,66 @@ knitr_fig_path("01-")
 Recall that our ultimate goal is to generate a report on how a country's life expectancy is related to GDP.
 
 ## Creating a reports directory
+_[Back to top](#contents)_
+
 
 Let's start by using the Unix Shell to create a directory within `un-report` called `reports` where we will write our reports to the UN.
 First, open the Unix Shell and `cd` to `un-report`
 
-```
+~~~
 pwd
 mkdir reports
-```
+~~~
+{: .source}
 
-```
+~~~
 /home/USERNAME/Desktop/un-report/reports/
-```
-TODO make this input and output look like SWC website.
+~~~
+{: .output}
 
-To start, I have a question for you:
-How do you usually share data analyses with your collaborators? 
-Many people share them through a Word document, a spreadsheet, slides, a  graphic, etc. 
+
+> ## Discusion 
+> How do you usually share data analyses with your collaborators? Many people share them through a Word document, a spreadsheet, slides, a  graphic, etc. 
+{: .discussion}
 
 ## Why use R Markdown?
+_[Back to top](#contents)_
+
+TODO: is reproducibility discussed somewhere? Add a link or more discussion here? 
 
 We're going to learn a way to create a report in R using something called R Markdown. 
 This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html or PDF file and share with others. 
 The text can be experimental methods, an analysis and discussion of the results, or whatever else you want to include.
-:We use this for writing reproducible analysis reports, publication, sharing work with collaborators, writing up homework, and keeping a computational notebook of our work, among other things.
-If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can even hide the code. 
 We call these types of reports *reproducible* reports because the code is embedded in the document and anyone can take the report and re-run the code to get the same output. 
-It's also useful because if you change any of your code or text because you found an error or want to modify the text or a figure, you can just re-run the report to get the updated output! 
+R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, and keeping a computational notebook of your work.
+If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can even hide the code. 
+It's also useful because if you find an error or want to modify the text or a figure, you can just change the code and re-run the R Markdown file to get the updated output! 
 
 R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures.
 
 ## Creating an R Markdown file
+_[Back to top](#contents)_
 
 Now that we have a better understanding of what we can use R Markdown files for, let's start writing a report!
 
-To create an R Markdown file: (TODO: Include screen shots or is that overkill? If you demo live, i (Jule) don't think you need screenshots.)
+To create an R Markdown file: 
 - Open RStudio
 - Go to File &rarr; New File &rarr; R Markdown
-- Give your document a title (Q for learners: what should we call it? - TODO: choose name - un-report? Maybe: "A UN Report on the Relationship between GDP and Life Expectancy") ## i think it is important to make clear here that this title is different from a file or directory name?
-- Keep the default output format as HTML. You need TeX installed if you want to generate PDF documents. (TODO: Add link to [how to install TeX](https://www.latex-project.org/get/)/[render PDFs](https://rmarkdown.rstudio.com/pdf_document_format.html%2F), general link on [R Markdown output formats](https://rmarkdown.rstudio.com/lesson-9.html))
+- Give your document a title, something like "A UN Report on the Relationship between GDP and Life Expectancy" (Note: this is not the same as the file name - it's just a title that will appear at the top of your report) 
+- Keep the default output format as HTML. 
 - R Markdown files always end in `.Rmd`
 
+> ## R Markdown Outputs
+> The default output for an R Markdown report is HTML, but you can also use R Markdown to [output other report formats](https://rmarkdown.rstudio.com/lesson-9.html). For example, you can generate PDF reports using R Markdown, but you must [install TeX](https://www.latex-project.org/get/) to do this. 
+> 
+{: .callout}
+
+
 ## Basic components of R Markdown
+_[Back to top](#contents)_
 
 ### Header
+_[Back to top](#contents)_
 
 The first part is a *header* at the top of the file between the lines of `---`. This contains instructions for R to specify the type of document to be created and options to choose (ex. title, author, date). These are in the form of key-value pairs (`key: value`; YAML).
 
@@ -75,6 +115,7 @@ output: html_document
 ```
 
 ### Code chunks
+_[Back to top](#contents)_
 
 The next section is a *code chunk*, or embedded R code, that sets up options for all code chunks. Here is the default when you create a new R Markdown file:
 
@@ -98,22 +139,24 @@ For instance, the first code block is named "setup", and `include=FALSE` prevent
 Inside the code chunk, you can put any R code that you want to run, and you can have as many code chunks as you want in your file.
 
 As we mentioned above, in the first code chunk you set options for the entire file. 
-`echo = TRUE` means that you want your code to be shown in the output file. 
-There are also many other options that you can change, but we won't go into those details in this workshop. 
-TODO: Check link on where we can learn more: [See here on code chunks in R Markdown](https://rmarkdown.rstudio.com/lesson-3.html)
+`echo = TRUE` means that you want your code to be shown in the output file. If you change this to `echo = FALSE`, then the code will be hidden and only the output of the code chunks will be seen in the output file. 
+There are also [many other options that you can change](https://rmarkdown.rstudio.com/lesson-3.html), but we won't go into those details in this workshop. 
+
 
 ### Text
+_[Back to top](#contents)_
 
 Finally, you can include text in your R Markdown file. 
 This is any text or explanation you want to include, and it's formatted with Markdown. 
 We'll learn more about Markdown formatting soon!
 
 ## Starting the report
+_[Back to top](#contents)_
 
-First, let's delete everything below the setup code chunk.
+Let's return to the new R Markdown file you created and delete everything below the setup code chunk. (That stuff is just examples and reminders of how to use R Markdown.)
 
 Next, let's save our R markdown file to the `reports` directory. 
-You can do this by clicking the save icon in the top left. 
+You can do this by clicking the save icon in the top left or using <kbd>control</kbd> + <kbd>s</kbd> (<kbd>command</kbd> + <kbd>s</kbd>  on a Mac). 
 
 There's one other thing that we need to do before we get started with our report.
 To render our documents into html format, we can "knit" them in R Studio. 
@@ -124,10 +167,10 @@ Now it will assume all of your relative paths for reading and writing files are 
 
 Now that we have that set up, let's start on the report!
 
-We're going to use the code you generated yesterday to plot GDP vs Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to library the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference. We can specify `include=FALSE` like the setup chuck so we dont see the messages from loading packages in the report output. 
+We're going to use the code you generated yesterday to plot GDP vs Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to library the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference. 
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r packages, include=FALSE}\n')
+cat('```{r packages}\n')
 cat('library(tidyverse)\n')
 cat('```\n')
 ```
@@ -158,8 +201,7 @@ cat('ggplot(data = gapminder_1997) + \n
 cat('```\n')
 ```
 
-Now we can knit our document to see how our report looks
-TODO: add in using the knit button and changing knit directory or rmarkdown::render('file.rmd', output_dir = "dirpath/")
+Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd> button in the top left of the screen. 
 
 ![](../fig/r-markdown/first_report_render.png)
 
@@ -169,7 +211,7 @@ TODO: check below instructions for pushing to GitHub
 Now all we need to do is commit our recent changes and update our remote repository using Git.
 
 Returning to the command line, type
-`git status` ##to get an idea of which files just changed`
+`git status` ##to get an idea of which files just changed
 `git add <filename(s)>` ##to add any file(s) that you just created and that are not yet version controlled
 `git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
 `git push` ##to update your changes to the git directory on the remote server
@@ -187,7 +229,7 @@ cat('library(tidyverse)\n')
 cat('```\n')
 ```
 
-We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk, too?
+We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change. 
 
 ![](../fig/r-markdown/includeFalse.png)
 
@@ -208,25 +250,38 @@ When we knit this again, we can see the plot again!
 ![](../fig/r-markdown/echoFalse.png)
 Now that we have a report we are happy with, let's push the changes to GitHub. 
 
-TODO: Add a list of conclusions, possibly with some bold/italicized text to the end to learn more Markdown formatting. 
-
-## Integrating it all together: Paired exercise
-
 ## Formatting
+_[Back to top](#contents)_
+
 Now that we know how to create a report, we might want to format it in a way that structures our thought process in a useful way (e.g., sections) and makes it visually appealing.
 Markdown is a very simple programming language when it comes to syntax.
-Let's try to figure out some syntax together. What would be a formatting style you might want to use?
-Cool, let's google "this student example" together (e.g., how create sections by using headers and subheaders).
+Let's try to figure out some syntax together. Suppose we wanted to create sections in our report. 
 
-See, we can easily create headers and subheaders by using the `#` pound/hash sign.
+> ## Exercise: R Markdown headers
+> Try googling how to create sections by using headers and subheaders using R Markdown. What do you find? 
+> 
+> > ## Solution
+> > We can easily create headers and subheaders by using the `#` pound/hash sign. Our main headers have one `#` (e.g. `# Main Header Here`) and to create subheaders we add additinal `#`s (e.g. `## First subheader` and `### Second subheader`)
+> {: .solution}
+{: .challenge}
 
 OK, now that we know how to make headers, let's practice some more Markdown syntax.
 
-Go ahead and do some online searches on how to do the following:
+> ## Exercise: R Markdown syntax 
+> Go ahead and do some online searches on how to do the following:
+> * create a bullet point list with three items
+> * as the first item, write the name of your currently favorite programming language in bold
+> * as the second item, write  the name of a function you have so far found most useful in italics
+> * as the third item, write one thing you want to learn next on your programming journey in bold and italics
+> * turn your bullet point list into a numbered list
+> * create a fourth list item and find an online guide and/or cheat sheet for basic Markdown syntax, write its name down here and hyperlink its url 
+> 
+> > ## Solution
+> > [This link](https://rmarkdown.rstudio.com/authoring_basics.html) has some helpful basic R Markdown syntax. 
+> {: .solution}
+{: .challenge}
 
-* create a bullet point list with three items
-* as the first item, write the name of your currently favorite programming language in bold
-* as the second item, write  the name of a function you have so far found most useful in italics
-* as the third item, write one thing you want to learn next on your programming journey in bold and italics
-* turn your bullet point list into a numbered list
-* create a fourth list item and find an online guide and/or cheat sheet for basic Markdown syntax, write its name down here and hyperlink its url 
+
+
+## Integrating it all together: Paired exercise
+_[Back to top](#contents)_
