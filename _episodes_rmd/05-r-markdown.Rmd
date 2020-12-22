@@ -211,6 +211,7 @@ Now that we have a report we are happy with, let's push the changes to GitHub.
 TODO: Add a list of conclusions, possibly with some bold/italicized text to the end to learn more Markdown formatting. 
 
 ## Integrating it all together: Paired exercise
+_[Back to top](#contents)_
 
 You've learned so much in the past two days - how to use the Unix Shell to move around your computer, how to use git for version control and GitHub for collaborating with others on code, how to make pretty plots and do data analysis in R, and how to incorporate it all into a report. 
 Now, you're going to work in pairs to practice everything you learned. Ideally, you'll have the same pair as for the git/GitHub lesson.
@@ -245,6 +246,7 @@ TODO: *check if question numbers reset after solution blocks*
 TODO: *make sure r code works in solution blocks* 
 
 ### Exercises using the gapminder data
+_[Back to top](#contents)_
 
 First we're going to start out with a few questions about the gapminder dataset.
 
@@ -258,6 +260,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 {: .solution}
 
 #### Investigating population over time.
+_[Back to top](#contents)_
 
 1. Make a scatter plot of year vs. population, separated into a plot for each contient. **HINT:** you can use `facet_wrap(vars(column_name))` to separate into different plots based on that column.
 
@@ -289,6 +292,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 
 
 ##### Bonus questions: come back to these if you have time at the end
+_[Back to top](#contents)_
 
 1. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do it!
 
@@ -313,6 +317,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 {: .solution}
 
 #### Looking into life expectancy a bit more.
+_[Back to top](#contents)_
 
 1. What country had the highest life expectancy in 1982? **Hint:** use the `slice_max()` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
 
@@ -342,6 +347,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 {: .solution}
 
 ##### Bonus questions: come back to these if you have time at the end
+_[Back to top](#contents)_
 
 1. What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
 
@@ -382,6 +388,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 {: .solution}
 
 ### Exercises integrating a new dataset
+_[Back to top](#contents)_
 
 **If you finished the questions involving the gapminder datset (Bonus questions are optional), move on to these questions next. Note that we don't expect you to finish all of these! You can also use them as practice after the workshop if you'd like.**
 
@@ -393,6 +400,7 @@ TODO:
 - [ ] check with R plotting and stats to make sure the contents has been covered before the exercises
 
 #### Preview of the data
+_[Back to top](#contents)_
 
 This dataset has information on the gross domestic expenditure on research and development (R&D) for different countries. We're going to use it to practice the data analysis workflow that you learned over the course of the workshop.
 
@@ -424,6 +432,7 @@ Region/Country/Area,,Year,Series,Value,Footnotes,Source
 ```
 
 #### Reading in and cleaning the data
+_[Back to top](#contents)_
 
 1. First, read in the data. Note that you need to skip the first line of the file because that's just a title for the whole dataset (see above). Also rename the columns to something more informative (as you learned, there are lots of ways to do this, and different preferences - feel free to use whichever method you want!).
 
@@ -461,6 +470,7 @@ Note that there is a lot of missing data.
 Now we have our data set up in a way that makes it easier to work with. Feel free to clean up the data more before moving on to the next step if you'd like.
 
 #### Plotting with the R & D dataset
+_[Back to top](#contents)_
 
 1. Plot the distribution of percent expenditure using a histogram. Observe the range and how heavy the "tails" are. **Note:** You will likely get a note and a warning. Feel free to change the number of bins as the note describes. Why do you get warnings? (Hint: Look at the column you're plotting.). **Bonus:** Plot the same exact data in a way in which you don't get warnings. 
 
@@ -492,6 +502,7 @@ Now we have our data set up in a way that makes it easier to work with. Feel fre
 {: .solution}
 
 ### Combining the CO2 and R&D datasets
+_[Back to top](#contents)_
 
 Now we're going to work with the CO2 and R&D datasets together. 
 
@@ -538,6 +549,7 @@ TODO: *check if `is.na()` and ! (not operator) are introduced in R for data anal
 {: .solution}
 
 #### Plotting with the CO2 and R&D datasets together
+_[Back to top](#contents)_
 
 1. Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
 
@@ -587,6 +599,7 @@ TODO: *check if r for data anlaysis teaches `%in%` and `c()`*
 
 
 #### Bonus questions
+_[Back to top](#contents)_
 
 1. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
 
