@@ -491,7 +491,7 @@ Now we have our data set up in a way that makes it easier to work with. Feel fre
 > ```
 {: .solution}
 
-### Combining the CO2 and R&D datasets datasets together
+### Combining the CO2 and R&D datasets
 
 Now we're going to work with the CO2 and R&D datasets together. 
 
