@@ -5,29 +5,29 @@ source: Rmd
 title: "R for Plotting"
 teaching: 120
 exercises: 30
-questions: 
-- "What are R and R Studio?" 
+questions:
+- "What are R and R Studio?"
 - "How do I read data into R?"
 - "What are geometries and aesthetics?"
-- "How can I use R to create and save professional data visualizations?" 
-objectives: 
+- "How can I use R to create and save professional data visualizations?"
+objectives:
 - "To become oriented with R and R Studio."
 - "To be able to read in data from csv files."
 - "To create plots with both discrete and continuous variables."
-- "To understand mapping and layering using `ggplot2`." 
-- "To be able to modify a plot's color, theme, and axes labels." 
-- "To be able to save plots to a local directory." 
-keypoints: 
-- "R is a free programming language used by many for reproducible data analysis." 
+- "To understand mapping and layering using `ggplot2`."
+- "To be able to modify a plot's color, theme, and axes labels."
+- "To be able to save plots to a local directory."
+keypoints:
+- "R is a free programming language used by many for reproducible data analysis."
 - "Use `read_csv` to read tabular data in R."
 - "Geometries are the visual elements drawn on data visualizations (lines, points, etc.), and aesthetics are the visual properties of those geometries (color, position, etc.)."
-- "Use `ggplot()` and geoms to create data visualizations, and save them using `ggsave()`." 
+- "Use `ggplot()` and geoms to create data visualizations, and save them using `ggsave()`."
 
 ---
 
-*Key of notes to editors:* 
+*Key of notes to editors:*
 TODO - things that still need to be completed
-TODO_fp - "File path to dos" - places to check/create file paths 
+TODO_fp - "File path to dos" - places to check/create file paths
 TODO_link - add link between lessons
 
 
@@ -75,7 +75,7 @@ To make your life in R easier, there is a great (and free!) program called RStud
 > ## Exercise
 > Can you think of a reason you might not want to use RStudio?
 >
->> ## Solution: 
+>> ## Solution:
 >> On some high-performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](https://arc-ts.umich.edu/greatlakes/user-guide/#document-3) to run RStudio on Great Lakes.
 > {: .solution}
 {: challenge}
@@ -147,7 +147,7 @@ As you write more code, you can highlight multiple lines and then click <kbd>Run
 
 Let's delete the line with 2+2 and replace it with `library(tidyverse)`.
 
-Go ahead and run that line in the **Console** by clicking the <kbd>Run</kbd> button on the top right of the **Editor** tab and choosing <kbd>Run Selected Lines</kbd>. This loads a set of useful functions and sample data that makes it easier for us to do complex analyses and create professional visualizations in R. 
+Go ahead and run that line in the **Console** by clicking the <kbd>Run</kbd> button on the top right of the **Editor** tab and choosing <kbd>Run Selected Lines</kbd>. This loads a set of useful functions and sample data that makes it easier for us to do complex analyses and create professional visualizations in R.
 
 
 ~~~
@@ -158,52 +158,52 @@ library(tidyverse)
 
 
 ~~~
-── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
+── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ~~~
 {: .output}
 
 
 
 ~~~
-[32m✔[39m [34mggplot2[39m 3.3.2     [32m✔[39m [34mpurrr  [39m 0.3.4
-[32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
-[32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
-[32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
+✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+✔ tibble  3.0.4     ✔ dplyr   1.0.2
+✔ tidyr   1.1.2     ✔ stringr 1.4.0
+✔ readr   1.4.0     ✔ forcats 0.5.0
 ~~~
 {: .output}
 
 
 
 ~~~
-── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
-[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
-[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
 ~~~
 {: .output}
 
 > ## What's with all those messages???
-> 
+>
 > When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
 
-> The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that: 
+> The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that:
 
 > ~~~
 > dplyr::filter() masks stats::filter()
 > ~~~
 > {: .output}
 
-> This means that two different packages (`dyplr` from `tidyverse` and `stats` from base R) have a function named `filter()`. By default, R uses the function that was most recently loaded, so if we try using the `filter()` function after loading `tidyverse`, we will be using the `filter()` function from `dplyr()`. 
+> This means that two different packages (`dyplr` from `tidyverse` and `stats` from base R) have a function named `filter()`. By default, R uses the function that was most recently loaded, so if we try using the `filter()` function after loading `tidyverse`, we will be using the `filter()` function from `dplyr()`.
 >
 {: .callout}
 
 
 > ## Hint / Pro-tip
-> 
+>
 > Those of us that use R on a daily basis use cheat sheets to help us remember how to use various R functions. If you haven't already, print out the PDF versions of the cheat sheets that were in the setup instructions.
 >
 > You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2" and "Data Transformation with dplyr".
 >
-> For things that aren't on the cheat sheets, [Google is your best friend](../_episodes/06-conclusion.md). Even expert coders use Google when they're stuck or trying something new! 
+> For things that aren't on the cheat sheets, [Google is your best friend](../_episodes/06-conclusion.md). Even expert coders use Google when they're stuck or trying something new!
 >
 {: .testimonial}
 
@@ -258,7 +258,7 @@ Starting from the left, the first thing we see is `gapminder_1997`. We viewed th
 > ## Exercise: Running parts of our code
 > If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
 >> ## Solution
->> We see a data table outputted, similar to what we saw in the Viewer tab. 
+>> We see a data table outputted, similar to what we saw in the Viewer tab.
 >{: .solution}
 {: .challenge}
 
@@ -268,11 +268,11 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 
 
 > ## Exercise: Assigning values to objects
-> Try to assign values to some objects and observe each object after you have assigned a new value. What do you notice? 
+> Try to assign values to some objects and observe each object after you have assigned a new value. What do you notice?
 >
 > 
 > ~~~
-> name <- "Ben" 
+> name <- "Ben"
 > name
 > ~~~
 > {: .language-r}
@@ -288,7 +288,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > 
 > ~~~
 > age <- 26
-> age 
+> age
 > ~~~
 > {: .language-r}
 > 
@@ -302,7 +302,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > 
 > 
 > ~~~
-> name <- "Harry Potter" 
+> name <- "Harry Potter"
 > name
 > ~~~
 > {: .language-r}
@@ -330,7 +330,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > {: .source}
 >
 >> ## Solution
->> When we assign a value to an object, the object stores that value so we can access it later. However, if we store a new value in an object we have already created (like when we stored "Harry Potter" in the `name` object), it replaces the old value. The `age` object does not change, because we never assign it a new value. 
+>> When we assign a value to an object, the object stores that value so we can access it later. However, if we store a new value in an object we have already created (like when we stored "Harry Potter" in the `name` object), it replaces the old value. The `age` object does not change, because we never assign it a new value.
 > {: .solution}
 {: .challenge}
 
@@ -346,8 +346,8 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > - Be consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. One popular style guide can be found through the [tidyverse](https://style.tidyverse.org/).
 {: .solution}
 
-> ## Challenge (optional): Bad names for objects 
-> Try to assign values to some new objects. What do you notice? After running all four lines of code bellow, what value do you think the object `Flower` holds? 
+> ## Challenge (optional): Bad names for objects
+> Try to assign values to some new objects. What do you notice? After running all four lines of code bellow, what value do you think the object `Flower` holds?
 >
 > 
 > ~~~
@@ -360,7 +360,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > {: .source}
 >
 >> ## Solution
->> Notice that we get an error when we try to assign values to `1number` and `favorite number`. This is because we cannot start an object name with a numeral and we cannot have spaces in object names. The object `Flower` still holds "marigold." This is because R is case-sensitive, so running `flower <- "rose"` does NOT change the `Flower` object. This can get confusing, and is why we generally avoid having objects with the same name and different capitalization. 
+>> Notice that we get an error when we try to assign values to `1number` and `favorite number`. This is because we cannot start an object name with a numeral and we cannot have spaces in object names. The object `Flower` still holds "marigold." This is because R is case-sensitive, so running `flower <- "rose"` does NOT change the `Flower` object. This can get confusing, and is why we generally avoid having objects with the same name and different capitalization.
 > {: .solution}
 {: .challenge}
 
@@ -379,21 +379,21 @@ Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_
 ~~~
 {: .error}
 
-We get an error message. Don't panic! Error messages pop all the time, and can be super helpful in debugging code. 
+We get an error message. Don't panic! Error messages pop all the time, and can be super helpful in debugging code.
 
-In this case, the message tells us "argument "file" is missing, with no default." Many functions, including `read_csv`, require additional pieces of information to do their job. We call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in. 
+In this case, the message tells us "argument "file" is missing, with no default." Many functions, including `read_csv`, require additional pieces of information to do their job. We call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in.
 
-For example, when we loaded in our data, the command contained `"gapminder_1997.csv"` inside the `read_csv()` function. This is the value we assigned to the file argument. But we didn't say that that was the file. How does that work? 
+For example, when we loaded in our data, the command contained `"gapminder_1997.csv"` inside the `read_csv()` function. This is the value we assigned to the file argument. But we didn't say that that was the file. How does that work?
 
-> ## Hint/Pro-tip 
-> Each function has a help page that documents what arguments the function expects and what value it will return. You can bring up the help page a few different ways. If you have typed the function name in the **Editor** windows, you can put your cursor on the function name and press <kbd>F1</kbd> to open help page in the **Help** viewer in the lower right corner of RStudio. You can also type `?` followed by the function name in the console. 
-> For example, try running `?read_csv`. A help page should pop up with information about what the function is used for and how to use it, as well as useful examples of the function in action. As you can see, the first **argument** of `read_csv` is the file path. 
+> ## Hint/Pro-tip
+> Each function has a help page that documents what arguments the function expects and what value it will return. You can bring up the help page a few different ways. If you have typed the function name in the **Editor** windows, you can put your cursor on the function name and press <kbd>F1</kbd> to open help page in the **Help** viewer in the lower right corner of RStudio. You can also type `?` followed by the function name in the console.
+> For example, try running `?read_csv`. A help page should pop up with information about what the function is used for and how to use it, as well as useful examples of the function in action. As you can see, the first **argument** of `read_csv` is the file path.
 {: .callout}
 
-The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R dataframe with the data stored in that csv file. All that, with one short line of code! 
+The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R dataframe with the data stored in that csv file. All that, with one short line of code!
 
-Do all functions need arguments? Let's test some other functions: 
- 
+Do all functions need arguments? Let's test some other functions:
+
 
 ~~~
   Sys.Date()
@@ -403,7 +403,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "2020-12-22"
+[1] "2021-01-05"
 ~~~
 {: .output}
 
@@ -417,12 +417,12 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/home/runner/work/curriculum/curriculum/_episodes_rmd"
+[1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
 ~~~
 {: .output}
 
 > ## Comments
-> Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do: 
+> Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do:
 > 
 > ~~~
 >  Sys.Date()  # outputs the current date
@@ -432,7 +432,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "2020-12-22"
+> [1] "2021-01-05"
 > ~~~
 > {: .output}
 > 
@@ -446,12 +446,12 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "/home/runner/work/curriculum/curriculum/_episodes_rmd"
+> [1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
 > ~~~
 > {: .output}
 {: .callout}
 
-While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together: 
+While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together:
 
 
 ~~~
@@ -478,7 +478,7 @@ sum(5, 6)
 > {: .source}
 >
 >> ## Solution
->> `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.141) 
+>> `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.141)
 > {: .solution}
 {: .challenge}
 
@@ -493,7 +493,7 @@ read_csv(file = 'gapminder_1997.csv')
 
 
 ~~~
-Error: 'gapminder_1997.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Error: 'gapminder_1997.csv' does not exist in current working directory ('/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -561,7 +561,7 @@ Error: 'gapminder_1997.csv' does not exist in current working directory ('/home/
 > {: .solution}
 {: .challenge}
 
-Sometimes it is helpful - or even necessary - to include the argument name, but often we can skip the argument name, if the argument values are passed in a certain order. If all this function stuff sounds confusing, don't worry! We'll see a bunch of examples as we go that will make things clearer. 
+Sometimes it is helpful - or even necessary - to include the argument name, but often we can skip the argument name, if the argument values are passed in a certain order. If all this function stuff sounds confusing, don't worry! We'll see a bunch of examples as we go that will make things clearer.
 
 # Creating our first plot
 _[Back to top](#contents)_
@@ -589,7 +589,7 @@ What we've done is created a ggplot object and told it we will be using the data
 
 So we've made a plot object, now we need to start telling it what we actually want to draw in this plot. The elements of a plot have a bunch of properties like an x and y position, a size, a color, etc. These properties are called **aesthetics**. When creating a data visualization, we  map a variable in our dataset to an aesthetic in our plot. In ggplot, we can do this by creating an "aesthetic mapping", which we do with the `aes()` function.
 
-To create our plot, we need to map variables from our `gapminder_1997` object to ggplot aesthetics using the `aes()` function. Since we have already told `ggplot` that we are using the data in the `gapminder_1997` object, we can access the columns of `gapminder_1997` using the object's column names. (Remember, R is case-sensitive, so we have to be careful to match the column names exactly!) 
+To create our plot, we need to map variables from our `gapminder_1997` object to ggplot aesthetics using the `aes()` function. Since we have already told `ggplot` that we are using the data in the `gapminder_1997` object, we can access the columns of `gapminder_1997` using the object's column names. (Remember, R is case-sensitive, so we have to be careful to match the column names exactly!)
 
 We are interested in whether there is a relationship between GDP and life expectancy, so let's start by telling our plot object that we want to map our GDP values to the x axis of our plot. We do this by adding (`+`) information to our plot object. Add this new line to your code and run both lines by highlighting them and pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard:
 
@@ -607,7 +607,7 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
 
-Note that we've added this new function call to a second line just to make it easier to read. To do this we make sure that the `+` is at the end of the first line otherwise R will assume your command ends when it starts the next row. The `+` sign indicates not only that we are adding information, but to continue on to the next line of code. 
+Note that we've added this new function call to a second line just to make it easier to read. To do this we make sure that the `+` is at the end of the first line otherwise R will assume your command ends when it starts the next row. The `+` sign indicates not only that we are adding information, but to continue on to the next line of code.
 
 Observe that our **Plot** window is no longer a grey square. We now see that we've mapped the `gdpPercap` column to the x axis of our plot. Note that that column name isn't very pretty as an x-axis label, so let's add the `labs()` function to make a nicer label for the x axis
 
@@ -647,7 +647,7 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
 
-Excellent. We've now told our plot object where the x and y values are coming from and what they stand for. But we haven't told our object how we want it to draw the data. There are many different plot types (bar charts, scatter plots, histograms, etc). We tell our plot object what to draw by adding a "geometry" ("geom" for short) to our object. We will talk about many different geometries today, but for our first plot, let's draw our data using the "points" geometry for each value in the data set. To do this, we add `geom_point()` to our plot object: 
+Excellent. We've now told our plot object where the x and y values are coming from and what they stand for. But we haven't told our object how we want it to draw the data. There are many different plot types (bar charts, scatter plots, histograms, etc). We tell our plot object what to draw by adding a "geometry" ("geom" for short) to our object. We will talk about many different geometries today, but for our first plot, let's draw our data using the "points" geometry for each value in the data set. To do this, we add `geom_point()` to our plot object:
 
 
 ~~~
@@ -688,7 +688,7 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
 
-No one can deny we've made a very handsome plot! But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data in the `gapminder_1997` object that we haven't used yet. Maybe we are curious if the different continents show different patterns in GDP and life expectancy. One thing we could do is use a different color for each of the continents. To map the continent of each point to a color, we will again use the `aes()` function: 
+No one can deny we've made a very handsome plot! But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data in the `gapminder_1997` object that we haven't used yet. Maybe we are curious if the different continents show different patterns in GDP and life expectancy. One thing we could do is use a different color for each of the continents. To map the continent of each point to a color, we will again use the `aes()` function:
 
 
 ~~~
@@ -710,7 +710,7 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
 
-Here we can see that in 1997 the African countries had much lower life expectancy than many other continents. Notice that when we add a mapping for color, ggplot automatically provided a legend for us. It took care of assigning different colors to each of our unique values of the `continent` variable. (Note that when we mapped the x and y values, those drew the actual axis labels, so in a way the axes are like the legends for the x and y values). The colors that ggplot uses are determined by the color "scale". Each aesthetic value we can supply (x, y, color, etc) has a corresponding scale. Let's change the colors to make them a bit prettier. 
+Here we can see that in 1997 the African countries had much lower life expectancy than many other continents. Notice that when we add a mapping for color, ggplot automatically provided a legend for us. It took care of assigning different colors to each of our unique values of the `continent` variable. (Note that when we mapped the x and y values, those drew the actual axis labels, so in a way the axes are like the legends for the x and y values). The colors that ggplot uses are determined by the color "scale". Each aesthetic value we can supply (x, y, color, etc) has a corresponding scale. Let's change the colors to make them a bit prettier.
 
 
 ~~~
@@ -757,15 +757,27 @@ There are also lots of other fun options:
 >> 
 >> 
 >> ~~~
->> Installing package into '/home/runner/work/_temp/Library'
->> (as 'lib' is unspecified)
+>> Error in contrib.url(repos, "source"): trying to use CRAN without setting a mirror
 >> ~~~
->> {: .output}
+>> {: .error}
 >> 
 >> 
 >> 
 >> ~~~
 >> library(wesanderson)
+>> ~~~
+>> {: .language-r}
+>> 
+>> 
+>> 
+>> ~~~
+>> Error in library(wesanderson): there is no package called 'wesanderson'
+>> ~~~
+>> {: .error}
+>> 
+>> 
+>> 
+>> ~~~
 >> ggplot(data = gapminder_1997) +
 >> aes(x = gdpPercap) +
 >> labs(x = "GDP Per Capita") +
@@ -788,7 +800,7 @@ There are also lots of other fun options:
 > {: .solution}
 {: .challenge}
 
-Since we have the data for the population of each country, we might be curious what effect population might have on life expectancy and GDP per capita. Do you think larger countires will have a longer or shorter life expectancy? Let's find out by mapping the population of each country to the size of our points. 
+Since we have the data for the population of each country, we might be curious what effect population might have on life expectancy and GDP per capita. Do you think larger countires will have a longer or shorter life expectancy? Let's find out by mapping the population of each country to the size of our points.
 
 
 ~~~
@@ -907,17 +919,17 @@ In the first plot, we looked at a smaller slice of a large dataset. To gain a be
 To start, we will read in the data without using the interactive RStudio file navigation.
 
 > ## Exercise: Read in your own data
-> 
-> What argument (including file path) should be provided in the below code to read in the full dataset? 
+>
+> What argument (including file path) should be provided in the below code to read in the full dataset?
 >
 > 
 > ~~~
-> gapminder_data <- read_csv() 
+> gapminder_data <- read_csv()
 > ~~~
 > {: .language-r}
 >
 >> ## Solution
->> 
+>>
 >> 
 >> ~~~
 >> gapminder_data <- read_csv("gapminder_data.csv")
@@ -927,17 +939,17 @@ To start, we will read in the data without using the interactive RStudio file na
 >> 
 >> 
 >> ~~~
->> Error: 'gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+>> Error: 'gapminder_data.csv' does not exist in current working directory ('/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd').
 >> ~~~
 >> {: .error}
 > {: .solution}
 {: .challenge}
 
-Let's take a look at the full dataset. We could use `View()`, the way we did for the smaller dataset, but if your dataframe is too big, it might take too long to load. Luckily, R offers way to look at parts of the data to get an idea of what your dataset looks like, without having to examine the whole thing. Here are some commands that allow us to get the dimensions of our dataframe and look at a snapshot of the data. Try them out! 
+Let's take a look at the full dataset. We could use `View()`, the way we did for the smaller dataset, but if your dataframe is too big, it might take too long to load. Luckily, R offers way to look at parts of the data to get an idea of what your dataset looks like, without having to examine the whole thing. Here are some commands that allow us to get the dimensions of our dataframe and look at a snapshot of the data. Try them out!
 
 
 ~~~
-dim(gapminder_data) 
+dim(gapminder_data)
 head(gapminder_data)
 ~~~
 {: .language-r}
@@ -945,8 +957,8 @@ head(gapminder_data)
 Notice that this dataset has an additional column `year` compared to the smaller dataset we started with.
 
 > ## Exercise: Predicting `ggplot` outputs
-> Now that we have the full dataset read into our R session, let's plot the data placing our new `year` variable on the x axis and life expectancy on the y axis. We've provided the code below. Notice that we've collapsed the plotting function options and left off some of the labels so there's not as much code to work with. 
-> Before running the code, read through it and see if you can predict what the plot output will look like. Then run the code and check to see if you were right! 
+> Now that we have the full dataset read into our R session, let's plot the data placing our new `year` variable on the x axis and life expectancy on the y axis. We've provided the code below. Notice that we've collapsed the plotting function options and left off some of the labels so there's not as much code to work with.
+> Before running the code, read through it and see if you can predict what the plot output will look like. Then run the code and check to see if you were right!
 >
 > 
 > ~~~
@@ -960,10 +972,10 @@ Notice that this dataset has an additional column `year` compared to the smaller
 
 Hmm, the plot we created in the last challenge isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
 
-Let's review the columns and the type of data stored in the full table to decide how we should group things together. To get an overview of our dataframe, we can look at the structure of `gapminder_data` using the `str()` function. 
+Let's review the columns and the type of data stored in the full table to decide how we should group things together. To get an overview of our dataframe, we can look at the structure of `gapminder_data` using the `str()` function.
 
 ~~~
-str(gapminder_data) 
+str(gapminder_data)
 ~~~
 {: .language-r}
 (You can also review the structure of your data in the **Environment** tab by clicking on the blue circle with the arrow in it next to your data object name.)
@@ -975,7 +987,7 @@ What kind of data do we see?
 * "num" = Numeric (or non-whole number)
 * "chr" = Character (categorical data)
 
-**Note** In anything before R 4.0, categorical variables used to be read in as factors, which are a [special data object](https://www.tutorialspoint.com/r/r_factors.htm) that are used to store categorical data and have limited numbers of unique values. The unique values of a factor are tracked via the "levels" of a factor. A factor will always remember all of its levels even if the values don't actually appear in your data. The factor will also remember the order of the levels and will always print values out in the same order (by default this order is alphabetical). 
+**Note** In anything before R 4.0, categorical variables used to be read in as factors, which are a [special data object](https://www.tutorialspoint.com/r/r_factors.htm) that are used to store categorical data and have limited numbers of unique values. The unique values of a factor are tracked via the "levels" of a factor. A factor will always remember all of its levels even if the values don't actually appear in your data. The factor will also remember the order of the levels and will always print values out in the same order (by default this order is alphabetical).
 
 If your columns are stored as character values but you need factors for plotting, ggplot will convert them to factors for you as needed.
 
@@ -1002,7 +1014,7 @@ Hmm. This doesn't look right. By setting the color value, we got a line for each
 Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
 
 > Exercise: More line plots
-> Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007? 
+> Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007?
 
 > > ## Solution
 > > 
@@ -1049,8 +1061,8 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 This type of visualization makes it easy to compare the range and spread of values across groups. The "middle" 50% of the data is located inside the box and outliers that are far away from the central mass of the data are drawn as points.
 
 
-> ## Exercise: 
-> Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other functions. 
+> ## Exercise:
+> Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other functions.
 >
 > > ## Example solution
 > > 
@@ -1075,7 +1087,7 @@ This type of visualization makes it easy to compare the range and spread of valu
 ## Layers
 _[Back to top](#contents)_
 
-So far we've only been adding one geom to each plot, but each plot object can actually contain multiple layers and each layer has it's own geom. Let's start with a basic violin plot: 
+So far we've only been adding one geom to each plot, but each plot object can actually contain multiple layers and each layer has it's own geom. Let's start with a basic violin plot:
 
 
 ~~~
@@ -1092,7 +1104,7 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
 
-Violin plots are similar to box plots, but they show the range and spread of values with curves rather than boxes (wider curves = more observations) and they do not include outliers. Also note you need a minimum number of points so they can be drawn - because Oceania only has two values, it doesn't get a curve. We can include the Oceania data by adding a layer of points on top that will show us the "raw" data: 
+Violin plots are similar to box plots, but they show the range and spread of values with curves rather than boxes (wider curves = more observations) and they do not include outliers. Also note you need a minimum number of points so they can be drawn - because Oceania only has two values, it doesn't get a curve. We can include the Oceania data by adding a layer of points on top that will show us the "raw" data:
 
 
 ~~~
@@ -1131,16 +1143,16 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 Be aware that these movements are random so your plot will look a bit different each time you run it!
 
 > ## Exercise: Ordering `ggplot` layers
-> Try switching the order of `geom_violin` and `geom_jitter`. What happens? Why? 
+> Try switching the order of `geom_violin` and `geom_jitter`. What happens? Why?
 >
->> ## Solution: 
->> 
+>> ## Solution:
+>>
 >>
 >>~~~
 >> ggplot(data = gapminder_1997) +
 >>  aes(x = continent, y = lifeExp) +
 >>  geom_jitter() +
->>  geom_violin() 
+>>  geom_violin()
 >>~~~
 >>{: .language-r}
 >>
@@ -1151,11 +1163,11 @@ Be aware that these movements are random so your plot will look a bit different 
 >>~~~
 >>{: .error}
 >>
->> Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points. 
+>> Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points.
 >{: .solution}
 {: .challenge}
 
-Note that each layer can have it's own set of aesthetic mappings. So far we've been using `aes()` outside of the other functions. When we do this, we are setting the "default" aesthetic mappings for the plot. We could do the same thing by passing the values to the `ggplot()` function call as is sometimes more common: 
+Note that each layer can have it's own set of aesthetic mappings. So far we've been using `aes()` outside of the other functions. When we do this, we are setting the "default" aesthetic mappings for the plot. We could do the same thing by passing the values to the `ggplot()` function call as is sometimes more common:
 
 
 ~~~
@@ -1172,7 +1184,7 @@ Error in ggplot(data = gapminder_1997, mapping = aes(x = continent, y = lifeExp)
 ~~~
 {: .error}
 
-However, we can also use aesthetic values for only one layer of our plot. To do that, you an place an additional `aes()` inside of that layer. For example, what if we want to change the size for the points so they are scaled by population, but we don't want to change the violin plot? We can do: 
+However, we can also use aesthetic values for only one layer of our plot. To do that, you an place an additional `aes()` inside of that layer. For example, what if we want to change the size for the points so they are scaled by population, but we don't want to change the violin plot? We can do:
 
 
 ~~~
@@ -1190,20 +1202,20 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
 
-Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(continent, lifeExp)` but only `geom_jitter` will also use `aes(size = pop)`. 
+Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(continent, lifeExp)` but only `geom_jitter` will also use `aes(size = pop)`.
 
 > ## Functions within functions
-> 
-> In the two examples above, we placed the `aes()` function inside another function - see how in the line of code `geom_jitter(aes(size = pop))`, `aes()` is nested **inside** `geom_jitter()`? When this happens, R evaluates the inner function first, then passes the output of that function as an argument to the outer function. 
-> 
-> Take a look at this simpler example. Suppose we have: 
+>
+> In the two examples above, we placed the `aes()` function inside another function - see how in the line of code `geom_jitter(aes(size = pop))`, `aes()` is nested **inside** `geom_jitter()`? When this happens, R evaluates the inner function first, then passes the output of that function as an argument to the outer function.
+>
+> Take a look at this simpler example. Suppose we have:
 >
 > 
 > ~~~
 > sum(2, max(6,8))
 > ~~~
 > {: .language-r}
-> First R calculates the maximum of the numbers 6 and 8 and returns the value 8. It passes the output 8 into the sum function and evaluates: 
+> First R calculates the maximum of the numbers 6 and 8 and returns the value 8. It passes the output 8 into the sum function and evaluates:
 > 
 > ~~~
 > sum(2, 8)
@@ -1223,7 +1235,7 @@ Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(con
 ## Color vs. Fill
 _[Back to top](#contents)_
 
-Let's say we want to spice up our plot a bit by adding some color. Maybe we want our violin color to a fancy color like "darkolivegreen." We can do this by explicitly setting the color aesthetic inside the `geom_violin` function. Note that because we are assigning a color directly and not using any values from our data to do so, we do not need to use the `aes()` mapping function. Let's try it out: 
+Let's say we want to spice up our plot a bit by adding some color. Maybe we want our violin color to a fancy color like "darkolivegreen." We can do this by explicitly setting the color aesthetic inside the `geom_violin` function. Note that because we are assigning a color directly and not using any values from our data to do so, we do not need to use the `aes()` mapping function. Let's try it out:
 
 
 ~~~
@@ -1275,9 +1287,9 @@ Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 
 So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color names. You can see the full list if you run `colors()` in the console. Since there are so many, you can randomly choose 10 if you run `sample(colors(), size = 10)`.
 
-> ## Exercise: choosing a color 
+> ## Exercise: choosing a color
 >  Use `sample(colors(), size = 10)` a few times until you get an interesting sounding color name and swap that out for "darkolivegreen" in the violin plot example.
-> 
+>
 {: .challenge}
 
 > ## Exercise: transparency
@@ -1302,8 +1314,8 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 
 
 
-> ## Exercise (optional): changing colors 
-> What happens if you run: 
+> ## Exercise (optional): changing colors
+> What happens if you run:
 > 
 > ~~~
 >  ggplot(data = gapminder_1997) +
@@ -1318,10 +1330,10 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
 > ~~~
 > {: .error}
-> Why doesn't this work? How can you fix it? Where does that color come from? 
+> Why doesn't this work? How can you fix it? Where does that color come from?
 >
 >> Solution
->> In this example, you placed the fill inside the `aes()` function. Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values - in this case, you only have one value: the word "springgreen." Instead, try `geom_violin(fill = "springgreen")`. 
+>> In this example, you placed the fill inside the `aes()` function. Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values - in this case, you only have one value: the word "springgreen." Instead, try `geom_violin(fill = "springgreen")`.
 > {: .solution}
 {: .challenge}
 
@@ -1365,7 +1377,7 @@ Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
 
 Try different values like 5 or 50 to see how the plot changes.
 
-> ## Exercise: One variable plots 
+> ## Exercise: One variable plots
 > Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continuous values. If you want to try the discrete options, try mapping `continent` to x instead.
 >
 > > ## Example solution
@@ -1389,7 +1401,7 @@ Try different values like 5 or 50 to see how the plot changes.
 ## Plot Themes
 _[Back to top](#contents)_
 
-Our plots are looking pretty nice, but what's with that grey background? While you can change various elements of a `ggplot` object manually (background color, grid lines, etc.) the `ggplot` package also has a bunch of nice built-in themes to change the look of your graph. For example, let's try adding `theme_classic()` to our histogram: 
+Our plots are looking pretty nice, but what's with that grey background? While you can change various elements of a `ggplot` object manually (background color, grid lines, etc.) the `ggplot` package also has a bunch of nice built-in themes to change the look of your graph. For example, let's try adding `theme_classic()` to our histogram:
 
 
 ~~~
@@ -1407,7 +1419,7 @@ Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
 ~~~
 {: .error}
 
-Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw()`, `theme_minimal()`. 
+Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw()`, `theme_minimal()`.
 
 ## Saving plots
 _[Back to top](#contents)_
@@ -1416,7 +1428,7 @@ We've made a bunch of plots today, but we never talked about how to share them w
 
 One that's easy if you are working in RStudio interactively is to use "Export" menu on the **Plots** tab. Clicking that button gives you three options "Save as Image", "Save as PDF", and "Copy To Clipboard". These options will bring up a window that will let you resize and name the plot however you like.
 
-A better option if you will be running your code as a script from the command line or just need your code to be more reproducible is to use the `ggsave()` function. When you call this function, it will write the last plot printed to a file in your local directory. It will determine the file type based on the name you provide. So if you call `ggsave("plot.png")` you'll get a PNG file or if you call `ggsave("plot.pdf")` you'll get a PDF file. By default the size will match the size of the **Plots** tab. To change that you can also supply `width=` and `height=` arguments. By default these values are interpreted as inches. So if you want a wide 4x6 image you could do something like: 
+A better option if you will be running your code as a script from the command line or just need your code to be more reproducible is to use the `ggsave()` function. When you call this function, it will write the last plot printed to a file in your local directory. It will determine the file type based on the name you provide. So if you call `ggsave("plot.png")` you'll get a PNG file or if you call `ggsave("plot.pdf")` you'll get a PDF file. By default the size will match the size of the **Plots** tab. To change that you can also supply `width=` and `height=` arguments. By default these values are interpreted as inches. So if you want a wide 4x6 image you could do something like:
 
 
 ~~~
@@ -1425,9 +1437,9 @@ ggsave("awesome_plot.jpg", width=6, height=4)
 {: .language-r}
 
 > ## Exercise: Saving a plot
-> 
+>
 > Try rerunning one of your plots and then saving it using `ggsave()`. Find and open the plot to see if it worked!
-> 
+>
 > > ## Example solution
 > > 
 > > ~~~
@@ -1451,12 +1463,12 @@ ggsave("awesome_plot.jpg", width=6, height=4)
 > > ggsave("awesome_histogram.jpg", width=6, height=4)
 > > ~~~
 > > {: .language-r}
-> > 
-> > Check your current working directory to find the plot! 
+> >
+> > Check your current working directory to find the plot!
 > {: .solution}
 {: .challenge}
 
-You also might want to just temporarily save a plot while you're using R, so that you can come back to it later. Luckily, a plot is just an object, like any other object we've been working with! Let's try storing our violin plot from earlier in an object called `violin_plot`: 
+You also might want to just temporarily save a plot while you're using R, so that you can come back to it later. Luckily, a plot is just an object, like any other object we've been working with! Let's try storing our violin plot from earlier in an object called `violin_plot`:
 
 
 ~~~
@@ -1488,7 +1500,7 @@ Error in eval(expr, envir, enclos): object 'violin_plot' not found
 ~~~
 {: .error}
 
-We can also add changes to the plot. Let's say we want our violin plot to have the black-and-white theme: 
+We can also add changes to the plot. Let's say we want our violin plot to have the black-and-white theme:
 
 
 ~~~
@@ -1503,7 +1515,7 @@ Error in eval(expr, envir, enclos): object 'violin_plot' not found
 ~~~
 {: .error}
 
-Watch out! Adding the theme does not change the `violin_plot` object! If we want to change the object, we need to store our changes: 
+Watch out! Adding the theme does not change the `violin_plot` object! If we want to change the object, we need to store our changes:
 
 
 ~~~
@@ -1518,7 +1530,7 @@ Error in eval(expr, envir, enclos): object 'violin_plot' not found
 ~~~
 {: .error}
 
-We can also save any plot object we have named, even if they were not the plot that we ran most recently. We just have to tell `ggsave()` which plot we want to save: 
+We can also save any plot object we have named, even if they were not the plot that we ran most recently. We just have to tell `ggsave()` which plot we want to save:
 
 
 ~~~
@@ -1527,8 +1539,8 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 {: .language-r}
 
 > ## Exercise: create and save a plot
-> Now try it yourself! Create your own plot using `ggplot()`, store it in an object named `my_plot`, and save the plot using `ggsave()`. 
-> 
+> Now try it yourself! Create your own plot using `ggplot()`, store it in an object named `my_plot`, and save the plot using `ggsave()`.
+>
 > > ## Example solution
 > > 
 > > ~~~
@@ -1564,7 +1576,7 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 {: .challenge}
 
 
-# Bonus topics: creating complex plots 
+# Bonus topics: creating complex plots
 
 ## Facets
 _[Back to top](#contents)_
@@ -1627,9 +1639,9 @@ Unlike the `facet_wrap` output where each box got its own x and y axis, with `fa
 ## Animated plots
 _[Back to top](#contents)_
 
-Sometimes it can be cool (and useful) to create animated graphs, like [this famous one](https://www.youtube.com/watch?v=FTu4dDHpfdU&feature=youtu.be) by Hans Rosling using the Gapminder dataset that plots GDP vs. Life Expectancy over time. Let's try to recreate this plot! 
+Sometimes it can be cool (and useful) to create animated graphs, like [this famous one](https://www.youtube.com/watch?v=FTu4dDHpfdU&feature=youtu.be) by Hans Rosling using the Gapminder dataset that plots GDP vs. Life Expectancy over time. Let's try to recreate this plot!
 
-First, we need to install and load the `gganimate` package, which allows us to use ggplot to create animated visuals: 
+First, we need to install and load the `gganimate` package, which allows us to use ggplot to create animated visuals:
 
 ~~~
 install.packages("gganimate")
@@ -1638,16 +1650,16 @@ library(gganimate)
 {: .language-r}
 
 > ## Exercise: Reviewing how to create a scatter plot
-> **Part 1:** 
-> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent. 
-> 
+> **Part 1:**
+> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
+>
 >> ## Solution
 >>
 >> 
 >> ~~~
 >> ggplot(data = gapminder_data)+
 >>  aes(x = log(gdpPercap), y = lifeExp, size = pop, color = continent)+
->>  geom_point() 
+>>  geom_point()
 >> ~~~
 >> {: .language-r}
 >> 
@@ -1659,15 +1671,15 @@ library(gganimate)
 >> {: .error}
 >{: .solution}
 
-> **Part 2:** 
-> Before we start to animate our plot, let's make sure it looks pretty. Add some better axis and legend labels, change the plot theme, and otherwise fix up the plot so it looks nice. Then save the plot into an object called `staticHansPlot`. When you're ready, check out how we've edited our plot, below. 
+> **Part 2:**
+> Before we start to animate our plot, let's make sure it looks pretty. Add some better axis and legend labels, change the plot theme, and otherwise fix up the plot so it looks nice. Then save the plot into an object called `staticHansPlot`. When you're ready, check out how we've edited our plot, below.
 >
 >> ## A pretty plot (yours may look different)
 >> 
 >> ~~~
 >> staticHansPlot <- ggplot(data = gapminder_data)+
 >>  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
->>  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points 
+>>  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points
 >>  scale_color_brewer(palette = "Set1") +
 >>  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
 >> theme_classic()
@@ -1701,7 +1713,7 @@ library(gganimate)
 ~~~
  staticHansPlot <- ggplot(data = gapminder_data)+
   aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
-  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points 
+  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points
   scale_color_brewer(palette = "Set1") +
   labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
  theme_classic()
@@ -1729,7 +1741,7 @@ Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
 ~~~
 {: .error}
 
-Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot. 
+Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot.
 
 
 ~~~
@@ -1760,12 +1772,12 @@ Error in eval(expr, envir, enclos): object 'animatedHansPlot' not found
 ~~~
 {: .error}
 
-Awesome! This is looking sweet! Let's make sure we understand the code above: 
-1. The first argument of the `transition_states()` function tells `ggplot()` which variable should be different in each frame of our animation: in this case, we want each frame to be a different `year`. 
-1. The `transition_length` and `state_length` arguments are just some of the `gganimate` arguments you can use to adjust how the animation progresses from one frame to the next. Feel free to play around with those parameters, to see how they affect the animation (or check out more `gganmiate` options [here](https://gganimate.com/articles/gganimate.html)!). 
-1. Finally, we want the title of our plot to tell us which year our animation is currently showing. Using "{closest_state}" as our title allows the title of our plot to show which `year` is currently being plotted. 
+Awesome! This is looking sweet! Let's make sure we understand the code above:
+1. The first argument of the `transition_states()` function tells `ggplot()` which variable should be different in each frame of our animation: in this case, we want each frame to be a different `year`.
+1. The `transition_length` and `state_length` arguments are just some of the `gganimate` arguments you can use to adjust how the animation progresses from one frame to the next. Feel free to play around with those parameters, to see how they affect the animation (or check out more `gganmiate` options [here](https://gganimate.com/articles/gganimate.html)!).
+1. Finally, we want the title of our plot to tell us which year our animation is currently showing. Using "{closest_state}" as our title allows the title of our plot to show which `year` is currently being plotted.
 
-So we've made this cool animated plot - how do we save it? For `gganimate` objects, we can use the `anim_save()` function. It works just like `ggsave()`, but for animated objects. 
+So we've made this cool animated plot - how do we save it? For `gganimate` objects, we can use the `anim_save()` function. It works just like `ggsave()`, but for animated objects.
 
 
 ~~~
