@@ -3,7 +3,6 @@ U-M SWC Curriculum
 
 This is the custom curriculum developed by the University of Michigan Software Carpentry instance.
 It is under active development and is not yet ready to be used to teach a workshop.
-Hopefully we'll have a draft in 2 days!
 
 ## Repo Layout
 
@@ -40,23 +39,25 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 |---|-------|-------------|
 | **Day 1** |   |
 | 09:00 | Welcome to the workshop | `_episodes/00-welcome.md` |
-| 09:15 | **R for Plotting (Part I)** | `_episodes_rmd/01-r-plotting.Rmd` |
+| 09:15 | **R for Plotting** | `_episodes_rmd/01-r-plotting.Rmd` |
 | 10:30 | Break |  |
-| 10:45 | **R for Plotting (Part II)** | continuation of `01-r-plotting` |
+| 10:45 | **R for Plotting (Continued)** | continuation of `01-r-plotting` |
 | 12:00 | Lunch Break |  |
 | 13:00 | **The Unix Shell** | `_episodes/02-unix-shell.md` |
 | 14:15 | Break |  |
 | 14:30 | **Intro to git & GitHub** | `_episodes_rmd/03-intro-git-github.md` |
+| 16:30 | Wrap-up Day 1 |  |
 | **Day 2** |   |
-| 09:00 | **R for Data Analysis (Part I)** | `_episodes_rmd/04-r-data-analysis.Rmd` |
+| 09:00 | **R for Data Analysis** | `_episodes_rmd/04-r-data-analysis.Rmd` |
 | 10:30 | Break |  |
-| 10:45 | **R for Data Analysis (Part II)** | continuation of `04-r-data-analysis` |
+| 10:45 | **R for Data Analysis (Continued)** | continuation of `04-r-data-analysis` |
 | 12:00 | Lunch Break |  |
 | 13:00 | **Writing Reports with R Markdown** | `_episodes_rmd/05-r-markdown.Rmd` |
 | 14:30 | Break |  |
-| 14:45 | Collaborative Exercise | at end of `05-r-markdown` |
-| 15:30 | **Conclusions** |  `_episodes/06-conclusion.md` |
-| 15:50 | Exit Survey |   |
+| 14:45 | **Writing Reports with R Markdown (Continued)** | at end of `05-r-markdown` |
+| 15:30 | Conclusions & Wrap-up |  `_episodes/06-conclusion.md` |
+| 16:15 | Exit Survey |   |
+| 16:30 | End | |
 
 ## Helpful links
 
