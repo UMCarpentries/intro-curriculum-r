@@ -1,4 +1,4 @@
-awesome_plot.jpg---
+---
 title: “The Unix Shell”
 teaching: 1hr15min
 exercises: n
