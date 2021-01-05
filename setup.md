@@ -2,13 +2,26 @@
 title: Setup
 ---
 
-## Requirements
+## Pre-workshop setup checklist
 
-* A Unix shell
-* A [GitHub](https://github.com/) account
-* [Git](https://git-scm.com/), software for tracking changes in source code (i.e. version control)
-* A recent version of [R](https://www.r-project.org/) (>=4.0)
-* [RStudio](https://rstudio.com/), an integrated development environment for R
+1. [ ] Zoom (if this is a virtual workshop)
+1. [ ] A Unix shell (instructions below)
+1. [ ] [git](https://git-scm.com/), (instructions below)
+1. [ ] A [GitHub](https://github.com/) account
+1. [ ] A recent version of [R](https://www.r-project.org/) (instructions below)
+1. [ ] [RStudio](https://rstudio.com/), an integrated development environment for R (instructions below)
+1. [ ] R packages:
+    - tidyverse
+    - rmarkdown
+
+After you have installed everything, download [un-report.zip](https://github.com/UMSWC/curriculum/raw/setup-zip/files/un-report.zip).
+Move it to your Desktop and unzip it (usually double-clicking it will work).
+Then, inside the `un-report/` folder, click on the file `check_packages.R` and
+open it with RStudio.
+In the upper right corner, click the `Source` button to run the script.
+You should see output printed to the console.
+Take a screenshot or copy & paste the console output and send it to the
+lead instructor.
 
 ## Windows installations
 
@@ -24,62 +37,60 @@ Windows](https://www.youtube.com/watch?v=339AEqk9c-8)
 
 2. Run the installer and follow the steps below:
 
-   * **Information**
-      * Click on `Next` to get through the license screen.
+   * Click on `Next` to get through the license screen.
 
-   * **Select Destination Location**
-      * Click on `Next` to accept the default installation path of `C:\Program Files\Git`. (If a new version has been released, the number may change.)
+   * Click on `Next` to accept the default installation path of
+   `C:\Program Files\Git`. (If a new version has been released,
+   the number may change.)
 
-   * **Select Components**
-      * You may wish to check the box to create Desktop icons.  Please do not change the other selections. Click on `Next`.
+   * On the Select Components screen, you may wish to check the box to
+   create Desktop icons.  Please do not change the other selections.
+   Click `Next`.
 
-   * **Select Start Menu Folder**
-      * Click on `Next` to accept `Git` as the name of the Start Menu folder.
+   * Click on `Next` to accept `Git` as the name of the Start Menu folder.
 
-   * **Choosing the default editor used by Git**
-      * Select **Use the nano editor by default** from the dropdown menu -- NOTE: you may need to scroll _up_ in the list to find it. Click on `Next`.
+   * On the **Choosing the default edit used by Git** panel, please select
 
-   * **Adjusting the name of the initial branch in new repositories**
-      * Select **Let Git decide**
+   * from the dropdown menu **Use the nano editor by default** -- you may
+   need to scroll _up_ in the list to find it.  Click on `Next`.
 
-   * **Adjusting your PATH environment**
-      * Ensure that **Git from the command line and also from 3rd-party software** is selected and click on `Next`. (If you don't do this Git Bash will not work properly, requiring you to remove the Git Bash installation, re-run the installer and to select the **Git from the command line and also from 3rd-party software** option.)
+   * Ensure that **Git from the command line and also from 3rd-party
+   software** is selected and click on `Next`. (If you don't do this Git
+   Bash will not work properly, requiring you to remove the Git Bash
+   installation, re-run the installer and to select the **Git from the
+   command line and also from 3rd-party software** option.)
 
-   * **Choosing the SSH exeutable**
-      * Keep the OpenSSH option (if it gives you an option to change that) and click on `Next`.
+   * Keep the OpenSSH option if it gives you an option to change that.
 
-   * **Choosing HTTPS transport backend**
-      *Ensure that **Use the native Windows Secure Channel library** is selected and click on `Next`.
+   * Ensure that **Use the native Windows Secure Channel library** is
+   selected and click on `Next`.
 
-   * **Configuring the line ending conversions**
-      * Ensure that **Checkout Windows-style, commit Unix-style line endings** is selected and click on `Next`.
+   * Ensure that **Checkout Windows-style, commit Unix-style line endings**
+   is selected and click on `Next`.
 
-   * **Configuring the terminal emulator to use with Git Bash**
-      * Ensure that **Use Windows' default console window** is selected and click on `Next`.
+   * Ensure that **Use Windows' default console window** is selected and
+   click on `Next`.
 
-   * **Choose the default behavior of 'git pull'**
-      * Select **Default (fast-forward or merge)** and click on `Next`.
+   * Choose the **Default behavior of git pull** to be **Default (fast-forward
+   or merge)**.
 
-   * **Choose a credential manager**
-      * Choose **Git Credential Manager Core** and click on `Next`.
+   * From **Choose a credential manager**, choose **Git Credential Manager
+   Core**.
 
-   * **Configuring extra options**
-      * Ensure that **Enable file system caching** is selected.
-      * If you have an option to **Enable symbolic links**, ensure that it is selected as well.
-      * Click on `Next`.
+   * Ensure that **Enable file system caching** is selected
 
-   * **Configuring extra options**
-      * Ensure that **Enable file system caching** is selected and click on `Next`.
+   * Do _NOT_ enable experimental support for pseudo consoles.  Clicking
+   `Next` here should start the installation with no further selection
+   screens.
 
-   * **Configuring experimental options**
-      * Do _NOT_ enable experimental support for pseudo consoles.  Clicking `Next` here should start the installation with no further selection screens.
-
-   * This should bring you to a screen where you can click `Finish`. Unless you are really interested, you should uncheck the box to view the release notes.
+   * This should bring you to a screen where you can click `Finish`.
+   Unless you are really interested, you should uncheck the box to view
+   the release notes.
 
 3. If your `HOME` environment variable is not set (or you don't know
    what this is), then
 
-    * Open command prompt (In the Windows search box, type cmd and press [Enter])
+    * Open command prompt (Open Start Menu then type cmd and press [Enter])
 
     * Type the following line into the command prompt window exactly as shown:
     ```
@@ -118,8 +129,8 @@ Note that you _must_ install R before RStudio.
 
 Please see the
 <a href="https://rstudio.com/products/rstudio/download/#download">download
-page at the RStudio web site</a>.  There is only one Windows installercw
-available for Windows 10, 8, and 7 as of 19 Nov, 2020.  You should be
+page at the RStudio web site</a>. There is only one Windows installer
+available for Windows 10, 8, and 7 as of 19 Nov, 2020. You should be
 able to run it once downloaded and it will install properly.
 
 ## macOS
@@ -214,3 +225,4 @@ dnf install R
 You will need to install RStudio using the instruction found at the [RStudio
 page](https://www.rstudio.com/products/rstudio/download/#download) that are
 appropriate for your Linux.
+
