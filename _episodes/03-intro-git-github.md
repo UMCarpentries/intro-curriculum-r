@@ -1513,7 +1513,7 @@ here's how Git works in cartoon form:
 
 We start by creating a local working directory. Our working directory is `un-report`
 
-![git-basics-flow-01-opt1]({{ page.root }}/fig/git-basics/20201117-git-01-opt1.png =400x)  
+![git-basics-flow-01-opt1](../fig/git-basics/20201117-git-01-opt1.png =400x)  
 
 Then we initialize git
 
@@ -1524,11 +1524,11 @@ git init
 
 Now our working directory also is being tracked by the git repo
 
-![git-basics-flow-02]({{ page.root }}/fig/git-basics/20201117-git-02.png =400x)  
+![git-basics-flow-02](../fig/git-basics/20201117-git-02.png =400x)  
 
 Then if we add a file to our working directory, it is only in our working directory.
 
-![git-basics-flow-03]({{ page.root }}/fig/git-basics/20201117-git-03.png =400x)  
+![git-basics-flow-03](../fig/git-basics/20201117-git-03.png =400x)  
 
 If we want to begin tracking this file, we need to add it to the staging area
 
@@ -1538,7 +1538,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-04]({{ page.root }}/fig/git-basics/20201117-git-04.png =400x)  
+![git-basics-flow-04](../fig/git-basics/20201117-git-04.png =400x)  
 
 Now we can commit this file to our git repository for the changes to be saved.
 
@@ -1548,7 +1548,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-05]({{ page.root }}/fig/git-basics/20201117-git-05.png =400x)  
+![git-basics-flow-05](../fig/git-basics/20201117-git-05.png =400x)  
 
 If we make changes to the file now, we can see the differences between the commited file and the new edits.
 
@@ -1557,7 +1557,7 @@ git diff
 ```
 {: .language-bash}
 
-![git-basics-flow-10]({{ page.root }}/fig/git-basics/20201117-git-10.png =400x)  
+![git-basics-flow-10](../fig/git-basics/20201117-git-10.png =400x)  
 
 Let's commit this change
 
@@ -1567,7 +1567,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-12]({{ page.root }}/fig/git-basics/20201117-git-12.png =400x)  
+![git-basics-flow-12](../fig/git-basics/20201117-git-12.png =400x)  
 
 Now we can commit this file to our git repository for the changes to be saved.
 
@@ -1577,7 +1577,7 @@ git status
 ```
 {: .language-bash}
 
-![git-basics-flow-13]({{ page.root }}/fig/git-basics/20201117-git-13.png =400x)  
+![git-basics-flow-13](../fig/git-basics/20201117-git-13.png =400x)  
 
 We can check the history of our commits
 
@@ -1586,7 +1586,7 @@ git log
 ```
 {: .language-bash}
 
-![git-basics-flow-14]({{ page.root }}/fig/git-basics/20201117-git-14.png =400x)  
+![git-basics-flow-14](../fig/git-basics/20201117-git-14.png =400x)  
 
 
 We can also check the differences between commits
@@ -1596,25 +1596,25 @@ git diff <commit>..<commit>
 ```
 {: .language-bash}
 
-![git-basics-flow-15]({{ page.root }}/fig/git-basics/20201117-git-15.png =400x)  
+![git-basics-flow-15](../fig/git-basics/20201117-git-15.png =400x)  
 
 
 If we introduce a bug and break our code, no problem! We can `revert` to a previous commit.
 
-![git-basics-flow-30]({{ page.root }}/fig/git-basics/20201117-git-30.png =400x)  
+![git-basics-flow-30](../fig/git-basics/20201117-git-30.png =400x)  
 
 ```
 git revert
 ```
 {: .language-bash}
 
-![git-basics-flow-32]({{ page.root }}/fig/git-basics/20201117-git-32.png =400x)  
+![git-basics-flow-32](../fig/git-basics/20201117-git-32.png =400x)  
 
 We have now reverted our current file and commit to the latest version without the bug. But we have kept the commit and history from the commit that had the error.
 
 In the next section, we will learn how to share our git repository across networks. We can do this by creating a link to another location, like Github (remote repository) which we can `push` and `pull` our repository to and from to share our files with others as well as backing up our local repository.
 
-![git-basics-flow-27]({{ page.root }}/fig/git-basics/20201117-git-27.png =400x)  
+![git-basics-flow-27](../fig/git-basics/20201117-git-27.png =400x)  
 
 
 > ## Simplifying the Common Case
@@ -2278,4 +2278,3 @@ GitHub) are back in sync!
 {: .callout}
 
 ## Glossary
-
