@@ -293,91 +293,91 @@ We can resolve this warning by one of two methods. First, we can tell `read_csv(
 
 ```{r CleanEmissionsColNames1}
 read_csv("../data/co2-un-data.csv", skip=2,
-col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
+         col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
 ```
 As an alternative, we can read in the table, get the warning and then fix the column names using the rename function.
 
 ```{r CleanEmissionsRename}
 read_csv("../data/co2-un-data.csv", skip=1) %>%
-rename(country=X2)
+  rename(country=X2)
 ```
 
 Many data analysts prefer to have their column headings and variable names be in all lower case. We can use a variation of `rename()`, which is `rename_all()` that allows us to set all of the column headings to lower case by giving it the name of the tolower function, which makes everything lowercase.
 
 ```{r CleanEmissionsRenameLower}
 read_csv("../data/co2-un-data.csv", skip=1) %>%
-rename_all(tolower)
+  rename_all(tolower)
 ```
 
 Both of these strategies are useful for helping us to clean up our data. Which you ultimately use for this project is a matter of personal preference. We'll go with the first option where we used col_names so that we don't have to worry about the Warning message.
 
 ```{r CleanEmissionsColNames2}
 read_csv("../data/co2-un-data.csv", skip=2,
-col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
+         col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
 ```
 
 We previously saw how we can subset columns from a data frame using the select function. Let's get the country, year, series, and value columns:
 
 ```{r CleanEmissionsSelect}
 read_csv("../data/co2-un-data.csv", skip=2,
-col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-select(country, year, series, value)
+         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+  select(country, year, series, value)
 ```
 
 The series column has two methods of quantifying CO2 emissions - "Emissions (thousand metric tons of carbon dioxide)" and "Emissions per capita (metric tons of carbon dioxide)". Those are long titles that we'd like to shorten to make them easier to work with. We can shorten them to "total" and "per_capita" using the recode function. We need to do this within the mutate function where we will mutate the series column. The syntax in the recode function is to tell recode which column we want to recode and then what the old value (e.g. "Emissions (thousand metric tons of carbon dioxide)") should equal after recoding (e.g. "total").
 
 ```{r CleanEmissionsMutateRecode}
 read_csv("../data/co2-un-data.csv", skip=2,
-col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-select(country, year, series, value) %>%
-mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-"Emissions per capita (metric tons of carbon dioxide)" = "per_capita"))
+         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+  select(country, year, series, value) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita"))
 ```
 Recall that we'd like to have separate columns for the two ways that we CO2 emissions data. To achieve this, we'll use the pivot_wider function that we saw previously. The columns we want to spread out are series (i.e. names_from) and value (i.e. values_from).
 
 ```{r CleanEmissionsPivotWider}
 read_csv("../data/co2-un-data.csv", skip=2,
-col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-select(country, year, series, value) %>%
-mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-"Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
-pivot_wider(names_from=series, values_from=value)
+         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+  select(country, year, series, value) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+  pivot_wider(names_from=series, values_from=value)
 ```
 Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. One useful tool is the `count()` function, which will tell us how many times a value is repeated in a column of a data frame. Let's use this function on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year.
 
 ```{r CleanEmissionsyearCountryCount}
 read_csv("../data/co2-un-data.csv", skip=2,
-col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-select(country, year, series, value) %>%
-mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-"Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
-pivot_wider(names_from=series, values_from=value) %>%
-count(year)
+         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+  select(country, year, series, value) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+  pivot_wider(names_from=series, values_from=value) %>%
+  count(year)
 ```
 It looks like we have data for 140 countries in 2005 and 2010. Let's filter our data to get the rows that correspond to 2005. Also, because we will only have data from one year, we can drop the year column from our data frame by giving it year with a minus sign before it.
 
 ```{r CleanEmissionsByYear}
 read_csv("../data/co2-un-data.csv", skip=2,
-col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-select(country, year, series, value) %>%
-mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-"Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
-pivot_wider(names_from=series, values_from=value) %>%
-filter(year==2005) %>%
-select(-year)
+         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+  select(country, year, series, value) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+  pivot_wider(names_from=series, values_from=value) %>%
+  filter(year==2005) %>%
+  select(-year)
 ```
 
 Finally, let's go ahead and assign the output of this code chunk to a variable name:
 
 ```{r AssignCleanEmissions}
 co2_emissions <- read_csv("../data/co2-un-data.csv", skip=2,
-col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-select(country, year, series, value) %>%
-mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-"Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
-pivot_wider(names_from=series, values_from=value) %>%
-filter(year==2005) %>%
-select(-year)
+                          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+  select(country, year, series, value) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+  pivot_wider(names_from=series, values_from=value) %>%
+  filter(year==2005) %>%
+  select(-year)
 ```
 > **Looking at your data:** You can get a look at your data-cleaning hard work by navigating to the **Environment** tab in RStudio and clicking the table icon next to the variable name. Notice when we do this, RStudio automatically runs the `View()` command. We've made a lot of progress!
 
@@ -514,23 +514,23 @@ To help clarify the association, we can add a fit line through the data using `g
 
 ```{r PlotPercapCO2vsGDPSmooth}
 ggplot(gapminder_co2, aes(x=gdpPercap, y=per_capita)) +
-geom_point() +
-labs(x="GDP (per capita)",
-y="CO2 emitted (per capita)",
-title="There is a strong association between a nation's GDP \nand the amount of CO2 it produces"
-) +
-geom_smooth()
+  geom_point() +
+  labs(x="GDP (per capita)",
+       y="CO2 emitted (per capita)",
+       title="There is a strong association between a nation's GDP \nand the amount of CO2 it produces"
+  ) +
+  geom_smooth()
 ```
 We can force the line to be straight using `method="lm"` as an argument to `geom_smooth`
 
 ```{r PlotPercapCO2vsGDP1SmoothLm}
 ggplot(gapminder_co2, aes(x=gdpPercap, y=per_capita)) +
-geom_point() +
-labs(x="GDP (per capita)",
-y="CO2 emitted (per capita)",
-title="There is a strong association between a nation's GDP \nand the amount of CO2 it produces"
-) +
-geom_smooth(method="lm")
+  geom_point() +
+  labs(x="GDP (per capita)",
+       y="CO2 emitted (per capita)",
+       title="There is a strong association between a nation's GDP \nand the amount of CO2 it produces"
+  ) +
+  geom_smooth(method="lm")
 ```
 To answer our first question, as the title of our plot indicates there is indeed a strong association between a nation's GDP and the amount of CO2 it produces.
 
@@ -540,16 +540,18 @@ We can create a grouping variable using `mutate()` combined with an `if_else()` 
 
 ```{r GapRegion}
 gapminder_co2 %>%
-mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south"))
+  mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south"))
 ```
 Now we can use this column to repeat our `group_by()` and `summarize()` steps
 
 ```{r GapRegionGroupSummary}
 gapminder_co2 %>%
-mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
-group_by(region) %>%
-summarize(sumtotal = sum(total),
-          sumpop = sum(pop))
+  mutate(region = if_else(country == "Canada" | 
+                            country == "United States" | 
+                            country == "Mexico", "north", "south")) %>%
+  group_by(region) %>%
+  summarize(sumtotal = sum(total),
+            sumpop = sum(pop))
 ```
 The `if_else()` statment reads like, "if country equals "Canada" OR (|) "United states" OR "Mexico", The new variable region should be "north", else "south"". It's worth exploring logical operators for "or" `|`, "and" `&&`, and "not" `!`, which opens up a great deal of possibilities for writing code to do what you want.
 
@@ -628,7 +630,7 @@ gapminder_co2 %>%
   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
   mutate(totalPercent = total/sum(total)*100,
          popPercent = pop/sum(pop)*100) %>%
-group_by(region) %>%
+  group_by(region) %>%
   summarize(sumTotalPercent = sum(totalPercent),
             sumPopPercent = sum(popPercent))
 
