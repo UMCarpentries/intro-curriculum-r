@@ -34,7 +34,7 @@ to keep track of what one person did and when.
 Even if you aren't collaborating with other people,
 automated version control is much better than this situation:
 
-[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531](../fig/git/phd101212s.png)](http://www.phdcomics.com)
+[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531]({{ page.root }}/fig/git/phd101212s.png)](http://www.phdcomics.com)
 
 "Piled Higher and Deeper" by Jorge Cham, http://www.phdcomics.com
 
@@ -52,19 +52,19 @@ think of it as a recording of your progress: you can rewind to start at the base
 document and play back each change you made, eventually arriving at your
 more recent version.
 
-![Changes Are Saved Sequentially](../fig/git/play-changes.svg)
+![Changes Are Saved Sequentially]({{ page.root }}/fig/git/play-changes.svg)
 
 Once you think of changes as separate from the document itself, you
 can then think about "playing back" different sets of changes on the base document, ultimately
 resulting in different versions of that document. For example, two users can make independent
 sets of changes on the same document.
 
-![Different Versions Can be Saved](../fig/git/versions.svg)
+![Different Versions Can be Saved]({{ page.root }}/fig/git/versions.svg)
 
 Unless multiple users make changes to the same section of the document - a conflict - you can
 incorporate two sets of changes into the same base document.
 
-![Multiple Versions Can be Merged](../fig/git/merge.svg)
+![Multiple Versions Can be Merged]({{ page.root }}/fig/git/merge.svg)
 
 A version control system is a tool that keeps track of these changes for us,
 effectively creating different versions of our files. It allows us to decide
@@ -255,7 +255,7 @@ same commands to choose another editor or update your email address.
 ## Basic Workflow
 _[Back to top](#contents)_
 
-![git-basics-flow-01-opt1](../fig/git-basics/20201117-git-01-opt1.png)  
+![git-basics-flow-01-opt1]({{ page.root }}/fig/git-basics/20201117-git-01-opt1.png)  
 
 Once Git is configured, we can start using it.
 
@@ -779,7 +779,7 @@ but not yet committed.
 > than you would like!
 {: .callout}
 
-![The Git Staging Area](../fig/git/git-staging-area.svg)
+![The Git Staging Area]({{ page.root }}/fig/git/git-staging-area.svg)
 
 Let's watch as our changes to a file move from our editor
 to the staging area
@@ -1040,7 +1040,7 @@ we first need to add the changed files to the staging area
 (`git add`) and then commit the staged changes to the
 repository (`git commit`):
 
-![The Git Commit Workflow](../fig/git/git-committing.svg)
+![The Git Commit Workflow]({{ page.root }}/fig/git/git-committing.svg)
 
 > ## Choosing a Commit Message
 >
@@ -1505,7 +1505,7 @@ the commit in which we made the change we're trying to discard.
 In the example below, we want to retrieve the state from before the most
 recent commit (`HEAD~1`), which is commit `f22b25e`:
 
-![Git Checkout](../fig/git/git-checkout.svg)
+![Git Checkout]({{ page.root }}/fig/git/git-checkout.svg)
 
 So, to put it all together,
 here's how Git works in cartoon form:
@@ -1840,7 +1840,7 @@ Let's start by sharing the changes we've made to our current project with the
 world. Log in to GitHub, then click on the icon in the top right corner to
 create a new repository called `un-report`.
 
-![Creating a Repository on GitHub (Step 1)](../fig/git/github-create-repo-01.png)
+![Creating a Repository on GitHub (Step 1)]({{ page.root }}/fig/git/github-create-repo-01.png)
 
 Name your repository `un-report` and then click `Create Repository`.
 
@@ -1856,12 +1856,12 @@ In the screenshots below, the Owner is 'mkuzak' and the Repository name is 'plan
 You should instead see your own username for the Owner and you should name the
 repository `un-report`.
 
-![Creating a Repository on GitHub (Step 2)](../fig/git/github-create-repo-02.png)
+![Creating a Repository on GitHub (Step 2)]({{ page.root }}/fig/git/github-create-repo-02.png)
 
 As soon as the repository is created, GitHub displays a page with a URL and some
 information on how to configure your local repository:
 
-![Creating a Repository on GitHub (Step 3)](../fig/git/github-create-repo-03.png)
+![Creating a Repository on GitHub (Step 3)]({{ page.root }}/fig/git/github-create-repo-03.png)
 
 This effectively does the following on GitHub's servers:
 
@@ -1876,11 +1876,11 @@ If you remember back to the earlier [lesson]({{ page.root }}/04-changes/) where 
 committed our earlier work on `analysis.txt`, we had a diagram of the local repository
 which looked like this:
 
-![The Local Repository with Git Staging Area](../fig/git/git-staging-area.svg)
+![The Local Repository with Git Staging Area]({{ page.root }}/fig/git/git-staging-area.svg)
 
 Now that we have two repositories, we need a diagram like this:
 
-![Freshly-Made GitHub Repository](../fig/git/git-freshly-made-github-repo.svg)
+![Freshly-Made GitHub Repository]({{ page.root }}/fig/git/git-freshly-made-github-repo.svg)
 
 Note that our local repository still contains our earlier work on `analysis.txt`, but the
 remote repository on GitHub appears empty as it doesn't contain any files yet.
@@ -1890,7 +1890,7 @@ GitHub repository a [remote]({{ page.root}}{% link reference.md %}#remote) for t
 The home page of the repository on GitHub includes the string we need to
 identify it:
 
-![Where to Find Repository URL on GitHub](../fig/git/github-find-repo-string.png)
+![Where to Find Repository URL on GitHub]({{ page.root }}/fig/git/github-find-repo-string.png)
 
 Copy that URL from the browser, go into the local `un-report` repository, and run
 this command:
@@ -1943,7 +1943,7 @@ To https://github.com/USERNAME/un-report.git
 
 Our local and remote repositories are now in this state:
 
-![GitHub Repository After First Push](../fig/git/github-repo-after-first-push.svg)
+![GitHub Repository After First Push]({{ page.root }}/fig/git/github-repo-after-first-push.svg)
 
 > ## The '-u' Flag
 >
@@ -2090,7 +2090,7 @@ The Owner needs to give the Collaborator access. On GitHub, click the settings
 button on the right, select Manage access, click Invite a collaborator, and
 then enter your partner's username.
 
-![Adding Collaborators on GitHub](../fig/git/github-add-collaborators.png)
+![Adding Collaborators on GitHub]({{ page.root }}/fig/git/github-add-collaborators.png)
 
 To accept access to the Owner's repo, the Collaborator
 needs to go to [https://github.com/notifications](https://github.com/notifications).
