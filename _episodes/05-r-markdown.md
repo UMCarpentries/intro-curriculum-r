@@ -122,19 +122,7 @@ The next section is a *code chunk*, or embedded R code, that sets up options for
 
 ~~~
 ```{r setup, include=FALSE}
-~~~
-{: .output}
-
-
-
-~~~
 knitr::opts_chunk$set(echo = TRUE)
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}

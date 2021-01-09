@@ -17,7 +17,9 @@ keypoints:
   - "Options such as `include` and `echo` determine what parts of an R code chunk are included in the R Markdown report. "
   - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
+
 ```{r echo=FALSE}
+# prevents jitter plots from changing
 set.seed(20210109)
 ```
 
@@ -123,9 +125,7 @@ _[Back to top](#contents)_
 The next section is a *code chunk*, or embedded R code, that sets up options for all code chunks. Here is the default when you create a new R Markdown file:
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r setup, include=FALSE}\n')
-cat('knitr::opts_chunk$set(echo = TRUE)\n')
-cat('```\n')
+cat('```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n')
 ```
 
 All code chunks have this format:
