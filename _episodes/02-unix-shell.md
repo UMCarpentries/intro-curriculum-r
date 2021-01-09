@@ -1,43 +1,43 @@
 ---
-title: The Unix Shell
+title: "The Unix Shell"
 teaching: 60
 exercises: 15
 questions:
-- What is a command shell and why would I use one?
-- How can I move around on my computer?
-- How can I see what files and directories I have?
-- How can I specify the location of a file or directory on my computer?
-- How can I create, copy, and delete files and directories?
-- How can I edit files?
+- "What is a command shell and why would I use one?"
+- "How can I move around on my computer?"
+- "How can I see what files and directories I have?"
+- "How can I specify the location of a file or directory on my computer?"
+- "How can I create, copy, and delete files and directories?"
+- "How can I edit files?"
 objectives:
-- Explain how the shell relates to users’ programs.
-- Explain when and why command-line interfaces should be used instead of graphical interfaces.
-- Construct absolute and relative paths that identify specific files and directories.
-- Demonstrate the use of tab completion and explain its advantages.
-- Create a directory hierarchy that matches a given diagram.
-- Create files in the directory hierarchy using an editor or by copying and renaming existing files.
-- Delete, copy, and move specified files and/or directories.
+- "Explain how the shell relates to users’ programs."
+- "Explain when and why command-line interfaces should be used instead of graphical interfaces."
+- "Construct absolute and relative paths that identify specific files and directories."
+- "Demonstrate the use of tab completion and explain its advantages."
+- "Create a directory hierarchy that matches a given diagram."
+- "Create files in the directory hierarchy using an editor or by copying and renaming existing files."
+- "Delete, copy, and move specified files and/or directories."
 keypoints:
-- A shell is a program whose primary purpose is to read commands and run other programs.
-- Tab completion can help you save a lot of time and frustration.
-- The shell’s main advantages are its support for automating repetitive tasks and its capacity to access network machines.
-- Information is stored in files, which are stored in directories (folders).
-- Directories nested in other directories for a directory tree.
-- `cd [path]` changes the current working directory.
-- `ls [path]` prints a listing of a specific file or directory.
-- `ls` lists the current working directory.
-- `pwd` prints the user’s current working directory.
-- `/` is the root directory of the whole file system.
-- A relative path specifies a location starting from the current location.
-- An absolute path specifies a location from the root of the file system.
-- Directory names in a path are separated with `/` on Unix, but `\` on Windows.
-- `..` means ‘the directory above the current one’; `.` on its own means ‘the current directory’.
-- `cp [old] [new]` copies a file.
-- `mkdir [path]` creates a new directory.
-- `mv [old] [new]` moves (renames) a file or directory.
-- `rm [path]` removes (deletes) a file.
-- `*` matches zero or more characters in a filename.
-- The shell does not have a trash bin - once something is deleted, it’s really gone.
+- "A shell is a program whose primary purpose is to read commands and run other programs."
+- "Tab completion can help you save a lot of time and frustration."
+- "The shell’s main advantages are its support for automating repetitive tasks and its capacity to access network machines."
+- "Information is stored in files, which are stored in directories (folders)."
+- "Directories nested in other directories for a directory tree."
+- "`cd [path]` changes the current working directory."
+- "`ls [path]` prints a listing of a specific file or directory."
+- "`ls` lists the current working directory."
+- "`pwd` prints the user’s current working directory."
+- "`/` is the root directory of the whole file system."
+- "A relative path specifies a location starting from the current location."
+- "An absolute path specifies a location from the root of the file system."
+- "Directory names in a path are separated with `/` on Unix, but `\` on Windows."
+- "`..` means ‘the directory above the current one’; `.` on its own means ‘the current directory’."
+- "`cp [old] [new]` copies a file."
+- "`mkdir [path]` creates a new directory."
+- "`mv [old] [new]` moves (renames) a file or directory."
+- "`rm [path]` removes (deletes) a file."
+- "`*` matches zero or more characters in a filename."
+- "The shell does not have a trash bin - once something is deleted, it’s really gone."
 ---
 
 <!--
