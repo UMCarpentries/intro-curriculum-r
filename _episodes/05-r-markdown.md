@@ -3,24 +3,1012 @@
 # Instead, please edit 05-r-markdown.md in _episodes_rmd/
 source: Rmd
 title: "Writing Reports with R Markdown"
-teaching: 0 
+teaching: 0
 exercises: 0
-questions: ""
-objectives: ""
-keypoints: ""
+questions:
+- "How can I make reproducible reports using R Markdown?"
+- "How do I format text using Markdown?"
+objectives:
+- "To create a report in R Markdown that combines text, code, and figures."
+- "To use Markdown to format our report."
+- "To understand how to use R code chunks to include or hide code, figures, and messages."
+- "To be aware of the various report formats that can be rendered using R Markdown."
+- "To practice using the Unix Shell, Github, and R through paired programming exercises. "
+keypoints:
+  - "R Markdown is an easy way to create a report that integrates text, code, and figures."
+  - "Options such as `include` and `echo` determine what parts of an R code chunk are included in the R Markdown report. "
+  - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
 
+TODO: Complete Table of Contents and back to top links (for excercises)
+
+### Contents
+1. [Creating a reports directory](#creating-a-reports-directory)
+1. [Why use R Markdown?](#why-use-r-markdown?)
+1. [Creating an R Markdown file](#creating-an-r-markdown-file)
+1. [Basic components of R Markdown](#basic-components-of-r-markdown)
+    + [Header](#header)
+    + [Code chunks](#code-chunks)
+    + [Text](#text)
+1. [Starting the report](#starting-the-report)
+1. [Formatting](#formatting)
+1. [Integrating it all together: Paired exercise](#integrating-it-all-together:-paired-exercise)
 
 
+
+Recall that our ultimate goal is to generate a report on how a country's life expectancy is related to GDP.
+
+## Creating a reports directory
+_[Back to top](#contents)_
+
+
+Let's start by using the Unix Shell to create a directory within `un-report` called `reports` where we will write our reports to the UN.
+First, open the Unix Shell and `cd` to `un-report`
 
 ~~~
-print("Hello, World!")
+pwd
+mkdir reports
 ~~~
-{: .language-r}
-
-
+{: .source}
 
 ~~~
-[1] "Hello, World!"
+/home/USERNAME/Desktop/un-report/reports/
 ~~~
 {: .output}
+
+
+> ## Discusion
+> How do you usually share data analyses with your collaborators? Many people share them through a Word document, a spreadsheet, slides, a  graphic, etc.
+{: .discussion}
+
+## Why use R Markdown?
+_[Back to top](#contents)_
+
+TODO: is reproducibility discussed somewhere? Add a link or more discussion here?
+
+We're going to learn a way to create a report in R using something called R Markdown.
+This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html or PDF file and share with others.
+The text can be experimental methods, an analysis and discussion of the results, or whatever else you want to include.
+We call these types of reports *reproducible* reports because the code is embedded in the document and anyone can take the report and re-run the code to get the same output.
+R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, and keeping a computational notebook of your work.
+If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can even hide the code.
+It's also useful because if you find an error or want to modify the text or a figure, you can just change the code and re-run the R Markdown file to get the updated output!
+
+R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures.
+
+## Creating an R Markdown file
+_[Back to top](#contents)_
+
+Now that we have a better understanding of what we can use R Markdown files for, let's start writing a report!
+
+To create an R Markdown file:
+- Open RStudio
+- Go to File &rarr; New File &rarr; R Markdown
+- Give your document a title, something like "A UN Report on the Relationship between GDP and Life Expectancy" (Note: this is not the same as the file name - it's just a title that will appear at the top of your report)
+- Keep the default output format as HTML.
+- R Markdown files always end in `.Rmd`
+
+> ## R Markdown Outputs
+> The default output for an R Markdown report is HTML, but you can also use R Markdown to [output other report formats](https://rmarkdown.rstudio.com/lesson-9.html). For example, you can generate PDF reports using R Markdown, but you must [install TeX](https://www.latex-project.org/get/) to do this.
+>
+{: .callout}
+
+
+## Basic components of R Markdown
+_[Back to top](#contents)_
+
+### Header
+_[Back to top](#contents)_
+
+The first part is a *header* at the top of the file between the lines of `---`. This contains instructions for R to specify the type of document to be created and options to choose (ex. title, author, date). These are in the form of key-value pairs (`key: value`; YAML).
+
+Here's an example:
+
+```
+---
+title: 'Writing Reports with R Markdown'
+author: "Zena Lapp"
+date: "11/18/2020"
+output: html_document
+---
+```
+
+### Code chunks
+_[Back to top](#contents)_
+
+The next section is a *code chunk*, or embedded R code, that sets up options for all code chunks. Here is the default when you create a new R Markdown file:
+
+
+~~~
+```{r setup, include=FALSE}
+~~~
+{: .output}
+
+
+
+~~~
+knitr::opts_chunk$set(echo = TRUE)
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+All code chunks have this format:
+
+
+~~~
+```{r}
+# Your code here
+```
+~~~
+{: .output}
+
+All of the code is enclosed in 3 backticks (`cat('```')`), and the `{r}` part indicates that it's a chunk of R code.
+
+You can also include other information within the curly brackets to indicate different information about that code chunk.
+For instance, the first code block is named "setup", and `include=FALSE` prevents code and results from showing up in the output file.
+
+Inside the code chunk, you can put any R code that you want to run, and you can have as many code chunks as you want in your file.
+
+As we mentioned above, in the first code chunk you set options for the entire file.
+`echo = TRUE` means that you want your code to be shown in the output file. If you change this to `echo = FALSE`, then the code will be hidden and only the output of the code chunks will be seen in the output file.
+There are also [many other options that you can change](https://rmarkdown.rstudio.com/lesson-3.html), but we won't go into those details in this workshop.
+
+
+### Text
+_[Back to top](#contents)_
+
+Finally, you can include text in your R Markdown file.
+This is any text or explanation you want to include, and it's formatted with Markdown.
+We'll learn more about Markdown formatting soon!
+
+## Starting the report
+_[Back to top](#contents)_
+
+Let's return to the new R Markdown file you created and delete everything below the setup code chunk. (That stuff is just examples and reminders of how to use R Markdown.)
+
+Next, let's save our R markdown file to the `reports` directory.
+You can do this by clicking the save icon in the top left or using <kbd>control</kbd> + <kbd>s</kbd> (<kbd>command</kbd> + <kbd>s</kbd>  on a Mac).
+
+There's one other thing that we need to do before we get started with our report.
+To render our documents into html format, we can "knit" them in R Studio.
+Usually, R Markdown renders documents from the directory where the document is saved (the location of the `.Rmd` file), but we want it to render from the main project directory where our `.Rproj` file is.
+This is because that's where all of our relative paths are from and it's good practice to have all of your relative paths from the main project directory.
+To change this default, click on the down arrow next to the "Knit" button at the top left of R Studio, go to "Knit Directory" and click "Project Directory".
+Now it will assume all of your relative paths for reading and writing files are from the `un-report` directory, rather than the `reports` directory.
+
+Now that we have that set up, let's start on the report!
+
+We're going to use the code you generated yesterday to plot GDP vs Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to library the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference.
+
+
+~~~
+```{r packages}
+~~~
+{: .output}
+
+
+
+~~~
+library(tidyverse)
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+Now in a real report this is when we would type out the background and purpose of the report to provide context to the readers of the report. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the text below into your report below the package code chunk.
+
+```
+(couple sentances with purpose/question/hypothesis for the report that can be copied and pasted into the report)
+```
+
+Now since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
+
+
+~~~
+```{r data}
+~~~
+{: .output}
+
+
+
+~~~
+gapminder_1997 <- read.csv("./data/gapminder_1997.csv")
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+Now that we have the data we need to produce the plot, let's create it!
+
+
+~~~
+```{r gdp_lifeexp_1997}
+~~~
+{: .output}
+
+
+
+~~~
+ggplot(data = gapminder_1997) + 
+
+  aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
+
+  geom_point() +
+
+  labs(x = "GDP Per Capita", y = "Life Expectancy",
+
+       title= "Do people in wealthy countries live longer?", size="Population (in millions)")
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd> button in the top left of the screen.
+
+![](../fig/r-markdown/first_report_render.png)
+
+Amazing! We've created a report! Lets push this to GitHub to make sure we preserve this document.
+
+TODO: check below instructions for pushing to GitHub
+Now all we need to do is commit our recent changes and update our remote repository using Git.
+
+Returning to the command line, type
+`git status` ##to get an idea of which files just changed
+`git add <filename(s)>` ##to add any file(s) that you just created and that are not yet version controlled
+`git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
+`git push` ##to update your changes to the git directory on the remote server
+
+
+It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
+
+![](../fig/r-markdown/tidyverse_messages.png)
+
+To get rid of this, we can revise our packages code chunk by adding `include=FALSE` like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
+
+
+~~~
+```{r packages, include=FALSE}
+~~~
+{: .output}
+
+
+
+~~~
+library(tidyverse)
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
+
+![](../fig/r-markdown/includeFalse.png)
+
+Oops! Now the plot doesn't show up in our report. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE` for the code chunk to tell it that we don't want to see the code but we want to see the output.
+
+
+~~~
+```{r gdp_lifeexp_1997, echo=FALSE}
+~~~
+{: .output}
+
+
+
+~~~
+ggplot(data = gapminder_1997) + 
+
+  aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
+
+  geom_point() +
+
+  labs(x = "GDP Per Capita", y = "Life Expectancy",
+
+       title= "Do people in wealthy countries live longer?", size="Population (in millions)")
+~~~
+{: .output}
+
+
+
+~~~
+```
+~~~
+{: .output}
+
+When we knit this again, we can see the plot again!
+
+![](../fig/r-markdown/echoFalse.png)
+Now that we have a report we are happy with, let's push the changes to GitHub.
+
+## Formatting
+_[Back to top](#contents)_
+
+Now that we know how to create a report, we might want to format it in a way that structures our thought process in a useful way (e.g., sections) and makes it visually appealing.
+Markdown is a very simple programming language when it comes to syntax.
+Let's try to figure out some syntax together. Suppose we wanted to create sections in our report.
+
+> ## Exercise: R Markdown headers
+> Try googling how to create sections by using headers and subheaders using R Markdown. What do you find?
+>
+> > ## Solution
+> > We can easily create headers and subheaders by using the `#` pound/hash sign. Our main headers have one `#` (e.g. `# Main Header Here`) and to create subheaders we add additinal `#`s (e.g. `## First subheader` and `### Second subheader`)
+> {: .solution}
+{: .challenge}
+
+OK, now that we know how to make headers, let's practice some more Markdown syntax.
+
+> ## Exercise: R Markdown syntax
+> Go ahead and do some online searches on how to do the following:
+> * create a bullet point list with three items
+> * as the first item, write the name of your currently favorite programming language in bold
+> * as the second item, write  the name of a function you have so far found most useful in italics
+> * as the third item, write one thing you want to learn next on your programming journey in bold and italics
+> * turn your bullet point list into a numbered list
+> * create a fourth list item and find an online guide and/or cheat sheet for basic Markdown syntax, write its name down here and hyperlink its url
+>
+> > ## Solution
+> > [This link](https://rmarkdown.rstudio.com/authoring_basics.html) has some helpful basic R Markdown syntax.
+> {: .solution}
+{: .challenge}
+
+
+## Integrating it all together: Paired exercise
+_[Back to top](#contents)_
+
+You've learned so much in the past two days - how to use the Unix Shell to move around your computer, how to use git for version control and GitHub for collaborating with others on code, how to make pretty plots and do data analysis in R, and how to incorporate it all into a report.
+Now, you're going to work in pairs to practice everything you learned. Ideally, you'll have the same pair as for the git/GitHub lesson.
+Don't worry - if you have questions, the instructor and helpers can help you out!
+
+Only one of the people in your pair is going to create the R Markdown file. The other person is going to collaborate with that person using GitHub. So the first step is to choose one person in your pair to create/host the R Markdown file.
+
+**For the person who is going to host the new R Markdown file:**
+1. Make a new R markdown file.
+1. Give it an informative title.
+1. Delete all the unnecessary Markdown and R code (everything below the setup R chunk).
+1. Save it to the `reports` directory using an informative file name.
+
+**For the person who is going to collaborate with the host of the R Markdown file:**
+
+If you don't already have your partner's GitHub repo cloned from the git/GitHub lesson, clone their repo to your Desktop under the name `USERNAME-un-report`. If you don't remember how to do this, you can review the [git lesson](_episodes/03-intro-git-github.md).
+
+The way you will collaborate with each other is as follows:
+1. For each exercise, both people will be thinking about how to answer the question, but only one person will be writing the code.
+This is called _paired programming_.
+1. Once you have completed an exercise, the person working on the exercise will add, commit, and push the changes to GitHub.
+1. Then the other person will pull the changes from GitHub.
+1. The person who pulled changes will code for the next exercise.
+1. Repeat the process for as many exercises as you can finish in the remaining time.
+Don't worry if you don't finish all of the exercises, and it's not a race between groups!
+This is just a way for you to practice what you've learned.
+
+**One note:** It may be helpful to copy and paste the questions into the R Markdown file as you go.
+
+
+TODO: *check if question numbers reset after solution blocks*
+TODO: *make sure r code works in solution blocks*
+
+### Exercises using the gapminder data
+_[Back to top](#contents)_
+
+First we're going to start out with a few questions about the gapminder dataset.
+
+1. The very first step is to read in the gapminder dataset, so don't forget! Also load the `tidyverse` package.
+
+> ## Solution
+> 
+> ~~~
+> library(tidyverse)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> ── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
+> ~~~
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> [32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
+> [32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
+> [32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
+> [32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
+> ~~~
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> ── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
+> [31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+> [31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> ~~~
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> gapminder <- read_csv('data/gapminder_data.csv')
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+> ~~~
+> {: .error}
+{: .solution}
+
+#### Investigating population over time.
+_[Back to top](#contents)_
+
+1. Make a scatter plot of year vs. population, separated into a plot for each contient. **HINT:** you can use `facet_wrap(vars(column_name))` to separate into different plots based on that column.
+
+> ## Solution
+> 
+> ~~~
+> ggplot(gapminder, aes(x=year,y=pop)) +
+> geom_point() +
+> facet_wrap(vars(continent))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in ggplot(gapminder, aes(x = year, y = pop)): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. It seems like there are 2 outliers - which countries are those?
+
+> ## Solution
+>
+>~~~
+> gapminder %>% filter(pop > 1e9) %>% select(country) %>% unique()
+>~~~
+>{: .language-r}
+>
+>
+>
+>~~~
+>Error in filter(., pop > 1e+09): object 'gapminder' not found
+>~~~
+>{: .error}
+{: .solution}
+
+1. Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries.
+
+> ## Solution
+> 
+> ~~~
+> gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop)) +
+> geom_point() +
+> facet_wrap(vars(continent))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., country != "China" & country != "India"): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+
+##### Bonus questions: come back to these if you have time at the end
+_[Back to top](#contents)_
+
+1. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do it!
+
+> Solution
+> 
+> ~~~
+> gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop)) +
+> geom_point() +
+> facet_wrap(vars(continent)) +
+> theme(axis.text.x=element_text(angle=90))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., country != "China" & country != "India"): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? HINT: This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
+
+> ## Solution
+> 
+> ~~~
+> gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop,group=country)) +
+> geom_line() +
+> facet_wrap(vars(continent)) +
+> theme(axis.text.x=element_text(angle=90))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., country != "China" & country != "India"): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+#### Looking into life expectancy a bit more.
+_[Back to top](#contents)_
+
+1. What country had the highest life expectancy in 1982? **Hint:** use the `slice_max()` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
+
+> ## Solution
+> 
+> ~~~
+> Error in filter(gapminder, year == 1982): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Now, do the same thing but for all years! *HINT:* Use the `group_by()` function.
+
+> ## Solution
+> 
+> ~~~
+> gapminder %>% group_by(year) %>% select(country,year,lifeExp) %>% slice_max(lifeExp) %>% print(n=Inf)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in group_by(., year): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
+
+> ## Solution
+> 
+> ~~~
+> Error in filter(., continent == "Asia"): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+##### Bonus questions: come back to these if you have time at the end
+_[Back to top](#contents)_
+
+1. What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
+
+> ## Solution
+> 
+> ~~~
+> gapminder %>% filter(continent == 'Asia') %>% group_by(year) %>% slice_min(lifeExp)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., continent == "Asia"): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text too. Feel free to change the theme if you'd like.
+
+> ## Solution
+> 
+> ~~~
+> Error in ggplot(., aes(x = as.character(year), y = lifeExp)): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Which country has had the greatest increase in life expectancy from 1952 to 2007? **HINT:** You might want to use the `pivot_wider()` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy.
+
+> ## Solution
+> 
+> ~~~
+> Error in filter(gapminder, year == 1952 | year == 2007): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. What countries had a decrease in life expectancy from 1952 to 2007?
+
+> ## Solution
+> 
+> ~~~
+> Error in filter(gapminder, year == 1952 | year == 2007): object 'gapminder' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+### Exercises integrating a new dataset
+_[Back to top](#contents)_
+
+**If you finished the questions involving the gapminder datset (Bonus questions are optional), move on to these questions next. Note that we don't expect you to finish all of these! You can also use them as practice after the workshop if you'd like.**
+
+Now that you've practiced what you've learned with the gapminder data, you're going to try using what we've learned to explore a new dataset.
+
+TODO:
+- [ ] check with R analysis team for the CO2 data format after that part of workshop
+- [ ] cut down number of questions (there is likely not enough time for all of the following)
+- [ ] check with R plotting and stats to make sure the contents has been covered before the exercises
+
+#### Preview of the data
+_[Back to top](#contents)_
+
+This dataset has information on the gross domestic expenditure on research and development (R&D) for different countries. We're going to use it to practice the data analysis workflow that you learned over the course of the workshop.
+
+_Data:_ Gross domestic expenditure onresearch and development (R & D)
+
+_Data source:_ [UN data](data.un.org), under "Science and technology"
+
+_Data path:_ `data/SYB63_286_202009_GDP_on_RnD.csv`
+
+Raw csv file:
+
+```
+T27,Gross domestic expenditure on research and development (R&D),,,,,
+Region/Country/Area,,Year,Series,Value,Footnotes,Source
+1,"Total, all countries or areas",2005,Gross domestic expenditure on R & D: as a percentage of GDP (%),1.5261,,"United Nations Educational, Scientific and Cultural Organization (UNESCO), Montreal, the UNESCO Institute for Statistics (UIS) statistics database, last accessed June 2020."
+1,"Total, all countries or areas",2010,Gross domestic expenditure on R & D: as a percentage of GDP (%),1.6189,,"United Nations Educational, Scientific and Cultural Organization (UNESCO), Montreal, the UNESCO Institute for Statistics (UIS) statistics database, last accessed June 2020."
+...
+32,Argentina,2017,Gross domestic expenditure on R & D: Business enterprises (%),16.5161,,"United Nations Educational, Scientific and Cultural Organization (UNESCO), Montreal, the UNESCO Institute for Statistics (UIS) statistics database, last accessed June 2020."
+...
+```
+
+CO2 dataset (UN data) preview:
+
+```
+T24,CO2 emission estimates,,,,,
+Region/Country/Area,,Year,Series,Value,Footnotes,Source
+8,Albania,1975,Emissions (thousand metric tons of carbon dioxide),4338.3340,,"International Energy Agency, IEA World Energy Balances 2019 and 2006 IPCC Guidelines for Greenhouse Gas Inventories, last accessed June 2020."
+8,Albania,1985,Emissions (thousand metric tons of carbon dioxide),6929.9260,,"International Energy Agency, IEA World Energy Balances 2019 and 2006 IPCC Guidelines for Greenhouse Gas Inventories, last accessed June 2020."
+```
+
+#### Reading in and cleaning the data
+_[Back to top](#contents)_
+
+1. First, read in the data. Note that you need to skip the first line of the file because that's just a title for the whole dataset (see above). Also rename the columns to something more informative (as you learned, there are lots of ways to do this, and different preferences - feel free to use whichever method you want!).
+
+> ## Solution
+> 
+> ~~~
+> rnd <- read_csv('data/rnd-un-data.csv', skip = 1) %>% rename(country=X2) %>% rename_all(tolower)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error: 'data/rnd-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
+
+> ## Solution
+> 
+> ~~~
+> rnd <- rnd %>% mutate(series=recode(series,
+>                "Gross domestic expenditure on R & D: as a percentage of GDP (%)" = 'gdp_pct',
+> "Gross domestic expenditure on R & D: Business enterprises (%)" = 'business',
+> "Gross domestic expenditure on R & D: Government (%)" = 'government',
+> "Gross domestic expenditure on R & D: Higher education (%)" = 'higher_ed',
+> "Gross domestic expenditure on R & D: Funds from abroad (%)" = 'abroad',
+> "Gross domestic expenditure on R & D: Not distributed (%)" = 'not_distributed',
+> "Gross domestic expenditure on R & D: Private non-profit (%)" = 'non_profit'))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in mutate(., series = recode(series, `Gross domestic expenditure on R & D: as a percentage of GDP (%)` = "gdp_pct", : object 'rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This shoudl give you the following columns: conuntry name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
+
+> ## Solution
+> 
+> ~~~
+> rnd <- rnd %>% pivot_wider(names_from=series,values_from=value)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in pivot_wider(., names_from = series, values_from = value): object 'rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+Note that there is a lot of missing data.  
+
+Now we have our data set up in a way that makes it easier to work with. Feel free to clean up the data more before moving on to the next step if you'd like.
+
+#### Plotting with the R & D dataset
+_[Back to top](#contents)_
+
+1. Plot the distribution of percent expenditure using a histogram. Observe the range and how heavy the "tails" are. **Note:** You will likely get a note and a warning. Feel free to change the number of bins as the note describes. Why do you get warnings? (Hint: Look at the column you're plotting.). **Bonus:** Plot the same exact data in a way in which you don't get warnings.
+
+> ## Solution
+> 
+> ~~~
+> rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=gdp_pct)) +
+> geom_histogram(bins=30)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., !is.na(gdp_pct)): object 'rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want.
+
+> ## Solution
+> 
+> ~~~
+> rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) +
+> geom_point(alpha=0.5) +
+> xlab('')
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., !is.na(gdp_pct)): object 'rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
+
+> ## Solution
+> 
+> ~~~
+> rnd %>% filter(!is.na(gdp_pct)) %>% ggplot(aes(x=as.character(year), y=gdp_pct)) +
+> geom_violin() +
+> xlab('')
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., !is.na(gdp_pct)): object 'rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+### Combining the CO2 and R&D datasets
+_[Back to top](#contents)_
+
+Now we're going to work with the CO2 and R&D datasets together.
+
+Unfortunately, we don't have the exact same dates for all of them.
+
+1. First, read in the CO2 dataset. You can use the code from the [R for data analysis](_episodes/04-r-data-analysis.md) lesson to clean the CO2 data.
+
+> ## Solution
+> 
+> ~~~
+> # read in and clean CO2 data
+> co2 <- read_csv("data/co2-un-data.csv", skip=2,
+> col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> select(country, year, series, value) %>%
+> mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+> "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+> pivot_wider(names_from=series, values_from=value)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D.
+
+> ## Solution
+> 
+> ~~~
+> co2_rnd <- full_join(co2, rnd) %>% select(country, year, total, per_capita, gdp_pct)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in UseMethod("full_join"): no applicable method for 'full_join' applied to an object of class "ts"
+> ~~~
+> {: .error}
+{: .solution}
+
+1. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have bot C02 and R&D data.
+
+TODO: *check if `is.na()` and ! (not operator) are introduced in R for data analysis lesson*
+
+> ## Solution
+> 
+> ~~~
+> co2_rnd <- co2_rnd %>% filter(!is.na(total) & !is.na(gdp_pct))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., !is.na(total) & !is.na(gdp_pct)): object 'co2_rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
+
+> ## Solution
+> 
+> ~~~
+> co2_rnd %>% group_by(year) %>% summarize(count=n())
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in group_by(., year): object 'co2_rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+#### Plotting with the CO2 and R&D datasets together
+_[Back to top](#contents)_
+
+1. Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
+
+> ## Solution
+> 
+> ~~~
+> ggplot(co2_rnd, aes(x=gdp_pct,y=per_capita)) +
+> geom_point() +
+> ylab('Per-capita CO2 emissiosn') +
+> xlab('Percent of GDP spent on R&D')
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in ggplot(co2_rnd, aes(x = gdp_pct, y = per_capita)): object 'co2_rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+
+1. Next, facet the above plot by year.
+
+> ## Solution
+> 
+> ~~~
+> ggplot(co2_rnd, aes(x=gdp_pct,y=per_capita)) +
+> geom_point() +
+> ylab('Per-capita CO2 emissiosn') +
+> xlab('Percent of GDP spent on R&D') +
+> facet_wrap(vars(year))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in ggplot(co2_rnd, aes(x = gdp_pct, y = per_capita)): object 'co2_rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+1. Identify the countries that have 5 time points for both C02 emissions and R&D.
+
+> ## Solution
+> 
+> ~~~
+> co2_rnd %>% group_by(country) %>% summarize(count=n()) %>% filter(count==5)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in group_by(., country): object 'co2_rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+**BONUS**
+
+1. For 3 of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINT:** Use `pivot_longer` to get the data in the right format.
+
+TODO: *check if r for data anlaysis teaches `%in%` and `c()`*
+> ## Solution
+> 
+> ~~~
+> co2_rnd %>% filter(country %in% c('Azerbaijan','Cuba','Panama')) %>% pivot_longer(c(per_capita,gdp_pct)) %>% ggplot(aes(x=year,y=value,col=name)) +
+> geom_line() +
+> facet_wrap(vars(country))+
+> scale_color_discrete(name = "", labels = c("GDP %", "CO2 Per Capita"))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in filter(., country %in% c("Azerbaijan", "Cuba", "Panama")): object 'co2_rnd' not found
+> ~~~
+> {: .error}
+{: .solution}
+
+
+#### Bonus questions
+_[Back to top](#contents)_
+
+1. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
+
+1. After merging the data sets, there is some missing data, how many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive obsevation in a plot and/or summary statistics? (e.g. `ggplot` removes `NA`s but stat functions (e.g. `median()` often ask for specific input regarding to how to deal with `NA`s)).
+
+1. What countries have the highest and lowest data availabilities? (How would you measure data availability?)
+
+1. Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
+
+1. For a specific contient (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
+
+1. Create an R Markdown report with some of the information from these exercises. Decide excatly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
+
+>>>>>>> gh-pages

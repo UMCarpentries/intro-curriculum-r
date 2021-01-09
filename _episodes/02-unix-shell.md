@@ -1,18 +1,726 @@
 ---
-title: "The Unix Shell"
-teaching: 0
-exercises: 0
-questions: ""
-objectives: ""
-keypoints: ""
+title: “The Unix Shell”
+teaching: 1hr15min
+exercises: n
+questions:
+- “What is a command shell and why would I use one?”
+- “How can I move around on my computer?”
+- “How can I see what files and directories I have?”
+- “How can I specify the location of a file or directory on my computer?”
+- “How can I create, copy, and delete files and directories?”
+- “How can I edit files?”
+objectives:
+- “Explain how the shell relates to users’ programs.”
+- “Explain when and why command-line interfaces should be used instead of graphical interfaces.”
+- “Construct absolute and relative paths that identify specific files and directories.”
+- “Demonstrate the use of tab completion and explain its advantages.”
+- “Create a directory hierarchy that matches a given diagram.”
+- “Create files in the directory hierarchy using an editor or by copying and renaming existing files.”
+- “Delete, copy, and move specified files and/or directories.”
+keypoints:
+- “A shell is a program whose primary purpose is to read commands and run other programs.”
+- “Tab completion can help you save a lot of time and frustration.”
+- “The shell’s main advantages are its support for automating repetitive tasks and its capacity to access network machines.”
+- “Information is stored in files, which are stored in directories (folders).”
+- “Directories nested in other directories for a directory tree.”
+- “`cd [path]` changes the current working directory.”
+- “`ls [path]` prints a listing of a specific file or directory.”
+- “`ls` lists the current working directory.”
+- “`pwd` prints the user’s current working directory.”
+- “`/` is the root directory of the whole file system.”
+- “A relative path specifies a location starting from the current location.”
+- “An absolute path specifies a location from the root of the file system.”
+- “Directory names in a path are separated with `/` on Unix, but `\` on Windows.”
+- “`..` means ‘the directory above the current one’; `.` on its own means ‘the current directory’.
+- “`cp [old] [new]` copies a file.”
+- “`mkdir [path]` creates a new directory.”
+- “`mv [old] [new]` moves (renames) a file or directory.”
+- “`rm [path]` removes (deletes) a file.”
+- “`*` matches zero or more characters in a filename.”
+- “The shell does not have a trash bin - once something is deleted, it’s really gone.”
 ---
 
+TODOs:
+- Potentially concicify questions, objectives, key points (and make them non-redundant with the glossary)
+- Add outputs / fix paths
+- Tree structure / navigating files and directories.
+
+
+## Introducing the Shell
+
+## Motivation
+
+Usually you move around your computer and run programs through graphical user interfaces (GUIs).
+For example, Finder for Mac and Explorer for Windows.
+These GUIs are convenient because you can use your mouse to navigate to different folders and open different files.
+However, there are some things you simply can’t do from these GUIs.
+
+The Unix Shell (or the command line) allows you to do everything you would do through Finder/Explorer, and a lot more.
+But it’s so scary! I thought so at first, too.
+Since then, I’ve learned that it’s just another way to navigate your computer and run programs, and it can be super useful for your work.
+For instance, you can use it to combine existing tools into a pipeline to automate analyses, you can write a script to do things for you and improve reproducibility, you can interact with remote machines and supercomputers that are far away from you, and sometimes it’s the only option for the program you want to run.
+
+We’re going to use it to:
+1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html) (TODO: confirm correct link).
+1. Perform version control using git during the rest of the workshop.
+
+## What the Shell looks like
+
+When you open up the terminal for the first time, it can look pretty scary - it’s basically just a blank screen.
+Don’t worry - we’ll take you through how to use it step by step.
+
+The first line of the shell shows a prompt - the shell is waiting for an input.
+When you’re following along in the lesson, don’t type the prompt when typing commands.
+To make the prompt the same for all of us, run this command:
+
 ```
-echo "Hello World"
+PS1=’$ ‘
+```
+{: .language-bash}
+
+## Tree Structure
+
+The first thing we need to learn when using the shell is how to get around our computer.
+The shell folder (directory) structure is the same file structure as you're used to.
+We call the way that different directories are nested the "directory tree".
+You start at the root directory (`/`) and you can move "up" and "down" the tree. Here's an example:
+
+TODO - update the file structure of this tree after we know where things will actually be.
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/directory_tree_blank.png"/>
+
+Now that we understand directory trees a bit, let's check it out from the command line.
+We can see where we are by using the command `pwd` which stands for "print working directory", or the directory we are currently in:
+
+```
+pwd
 ```
 {: .language-bash}
 
 ```
-Hello World
+/home/USERNAME/
 ```
 {: .output}
+
+Congrats! You just ran your first command from the command line.
+The output is a file path to a location (a directory) on your computer.
+
+The output will look a little different depending on what operating system you're using:
+- Mac: `/Users/USERNAME`
+- Linux: `/home/USERNAME`
+- Windows: `C:\Users\USERNAME` (or maybe `/mnt/c/Users/USERNAME` for Windows 10 -- TODO: check)
+
+Usually you start in your home directory, but for Unix subsystem for Windows, it's a bit different.
+
+Let's check to see what's in your home directory using the `ls` command, which lists all of the files in your working directory:
+
+```
+ls
+```
+{: .language-bash}
+
+```
+Desktop     Downloads   Movies      Pictures
+Documents   Library     Music       Public
+```
+{: .output}
+
+If you're using the Unix subsystem for Windows, you'll probably see unfamiliar things. If you're using a Mac or git bash, you should see some files and directories you're familiar with such as `Documents` and `Desktop`.
+
+If you make a typo, don't worry. If the shell can’t find a command you type, it will show you a helpful error message.
+
+```
+ks
+```
+{: .language-bash}
+
+```
+ks: command not found
+```
+{: .output}
+
+This error message tells us the command we tried to run, `ks`, is not a command that is recognized, letting us know we might have made a mistake when typing.
+
+Next, let's move to our Desktop. To do this, we use `cd` to change directories.
+
+On Mac or git bash, run the following command:
+
+```
+cd Desktop
+```
+{: .language-bash}
+
+On Unix subsystem for Windows, run:
+```
+cd /mnt/c/USERNAME/Desktop
+```
+{: .language-bash}
+
+Let's see if we're in the right place:
+
+```
+pwd
+```
+{: .language-bash}
+
+```
+/home/USERNAME/Desktop
+```
+{: .output}
+
+We just moved _down_ the directory tree into the `Desktop` directory.
+
+What files and directories do you have on your Desktop? How can you check?
+```
+ls
+```
+{: .language-bash}
+
+```
+list.txt
+my_project
+notes.pdf
+Untitled.png
+```
+{: .output}
+
+Your Desktop will likely look different, but the important thing is that you see the folder we worked in for the R plotting lesson.
+Is the `my_project` directory listed on your Desktop?
+
+How can we get into the `my_project` directory?
+
+```
+cd my_project
+```
+{: .language-bash}
+
+We just went _down_ the directory tree again.
+
+Let's see what files are in `my_project`:
+```
+ls
+```
+{: .language-bash}
+
+```
+awesome_plot.jpg
+awesome_violin_plot.jpg
+gapminder_1997.csv
+gapminder_data.csv
+gdp_population.R
+hansAnimatedPlot.gif
+```
+{: .output}
+
+Is it what you expect? Are the files you made in the R plotting lesson there?
+
+Now let's move back _up_ the directory tree. First, let's try this command:
+
+```
+cd my_project
+```
+{: .language-bash}
+
+```
+cd: no such file or directory: my_project
+```
+{: .output}
+
+This doesn't work because the `my_project` directory is not within the directory that we are currently in.
+
+To move up the directory tree, you can use `..`, which is the parent of the current directory:
+```
+cd ..
+pwd
+```
+{: .language-bash}
+
+```
+/home/USERNAME/Desktop
+```
+{: .output}
+
+Everything that we've been doing is working with file paths. We tell the computer where we want to go using `cd` plus the file path. We can also tell the computer what files we want to list by giving a file path to `ls`:
+
+```
+ls my_project
+```
+{: .language-bash}
+
+```
+awesome_plot.jpg
+awesome_violin_plot.jpg
+gapminder_1997.csv
+gapminder_data.csv
+gdp_population.R
+hansAnimatedPlot.gif
+```
+{: .output}
+
+
+```
+ls ..
+```
+{: .language-bash}
+
+```
+list.txt
+my_project
+notes.pdf
+Untitled.png
+```
+{: .output}
+
+What happens if you just type `cd` without a file path?
+
+```
+cd
+pwd
+```
+{: .language-bash}
+
+```
+/home/USERNAME
+```
+{: .output}
+
+It takes you back to your home directory! (Or for Unix subsytem for Windows, your `/mnt` directory.
+
+To get back to your projects directory you can use the following command:
+
+Mac/git-bash:
+
+```
+cd Desktop/my_project
+```
+{: .language-bash}
+
+
+Unix subsystem for Windows:
+```
+cd c/USERNAME/Desktop/my_project
+```
+{: .language-bask}
+
+We have been using _relative paths_, meaning you use your current working directory to get to where you want to go.
+
+You can also use the _absolute path_, or the entire path from the root directory. What's listed when you use the `pwd` command is the absolute path:
+
+```
+pwd
+```
+{: .language-bash}
+
+You can also use `~` for the path to your home directory:
+
+```
+cd ~
+pwd
+```
+{: .language-bash}
+
+```
+/home/USERNAME
+```
+{: .output}
+
+> ## Absolute vs Relative Paths
+>
+> Starting from `/Users/amanda/data`,
+> which of the following commands could Amanda use to navigate to her home directory,
+> which is `/Users/amanda`?
+>
+> 1. `cd .`
+> 2. `cd /`
+> 3. `cd /home/amanda`
+> 4. `cd ../..`
+> 5. `cd ~`
+> 6. `cd home`
+> 7. `cd ~/data/..`
+> 8. `cd`
+> 9. `cd ..`
+>
+> > ## Solution
+> > 1. No: `.` stands for the current directory.
+> > 2. No: `/` stands for the root directory.
+> > 3. No: Amanda's home directory is `/Users/amanda`.
+> > 4. No: this goes up two levels, i.e. ends in `/Users`.
+> > 5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.
+> > 6. No: this would navigate into a directory `home` in the current directory if it exists.
+> > 7. Yes: unnecessarily complicated, but correct.
+> > 8. Yes: shortcut to go back to the user's home directory.
+> > 9. Yes: goes up one level.
+> {: .solution}
+{: .challenge}
+
+## Working with files and directories
+
+Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html) (TODO: confirm correct link).
+You might ask: why would I use the command line when I could just use the GUI?
+My best response is that if you ever need to use a high-performance computing cluster (such as Great Lakes at the University of Michigan), you’ll have no other option.
+You might also come to like it more than clicking around to get places once you get comfortable, because it’s a lot faster!
+
+First, let’s make sure we’re in the right directory (the `my_project` directory; TODO: change name of directory):
+
+```
+pwd
+```
+{: .language-bash}
+
+```
+/home/USERNAME/Desktop/my_project
+```
+{: .output}
+
+If you’re not there, `cd` to the correct place.
+
+Next, let’s remind ourselves what files are in this directory:
+
+```
+ls
+```
+{: .language-bash}
+```
+awesome_plot.jpg
+awesome_violin_plot.jpg
+gapminder_1997.csv
+gapminder_data.csv
+gdp_population.R
+hansAnimatedPlot.gif
+```
+{: .output}
+
+You can see that right now all of our files are in our main directory.
+However, it can start to get crazy if you have too many different files of different types all in one place!
+We’re going to create a better project directory structure that will help us organize our files. This is really important, particularly for larger projects.
+If you’re interested in learning more about structuring computational biology projects in particular, [here](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424) is a useful article.
+
+What do you think good would be a good way to organize our files?
+
+One way is the following (TODO: check names):
+```
+.
+├── code
+│   └── gdp_population.R
+├── data
+│   ├── gapminder_1997.csv
+    └── gapminder_data.csv
+└── figures
+    ├── awesome_plot.jpg
+    ├── awesome_violin_plot.jpg
+    └── hansAnimatedPlot.gif
+```
+{: .language-bash}
+
+The R script goes in the code directory, the gapminder datasets go in the data directory, and the figures go in the figures directory.
+This way, all of the files are organized into a clearer overall structure.
+
+A few notes about naming files and directories:
+- Don’t use whitespaces because they’re used to break arguments on the command line, so it makes things like moving and viewing files more complicated.
+Instead you can use a dash (`-`) or an underscore (`_`).
+- Don’t start names with a dash (`-`) because the shell will interpret it incorrectly.
+- Stick with letters, numbers, periods, dashes, and underscores, because other symbols (e.g. `^`, `&`) have special meanings.
+- If you have to refer to names of files or directories with whitespace or other special characters, use double quotes. For example, if you wanted to change into a directory called `My Code`, you will want to type `cd "My Code"`, not `cd My Code`.
+
+So how do we make our directory structure look like this?
+
+First, we need to make a new directory. Let’s start with the `code` directory. To do this, we use the command `mkdir` plus the name of the directory we want to make:
+
+```
+mkdir code
+```
+{: .language-bash}
+
+
+Now, let’s see if that directory exists now:
+
+```
+ls
+```
+{: .language-bash}
+```
+awesome_plot.jpg
+awesome_violin_plot.jpg
+code
+gapminder_1997.csv
+gapminder_data.csv
+gdp_population.R
+hansAnimatedPlot.gif
+```
+{: .output}
+
+
+How can we check to see if there’s anything in the `code` directory?
+
+```
+ls code
+```
+{: .language-bash}
+```
+
+```
+{: .output}
+
+Nothing in there yet, which is expected since we just made the directory.
+
+The next step is to move the `.R` file into the code directory. To do this, we use the `mv` command. The first argument after `mv` is the file you want to move, and the second argument is the place you want to move it:
+
+```
+mv gdp_population.R code
+```
+{: .language-bash}
+
+Okay, let’s see what’s in our current directory now:
+
+```
+ls
+```
+{: .language-bash}
+```
+awesome_plot.jpg
+awesome_violin_plot.jpg
+code
+gapminder_1997.csv
+gapminder_data.csv
+hansAnimatedPlot.gif
+```
+{: .output}
+
+`gdp_population.R` is no longer there! Where did it go? Let’s check the code directory, where we moved it to:
+
+```
+ls code
+```
+{: .language-bash}
+```
+gdp_population.R
+```
+{: .output}
+
+There it is!
+
+Great, now for an exercise:
+
+> ## Creating directories and moving files
+>
+> Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
+> > ## Solution
+> > From the `my_project` directory:
+> >  ```
+> > mkdir data
+> > mv gapminder_data.csv data
+> > mv gapminder_1997.csv data
+> > ```
+> {: .solution}
+{: .challenge}
+
+Okay, now we have the code and data in the right place. But we have several figures that should still be in their own directory.
+
+First, let’s make a `figures` directory:
+
+```
+mkdir figures
+```
+{: .language-bash}
+
+Next, we have to move the figures. But we have so many figures! It’d be annoying to move them one at a time. Thankfully, we can use a _wildcard_ to move them all at once. Wildcards are used to match files and directories to patterns.
+
+One example of a wildcard is the asterisk, `*`. This special character is interpreted as "multiple characters of any kind".
+
+Let’s see how we can use a wildcard to list only files with the extension `.jpg`:
+
+```
+ls *.jpg
+```
+{: .language-bash}
+```
+awesome_plot.jpg
+awesome_violin_plot.jpg
+```
+{: .output}
+
+See how only the files ending in `.jpg` were listed? The shell expands the wildcard to create a list of matching file names before running the commands. Can you guess how we move all of these files at once to the figures directory?
+
+```
+mv *jpg figures
+```
+{: .language-bash}
+
+We can also use the wildcard to list all of the files in all of the directories:
+
+```
+ls *
+```
+{: .language-bash}
+```
+code:
+gdp_population.R
+
+data:
+gapminder_1997.csv  gapminder_data.csv
+
+figures:
+awesome_plot.jpg    awesome_violin_plot.jpg
+```
+{: .output}
+
+This output shows each directory name, followed by its contents on the next line. As you can see, all of the files are now in the right place!
+
+> ## Working with Wildcards
+>
+> Suppose we are in a directory containing the following files:
+> ```
+> cubane.pdb
+> ethane.pdb
+> methane.pdb
+> octane.pdb
+> pentane.pdb
+> propane.pdb
+> README.md
+> ```
+>
+> What would be the output of the following commands?
+> 1. `ls *`
+> 2. `ls *.pdb`
+> 3. `ls *ethane.pdb`
+> 4. `ls *ane`
+> 5. `ls p*`
+>
+> > ## Solution
+> > 1. `cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb README.md`
+> > 2. `cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb`
+> > 3. `ethane.pdb methane.pdb`
+> > 4. `cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb`
+> > 5. `pentane.pdb propane.pdb`
+>
+> {: .solution}
+{: .challenge}
+
+## Viewing Files
+
+To view and navigate the contents of a file we can use the command `less`. This will open a full screen view of the file.
+
+Here is what we should expect to see when running the command `less` on our `gapminder_data.csv` file:
+
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/less_example.png"/>
+
+To navigate, press `spacebar` to scroll to the next page and `b` to scroll up to the previous page. You can also use the up and down arrows to scroll line-by-line. Note that `less` defaults to line wrapping, meaning that any lines longer than the width of the screen will be wrapped to the next line, (to disable this use the option `-S` when running `less`, ex `less -S file.txt`). To exit less, press the letter `q`.
+
+We should note that not all file types can be viewed with `less`. While we can open PDFs and excel spreadsheets easily with programs on our computer, `less` doesn't render them well on the command line. For example, if we try to less a .pdf file we will see a warning.
+
+```
+less file.pdf
+```
+{: .language-bash}
+```
+file.pdf may be a binary file.  See it anyway?
+```
+{: .output}
+
+If we say "yes", less will render the file but it will appear as a seemingly random display of characters that wont make much sense to us.
+
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/less_pdf_example.png"/>
+
+## Man and Help
+
+Now that we know how to view files with `less`, we can learn how to look up the manual pages for unix shell commands. If you want to learn more about a command we can use `man` to look up its manual page. which will open with `less`. We can navigate the man page to view the description of a command and its options. For example, if you want to know more about the navigation options of `less` you can type `man less` on the command line.
+
+```
+man less
+```
+{: .language-bash}
+
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/man_less.png"/>
+
+On the manual page for `less`, we see a section titled **options**. These options, also called **flags**, allow us to customize how `less` runs.
+
+One very helpful flag that is available for any command is `-h or --help` which will print brief documentation for the command.
+
+```
+less -h
+less --help
+```
+{: .language-bash}
+
+<img src="https://github.com/UMSWC/curriculum/blob/unix-shell/fig/unix-shell/less_help.png"/>
+
+Sometimes, commands will have multiple flags that we want to use at the same time. For example, `less` has a flag `-w` which highlights unread text, and `-S` which cuts off really long lines (rather than having the text wrap around). There are two ways to run `less` using both of these flags:
+
+`less -w -S [FILE]`
+
+`less -wS [FILE]`
+
+> ## Using the Manual Pages
+>
+> Use `man` to open the manual for the command `ls`.
+>
+> What flags would you use to...
+> 1. Print files in order of size?
+> 2. Print files in order of the last time they were edited?
+> 3. Print hidden files (files that begin with `.`)?
+> 4. Print more information about the files?
+> 5. Print files in order of size AND also print more information about the files?
+>
+> > ## Solution
+> > 1. `ls -S`
+> > 2. `ls -t`
+> > 3. `ls -a`
+> > 4. `ls -l`
+> > 5. `ls -lS`
+>
+> {: .solution}
+{: .challenge}
+
+## Editing Files
+
+Beyond viewing the content of files, we may want to be able to edit or write files on the command line. There are many different text editors you can use to edit files on the command line, but we will talk about `nano` since it is a bit easier to learn. To edit a file with nano type `nano file.txt`. If the file exists, it will open the file in a nano window, if the file does not exist it will be created. One nice feature of nano is that it has a cheat sheet along the bottom with some common commands you’ll need. When you are ready to save (write) your file, you type <kbd>Ctrl</kbd>+<kbd>O</kbd>. Along the bottom will appear a prompt for the file name to write to. The current name of the file will appear here, to keep the name as it is hit `enter` otherwise you can change the name of the file then hit `enter`. To exit nano, press <kbd>Ctrl</kbd>+<kbd>X</kbd>. If you forget to save before exiting, no worries nano will prompt you to first save the file.
+
+Since we moved around files when we organized our project directory we will have to update our R script. The path we use to read in our dataset is no longer correct. We will use nano to update the path to our new directory structure.
+
+```
+nano code/gdp_population.R
+```
+{: .language-bash}
+
+```
+gapminder_data <- read_csv("data/gapminder_data.csv")
+```
+{: .output}
+
+Great! Now as an exercise we can change the paths to write out figures.
+
+> ## Editing file paths with nano
+>
+> Use nano to edit the file paths of the figures saved in `code/gdp_population.R` to match our new directory structure.
+> > ## Solution
+> > ```
+> > nano code/gdp_population.R
+> > ```
+> > {: .language-bash}
+> > Edit the lines in `code/gdp_population.R` where plots are saved:
+> >  ```
+> > ggsave("figures/awesome_plot.jpg", width=6, height=4)
+> > ggsave("figures/awesome_histogram.jpg", width=6, height=4)
+> > anim_save("figures/hansAnimatedPlot.gif", plot = animatedHansPlot)
+> > ```
+> > {: .output}
+> {: .solution}
+{: .challenge}
+TODO: Confirm figure output paths.
+
+## Glossary of terms
+
+- root: the very top of the file system tree
+- absolute path: the location of a specific file or directory starting from the root of the file system tree
+- relative path: the location of a specific file or directory starting from where you currently are in the file system tree
+
+- `pwd`: Print working directory - prints the _absolute path_ from the _root_ directory to the directory where you currently are.
+- `ls`: List files - lists files in the current directory. You can provide a path to list files to another directory as well (`ls [path]`).
+- `cd [path]`: Change directories - move to another folder.
+- `mkdir`: Make directory - creates a new directory
+- `..`: This will move you up one level in the file system tree
+- `mv`: Move - move a file to a new location (`mv [file] [/path/to/new/location]`) OR remaning a file (`mv [oldfilename] [newfilename]`)
+- `less`: - quick way to view a document without using a full text editor
+- `man`: Manual - allows you to view the bash manual for another command (e.g. `man ls`)
+- `-h/--help`: Help - argument that pulls up the help manual for a program
+- `nano`: a user-friendly text editor
+- `*`: Wildcard - matches zero of more characters in a filename
