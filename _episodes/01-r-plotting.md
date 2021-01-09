@@ -158,26 +158,26 @@ library(tidyverse)
 
 
 ~~~
-── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
+── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ~~~
 {: .output}
 
 
 
 ~~~
-[32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
-[32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
-[32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
-[32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
+✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+✔ tibble  3.0.4     ✔ dplyr   1.0.2
+✔ tidyr   1.1.2     ✔ stringr 1.4.0
+✔ readr   1.4.0     ✔ forcats 0.5.0
 ~~~
 {: .output}
 
 
 
 ~~~
-── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
-[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
-[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
 ~~~
 {: .output}
 
@@ -238,10 +238,24 @@ Finally, take a look at the **Console** at the bottom left part of the RStudio s
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
 
-```
-gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 
-```
+~~~
+gapminder_1997 <- read_csv("gapminder_1997.csv")
+~~~
+{: .language-r}
+
+~~~
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  country = col_character(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)
+~~~
+{: .output}
 
 You should now have a line of text in your code file that started with `gapminder` and ends with a `)` symbol.
 
@@ -259,7 +273,7 @@ Starting from the left, the first thing we see is `gapminder_1997`. We viewed th
 > If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
 >> ## Solution
 >> We see a data table outputted, similar to what we saw in the Viewer tab.
->{: .solution}
+> {: .solution}
 {: .challenge}
 
 In R terms, `gapminder_1997` is a named **object** that references or stores something. In this case, `gapminder_1997` stores a specific table of data.
@@ -403,7 +417,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "2021-01-07"
+[1] "2021-01-09"
 ~~~
 {: .output}
 
@@ -417,7 +431,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/home/runner/work/curriculum/curriculum/_episodes_rmd"
+[1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
 ~~~
 {: .output}
 
@@ -432,7 +446,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "2021-01-07"
+> [1] "2021-01-09"
 > ~~~
 > {: .output}
 > 
@@ -446,7 +460,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "/home/runner/work/curriculum/curriculum/_episodes_rmd"
+> [1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
 > ~~~
 > {: .output}
 {: .callout}
@@ -490,12 +504,38 @@ read_csv(file = 'gapminder_1997.csv')
 ~~~
 {: .language-r}
 
+~~~
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  country = col_character(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)
+~~~
+{: .output}
+
 
 
 ~~~
-Error: 'gapminder_1997.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+# A tibble: 142 x 5
+   country           pop continent lifeExp gdpPercap
+   <chr>           <dbl> <chr>       <dbl>     <dbl>
+ 1 Afghanistan  22227415 Asia         41.8      635.
+ 2 Albania       3428038 Europe       73.0     3193.
+ 3 Algeria      29072015 Africa       69.2     4797.
+ 4 Angola        9875024 Africa       41.0     2277.
+ 5 Argentina    36203463 Americas     73.3    10967.
+ 6 Australia    18565243 Oceania      78.8    26998.
+ 7 Austria       8069876 Europe       77.5    29096.
+ 8 Bahrain        598561 Asia         73.9    20292.
+ 9 Bangladesh  123315288 Asia         59.4      973.
+10 Belgium      10199787 Europe       77.5    27561.
+# … with 132 more rows
 ~~~
-{: .error}
+{: .output}
 
 > ## Exercise: Position of the arguments in functions
 > Which of the following lines of code will give you an output of 3.14? For the one(s) that don't give you 3.14, what do they give you?
@@ -574,12 +614,7 @@ ggplot(data=gapminder_1997)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-ggplotDataOnly-1.png" title="plot of chunk ggplotDataOnly" alt="plot of chunk ggplotDataOnly" width="612" style="display: block; margin: auto;" />
 
 To run code that you've typed in the editor, you have a few options. Remember that the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard. This will run the line of code that currently contains your cursor or any highlighted code.
 
@@ -600,12 +635,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-ggplotX-1.png" title="plot of chunk ggplotX" alt="plot of chunk ggplotX" width="612" style="display: block; margin: auto;" />
 
 Note that we've added this new function call to a second line just to make it easier to read. To do this we make sure that the `+` is at the end of the first line otherwise R will assume your command ends when it starts the next row. The `+` sign indicates not only that we are adding information, but to continue on to the next line of code.
 
@@ -619,12 +649,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotAddXLabel-1.png" title="plot of chunk FirstPlotAddXLabel" alt="plot of chunk FirstPlotAddXLabel" width="612" style="display: block; margin: auto;" />
 
 OK. That looks better. Notice that when we added the label value we did so by placing the values inside quotes. This is because we are not using a value from inside our data object - we are providing the name directly. When you need to include actual text values in R, they will be placed inside quotes to tell them apart from other object or variable names.
 
@@ -640,12 +665,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotAddY-1.png" title="plot of chunk FirstPlotAddY" alt="plot of chunk FirstPlotAddY" width="612" style="display: block; margin: auto;" />
 
 Excellent. We've now told our plot object where the x and y values are coming from and what they stand for. But we haven't told our object how we want it to draw the data. There are many different plot types (bar charts, scatter plots, histograms, etc). We tell our plot object what to draw by adding a "geometry" ("geom" for short) to our object. We will talk about many different geometries today, but for our first plot, let's draw our data using the "points" geometry for each value in the data set. To do this, we add `geom_point()` to our plot object:
 
@@ -660,12 +680,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotAddPoints-1.png" title="plot of chunk FirstPlotAddPoints" alt="plot of chunk FirstPlotAddPoints" width="612" style="display: block; margin: auto;" />
 
 Now we're really getting somewhere. It finally looks like a proper plot!  We can now see a trend in the data. It looks like countries with a larger GDP tend to have a higher life expectancy. Let's add a title to our plot to make that clearer. Again, we will use the `labs()` function, but this time we will use the `title =` argument.
 
@@ -681,12 +696,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotAddTitle-1.png" title="plot of chunk FirstPlotAddTitle" alt="plot of chunk FirstPlotAddTitle" width="612" style="display: block; margin: auto;" />
 
 No one can deny we've made a very handsome plot! But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data in the `gapminder_1997` object that we haven't used yet. Maybe we are curious if the different continents show different patterns in GDP and life expectancy. One thing we could do is use a different color for each of the continents. To map the continent of each point to a color, we will again use the `aes()` function:
 
@@ -703,12 +713,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotAddColor-1.png" title="plot of chunk FirstPlotAddColor" alt="plot of chunk FirstPlotAddColor" width="612" style="display: block; margin: auto;" />
 
 Here we can see that in 1997 the African countries had much lower life expectancy than many other continents. Notice that when we add a mapping for color, ggplot automatically provided a legend for us. It took care of assigning different colors to each of our unique values of the `continent` variable. (Note that when we mapped the x and y values, those drew the actual axis labels, so in a way the axes are like the legends for the x and y values). The colors that ggplot uses are determined by the color "scale". Each aesthetic value we can supply (x, y, color, etc) has a corresponding scale. Let's change the colors to make them a bit prettier.
 
@@ -726,12 +731,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotAddColorScale-1.png" title="plot of chunk FirstPlotAddColorScale" alt="plot of chunk FirstPlotAddColorScale" width="612" style="display: block; margin: auto;" />
 
 The `scale_color_brewer()` function is just one of many you can use to change colors. There are bunch of "palettes" that are build in. You can view them all by running `RColorBrewer::display.brewer.all()` or check out the [Color Brewer website](https://colorbrewer2.org/) for more info about choosing plot colors.
 
@@ -757,15 +757,27 @@ There are also lots of other fun options:
 >> 
 >> 
 >> ~~~
->> Installing package into '/home/runner/work/_temp/Library'
->> (as 'lib' is unspecified)
+>> Error in contrib.url(repos, "source"): trying to use CRAN without setting a mirror
 >> ~~~
->> {: .output}
+>> {: .error}
 >> 
 >> 
 >> 
 >> ~~~
 >> library(wesanderson)
+>> ~~~
+>> {: .language-r}
+>> 
+>> 
+>> 
+>> ~~~
+>> Error in library(wesanderson): there is no package called 'wesanderson'
+>> ~~~
+>> {: .error}
+>> 
+>> 
+>> 
+>> ~~~
 >> ggplot(data = gapminder_1997) +
 >> aes(x = gdpPercap) +
 >> labs(x = "GDP Per Capita") +
@@ -781,7 +793,7 @@ There are also lots of other fun options:
 >> 
 >> 
 >> ~~~
->> Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
+>> Error in wes_palette("Cavalcanti1"): could not find function "wes_palette"
 >> ~~~
 >> {: .error}
 >> {: .source}
@@ -805,12 +817,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotAddSize-1.png" title="plot of chunk FirstPlotAddSize" alt="plot of chunk FirstPlotAddSize" width="612" style="display: block; margin: auto;" />
 
 There doesn't seem to be a very strong association with population size. We can see two very large countries with relatively low GDP per capita (but since the per capita value is already divided by the total population, there is some problems with separating those two values). We got another legend here for size which is nice, but the values look a bit ugly in scientific notation. Let's divide all the values by 1,000,000 and label our legend "Population (in millions)"
 
@@ -830,12 +837,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotAddPop-1.png" title="plot of chunk FirstPlotAddPop" alt="plot of chunk FirstPlotAddPop" width="612" style="display: block; margin: auto;" />
 
 This works because you can treat the columns in the aesthetic mappings just like any other variables and can use functions to transform or change them at plot time rather than having to transform your data first.
 
@@ -864,12 +866,7 @@ Good work! Take a moment to appreciate what a cool plot you made with a few line
 >> ~~~
 >> {: .language-r}
 >> 
->> 
->> 
->> ~~~
->> Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
->> ~~~
->> {: .error}
+>> <img src="../fig/rmd-01-Shape-1.png" title="plot of chunk Shape" alt="plot of chunk Shape" width="612" style="display: block; margin: auto;" />
 >> {: .source}
 > {: .solution}
 {: .challenge}
@@ -887,12 +884,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-FirstPlotCondensed-1.png" title="plot of chunk FirstPlotCondensed" alt="plot of chunk FirstPlotCondensed" width="612" style="display: block; margin: auto;" />
 
 # Plotting for data exploration
 _[Back to top](#contents)_
@@ -905,6 +897,21 @@ _[Back to top](#contents)_
 In the first plot, we looked at a smaller slice of a large dataset. To gain a better understanding of the kinds of patterns we might observe in our own data, we will now use the full dataset, which is stored in a called "gapminder_data.csv".
 
 To start, we will read in the data without using the interactive RStudio file navigation.
+
+
+~~~
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)
+~~~
+{: .output}
 
 > ## Exercise: Read in your own data
 >
@@ -923,13 +930,6 @@ To start, we will read in the data without using the interactive RStudio file na
 >> gapminder_data <- read_csv("gapminder_data.csv")
 >> ~~~
 >> {: .language-r}
->> 
->> 
->> 
->> ~~~
->> Error: 'gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
->> ~~~
->> {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -1013,12 +1013,7 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-01-gapminderMoreLines-1.png" title="plot of chunk gapminderMoreLines" alt="plot of chunk gapminderMoreLines" width="612" style="display: block; margin: auto;" />
 > > (China and India are the two Asian countries that have experience massive population growth from 1952-2007.)
 > {: .solution}
 {: .challenge}
@@ -1039,12 +1034,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapBox-1.png" title="plot of chunk GapBox" alt="plot of chunk GapBox" width="612" style="display: block; margin: auto;" />
 
 This type of visualization makes it easy to compare the range and spread of values across groups. The "middle" 50% of the data is located inside the box and outliers that are far away from the central mass of the data are drawn as points.
 
@@ -1061,12 +1051,7 @@ This type of visualization makes it easy to compare the range and spread of valu
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-01-GapViol-1.png" title="plot of chunk GapViol" alt="plot of chunk GapViol" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -1085,12 +1070,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapViolin-1.png" title="plot of chunk GapViolin" alt="plot of chunk GapViolin" width="612" style="display: block; margin: auto;" />
 
 Violin plots are similar to box plots, but they show the range and spread of values with curves rather than boxes (wider curves = more observations) and they do not include outliers. Also note you need a minimum number of points so they can be drawn - because Oceania only has two values, it doesn't get a curve. We can include the Oceania data by adding a layer of points on top that will show us the "raw" data:
 
@@ -1103,12 +1083,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapViolinPoints-1.png" title="plot of chunk GapViolinPoints" alt="plot of chunk GapViolinPoints" width="612" style="display: block; margin: auto;" />
 
 OK, we've drawn the points but most of them stack up on top of each other. One way to make it easier to see all the data is to "jitter" the points, or move them around randomly so they don't stack up on top of each other. To do this, we use `geom_jitter` rather than `geom_point`
 
@@ -1121,12 +1096,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapViolinJitter-1.png" title="plot of chunk GapViolinJitter" alt="plot of chunk GapViolinJitter" width="612" style="display: block; margin: auto;" />
 
 Be aware that these movements are random so your plot will look a bit different each time you run it!
 
@@ -1144,12 +1114,7 @@ Be aware that these movements are random so your plot will look a bit different 
 >>~~~
 >>{: .language-r}
 >>
->>
->>
->>~~~
->>Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
->>~~~
->>{: .error}
+>><img src="../fig/rmd-01-GapViolinJitterSolution-1.png" title="plot of chunk GapViolinJitterSolution" alt="plot of chunk GapViolinJitterSolution" width="612" style="display: block; margin: auto;" />
 >>
 >> Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points.
 >{: .solution}
@@ -1165,12 +1130,7 @@ ggplot(data = gapminder_1997, mapping = aes(x = continent, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997, mapping = aes(x = continent, y = lifeExp)): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapViolinJitter2-1.png" title="plot of chunk GapViolinJitter2" alt="plot of chunk GapViolinJitter2" width="612" style="display: block; margin: auto;" />
 
 However, we can also use aesthetic values for only one layer of our plot. To do that, you an place an additional `aes()` inside of that layer. For example, what if we want to change the size for the points so they are scaled by population, but we don't want to change the violin plot? We can do:
 
@@ -1183,12 +1143,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapViolinJitterAes-1.png" title="plot of chunk GapViolinJitterAes" alt="plot of chunk GapViolinJitterAes" width="612" style="display: block; margin: auto;" />
 
 Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(continent, lifeExp)` but only `geom_jitter` will also use `aes(size = pop)`.
 
@@ -1233,12 +1188,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapViolinColor-1.png" title="plot of chunk GapViolinColor" alt="plot of chunk GapViolinColor" width="612" style="display: block; margin: auto;" />
 Well, that didn't get all that colorful. That's because objects like these violins have two different parts that have a color: the shape outline, and the inner part of the shape. For geoms that have an inner part, you change the fill color with `fill=` rather than `color=`, so let's try that instead
 
 
@@ -1249,12 +1199,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapViolinFill-1.png" title="plot of chunk GapViolinFill" alt="plot of chunk GapViolinFill" width="612" style="display: block; margin: auto;" />
 
 That's some plot now isn't it! Compare this to what you see when you map the fill property to your data rather than setting a specific value.
 
@@ -1266,12 +1211,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapViolinFillMap-1.png" title="plot of chunk GapViolinFillMap" alt="plot of chunk GapViolinFillMap" width="612" style="display: block; margin: auto;" />
 
 So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color names. You can see the full list if you run `colors()` in the console. Since there are so many, you can randomly choose 10 if you run `sample(colors(), size = 10)`.
 
@@ -1291,12 +1231,7 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-01-GapViolinFillSoln-1.png" title="plot of chunk GapViolinFillSoln" alt="plot of chunk GapViolinFillSoln" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -1312,12 +1247,7 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-GapViolinAesFillMap-1.png" title="plot of chunk GapViolinAesFillMap" alt="plot of chunk GapViolinAesFillMap" width="612" style="display: block; margin: auto;" />
 > Why doesn't this work? How can you fix it? Where does that color come from?
 >
 >> Solution
@@ -1342,9 +1272,11 @@ ggplot(gapminder_1997) +
 
 
 ~~~
-Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ~~~
-{: .error}
+{: .output}
+
+<img src="../fig/rmd-01-GapLifeHist-1.png" title="plot of chunk GapLifeHist" alt="plot of chunk GapLifeHist" width="612" style="display: block; margin: auto;" />
 
 You should not only see the plot in the plot window, but also a message telling you to choose a better bin value. Histograms can look very different depending on the number of bars you decide to draw. The default is 30. Let's try setting a different value by explicitly passing a `bin=` argument to the `geom_histogram` later.
 
@@ -1356,12 +1288,7 @@ ggplot(gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapLifeHistBins-1.png" title="plot of chunk GapLifeHistBins" alt="plot of chunk GapLifeHistBins" width="612" style="display: block; margin: auto;" />
 
 Try different values like 5 or 50 to see how the plot changes.
 
@@ -1377,12 +1304,7 @@ Try different values like 5 or 50 to see how the plot changes.
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-01-GapLifeDens-1.png" title="plot of chunk GapLifeDens" alt="plot of chunk GapLifeDens" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -1400,12 +1322,7 @@ ggplot(gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapLifeHistBinsClassicTheme-1.png" title="plot of chunk GapLifeHistBinsClassicTheme" alt="plot of chunk GapLifeHistBinsClassicTheme" width="612" style="display: block; margin: auto;" />
 
 Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw()`, `theme_minimal()`.
 
@@ -1438,14 +1355,7 @@ ggsave("awesome_plot.jpg", width=6, height=4)
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
+> > <img src="../fig/rmd-01-savingPlotExercise-1.png" title="plot of chunk savingPlotExercise" alt="plot of chunk savingPlotExercise" width="612" style="display: block; margin: auto;" />
 > > 
 > > ~~~
 > > ggsave("awesome_histogram.jpg", width=6, height=4)
@@ -1466,13 +1376,6 @@ violin_plot <- ggplot(data = gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
-
 Now if we want to see our plot again, we can just run:
 
 
@@ -1481,12 +1384,7 @@ violin_plot
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'violin_plot' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-outputViolinPlot-1.png" title="plot of chunk outputViolinPlot" alt="plot of chunk outputViolinPlot" width="612" style="display: block; margin: auto;" />
 
 We can also add changes to the plot. Let's say we want our violin plot to have the black-and-white theme:
 
@@ -1496,12 +1394,7 @@ violin_plot + theme_bw()
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'violin_plot' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-violinPlotBWTheme-1.png" title="plot of chunk violinPlotBWTheme" alt="plot of chunk violinPlotBWTheme" width="612" style="display: block; margin: auto;" />
 
 Watch out! Adding the theme does not change the `violin_plot` object! If we want to change the object, we need to store our changes:
 
@@ -1510,13 +1403,6 @@ Watch out! Adding the theme does not change the `violin_plot` object! If we want
 violin_plot <- violin_plot + theme_bw()
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'violin_plot' not found
-~~~
-{: .error}
 
 We can also save any plot object we have named, even if they were not the plot that we ran most recently. We just have to tell `ggsave()` which plot we want to save:
 
@@ -1537,29 +1423,10 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 > >   geom_boxplot(fill = "orange")+
 > >   theme_bw()+
 > >   labs(x = "Continent", y = "GDP Per Capita")
-> > ~~~
-> > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(data = gapminder_1997): object 'gapminder_1997' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > ggsave("my_awesome_plot.jpg", plot = my_plot, width=6, height=4)
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in grid.draw(plot): object 'my_plot' not found
-> > ~~~
-> > {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -1579,12 +1446,7 @@ ggplot(gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapNoFacet-1.png" title="plot of chunk GapNoFacet" alt="plot of chunk GapNoFacet" width="612" style="display: block; margin: auto;" />
 
 The first time we made this plot, we colored the points differently for each of the continents. This time let's actually draw a separate box for each continent. We can do this with `facet_wrap()`
 
@@ -1597,12 +1459,7 @@ ggplot(gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapFacetWrap-1.png" title="plot of chunk GapFacetWrap" alt="plot of chunk GapFacetWrap" width="612" style="display: block; margin: auto;" />
 Note that `facet_wrap` requires this extra helper function called `vars()` in order to pass in the column names. It's a lot like the `aes()` function, but it doesn't require an aesthetic name. We can see in this output we get a separate box with a label for each continent so that only the points for that continent are in that box.
 
 The other faceting function ggplot provides is `facet_grid()`. The main difference is that `facet_grid()` will make sure all of your smaller boxes share a common axis. In this example, we will stack all the boxes on top of each other into rows so that their x axes all line up.
@@ -1615,12 +1472,7 @@ ggplot(gapminder_1997) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(gapminder_1997): object 'gapminder_1997' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-GapFacetGrid-1.png" title="plot of chunk GapFacetGrid" alt="plot of chunk GapFacetGrid" width="612" style="display: block; margin: auto;" />
 
 Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
 
@@ -1638,6 +1490,10 @@ library(gganimate)
 {: .language-r}
 
 > ## Exercise: Reviewing how to create a scatter plot
+<<<<<<< HEAD
+> **Part 1:** 
+> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent. 
+> 
 > **Part 1:**
 > Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
 >
@@ -1651,12 +1507,7 @@ library(gganimate)
 >> ~~~
 >> {: .language-r}
 >> 
->> 
->> 
->> ~~~
->> Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
->> ~~~
->> {: .error}
+>> <img src="../fig/rmd-01-hansGraphStaticSolution-1.png" title="plot of chunk hansGraphStaticSolution" alt="plot of chunk hansGraphStaticSolution" width="612" style="display: block; margin: auto;" />
 >{: .solution}
 
 > **Part 2:**
@@ -1671,29 +1522,12 @@ library(gganimate)
 >>  scale_color_brewer(palette = "Set1") +
 >>  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
 >> theme_classic()
->> ~~~
->> {: .language-r}
 >> 
->> 
->> 
->> ~~~
->> Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
->> ~~~
->> {: .error}
->> 
->> 
->> 
->> ~~~
 >> staticHansPlot
 >> ~~~
 >> {: .language-r}
 >> 
->> 
->> 
->> ~~~
->> Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
->> ~~~
->> {: .error}
+>> <img src="../fig/rmd-01-hansGraphStaticPrettySolution-1.png" title="plot of chunk hansGraphStaticPrettySolution" alt="plot of chunk hansGraphStaticPrettySolution" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -1705,29 +1539,12 @@ library(gganimate)
   scale_color_brewer(palette = "Set1") +
   labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
  theme_classic()
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
-~~~
-{: .error}
-
-
-
-~~~
  staticHansPlot
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-hansGraphStatic-1.png" title="plot of chunk hansGraphStatic" alt="plot of chunk hansGraphStatic" width="612" style="display: block; margin: auto;" />
 
 Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot.
 
@@ -1742,7 +1559,7 @@ animatedHansPlot <- staticHansPlot +
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
+Error in transition_states(year, transition_length = 1, state_length = 1): could not find function "transition_states"
 ~~~
 {: .error}
 

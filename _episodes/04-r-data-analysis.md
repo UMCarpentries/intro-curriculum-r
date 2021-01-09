@@ -55,26 +55,26 @@ library(tidyverse)
 
 
 ~~~
-── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
+── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ~~~
 {: .output}
 
 
 
 ~~~
-[32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
-[32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
-[32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
-[32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
+✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+✔ tibble  3.0.4     ✔ dplyr   1.0.2
+✔ tidyr   1.1.2     ✔ stringr 1.4.0
+✔ readr   1.4.0     ✔ forcats 0.5.0
 ~~~
 {: .output}
 
 
 
 ~~~
-── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
-[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
-[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
 ~~~
 {: .output}
 
@@ -88,9 +88,18 @@ gapminder_data <- read_csv("data/gapminder_data.csv")
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)
 ~~~
-{: .error}
+{: .output}
 Let's say we would like to know what is the mean (average) life expecteny in the dataset. R has a built in function function called `mean()` that will calculate this value for us. We can apply that function to our *lifeExp* column using the `summarize` function. Here's what that looks like
 
 ~~~
@@ -102,9 +111,12 @@ gapminder_data %>%
 
 
 ~~~
-Error in summarize(., average = mean(lifeExp)): object 'gapminder_data' not found
+# A tibble: 1 x 1
+  average
+    <dbl>
+1    59.5
 ~~~
-{: .error}
+{: .output}
 This command is made of several parts. First, we start with our data object (gapminder_data). Then, we use a special operator called the *pipe operator* `%>%` to pass the data value into the `summarize` function. The pipe operator allows us to "chain" together multiple function calls so that the output of the first function becomes the input to the next function.
 
 > ## Exercise: why use a pipe operator?
@@ -118,9 +130,12 @@ This command is made of several parts. First, we start with our data object (gap
 > 
 > 
 > ~~~
-> Error in summarize(gapminder_data, average = mean(lifeExp)): object 'gapminder_data' not found
+> # A tibble: 1 x 1
+>   average
+>     <dbl>
+> 1    59.5
 > ~~~
-> {: .error}
+> {: .output}
 > Here we pass the data directly to `summarize()` as an argument rather than piping the value.
 > But as soon as we start writing more functions, we will see that using pipes makes this easier to read.
 > {: .source}
@@ -153,9 +168,12 @@ gapminder_data %>%
 
 
 ~~~
-Error in summarize(., recent_year = max(year)): object 'gapminder_data' not found
+# A tibble: 1 x 1
+  recent_year
+        <dbl>
+1        2007
 ~~~
-{: .error}
+{: .output}
 So we see that the most recent year in the dataset is 2007. Let's calculate the life expecteny for all countries for only that year. To do that, we will use the `filter()` function to only use rows for that year before calculating the mean value.
 
 
@@ -169,9 +187,12 @@ gapminder_data %>%
 
 
 ~~~
-Error in filter(., year == 2007): object 'gapminder_data' not found
+# A tibble: 1 x 1
+  average
+    <dbl>
+1    67.0
 ~~~
-{: .error}
+{: .output}
 
 > ##Challenge: What is the average GDP per capita for the first year in the dataset?
 >>
@@ -184,9 +205,12 @@ Error in filter(., year == 2007): object 'gapminder_data' not found
 >>
 >>
 >>~~~
->>Error in summarize(., first_year = min(year)): object 'gapminder_data' not found
+>># A tibble: 1 x 1
+>>  first_year
+>>       <dbl>
+>>1       1952
 >>~~~
->>{: .error}
+>>{: .output}
 >>
 >>
 >>
@@ -200,9 +224,12 @@ Error in filter(., year == 2007): object 'gapminder_data' not found
 >>
 >>
 >>~~~
->>Error in filter(., year == 1952): object 'gapminder_data' not found
+>># A tibble: 1 x 1
+>>  average_gdp
+>>        <dbl>
+>>1       3725.
 >>~~~
->>{: .error}
+>>{: .output}
 > {: .source}
 {: .challenge}
 
@@ -223,9 +250,30 @@ gapminder_data %>%
 
 
 ~~~
-Error in group_by(., year): object 'gapminder_data' not found
+`summarise()` ungrouping output (override with `.groups` argument)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 12 x 2
+    year average
+   <dbl>   <dbl>
+ 1  1952    49.1
+ 2  1957    51.5
+ 3  1962    53.6
+ 4  1967    55.7
+ 5  1972    57.6
+ 6  1977    59.6
+ 7  1982    61.5
+ 8  1987    63.2
+ 9  1992    64.2
+10  1997    65.0
+11  2002    65.7
+12  2007    67.0
+~~~
+{: .output}
 The `group_by()` function just expects you to pass in the name of a column (or mutiple columns separated by commans) in your data.
 
 ## TODO: challenge Try calculating the average life expetency by continent
@@ -242,9 +290,30 @@ gapminder_data %>%
 
 
 ~~~
-Error in group_by(., year): object 'gapminder_data' not found
+`summarise()` ungrouping output (override with `.groups` argument)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 12 x 3
+    year   min   max
+   <dbl> <dbl> <dbl>
+ 1  1952  28.8  72.7
+ 2  1957  30.3  73.5
+ 3  1962  32.0  73.7
+ 4  1967  34.0  74.2
+ 5  1972  35.4  74.7
+ 6  1977  31.2  76.1
+ 7  1982  38.4  77.1
+ 8  1987  39.9  78.7
+ 9  1992  23.6  79.4
+10  1997  36.1  80.7
+11  2002  39.2  82  
+12  2007  39.6  82.6
+~~~
+{: .output}
 We can now see just how large a gap there is between different countries for the different years.
 
 ## Arrange
@@ -263,9 +332,23 @@ gapminder_data %>%
 
 
 ~~~
-Error in filter(., year == 2007): object 'gapminder_data' not found
+`summarise()` ungrouping output (override with `.groups` argument)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 5 x 2
+  continent average
+  <chr>       <dbl>
+1 Oceania      80.7
+2 Europe       77.6
+3 Americas     73.6
+4 Asia         70.7
+5 Africa       54.8
+~~~
+{: .output}
 Notice there that we can use the column created the in the `summarize()` step ("avarage") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
 
 ## Mutate
@@ -283,9 +366,22 @@ gapminder_data %>%
 
 
 ~~~
-Error in mutate(., gdp = pop * gdpPercap): object 'gapminder_data' not found
+# A tibble: 1,704 x 7
+   country      year      pop continent lifeExp gdpPercap          gdp
+   <chr>       <dbl>    <dbl> <chr>       <dbl>     <dbl>        <dbl>
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.  6567086330.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.  7585448670.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.  8758855797.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.  9648014150.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.  9678553274.
+ 6 Afghanistan  1977 14880372 Asia         38.4      786. 11697659231.
+ 7 Afghanistan  1982 12881816 Asia         39.9      978. 12598563401.
+ 8 Afghanistan  1987 13867957 Asia         40.8      852. 11820990309.
+ 9 Afghanistan  1992 16317921 Asia         41.7      649. 10595901589.
+10 Afghanistan  1997 22227415 Asia         41.8      635. 14121995875.
+# … with 1,694 more rows
 ~~~
-{: .error}
+{: .output}
 This will add a new column called "gdp" to our data. We use the column names as if they were regular values that we want to perform mathematical operations on and provide the name infront of an equals sign like we have done with `summarize()`
 
 ## Select
@@ -301,9 +397,22 @@ gapminder_data %>%
 
 
 ~~~
-Error in select(., pop, year): object 'gapminder_data' not found
+# A tibble: 1,704 x 2
+        pop  year
+      <dbl> <dbl>
+ 1  8425333  1952
+ 2  9240934  1957
+ 3 10267083  1962
+ 4 11537966  1967
+ 5 13079460  1972
+ 6 14880372  1977
+ 7 12881816  1982
+ 8 13867957  1987
+ 9 16317921  1992
+10 22227415  1997
+# … with 1,694 more rows
 ~~~
-{: .error}
+{: .output}
 The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with
 
 ~~~
@@ -315,9 +424,22 @@ gapminder_data %>%
 
 
 ~~~
-Error in select(., year, starts_with("c")): object 'gapminder_data' not found
+# A tibble: 1,704 x 3
+    year country     continent
+   <dbl> <chr>       <chr>    
+ 1  1952 Afghanistan Asia     
+ 2  1957 Afghanistan Asia     
+ 3  1962 Afghanistan Asia     
+ 4  1967 Afghanistan Asia     
+ 5  1972 Afghanistan Asia     
+ 6  1977 Afghanistan Asia     
+ 7  1982 Afghanistan Asia     
+ 8  1987 Afghanistan Asia     
+ 9  1992 Afghanistan Asia     
+10  1997 Afghanistan Asia     
+# … with 1,694 more rows
 ~~~
-{: .error}
+{: .output}
 This returns just the three columns we are interested in. We can also use `select()` to drop/remove particular columns by putting a minus sign (`-`) in front of the column name. For example, if we want everything but the continent column, we can do
 
 ~~~
@@ -329,9 +451,22 @@ gapminder_data %>%
 
 
 ~~~
-Error in select(., -continent): object 'gapminder_data' not found
+# A tibble: 1,704 x 5
+   country      year      pop lifeExp gdpPercap
+   <chr>       <dbl>    <dbl>   <dbl>     <dbl>
+ 1 Afghanistan  1952  8425333    28.8      779.
+ 2 Afghanistan  1957  9240934    30.3      821.
+ 3 Afghanistan  1962 10267083    32.0      853.
+ 4 Afghanistan  1967 11537966    34.0      836.
+ 5 Afghanistan  1972 13079460    36.1      740.
+ 6 Afghanistan  1977 14880372    38.4      786.
+ 7 Afghanistan  1982 12881816    39.9      978.
+ 8 Afghanistan  1987 13867957    40.8      852.
+ 9 Afghanistan  1992 16317921    41.7      649.
+10 Afghanistan  1997 22227415    41.8      635.
+# … with 1,694 more rows
 ~~~
-{: .error}
+{: .output}
 
 ## TODO: challenge Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
 
@@ -353,9 +488,23 @@ gapminder_data %>%
 
 
 ~~~
-Error in select(., country, continent, year, lifeExp): object 'gapminder_data' not found
+# A tibble: 142 x 14
+   country continent `1952` `1957` `1962` `1967` `1972` `1977` `1982` `1987`
+   <chr>   <chr>      <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
+ 1 Afghan… Asia        28.8   30.3   32.0   34.0   36.1   38.4   39.9   40.8
+ 2 Albania Europe      55.2   59.3   64.8   66.2   67.7   68.9   70.4   72  
+ 3 Algeria Africa      43.1   45.7   48.3   51.4   54.5   58.0   61.4   65.8
+ 4 Angola  Africa      30.0   32.0   34     36.0   37.9   39.5   39.9   39.9
+ 5 Argent… Americas    62.5   64.4   65.1   65.6   67.1   68.5   69.9   70.8
+ 6 Austra… Oceania     69.1   70.3   70.9   71.1   71.9   73.5   74.7   76.3
+ 7 Austria Europe      66.8   67.5   69.5   70.1   70.6   72.2   73.2   74.9
+ 8 Bahrain Asia        50.9   53.8   56.9   59.9   63.3   65.6   69.1   70.8
+ 9 Bangla… Asia        37.5   39.3   41.2   43.5   45.3   46.9   50.0   52.8
+10 Belgium Europe      68     69.2   70.2   70.9   71.4   72.8   73.9   75.4
+# … with 132 more rows, and 4 more variables: `1992` <dbl>, `1997` <dbl>,
+#   `2002` <dbl>, `2007` <dbl>
 ~~~
-{: .error}
+{: .output}
 
 
 ## Cleaning up data
@@ -375,9 +524,47 @@ read_csv("data/co2-un-data.csv")
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Warning: Missing column names filled in: 'X3' [3], 'X4' [4], 'X5' [5], 'X6' [6],
+'X7' [7]
 ~~~
-{: .error}
+{: .warning}
+
+
+
+~~~
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  T24 = col_character(),
+  `CO2 emission estimates` = col_character(),
+  X3 = col_character(),
+  X4 = col_character(),
+  X5 = col_character(),
+  X6 = col_character(),
+  X7 = col_character()
+)
+~~~
+{: .output}
+
+
+
+~~~
+# A tibble: 2,133 x 7
+   T24      `CO2 emission est… X3    X4            X5    X6    X7               
+   <chr>    <chr>              <chr> <chr>         <chr> <chr> <chr>            
+ 1 Region/… <NA>               Year  Series        Value Foot… Source           
+ 2 8        Albania            1975  Emissions (t… 4338… <NA>  International En…
+ 3 8        Albania            1985  Emissions (t… 6929… <NA>  International En…
+ 4 8        Albania            1995  Emissions (t… 1848… <NA>  International En…
+ 5 8        Albania            2005  Emissions (t… 3825… <NA>  International En…
+ 6 8        Albania            2010  Emissions (t… 3930… <NA>  International En…
+ 7 8        Albania            2015  Emissions (t… 3824… <NA>  International En…
+ 8 8        Albania            2016  Emissions (t… 3674… <NA>  International En…
+ 9 8        Albania            2017  Emissions (t… 4342… <NA>  International En…
+10 8        Albania            1975  Emissions pe… 1.80… <NA>  International En…
+# … with 2,123 more rows
+~~~
+{: .output}
 
 The output gives us a warning about missing column names being filled in with things like 'X3', 'X4', etc. Looking at the table that is outputted by `read_csv` we can see that there appear to be two rows at the top of the file that contain information about the data in the table. The first is a header that tells us the table number and its name. Ideally, we'd skip that. We can do this using the `skip` argument in read_csv by giving it a number of lines to skip.
 
@@ -390,9 +577,46 @@ read_csv("data/co2-un-data.csv", skip=1)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Warning: Missing column names filled in: 'X2' [2]
 ~~~
-{: .error}
+{: .warning}
+
+
+
+~~~
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  `Region/Country/Area` = col_double(),
+  X2 = col_character(),
+  Year = col_double(),
+  Series = col_character(),
+  Value = col_double(),
+  Footnotes = col_character(),
+  Source = col_character()
+)
+~~~
+{: .output}
+
+
+
+~~~
+# A tibble: 2,132 x 7
+   `Region/Country/… X2      Year Series        Value Footnotes Source          
+               <dbl> <chr>  <dbl> <chr>         <dbl> <chr>     <chr>           
+ 1                 8 Alban…  1975 Emissions (… 4.34e3 <NA>      International E…
+ 2                 8 Alban…  1985 Emissions (… 6.93e3 <NA>      International E…
+ 3                 8 Alban…  1995 Emissions (… 1.85e3 <NA>      International E…
+ 4                 8 Alban…  2005 Emissions (… 3.83e3 <NA>      International E…
+ 5                 8 Alban…  2010 Emissions (… 3.93e3 <NA>      International E…
+ 6                 8 Alban…  2015 Emissions (… 3.82e3 <NA>      International E…
+ 7                 8 Alban…  2016 Emissions (… 3.67e3 <NA>      International E…
+ 8                 8 Alban…  2017 Emissions (… 4.34e3 <NA>      International E…
+ 9                 8 Alban…  1975 Emissions p… 1.80e0 <NA>      International E…
+10                 8 Alban…  1985 Emissions p… 2.34e0 <NA>      International E…
+# … with 2,122 more rows
+~~~
+{: .output}
 
 Now we get a similar Warning message as before, but the outputted table looks better. It's important to differentiate between Warnings and Errors in R. A warning tells us, "you might want to know about this issue, but R still did what you asked". An error tells us, "there's something wrong with your code or your data and R didn't do what you asked". You need to fix any errors that arise. Warnings, are probably best to resolve or at least understand why they are coming up. We can resolve this warning by one of two methods. First, we can tell read_csv what the column names should be with the col_names argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings
 
@@ -406,9 +630,39 @@ col_names=c("region", "country", "year", "series", "value", "footnotes", "source
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 2,132 x 7
+   region country  year series             value footnotes source               
+    <dbl> <chr>   <dbl> <chr>              <dbl> <chr>     <chr>                
+ 1      8 Albania  1975 Emissions (thous… 4.34e3 <NA>      International Energy…
+ 2      8 Albania  1985 Emissions (thous… 6.93e3 <NA>      International Energy…
+ 3      8 Albania  1995 Emissions (thous… 1.85e3 <NA>      International Energy…
+ 4      8 Albania  2005 Emissions (thous… 3.83e3 <NA>      International Energy…
+ 5      8 Albania  2010 Emissions (thous… 3.93e3 <NA>      International Energy…
+ 6      8 Albania  2015 Emissions (thous… 3.82e3 <NA>      International Energy…
+ 7      8 Albania  2016 Emissions (thous… 3.67e3 <NA>      International Energy…
+ 8      8 Albania  2017 Emissions (thous… 4.34e3 <NA>      International Energy…
+ 9      8 Albania  1975 Emissions per ca… 1.80e0 <NA>      International Energy…
+10      8 Albania  1985 Emissions per ca… 2.34e0 <NA>      International Energy…
+# … with 2,122 more rows
+~~~
+{: .output}
 
 As an alternative, we can read in the table, get the warning and then fix the column names using the rename function.
 
@@ -422,9 +676,46 @@ rename(country=X2)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Warning: Missing column names filled in: 'X2' [2]
 ~~~
-{: .error}
+{: .warning}
+
+
+
+~~~
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  `Region/Country/Area` = col_double(),
+  X2 = col_character(),
+  Year = col_double(),
+  Series = col_character(),
+  Value = col_double(),
+  Footnotes = col_character(),
+  Source = col_character()
+)
+~~~
+{: .output}
+
+
+
+~~~
+# A tibble: 2,132 x 7
+   `Region/Country/… country  Year Series        Value Footnotes Source         
+               <dbl> <chr>   <dbl> <chr>         <dbl> <chr>     <chr>          
+ 1                 8 Albania  1975 Emissions (… 4.34e3 <NA>      International …
+ 2                 8 Albania  1985 Emissions (… 6.93e3 <NA>      International …
+ 3                 8 Albania  1995 Emissions (… 1.85e3 <NA>      International …
+ 4                 8 Albania  2005 Emissions (… 3.83e3 <NA>      International …
+ 5                 8 Albania  2010 Emissions (… 3.93e3 <NA>      International …
+ 6                 8 Albania  2015 Emissions (… 3.82e3 <NA>      International …
+ 7                 8 Albania  2016 Emissions (… 3.67e3 <NA>      International …
+ 8                 8 Albania  2017 Emissions (… 4.34e3 <NA>      International …
+ 9                 8 Albania  1975 Emissions p… 1.80e0 <NA>      International …
+10                 8 Albania  1985 Emissions p… 2.34e0 <NA>      International …
+# … with 2,122 more rows
+~~~
+{: .output}
 
 A lot of data analysts prefer to have their column headings and variable names be in all lower case. We can use a variation of `rename`, which is `rename_all` that allows us to set all of the column headings to lower case by giving it the name of the tolower function, which makes everything lowercase.
 
@@ -438,9 +729,46 @@ rename_all(tolower)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Warning: Missing column names filled in: 'X2' [2]
 ~~~
-{: .error}
+{: .warning}
+
+
+
+~~~
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  `Region/Country/Area` = col_double(),
+  X2 = col_character(),
+  Year = col_double(),
+  Series = col_character(),
+  Value = col_double(),
+  Footnotes = col_character(),
+  Source = col_character()
+)
+~~~
+{: .output}
+
+
+
+~~~
+# A tibble: 2,132 x 7
+   `region/country/… x2      year series        value footnotes source          
+               <dbl> <chr>  <dbl> <chr>         <dbl> <chr>     <chr>           
+ 1                 8 Alban…  1975 Emissions (… 4.34e3 <NA>      International E…
+ 2                 8 Alban…  1985 Emissions (… 6.93e3 <NA>      International E…
+ 3                 8 Alban…  1995 Emissions (… 1.85e3 <NA>      International E…
+ 4                 8 Alban…  2005 Emissions (… 3.83e3 <NA>      International E…
+ 5                 8 Alban…  2010 Emissions (… 3.93e3 <NA>      International E…
+ 6                 8 Alban…  2015 Emissions (… 3.82e3 <NA>      International E…
+ 7                 8 Alban…  2016 Emissions (… 3.67e3 <NA>      International E…
+ 8                 8 Alban…  2017 Emissions (… 4.34e3 <NA>      International E…
+ 9                 8 Alban…  1975 Emissions p… 1.80e0 <NA>      International E…
+10                 8 Alban…  1985 Emissions p… 2.34e0 <NA>      International E…
+# … with 2,122 more rows
+~~~
+{: .output}
 
 Both of these strategies are useful for helping us to clean up our data. Which you ultimately use for this project is a matter of personal preference. We'll go with the first option where we used col_names so that we don't have to worry about the Warning message.
 
@@ -454,9 +782,39 @@ col_names=c("region", "country", "year", "series", "value", "footnotes", "source
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 2,132 x 7
+   region country  year series             value footnotes source               
+    <dbl> <chr>   <dbl> <chr>              <dbl> <chr>     <chr>                
+ 1      8 Albania  1975 Emissions (thous… 4.34e3 <NA>      International Energy…
+ 2      8 Albania  1985 Emissions (thous… 6.93e3 <NA>      International Energy…
+ 3      8 Albania  1995 Emissions (thous… 1.85e3 <NA>      International Energy…
+ 4      8 Albania  2005 Emissions (thous… 3.83e3 <NA>      International Energy…
+ 5      8 Albania  2010 Emissions (thous… 3.93e3 <NA>      International Energy…
+ 6      8 Albania  2015 Emissions (thous… 3.82e3 <NA>      International Energy…
+ 7      8 Albania  2016 Emissions (thous… 3.67e3 <NA>      International Energy…
+ 8      8 Albania  2017 Emissions (thous… 4.34e3 <NA>      International Energy…
+ 9      8 Albania  1975 Emissions per ca… 1.80e0 <NA>      International Energy…
+10      8 Albania  1985 Emissions per ca… 2.34e0 <NA>      International Energy…
+# … with 2,122 more rows
+~~~
+{: .output}
 
 We previously saw how we can subset columns from a data frame using the select function. Let's get the country, year, series, and value columns
 
@@ -471,9 +829,39 @@ select(country, year, series, value)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 2,132 x 4
+   country  year series                                                 value
+   <chr>   <dbl> <chr>                                                  <dbl>
+ 1 Albania  1975 Emissions (thousand metric tons of carbon dioxide)   4338.  
+ 2 Albania  1985 Emissions (thousand metric tons of carbon dioxide)   6930.  
+ 3 Albania  1995 Emissions (thousand metric tons of carbon dioxide)   1849.  
+ 4 Albania  2005 Emissions (thousand metric tons of carbon dioxide)   3825.  
+ 5 Albania  2010 Emissions (thousand metric tons of carbon dioxide)   3930.  
+ 6 Albania  2015 Emissions (thousand metric tons of carbon dioxide)   3825.  
+ 7 Albania  2016 Emissions (thousand metric tons of carbon dioxide)   3674.  
+ 8 Albania  2017 Emissions (thousand metric tons of carbon dioxide)   4342.  
+ 9 Albania  1975 Emissions per capita (metric tons of carbon dioxide)    1.80
+10 Albania  1985 Emissions per capita (metric tons of carbon dioxide)    2.34
+# … with 2,122 more rows
+~~~
+{: .output}
 
 The series column has two methods of quantifying CO2 emissions - "Emissions (thousand metric tons of carbon dioxide)" and "Emissions per capita (metric tons of carbon dioxide)". Those are long titles that we'd like to shorten to make them easier to work with. We can shorten them to "total" and "per_capita" using the recode function. We need to do this within the mutate function where we will mutate the series column. The syntax in the recode function is to tell recode which column we want to recode and then what the old value (e.g. "Emissions (thousand metric tons of carbon dioxide)") should equal after recoding (e.g. "total").
 
@@ -490,9 +878,39 @@ mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxid
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 2,132 x 4
+   country  year series       value
+   <chr>   <dbl> <chr>        <dbl>
+ 1 Albania  1975 total      4338.  
+ 2 Albania  1985 total      6930.  
+ 3 Albania  1995 total      1849.  
+ 4 Albania  2005 total      3825.  
+ 5 Albania  2010 total      3930.  
+ 6 Albania  2015 total      3825.  
+ 7 Albania  2016 total      3674.  
+ 8 Albania  2017 total      4342.  
+ 9 Albania  1975 per_capita    1.80
+10 Albania  1985 per_capita    2.34
+# … with 2,122 more rows
+~~~
+{: .output}
 
 Recall that we'd like to have separate columns for the two ways that we CO2 emissions data. To achieve this, we'll use the pivot_wider function that we saw previously. The columns we want to spread out are series (i.e. names_from) and value (i.e. values_from).
 
@@ -510,9 +928,39 @@ pivot_wider(names_from=series, values_from=value)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 1,066 x 4
+   country  year  total per_capita
+   <chr>   <dbl>  <dbl>      <dbl>
+ 1 Albania  1975  4338.      1.80 
+ 2 Albania  1985  6930.      2.34 
+ 3 Albania  1995  1849.      0.580
+ 4 Albania  2005  3825.      1.27 
+ 5 Albania  2010  3930.      1.35 
+ 6 Albania  2015  3825.      1.33 
+ 7 Albania  2016  3674.      1.28 
+ 8 Albania  2017  4342.      1.51 
+ 9 Algeria  1975 13553.      0.811
+10 Algeria  1985 42073.      1.86 
+# … with 1,056 more rows
+~~~
+{: .output}
 
 Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. One useful tool is the count function, which will tell us how many times a value is repeated in a column of a data frame. Let's us that on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year
 
@@ -531,9 +979,36 @@ count(year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 8 x 2
+   year     n
+  <dbl> <int>
+1  1975   111
+2  1985   113
+3  1995   136
+4  2005   140
+5  2010   140
+6  2015   142
+7  2016   142
+8  2017   142
+~~~
+{: .output}
 
 It looks like we have data for 140 countries in 2005 and 2010. Let's filter our data to get the rows that correspond to 2005. Also, because we will only have data from one year, we can drop the year column from our data frame by giving it year with a minus sign before it.
 
@@ -553,9 +1028,39 @@ select(-year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 140 x 3
+   country      total per_capita
+   <chr>        <dbl>      <dbl>
+ 1 Albania      3825.      1.27 
+ 2 Algeria     77474.      2.33 
+ 3 Angola       6147.      0.314
+ 4 Argentina  149476.      3.82 
+ 5 Armenia      4130.      1.38 
+ 6 Australia  365515.     17.9  
+ 7 Austria     74764.      9.09 
+ 8 Azerbaijan  29018.      3.46 
+ 9 Bahrain     20565.     23.1  
+10 Bangladesh  31960.      0.223
+# … with 130 more rows
+~~~
+{: .output}
 
 Finally, let's go ahead and assign the output of this code chunk to a variable name
 
@@ -575,9 +1080,19 @@ select(-year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
 
 
 ## Joining data frames
@@ -595,9 +1110,18 @@ gapminder_data <- read_csv("data/gapminder_data.csv") %>%
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)
 ~~~
-{: .error}
+{: .output}
 
 Look at the data in co2_emissions and gapminder_data. If you had to merge these two data frames together, which column would you use to merge them together? If you said "country" - good job! We'll call country our "key". Now, when we join them together, can you think of any problems we might run into when we merge things? We might not have CO2 emissions data for all of the countries in the gapmiinder dataset and vice versa. Also, a country might be represented in both data frames but by the same name in both places. As an example, write down the name of the country that the University of Michigan is in. Remember your answer and we'll come back to you answer shortly!
 
@@ -622,9 +1146,29 @@ inner_join(gapminder_data, co2_emissions)
 
 
 ~~~
-Error in inner_join(gapminder_data, co2_emissions): object 'gapminder_data' not found
+Joining, by = "country"
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 21 x 6
+   country                  pop lifeExp gdpPercap   total per_capita
+   <chr>                  <dbl>   <dbl>     <dbl>   <dbl>      <dbl>
+ 1 Argentina           40301927    75.3    12779. 149476.       3.82
+ 2 Brazil             190010647    72.4     9066. 311624.       1.67
+ 3 Canada              33390141    80.7    36319. 540431.      16.8 
+ 4 Chile               16284741    78.6    13172.  54435.       3.34
+ 5 Colombia            44227550    72.9     7007.  53585.       1.24
+ 6 Costa Rica           4133884    78.8     9645.   5463.       1.29
+ 7 Cuba                11416987    78.3     8948.  25051.       2.22
+ 8 Dominican Republic   9319622    72.2     6025.  17522.       1.90
+ 9 Ecuador             13755680    75.0     6873.  23927.       1.74
+10 El Salvador          6939688    71.9     5728.   6253.       1.04
+# … with 11 more rows
+~~~
+{: .output}
 
 Do you see that we now have data from both data frames joined together in the same data frame? One thing to note about the output is that `inner_join` tells us that that it joined by "country". We can make this explicit using the "by" argument in the join functions
 
@@ -637,9 +1181,22 @@ inner_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-Error in inner_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+# A tibble: 21 x 6
+   country                  pop lifeExp gdpPercap   total per_capita
+   <chr>                  <dbl>   <dbl>     <dbl>   <dbl>      <dbl>
+ 1 Argentina           40301927    75.3    12779. 149476.       3.82
+ 2 Brazil             190010647    72.4     9066. 311624.       1.67
+ 3 Canada              33390141    80.7    36319. 540431.      16.8 
+ 4 Chile               16284741    78.6    13172.  54435.       3.34
+ 5 Colombia            44227550    72.9     7007.  53585.       1.24
+ 6 Costa Rica           4133884    78.8     9645.   5463.       1.29
+ 7 Cuba                11416987    78.3     8948.  25051.       2.22
+ 8 Dominican Republic   9319622    72.2     6025.  17522.       1.90
+ 9 Ecuador             13755680    75.0     6873.  23927.       1.74
+10 El Salvador          6939688    71.9     5728.   6253.       1.04
+# … with 11 more rows
 ~~~
-{: .error}
+{: .output}
 
 One thing to notice is that `co2_emissions` had 25 rows, but the output of our join only had 21. Let's investigate. It appears that there must have been countries in the gapminder data that did not appear in our co2_emissions data frame. We could look at which countries are missing using `left_join` and piping the output to `View()`
 
@@ -649,13 +1206,6 @@ left_join(gapminder_data, co2_emissions, by="country") %>%
 View()
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in left_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
-~~~
-{: .error}
 
 We can see that the co2_emissions data were missing for Bolivia, Puerto Rico, United States, and Venezuela. Another way to get the same information a bit more directly is to use an `anti_join`.  This will show us the data for the keys on the left that are missing from the data frame on the right
 
@@ -668,9 +1218,15 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-Error in anti_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+# A tibble: 4 x 4
+  country             pop lifeExp gdpPercap
+  <chr>             <dbl>   <dbl>     <dbl>
+1 Bolivia         9119152    65.6     3822.
+2 Puerto Rico     3942491    78.7    19329.
+3 United States 301139947    78.2    42952.
+4 Venezuela      26084662    73.7    11416.
 ~~~
-{: .error}
+{: .output}
 
 If we look at the co2_emissions data with `View()`, we will see that Bolivia, United States, and Venezuela are called different things in the co2_emissions data frame. They're called "Bolivia (Plurin. State of)", "United States of America", and "Venezuela (Boliv. Rep. of)". Puerto Rico isn't a country; it's part of the United States. To fix this, we can use the `recode` functions like we did earlier when altering the values of the "series" column.
 
@@ -695,9 +1251,19 @@ mutate(country=recode(country,
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
+)
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -709,9 +1275,12 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-Error in anti_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+# A tibble: 1 x 4
+  country         pop lifeExp gdpPercap
+  <chr>         <dbl>   <dbl>     <dbl>
+1 Puerto Rico 3942491    78.7    19329.
 ~~~
-{: .error}
+{: .output}
 
 [[ NOTE: This could easily be pulled out as an exercise ]]
 This leaves us with a missing row for Puerto Rico. We could ignore this and move on or we could add it's values to those of the United States. Let's recode Puerto Rico as United States and then use `group_by` and `summarize` to aggregate the data; we'll use the population data to weight the life expectancy and GDP values.
@@ -733,9 +1302,25 @@ pop = sum(pop)
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+`summarise()` ungrouping output (override with `.groups` argument)
+~~~
+{: .output}
 
 
 
@@ -747,9 +1332,10 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-Error in anti_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+# A tibble: 0 x 4
+# … with 4 variables: country <chr>, lifeExp <dbl>, gdpPercap <dbl>, pop <dbl>
 ~~~
-{: .error}
+{: .output}
 
 Now our `anti_join` returns an empty data frame, which tells us that we have reconciled all of the keys from the gapminder data with the data in the co2_emissions data frame.
 
@@ -762,13 +1348,6 @@ Let's use the `inner_join` to create a new data frame
 gapminder_co2 <- inner_join(gapminder_data, co2_emissions, by="country")
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in inner_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
-~~~
-{: .error}
 
 
 ## Analyzing combined data
@@ -788,12 +1367,7 @@ title="There is a strong association between a nation's GDP and the amount of CO
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(gapminder_co2, aes(x = gdpPercap, y = per_capita)): object 'gapminder_co2' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="612" style="display: block; margin: auto;" />
 
 To help clarify the association, we can add a fit line through the data using `geom_smooth`
 
@@ -812,9 +1386,11 @@ geom_smooth()
 
 
 ~~~
-Error in ggplot(gapminder_co2, aes(x = gdpPercap, y = per_capita)): object 'gapminder_co2' not found
+`geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ~~~
-{: .error}
+{: .output}
+
+<img src="../fig/rmd-01-unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="612" style="display: block; margin: auto;" />
 
 We can force the line to be straight using `method="lm"` as an argument to `geom_smooth`
 
@@ -833,9 +1409,11 @@ geom_smooth(method="lm")
 
 
 ~~~
-Error in ggplot(gapminder_co2, aes(x = gdpPercap, y = per_capita)): object 'gapminder_co2' not found
+`geom_smooth()` using formula 'y ~ x'
 ~~~
-{: .error}
+{: .output}
+
+<img src="../fig/rmd-01-unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="612" style="display: block; margin: auto;" />
 
 For the second question, we want to create two groups - Canada, the United States, and Mexico in one and the other countries in another. We can create a grouping variable using `mutate`
 
@@ -849,9 +1427,22 @@ mutate(region = if_else(country == "Canada" | country == "United States" | count
 
 
 ~~~
-Error in mutate(., region = if_else(country == "Canada" | country == "United States" | : object 'gapminder_co2' not found
+# A tibble: 24 x 7
+   country            lifeExp gdpPercap       pop   total per_capita region
+   <chr>                <dbl>     <dbl>     <dbl>   <dbl>      <dbl> <chr> 
+ 1 Argentina             75.3    12779.  40301927 149476.      3.82  south 
+ 2 Bolivia               65.6     3822.   9119152   8976.      0.984 south 
+ 3 Brazil                72.4     9066. 190010647 311624.      1.67  south 
+ 4 Canada                80.7    36319.  33390141 540431.     16.8   north 
+ 5 Chile                 78.6    13172.  16284741  54435.      3.34  south 
+ 6 Colombia              72.9     7007.  44227550  53585.      1.24  south 
+ 7 Costa Rica            78.8     9645.   4133884   5463.      1.29  south 
+ 8 Cuba                  78.3     8948.  11416987  25051.      2.22  south 
+ 9 Dominican Republic    72.2     6025.   9319622  17522.      1.90  south 
+10 Ecuador               75.0     6873.  13755680  23927.      1.74  south 
+# … with 14 more rows
 ~~~
-{: .error}
+{: .output}
 
 Then we can use this column to repeat our `group_by` and `summarize` steps
 
@@ -867,9 +1458,20 @@ summarize(total = sum(total))
 
 
 ~~~
-Error in mutate(., region = if_else(country == "Canada" | country == "United States" | : object 'gapminder_co2' not found
+`summarise()` ungrouping output (override with `.groups` argument)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 2 x 2
+  region    total
+  <chr>     <dbl>
+1 north  6656037.
+2 south   889332.
+~~~
+{: .output}
 
 We see that although Canada, the United States, and Mexico account for half the population of the Americas, they account for 88% of the CO2 emitted. In fact, the United States accounts for 75% of the CO2 emitted from the Americas.
 

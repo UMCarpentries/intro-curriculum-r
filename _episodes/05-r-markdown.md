@@ -20,6 +20,7 @@ keypoints:
   - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
 
+
 TODO: Complete Table of Contents and back to top links (for excercises)
 
 ### Contents
@@ -32,7 +33,7 @@ TODO: Complete Table of Contents and back to top links (for excercises)
     + [Text](#text)
 1. [Starting the report](#starting-the-report)
 1. [Formatting](#formatting)
-1. [Integrating it all together: Paired exercise](#integrating-it-all-together:-paired-exercise)
+1. [Integrating it all together: Paired exercise](#integrating-it-all-together-paired-exercise)
 
 
 
@@ -121,19 +122,7 @@ The next section is a *code chunk*, or embedded R code, that sets up options for
 
 ~~~
 ```{r setup, include=FALSE}
-~~~
-{: .output}
-
-
-
-~~~
 knitr::opts_chunk$set(echo = TRUE)
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -408,8 +397,6 @@ This is just a way for you to practice what you've learned.
 
 **One note:** It may be helpful to copy and paste the questions into the R Markdown file as you go.
 
-
-TODO: *check if question numbers reset after solution blocks*
 TODO: *make sure r code works in solution blocks*
 
 ### Exercises using the gapminder data
@@ -429,26 +416,26 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > 
 > ~~~
-> ── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
+> ── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 > ~~~
 > {: .output}
 > 
 > 
 > 
 > ~~~
-> [32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
-> [32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
-> [32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
-> [32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
+> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+> ✔ tibble  3.0.4     ✔ dplyr   1.0.2
+> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+> ✔ readr   1.4.0     ✔ forcats 0.5.0
 > ~~~
 > {: .output}
 > 
 > 
 > 
 > ~~~
-> ── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
-> [31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
-> [31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> ── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+> ✖ dplyr::filter() masks stats::filter()
+> ✖ dplyr::lag()    masks stats::lag()
 > ~~~
 > {: .output}
 > 
@@ -462,15 +449,24 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > 
 > ~~~
-> Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+> 
+> ── Column specification ───────────────────────────────────────────────────────────────────────────
+> cols(
+>   country = col_character(),
+>   year = col_double(),
+>   pop = col_double(),
+>   continent = col_character(),
+>   lifeExp = col_double(),
+>   gdpPercap = col_double()
+> )
 > ~~~
-> {: .error}
+> {: .output}
 {: .solution}
 
 #### Investigating population over time.
 _[Back to top](#contents)_
 
-1. Make a scatter plot of year vs. population, separated into a plot for each contient. **HINT:** you can use `facet_wrap(vars(column_name))` to separate into different plots based on that column.
+2. Make a scatter plot of year vs. population, separated into a plot for each contient. **HINT:** you can use `facet_wrap(vars(column_name))` to separate into different plots based on that column.
 
 > ## Solution
 > 
@@ -481,15 +477,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in ggplot(gapminder, aes(x = year, y = pop)): object 'gapminder' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-1. It seems like there are 2 outliers - which countries are those?
+3. It seems like there are 2 outliers - which countries are those?
 
 > ## Solution
 >
@@ -501,12 +492,16 @@ _[Back to top](#contents)_
 >
 >
 >~~~
->Error in filter(., pop > 1e+09): object 'gapminder' not found
+># A tibble: 2 x 1
+>  country
+>  <chr>  
+>1 China  
+>2 India  
 >~~~
->{: .error}
+>{: .output}
 {: .solution}
 
-1. Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries.
+4. Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries.
 
 > ## Solution
 > 
@@ -517,19 +512,14 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in filter(., country != "China" & country != "India"): object 'gapminder' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
 ##### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
-1. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do it!
+5. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do it!
 
 > Solution
 > 
@@ -541,15 +531,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in filter(., country != "China" & country != "India"): object 'gapminder' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-1. It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? HINT: This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
+6. It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? HINT: This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
 
 > ## Solution
 > 
@@ -561,28 +546,26 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in filter(., country != "China" & country != "India"): object 'gapminder' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 #### Looking into life expectancy a bit more.
 _[Back to top](#contents)_
 
-1. What country had the highest life expectancy in 1982? **Hint:** use the `slice_max()` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
+7. What country had the highest life expectancy in 1982? **Hint:** use the `slice_max()` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
 
 > ## Solution
 > 
 > ~~~
-> Error in filter(gapminder, year == 1982): object 'gapminder' not found
+> # A tibble: 1 x 6
+>   country  year       pop continent lifeExp gdpPercap
+>   <chr>   <dbl>     <dbl> <chr>       <dbl>     <dbl>
+> 1 Japan    1982 118454974 Asia         77.1    19384.
 > ~~~
-> {: .error}
+> {: .output}
 {: .solution}
 
-1. Now, do the same thing but for all years! *HINT:* Use the `group_by()` function.
+8. Now, do the same thing but for all years! *HINT:* Use the `group_by()` function.
 
 > ## Solution
 > 
@@ -594,25 +577,36 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> Error in group_by(., year): object 'gapminder' not found
+> # A tibble: 12 x 3
+> # Groups:   year [12]
+>    country  year lifeExp
+>    <chr>   <dbl>   <dbl>
+>  1 Norway   1952    72.7
+>  2 Iceland  1957    73.5
+>  3 Iceland  1962    73.7
+>  4 Sweden   1967    74.2
+>  5 Sweden   1972    74.7
+>  6 Iceland  1977    76.1
+>  7 Japan    1982    77.1
+>  8 Japan    1987    78.7
+>  9 Japan    1992    79.4
+> 10 Japan    1997    80.7
+> 11 Japan    2002    82  
+> 12 Japan    2007    82.6
 > ~~~
-> {: .error}
+> {: .output}
 {: .solution}
 
-1. Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
+9. Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
 
 > ## Solution
-> 
-> ~~~
-> Error in filter(., continent == "Asia"): object 'gapminder' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 ##### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
-1. What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
+10. What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
 
 > ## Solution
 > 
@@ -624,39 +618,57 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> Error in filter(., continent == "Asia"): object 'gapminder' not found
+> # A tibble: 12 x 6
+> # Groups:   year [12]
+>    country      year      pop continent lifeExp gdpPercap
+>    <chr>       <dbl>    <dbl> <chr>       <dbl>     <dbl>
+>  1 Afghanistan  1952  8425333 Asia         28.8      779.
+>  2 Afghanistan  1957  9240934 Asia         30.3      821.
+>  3 Afghanistan  1962 10267083 Asia         32.0      853.
+>  4 Afghanistan  1967 11537966 Asia         34.0      836.
+>  5 Afghanistan  1972 13079460 Asia         36.1      740.
+>  6 Cambodia     1977  6978607 Asia         31.2      525.
+>  7 Afghanistan  1982 12881816 Asia         39.9      978.
+>  8 Afghanistan  1987 13867957 Asia         40.8      852.
+>  9 Afghanistan  1992 16317921 Asia         41.7      649.
+> 10 Afghanistan  1997 22227415 Asia         41.8      635.
+> 11 Afghanistan  2002 25268405 Asia         42.1      727.
+> 12 Afghanistan  2007 31889923 Asia         43.8      975.
 > ~~~
-> {: .error}
+> {: .output}
 {: .solution}
 
-1. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text too. Feel free to change the theme if you'd like.
+11. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text too. Feel free to change the theme if you'd like.
+
+> ## Solution
+> <img src="../fig/rmd-01-unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="612" style="display: block; margin: auto;" />
+{: .solution}
+
+12. Which country has had the greatest increase in life expectancy from 1952 to 2007? **HINT:** You might want to use the `pivot_wider()` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy.
 
 > ## Solution
 > 
 > ~~~
-> Error in ggplot(., aes(x = as.character(year), y = lifeExp)): object 'gapminder' not found
+> # A tibble: 1 x 4
+>   country `1952` `2007`  diff
+>   <chr>    <dbl>  <dbl> <dbl>
+> 1 Oman      37.6   75.6  38.1
 > ~~~
-> {: .error}
+> {: .output}
 {: .solution}
 
-1. Which country has had the greatest increase in life expectancy from 1952 to 2007? **HINT:** You might want to use the `pivot_wider()` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy.
+13. What countries had a decrease in life expectancy from 1952 to 2007?
 
 > ## Solution
 > 
 > ~~~
-> Error in filter(gapminder, year == 1952 | year == 2007): object 'gapminder' not found
+> # A tibble: 2 x 4
+>   country   `1952` `2007`  diff
+>   <chr>      <dbl>  <dbl> <dbl>
+> 1 Swaziland   41.4   39.6 -1.79
+> 2 Zimbabwe    48.5   43.5 -4.96
 > ~~~
-> {: .error}
-{: .solution}
-
-1. What countries had a decrease in life expectancy from 1952 to 2007?
-
-> ## Solution
-> 
-> ~~~
-> Error in filter(gapminder, year == 1952 | year == 2007): object 'gapminder' not found
-> ~~~
-> {: .error}
+> {: .output}
 {: .solution}
 
 ### Exercises integrating a new dataset
@@ -718,12 +730,29 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> Error: 'data/rnd-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+> Warning: Missing column names filled in: 'X2' [2]
 > ~~~
-> {: .error}
+> {: .warning}
+> 
+> 
+> 
+> ~~~
+> 
+> ── Column specification ───────────────────────────────────────────────────────────────────────────
+> cols(
+>   `Region/Country/Area` = col_double(),
+>   X2 = col_character(),
+>   Year = col_double(),
+>   Series = col_character(),
+>   Value = col_double(),
+>   Footnotes = col_character(),
+>   Source = col_character()
+> )
+> ~~~
+> {: .output}
 {: .solution}
 
-1. Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
+2. Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
 
 > ## Solution
 > 
@@ -738,16 +767,9 @@ _[Back to top](#contents)_
 > "Gross domestic expenditure on R & D: Private non-profit (%)" = 'non_profit'))
 > ~~~
 > {: .language-r}
-> 
-> 
-> 
-> ~~~
-> Error in mutate(., series = recode(series, `Gross domestic expenditure on R & D: as a percentage of GDP (%)` = "gdp_pct", : object 'rnd' not found
-> ~~~
-> {: .error}
 {: .solution}
 
-1. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This shoudl give you the following columns: conuntry name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
+3. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This shoudl give you the following columns: conuntry name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
 
 > ## Solution
 > 
@@ -755,13 +777,6 @@ _[Back to top](#contents)_
 > rnd <- rnd %>% pivot_wider(names_from=series,values_from=value)
 > ~~~
 > {: .language-r}
-> 
-> 
-> 
-> ~~~
-> Error in pivot_wider(., names_from = series, values_from = value): object 'rnd' not found
-> ~~~
-> {: .error}
 {: .solution}
 
 Note that there is a lot of missing data.  
@@ -781,15 +796,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in filter(., !is.na(gdp_pct)): object 'rnd' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-1. Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want.
+2. Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want.
 
 > ## Solution
 > 
@@ -800,15 +810,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in filter(., !is.na(gdp_pct)): object 'rnd' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-1. Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
+3. Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
 
 > ## Solution
 > 
@@ -819,12 +824,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in filter(., !is.na(gdp_pct)): object 'rnd' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 ### Combining the CO2 and R&D datasets
@@ -852,12 +852,22 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > 
 > ~~~
-> Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+> 
+> ── Column specification ───────────────────────────────────────────────────────────────────────────
+> cols(
+>   region = col_double(),
+>   country = col_character(),
+>   year = col_double(),
+>   series = col_character(),
+>   value = col_double(),
+>   footnotes = col_character(),
+>   source = col_character()
+> )
 > ~~~
-> {: .error}
+> {: .output}
 {: .solution}
 
-1. Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D.
+2. Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D.
 
 > ## Solution
 > 
@@ -869,12 +879,12 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > 
 > ~~~
-> Error in UseMethod("full_join"): no applicable method for 'full_join' applied to an object of class "ts"
+> Joining, by = c("country", "year")
 > ~~~
-> {: .error}
+> {: .output}
 {: .solution}
 
-1. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have bot C02 and R&D data.
+3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have bot C02 and R&D data.
 
 TODO: *check if `is.na()` and ! (not operator) are introduced in R for data analysis lesson*
 
@@ -884,16 +894,9 @@ TODO: *check if `is.na()` and ! (not operator) are introduced in R for data anal
 > co2_rnd <- co2_rnd %>% filter(!is.na(total) & !is.na(gdp_pct))
 > ~~~
 > {: .language-r}
-> 
-> 
-> 
-> ~~~
-> Error in filter(., !is.na(total) & !is.na(gdp_pct)): object 'co2_rnd' not found
-> ~~~
-> {: .error}
 {: .solution}
 
-1. How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
+4. How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
 
 > ## Solution
 > 
@@ -905,9 +908,23 @@ TODO: *check if `is.na()` and ! (not operator) are introduced in R for data anal
 > 
 > 
 > ~~~
-> Error in group_by(., year): object 'co2_rnd' not found
+> `summarise()` ungrouping output (override with `.groups` argument)
 > ~~~
-> {: .error}
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> # A tibble: 5 x 2
+>    year count
+>   <dbl> <int>
+> 1  2005    83
+> 2  2010    86
+> 3  2015    94
+> 4  2016    11
+> 5  2017    57
+> ~~~
+> {: .output}
 {: .solution}
 
 #### Plotting with the CO2 and R&D datasets together
@@ -925,16 +942,11 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in ggplot(co2_rnd, aes(x = gdp_pct, y = per_capita)): object 'co2_rnd' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
-1. Next, facet the above plot by year.
+2. Next, facet the above plot by year.
 
 > ## Solution
 > 
@@ -947,15 +959,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in ggplot(co2_rnd, aes(x = gdp_pct, y = per_capita)): object 'co2_rnd' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-1. Identify the countries that have 5 time points for both C02 emissions and R&D.
+3. Identify the countries that have 5 time points for both C02 emissions and R&D.
 
 > ## Solution
 > 
@@ -967,14 +974,26 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> Error in group_by(., country): object 'co2_rnd' not found
+> `summarise()` ungrouping output (override with `.groups` argument)
 > ~~~
-> {: .error}
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> # A tibble: 3 x 2
+>   country    count
+>   <chr>      <int>
+> 1 Azerbaijan     5
+> 2 Cuba           5
+> 3 Panama         5
+> ~~~
+> {: .output}
 {: .solution}
 
 **BONUS**
 
-1. For 3 of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINT:** Use `pivot_longer` to get the data in the right format.
+4. For 3 of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINT:** Use `pivot_longer` to get the data in the right format.
 
 TODO: *check if r for data anlaysis teaches `%in%` and `c()`*
 > ## Solution
@@ -987,28 +1006,22 @@ TODO: *check if r for data anlaysis teaches `%in%` and `c()`*
 > ~~~
 > {: .language-r}
 > 
-> 
-> 
-> ~~~
-> Error in filter(., country %in% c("Azerbaijan", "Cuba", "Panama")): object 'co2_rnd' not found
-> ~~~
-> {: .error}
+> <img src="../fig/rmd-01-unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
 #### Bonus questions
 _[Back to top](#contents)_
 
-1. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
+5. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
 
-1. After merging the data sets, there is some missing data, how many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive obsevation in a plot and/or summary statistics? (e.g. `ggplot` removes `NA`s but stat functions (e.g. `median()` often ask for specific input regarding to how to deal with `NA`s)).
+6. After merging the data sets, there is some missing data, how many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive obsevation in a plot and/or summary statistics? (e.g. `ggplot` removes `NA`s but stat functions (e.g. `median()` often ask for specific input regarding to how to deal with `NA`s)).
 
-1. What countries have the highest and lowest data availabilities? (How would you measure data availability?)
+7. What countries have the highest and lowest data availabilities? (How would you measure data availability?)
 
-1. Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
+8. Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
 
-1. For a specific contient (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
+9. For a specific contient (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
 
-1. Create an R Markdown report with some of the information from these exercises. Decide excatly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
+10. Create an R Markdown report with some of the information from these exercises. Decide excatly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
 
->>>>>>> gh-pages
