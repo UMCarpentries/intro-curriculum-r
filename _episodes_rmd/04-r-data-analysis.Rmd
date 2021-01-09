@@ -50,8 +50,8 @@ We will start by importing the complete gapminder dataset that we used yesterday
 > ### Assessment
 > If we look in the console now, we'll see we've received an error message saying that R "could not find the function `read_csv()`". *Hint: Packages...*
 >
->> ### Solution
->> What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again.
+> > ### Solution
+> > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again.
 > {: .source}
 {: .keypoints}
 
@@ -90,12 +90,12 @@ This command is made of several parts. First, we start with our data object (gap
 > ### Exercise: Practice using the `%>%`
 > Write the last line of code without using the pipe operator.
 >
->> ### Solution:
->> You could also write the above code in the following way:
->> ```{r AvgLifeExpNoPipe}
->>   summarize(gapminder_data, average=mean(lifeExp))
->> ```
->> Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
+> > ### Solution:
+> > You could also write the above code in the following way:
+> > ```{r AvgLifeExpNoPipe}
+> >   summarize(gapminder_data, average=mean(lifeExp))
+> > ```
+> > Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
 > {: .source} 
 {: .challenge}
 
@@ -108,11 +108,11 @@ Note that you don't have to quotes around this new name as long as it starts wit
 > ### Exercise: Variable names with characters or spaces
 > What would our code look like if we wanted to have a new column name be "Average Life Expectancy"?
 >
->> ### Solution:
->> If you do want to use spaces or other characters, You should wrap the name in quotes.
->> ```{r AvgLifeWithSpaces}
->>  summarize(gapminder_data, "Average Life Expectancy"=mean(lifeExp))
->> ```
+> > ### Solution:
+> > If you do want to use spaces or other characters, You should wrap the name in quotes.
+> > ```{r AvgLifeWithSpaces}
+> >  summarize(gapminder_data, "Average Life Expectancy"=mean(lifeExp))
+> > ```
 > {: .source}
 {: .callout}
 
@@ -140,20 +140,20 @@ gapminder_data %>%
 > ### Exercise: Filtering the dataset
 > What is the average GDP per capita for the first year in the dataset? *Hint: the column headers identified by `read_csv()` showed us there was a column called gdpPercap in the dataset*
 >
->> ### Solution
->> Identify the earliest year in our dataset using `min()` and `summarize()`
->> ```{r FilterChallenge}
->>  gapminder_data %>%
->>      summarize(first_year=min(year))
->> ```
->> We see here that the first year in the dataset is 1952. Filter to only 1952, and determin the average GDP per capita.
->>
->> ```{r FilterChallenge}
->>  gapminder_data %>%
->>  filter(year == 1952) %>%
->>  summarize(average_gdp=mean(gdpPercap))
->> ```
->> By combining `filter()` and `summarize()` we were able to calculate the mean GDP per capita in the year 1952.
+> > ### Solution
+> > Identify the earliest year in our dataset using `min()` and `summarize()`
+> > ```{r FilterChallenge}
+> >  gapminder_data %>%
+> >      summarize(first_year=min(year))
+> > ```
+> > We see here that the first year in the dataset is 1952. Filter to only 1952, and determin the average GDP per capita.
+> >
+> > ```{r FilterChallenge}
+> >  gapminder_data %>%
+> >  filter(year == 1952) %>%
+> >  summarize(average_gdp=mean(gdpPercap))
+> > ```
+> > By combining `filter()` and `summarize()` we were able to calculate the mean GDP per capita in the year 1952.
 > {: .source}
 {: .callout}
 
@@ -174,14 +174,14 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 > ### Exercise: Grouping the data
 > Try calculating the average life expectancy by continent.
 >
->> ### Solution
->> 
->> ```{r GroupByChallenge}
->>  gapminder_data %>%
->>  group_by(continent) %>%
->>  summarize(average=mean(lifeExp))
->> ```
->> By combining `group_by()` and `summarize()` we are able to calculate the mean life expectancy by continent.
+> > ### Solution
+> > 
+> > ```{r GroupByChallenge}
+> >  gapminder_data %>%
+> >  group_by(continent) %>%
+> >  summarize(average=mean(lifeExp))
+> > ```
+> > By combining `group_by()` and `summarize()` we are able to calculate the mean life expectancy by continent.
 > {: .source}
 {: .challenge}
 
@@ -244,13 +244,13 @@ gapminder_data %>%
 > ### Exercise: Using `select()` with a helper function
 > Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
 >
->> ### Solution
->> The helper function `ends_with()` can help us here.
->>
->> ```{r GroupByChallenge}
->>  gapminder_data %>%
->>      select(ends_with("p"))
->> ```
+> > ### Solution
+> > The helper function `ends_with()` can help us here.
+> >
+> > ```{r GroupByChallenge}
+> >  gapminder_data %>%
+> >      select(ends_with("p"))
+> > ```
 > {: .source}
 {: .challenge}
 
@@ -454,22 +454,22 @@ Now we see that our recode enabled the join for all countries in the gapminder, 
 > ### Exercise: Data cleaning to facilitate a join
 > In the gapminder data, Recode Puerto Rico as United States, aggregate the two, and calculate life expectancy and GDP values weighted by population data.
 >
->> ### Solution
->> we can use the `mutate()` and `recode()` functions like we did earlier when altering the values of the "series" column.
->>
->> ```{r RecodeJoinExercise}
->> gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
->>   filter(year == 2007 & continent == "Americas") %>%
->>   select(-year, -continent) %>%
->>   mutate(country = recode(country, "Puerto Rico" = "United States")) %>%
->>   group_by(country) %>%
->>   summarize(lifeExp = sum(lifeExp * pop)/sum(pop),
->>             gdpPercap = sum(gdpPercap * pop)/sum(pop),
->>             pop = sum(pop)
->>   )
->>
->> anti_join(gapminder_data, co2_emissions, by="country")
->> ```
+> > ### Solution
+> > we can use the `mutate()` and `recode()` functions like we did earlier when altering the values of the "series" column.
+> >
+> > ```{r RecodeJoinExercise}
+> > gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
+> >   filter(year == 2007 & continent == "Americas") %>%
+> >   select(-year, -continent) %>%
+> >   mutate(country = recode(country, "Puerto Rico" = "United States")) %>%
+> >   group_by(country) %>%
+> >   summarize(lifeExp = sum(lifeExp * pop)/sum(pop),
+> >             gdpPercap = sum(gdpPercap * pop)/sum(pop),
+> >             pop = sum(pop)
+> >   )
+> >
+> > anti_join(gapminder_data, co2_emissions, by="country")
+> > ```
 > {: .source}
 {: .challenge}
 
@@ -560,25 +560,25 @@ We see that although Canada, the United States, and Mexico account for close to 
 > ### Exercise: Calculating percent
 > What percentage of the population and CO2 emissions does the United States makeup? Summarized by region?
 >
->> ### Solution
->> Create a new variable using `mutate()` that caluclates percentages for the pop and total variables.
->>
->> ```{r PopPercExercise}
->> gapminder_co2 %>%
->>   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
->>   mutate(totalPercent = total/sum(total)*100,
->>          popPercent = pop/sum(pop)*100)
->> ```
->> This table shows that the United states makes up 33% of the population of the Americas, but accounts for 77% of total emissions. That's a big proportion of the northern region's emissions, as summarized below:
->> ```{r}
->> gapminder_co2 %>%
->>   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
->>   mutate(totalPercent = total/sum(total)*100,
->>          popPercent = pop/sum(pop)*100) %>%
->>   group_by(region) %>%
->>   summarize(sumTotalPercent = sum(totalPercent),
->>             sumPopPercent = sum(popPercent))
->> ```
+> > ### Solution
+> > Create a new variable using `mutate()` that caluclates percentages for the pop and total variables.
+> >
+> > ```{r PopPercExercise}
+> > gapminder_co2 %>%
+> >   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
+> >   mutate(totalPercent = total/sum(total)*100,
+> >          popPercent = pop/sum(pop)*100)
+> > ```
+> > This table shows that the United states makes up 33% of the population of the Americas, but accounts for 77% of total emissions. That's a big proportion of the northern region's emissions, as summarized below:
+> > ```{r}
+> > gapminder_co2 %>%
+> >   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
+> >   mutate(totalPercent = total/sum(total)*100,
+> >          popPercent = pop/sum(pop)*100) %>%
+> >   group_by(region) %>%
+> >   summarize(sumTotalPercent = sum(totalPercent),
+> >             sumPopPercent = sum(popPercent))
+> > ```
 > {: .source}
 {: .challenge}
 
