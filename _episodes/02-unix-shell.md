@@ -38,6 +38,7 @@ keypoints:
 - "`rm [path]` removes (deletes) a file."
 - "`*` matches zero or more characters in a filename."
 - "The shell does not have a trash bin — once something is deleted, it’s really gone."
+
 ---
 
 <!--
