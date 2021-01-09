@@ -179,19 +179,7 @@ We're going to use the code you generated yesterday to plot GDP vs Life Expectan
 
 ~~~
 ```{r packages}
-~~~
-{: .output}
-
-
-
-~~~
 library(tidyverse)
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -207,19 +195,7 @@ Now since we want to show our results comparing GDP and life expectancy by count
 
 ~~~
 ```{r data}
-~~~
-{: .output}
-
-
-
-~~~
 gapminder_1997 <- read.csv("./data/gapminder_1997.csv")
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -229,12 +205,6 @@ Now that we have the data we need to produce the plot, let's create it!
 
 ~~~
 ```{r gdp_lifeexp_1997}
-~~~
-{: .output}
-
-
-
-~~~
 ggplot(data = gapminder_1997) + 
 
   aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
@@ -244,12 +214,6 @@ ggplot(data = gapminder_1997) +
   labs(x = "GDP Per Capita", y = "Life Expectancy",
 
        title= "Do people in wealthy countries live longer?", size="Population (in millions)")
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -279,19 +243,7 @@ To get rid of this, we can revise our packages code chunk by adding `include=FAL
 
 ~~~
 ```{r packages, include=FALSE}
-~~~
-{: .output}
-
-
-
-~~~
 library(tidyverse)
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -305,12 +257,6 @@ Oops! Now the plot doesn't show up in our report. This is because setting `inclu
 
 ~~~
 ```{r gdp_lifeexp_1997, echo=FALSE}
-~~~
-{: .output}
-
-
-
-~~~
 ggplot(data = gapminder_1997) + 
 
   aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
@@ -320,12 +266,6 @@ ggplot(data = gapminder_1997) +
   labs(x = "GDP Per Capita", y = "Life Expectancy",
 
        title= "Do people in wealthy countries live longer?", size="Population (in millions)")
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
