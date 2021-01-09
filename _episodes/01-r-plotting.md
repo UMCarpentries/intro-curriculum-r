@@ -24,11 +24,14 @@ keypoints:
 - "Use `ggplot()` and geoms to create data visualizations, and save them using `ggsave()`."
 
 ---
-
+<!--
 *Key of notes to editors:*
 TODO - things that still need to be completed
 TODO_fp - "File path to dos" - places to check/create file paths
 TODO_link - add link between lessons
+-->
+
+
 
 
 

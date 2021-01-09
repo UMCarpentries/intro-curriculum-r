@@ -3,8 +3,8 @@
 # Instead, please edit 05-r-markdown.md in _episodes_rmd/
 source: Rmd
 title: "Writing Reports with R Markdown"
-teaching: 0
-exercises: 0
+teaching: 105
+exercises: 30
 questions:
 - "How can I make reproducible reports using R Markdown?"
 - "How do I format text using Markdown?"

@@ -3,8 +3,8 @@
 # Instead, please edit 04-r-data-analysis.md in _episodes_rmd/
 source: Rmd
 title: "R for Data Analysis"
-teaching: 0
-exercises: 0
+teaching: 120
+exercises: 45
 questions: ""
 objectives: ""
 keypoints: ""
