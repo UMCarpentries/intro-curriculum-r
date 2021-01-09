@@ -30,7 +30,7 @@ keypoints:
 - "`/` is the root directory of the whole file system."
 - "A relative path specifies a location starting from the current location."
 - "An absolute path specifies a location from the root of the file system."
-- "Directory names in a path are separated with `/` on Unix, but `\` on Windows."
+- "Directory names in a path are separated with `/` on Unix, but `\\` on Windows."
 - "`..` means ‘the directory above the current one’; `.` on its own means ‘the current directory’."
 - "`cp [old] [new]` copies a file."
 - "`mkdir [path]` creates a new directory."
