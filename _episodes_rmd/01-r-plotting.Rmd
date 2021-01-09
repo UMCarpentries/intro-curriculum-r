@@ -582,6 +582,13 @@ In the first plot, we looked at a smaller slice of a large dataset. To gain a be
 
 To start, we will read in the data without using the interactive RStudio file navigation.
 
+```{r ImportFullDataSolutionEval, echo = FALSE}
+# required for below code chunks to work.
+# currently, gapminder isn't in a data folder on learners' machines 
+# because they haven't done the unix lesson yet.
+gapminder_data <- read_csv("data/gapminder_data.csv")
+```
+
 > ## Exercise: Read in your own data
 >
 > What argument (including file path) should be provided in the below code to read in the full dataset?
@@ -592,7 +599,7 @@ To start, we will read in the data without using the interactive RStudio file na
 >
 >> ## Solution
 >>
->> ```{r ImportFullDataSolution}
+>> ```{r ImportFullDataSolutionEcho, eval = FALSE}
 >> gapminder_data <- read_csv("gapminder_data.csv")
 >> ```
 > {: .solution}

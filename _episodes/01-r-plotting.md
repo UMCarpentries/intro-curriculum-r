@@ -898,6 +898,21 @@ In the first plot, we looked at a smaller slice of a large dataset. To gain a be
 
 To start, we will read in the data without using the interactive RStudio file navigation.
 
+
+~~~
+
+── Column specification ───────────────────────────────────────────────────────────────────────────
+cols(
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)
+~~~
+{: .output}
+
 > ## Exercise: Read in your own data
 >
 > What argument (including file path) should be provided in the below code to read in the full dataset?
@@ -915,13 +930,6 @@ To start, we will read in the data without using the interactive RStudio file na
 >> gapminder_data <- read_csv("gapminder_data.csv")
 >> ~~~
 >> {: .language-r}
->> 
->> 
->> 
->> ~~~
->> Error: 'gapminder_data.csv' does not exist in current working directory ('/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd').
->> ~~~
->> {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -1005,12 +1013,7 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-01-gapminderMoreLines-1.png" title="plot of chunk gapminderMoreLines" alt="plot of chunk gapminderMoreLines" width="612" style="display: block; margin: auto;" />
 > > (China and India are the two Asian countries that have experience massive population growth from 1952-2007.)
 > {: .solution}
 {: .challenge}
@@ -1504,12 +1507,7 @@ library(gganimate)
 >> ~~~
 >> {: .language-r}
 >> 
->> 
->> 
->> ~~~
->> Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
->> ~~~
->> {: .error}
+>> <img src="../fig/rmd-01-hansGraphStaticSolution-1.png" title="plot of chunk hansGraphStaticSolution" alt="plot of chunk hansGraphStaticSolution" width="612" style="display: block; margin: auto;" />
 >{: .solution}
 
 > **Part 2:**
@@ -1524,29 +1522,12 @@ library(gganimate)
 >>  scale_color_brewer(palette = "Set1") +
 >>  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
 >> theme_classic()
->> ~~~
->> {: .language-r}
 >> 
->> 
->> 
->> ~~~
->> Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
->> ~~~
->> {: .error}
->> 
->> 
->> 
->> ~~~
 >> staticHansPlot
 >> ~~~
 >> {: .language-r}
 >> 
->> 
->> 
->> ~~~
->> Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
->> ~~~
->> {: .error}
+>> <img src="../fig/rmd-01-hansGraphStaticPrettySolution-1.png" title="plot of chunk hansGraphStaticPrettySolution" alt="plot of chunk hansGraphStaticPrettySolution" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -1558,29 +1539,12 @@ library(gganimate)
   scale_color_brewer(palette = "Set1") +
   labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
  theme_classic()
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
-~~~
-{: .error}
-
-
-
-~~~
  staticHansPlot
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-hansGraphStatic-1.png" title="plot of chunk hansGraphStatic" alt="plot of chunk hansGraphStatic" width="612" style="display: block; margin: auto;" />
 
 Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot.
 
@@ -1595,7 +1559,7 @@ animatedHansPlot <- staticHansPlot +
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
+Error in transition_states(year, transition_length = 1, state_length = 1): could not find function "transition_states"
 ~~~
 {: .error}
 
