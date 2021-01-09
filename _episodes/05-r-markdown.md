@@ -20,6 +20,7 @@ keypoints:
   - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
 
+
 TODO: Complete Table of Contents and back to top links (for excercises)
 
 ### Contents
@@ -32,7 +33,7 @@ TODO: Complete Table of Contents and back to top links (for excercises)
     + [Text](#text)
 1. [Starting the report](#starting-the-report)
 1. [Formatting](#formatting)
-1. [Integrating it all together: Paired exercise](#integrating-it-all-together:-paired-exercise)
+1. [Integrating it all together: Paired exercise](#integrating-it-all-together-paired-exercise)
 
 
 
@@ -488,7 +489,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 3. It seems like there are 2 outliers - which countries are those?
@@ -523,7 +524,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
@@ -542,7 +543,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 6. It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? HINT: This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
@@ -557,7 +558,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 #### Looking into life expectancy a bit more.
@@ -611,7 +612,7 @@ _[Back to top](#contents)_
 9. Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
 
 > ## Solution
-> <img src="../fig/rmd-01-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 ##### Bonus questions: come back to these if you have time at the end
@@ -652,7 +653,7 @@ _[Back to top](#contents)_
 11. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text too. Feel free to change the theme if you'd like.
 
 > ## Solution
-> <img src="../fig/rmd-01-unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 12. Which country has had the greatest increase in life expectancy from 1952 to 2007? **HINT:** You might want to use the `pivot_wider()` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy.
@@ -807,7 +808,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 2. Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want.
@@ -821,7 +822,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 3. Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
@@ -835,7 +836,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 ### Combining the CO2 and R&D datasets
@@ -953,7 +954,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
@@ -970,7 +971,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 3. Identify the countries that have 5 time points for both C02 emissions and R&D.
@@ -1017,7 +1018,7 @@ TODO: *check if r for data anlaysis teaches `%in%` and `c()`*
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-01-unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
