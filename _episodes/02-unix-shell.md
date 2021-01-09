@@ -1,7 +1,7 @@
 ---
 title: The Unix Shell
-teaching: 75
-exercises:
+teaching: 60
+exercises: 15
 questions:
 - What is a command shell and why would I use one?
 - How can I move around on my computer?
@@ -40,11 +40,12 @@ keypoints:
 - The shell does not have a trash bin - once something is deleted, it’s really gone.
 ---
 
-TODOs:
-- Potentially concicify questions, objectives, key points (and make them non-redundant with the glossary)
+<!--
+TO-DOs:
+- Potentially concisify questions, objectives, key points (and make them non-redundant with the glossary)
 - Add outputs / fix paths
 - Tree structure / navigating files and directories.
-
+-->
 
 ## Introducing the Shell
 
@@ -61,7 +62,7 @@ Since then, I’ve learned that it’s just another way to navigate your compute
 For instance, you can use it to combine existing tools into a pipeline to automate analyses, you can write a script to do things for you and improve reproducibility, you can interact with remote machines and supercomputers that are far away from you, and sometimes it’s the only option for the program you want to run.
 
 We’re going to use it to:
-1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html) (TODO: confirm correct link).
+1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html). <!--(TODO: confirm correct link)-->
 1. Perform version control using git during the rest of the workshop.
 
 ## What the Shell looks like
