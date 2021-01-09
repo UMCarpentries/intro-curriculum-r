@@ -23,8 +23,6 @@ keypoints:
 set.seed(20210109)
 ```
 
-TODO: Complete Table of Contents and back to top links (for excercises)
-
 ### Contents
 1. [Creating a reports directory](#creating-a-reports-directory)
 1. [Why use R Markdown?](#why-use-r-markdown?)
@@ -70,15 +68,13 @@ mkdir reports
 ## Why use R Markdown?
 _[Back to top](#contents)_
 
-TODO: is reproducibility discussed somewhere? Add a link or more discussion here?
-
 We're going to learn a way to create a report in R using something called R Markdown.
-This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html or PDF file and share with others.
+This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html, PDF or Word file and share with others.
 The text can be experimental methods, an analysis and discussion of the results, or whatever else you want to include.
-We call these types of reports *reproducible* reports because the code is embedded in the document and anyone can take the report and re-run the code to get the same output.
-R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, and keeping a computational notebook of your work.
-If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can even hide the code.
-It's also useful because if you find an error or want to modify the text or a figure, you can just change the code and re-run the R Markdown file to get the updated output!
+We call  reports *reproducible*  when the code is embedded in the document and anyone can take the report and re-run the code to get the same output.
+R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, or keeping a computational notebook of your work.
+If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can  hide the code in the final, rendered output file while keeping it in the R Markdown file for your own record.
+Writing reports with R Markdown is also useful because if you find an error or want to modify the text or a figure later on, you can simply change the code and re-run the R Markdown file to get the updated output!
 
 R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures.
 
