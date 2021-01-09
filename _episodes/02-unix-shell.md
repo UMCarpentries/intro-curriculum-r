@@ -37,7 +37,7 @@ keypoints:
 - "`mv [old] [new]` moves (renames) a file or directory."
 - "`rm [path]` removes (deletes) a file."
 - "`*` matches zero or more characters in a filename."
-- "The shell does not have a trash bin - once something is deleted, it’s really gone."
+- "The shell does not have a trash bin — once something is deleted, it’s really gone."
 ---
 
 <!--
