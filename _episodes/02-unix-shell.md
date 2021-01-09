@@ -85,7 +85,7 @@ The shell folder (directory) structure is the same file structure as you're used
 We call the way that different directories are nested the "directory tree".
 You start at the root directory (`/`) and you can move "up" and "down" the tree. Here's an example:
 
-![]({{ page.root }}/fig/unix-shell/directory_tree_blank.png =400px)
+![]({{ page.root }}/fig/unix-shell/directory_tree_blank.png =400x)
 
 Now that we understand directory trees a bit, let's check it out from the command line.
 We can see where we are by using the command `pwd` which stands for "print working directory", or the directory we are currently in:
@@ -600,7 +600,7 @@ To view and navigate the contents of a file we can use the command `less`. This 
 
 Here is what we should expect to see when running the command `less` on our `gapminder_data.csv` file:
 
-![]({{ page.root }}/fig/unix-shell/less_example.png =400px)
+![]({{ page.root }}/fig/unix-shell/less_example.png =400x)
 
 To navigate, press `spacebar` to scroll to the next page and `b` to scroll up to the previous page. You can also use the up and down arrows to scroll line-by-line. Note that `less` defaults to line wrapping, meaning that any lines longer than the width of the screen will be wrapped to the next line, (to disable this use the option `-S` when running `less`, ex `less -S file.txt`). To exit less, press the letter `q`.
 
@@ -640,7 +640,7 @@ less --help
 ```
 {: .language-bash}
 
-![]({{ page.root }}/fig/unix-shell/less_help.png =400px)
+![]({{ page.root }}/fig/unix-shell/less_help.png =400x)
 
 Sometimes, commands will have multiple flags that we want to use at the same time. For example, `less` has a flag `-w` which highlights unread text, and `-S` which cuts off really long lines (rather than having the text wrap around). There are two ways to run `less` using both of these flags:
 
