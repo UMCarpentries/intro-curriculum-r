@@ -21,6 +21,7 @@ keypoints:
 ---
 
 
+
 TODO: Complete Table of Contents and back to top links (for excercises)
 
 ### Contents
@@ -178,19 +179,7 @@ We're going to use the code you generated yesterday to plot GDP vs Life Expectan
 
 ~~~
 ```{r packages}
-~~~
-{: .output}
-
-
-
-~~~
 library(tidyverse)
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -206,19 +195,7 @@ Now since we want to show our results comparing GDP and life expectancy by count
 
 ~~~
 ```{r data}
-~~~
-{: .output}
-
-
-
-~~~
 gapminder_1997 <- read.csv("./data/gapminder_1997.csv")
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -228,12 +205,6 @@ Now that we have the data we need to produce the plot, let's create it!
 
 ~~~
 ```{r gdp_lifeexp_1997}
-~~~
-{: .output}
-
-
-
-~~~
 ggplot(data = gapminder_1997) + 
 
   aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
@@ -243,12 +214,6 @@ ggplot(data = gapminder_1997) +
   labs(x = "GDP Per Capita", y = "Life Expectancy",
 
        title= "Do people in wealthy countries live longer?", size="Population (in millions)")
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -278,19 +243,7 @@ To get rid of this, we can revise our packages code chunk by adding `include=FAL
 
 ~~~
 ```{r packages, include=FALSE}
-~~~
-{: .output}
-
-
-
-~~~
 library(tidyverse)
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -304,12 +257,6 @@ Oops! Now the plot doesn't show up in our report. This is because setting `inclu
 
 ~~~
 ```{r gdp_lifeexp_1997, echo=FALSE}
-~~~
-{: .output}
-
-
-
-~~~
 ggplot(data = gapminder_1997) + 
 
   aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
@@ -319,12 +266,6 @@ ggplot(data = gapminder_1997) +
   labs(x = "GDP Per Capita", y = "Life Expectancy",
 
        title= "Do people in wealthy countries live longer?", size="Population (in millions)")
-~~~
-{: .output}
-
-
-
-~~~
 ```
 ~~~
 {: .output}
@@ -416,26 +357,26 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > 
 > ~~~
-> ── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+> ── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
 > ~~~
 > {: .output}
 > 
 > 
 > 
 > ~~~
-> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-> ✔ tibble  3.0.4     ✔ dplyr   1.0.2
-> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-> ✔ readr   1.4.0     ✔ forcats 0.5.0
+> [32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
+> [32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
+> [32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
+> [32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
 > ~~~
 > {: .output}
 > 
 > 
 > 
 > ~~~
-> ── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-> ✖ dplyr::filter() masks stats::filter()
-> ✖ dplyr::lag()    masks stats::lag()
+> ── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
+> [31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+> [31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
 > ~~~
 > {: .output}
 > 
@@ -450,14 +391,14 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > ~~~
 > 
-> ── Column specification ───────────────────────────────────────────────────────────────────────────
+> [36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
 > cols(
->   country = col_character(),
->   year = col_double(),
->   pop = col_double(),
->   continent = col_character(),
->   lifeExp = col_double(),
->   gdpPercap = col_double()
+>   country = [31mcol_character()[39m,
+>   year = [32mcol_double()[39m,
+>   pop = [32mcol_double()[39m,
+>   continent = [31mcol_character()[39m,
+>   lifeExp = [32mcol_double()[39m,
+>   gdpPercap = [32mcol_double()[39m
 > )
 > ~~~
 > {: .output}
@@ -492,11 +433,11 @@ _[Back to top](#contents)_
 >
 >
 >~~~
-># A tibble: 2 x 1
+>[90m# A tibble: 2 x 1[39m
 >  country
->  <chr>  
->1 China  
->2 India  
+>  [3m[90m<chr>[39m[23m  
+>[90m1[39m China  
+>[90m2[39m India  
 >~~~
 >{: .output}
 {: .solution}
@@ -557,10 +498,10 @@ _[Back to top](#contents)_
 > ## Solution
 > 
 > ~~~
-> # A tibble: 1 x 6
+> [90m# A tibble: 1 x 6[39m
 >   country  year       pop continent lifeExp gdpPercap
->   <chr>   <dbl>     <dbl> <chr>       <dbl>     <dbl>
-> 1 Japan    1982 118454974 Asia         77.1    19384.
+>   [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
+> [90m1[39m Japan    [4m1[24m982 118[4m4[24m[4m5[24m[4m4[24m974 Asia         77.1    [4m1[24m[4m9[24m384.
 > ~~~
 > {: .output}
 {: .solution}
@@ -577,22 +518,22 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> # A tibble: 12 x 3
-> # Groups:   year [12]
+> [90m# A tibble: 12 x 3[39m
+> [90m# Groups:   year [12][39m
 >    country  year lifeExp
->    <chr>   <dbl>   <dbl>
->  1 Norway   1952    72.7
->  2 Iceland  1957    73.5
->  3 Iceland  1962    73.7
->  4 Sweden   1967    74.2
->  5 Sweden   1972    74.7
->  6 Iceland  1977    76.1
->  7 Japan    1982    77.1
->  8 Japan    1987    78.7
->  9 Japan    1992    79.4
-> 10 Japan    1997    80.7
-> 11 Japan    2002    82  
-> 12 Japan    2007    82.6
+>    [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m
+> [90m 1[39m Norway   [4m1[24m952    72.7
+> [90m 2[39m Iceland  [4m1[24m957    73.5
+> [90m 3[39m Iceland  [4m1[24m962    73.7
+> [90m 4[39m Sweden   [4m1[24m967    74.2
+> [90m 5[39m Sweden   [4m1[24m972    74.7
+> [90m 6[39m Iceland  [4m1[24m977    76.1
+> [90m 7[39m Japan    [4m1[24m982    77.1
+> [90m 8[39m Japan    [4m1[24m987    78.7
+> [90m 9[39m Japan    [4m1[24m992    79.4
+> [90m10[39m Japan    [4m1[24m997    80.7
+> [90m11[39m Japan    [4m2[24m002    82  
+> [90m12[39m Japan    [4m2[24m007    82.6
 > ~~~
 > {: .output}
 {: .solution}
@@ -618,22 +559,22 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> # A tibble: 12 x 6
-> # Groups:   year [12]
+> [90m# A tibble: 12 x 6[39m
+> [90m# Groups:   year [12][39m
 >    country      year      pop continent lifeExp gdpPercap
->    <chr>       <dbl>    <dbl> <chr>       <dbl>     <dbl>
->  1 Afghanistan  1952  8425333 Asia         28.8      779.
->  2 Afghanistan  1957  9240934 Asia         30.3      821.
->  3 Afghanistan  1962 10267083 Asia         32.0      853.
->  4 Afghanistan  1967 11537966 Asia         34.0      836.
->  5 Afghanistan  1972 13079460 Asia         36.1      740.
->  6 Cambodia     1977  6978607 Asia         31.2      525.
->  7 Afghanistan  1982 12881816 Asia         39.9      978.
->  8 Afghanistan  1987 13867957 Asia         40.8      852.
->  9 Afghanistan  1992 16317921 Asia         41.7      649.
-> 10 Afghanistan  1997 22227415 Asia         41.8      635.
-> 11 Afghanistan  2002 25268405 Asia         42.1      727.
-> 12 Afghanistan  2007 31889923 Asia         43.8      975.
+>    [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m    [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
+> [90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
+> [90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
+> [90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
+> [90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
+> [90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
+> [90m 6[39m Cambodia     [4m1[24m977  6[4m9[24m[4m7[24m[4m8[24m607 Asia         31.2      525.
+> [90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978.
+> [90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852.
+> [90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649.
+> [90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
+> [90m11[39m Afghanistan  [4m2[24m002 25[4m2[24m[4m6[24m[4m8[24m405 Asia         42.1      727.
+> [90m12[39m Afghanistan  [4m2[24m007 31[4m8[24m[4m8[24m[4m9[24m923 Asia         43.8      975.
 > ~~~
 > {: .output}
 {: .solution}
@@ -649,10 +590,10 @@ _[Back to top](#contents)_
 > ## Solution
 > 
 > ~~~
-> # A tibble: 1 x 4
+> [90m# A tibble: 1 x 4[39m
 >   country `1952` `2007`  diff
->   <chr>    <dbl>  <dbl> <dbl>
-> 1 Oman      37.6   75.6  38.1
+>   [3m[90m<chr>[39m[23m    [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
+> [90m1[39m Oman      37.6   75.6  38.1
 > ~~~
 > {: .output}
 {: .solution}
@@ -662,11 +603,11 @@ _[Back to top](#contents)_
 > ## Solution
 > 
 > ~~~
-> # A tibble: 2 x 4
+> [90m# A tibble: 2 x 4[39m
 >   country   `1952` `2007`  diff
->   <chr>      <dbl>  <dbl> <dbl>
-> 1 Swaziland   41.4   39.6 -1.79
-> 2 Zimbabwe    48.5   43.5 -4.96
+>   [3m[90m<chr>[39m[23m      [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
+> [90m1[39m Swaziland   41.4   39.6 -[31m1[39m[31m.[39m[31m79[39m
+> [90m2[39m Zimbabwe    48.5   43.5 -[31m4[39m[31m.[39m[31m96[39m
 > ~~~
 > {: .output}
 {: .solution}
@@ -738,15 +679,15 @@ _[Back to top](#contents)_
 > 
 > ~~~
 > 
-> ── Column specification ───────────────────────────────────────────────────────────────────────────
+> [36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
 > cols(
->   `Region/Country/Area` = col_double(),
->   X2 = col_character(),
->   Year = col_double(),
->   Series = col_character(),
->   Value = col_double(),
->   Footnotes = col_character(),
->   Source = col_character()
+>   `Region/Country/Area` = [32mcol_double()[39m,
+>   X2 = [31mcol_character()[39m,
+>   Year = [32mcol_double()[39m,
+>   Series = [31mcol_character()[39m,
+>   Value = [32mcol_double()[39m,
+>   Footnotes = [31mcol_character()[39m,
+>   Source = [31mcol_character()[39m
 > )
 > ~~~
 > {: .output}
@@ -853,15 +794,15 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > ~~~
 > 
-> ── Column specification ───────────────────────────────────────────────────────────────────────────
+> [36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
 > cols(
->   region = col_double(),
->   country = col_character(),
->   year = col_double(),
->   series = col_character(),
->   value = col_double(),
->   footnotes = col_character(),
->   source = col_character()
+>   region = [32mcol_double()[39m,
+>   country = [31mcol_character()[39m,
+>   year = [32mcol_double()[39m,
+>   series = [31mcol_character()[39m,
+>   value = [32mcol_double()[39m,
+>   footnotes = [31mcol_character()[39m,
+>   source = [31mcol_character()[39m
 > )
 > ~~~
 > {: .output}
@@ -915,14 +856,14 @@ TODO: *check if `is.na()` and ! (not operator) are introduced in R for data anal
 > 
 > 
 > ~~~
-> # A tibble: 5 x 2
+> [90m# A tibble: 5 x 2[39m
 >    year count
->   <dbl> <int>
-> 1  2005    83
-> 2  2010    86
-> 3  2015    94
-> 4  2016    11
-> 5  2017    57
+>   [3m[90m<dbl>[39m[23m [3m[90m<int>[39m[23m
+> [90m1[39m  [4m2[24m005    83
+> [90m2[39m  [4m2[24m010    86
+> [90m3[39m  [4m2[24m015    94
+> [90m4[39m  [4m2[24m016    11
+> [90m5[39m  [4m2[24m017    57
 > ~~~
 > {: .output}
 {: .solution}
@@ -981,12 +922,12 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> # A tibble: 3 x 2
+> [90m# A tibble: 3 x 2[39m
 >   country    count
->   <chr>      <int>
-> 1 Azerbaijan     5
-> 2 Cuba           5
-> 3 Panama         5
+>   [3m[90m<chr>[39m[23m      [3m[90m<int>[39m[23m
+> [90m1[39m Azerbaijan     5
+> [90m2[39m Cuba           5
+> [90m3[39m Panama         5
 > ~~~
 > {: .output}
 {: .solution}
