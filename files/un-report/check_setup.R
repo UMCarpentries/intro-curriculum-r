@@ -9,6 +9,8 @@ pkg_versions <- installed.packages() %>%
     dplyr::as_tibble() %>%
     filter(Package %in% packages) %>%
     select(Package, Version)
-print(pkg_versions)
-print(system('git --version', intern = TRUE))
+
 print(getwd())
+print(system('git --version', intern = TRUE))
+print(R.Version()$version.string)
+print(pkg_versions)
