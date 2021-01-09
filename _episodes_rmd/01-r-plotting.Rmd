@@ -211,9 +211,11 @@ Finally, take a look at the **Console** at the bottom left part of the RStudio s
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
 
+```{r consoleReadEcho, eval = FALSE}
+gapminder_1997 <- read_csv("gapminder_1997.csv")
 ```
+```{r consoleReadEval, echo = FALSE}
 gapminder_1997 <- read_csv("data/gapminder_1997.csv")
-
 ```
 
 You should now have a line of text in your code file that started with `gapminder` and ends with a `)` symbol.
@@ -232,7 +234,7 @@ Starting from the left, the first thing we see is `gapminder_1997`. We viewed th
 > If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
 >> ## Solution
 >> We see a data table outputted, similar to what we saw in the Viewer tab.
->{: .solution}
+> {: .solution}
 {: .challenge}
 
 In R terms, `gapminder_1997` is a named **object** that references or stores something. In this case, `gapminder_1997` stores a specific table of data.
@@ -343,8 +345,11 @@ sum(5, 6)
 
 Notice how in this example, we didn't include any argument names. But you can use argument names if you want:
 
-```{r FunctionAndArgument}
+```{r FunctionAndArgumentEcho, eval = FALSE}
 read_csv(file = 'gapminder_1997.csv')
+```
+```{r FunctionAndArgumentEval, echo = FALSE}
+read_csv(file = 'data/gapminder_1997.csv')
 ```
 
 > ## Exercise: Position of the arguments in functions
@@ -1011,6 +1016,10 @@ library(gganimate)
 ```
 
 > ## Exercise: Reviewing how to create a scatter plot
+<<<<<<< HEAD
+> **Part 1:** 
+> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent. 
+> 
 > **Part 1:**
 > Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
 >
