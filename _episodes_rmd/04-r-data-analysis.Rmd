@@ -1,8 +1,8 @@
 ---
 title: "R for Data Analysis"
 source: Rmd
-teaching: 120
-exercises: 7
+teaching: 150
+exercises: 15
 questions: 
 - How can I import 
 - How can R help make my research more reproducible?
