@@ -211,9 +211,11 @@ Finally, take a look at the **Console** at the bottom left part of the RStudio s
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
 
+```{r consoleReadEcho, eval = FALSE}
+gapminder_1997 <- read_csv("gapminder_1997.csv")
 ```
+```{r consoleReadEval, echo = FALSE}
 gapminder_1997 <- read_csv("data/gapminder_1997.csv")
-
 ```
 
 You should now have a line of text in your code file that started with `gapminder` and ends with a `)` symbol.
@@ -343,8 +345,11 @@ sum(5, 6)
 
 Notice how in this example, we didn't include any argument names. But you can use argument names if you want:
 
-```{r FunctionAndArgument}
+```{r FunctionAndArgumentEcho, eval = FALSE}
 read_csv(file = 'gapminder_1997.csv')
+```
+```{r FunctionAndArgumentEval, echo = FALSE}
+read_csv(file = 'data/gapminder_1997.csv')
 ```
 
 > ## Exercise: Position of the arguments in functions
