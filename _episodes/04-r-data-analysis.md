@@ -88,9 +88,18 @@ gapminder_data <- read_csv("data/gapminder_data.csv")
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  pop = [32mcol_double()[39m,
+  continent = [31mcol_character()[39m,
+  lifeExp = [32mcol_double()[39m,
+  gdpPercap = [32mcol_double()[39m
+)
 ~~~
-{: .error}
+{: .output}
 Let's say we would like to know what is the mean (average) life expecteny in the dataset. R has a built in function function called `mean()` that will calculate this value for us. We can apply that function to our *lifeExp* column using the `summarize` function. Here's what that looks like
 
 ~~~
@@ -102,9 +111,12 @@ gapminder_data %>%
 
 
 ~~~
-Error in summarize(., average = mean(lifeExp)): object 'gapminder_data' not found
+[90m# A tibble: 1 x 1[39m
+  average
+    [3m[90m<dbl>[39m[23m
+[90m1[39m    59.5
 ~~~
-{: .error}
+{: .output}
 This command is made of several parts. First, we start with our data object (gapminder_data). Then, we use a special operator called the *pipe operator* `%>%` to pass the data value into the `summarize` function. The pipe operator allows us to "chain" together multiple function calls so that the output of the first function becomes the input to the next function.
 
 > ## Exercise: why use a pipe operator?
@@ -118,9 +130,12 @@ This command is made of several parts. First, we start with our data object (gap
 > 
 > 
 > ~~~
-> Error in summarize(gapminder_data, average = mean(lifeExp)): object 'gapminder_data' not found
+> [90m# A tibble: 1 x 1[39m
+>   average
+>     [3m[90m<dbl>[39m[23m
+> [90m1[39m    59.5
 > ~~~
-> {: .error}
+> {: .output}
 > Here we pass the data directly to `summarize()` as an argument rather than piping the value.
 > But as soon as we start writing more functions, we will see that using pipes makes this easier to read.
 > {: .source}
@@ -153,9 +168,12 @@ gapminder_data %>%
 
 
 ~~~
-Error in summarize(., recent_year = max(year)): object 'gapminder_data' not found
+[90m# A tibble: 1 x 1[39m
+  recent_year
+        [3m[90m<dbl>[39m[23m
+[90m1[39m        [4m2[24m007
 ~~~
-{: .error}
+{: .output}
 So we see that the most recent year in the dataset is 2007. Let's calculate the life expecteny for all countries for only that year. To do that, we will use the `filter()` function to only use rows for that year before calculating the mean value.
 
 
@@ -169,9 +187,12 @@ gapminder_data %>%
 
 
 ~~~
-Error in filter(., year == 2007): object 'gapminder_data' not found
+[90m# A tibble: 1 x 1[39m
+  average
+    [3m[90m<dbl>[39m[23m
+[90m1[39m    67.0
 ~~~
-{: .error}
+{: .output}
 
 > ##Challenge: What is the average GDP per capita for the first year in the dataset?
 >>
@@ -184,9 +205,12 @@ Error in filter(., year == 2007): object 'gapminder_data' not found
 >>
 >>
 >>~~~
->>Error in summarize(., first_year = min(year)): object 'gapminder_data' not found
+>>[90m# A tibble: 1 x 1[39m
+>>  first_year
+>>       [3m[90m<dbl>[39m[23m
+>>[90m1[39m       [4m1[24m952
 >>~~~
->>{: .error}
+>>{: .output}
 >>
 >>
 >>
@@ -200,9 +224,12 @@ Error in filter(., year == 2007): object 'gapminder_data' not found
 >>
 >>
 >>~~~
->>Error in filter(., year == 1952): object 'gapminder_data' not found
+>>[90m# A tibble: 1 x 1[39m
+>>  average_gdp
+>>        [3m[90m<dbl>[39m[23m
+>>[90m1[39m       [4m3[24m725.
 >>~~~
->>{: .error}
+>>{: .output}
 > {: .source}
 {: .challenge}
 
@@ -223,9 +250,30 @@ gapminder_data %>%
 
 
 ~~~
-Error in group_by(., year): object 'gapminder_data' not found
+`summarise()` ungrouping output (override with `.groups` argument)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 12 x 2[39m
+    year average
+   [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m
+[90m 1[39m  [4m1[24m952    49.1
+[90m 2[39m  [4m1[24m957    51.5
+[90m 3[39m  [4m1[24m962    53.6
+[90m 4[39m  [4m1[24m967    55.7
+[90m 5[39m  [4m1[24m972    57.6
+[90m 6[39m  [4m1[24m977    59.6
+[90m 7[39m  [4m1[24m982    61.5
+[90m 8[39m  [4m1[24m987    63.2
+[90m 9[39m  [4m1[24m992    64.2
+[90m10[39m  [4m1[24m997    65.0
+[90m11[39m  [4m2[24m002    65.7
+[90m12[39m  [4m2[24m007    67.0
+~~~
+{: .output}
 The `group_by()` function just expects you to pass in the name of a column (or mutiple columns separated by commans) in your data.
 
 ## TODO: challenge Try calculating the average life expetency by continent
@@ -242,9 +290,30 @@ gapminder_data %>%
 
 
 ~~~
-Error in group_by(., year): object 'gapminder_data' not found
+`summarise()` ungrouping output (override with `.groups` argument)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 12 x 3[39m
+    year   min   max
+   [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
+[90m 1[39m  [4m1[24m952  28.8  72.7
+[90m 2[39m  [4m1[24m957  30.3  73.5
+[90m 3[39m  [4m1[24m962  32.0  73.7
+[90m 4[39m  [4m1[24m967  34.0  74.2
+[90m 5[39m  [4m1[24m972  35.4  74.7
+[90m 6[39m  [4m1[24m977  31.2  76.1
+[90m 7[39m  [4m1[24m982  38.4  77.1
+[90m 8[39m  [4m1[24m987  39.9  78.7
+[90m 9[39m  [4m1[24m992  23.6  79.4
+[90m10[39m  [4m1[24m997  36.1  80.7
+[90m11[39m  [4m2[24m002  39.2  82  
+[90m12[39m  [4m2[24m007  39.6  82.6
+~~~
+{: .output}
 We can now see just how large a gap there is between different countries for the different years.
 
 ## Arrange
@@ -263,9 +332,23 @@ gapminder_data %>%
 
 
 ~~~
-Error in filter(., year == 2007): object 'gapminder_data' not found
+`summarise()` ungrouping output (override with `.groups` argument)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 5 x 2[39m
+  continent average
+  [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m
+[90m1[39m Oceania      80.7
+[90m2[39m Europe       77.6
+[90m3[39m Americas     73.6
+[90m4[39m Asia         70.7
+[90m5[39m Africa       54.8
+~~~
+{: .output}
 Notice there that we can use the column created the in the `summarize()` step ("avarage") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
 
 ## Mutate
@@ -283,9 +366,22 @@ gapminder_data %>%
 
 
 ~~~
-Error in mutate(., gdp = pop * gdpPercap): object 'gapminder_data' not found
+[90m# A tibble: 1,704 x 7[39m
+   country      year      pop continent lifeExp gdpPercap          gdp
+   [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m    [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m        [3m[90m<dbl>[39m[23m
+[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.  [4m6[24m567[4m0[24m[4m8[24m[4m6[24m330.
+[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.  [4m7[24m585[4m4[24m[4m4[24m[4m8[24m670.
+[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.  [4m8[24m758[4m8[24m[4m5[24m[4m5[24m797.
+[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.  [4m9[24m648[4m0[24m[4m1[24m[4m4[24m150.
+[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.  [4m9[24m678[4m5[24m[4m5[24m[4m3[24m274.
+[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786. [4m1[24m[4m1[24m697[4m6[24m[4m5[24m[4m9[24m231.
+[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978. [4m1[24m[4m2[24m598[4m5[24m[4m6[24m[4m3[24m401.
+[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852. [4m1[24m[4m1[24m820[4m9[24m[4m9[24m[4m0[24m309.
+[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649. [4m1[24m[4m0[24m595[4m9[24m[4m0[24m[4m1[24m589.
+[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635. [4m1[24m[4m4[24m121[4m9[24m[4m9[24m[4m5[24m875.
+[90m# … with 1,694 more rows[39m
 ~~~
-{: .error}
+{: .output}
 This will add a new column called "gdp" to our data. We use the column names as if they were regular values that we want to perform mathematical operations on and provide the name infront of an equals sign like we have done with `summarize()`
 
 ## Select
@@ -301,9 +397,22 @@ gapminder_data %>%
 
 
 ~~~
-Error in select(., pop, year): object 'gapminder_data' not found
+[90m# A tibble: 1,704 x 2[39m
+        pop  year
+      [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
+[90m 1[39m  8[4m4[24m[4m2[24m[4m5[24m333  [4m1[24m952
+[90m 2[39m  9[4m2[24m[4m4[24m[4m0[24m934  [4m1[24m957
+[90m 3[39m 10[4m2[24m[4m6[24m[4m7[24m083  [4m1[24m962
+[90m 4[39m 11[4m5[24m[4m3[24m[4m7[24m966  [4m1[24m967
+[90m 5[39m 13[4m0[24m[4m7[24m[4m9[24m460  [4m1[24m972
+[90m 6[39m 14[4m8[24m[4m8[24m[4m0[24m372  [4m1[24m977
+[90m 7[39m 12[4m8[24m[4m8[24m[4m1[24m816  [4m1[24m982
+[90m 8[39m 13[4m8[24m[4m6[24m[4m7[24m957  [4m1[24m987
+[90m 9[39m 16[4m3[24m[4m1[24m[4m7[24m921  [4m1[24m992
+[90m10[39m 22[4m2[24m[4m2[24m[4m7[24m415  [4m1[24m997
+[90m# … with 1,694 more rows[39m
 ~~~
-{: .error}
+{: .output}
 The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with
 
 ~~~
@@ -315,9 +424,22 @@ gapminder_data %>%
 
 
 ~~~
-Error in select(., year, starts_with("c")): object 'gapminder_data' not found
+[90m# A tibble: 1,704 x 3[39m
+    year country     continent
+   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m       [3m[90m<chr>[39m[23m    
+[90m 1[39m  [4m1[24m952 Afghanistan Asia     
+[90m 2[39m  [4m1[24m957 Afghanistan Asia     
+[90m 3[39m  [4m1[24m962 Afghanistan Asia     
+[90m 4[39m  [4m1[24m967 Afghanistan Asia     
+[90m 5[39m  [4m1[24m972 Afghanistan Asia     
+[90m 6[39m  [4m1[24m977 Afghanistan Asia     
+[90m 7[39m  [4m1[24m982 Afghanistan Asia     
+[90m 8[39m  [4m1[24m987 Afghanistan Asia     
+[90m 9[39m  [4m1[24m992 Afghanistan Asia     
+[90m10[39m  [4m1[24m997 Afghanistan Asia     
+[90m# … with 1,694 more rows[39m
 ~~~
-{: .error}
+{: .output}
 This returns just the three columns we are interested in. We can also use `select()` to drop/remove particular columns by putting a minus sign (`-`) in front of the column name. For example, if we want everything but the continent column, we can do
 
 ~~~
@@ -329,9 +451,22 @@ gapminder_data %>%
 
 
 ~~~
-Error in select(., -continent): object 'gapminder_data' not found
+[90m# A tibble: 1,704 x 5[39m
+   country      year      pop lifeExp gdpPercap
+   [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m    [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
+[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333    28.8      779.
+[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934    30.3      821.
+[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083    32.0      853.
+[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966    34.0      836.
+[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460    36.1      740.
+[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372    38.4      786.
+[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816    39.9      978.
+[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957    40.8      852.
+[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921    41.7      649.
+[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415    41.8      635.
+[90m# … with 1,694 more rows[39m
 ~~~
-{: .error}
+{: .output}
 
 ## TODO: challenge Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
 
@@ -353,9 +488,23 @@ gapminder_data %>%
 
 
 ~~~
-Error in select(., country, continent, year, lifeExp): object 'gapminder_data' not found
+[90m# A tibble: 142 x 14[39m
+   country continent `1952` `1957` `1962` `1967` `1972` `1977` `1982` `1987`
+   [3m[90m<chr>[39m[23m   [3m[90m<chr>[39m[23m      [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m
+[90m 1[39m Afghan… Asia        28.8   30.3   32.0   34.0   36.1   38.4   39.9   40.8
+[90m 2[39m Albania Europe      55.2   59.3   64.8   66.2   67.7   68.9   70.4   72  
+[90m 3[39m Algeria Africa      43.1   45.7   48.3   51.4   54.5   58.0   61.4   65.8
+[90m 4[39m Angola  Africa      30.0   32.0   34     36.0   37.9   39.5   39.9   39.9
+[90m 5[39m Argent… Americas    62.5   64.4   65.1   65.6   67.1   68.5   69.9   70.8
+[90m 6[39m Austra… Oceania     69.1   70.3   70.9   71.1   71.9   73.5   74.7   76.3
+[90m 7[39m Austria Europe      66.8   67.5   69.5   70.1   70.6   72.2   73.2   74.9
+[90m 8[39m Bahrain Asia        50.9   53.8   56.9   59.9   63.3   65.6   69.1   70.8
+[90m 9[39m Bangla… Asia        37.5   39.3   41.2   43.5   45.3   46.9   50.0   52.8
+[90m10[39m Belgium Europe      68     69.2   70.2   70.9   71.4   72.8   73.9   75.4
+[90m# … with 132 more rows, and 4 more variables: `1992` [3m[90m<dbl>[90m[23m, `1997` [3m[90m<dbl>[90m[23m,[39m
+[90m#   `2002` [3m[90m<dbl>[90m[23m, `2007` [3m[90m<dbl>[90m[23m[39m
 ~~~
-{: .error}
+{: .output}
 
 
 ## Cleaning up data
@@ -375,9 +524,47 @@ read_csv("data/co2-un-data.csv")
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Warning: Missing column names filled in: 'X3' [3], 'X4' [4], 'X5' [5], 'X6' [6],
+'X7' [7]
 ~~~
-{: .error}
+{: .warning}
+
+
+
+~~~
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  T24 = [31mcol_character()[39m,
+  `CO2 emission estimates` = [31mcol_character()[39m,
+  X3 = [31mcol_character()[39m,
+  X4 = [31mcol_character()[39m,
+  X5 = [31mcol_character()[39m,
+  X6 = [31mcol_character()[39m,
+  X7 = [31mcol_character()[39m
+)
+~~~
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2,133 x 7[39m
+   T24      `CO2 emission est… X3    X4            X5    X6    X7               
+   [3m[90m<chr>[39m[23m    [3m[90m<chr>[39m[23m              [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m            
+[90m 1[39m Region/… [31mNA[39m                 Year  Series        Value Foot… Source           
+[90m 2[39m 8        Albania            1975  Emissions (t… 4338… [31mNA[39m    International En…
+[90m 3[39m 8        Albania            1985  Emissions (t… 6929… [31mNA[39m    International En…
+[90m 4[39m 8        Albania            1995  Emissions (t… 1848… [31mNA[39m    International En…
+[90m 5[39m 8        Albania            2005  Emissions (t… 3825… [31mNA[39m    International En…
+[90m 6[39m 8        Albania            2010  Emissions (t… 3930… [31mNA[39m    International En…
+[90m 7[39m 8        Albania            2015  Emissions (t… 3824… [31mNA[39m    International En…
+[90m 8[39m 8        Albania            2016  Emissions (t… 3674… [31mNA[39m    International En…
+[90m 9[39m 8        Albania            2017  Emissions (t… 4342… [31mNA[39m    International En…
+[90m10[39m 8        Albania            1975  Emissions pe… 1.80… [31mNA[39m    International En…
+[90m# … with 2,123 more rows[39m
+~~~
+{: .output}
 
 The output gives us a warning about missing column names being filled in with things like 'X3', 'X4', etc. Looking at the table that is outputted by `read_csv` we can see that there appear to be two rows at the top of the file that contain information about the data in the table. The first is a header that tells us the table number and its name. Ideally, we'd skip that. We can do this using the `skip` argument in read_csv by giving it a number of lines to skip.
 
@@ -390,9 +577,46 @@ read_csv("data/co2-un-data.csv", skip=1)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Warning: Missing column names filled in: 'X2' [2]
 ~~~
-{: .error}
+{: .warning}
+
+
+
+~~~
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  `Region/Country/Area` = [32mcol_double()[39m,
+  X2 = [31mcol_character()[39m,
+  Year = [32mcol_double()[39m,
+  Series = [31mcol_character()[39m,
+  Value = [32mcol_double()[39m,
+  Footnotes = [31mcol_character()[39m,
+  Source = [31mcol_character()[39m
+)
+~~~
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2,132 x 7[39m
+   `Region/Country/… X2      Year Series        Value Footnotes Source          
+               [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m  [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m           
+[90m 1[39m                 8 Alban…  [4m1[24m975 Emissions (… 4.34[90me[39m3 [31mNA[39m        International E…
+[90m 2[39m                 8 Alban…  [4m1[24m985 Emissions (… 6.93[90me[39m3 [31mNA[39m        International E…
+[90m 3[39m                 8 Alban…  [4m1[24m995 Emissions (… 1.85[90me[39m3 [31mNA[39m        International E…
+[90m 4[39m                 8 Alban…  [4m2[24m005 Emissions (… 3.83[90me[39m3 [31mNA[39m        International E…
+[90m 5[39m                 8 Alban…  [4m2[24m010 Emissions (… 3.93[90me[39m3 [31mNA[39m        International E…
+[90m 6[39m                 8 Alban…  [4m2[24m015 Emissions (… 3.82[90me[39m3 [31mNA[39m        International E…
+[90m 7[39m                 8 Alban…  [4m2[24m016 Emissions (… 3.67[90me[39m3 [31mNA[39m        International E…
+[90m 8[39m                 8 Alban…  [4m2[24m017 Emissions (… 4.34[90me[39m3 [31mNA[39m        International E…
+[90m 9[39m                 8 Alban…  [4m1[24m975 Emissions p… 1.80[90me[39m0 [31mNA[39m        International E…
+[90m10[39m                 8 Alban…  [4m1[24m985 Emissions p… 2.34[90me[39m0 [31mNA[39m        International E…
+[90m# … with 2,122 more rows[39m
+~~~
+{: .output}
 
 Now we get a similar Warning message as before, but the outputted table looks better. It's important to differentiate between Warnings and Errors in R. A warning tells us, "you might want to know about this issue, but R still did what you asked". An error tells us, "there's something wrong with your code or your data and R didn't do what you asked". You need to fix any errors that arise. Warnings, are probably best to resolve or at least understand why they are coming up. We can resolve this warning by one of two methods. First, we can tell read_csv what the column names should be with the col_names argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings
 
@@ -406,9 +630,39 @@ col_names=c("region", "country", "year", "series", "value", "footnotes", "source
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2,132 x 7[39m
+   region country  year series             value footnotes source               
+    [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m              [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m                
+[90m 1[39m      8 Albania  [4m1[24m975 Emissions (thous… 4.34[90me[39m3 [31mNA[39m        International Energy…
+[90m 2[39m      8 Albania  [4m1[24m985 Emissions (thous… 6.93[90me[39m3 [31mNA[39m        International Energy…
+[90m 3[39m      8 Albania  [4m1[24m995 Emissions (thous… 1.85[90me[39m3 [31mNA[39m        International Energy…
+[90m 4[39m      8 Albania  [4m2[24m005 Emissions (thous… 3.83[90me[39m3 [31mNA[39m        International Energy…
+[90m 5[39m      8 Albania  [4m2[24m010 Emissions (thous… 3.93[90me[39m3 [31mNA[39m        International Energy…
+[90m 6[39m      8 Albania  [4m2[24m015 Emissions (thous… 3.82[90me[39m3 [31mNA[39m        International Energy…
+[90m 7[39m      8 Albania  [4m2[24m016 Emissions (thous… 3.67[90me[39m3 [31mNA[39m        International Energy…
+[90m 8[39m      8 Albania  [4m2[24m017 Emissions (thous… 4.34[90me[39m3 [31mNA[39m        International Energy…
+[90m 9[39m      8 Albania  [4m1[24m975 Emissions per ca… 1.80[90me[39m0 [31mNA[39m        International Energy…
+[90m10[39m      8 Albania  [4m1[24m985 Emissions per ca… 2.34[90me[39m0 [31mNA[39m        International Energy…
+[90m# … with 2,122 more rows[39m
+~~~
+{: .output}
 
 As an alternative, we can read in the table, get the warning and then fix the column names using the rename function.
 
@@ -422,9 +676,46 @@ rename(country=X2)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Warning: Missing column names filled in: 'X2' [2]
 ~~~
-{: .error}
+{: .warning}
+
+
+
+~~~
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  `Region/Country/Area` = [32mcol_double()[39m,
+  X2 = [31mcol_character()[39m,
+  Year = [32mcol_double()[39m,
+  Series = [31mcol_character()[39m,
+  Value = [32mcol_double()[39m,
+  Footnotes = [31mcol_character()[39m,
+  Source = [31mcol_character()[39m
+)
+~~~
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2,132 x 7[39m
+   `Region/Country/… country  Year Series        Value Footnotes Source         
+               [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m          
+[90m 1[39m                 8 Albania  [4m1[24m975 Emissions (… 4.34[90me[39m3 [31mNA[39m        International …
+[90m 2[39m                 8 Albania  [4m1[24m985 Emissions (… 6.93[90me[39m3 [31mNA[39m        International …
+[90m 3[39m                 8 Albania  [4m1[24m995 Emissions (… 1.85[90me[39m3 [31mNA[39m        International …
+[90m 4[39m                 8 Albania  [4m2[24m005 Emissions (… 3.83[90me[39m3 [31mNA[39m        International …
+[90m 5[39m                 8 Albania  [4m2[24m010 Emissions (… 3.93[90me[39m3 [31mNA[39m        International …
+[90m 6[39m                 8 Albania  [4m2[24m015 Emissions (… 3.82[90me[39m3 [31mNA[39m        International …
+[90m 7[39m                 8 Albania  [4m2[24m016 Emissions (… 3.67[90me[39m3 [31mNA[39m        International …
+[90m 8[39m                 8 Albania  [4m2[24m017 Emissions (… 4.34[90me[39m3 [31mNA[39m        International …
+[90m 9[39m                 8 Albania  [4m1[24m975 Emissions p… 1.80[90me[39m0 [31mNA[39m        International …
+[90m10[39m                 8 Albania  [4m1[24m985 Emissions p… 2.34[90me[39m0 [31mNA[39m        International …
+[90m# … with 2,122 more rows[39m
+~~~
+{: .output}
 
 A lot of data analysts prefer to have their column headings and variable names be in all lower case. We can use a variation of `rename`, which is `rename_all` that allows us to set all of the column headings to lower case by giving it the name of the tolower function, which makes everything lowercase.
 
@@ -438,9 +729,46 @@ rename_all(tolower)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Warning: Missing column names filled in: 'X2' [2]
 ~~~
-{: .error}
+{: .warning}
+
+
+
+~~~
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  `Region/Country/Area` = [32mcol_double()[39m,
+  X2 = [31mcol_character()[39m,
+  Year = [32mcol_double()[39m,
+  Series = [31mcol_character()[39m,
+  Value = [32mcol_double()[39m,
+  Footnotes = [31mcol_character()[39m,
+  Source = [31mcol_character()[39m
+)
+~~~
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2,132 x 7[39m
+   `region/country/… x2      year series        value footnotes source          
+               [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m  [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m           
+[90m 1[39m                 8 Alban…  [4m1[24m975 Emissions (… 4.34[90me[39m3 [31mNA[39m        International E…
+[90m 2[39m                 8 Alban…  [4m1[24m985 Emissions (… 6.93[90me[39m3 [31mNA[39m        International E…
+[90m 3[39m                 8 Alban…  [4m1[24m995 Emissions (… 1.85[90me[39m3 [31mNA[39m        International E…
+[90m 4[39m                 8 Alban…  [4m2[24m005 Emissions (… 3.83[90me[39m3 [31mNA[39m        International E…
+[90m 5[39m                 8 Alban…  [4m2[24m010 Emissions (… 3.93[90me[39m3 [31mNA[39m        International E…
+[90m 6[39m                 8 Alban…  [4m2[24m015 Emissions (… 3.82[90me[39m3 [31mNA[39m        International E…
+[90m 7[39m                 8 Alban…  [4m2[24m016 Emissions (… 3.67[90me[39m3 [31mNA[39m        International E…
+[90m 8[39m                 8 Alban…  [4m2[24m017 Emissions (… 4.34[90me[39m3 [31mNA[39m        International E…
+[90m 9[39m                 8 Alban…  [4m1[24m975 Emissions p… 1.80[90me[39m0 [31mNA[39m        International E…
+[90m10[39m                 8 Alban…  [4m1[24m985 Emissions p… 2.34[90me[39m0 [31mNA[39m        International E…
+[90m# … with 2,122 more rows[39m
+~~~
+{: .output}
 
 Both of these strategies are useful for helping us to clean up our data. Which you ultimately use for this project is a matter of personal preference. We'll go with the first option where we used col_names so that we don't have to worry about the Warning message.
 
@@ -454,9 +782,39 @@ col_names=c("region", "country", "year", "series", "value", "footnotes", "source
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2,132 x 7[39m
+   region country  year series             value footnotes source               
+    [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m              [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m                
+[90m 1[39m      8 Albania  [4m1[24m975 Emissions (thous… 4.34[90me[39m3 [31mNA[39m        International Energy…
+[90m 2[39m      8 Albania  [4m1[24m985 Emissions (thous… 6.93[90me[39m3 [31mNA[39m        International Energy…
+[90m 3[39m      8 Albania  [4m1[24m995 Emissions (thous… 1.85[90me[39m3 [31mNA[39m        International Energy…
+[90m 4[39m      8 Albania  [4m2[24m005 Emissions (thous… 3.83[90me[39m3 [31mNA[39m        International Energy…
+[90m 5[39m      8 Albania  [4m2[24m010 Emissions (thous… 3.93[90me[39m3 [31mNA[39m        International Energy…
+[90m 6[39m      8 Albania  [4m2[24m015 Emissions (thous… 3.82[90me[39m3 [31mNA[39m        International Energy…
+[90m 7[39m      8 Albania  [4m2[24m016 Emissions (thous… 3.67[90me[39m3 [31mNA[39m        International Energy…
+[90m 8[39m      8 Albania  [4m2[24m017 Emissions (thous… 4.34[90me[39m3 [31mNA[39m        International Energy…
+[90m 9[39m      8 Albania  [4m1[24m975 Emissions per ca… 1.80[90me[39m0 [31mNA[39m        International Energy…
+[90m10[39m      8 Albania  [4m1[24m985 Emissions per ca… 2.34[90me[39m0 [31mNA[39m        International Energy…
+[90m# … with 2,122 more rows[39m
+~~~
+{: .output}
 
 We previously saw how we can subset columns from a data frame using the select function. Let's get the country, year, series, and value columns
 
@@ -471,9 +829,39 @@ select(country, year, series, value)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2,132 x 4[39m
+   country  year series                                                 value
+   [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m                                                  [3m[90m<dbl>[39m[23m
+[90m 1[39m Albania  [4m1[24m975 Emissions (thousand metric tons of carbon dioxide)   [4m4[24m338.  
+[90m 2[39m Albania  [4m1[24m985 Emissions (thousand metric tons of carbon dioxide)   [4m6[24m930.  
+[90m 3[39m Albania  [4m1[24m995 Emissions (thousand metric tons of carbon dioxide)   [4m1[24m849.  
+[90m 4[39m Albania  [4m2[24m005 Emissions (thousand metric tons of carbon dioxide)   [4m3[24m825.  
+[90m 5[39m Albania  [4m2[24m010 Emissions (thousand metric tons of carbon dioxide)   [4m3[24m930.  
+[90m 6[39m Albania  [4m2[24m015 Emissions (thousand metric tons of carbon dioxide)   [4m3[24m825.  
+[90m 7[39m Albania  [4m2[24m016 Emissions (thousand metric tons of carbon dioxide)   [4m3[24m674.  
+[90m 8[39m Albania  [4m2[24m017 Emissions (thousand metric tons of carbon dioxide)   [4m4[24m342.  
+[90m 9[39m Albania  [4m1[24m975 Emissions per capita (metric tons of carbon dioxide)    1.80
+[90m10[39m Albania  [4m1[24m985 Emissions per capita (metric tons of carbon dioxide)    2.34
+[90m# … with 2,122 more rows[39m
+~~~
+{: .output}
 
 The series column has two methods of quantifying CO2 emissions - "Emissions (thousand metric tons of carbon dioxide)" and "Emissions per capita (metric tons of carbon dioxide)". Those are long titles that we'd like to shorten to make them easier to work with. We can shorten them to "total" and "per_capita" using the recode function. We need to do this within the mutate function where we will mutate the series column. The syntax in the recode function is to tell recode which column we want to recode and then what the old value (e.g. "Emissions (thousand metric tons of carbon dioxide)") should equal after recoding (e.g. "total").
 
@@ -490,9 +878,39 @@ mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxid
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2,132 x 4[39m
+   country  year series       value
+   [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m        [3m[90m<dbl>[39m[23m
+[90m 1[39m Albania  [4m1[24m975 total      [4m4[24m338.  
+[90m 2[39m Albania  [4m1[24m985 total      [4m6[24m930.  
+[90m 3[39m Albania  [4m1[24m995 total      [4m1[24m849.  
+[90m 4[39m Albania  [4m2[24m005 total      [4m3[24m825.  
+[90m 5[39m Albania  [4m2[24m010 total      [4m3[24m930.  
+[90m 6[39m Albania  [4m2[24m015 total      [4m3[24m825.  
+[90m 7[39m Albania  [4m2[24m016 total      [4m3[24m674.  
+[90m 8[39m Albania  [4m2[24m017 total      [4m4[24m342.  
+[90m 9[39m Albania  [4m1[24m975 per_capita    1.80
+[90m10[39m Albania  [4m1[24m985 per_capita    2.34
+[90m# … with 2,122 more rows[39m
+~~~
+{: .output}
 
 Recall that we'd like to have separate columns for the two ways that we CO2 emissions data. To achieve this, we'll use the pivot_wider function that we saw previously. The columns we want to spread out are series (i.e. names_from) and value (i.e. values_from).
 
@@ -510,9 +928,39 @@ pivot_wider(names_from=series, values_from=value)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 1,066 x 4[39m
+   country  year  total per_capita
+   [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m
+[90m 1[39m Albania  [4m1[24m975  [4m4[24m338.      1.80 
+[90m 2[39m Albania  [4m1[24m985  [4m6[24m930.      2.34 
+[90m 3[39m Albania  [4m1[24m995  [4m1[24m849.      0.580
+[90m 4[39m Albania  [4m2[24m005  [4m3[24m825.      1.27 
+[90m 5[39m Albania  [4m2[24m010  [4m3[24m930.      1.35 
+[90m 6[39m Albania  [4m2[24m015  [4m3[24m825.      1.33 
+[90m 7[39m Albania  [4m2[24m016  [4m3[24m674.      1.28 
+[90m 8[39m Albania  [4m2[24m017  [4m4[24m342.      1.51 
+[90m 9[39m Algeria  [4m1[24m975 [4m1[24m[4m3[24m553.      0.811
+[90m10[39m Algeria  [4m1[24m985 [4m4[24m[4m2[24m073.      1.86 
+[90m# … with 1,056 more rows[39m
+~~~
+{: .output}
 
 Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. One useful tool is the count function, which will tell us how many times a value is repeated in a column of a data frame. Let's us that on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year
 
@@ -531,9 +979,36 @@ count(year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 8 x 2[39m
+   year     n
+  [3m[90m<dbl>[39m[23m [3m[90m<int>[39m[23m
+[90m1[39m  [4m1[24m975   111
+[90m2[39m  [4m1[24m985   113
+[90m3[39m  [4m1[24m995   136
+[90m4[39m  [4m2[24m005   140
+[90m5[39m  [4m2[24m010   140
+[90m6[39m  [4m2[24m015   142
+[90m7[39m  [4m2[24m016   142
+[90m8[39m  [4m2[24m017   142
+~~~
+{: .output}
 
 It looks like we have data for 140 countries in 2005 and 2010. Let's filter our data to get the rows that correspond to 2005. Also, because we will only have data from one year, we can drop the year column from our data frame by giving it year with a minus sign before it.
 
@@ -553,9 +1028,39 @@ select(-year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 140 x 3[39m
+   country      total per_capita
+   [3m[90m<chr>[39m[23m        [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m
+[90m 1[39m Albania      [4m3[24m825.      1.27 
+[90m 2[39m Algeria     [4m7[24m[4m7[24m474.      2.33 
+[90m 3[39m Angola       [4m6[24m147.      0.314
+[90m 4[39m Argentina  [4m1[24m[4m4[24m[4m9[24m476.      3.82 
+[90m 5[39m Armenia      [4m4[24m130.      1.38 
+[90m 6[39m Australia  [4m3[24m[4m6[24m[4m5[24m515.     17.9  
+[90m 7[39m Austria     [4m7[24m[4m4[24m764.      9.09 
+[90m 8[39m Azerbaijan  [4m2[24m[4m9[24m018.      3.46 
+[90m 9[39m Bahrain     [4m2[24m[4m0[24m565.     23.1  
+[90m10[39m Bangladesh  [4m3[24m[4m1[24m960.      0.223
+[90m# … with 130 more rows[39m
+~~~
+{: .output}
 
 Finally, let's go ahead and assign the output of this code chunk to a variable name
 
@@ -575,9 +1080,19 @@ select(-year)
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
 
 
 ## Joining data frames
@@ -595,9 +1110,18 @@ gapminder_data <- read_csv("data/gapminder_data.csv") %>%
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  pop = [32mcol_double()[39m,
+  continent = [31mcol_character()[39m,
+  lifeExp = [32mcol_double()[39m,
+  gdpPercap = [32mcol_double()[39m
+)
 ~~~
-{: .error}
+{: .output}
 
 Look at the data in co2_emissions and gapminder_data. If you had to merge these two data frames together, which column would you use to merge them together? If you said "country" - good job! We'll call country our "key". Now, when we join them together, can you think of any problems we might run into when we merge things? We might not have CO2 emissions data for all of the countries in the gapmiinder dataset and vice versa. Also, a country might be represented in both data frames but by the same name in both places. As an example, write down the name of the country that the University of Michigan is in. Remember your answer and we'll come back to you answer shortly!
 
@@ -622,9 +1146,29 @@ inner_join(gapminder_data, co2_emissions)
 
 
 ~~~
-Error in inner_join(gapminder_data, co2_emissions): object 'gapminder_data' not found
+Joining, by = "country"
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 21 x 6[39m
+   country                  pop lifeExp gdpPercap   total per_capita
+   [3m[90m<chr>[39m[23m                  [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m
+[90m 1[39m Argentina           40[4m3[24m[4m0[24m[4m1[24m927    75.3    [4m1[24m[4m2[24m779. [4m1[24m[4m4[24m[4m9[24m476.       3.82
+[90m 2[39m Brazil             190[4m0[24m[4m1[24m[4m0[24m647    72.4     [4m9[24m066. [4m3[24m[4m1[24m[4m1[24m624.       1.67
+[90m 3[39m Canada              33[4m3[24m[4m9[24m[4m0[24m141    80.7    [4m3[24m[4m6[24m319. [4m5[24m[4m4[24m[4m0[24m431.      16.8 
+[90m 4[39m Chile               16[4m2[24m[4m8[24m[4m4[24m741    78.6    [4m1[24m[4m3[24m172.  [4m5[24m[4m4[24m435.       3.34
+[90m 5[39m Colombia            44[4m2[24m[4m2[24m[4m7[24m550    72.9     [4m7[24m007.  [4m5[24m[4m3[24m585.       1.24
+[90m 6[39m Costa Rica           4[4m1[24m[4m3[24m[4m3[24m884    78.8     [4m9[24m645.   [4m5[24m463.       1.29
+[90m 7[39m Cuba                11[4m4[24m[4m1[24m[4m6[24m987    78.3     [4m8[24m948.  [4m2[24m[4m5[24m051.       2.22
+[90m 8[39m Dominican Republic   9[4m3[24m[4m1[24m[4m9[24m622    72.2     [4m6[24m025.  [4m1[24m[4m7[24m522.       1.90
+[90m 9[39m Ecuador             13[4m7[24m[4m5[24m[4m5[24m680    75.0     [4m6[24m873.  [4m2[24m[4m3[24m927.       1.74
+[90m10[39m El Salvador          6[4m9[24m[4m3[24m[4m9[24m688    71.9     [4m5[24m728.   [4m6[24m253.       1.04
+[90m# … with 11 more rows[39m
+~~~
+{: .output}
 
 Do you see that we now have data from both data frames joined together in the same data frame? One thing to note about the output is that `inner_join` tells us that that it joined by "country". We can make this explicit using the "by" argument in the join functions
 
@@ -637,9 +1181,22 @@ inner_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-Error in inner_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+[90m# A tibble: 21 x 6[39m
+   country                  pop lifeExp gdpPercap   total per_capita
+   [3m[90m<chr>[39m[23m                  [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m
+[90m 1[39m Argentina           40[4m3[24m[4m0[24m[4m1[24m927    75.3    [4m1[24m[4m2[24m779. [4m1[24m[4m4[24m[4m9[24m476.       3.82
+[90m 2[39m Brazil             190[4m0[24m[4m1[24m[4m0[24m647    72.4     [4m9[24m066. [4m3[24m[4m1[24m[4m1[24m624.       1.67
+[90m 3[39m Canada              33[4m3[24m[4m9[24m[4m0[24m141    80.7    [4m3[24m[4m6[24m319. [4m5[24m[4m4[24m[4m0[24m431.      16.8 
+[90m 4[39m Chile               16[4m2[24m[4m8[24m[4m4[24m741    78.6    [4m1[24m[4m3[24m172.  [4m5[24m[4m4[24m435.       3.34
+[90m 5[39m Colombia            44[4m2[24m[4m2[24m[4m7[24m550    72.9     [4m7[24m007.  [4m5[24m[4m3[24m585.       1.24
+[90m 6[39m Costa Rica           4[4m1[24m[4m3[24m[4m3[24m884    78.8     [4m9[24m645.   [4m5[24m463.       1.29
+[90m 7[39m Cuba                11[4m4[24m[4m1[24m[4m6[24m987    78.3     [4m8[24m948.  [4m2[24m[4m5[24m051.       2.22
+[90m 8[39m Dominican Republic   9[4m3[24m[4m1[24m[4m9[24m622    72.2     [4m6[24m025.  [4m1[24m[4m7[24m522.       1.90
+[90m 9[39m Ecuador             13[4m7[24m[4m5[24m[4m5[24m680    75.0     [4m6[24m873.  [4m2[24m[4m3[24m927.       1.74
+[90m10[39m El Salvador          6[4m9[24m[4m3[24m[4m9[24m688    71.9     [4m5[24m728.   [4m6[24m253.       1.04
+[90m# … with 11 more rows[39m
 ~~~
-{: .error}
+{: .output}
 
 One thing to notice is that `co2_emissions` had 25 rows, but the output of our join only had 21. Let's investigate. It appears that there must have been countries in the gapminder data that did not appear in our co2_emissions data frame. We could look at which countries are missing using `left_join` and piping the output to `View()`
 
@@ -653,7 +1210,14 @@ View()
 
 
 ~~~
-Error in left_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+Warning in View(.): unable to open display
+~~~
+{: .warning}
+
+
+
+~~~
+Error in .External2(C_dataviewer, x, title): unable to start data viewer
 ~~~
 {: .error}
 
@@ -668,9 +1232,15 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-Error in anti_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+[90m# A tibble: 4 x 4[39m
+  country             pop lifeExp gdpPercap
+  [3m[90m<chr>[39m[23m             [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
+[90m1[39m Bolivia         9[4m1[24m[4m1[24m[4m9[24m152    65.6     [4m3[24m822.
+[90m2[39m Puerto Rico     3[4m9[24m[4m4[24m[4m2[24m491    78.7    [4m1[24m[4m9[24m329.
+[90m3[39m United States 301[4m1[24m[4m3[24m[4m9[24m947    78.2    [4m4[24m[4m2[24m952.
+[90m4[39m Venezuela      26[4m0[24m[4m8[24m[4m4[24m662    73.7    [4m1[24m[4m1[24m416.
 ~~~
-{: .error}
+{: .output}
 
 If we look at the co2_emissions data with `View()`, we will see that Bolivia, United States, and Venezuela are called different things in the co2_emissions data frame. They're called "Bolivia (Plurin. State of)", "United States of America", and "Venezuela (Boliv. Rep. of)". Puerto Rico isn't a country; it's part of the United States. To fix this, we can use the `recode` functions like we did earlier when altering the values of the "series" column.
 
@@ -695,9 +1265,19 @@ mutate(country=recode(country,
 
 
 ~~~
-Error: 'data/co2-un-data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  region = [32mcol_double()[39m,
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  series = [31mcol_character()[39m,
+  value = [32mcol_double()[39m,
+  footnotes = [31mcol_character()[39m,
+  source = [31mcol_character()[39m
+)
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -709,9 +1289,12 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-Error in anti_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+[90m# A tibble: 1 x 4[39m
+  country         pop lifeExp gdpPercap
+  [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
+[90m1[39m Puerto Rico 3[4m9[24m[4m4[24m[4m2[24m491    78.7    [4m1[24m[4m9[24m329.
 ~~~
-{: .error}
+{: .output}
 
 [[ NOTE: This could easily be pulled out as an exercise ]]
 This leaves us with a missing row for Puerto Rico. We could ignore this and move on or we could add it's values to those of the United States. Let's recode Puerto Rico as United States and then use `group_by` and `summarize` to aggregate the data; we'll use the population data to weight the life expectancy and GDP values.
@@ -733,9 +1316,25 @@ pop = sum(pop)
 
 
 ~~~
-Error: 'data/gapminder_data.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+cols(
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  pop = [32mcol_double()[39m,
+  continent = [31mcol_character()[39m,
+  lifeExp = [32mcol_double()[39m,
+  gdpPercap = [32mcol_double()[39m
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+`summarise()` ungrouping output (override with `.groups` argument)
+~~~
+{: .output}
 
 
 
@@ -747,9 +1346,10 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-Error in anti_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
+[90m# A tibble: 0 x 4[39m
+[90m# … with 4 variables: country [3m[90m<chr>[90m[23m, lifeExp [3m[90m<dbl>[90m[23m, gdpPercap [3m[90m<dbl>[90m[23m, pop [3m[90m<dbl>[90m[23m[39m
 ~~~
-{: .error}
+{: .output}
 
 Now our `anti_join` returns an empty data frame, which tells us that we have reconciled all of the keys from the gapminder data with the data in the co2_emissions data frame.
 
@@ -762,13 +1362,6 @@ Let's use the `inner_join` to create a new data frame
 gapminder_co2 <- inner_join(gapminder_data, co2_emissions, by="country")
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in inner_join(gapminder_data, co2_emissions, by = "country"): object 'gapminder_data' not found
-~~~
-{: .error}
 
 
 ## Analyzing combined data
@@ -788,12 +1381,7 @@ title="There is a strong association between a nation's GDP and the amount of CO
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(gapminder_co2, aes(x = gdpPercap, y = per_capita)): object 'gapminder_co2' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="612" style="display: block; margin: auto;" />
 
 To help clarify the association, we can add a fit line through the data using `geom_smooth`
 
@@ -812,9 +1400,11 @@ geom_smooth()
 
 
 ~~~
-Error in ggplot(gapminder_co2, aes(x = gdpPercap, y = per_capita)): object 'gapminder_co2' not found
+`geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ~~~
-{: .error}
+{: .output}
+
+<img src="../fig/rmd-01-unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="612" style="display: block; margin: auto;" />
 
 We can force the line to be straight using `method="lm"` as an argument to `geom_smooth`
 
@@ -833,9 +1423,11 @@ geom_smooth(method="lm")
 
 
 ~~~
-Error in ggplot(gapminder_co2, aes(x = gdpPercap, y = per_capita)): object 'gapminder_co2' not found
+`geom_smooth()` using formula 'y ~ x'
 ~~~
-{: .error}
+{: .output}
+
+<img src="../fig/rmd-01-unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="612" style="display: block; margin: auto;" />
 
 For the second question, we want to create two groups - Canada, the United States, and Mexico in one and the other countries in another. We can create a grouping variable using `mutate`
 
@@ -849,9 +1441,22 @@ mutate(region = if_else(country == "Canada" | country == "United States" | count
 
 
 ~~~
-Error in mutate(., region = if_else(country == "Canada" | country == "United States" | : object 'gapminder_co2' not found
+[90m# A tibble: 24 x 7[39m
+   country            lifeExp gdpPercap       pop   total per_capita region
+   [3m[90m<chr>[39m[23m                [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m 
+[90m 1[39m Argentina             75.3    [4m1[24m[4m2[24m779.  40[4m3[24m[4m0[24m[4m1[24m927 [4m1[24m[4m4[24m[4m9[24m476.      3.82  south 
+[90m 2[39m Bolivia               65.6     [4m3[24m822.   9[4m1[24m[4m1[24m[4m9[24m152   [4m8[24m976.      0.984 south 
+[90m 3[39m Brazil                72.4     [4m9[24m066. 190[4m0[24m[4m1[24m[4m0[24m647 [4m3[24m[4m1[24m[4m1[24m624.      1.67  south 
+[90m 4[39m Canada                80.7    [4m3[24m[4m6[24m319.  33[4m3[24m[4m9[24m[4m0[24m141 [4m5[24m[4m4[24m[4m0[24m431.     16.8   north 
+[90m 5[39m Chile                 78.6    [4m1[24m[4m3[24m172.  16[4m2[24m[4m8[24m[4m4[24m741  [4m5[24m[4m4[24m435.      3.34  south 
+[90m 6[39m Colombia              72.9     [4m7[24m007.  44[4m2[24m[4m2[24m[4m7[24m550  [4m5[24m[4m3[24m585.      1.24  south 
+[90m 7[39m Costa Rica            78.8     [4m9[24m645.   4[4m1[24m[4m3[24m[4m3[24m884   [4m5[24m463.      1.29  south 
+[90m 8[39m Cuba                  78.3     [4m8[24m948.  11[4m4[24m[4m1[24m[4m6[24m987  [4m2[24m[4m5[24m051.      2.22  south 
+[90m 9[39m Dominican Republic    72.2     [4m6[24m025.   9[4m3[24m[4m1[24m[4m9[24m622  [4m1[24m[4m7[24m522.      1.90  south 
+[90m10[39m Ecuador               75.0     [4m6[24m873.  13[4m7[24m[4m5[24m[4m5[24m680  [4m2[24m[4m3[24m927.      1.74  south 
+[90m# … with 14 more rows[39m
 ~~~
-{: .error}
+{: .output}
 
 Then we can use this column to repeat our `group_by` and `summarize` steps
 
@@ -867,9 +1472,20 @@ summarize(total = sum(total))
 
 
 ~~~
-Error in mutate(., region = if_else(country == "Canada" | country == "United States" | : object 'gapminder_co2' not found
+`summarise()` ungrouping output (override with `.groups` argument)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+[90m# A tibble: 2 x 2[39m
+  region    total
+  [3m[90m<chr>[39m[23m     [3m[90m<dbl>[39m[23m
+[90m1[39m north  6[4m6[24m[4m5[24m[4m6[24m037.
+[90m2[39m south   [4m8[24m[4m8[24m[4m9[24m332.
+~~~
+{: .output}
 
 We see that although Canada, the United States, and Mexico account for half the population of the Americas, they account for 88% of the CO2 emitted. In fact, the United States accounts for 75% of the CO2 emitted from the Americas.
 

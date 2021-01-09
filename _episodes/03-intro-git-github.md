@@ -255,11 +255,6 @@ same commands to choose another editor or update your email address.
 ## Basic Workflow
 _[Back to top](#contents)_
 
-TODO: update outputs from `git status` and `ls` to include other files previously created in the
-`un-report` directory.
-
-(starting with project directory structure setup by the Unix Shell lesson with R plotting contents)
-
 ![git-basics-flow-01-opt1](../fig/git-basics/20201117-git-01-opt1.png)  
 
 Once Git is configured, we can start using it.
@@ -359,8 +354,10 @@ On branch master
 
 No commits yet
 
-nothing to commit (create/copy files and use "git add" to track)
-TODO: UPDATE WITH EXPECTED OUTPUT
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+nothing added to commit but untracked files present (use "git add" to track)
 ```
 {: .output}
 
@@ -2075,8 +2072,6 @@ GitHub, though, this command would download them to our local repository.
 
 ## Collaborating with GitHub
 _[Back to top](#contents)_
-
-- TODO: replace screenshots
 
 For the next step, get into pairs.  One person will be the "Owner" and the other
 will be the "Collaborator". The goal is that the Collaborator add changes into
