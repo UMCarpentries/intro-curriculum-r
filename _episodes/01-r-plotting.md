@@ -238,10 +238,16 @@ Finally, take a look at the **Console** at the bottom left part of the RStudio s
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
 
-```
-gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 
-```
+~~~
+gapminder_1997 <- read_csv("gapminder_1997.csv")
+~~~
+{: .language-r}
+
+~~~
+Error: 'data/gapminder_1997.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+~~~
+{: .error}
 
 You should now have a line of text in your code file that started with `gapminder` and ends with a `)` symbol.
 
@@ -259,7 +265,7 @@ Starting from the left, the first thing we see is `gapminder_1997`. We viewed th
 > If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
 >> ## Solution
 >> We see a data table outputted, similar to what we saw in the Viewer tab.
->{: .solution}
+> {: .solution}
 {: .challenge}
 
 In R terms, `gapminder_1997` is a named **object** that references or stores something. In this case, `gapminder_1997` stores a specific table of data.
@@ -403,7 +409,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "2021-01-08"
+[1] "2021-01-09"
 ~~~
 {: .output}
 
@@ -432,7 +438,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "2021-01-08"
+> [1] "2021-01-09"
 > ~~~
 > {: .output}
 > 
@@ -490,10 +496,8 @@ read_csv(file = 'gapminder_1997.csv')
 ~~~
 {: .language-r}
 
-
-
 ~~~
-Error: 'gapminder_1997.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
+Error: 'data/gapminder_1997.csv' does not exist in current working directory ('/home/runner/work/curriculum/curriculum/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -1638,6 +1642,10 @@ library(gganimate)
 {: .language-r}
 
 > ## Exercise: Reviewing how to create a scatter plot
+<<<<<<< HEAD
+> **Part 1:** 
+> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent. 
+> 
 > **Part 1:**
 > Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
 >
