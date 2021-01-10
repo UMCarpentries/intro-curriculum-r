@@ -13,7 +13,8 @@ objectives:
 keypoints:
   - "When it comes to trying to figure out how to code something, and debugging, Internet searching is your best friend."
   - "There are several resources at the University of Michigan that you can take advantage of if you need help with your code."
-  - "We didn't have time to cover all important coding concepts in this workshop, so definitely continue trying to learn more once you get comfortable with the material we covered!"
+  - "We didn't have time to cover all important coding concepts in this workshop, so definitely continue trying to learn more once you get comfortable with the material we covered."
+  - "There are often packages and tools that you can leverage to perform domain-specific analyses, so search for them!"
 ---
 
 # Where to go from here?: Departing on your own coding journey
@@ -115,9 +116,10 @@ There are some coding concepts that we did not have time to cover in this worksh
 
 We've provided some links below, but feel free to search for other explanations and tutorials as well.
 
-In addition to these, we encourage you to investigate domain-specific packages and software that will help you perform specific tasks related to your own research. The best way to find these packages is to either ask other people in your field and/or search for specific tasks that you would like to perform. If you'd like to perform the task in R, include that in your search (e.g. "find pairwise distances for DNA sequences in R" will help you find the R package `ape` which has a number of functions to perform phylogenetic and evolutionary analyses in R.)
+### R coding topics
 
-### R
+Some more advanced R coding topics include:
+
 - [Lists](https://www.tutorialspoint.com/r/r_lists.htm) 
 - [Functions](https://swcarpentry.github.io/r-novice-gapminder/10-functions/index.html)
 - [Conditionals](https://swcarpentry.github.io/r-novice-gapminder/07-control-flow/index.html)
@@ -125,10 +127,16 @@ In addition to these, we encourage you to investigate domain-specific packages a
 
 [Here](https://erdavenport.github.io/R-ecology-lesson/03-loops-and-functions.html#ifelse_statements) is a nice tutorial on conditionals, loops, and functions all together.
 
-### Bash/Shell
-- Using high-performance computing clusters for computationally intensive data analyses. At the University of Michigan, many of work on [Great Lakes](https://arc-ts.umich.edu/greatlakes/user-guide/) for much of our research. It can be a bit overwhelming at first, so try to find someone to help you learn the ropes.
+## Domain-specific analyses
+
+We encourage you to investigate domain-specific packages and software that will help you perform specific tasks related to your own research. The best way to find these packages is to either ask other people in your field and/or search for specific tasks that you would like to perform. If you'd like to perform the task in R, include that in your search (e.g. "find pairwise distances for DNA sequences in R" will help you find the R package `ape` which has a number of functions to perform phylogenetic and evolutionary analyses in R.)
+
+### High-performance computing clusters
+
+If you're performing computationally-intensive analyses, you'll likely want to use a high-performance computing cluster. At the University of Michigan, many of us work on [Great Lakes](https://arc-ts.umich.edu/greatlakes/user-guide/) for much of our research. It can be a bit overwhelming at first, so try to find someone to help you learn the ropes. Sometimes there are also [workshops](https://arc-ts.umich.edu/events/) where you can learn more. 
 
 ### Git/GitHub
-- [Creating branches](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) to work on new parts of your analysis, and then merging them back into your "master" branch. 
+
+If you start using Git/GitHub more frequently, it's useful to learn how to [create branches](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) to work on new parts of your analysis. When you're confident that it works, you can then merge the contents of the branch back into your "master" branch. 
 
 {% include links.md %}
