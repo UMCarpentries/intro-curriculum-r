@@ -177,7 +177,7 @@ cat('```\n')
 Now in a real report this is when we would type out the background and purpose of the report to provide context to the readers of the report. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the text below into your report below the package code chunk.
 
 ```
-(couple sentances with purpose/question/hypothesis for the report that can be copied and pasted into the report)
+(couple sentences with purpose/question/hypothesis for the report that can be copied and pasted into the report)
 ```
 
 Now since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
@@ -204,16 +204,16 @@ Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd>
 
 ![](../fig/r-markdown/first_report_render.png)
 
-Amazing! We've created a report! Lets push this to GitHub to make sure we preserve this document.
+Amazing! We've created a report! Let's push this to GitHub to make sure we preserve this document.
 
 TODO: check below instructions for pushing to GitHub
-Now all we need to do is commit our recent changes and update our remote repository using Git.
+Now, all we need to do is commit our new report to git version control and update our remote repository using Git.
 
 Returning to the command line, type
 `git status` ##to get an idea of which files just changed
 `git add <filename(s)>` ##to add any file(s) that you just created and that are not yet version controlled
 `git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
-`git push` ##to update your changes to the git directory on the remote server
+`git push` ##to upload your changes to the git directory on the remote server
 
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
