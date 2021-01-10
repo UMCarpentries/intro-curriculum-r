@@ -77,6 +77,7 @@ In the following, we list some strategies and resources we find useful. As you m
 * [RStudio Community Forum](https://community.rstudio.com/). This is a site that is welcoming to new R users where you can ask R programming questions.
 * [Search R Package Documentation](https://rdrr.io/). This site is very useful when you see someone using a function but don't know which package it comes from. This site lets you search across the help pages for all R packages.
 * [RStudio Cheat Sheets](https://rstudio.com/resources/cheatsheets/). A good collection of cheat sheets to print out and hang at your desk. For example: [base R](https://rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf), [tidyverse](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Tidyverse+Cheat+Sheet.pdf), and [ggplot](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+* If there is a specific R package that you want to use (e.g. [mikropml](http://www.schlosslab.org/mikropml/) for machine learning analysis), you can use the vignettes to help you learn the basics of the package. You can search for the vignette online, or use the `vignette()` function in R to open them. 
 
 ### R Markdown
 * [Getting started with R Markdown Online Tutorial](https://rmarkdown.rstudio.com/lesson-1.html)
@@ -113,6 +114,8 @@ There are many local opportunities at the University of Michigan or around the A
 There are some coding concepts that we did not have time to cover in this workshop, but are important to learn as you continue on your journey and begin to perform more sophisticated data analysis projects. While we have not created resources for these topics, we provide some links to where you can learn more. Note that these are more advanced coding topics; you should be come comfortable with what you learned in the workshop before trying to delve deeper into these other concepts. However, you'll likely come across situations where one of these will be useful, and that's when you should learn it! 
 
 We've provided some links below, but feel free to search for other explanations and tutorials as well.
+
+In addition to these, we encourage you to investigate domain-specific packages and software that will help you perform specific tasks related to your own research. The best way to find these packages is to either ask other people in your field and/or search for specific tasks that you would like to perform. If you'd like to perform the task in R, include that in your search (e.g. "find pairwise distances for DNA sequences in R" will help you find the R package `ape` which has a number of functions to perform phylogenetic and evolutionary analyses in R.)
 
 ### R
 - [Lists](https://www.tutorialspoint.com/r/r_lists.htm) 
