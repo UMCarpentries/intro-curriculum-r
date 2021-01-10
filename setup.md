@@ -11,7 +11,7 @@ title: Setup
     - [R](https://www.r-project.org/)
     - [RStudio](https://rstudio.com/), an integrated development environment for R
 1. Create a [GitHub](https://github.com/) account if you do not already have one. You'll need to know the email associated with your account during the git lesson of the workshop.
-1. After you have installed everything above, download [un-report.zip](https://github.com/UMSWC/curriculum/raw/setup-zip/files/un-report.zip). You'll need the files included during the workshop.
+1. After you have installed everything above, download [un-report.zip](https://github.com/UMSWC/curriculum/raw/gh-pages/files/un-report.zip). You'll need the files included during the workshop.
     1. Move `un-report.zip` to your Desktop and unzip it (usually double-clicking it will work).
     1. Start up **RStudio**. In the upper left menu, select `File` > `Open`. In the window that opens, go to the `un-report/` folder on your Desktop and select the file `check_setup.R` to open it in RStudio.
     1. Click the **`Source`** button to run the script. This script will make sure that everything is installed and setup correctly. You should see output printed to the console window (usually the lower left pane in RStudio).
