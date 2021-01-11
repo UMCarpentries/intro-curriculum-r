@@ -208,7 +208,6 @@ awesome_violin_plot.jpg
 gapminder_1997.csv
 gapminder_data.csv
 gdp_population.R
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -253,7 +252,6 @@ awesome_violin_plot.jpg
 gapminder_1997.csv
 gapminder_data.csv
 gdp_population.R
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -298,7 +296,7 @@ cd Desktop/un-report
 
 Unix subsystem for Windows:
 ```
-cd c/USERNAME/Desktop/un-report
+cd /mnt/c/USERNAME/Desktop/un-report
 ```
 {: .language-bask}
 
@@ -386,7 +384,6 @@ awesome_violin_plot.jpg
 gapminder_1997.csv
 gapminder_data.csv
 gdp_population.R
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -444,7 +441,6 @@ code
 gapminder_1997.csv
 gapminder_data.csv
 gdp_population.R
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -481,7 +477,6 @@ awesome_violin_plot.jpg
 code
 gapminder_1997.csv
 gapminder_data.csv
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -529,7 +524,7 @@ One example of a wildcard is the asterisk, `*`. This special character is interp
 Let’s see how we can use a wildcard to list only files with the extension `.jpg`:
 
 ```
-ls *.jpg
+ls *jpg
 ```
 {: .language-bash}
 ```
