@@ -642,7 +642,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-3. Identify the countries that have 5 time points for both C02 emissions and R&D.
+3. Identify the countries that have five time points for both C02 emissions and R&D.
 
 > ## Solution
 > ```{r}
@@ -652,9 +652,8 @@ _[Back to top](#contents)_
 
 **BONUS**
 
-4. For 3 of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINT:** Use `pivot_longer` to get the data in the right format.
+4. For three of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINTS:** Use `pivot_longer` to get the data in the right format. Search the internet for how you can use `%in%`. Also remember the  `c()` function from earlier in the workshop that can be used to combine values into a vector or list.
 
-TODO: *check if r for data anlaysis teaches `%in%` and `c()`*
 > ## Solution
 > ```{r}
 > co2_rnd %>% filter(country %in% c('Azerbaijan','Cuba','Panama')) %>% pivot_longer(c(per_capita,gdp_pct)) %>% ggplot(aes(x=year,y=value,col=name)) +
