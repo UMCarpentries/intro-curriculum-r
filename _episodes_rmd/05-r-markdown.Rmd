@@ -368,7 +368,7 @@ _[Back to top](#contents)_
 ##### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
-5. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do it!
+5. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do this!
 
 > Solution
 > ```{r}
@@ -431,7 +431,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-11. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text too. Feel free to change the theme if you'd like.
+11. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text, too. Feel free to change the theme if you'd like.
 
 > ## Solution
 > ```{r,comment=NA,echo=F,collapse=T}
@@ -464,14 +464,9 @@ _[Back to top](#contents)_
 ### Exercises integrating a new dataset
 _[Back to top](#contents)_
 
-**If you finished the questions involving the gapminder datset (Bonus questions are optional), move on to these questions next. Note that we don't expect you to finish all of these! You can also use them as practice after the workshop if you'd like.**
+**If you finished the questions involving the gapminder dataset (bonus questions are optional), move on to these questions next. Note that we don't expect you to finish all of these! You can also use them as practice after the workshop if you'd like.**
 
 Now that you've practiced what you've learned with the gapminder data, you're going to try using what we've learned to explore a new dataset.
-
-TODO:
-- [ ] check with R analysis team for the CO2 data format after that part of workshop
-- [ ] cut down number of questions (there is likely not enough time for all of the following)
-- [ ] check with R plotting and stats to make sure the contents has been covered before the exercises
 
 #### Preview of the data
 _[Back to top](#contents)_
