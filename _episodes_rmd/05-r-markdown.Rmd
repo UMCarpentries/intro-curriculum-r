@@ -40,7 +40,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
-Recall that our ultimate goal is to generate a report on how a country's life expectancy is related to GDP.
+Recall that our  goal is to generate a report on how a country's life expectancy is related to GDP.
 
 ## Creating a reports directory
 _[Back to top](#contents)_
@@ -102,7 +102,7 @@ _[Back to top](#contents)_
 ### Header
 _[Back to top](#contents)_
 
-The first part is a *header* at the top of the file between the lines of `---`. This contains instructions for R to specify the type of document to be created and options to choose (ex. title, author, date). These are in the form of key-value pairs (`key: value`; YAML).
+The first part is a *header* at the top of the file between the lines of `---`. This contains instructions for R to specify the type of document to be created and options to choose (ex., title, author, date). These are in the form of key-value pairs (`key: value`; YAML).
 
 Here's an example:
 
@@ -166,25 +166,25 @@ Now it will assume all of your relative paths for reading and writing files are 
 
 Now that we have that set up, let's start on the report!
 
-We're going to use the code you generated yesterday to plot GDP vs Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to library the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference.
+We're going to use the code you generated yesterday to plot GDP vs. Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to load the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference.
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r packages}\nlibrary(tidyverse)\n```\n')
 ```
 
-Now in a real report this is when we would type out the background and purpose of the report to provide context to the readers of the report. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the text below into your report below the package code chunk.
+Now, in a real report this is when we would type out the background and purpose of our analysis to provide context to our readers. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the following text  into your own report below the package code chunk.
 
 ```
-(couple sentences with purpose/question/hypothesis for the report that can be copied and pasted into the report)
+This report was prepared to the attention of the United Nations. It analyzes the relationship between a country's GDP, its life expectancy and CO2 emissions. Our goal is to determine to what degree a country’s economic strength or weakness may be related to its public health status and impact on climate pollution. We hypothesize that both life expectancy and CO2 emissions increase with a country's GDP.
 ```
 
-Now since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
+Now, since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r data}\ngapminder_1997 <- read.csv("./data/gapminder_1997.csv")\n```\n')
 ```
 
-Now that we have the data we need to produce the plot, let's create it!
+Now that we have the data, we need to produce the plot. Let's create it!
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r gdp_lifeexp_1997}\nggplot(data = gapminder_1997) + \n
@@ -200,12 +200,11 @@ Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd>
 
 Amazing! We've created a report! Let's push this to GitHub to make sure we preserve this document.
 
-TODO: check below instructions for pushing to GitHub
 Now, all we need to do is commit our new report to git version control and update our remote repository using Git.
 
 Returning to the command line, type
 `git status` ##to get an idea of which files just changed
-`git add <filename(s)>` ##to add any file(s) that you just created and that are not yet version controlled
+`git add <filename(s)>` ##to add any file(s) that you just created and that you would like to version control
 `git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
 `git push` ##to upload your changes to the git directory on the remote server
 
@@ -214,17 +213,17 @@ It's looking pretty good, but there seem to be a few extra bits that we don't ne
 
 ![](../fig/r-markdown/tidyverse_messages.png)
 
-To get rid of this, we can revise our packages code chunk by adding `include=FALSE` like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
+To get rid of this, we can revise our packages code chunk by adding `include=FALSE` just like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r packages, include=FALSE}\nlibrary(tidyverse)\n```\n')
 ```
 
-We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
+We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If you don't want the code to appear, how can you prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
 
 ![](../fig/r-markdown/includeFalse.png)
 
-Oops! Now the plot doesn't show up in our report. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE` for the code chunk to tell it that we don't want to see the code but we want to see the output.
+Oops! Now the plot doesn't show up in our report at all. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE`  to tell this code chunk that we don't want to see the code but just the output.
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r gdp_lifeexp_1997, echo=FALSE}\nggplot(data = gapminder_1997) + \n
@@ -234,15 +233,33 @@ cat('```{r gdp_lifeexp_1997, echo=FALSE}\nggplot(data = gapminder_1997) + \n
        title= "Do people in wealthy countries live longer?", size="Population (in millions)")\n```\n')
 ```
 
-When we knit this again, we can see the plot again!
+When we knit this again, our plot is back!
 
 ![](../fig/r-markdown/echoFalse.png)
+
+Before we finalize our report, let's look at one more cool feature. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
+
+First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values.
+
+```{r,comment=NA,echo=F,collapse=T}
+cat('```{r data_summary, include=FALSE}\n
+  nCountries <- length(unique(gapminder_1997$country)) \n
+  minGDP <- round(min(gapminder_1997$gdpPercap), digits=0) \n
+  maxGDP <- round(max(gapminder_1997$gdpPercap), digits=0)\n```\n')
+```
+
+Now, all we need to do is reference the values we just computed to describe our plot. To do this, we enclose each value in one set of backticks (`cat('`<some R value name>`')`), while the `{r}` part once again indicates that it's a chunk of R code. When we knit our report, R will automatically fill in the values we just created in the above code chunk. Note that R will automatically update these values every time our data might change (if we were to decide to drop or add countries to this  analysis, for example).
+
+```
+The above plot shows the relationship between GDP per capita and life expectancy for a total of `r nCountries` countries. For this set of countries, economic wealth ranged from a minimum of USD `r minGDP` to a maximum of USD `r maxGDP` per capita.
+```
+
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
 ## Formatting
 _[Back to top](#contents)_
 
-Now that we know how to create a report, we might want to format it in a way that structures our thought process in a useful way (e.g., sections) and makes it visually appealing.
+We now know how to create a report. Maybe we also want to format the report a little bit to structure our thought process in a useful way (e.g., sections) and make it visually appealing?
 Markdown is a very simple programming language when it comes to syntax.
 Let's try to figure out some syntax together. Suppose we wanted to create sections in our report.
 
