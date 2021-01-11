@@ -584,9 +584,8 @@ This output shows each directory name, followed by its contents on the next line
 > > 1. `cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb README.md`
 > > 2. `cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb`
 > > 3. `ethane.pdb methane.pdb`
-> > 4. `cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb`
+> > 4. None. None of the files end in only `ane`. This would have listed files if `ls *ane*` were used instead.
 > > 5. `pentane.pdb propane.pdb`
->
 > {: .solution}
 {: .challenge}
 
