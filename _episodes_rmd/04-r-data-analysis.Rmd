@@ -4,21 +4,21 @@ source: Rmd
 teaching: 150
 exercises: 15
 questions: 
-- How can I import 
-- How can R help make my research more reproducible?
-- How can I combine two datasets from different sources?
-- How can data tidying facilitate answering analysis questions?
+- "How can I summarize my data in R?"
+- "How can R help make my research more reproducible?"
+- "How can I combine two datasets from different sources?"
+- "How can data tidying facilitate answering analysis questions?"
 objectives: 
-- To become familiar with the functions of the `dplyr` package.
-- To be able to use `dplyr` to prepare data for analysis.
-- To be able to combine two different data sources using joins.
-- To be able to create plots and summary tables to answer analysis questions.
+- "To become familiar with the functions of the `dplyr` package."
+- "To be able to use `dplyr` to prepare data for analysis."
+- "To be able to combine two different data sources using joins."
+- "To be able to create plots and summary tables to answer analysis questions."
 keypoints:
-- Package loading is an important first step in preparing an R environment.
-- Data analsyis in R facilitates reproducible research.
-- There are many useful functions in the `tidyverse` packages that can aid in data analysis.
-- Assessing data source and structure is an important first step in analysis.
-- Preparing data for analysis can take significant effort and planning.
+- "Package loading is an important first step in preparing an R environment."
+- "Data analsyis in R facilitates reproducible research."
+- "There are many useful functions in the `tidyverse` packages that can aid in data analysis."
+- "Assessing data source and structure is an important first step in analysis."
+- "Preparing data for analysis can take significant effort and planning."
 ---
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
