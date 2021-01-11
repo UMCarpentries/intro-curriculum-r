@@ -178,25 +178,25 @@ ls
 
 ```
 list.txt
-my_project
+un-report
 notes.pdf
 Untitled.png
 ```
 {: .output}
 
 Your Desktop will likely look different, but the important thing is that you see the folder we worked in for the R plotting lesson.
-Is the `my_project` directory listed on your Desktop?
+Is the `un-report` directory listed on your Desktop?
 
-How can we get into the `my_project` directory?
+How can we get into the `un-report` directory?
 
 ```
-cd my_project
+cd un-report
 ```
 {: .language-bash}
 
 We just went _down_ the directory tree again.
 
-Let's see what files are in `my_project`:
+Let's see what files are in `un-report`:
 ```
 ls
 ```
@@ -217,16 +217,16 @@ Is it what you expect? Are the files you made in the R plotting lesson there?
 Now let's move back _up_ the directory tree. First, let's try this command:
 
 ```
-cd my_project
+cd un-report
 ```
 {: .language-bash}
 
 ```
-cd: no such file or directory: my_project
+cd: no such file or directory: un-report
 ```
 {: .output}
 
-This doesn't work because the `my_project` directory is not within the directory that we are currently in.
+This doesn't work because the `un-report` directory is not within the directory that we are currently in.
 
 To move up the directory tree, you can use `..`, which is the parent of the current directory:
 ```
@@ -243,7 +243,7 @@ pwd
 Everything that we've been doing is working with file paths. We tell the computer where we want to go using `cd` plus the file path. We can also tell the computer what files we want to list by giving a file path to `ls`:
 
 ```
-ls my_project
+ls un-report
 ```
 {: .language-bash}
 
@@ -265,7 +265,7 @@ ls ..
 
 ```
 list.txt
-my_project
+un-report
 notes.pdf
 Untitled.png
 ```
@@ -291,14 +291,14 @@ To get back to your projects directory you can use the following command:
 Mac/git-bash:
 
 ```
-cd Desktop/my_project
+cd Desktop/un-report
 ```
 {: .language-bash}
 
 
 Unix subsystem for Windows:
 ```
-cd c/USERNAME/Desktop/my_project
+cd c/USERNAME/Desktop/un-report
 ```
 {: .language-bask}
 
@@ -504,7 +504,7 @@ Great, now for an exercise:
 >
 > Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
 > > ## Solution
-> > From the `my_project` directory:
+> > From the `un-report` directory:
 > >  ```
 > > mkdir data
 > > mv gapminder_data.csv data
