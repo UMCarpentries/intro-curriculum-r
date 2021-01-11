@@ -23,8 +23,6 @@ keypoints:
 set.seed(20210109)
 ```
 
-TODO: Complete Table of Contents and back to top links (for excercises)
-
 ### Contents
 1. [Creating a reports directory](#creating-a-reports-directory)
 1. [Why use R Markdown?](#why-use-r-markdown?)
@@ -42,7 +40,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
-Recall that our ultimate goal is to generate a report on how a country's life expectancy is related to GDP.
+Recall that our  goal is to generate a report on how a country's life expectancy is related to GDP.
 
 ## Creating a reports directory
 _[Back to top](#contents)_
@@ -70,15 +68,13 @@ mkdir reports
 ## Why use R Markdown?
 _[Back to top](#contents)_
 
-TODO: is reproducibility discussed somewhere? Add a link or more discussion here?
-
 We're going to learn a way to create a report in R using something called R Markdown.
-This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html or PDF file and share with others.
+This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html, PDF or Word file and share with others.
 The text can be experimental methods, an analysis and discussion of the results, or whatever else you want to include.
-We call these types of reports *reproducible* reports because the code is embedded in the document and anyone can take the report and re-run the code to get the same output.
-R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, and keeping a computational notebook of your work.
-If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can even hide the code.
-It's also useful because if you find an error or want to modify the text or a figure, you can just change the code and re-run the R Markdown file to get the updated output!
+We call  reports *reproducible*  when the code is embedded in the document and anyone can take the report and re-run the code to get the same output.
+R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, or keeping a computational notebook of your work.
+If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can  hide the code in the final, rendered output file while keeping it in the R Markdown file for your own record.
+Writing reports with R Markdown is also useful because if you find an error or want to modify the text or a figure later on, you can simply change the code and re-run the R Markdown file to get the updated output!
 
 R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures.
 
@@ -106,7 +102,7 @@ _[Back to top](#contents)_
 ### Header
 _[Back to top](#contents)_
 
-The first part is a *header* at the top of the file between the lines of `---`. This contains instructions for R to specify the type of document to be created and options to choose (ex. title, author, date). These are in the form of key-value pairs (`key: value`; YAML).
+The first part is a *header* at the top of the file between the lines of `---`. This contains instructions for R to specify the type of document to be created and options to choose (ex., title, author, date). These are in the form of key-value pairs (`key: value`; YAML).
 
 Here's an example:
 
@@ -170,25 +166,25 @@ Now it will assume all of your relative paths for reading and writing files are 
 
 Now that we have that set up, let's start on the report!
 
-We're going to use the code you generated yesterday to plot GDP vs Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to library the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference.
+We're going to use the code you generated yesterday to plot GDP vs. Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to load the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference.
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r packages}\nlibrary(tidyverse)\n```\n')
 ```
 
-Now in a real report this is when we would type out the background and purpose of the report to provide context to the readers of the report. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the text below into your report below the package code chunk.
+Now, in a real report this is when we would type out the background and purpose of our analysis to provide context to our readers. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the following text  into your own report below the package code chunk.
 
 ```
-(couple sentances with purpose/question/hypothesis for the report that can be copied and pasted into the report)
+This report was prepared to the attention of the United Nations. It analyzes the relationship between a country's GDP, its life expectancy and CO2 emissions. Our goal is to determine to what degree a country’s economic strength or weakness may be related to its public health status and impact on climate pollution. We hypothesize that both life expectancy and CO2 emissions increase with a country's GDP.
 ```
 
-Now since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
+Now, since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r data}\ngapminder_1997 <- read.csv("./data/gapminder_1997.csv")\n```\n')
 ```
 
-Now that we have the data we need to produce the plot, let's create it!
+Now that we have the data, we need to produce the plot. Let's create it!
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r gdp_lifeexp_1997}\nggplot(data = gapminder_1997) + \n
@@ -202,33 +198,32 @@ Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd>
 
 ![](../fig/r-markdown/first_report_render.png)
 
-Amazing! We've created a report! Lets push this to GitHub to make sure we preserve this document.
+Amazing! We've created a report! Let's push this to GitHub to make sure we preserve this document.
 
-TODO: check below instructions for pushing to GitHub
-Now all we need to do is commit our recent changes and update our remote repository using Git.
+Now, all we need to do is commit our new report to git version control and update our remote repository using Git.
 
 Returning to the command line, type
 `git status` ##to get an idea of which files just changed
-`git add <filename(s)>` ##to add any file(s) that you just created and that are not yet version controlled
+`git add <filename(s)>` ##to add any file(s) that you just created and that you would like to version control
 `git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
-`git push` ##to update your changes to the git directory on the remote server
+`git push` ##to upload your changes to the git directory on the remote server
 
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
 
 ![](../fig/r-markdown/tidyverse_messages.png)
 
-To get rid of this, we can revise our packages code chunk by adding `include=FALSE` like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
+To get rid of this, we can revise our packages code chunk by adding `include=FALSE` just like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r packages, include=FALSE}\nlibrary(tidyverse)\n```\n')
 ```
 
-We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
+We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If you don't want the code to appear, how can you prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
 
 ![](../fig/r-markdown/includeFalse.png)
 
-Oops! Now the plot doesn't show up in our report. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE` for the code chunk to tell it that we don't want to see the code but we want to see the output.
+Oops! Now the plot doesn't show up in our report at all. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE`  to tell this code chunk that we don't want to see the code but just the output.
 
 ```{r,comment=NA,echo=F,collapse=T}
 cat('```{r gdp_lifeexp_1997, echo=FALSE}\nggplot(data = gapminder_1997) + \n
@@ -238,15 +233,36 @@ cat('```{r gdp_lifeexp_1997, echo=FALSE}\nggplot(data = gapminder_1997) + \n
        title= "Do people in wealthy countries live longer?", size="Population (in millions)")\n```\n')
 ```
 
-When we knit this again, we can see the plot again!
+When we knit this again, our plot is back!
 
 ![](../fig/r-markdown/echoFalse.png)
+
+Before we finalize our report, let's look at one more cool feature. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
+
+First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values.
+
+```{r,comment=NA,echo=F,collapse=T}
+cat('```{r data_summary, include=FALSE}\n
+  nCountries <- length(unique(gapminder_1997$country)) \n
+  minGDP <- round(min(gapminder_1997$gdpPercap), digits=0) \n
+  maxGDP <- round(max(gapminder_1997$gdpPercap), digits=0)\n```\n')
+```
+
+Now, all we need to do is reference the values we just computed to describe our plot. To do this, we enclose each value in one set of backticks (`cat('`<some R value name>`')`), while the `{r}` part once again indicates that it's a chunk of R code. When we knit our report, R will automatically fill in the values we just created in the above code chunk. Note that R will automatically update these values every time our data might change (if we were to decide to drop or add countries to this  analysis, for example).
+
+```
+The above plot shows the relationship between GDP per capita and life expectancy 
+for a total of "\u0060r nCountries\u0060" countries. For this set of countries, 
+economic wealth ranged from a minimum of USD "\u0060r minGDP\u0060" 
+to a maximum of USD "\u0060r maxGDP\u0060" per capita.
+```
+
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
 ## Formatting
 _[Back to top](#contents)_
 
-Now that we know how to create a report, we might want to format it in a way that structures our thought process in a useful way (e.g., sections) and makes it visually appealing.
+We now know how to create a report with R Markdown. Maybe we also want to format the report a little bit to structure our thought process in a useful way (e.g., sections) and make it visually appealing?
 Markdown is a very simple programming language when it comes to syntax.
 Let's try to figure out some syntax together. Suppose we wanted to create sections in our report.
 
@@ -280,12 +296,12 @@ _[Back to top](#contents)_
 
 You've learned so much in the past two days - how to use the Unix Shell to move around your computer, how to use git for version control and GitHub for collaborating with others on code, how to make pretty plots and do data analysis in R, and how to incorporate it all into a report.
 Now, you're going to work in pairs to practice everything you learned. Ideally, you'll have the same pair as for the git/GitHub lesson.
-Don't worry - if you have questions, the instructor and helpers can help you out!
+Don't worry - if you have questions, the instructor and helpers are here to help you out!
 
 Only one of the people in your pair is going to create the R Markdown file. The other person is going to collaborate with that person using GitHub. So the first step is to choose one person in your pair to create/host the R Markdown file.
 
 **For the person who is going to host the new R Markdown file:**
-1. Make a new R markdown file.
+1. Make a new R Markdown file.
 1. Give it an informative title.
 1. Delete all the unnecessary Markdown and R code (everything below the setup R chunk).
 1. Save it to the `reports` directory using an informative file name.
@@ -305,8 +321,6 @@ Don't worry if you don't finish all of the exercises, and it's not a race betwee
 This is just a way for you to practice what you've learned.
 
 **One note:** It may be helpful to copy and paste the questions into the R Markdown file as you go.
-
-TODO: *make sure r code works in solution blocks*
 
 ### Exercises using the gapminder data
 _[Back to top](#contents)_
@@ -357,7 +371,7 @@ _[Back to top](#contents)_
 ##### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
-5. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do it!
+5. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do this!
 
 > Solution
 > ```{r}
@@ -420,7 +434,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-11. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text too. Feel free to change the theme if you'd like.
+11. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text, too. Feel free to change the theme if you'd like.
 
 > ## Solution
 > ```{r,comment=NA,echo=F,collapse=T}
@@ -453,21 +467,16 @@ _[Back to top](#contents)_
 ### Exercises integrating a new dataset
 _[Back to top](#contents)_
 
-**If you finished the questions involving the gapminder datset (Bonus questions are optional), move on to these questions next. Note that we don't expect you to finish all of these! You can also use them as practice after the workshop if you'd like.**
+**If you finished the questions involving the gapminder dataset (bonus questions are optional), move on to these questions next. Note that we don't expect you to finish all of these! You can also use them as practice after the workshop if you'd like.**
 
 Now that you've practiced what you've learned with the gapminder data, you're going to try using what we've learned to explore a new dataset.
-
-TODO:
-- [ ] check with R analysis team for the CO2 data format after that part of workshop
-- [ ] cut down number of questions (there is likely not enough time for all of the following)
-- [ ] check with R plotting and stats to make sure the contents has been covered before the exercises
 
 #### Preview of the data
 _[Back to top](#contents)_
 
 This dataset has information on the gross domestic expenditure on research and development (R&D) for different countries. We're going to use it to practice the data analysis workflow that you learned over the course of the workshop.
 
-_Data:_ Gross domestic expenditure onresearch and development (R & D)
+_Data:_ Gross domestic expenditure on research and development (R & D)
 
 _Data source:_ [UN data](data.un.org), under "Science and technology"
 
@@ -520,7 +529,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-3. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This shoudl give you the following columns: conuntry name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
+3. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This should give you the following columns: country name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
 
 > ## Solution
 > ```{r}
@@ -593,9 +602,7 @@ pivot_wider(names_from=series, values_from=value)
 > ```
 {: .solution}
 
-3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have bot C02 and R&D data.
-
-TODO: *check if `is.na()` and ! (not operator) are introduced in R for data analysis lesson*
+3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both C02 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
 
 > ## Solution
 > ```{r}
@@ -638,7 +645,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-3. Identify the countries that have 5 time points for both C02 emissions and R&D.
+3. Identify the countries that have five time points for both C02 emissions and R&D.
 
 > ## Solution
 > ```{r}
@@ -648,9 +655,8 @@ _[Back to top](#contents)_
 
 **BONUS**
 
-4. For 3 of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINT:** Use `pivot_longer` to get the data in the right format.
+4. For three of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINTS:** Use `pivot_longer` to get the data in the right format. Search the internet for how you can use `%in%`. Also remember the  `c()` function from earlier in the workshop that can be used to combine values into a vector or list.
 
-TODO: *check if r for data anlaysis teaches `%in%` and `c()`*
 > ## Solution
 > ```{r}
 > co2_rnd %>% filter(country %in% c('Azerbaijan','Cuba','Panama')) %>% pivot_longer(c(per_capita,gdp_pct)) %>% ggplot(aes(x=year,y=value,col=name)) +
@@ -664,15 +670,15 @@ TODO: *check if r for data anlaysis teaches `%in%` and `c()`*
 #### Bonus questions
 _[Back to top](#contents)_
 
-5. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries there are for each value within the range? (e.g. x countries have 2 different years and y have 5 years)
+5. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries  are there for each value within the range? (e.g., x countries have two different years and y have five  years)
 
-6. After merging the data sets, there is some missing data, how many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive obsevation in a plot and/or summary statistics? (e.g. `ggplot` removes `NA`s but stat functions (e.g. `median()` often ask for specific input regarding to how to deal with `NA`s)).
+6. After merging the data sets, there is some missing data. How many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive observation in a plot and/or summary statistic? (e.g.,  `ggplot` removes `NA`s but stat functions (e.g., `median()`) often ask for specific input regarding how to deal with `NA`s).
 
 7. What countries have the highest and lowest data availabilities? (How would you measure data availability?)
 
 8. Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
 
-9. For a specific contient (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
+9. For a specific continent (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
 
-10. Create an R Markdown report with some of the information from these exercises. Decide excatly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
+10. Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
 
