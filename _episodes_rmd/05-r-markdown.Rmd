@@ -473,7 +473,7 @@ _[Back to top](#contents)_
 
 This dataset has information on the gross domestic expenditure on research and development (R&D) for different countries. We're going to use it to practice the data analysis workflow that you learned over the course of the workshop.
 
-_Data:_ Gross domestic expenditure onresearch and development (R & D)
+_Data:_ Gross domestic expenditure on research and development (R & D)
 
 _Data source:_ [UN data](data.un.org), under "Science and technology"
 
@@ -526,7 +526,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-3. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This shoudl give you the following columns: conuntry name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
+3. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This should give you the following columns: country name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
 
 > ## Solution
 > ```{r}
@@ -599,9 +599,7 @@ pivot_wider(names_from=series, values_from=value)
 > ```
 {: .solution}
 
-3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have bot C02 and R&D data.
-
-TODO: *check if `is.na()` and ! (not operator) are introduced in R for data analysis lesson*
+3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both C02 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
 
 > ## Solution
 > ```{r}
