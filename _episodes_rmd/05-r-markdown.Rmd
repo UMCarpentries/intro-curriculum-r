@@ -258,9 +258,9 @@ that R will automatically update these values every time our data might change
 
 ```
 The above plot shows the relationship between GDP per capita and life expectancy 
-for a total of `` `r '\x60r nCountries'` `` countries. For this set of countries, 
-economic wealth ranged from a minimum of USD `` `r '\x60r minGDP\x60'` ``
-to a maximum of USD `` `r '\x60r maxGDP\x60'` `` per capita.
+for a total of `r '\x60r nCountries\x60'` countries. For this set of countries, 
+economic wealth ranged from a minimum of USD `r '\x60r minGDP\x60'`
+to a maximum of USD `r '\x60r maxGDP\x60'` per capita.
 ```
 {: .code}
 
