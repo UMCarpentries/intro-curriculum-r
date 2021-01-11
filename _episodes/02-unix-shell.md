@@ -63,7 +63,7 @@ Since then, I’ve learned that it’s just another way to navigate your compute
 For instance, you can use it to combine existing tools into a pipeline to automate analyses, you can write a script to do things for you and improve reproducibility, you can interact with remote machines and supercomputers that are far away from you, and sometimes it’s the only option for the program you want to run.
 
 We’re going to use it to:
-1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html). <!--(TODO: confirm correct link)-->
+1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html).
 1. Perform version control using git during the rest of the workshop.
 
 ## What the Shell looks like
@@ -108,7 +108,7 @@ The output is a file path to a location (a directory) on your computer.
 The output will look a little different depending on what operating system you're using:
 - Mac: `/Users/USERNAME`
 - Linux: `/home/USERNAME`
-- Windows: `C:\Users\USERNAME` (or maybe `/mnt/c/Users/USERNAME` for Windows 10 -- TODO: check)
+- Windows:  `/mnt/c/Users/USERNAME`
 
 Usually you start in your home directory, but for Unix subsystem for Windows, it's a bit different.
 
@@ -355,12 +355,12 @@ pwd
 
 ## Working with files and directories
 
-Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html) (TODO: confirm correct link).
+Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html)
 You might ask: why would I use the command line when I could just use the GUI?
 My best response is that if you ever need to use a high-performance computing cluster (such as Great Lakes at the University of Michigan), you’ll have no other option.
 You might also come to like it more than clicking around to get places once you get comfortable, because it’s a lot faster!
 
-First, let’s make sure we’re in the right directory (the `my_project` directory; TODO: change name of directory):
+First, let’s make sure we’re in the right directory (the `un-reports` directory):
 
 ```
 pwd
@@ -368,7 +368,7 @@ pwd
 {: .language-bash}
 
 ```
-/home/USERNAME/Desktop/my_project
+/home/USERNAME/Desktop/un-reports
 ```
 {: .output}
 
@@ -397,7 +397,7 @@ If you’re interested in learning more about structuring computational biology 
 
 What do you think good would be a good way to organize our files?
 
-One way is the following (TODO: check names):
+One way is the following:
 ```
 .
 ├── code
@@ -407,8 +407,7 @@ One way is the following (TODO: check names):
     └── gapminder_data.csv
 └── figures
     ├── awesome_plot.jpg
-    ├── awesome_violin_plot.jpg
-    └── hansAnimatedPlot.gif
+    └── awesome_violin_plot.jpg
 ```
 {: .language-bash}
 
@@ -701,12 +700,10 @@ Great! Now as an exercise we can change the paths to write out figures.
 > >  ```
 > > ggsave("figures/awesome_plot.jpg", width=6, height=4)
 > > ggsave("figures/awesome_histogram.jpg", width=6, height=4)
-> > anim_save("figures/hansAnimatedPlot.gif", plot = animatedHansPlot)
 > > ```
 > > {: .output}
 > {: .solution}
 {: .challenge}
-TODO: Confirm figure output paths.
 
 ## Glossary of terms
 
