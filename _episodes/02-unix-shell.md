@@ -577,7 +577,7 @@ This output shows each directory name, followed by its contents on the next line
 > 1. `ls *`
 > 2. `ls *.pdb`
 > 3. `ls *ethane.pdb`
-> 4. `ls *ane`
+> 4. `ls *ane*`
 > 5. `ls p*`
 >
 > > ## Solution
