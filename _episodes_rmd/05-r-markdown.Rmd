@@ -259,7 +259,7 @@ Now that we have a report we are happy with, let's push the changes to GitHub.
 ## Formatting
 _[Back to top](#contents)_
 
-We now know how to create a report. Maybe we also want to format the report a little bit to structure our thought process in a useful way (e.g., sections) and make it visually appealing?
+We now know how to create a report with R Markdown. Maybe we also want to format the report a little bit to structure our thought process in a useful way (e.g., sections) and make it visually appealing?
 Markdown is a very simple programming language when it comes to syntax.
 Let's try to figure out some syntax together. Suppose we wanted to create sections in our report.
 
