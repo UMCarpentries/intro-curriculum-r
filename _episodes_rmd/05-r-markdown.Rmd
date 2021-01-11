@@ -293,12 +293,12 @@ _[Back to top](#contents)_
 
 You've learned so much in the past two days - how to use the Unix Shell to move around your computer, how to use git for version control and GitHub for collaborating with others on code, how to make pretty plots and do data analysis in R, and how to incorporate it all into a report.
 Now, you're going to work in pairs to practice everything you learned. Ideally, you'll have the same pair as for the git/GitHub lesson.
-Don't worry - if you have questions, the instructor and helpers can help you out!
+Don't worry - if you have questions, the instructor and helpers are here to help you out!
 
 Only one of the people in your pair is going to create the R Markdown file. The other person is going to collaborate with that person using GitHub. So the first step is to choose one person in your pair to create/host the R Markdown file.
 
 **For the person who is going to host the new R Markdown file:**
-1. Make a new R markdown file.
+1. Make a new R Markdown file.
 1. Give it an informative title.
 1. Delete all the unnecessary Markdown and R code (everything below the setup R chunk).
 1. Save it to the `reports` directory using an informative file name.
@@ -318,8 +318,6 @@ Don't worry if you don't finish all of the exercises, and it's not a race betwee
 This is just a way for you to practice what you've learned.
 
 **One note:** It may be helpful to copy and paste the questions into the R Markdown file as you go.
-
-TODO: *make sure r code works in solution blocks*
 
 ### Exercises using the gapminder data
 _[Back to top](#contents)_
