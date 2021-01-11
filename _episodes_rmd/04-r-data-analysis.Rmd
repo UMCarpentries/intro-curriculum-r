@@ -59,7 +59,9 @@ We will start by importing the complete gapminder dataset that we used yesterday
 >
 > > ## Solution
 > >
-> > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again. {: .source} {: .keypoints}
+> > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again. 
+> {: .solution}
+{: .keypoints}
 
 Now that we know what's wrong, We will use the `read_csv()` function from the Tidyverse `readr` package. Load the `tidyverse` package and gapminder dataset using the code below.
 
@@ -105,10 +107,11 @@ This command is made of several parts. First, we start with our data object (gap
 > > You could also write the above code in the following way:
 > >
 > > ```{r AvgLifeExpNoPipe}
-> >   summarize(gapminder_data, average=mean(lifeExp))
+> > summarize(gapminder_data, average=mean(lifeExp))
 > > ```
-> >
-> > Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac. {: .source} {: .challenge}
+> > Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac. 
+> {: .solution}
+{: .challenge}
 
 When we call `summarize()`, we can use any of the column names of our data object as values to pass to other functions. `summarize()` will return a new data object and our value will be returned as a column.
 
@@ -125,10 +128,11 @@ Note that you don't have to quotes around this new name as long as it starts wit
 > > If you do want to use spaces or other characters, You should wrap the name in quotes.
 > >
 > > ```{r AvgLifeWithSpaces}
-> >  summarize(gapminder_data, "Average Life Expectancy"=mean(lifeExp))
+> > summarize(gapminder_data, "Average Life Expectancy"=mean(lifeExp))
 > > ```
-> >
-> > {: .source} {: .callout}
+> > {: .source} 
+> {: .solution}
+{: .callout}
 
 ## Narrow down rows with `filter()` {#narrow-down-rows-with-filter}
 
@@ -162,19 +166,21 @@ gapminder_data %>%
 > > Identify the earliest year in our dataset using `min()` and `summarize()`
 > >
 > > ```{r FilterChallenge1}
-> >  gapminder_data %>%
-> >      summarize(first_year=min(year))
+> > gapminder_data %>%
+> > summarize(first_year=min(year))
 > > ```
 > >
 > > We see here that the first year in the dataset is 1952. Filter to only 1952, and determin the average GDP per capita.
 > >
 > > ```{r FilterChallenge2}
-> >  gapminder_data %>%
-> >  filter(year == 1952) %>%
-> >  summarize(average_gdp=mean(gdpPercap))
+> > gapminder_data %>%
+> > filter(year == 1952) %>%
+> > summarize(average_gdp=mean(gdpPercap))
 > > ```
-> >
-> > By combining `filter()` and `summarize()` we were able to calculate the mean GDP per capita in the year 1952. {: .source} {: .callout}
+> > {: .source}
+> > By combining `filter()` and `summarize()` we were able to calculate the mean GDP per capita in the year 1952. 
+> {: .solution} 
+{: .challenge}
 
 Notice how the pipe operator (`%>%`) allows us to combine these two simple steps into a more complicated data extraction?. We took the data, filtered out the rows, then took the mean value. The argument we pass to `filter()` needs to be some expression that will return TRUE or FALSE. We can use comparisons like `>` (greater than) and `<` (less than) for example. Here we tested for equality using a double equals sign `==`. You use `==` (double equals) when testing if two values are equal, and you use `=` (single equals) when naming arguments that you are passing to functions). Try changing it to use `filter(year = 2007)` and see what happens.
 
@@ -199,12 +205,15 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 > > ## Solution
 > >
 > > ```{r GroupByChallenge1}
-> >  gapminder_data %>%
-> >  group_by(continent) %>%
-> >  summarize(average=mean(lifeExp))
+> > gapminder_data %>%
+> > group_by(continent) %>%
+> > summarize(average=mean(lifeExp))
 > > ```
-> >
-> > By combining `group_by()` and `summarize()` we are able to calculate the mean life expectancy by continent. {: .source} {: .challenge}
+> > {: .source}
+> > 
+> > By combining `group_by()` and `summarize()` we are able to calculate the mean life expectancy by continent. 
+> {: .solution} 
+{: .challenge}
 
 You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Let's calculate the minimum and maximum life expectancy for each year using the `min()` and `max()` functions
 
@@ -281,11 +290,12 @@ gapminder_data %>%
 > > The helper function `ends_with()` can help us here.
 > >
 > > ```{r GroupByChallenge2}
-> >  gapminder_data %>%
-> >      select(ends_with("p"))
+> > gapminder_data %>%
+> > select(ends_with("p"))
 > > ```
-> >
-> > {: .source} {: .challenge}
+> > {: .source} 
+> {: .solution}
+{: .challenge}
 
 ## Changing the shape of the data
 
@@ -506,19 +516,16 @@ Now we see that our recode enabled the join for all countries in the gapminder, 
 > >
 > > ```{r RecodeJoinExercise1}
 > > gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
-> >   filter(year == 2007 & continent == "Americas") %>%
-> >   select(-year, -continent) %>%
-> >   mutate(country = recode(country, "Puerto Rico" = "United States")) %>%
-> >   group_by(country) %>%
-> >   summarize(lifeExp = sum(lifeExp * pop)/sum(pop),
-> >             gdpPercap = sum(gdpPercap * pop)/sum(pop),
-> >             pop = sum(pop)
-> >   )
-> > > >
+> > filter(year == 2007 & continent == "Americas") %>%
+> > select(-year, -continent) %>%
+> > mutate(country = recode(country, "Puerto Rico" = "United States")) %>%
+> > group_by(country) %>%
+> > summarize(lifeExp = sum(lifeExp * pop)/sum(pop), gdpPercap = sum(gdpPercap * pop)/sum(pop), pop = sum(pop))
 > > anti_join(gapminder_data, co2_emissions, by="country")
 > > ```
-> >
-> > {: .source} {: .challenge}
+> > {: .source} 
+> {: .solution}
+{: .challenge}
 
 ```{r RecodeJoinExercise2, include=FALSE}
 gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
@@ -641,7 +648,9 @@ We see that although Canada, the United States, and Mexico account for close to 
 > >             sumPopPercent = sum(popPercent))
 > > ```
 > >
-> > {: .source} {: .challenge}
+> > {: .source} 
+> {: .solution}
+{: .challenge}
 
 # Putting it all together {#putting-it-all-together}
 
