@@ -775,8 +775,9 @@ but not yet committed.
 > you might get an extra with incomplete makeup walking on
 > the stage for the picture because you used `-a`!)
 > Try to stage things manually,
-> or you might find yourself searching for "git undo commit" more
+> or you might find yourself searching for "how to undo a commit" more
 > than you would like!
+> We'll show you how to do this a little later with a command called `revert`.
 {: .callout}
 
 ![The Git Staging Area]({{ page.root }}/fig/git/git-staging-area.svg)
@@ -1019,17 +1020,20 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 >    Try it for yourself:
 >
 >    ```
->    $ touch analysis/plot-1 analysis/plot-2
+>    $ touch analysis/file-1.txt analysis/file-2.txt
 >    $ git status
 >    $ git add analysis
 >    $ git status
 >    ```
 >    {: .language-bash}
 >
+>    Note: the `touch` command creates blank text files that you can later edit
+>    with your preferred text editor.
+>
 >    Before moving on, we will commit these changes.
 >
 >    ```
->    $ git commit -m "Add some initial thoughts on analysis"
+>    $ git commit -m "Create blank text files"
 >    ```
 >    {: .language-bash}
 >
@@ -1696,7 +1700,7 @@ moving backward and forward in time becomes much easier.
 > files within the local repository to a previous state, whereas `git revert`
 > reverses changes committed to the local and project repositories.  
 > Below are the right steps and explanations for Jennifer to use `git revert`,
-> what is the missing command?
+> what is the missing command in step 1 below?
 >
 > 1. `________ # Look at the git history of the project to find the commit ID`
 >
@@ -1707,6 +1711,11 @@ moving backward and forward in time becomes much easier.
 > 4. Type in the new commit message.
 >
 > 5. Save and close
+>
+> > ## Solution
+> >
+> > Use `git log` to look at the git history to find the commit ID.
+> {: .solution}
 {: .challenge}
 
 > ## Understanding Workflow and History
@@ -1761,19 +1770,30 @@ moving backward and forward in time becomes much easier.
 > >  So, `cat venus.txt` will output
 > >  ```
 > >  Venus is beautiful and full of love.
-> > ```
+> >  ```
 > > {: .output}
 > {: .solution}
 {: .challenge}
 
 > ## Checking Understanding of `git diff`
 >
-> Consider this command: `git diff HEAD~9 analysis.txt`. What do you predict this command
+> Consider this command: `git diff HEAD~3 analysis.txt`. What do you predict this command
 > will do if you execute it? What happens when you do execute it? Why?
+>
+> > ## Solution
+> > The diff will show the difference between the current version of analysis.txt
+> > and the version that existed 3 commits ago.
+> {. :solution}
 >
 > Try another command, `git diff [ID] analysis.txt`, where [ID] is replaced with
 > the unique identifier for your most recent commit. What do you think will happen,
 > and what does happen?
+>
+> > ## Solution
+> >
+> > The diff will show the difference between the current version of analysis.txt
+> > and the version that exited in the commit from [ID].
+> {. :solution}
 {: .challenge}
 
 > ## Getting Rid of Staged Changes
@@ -1782,6 +1802,13 @@ moving backward and forward in time becomes much easier.
 > been made, but will it also work for changes that have been staged but not committed?
 > Make a change to `analysis.txt`, add that change, and use `git checkout` to see if
 > you can remove your change.
+>
+> > ## Solution
+> >
+> > `git checkout analysis.txt` does not work for this purpose.
+> > Instead, use the restore command with the staged flag:
+> > `git restore --staged analysis.txt`
+> {: .solution}
 {: .challenge}
 
 > ## Explore and Summarize Histories
@@ -2240,9 +2267,25 @@ GitHub) are back in sync!
 
 > ## Version History, Backup, and Version Control
 >
-> Some backup software can keep a history of the versions of your files. They also
-> allows you to recover specific versions. How is this functionality different from version control?
+> Some backup software (e.g. Time Machine on macOS, Google Drive) can keep a
+> history of the versions of your files.
+> They also allow you to recover specific versions.
+> How is this functionality different from version control?
 > What are some of the benefits of using version control, Git and GitHub?
+>
+> > ## Solution
+> >
+> > Automated back software gives you less control over how often backups are
+> > created and it is often difficult to compare changes between backups.
+> > However, Git has a steeper learning curve than backup software.
+> > Advantages of using Git and GitHub for version control include:
+> >   - Great control over which files to include in commits and when to make commits.
+> >   - Very popular way to collaborate on code and analysis projects among
+        programmers, data scientists, and researchers.
+> >   - Free and open source.
+> >   - GitHub allows you to share your project with the world and accept
+        contributions from outside collaborators.
+> {: .solution}
 {: .challenge}
 
 > ## Some more about remotes
