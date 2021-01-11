@@ -1228,7 +1228,7 @@ $ cat README.md
 We plotted life expectancy over time.
 Each point represents a country.
 Continents are grouped by color.
-An ill-considered change
+An ill-considered change.
 ```
 {: .output}
 
@@ -1613,31 +1613,30 @@ moving backward and forward in time becomes much easier.
 > What is the output of the last command in
 >
 > ```
-> $ cd planets
-> $ echo "Venus is beautiful and full of love" > venus.txt
-> $ git add venus.txt
-> $ echo "Venus is too hot to be suitable as a base" >> venus.txt
-> $ git commit -m "Comment on Venus as an unsuitable base"
-> $ git checkout HEAD venus.txt
-> $ cat venus.txt #this will print the contents of venus.txt to the screen
+> $ echo "Here are my notes from the workshop." > notes.txt
+> $ git add notes.txt
+> $ echo "I learned the unix shell, git & github, and the R programming language." >> notes.txt
+> $ git commit -m "Create workshop notes"
+> $ git checkout HEAD notes.txt
+> $ cat notes.txt #this will print the contents of notes.txt to the screen
 > ```
 > {: .language-bash}
 >
 > 1. ```
->    Venus is too hot to be suitable as a base
+>    I learned the unix shell, git & github, and the R programming language.
 >    ```
 >    {: .output}
 > 2. ```
->    Venus is beautiful and full of love
+>    Here are my notes from the workshop.
 >    ```
 >    {: .output}
 > 3. ```
->    Venus is beautiful and full of love
->    Venus is too hot to be suitable as a base
+>    Here are my notes from the workshop.
+>    I learned the unix shell, git & github, and the R programming language.
 >    ```
 >    {: .output}
 > 4. ```
->    Error because you have changed venus.txt without committing the changes
+>    Error because you have changed notes.txt without committing the changes
 >    ```
 >    {: .output}
 >
@@ -1645,21 +1644,21 @@ moving backward and forward in time becomes much easier.
 > >
 > > The answer is 2.
 > >
-> > The command `git add venus.txt` places the current version of `venus.txt` into the staging area.
+> > The command `git add notes.txt` places the current version of `notes.txt` into the staging area.
 > > The changes to the file from the second `echo` command are only applied to the working copy,
 > > not the version in the staging area.
 > >
-> > So, when `git commit -m "Comment on Venus as an unsuitable base"` is executed,
-> > the version of `venus.txt` committed to the repository is the one from the staging area and
+> > So, when `git commit -m "Create workshop notes"` is executed,
+> > the version of `notes.txt` committed to the repository is the one from the staging area and
 > > has only one line.
 > >  
 > >  At this time, the working copy still has the second line (and
-> >  `git status` will show that the file is modified). However, `git checkout HEAD venus.txt`
-> >  replaces the working copy with the most recently committed version of `venus.txt`.
+> >  `git status` will show that the file is modified). However, `git checkout HEAD notes.txt`
+> >  replaces the working copy with the most recently committed version of `notes.txt`.
 > >  
-> >  So, `cat venus.txt` will output
+> >  So, `cat notes.txt` will output
 > >  ```
-> >  Venus is beautiful and full of love.
+> >  Here are my notes from the workshop..
 > >  ```
 > > {: .output}
 > {: .solution}
