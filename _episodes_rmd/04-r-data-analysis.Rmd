@@ -29,11 +29,8 @@ knitr_fig_path("04-")
 ### Contents {#contents}
 
 1.  [Getting started](#getting-started)
-
     -   [Loading in the data](#loading-in-the-data)
-
 2.  [An introduction to data analysis in R using `dplyr`]
-
     -   [Get stats fast with `summarize()`](#get-stats-fast-with-summarize)
     -   [Narrow down rows with `filter()`](#narrow-down-rows-with-filter)
     -   [Grouping rows using `group_by()`](#grouping-rows-using-group_by)
@@ -41,13 +38,9 @@ knitr_fig_path("04-")
     -   [Make new variables with `mutate()`](#make-new-variables-with-mutate)
     -   [Subset columns using `select()`](#subset-columns-using-select)
     -   [Changing the shape of the data]
-
 3.  [Cleaning up data](#cleaning-up-data)
-
-4.  [Joining data frames]
-
+4.  [Joining data frames](#joining-data-frames)
 5.  [Analyzing combined data](#analyzing-combined-data)
-
 6.  [Putting it all together](#putting-it-all-together)
 
 # Getting Started {#getting-started}
@@ -429,7 +422,7 @@ co2_emissions <- read_csv("../data/co2-un-data.csv", skip=2,
 
 > **Looking at your data:** You can get a look at your data-cleaning hard work by navigating to the **Environment** tab in RStudio and clicking the table icon next to the variable name. Notice when we do this, RStudio automatically runs the `View()` command. We've made a lot of progress!
 
-# Joining data frames
+# Joining data frames {#joining-data-frames}
 
 [*Back to top*](#contents)
 
