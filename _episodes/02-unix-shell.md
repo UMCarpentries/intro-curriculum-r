@@ -717,3 +717,4 @@ Great! Now as an exercise we can change the paths to write out figures.
 - `-h/--help`: Help - argument that pulls up the help manual for a program
 - `nano`: a user-friendly text editor
 - `*`: Wildcard - matches zero of more characters in a filename
+
