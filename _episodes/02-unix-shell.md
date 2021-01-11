@@ -1,50 +1,52 @@
 ---
-title: The Unix Shell
-teaching: 1hr15min
-exercises: n
+title: "The Unix Shell"
+teaching: 60
+exercises: 15
 questions:
-- “What is a command shell and why would I use one?”
-- “How can I move around on my computer?”
-- “How can I see what files and directories I have?”
-- “How can I specify the location of a file or directory on my computer?”
-- “How can I create, copy, and delete files and directories?”
-- “How can I edit files?”
+- "What is a command shell and why would I use one?"
+- "How can I move around on my computer?"
+- "How can I see what files and directories I have?"
+- "How can I specify the location of a file or directory on my computer?"
+- "How can I create, copy, and delete files and directories?"
+- "How can I edit files?"
 objectives:
-- “Explain how the shell relates to users’ programs.”
-- “Explain when and why command-line interfaces should be used instead of graphical interfaces.”
-- “Construct absolute and relative paths that identify specific files and directories.”
-- “Demonstrate the use of tab completion and explain its advantages.”
-- “Create a directory hierarchy that matches a given diagram.”
-- “Create files in the directory hierarchy using an editor or by copying and renaming existing files.”
-- “Delete, copy, and move specified files and/or directories.”
+- "Explain how the shell relates to users’ programs."
+- "Explain when and why command-line interfaces should be used instead of graphical interfaces."
+- "Construct absolute and relative paths that identify specific files and directories."
+- "Demonstrate the use of tab completion and explain its advantages."
+- "Create a directory hierarchy that matches a given diagram."
+- "Create files in the directory hierarchy using an editor or by copying and renaming existing files."
+- "Delete, copy, and move specified files and/or directories."
 keypoints:
-- “A shell is a program whose primary purpose is to read commands and run other programs.”
-- “Tab completion can help you save a lot of time and frustration.”
-- “The shell’s main advantages are its support for automating repetitive tasks and its capacity to access network machines.”
-- “Information is stored in files, which are stored in directories (folders).”
-- “Directories nested in other directories for a directory tree.”
-- “`cd [path]` changes the current working directory.”
-- “`ls [path]` prints a listing of a specific file or directory.”
-- “`ls` lists the current working directory.”
-- “`pwd` prints the user’s current working directory.”
-- “`/` is the root directory of the whole file system.”
-- “A relative path specifies a location starting from the current location.”
-- “An absolute path specifies a location from the root of the file system.”
-- “Directory names in a path are separated with `/` on Unix, but `\` on Windows.”
-- “`..` means ‘the directory above the current one’; `.` on its own means ‘the current directory’.
-- “`cp [old] [new]` copies a file.”
-- “`mkdir [path]` creates a new directory.”
-- “`mv [old] [new]` moves (renames) a file or directory.”
-- “`rm [path]` removes (deletes) a file.”
-- “`*` matches zero or more characters in a filename.”
-- “The shell does not have a trash bin - once something is deleted, it’s really gone.”
+- "A shell is a program whose primary purpose is to read commands and run other programs."
+- "Tab completion can help you save a lot of time and frustration."
+- "The shell’s main advantages are its support for automating repetitive tasks and its capacity to access network machines."
+- "Information is stored in files, which are stored in directories (folders)."
+- "Directories nested in other directories for a directory tree."
+- "`cd [path]` changes the current working directory."
+- "`ls [path]` prints a listing of a specific file or directory."
+- "`ls` lists the current working directory."
+- "`pwd` prints the user’s current working directory."
+- "`/` is the root directory of the whole file system."
+- "A relative path specifies a location starting from the current location."
+- "An absolute path specifies a location from the root of the file system."
+- "Directory names in a path are separated with `/` on Unix, but `\\` on Windows."
+- "`..` means ‘the directory above the current one’; `.` on its own means ‘the current directory’."
+- "`cp [old] [new]` copies a file."
+- "`mkdir [path]` creates a new directory."
+- "`mv [old] [new]` moves (renames) a file or directory."
+- "`rm [path]` removes (deletes) a file."
+- "`*` matches zero or more characters in a filename."
+- "The shell does not have a trash bin — once something is deleted, it’s really gone."
+
 ---
 
-TODOs:
-- Potentially concicify questions, objectives, key points (and make them non-redundant with the glossary)
+<!--
+TO-DOs:
+- Potentially concisify questions, objectives, key points (and make them non-redundant with the glossary)
 - Add outputs / fix paths
 - Tree structure / navigating files and directories.
-
+-->
 
 ## Introducing the Shell
 
@@ -61,7 +63,7 @@ Since then, I’ve learned that it’s just another way to navigate your compute
 For instance, you can use it to combine existing tools into a pipeline to automate analyses, you can write a script to do things for you and improve reproducibility, you can interact with remote machines and supercomputers that are far away from you, and sometimes it’s the only option for the program you want to run.
 
 We’re going to use it to:
-1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html) (TODO: confirm correct link).
+1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html).
 1. Perform version control using git during the rest of the workshop.
 
 ## What the Shell looks like
@@ -106,7 +108,7 @@ The output is a file path to a location (a directory) on your computer.
 The output will look a little different depending on what operating system you're using:
 - Mac: `/Users/USERNAME`
 - Linux: `/home/USERNAME`
-- Windows: `C:\Users\USERNAME` (or maybe `/mnt/c/Users/USERNAME` for Windows 10 -- TODO: check)
+- Windows:  `/mnt/c/Users/USERNAME`
 
 Usually you start in your home directory, but for Unix subsystem for Windows, it's a bit different.
 
@@ -176,25 +178,25 @@ ls
 
 ```
 list.txt
-my_project
+un-report
 notes.pdf
 Untitled.png
 ```
 {: .output}
 
 Your Desktop will likely look different, but the important thing is that you see the folder we worked in for the R plotting lesson.
-Is the `my_project` directory listed on your Desktop?
+Is the `un-report` directory listed on your Desktop?
 
-How can we get into the `my_project` directory?
+How can we get into the `un-report` directory?
 
 ```
-cd my_project
+cd un-report
 ```
 {: .language-bash}
 
 We just went _down_ the directory tree again.
 
-Let's see what files are in `my_project`:
+Let's see what files are in `un-report`:
 ```
 ls
 ```
@@ -206,7 +208,6 @@ awesome_violin_plot.jpg
 gapminder_1997.csv
 gapminder_data.csv
 gdp_population.R
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -215,16 +216,16 @@ Is it what you expect? Are the files you made in the R plotting lesson there?
 Now let's move back _up_ the directory tree. First, let's try this command:
 
 ```
-cd my_project
+cd un-report
 ```
 {: .language-bash}
 
 ```
-cd: no such file or directory: my_project
+cd: no such file or directory: un-report
 ```
 {: .output}
 
-This doesn't work because the `my_project` directory is not within the directory that we are currently in.
+This doesn't work because the `un-report` directory is not within the directory that we are currently in.
 
 To move up the directory tree, you can use `..`, which is the parent of the current directory:
 ```
@@ -241,7 +242,7 @@ pwd
 Everything that we've been doing is working with file paths. We tell the computer where we want to go using `cd` plus the file path. We can also tell the computer what files we want to list by giving a file path to `ls`:
 
 ```
-ls my_project
+ls un-report
 ```
 {: .language-bash}
 
@@ -251,7 +252,6 @@ awesome_violin_plot.jpg
 gapminder_1997.csv
 gapminder_data.csv
 gdp_population.R
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -263,7 +263,7 @@ ls ..
 
 ```
 list.txt
-my_project
+un-report
 notes.pdf
 Untitled.png
 ```
@@ -289,14 +289,14 @@ To get back to your projects directory you can use the following command:
 Mac/git-bash:
 
 ```
-cd Desktop/my_project
+cd Desktop/un-report
 ```
 {: .language-bash}
 
 
 Unix subsystem for Windows:
 ```
-cd c/USERNAME/Desktop/my_project
+cd /mnt/c/USERNAME/Desktop/un-report
 ```
 {: .language-bask}
 
@@ -353,12 +353,12 @@ pwd
 
 ## Working with files and directories
 
-Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html) (TODO: confirm correct link).
+Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html)
 You might ask: why would I use the command line when I could just use the GUI?
 My best response is that if you ever need to use a high-performance computing cluster (such as Great Lakes at the University of Michigan), you’ll have no other option.
 You might also come to like it more than clicking around to get places once you get comfortable, because it’s a lot faster!
 
-First, let’s make sure we’re in the right directory (the `my_project` directory; TODO: change name of directory):
+First, let’s make sure we’re in the right directory (the `un-reports` directory):
 
 ```
 pwd
@@ -366,7 +366,7 @@ pwd
 {: .language-bash}
 
 ```
-/home/USERNAME/Desktop/my_project
+/home/USERNAME/Desktop/un-reports
 ```
 {: .output}
 
@@ -384,7 +384,6 @@ awesome_violin_plot.jpg
 gapminder_1997.csv
 gapminder_data.csv
 gdp_population.R
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -395,7 +394,7 @@ If you’re interested in learning more about structuring computational biology 
 
 What do you think good would be a good way to organize our files?
 
-One way is the following (TODO: check names):
+One way is the following:
 ```
 .
 ├── code
@@ -405,8 +404,7 @@ One way is the following (TODO: check names):
     └── gapminder_data.csv
 └── figures
     ├── awesome_plot.jpg
-    ├── awesome_violin_plot.jpg
-    └── hansAnimatedPlot.gif
+    └── awesome_violin_plot.jpg
 ```
 {: .language-bash}
 
@@ -443,7 +441,6 @@ code
 gapminder_1997.csv
 gapminder_data.csv
 gdp_population.R
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -480,7 +477,6 @@ awesome_violin_plot.jpg
 code
 gapminder_1997.csv
 gapminder_data.csv
-hansAnimatedPlot.gif
 ```
 {: .output}
 
@@ -503,7 +499,7 @@ Great, now for an exercise:
 >
 > Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
 > > ## Solution
-> > From the `my_project` directory:
+> > From the `un-report` directory:
 > >  ```
 > > mkdir data
 > > mv gapminder_data.csv data
@@ -528,7 +524,7 @@ One example of a wildcard is the asterisk, `*`. This special character is interp
 Let’s see how we can use a wildcard to list only files with the extension `.jpg`:
 
 ```
-ls *.jpg
+ls *jpg
 ```
 {: .language-bash}
 ```
@@ -699,12 +695,10 @@ Great! Now as an exercise we can change the paths to write out figures.
 > >  ```
 > > ggsave("figures/awesome_plot.jpg", width=6, height=4)
 > > ggsave("figures/awesome_histogram.jpg", width=6, height=4)
-> > anim_save("figures/hansAnimatedPlot.gif", plot = animatedHansPlot)
 > > ```
 > > {: .output}
 > {: .solution}
 {: .challenge}
-TODO: Confirm figure output paths.
 
 ## Glossary of terms
 
@@ -723,3 +717,4 @@ TODO: Confirm figure output paths.
 - `-h/--help`: Help - argument that pulls up the help manual for a program
 - `nano`: a user-friendly text editor
 - `*`: Wildcard - matches zero of more characters in a filename
+

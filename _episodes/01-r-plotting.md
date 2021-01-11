@@ -15,7 +15,7 @@ objectives:
 - "To be able to read in data from csv files."
 - "To create plots with both discrete and continuous variables."
 - "To understand mapping and layering using `ggplot2`."
-- "To be able to modify a plot's color, theme, and axes labels."
+- "To be able to modify a plot's color, theme, and axis labels."
 - "To be able to save plots to a local directory."
 keypoints:
 - "R is a free programming language used by many for reproducible data analysis."
@@ -25,10 +25,7 @@ keypoints:
 
 ---
 
-*Key of notes to editors:*
-TODO - things that still need to be completed
-TODO_fp - "File path to dos" - places to check/create file paths
-TODO_link - add link between lessons
+
 
 
 
@@ -51,8 +48,16 @@ TODO_link - add link between lessons
 1. [Glossary of terms](#glossary-of-terms)
 
 
+> ## Exercise: Why learn to program?
+> In the etherpad, write down why you're interested in learning how to code. 
+> > ## Solution:
+> > There are lots of different reasons, including to perform data analysis and generate figures. I'm sure you have morespecific reasons for why you'd like to learn!
+> {: .solution}
+{: challenge}
+
 # Introduction to R and RStudio
 _[Back to top](#contents)_
+
 In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP).
 To test this hypothesis, we'll need two things: data and a platform to analyze the data.
 
@@ -75,8 +80,8 @@ To make your life in R easier, there is a great (and free!) program called RStud
 > ## Exercise
 > Can you think of a reason you might not want to use RStudio?
 >
->> ## Solution:
->> On some high-performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](https://arc-ts.umich.edu/greatlakes/user-guide/#document-3) to run RStudio on Great Lakes.
+> > ## Solution:
+> > On some high-performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](https://arc-ts.umich.edu/greatlakes/user-guide/#document-3) to run RStudio on Great Lakes.
 > {: .solution}
 {: challenge}
 
@@ -158,26 +163,26 @@ library(tidyverse)
 
 
 ~~~
-── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
+── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ~~~
 {: .output}
 
 
 
 ~~~
-[32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
-[32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
-[32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
-[32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
+✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+✔ tibble  3.0.4     ✔ dplyr   1.0.2
+✔ tidyr   1.1.2     ✔ stringr 1.4.0
+✔ readr   1.4.0     ✔ forcats 0.5.0
 ~~~
 {: .output}
 
 
 
 ~~~
-── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
-[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
-[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
 ~~~
 {: .output}
 
@@ -186,12 +191,12 @@ library(tidyverse)
 > When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
 
 > The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that:
-
+>
 > ~~~
 > dplyr::filter() masks stats::filter()
 > ~~~
 > {: .output}
-
+>
 > This means that two different packages (`dyplr` from `tidyverse` and `stats` from base R) have a function named `filter()`. By default, R uses the function that was most recently loaded, so if we try using the `filter()` function after loading `tidyverse`, we will be using the `filter()` function from `dplyr()`.
 >
 {: .callout}
@@ -201,7 +206,7 @@ library(tidyverse)
 >
 > Those of us that use R on a daily basis use cheat sheets to help us remember how to use various R functions. If you haven't already, print out the PDF versions of the cheat sheets that were in the setup instructions.
 >
-> You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2" and "Data Transformation with dplyr".
+> You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2", "Data Transformation with dplyr", "R Markdown Cheat Sheet", and "R Markdown Reference Guide".
 >
 > For things that aren't on the cheat sheets, [Google is your best friend](../_episodes/06-conclusion.md). Even expert coders use Google when they're stuck or trying something new!
 >
@@ -246,13 +251,13 @@ gapminder_1997 <- read_csv("gapminder_1997.csv")
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 cols(
-  country = [31mcol_character()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )
 ~~~
 {: .output}
@@ -271,8 +276,8 @@ Starting from the left, the first thing we see is `gapminder_1997`. We viewed th
 
 > ## Exercise: Running parts of our code
 > If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
->> ## Solution
->> We see a data table outputted, similar to what we saw in the Viewer tab.
+> > ## Solution
+> > We see a data table outputted, similar to what we saw in the Viewer tab.
 > {: .solution}
 {: .challenge}
 
@@ -288,63 +293,16 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > ~~~
 > name <- "Ben"
 > name
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] "Ben"
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > age <- 26
 > age
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] 26
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > name <- "Harry Potter"
 > name
 > ~~~
 > {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] "Harry Potter"
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> age
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] 26
-> ~~~
-> {: .output}
 > {: .source}
 >
->> ## Solution
->> When we assign a value to an object, the object stores that value so we can access it later. However, if we store a new value in an object we have already created (like when we stored "Harry Potter" in the `name` object), it replaces the old value. The `age` object does not change, because we never assign it a new value.
+> > ## Solution
+> > When we assign a value to an object, the object stores that value so we can access it later. However, if we store a new value in an object we have already created (like when we stored "Harry Potter" in the `name` object), it replaces the old value. The `age` object does not change, because we never assign it a new value.
 > {: .solution}
 {: .challenge}
 
@@ -373,8 +331,8 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > {: .language-r}
 > {: .source}
 >
->> ## Solution
->> Notice that we get an error when we try to assign values to `1number` and `favorite number`. This is because we cannot start an object name with a numeral and we cannot have spaces in object names. The object `Flower` still holds "marigold." This is because R is case-sensitive, so running `flower <- "rose"` does NOT change the `Flower` object. This can get confusing, and is why we generally avoid having objects with the same name and different capitalization.
+> > ## Solution
+> > Notice that we get an error when we try to assign values to `1number` and `favorite number`. This is because we cannot start an object name with a numeral and we cannot have spaces in object names. The object `Flower` still holds "marigold." This is because R is case-sensitive, so running `flower <- "rose"` does NOT change the `Flower` object. This can get confusing, and is why we generally avoid having objects with the same name and different capitalization.
 > {: .solution}
 {: .challenge}
 
@@ -417,7 +375,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "2021-01-09"
+[1] "2021-01-10"
 ~~~
 {: .output}
 
@@ -431,7 +389,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/home/runner/work/curriculum/curriculum/_episodes_rmd"
+[1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
 ~~~
 {: .output}
 
@@ -446,7 +404,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "2021-01-09"
+> [1] "2021-01-10"
 > ~~~
 > {: .output}
 > 
@@ -460,7 +418,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "/home/runner/work/curriculum/curriculum/_episodes_rmd"
+> [1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
 > ~~~
 > {: .output}
 {: .callout}
@@ -491,8 +449,8 @@ sum(5, 6)
 > {: .language-r}
 > {: .source}
 >
->> ## Solution
->> `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.141)
+> > ## Solution
+> > `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.141)
 > {: .solution}
 {: .challenge}
 
@@ -506,13 +464,13 @@ read_csv(file = 'gapminder_1997.csv')
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 cols(
-  country = [31mcol_character()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )
 ~~~
 {: .output}
@@ -520,20 +478,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 142 x 5[39m
+# A tibble: 142 x 5
    country           pop continent lifeExp gdpPercap
-   [3m[90m<chr>[39m[23m           [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
-[90m 1[39m Afghanistan  22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
-[90m 2[39m Albania       3[4m4[24m[4m2[24m[4m8[24m038 Europe       73.0     [4m3[24m193.
-[90m 3[39m Algeria      29[4m0[24m[4m7[24m[4m2[24m015 Africa       69.2     [4m4[24m797.
-[90m 4[39m Angola        9[4m8[24m[4m7[24m[4m5[24m024 Africa       41.0     [4m2[24m277.
-[90m 5[39m Argentina    36[4m2[24m[4m0[24m[4m3[24m463 Americas     73.3    [4m1[24m[4m0[24m967.
-[90m 6[39m Australia    18[4m5[24m[4m6[24m[4m5[24m243 Oceania      78.8    [4m2[24m[4m6[24m998.
-[90m 7[39m Austria       8[4m0[24m[4m6[24m[4m9[24m876 Europe       77.5    [4m2[24m[4m9[24m096.
-[90m 8[39m Bahrain        [4m5[24m[4m9[24m[4m8[24m561 Asia         73.9    [4m2[24m[4m0[24m292.
-[90m 9[39m Bangladesh  123[4m3[24m[4m1[24m[4m5[24m288 Asia         59.4      973.
-[90m10[39m Belgium      10[4m1[24m[4m9[24m[4m9[24m787 Europe       77.5    [4m2[24m[4m7[24m561.
-[90m# … with 132 more rows[39m
+   <chr>           <dbl> <chr>       <dbl>     <dbl>
+ 1 Afghanistan  22227415 Asia         41.8      635.
+ 2 Albania       3428038 Europe       73.0     3193.
+ 3 Algeria      29072015 Africa       69.2     4797.
+ 4 Angola        9875024 Africa       41.0     2277.
+ 5 Argentina    36203463 Americas     73.3    10967.
+ 6 Australia    18565243 Oceania      78.8    26998.
+ 7 Austria       8069876 Europe       77.5    29096.
+ 8 Bahrain        598561 Asia         73.9    20292.
+ 9 Bangladesh  123315288 Asia         59.4      973.
+10 Belgium      10199787 Europe       77.5    27561.
+# … with 132 more rows
 ~~~
 {: .output}
 
@@ -543,65 +501,29 @@ cols(
 > 
 > ~~~
 > round(x = 3.1415)
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] 3
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > round(x = 3.1415, digits = 2)
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] 3.14
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > round(digits = 2, x = 3.1415)
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] 3.14
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > round(2, 3.1415)
 > ~~~
 > {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] 2
-> ~~~
-> {: .output}
 > {: .source}
 >
->> ## Solution
->> The 2nd and 3rd lines will give you the right answer because the arguments are named, and when you use names the order doesn't matter. The 1st line will give you 3 because the default number of digits is 0. Then 4th line will give you 2 because, since you didn't name the arguments, x=2 and digits=3.1415.
+> > ## Solution
+> > The 2nd and 3rd lines will give you the right answer because the arguments are named, and when you use names the order doesn't matter. The 1st line will give you 3 because the default number of digits is 0. Then 4th line will give you 2 because, since you didn't name the arguments, x=2 and digits=3.1415.
 > {: .solution}
 {: .challenge}
 
 Sometimes it is helpful - or even necessary - to include the argument name, but often we can skip the argument name, if the argument values are passed in a certain order. If all this function stuff sounds confusing, don't worry! We'll see a bunch of examples as we go that will make things clearer.
+
+> ## Exercise: Reading in an excel file
+> Say you have an excel file and not a csv - how would you read that in? Hint: Use the Internet to help you figure it out!
+>
+> {: .source}
+>
+> > ## Solution
+> > One way is using the `read_excel` function in the `readxl` package. There are other ways, but this is our preferred method because the output will be the same as the output of `read_csv`. 
+> {: .solution}
+{: .challenge}
 
 # Creating our first plot
 _[Back to top](#contents)_
@@ -746,40 +668,57 @@ There are also lots of other fun options:
 > Play around with different color palettes. Feel free to install another package and choose one of those if you want. Pick your favorite!
 > {: .source}
 >
->> ## Solution
->> You can use RColorBrewer::display.brewer.all() to pick a color palette. As a bonus, you can also use one of the packages listed above. Here's an example:
->> 
->> ~~~
->> install.packages("wesanderson") # install package from GitHub
->> ~~~
->> {: .language-r}
->> 
->> 
->> 
->> ~~~
->> Installing package into '/home/runner/work/_temp/Library'
->> (as 'lib' is unspecified)
->> ~~~
->> {: .output}
->> 
->> 
->> 
->> ~~~
->> library(wesanderson)
->> ggplot(data = gapminder_1997) +
->> aes(x = gdpPercap) +
->> labs(x = "GDP Per Capita") +
->> aes(y = lifeExp) +
->> labs(y = "Life Expectancy") +
->> geom_point() +
->> labs(title = "Do people in wealthy countries live longer?") +
->> aes(color = continent) +
->> scale_color_manual(values = wes_palette('Cavalcanti1'))
->> ~~~
->> {: .language-r}
->> 
->> <img src="../fig/rmd-01-Color-1.png" title="plot of chunk Color" alt="plot of chunk Color" width="612" style="display: block; margin: auto;" />
->> {: .source}
+> > ## Solution
+> > You can use RColorBrewer::display.brewer.all() to pick a color palette. As a bonus, you can also use one of the packages listed above. Here's an example:
+> > 
+> > ~~~
+> > install.packages("wesanderson") # install package from GitHub
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > Error in contrib.url(repos, "source"): trying to use CRAN without setting a mirror
+> > ~~~
+> > {: .error}
+> > 
+> > 
+> > 
+> > ~~~
+> > library(wesanderson)
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > Error in library(wesanderson): there is no package called 'wesanderson'
+> > ~~~
+> > {: .error}
+> > 
+> > 
+> > 
+> > ~~~
+> > ggplot(data = gapminder_1997) +
+> > aes(x = gdpPercap) +
+> > labs(x = "GDP Per Capita") +
+> > aes(y = lifeExp) +
+> > labs(y = "Life Expectancy") +
+> > geom_point() +
+> > labs(title = "Do people in wealthy countries live longer?") +
+> > aes(color = continent) +
+> > scale_color_manual(values = wes_palette('Cavalcanti1'))
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > Error in wes_palette("Cavalcanti1"): could not find function "wes_palette"
+> > ~~~
+> > {: .error}
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -830,27 +769,27 @@ Good work! Take a moment to appreciate what a cool plot you made with a few line
 > Instead of (or in addition to) color, change the shape of the points so each continent has a different shape. (I'm not saying this is a great thing to do - it's just for practice!) HINT: Is size an aesthetic or a geometry? If you're stuck, feel free to Google it, or look at the help menu.
 > {: .source}
 >
->> ## Solution
->> You'll want to use the `aes` aesthetic function to change the shape:
->> 
->> ~~~
->> ggplot(data = gapminder_1997) +
->>   aes(x = gdpPercap) +
->>   labs(x = "GDP Per Capita") +
->>   aes(y = lifeExp) +
->>   labs(y = "Life Expectancy") +
->>   geom_point() +
->>   labs(title = "Do people in wealthy countries live longer?") +
->>   aes(color = continent) +
->>   scale_color_brewer(palette = "Set1") +
->>   aes(size = pop/1000000) +
->>   labs(size = "Population (in millions)") +
->>   aes(shape = continent)
->> ~~~
->> {: .language-r}
->> 
->> <img src="../fig/rmd-01-Shape-1.png" title="plot of chunk Shape" alt="plot of chunk Shape" width="612" style="display: block; margin: auto;" />
->> {: .source}
+> > ## Solution
+> > You'll want to use the `aes` aesthetic function to change the shape:
+> > 
+> > ~~~
+> > ggplot(data = gapminder_1997) +
+> >   aes(x = gdpPercap) +
+> >   labs(x = "GDP Per Capita") +
+> >   aes(y = lifeExp) +
+> >   labs(y = "Life Expectancy") +
+> >   geom_point() +
+> >   labs(title = "Do people in wealthy countries live longer?") +
+> >   aes(color = continent) +
+> >   scale_color_brewer(palette = "Set1") +
+> >   aes(size = pop/1000000) +
+> >   labs(size = "Population (in millions)") +
+> >   aes(shape = continent)
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/rmd-01-Shape-1.png" title="plot of chunk Shape" alt="plot of chunk Shape" width="612" style="display: block; margin: auto;" />
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -884,14 +823,14 @@ To start, we will read in the data without using the interactive RStudio file na
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 cols(
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )
 ~~~
 {: .output}
@@ -906,13 +845,13 @@ cols(
 > ~~~
 > {: .language-r}
 >
->> ## Solution
->>
->> 
->> ~~~
->> gapminder_data <- read_csv("gapminder_data.csv")
->> ~~~
->> {: .language-r}
+> > ## Solution
+> >
+> > 
+> > ~~~
+> > gapminder_data <- read_csv("gapminder_data.csv")
+> > ~~~
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -984,9 +923,9 @@ Hmm. This doesn't look right. By setting the color value, we got a line for each
 
 Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
 
-> Exercise: More line plots
+> ## Exercise: More line plots
 > Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007?
-
+> 
 > > ## Solution
 > > 
 > > ~~~
@@ -1086,20 +1025,20 @@ Be aware that these movements are random so your plot will look a bit different 
 > ## Exercise: Ordering `ggplot` layers
 > Try switching the order of `geom_violin` and `geom_jitter`. What happens? Why?
 >
->> ## Solution:
->>
->>
->>~~~
->> ggplot(data = gapminder_1997) +
->>  aes(x = continent, y = lifeExp) +
->>  geom_jitter() +
->>  geom_violin()
->>~~~
->>{: .language-r}
->>
->><img src="../fig/rmd-01-GapViolinJitterSolution-1.png" title="plot of chunk GapViolinJitterSolution" alt="plot of chunk GapViolinJitterSolution" width="612" style="display: block; margin: auto;" />
->>
->> Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points.
+> > ## Solution:
+> >
+> >
+> >~~~
+> > ggplot(data = gapminder_1997) +
+> >  aes(x = continent, y = lifeExp) +
+> >  geom_jitter() +
+> >  geom_violin()
+> >~~~
+> >{: .language-r}
+> >
+> ><img src="../fig/rmd-01-GapViolinJitterSolution-1.png" title="plot of chunk GapViolinJitterSolution" alt="plot of chunk GapViolinJitterSolution" width="612" style="display: block; margin: auto;" />
+> >
+> > Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points.
 >{: .solution}
 {: .challenge}
 
@@ -1233,8 +1172,8 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > <img src="../fig/rmd-01-GapViolinAesFillMap-1.png" title="plot of chunk GapViolinAesFillMap" alt="plot of chunk GapViolinAesFillMap" width="612" style="display: block; margin: auto;" />
 > Why doesn't this work? How can you fix it? Where does that color come from?
 >
->> Solution
->> In this example, you placed the fill inside the `aes()` function. Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values - in this case, you only have one value: the word "springgreen." Instead, try `geom_violin(fill = "springgreen")`.
+> > ## Solution
+> > In this example, you placed the fill inside the `aes()` function. Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values - in this case, you only have one value: the word "springgreen." Instead, try `geom_violin(fill = "springgreen")`.
 > {: .solution}
 {: .challenge}
 
@@ -1480,37 +1419,37 @@ library(gganimate)
 > **Part 1:**
 > Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
 >
->> ## Solution
->>
->> 
->> ~~~
->> ggplot(data = gapminder_data)+
->>  aes(x = log(gdpPercap), y = lifeExp, size = pop, color = continent)+
->>  geom_point()
->> ~~~
->> {: .language-r}
->> 
->> <img src="../fig/rmd-01-hansGraphStaticSolution-1.png" title="plot of chunk hansGraphStaticSolution" alt="plot of chunk hansGraphStaticSolution" width="612" style="display: block; margin: auto;" />
+> > ## Solution
+> >
+> > 
+> > ~~~
+> > ggplot(data = gapminder_data)+
+> >  aes(x = log(gdpPercap), y = lifeExp, size = pop, color = continent)+
+> >  geom_point()
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/rmd-01-hansGraphStaticSolution-1.png" title="plot of chunk hansGraphStaticSolution" alt="plot of chunk hansGraphStaticSolution" width="612" style="display: block; margin: auto;" />
 >{: .solution}
 
 > **Part 2:**
 > Before we start to animate our plot, let's make sure it looks pretty. Add some better axis and legend labels, change the plot theme, and otherwise fix up the plot so it looks nice. Then save the plot into an object called `staticHansPlot`. When you're ready, check out how we've edited our plot, below.
 >
->> ## A pretty plot (yours may look different)
->> 
->> ~~~
->> staticHansPlot <- ggplot(data = gapminder_data)+
->>  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
->>  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points
->>  scale_color_brewer(palette = "Set1") +
->>  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
->> theme_classic()
->> 
->> staticHansPlot
->> ~~~
->> {: .language-r}
->> 
->> <img src="../fig/rmd-01-hansGraphStaticPrettySolution-1.png" title="plot of chunk hansGraphStaticPrettySolution" alt="plot of chunk hansGraphStaticPrettySolution" width="612" style="display: block; margin: auto;" />
+> > ## A pretty plot (yours may look different)
+> > 
+> > ~~~
+> > staticHansPlot <- ggplot(data = gapminder_data)+
+> >  aes(x = log(gdpPercap), y = lifeExp, size = pop/1000000, color = continent)+
+> >  geom_point(alpha = 0.5) + # we made our points slightly transparent, because it makes it easier to see overlapping points
+> >  scale_color_brewer(palette = "Set1") +
+> >  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
+> > theme_classic()
+> > 
+> > staticHansPlot
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/rmd-01-hansGraphStaticPrettySolution-1.png" title="plot of chunk hansGraphStaticPrettySolution" alt="plot of chunk hansGraphStaticPrettySolution" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 

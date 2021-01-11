@@ -1,6 +1,6 @@
 ---
 title: "Welcome to Software Carpentry"
-teaching: 0
+teaching: 15
 exercises: 0
 questions: 
 - "What is The Carpentries?"
@@ -74,7 +74,7 @@ The programs to be introduced are:
 We'll use it to manage data and make pretty plots!
 1. [_Git_](https://umswc.github.io/curriculum/03-intro-git-github/index.html): a program to help you keep track of changes to your programs over time.
 1. [_GitHub_](https://umswc.github.io/curriculum/03-intro-git-github/index.html#intro-to-github): a web application that makes sharing your programs and working on them with others much easier. It can also be used to generate a citable reference to your computer code.
-1. [_The Unix shell (command line)_](https://umswc.github.io/curriculum/02-unix-shell/index.html)): A tool that is extremely useful for managing both data and program files and chaining together discrete steps in your workflow
+1. [_The Unix shell (command line)_](https://umswc.github.io/curriculum/02-unix-shell/index.html): A tool that is extremely useful for managing both data and program files and chaining together discrete steps in your workflow
 (automation).
 
 We will not try to make you an expert or even proficient with any of them, but we
@@ -101,3 +101,4 @@ Feel free to also call helpers over through a hand wave or a message if we don't
 ## Other miscellaneous things
 
 If you're in person, we'll tell you where the bathrooms are! If you're virtual we hope you know. :)
+Let us know if there are any accommodations we can provide to help make your learning experience better!
