@@ -22,6 +22,7 @@ keypoints:
 1. [Background](#background)
 1. [Setting up git](#setting-up-git)
 1. [Basic Workflow](#basic-workflow)
+1. [Undoing Changes](#undoing-changes)
 1. [Intro to GitHub](#intro-to-github)
 1. [Collaborating with GitHub](#collaborating-with-github)
 1. [Glossary of terms](#glossary)
@@ -774,7 +775,7 @@ but not yet committed.
 > Try to stage things manually,
 > or you might find yourself searching for "how to undo a commit" more
 > than you would like!
-> We'll show you how to do this a little later with a command called `revert`.
+> We'll show you how to do this a little later in this lesson.
 {: .callout}
 
 ![The Git Staging Area]({{ page.root }}/fig/git/git-staging-area.svg)
@@ -1209,6 +1210,9 @@ repository (`git commit`):
 [git-references]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
 
 {% include links.md %}
+
+## Undoing changes
+_[Back to top](#contents)_
 
 As we saw in the previous lesson, we can refer to commits by their
 identifiers.  You can refer to the _most recent commit_ of the working
