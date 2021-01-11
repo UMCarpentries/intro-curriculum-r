@@ -148,7 +148,7 @@ gapminder_data %>%
 > > ```
 > > We see here that the first year in the dataset is 1952. Filter to only 1952, and determin the average GDP per capita.
 > >
-> > ```{r FilterChallenge}
+> > ```{r FilterChallenge2}
 > >  gapminder_data %>%
 > >  filter(year == 1952) %>%
 > >  summarize(average_gdp=mean(gdpPercap))
