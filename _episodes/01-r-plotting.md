@@ -24,11 +24,14 @@ keypoints:
 - "Use `ggplot()` and geoms to create data visualizations, and save them using `ggsave()`."
 
 ---
-
+<!--
 *Key of notes to editors:*
 TODO - things that still need to be completed
 TODO_fp - "File path to dos" - places to check/create file paths
 TODO_link - add link between lessons
+-->
+
+
 
 
 
@@ -158,26 +161,26 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
 ~~~
 {: .output}
 
 
 
 ~~~
-✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-✔ tibble  3.0.4     ✔ dplyr   1.0.2
-✔ tidyr   1.1.2     ✔ stringr 1.4.0
-✔ readr   1.4.0     ✔ forcats 0.5.0
+[32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
+[32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
+[32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
+[32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
 ~~~
 {: .output}
 
 
 
 ~~~
-── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
+── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
 ~~~
 {: .output}
 
@@ -246,13 +249,13 @@ gapminder_1997 <- read_csv("gapminder_1997.csv")
 
 ~~~
 
-── Column specification ───────────────────────────────────────────────────────────────────────────
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
 cols(
-  country = col_character(),
-  pop = col_double(),
-  continent = col_character(),
-  lifeExp = col_double(),
-  gdpPercap = col_double()
+  country = [31mcol_character()[39m,
+  pop = [32mcol_double()[39m,
+  continent = [31mcol_character()[39m,
+  lifeExp = [32mcol_double()[39m,
+  gdpPercap = [32mcol_double()[39m
 )
 ~~~
 {: .output}
@@ -431,7 +434,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
+[1] "/home/runner/work/curriculum/curriculum/_episodes_rmd"
 ~~~
 {: .output}
 
@@ -460,7 +463,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
+> [1] "/home/runner/work/curriculum/curriculum/_episodes_rmd"
 > ~~~
 > {: .output}
 {: .callout}
@@ -506,13 +509,13 @@ read_csv(file = 'gapminder_1997.csv')
 
 ~~~
 
-── Column specification ───────────────────────────────────────────────────────────────────────────
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
 cols(
-  country = col_character(),
-  pop = col_double(),
-  continent = col_character(),
-  lifeExp = col_double(),
-  gdpPercap = col_double()
+  country = [31mcol_character()[39m,
+  pop = [32mcol_double()[39m,
+  continent = [31mcol_character()[39m,
+  lifeExp = [32mcol_double()[39m,
+  gdpPercap = [32mcol_double()[39m
 )
 ~~~
 {: .output}
@@ -520,20 +523,20 @@ cols(
 
 
 ~~~
-# A tibble: 142 x 5
+[90m# A tibble: 142 x 5[39m
    country           pop continent lifeExp gdpPercap
-   <chr>           <dbl> <chr>       <dbl>     <dbl>
- 1 Afghanistan  22227415 Asia         41.8      635.
- 2 Albania       3428038 Europe       73.0     3193.
- 3 Algeria      29072015 Africa       69.2     4797.
- 4 Angola        9875024 Africa       41.0     2277.
- 5 Argentina    36203463 Americas     73.3    10967.
- 6 Australia    18565243 Oceania      78.8    26998.
- 7 Austria       8069876 Europe       77.5    29096.
- 8 Bahrain        598561 Asia         73.9    20292.
- 9 Bangladesh  123315288 Asia         59.4      973.
-10 Belgium      10199787 Europe       77.5    27561.
-# … with 132 more rows
+   [3m[90m<chr>[39m[23m           [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
+[90m 1[39m Afghanistan  22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
+[90m 2[39m Albania       3[4m4[24m[4m2[24m[4m8[24m038 Europe       73.0     [4m3[24m193.
+[90m 3[39m Algeria      29[4m0[24m[4m7[24m[4m2[24m015 Africa       69.2     [4m4[24m797.
+[90m 4[39m Angola        9[4m8[24m[4m7[24m[4m5[24m024 Africa       41.0     [4m2[24m277.
+[90m 5[39m Argentina    36[4m2[24m[4m0[24m[4m3[24m463 Americas     73.3    [4m1[24m[4m0[24m967.
+[90m 6[39m Australia    18[4m5[24m[4m6[24m[4m5[24m243 Oceania      78.8    [4m2[24m[4m6[24m998.
+[90m 7[39m Austria       8[4m0[24m[4m6[24m[4m9[24m876 Europe       77.5    [4m2[24m[4m9[24m096.
+[90m 8[39m Bahrain        [4m5[24m[4m9[24m[4m8[24m561 Asia         73.9    [4m2[24m[4m0[24m292.
+[90m 9[39m Bangladesh  123[4m3[24m[4m1[24m[4m5[24m288 Asia         59.4      973.
+[90m10[39m Belgium      10[4m1[24m[4m9[24m[4m9[24m787 Europe       77.5    [4m2[24m[4m7[24m561.
+[90m# … with 132 more rows[39m
 ~~~
 {: .output}
 
@@ -757,27 +760,15 @@ There are also lots of other fun options:
 >> 
 >> 
 >> ~~~
->> Error in contrib.url(repos, "source"): trying to use CRAN without setting a mirror
+>> Installing package into '/home/runner/work/_temp/Library'
+>> (as 'lib' is unspecified)
 >> ~~~
->> {: .error}
+>> {: .output}
 >> 
 >> 
 >> 
 >> ~~~
 >> library(wesanderson)
->> ~~~
->> {: .language-r}
->> 
->> 
->> 
->> ~~~
->> Error in library(wesanderson): there is no package called 'wesanderson'
->> ~~~
->> {: .error}
->> 
->> 
->> 
->> ~~~
 >> ggplot(data = gapminder_1997) +
 >> aes(x = gdpPercap) +
 >> labs(x = "GDP Per Capita") +
@@ -790,12 +781,7 @@ There are also lots of other fun options:
 >> ~~~
 >> {: .language-r}
 >> 
->> 
->> 
->> ~~~
->> Error in wes_palette("Cavalcanti1"): could not find function "wes_palette"
->> ~~~
->> {: .error}
+>> <img src="../fig/rmd-01-Color-1.png" title="plot of chunk Color" alt="plot of chunk Color" width="612" style="display: block; margin: auto;" />
 >> {: .source}
 > {: .solution}
 {: .challenge}
@@ -901,14 +887,14 @@ To start, we will read in the data without using the interactive RStudio file na
 
 ~~~
 
-── Column specification ───────────────────────────────────────────────────────────────────────────
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
 cols(
-  country = col_character(),
-  year = col_double(),
-  pop = col_double(),
-  continent = col_character(),
-  lifeExp = col_double(),
-  gdpPercap = col_double()
+  country = [31mcol_character()[39m,
+  year = [32mcol_double()[39m,
+  pop = [32mcol_double()[39m,
+  continent = [31mcol_character()[39m,
+  lifeExp = [32mcol_double()[39m,
+  gdpPercap = [32mcol_double()[39m
 )
 ~~~
 {: .output}

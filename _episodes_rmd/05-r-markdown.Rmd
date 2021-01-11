@@ -1,8 +1,8 @@
 ---
 source: Rmd
 title: "Writing Reports with R Markdown"
-teaching: 0
-exercises: 0
+teaching: 105
+exercises: 30
 questions:
 - "How can I make reproducible reports using R Markdown?"
 - "How do I format text using Markdown?"
@@ -169,9 +169,7 @@ Now that we have that set up, let's start on the report!
 We're going to use the code you generated yesterday to plot GDP vs Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to library the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference.
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r packages}\n')
-cat('library(tidyverse)\n')
-cat('```\n')
+cat('```{r packages}\nlibrary(tidyverse)\n```\n')
 ```
 
 Now in a real report this is when we would type out the background and purpose of the report to provide context to the readers of the report. However, since writing is not a focus of this workshop we will avoid lengthy prose and stick to short descriptions. You can copy the text below into your report below the package code chunk.
@@ -183,21 +181,17 @@ Now in a real report this is when we would type out the background and purpose o
 Now since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r data}\n')
-cat('gapminder_1997 <- read.csv("./data/gapminder_1997.csv")\n')
-cat('```\n')
+cat('```{r data}\ngapminder_1997 <- read.csv("./data/gapminder_1997.csv")\n```\n')
 ```
 
 Now that we have the data we need to produce the plot, let's create it!
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r gdp_lifeexp_1997}\n')
-cat('ggplot(data = gapminder_1997) + \n
+cat('```{r gdp_lifeexp_1997}\nggplot(data = gapminder_1997) + \n
   aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +\n
   geom_point() +\n
   labs(x = "GDP Per Capita", y = "Life Expectancy",\n
-       title= "Do people in wealthy countries live longer?", size="Population (in millions)")\n')
-cat('```\n')
+       title= "Do people in wealthy countries live longer?", size="Population (in millions)")\n```\n')
 ```
 
 Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd> button in the top left of the screen.
@@ -223,9 +217,7 @@ It's looking pretty good, but there seem to be a few extra bits that we don't ne
 To get rid of this, we can revise our packages code chunk by adding `include=FALSE` like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r packages, include=FALSE}\n')
-cat('library(tidyverse)\n')
-cat('```\n')
+cat('```{r packages, include=FALSE}\nlibrary(tidyverse)\n```\n')
 ```
 
 We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If we dont want to code to appear, how can prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
@@ -235,13 +227,11 @@ We can also see the code that was used to generate the plot. Depending on the pu
 Oops! Now the plot doesn't show up in our report. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE` for the code chunk to tell it that we don't want to see the code but we want to see the output.
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r gdp_lifeexp_1997, echo=FALSE}\n')
-cat('ggplot(data = gapminder_1997) + \n
+cat('```{r gdp_lifeexp_1997, echo=FALSE}\nggplot(data = gapminder_1997) + \n
   aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +\n
   geom_point() +\n
   labs(x = "GDP Per Capita", y = "Life Expectancy",\n
-       title= "Do people in wealthy countries live longer?", size="Population (in millions)")\n')
-cat('```\n')
+       title= "Do people in wealthy countries live longer?", size="Population (in millions)")\n```\n')
 ```
 
 When we knit this again, we can see the plot again!
