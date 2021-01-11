@@ -20,6 +20,10 @@ keypoints:
 - Assessing data source and structure is an important first step in analysis.
 - Preparing data for analysis can take significant effort and planning.
 ---
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("04-")
+```
 ### Contents
 1. [Getting started](#getting-started)
     + [Loading in the data](#loading-in-the-data)
@@ -142,13 +146,13 @@ gapminder_data %>%
 >
 > > ### Solution
 > > Identify the earliest year in our dataset using `min()` and `summarize()`
-> > ```{r FilterChallenge}
+> > ```{r FilterChallenge1}
 > >  gapminder_data %>%
 > >      summarize(first_year=min(year))
 > > ```
 > > We see here that the first year in the dataset is 1952. Filter to only 1952, and determin the average GDP per capita.
 > >
-> > ```{r FilterChallenge}
+> > ```{r FilterChallenge2}
 > >  gapminder_data %>%
 > >  filter(year == 1952) %>%
 > >  summarize(average_gdp=mean(gdpPercap))
@@ -176,7 +180,7 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 >
 > > ### Solution
 > > 
-> > ```{r GroupByChallenge}
+> > ```{r GroupByChallenge1}
 > >  gapminder_data %>%
 > >  group_by(continent) %>%
 > >  summarize(average=mean(lifeExp))
@@ -247,7 +251,7 @@ gapminder_data %>%
 > > ### Solution
 > > The helper function `ends_with()` can help us here.
 > >
-> > ```{r GroupByChallenge}
+> > ```{r GroupByChallenge2}
 > >  gapminder_data %>%
 > >      select(ends_with("p"))
 > > ```
@@ -457,7 +461,7 @@ Now we see that our recode enabled the join for all countries in the gapminder, 
 > > ### Solution
 > > we can use the `mutate()` and `recode()` functions like we did earlier when altering the values of the "series" column.
 > >
-> > ```{r RecodeJoinExercise}
+> > ```{r RecodeJoinExercise1}
 > > gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
 > >   filter(year == 2007 & continent == "Americas") %>%
 > >   select(-year, -continent) %>%
@@ -473,7 +477,7 @@ Now we see that our recode enabled the join for all countries in the gapminder, 
 > {: .source}
 {: .challenge}
 
-```{r RecodeJoinExercise, include=FALSE}
+```{r RecodeJoinExercise2, include=FALSE}
 gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
   filter(year == 2007 & continent == "Americas") %>%
   select(-year, -continent) %>%

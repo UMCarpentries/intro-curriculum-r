@@ -17,6 +17,10 @@ keypoints:
   - "Options such as `include` and `echo` determine what parts of an R code chunk are included in the R Markdown report. "
   - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("05-")
+```
 
 ```{r echo=FALSE}
 # prevents jitter plots from changing
@@ -34,11 +38,6 @@ set.seed(20210109)
 1. [Starting the report](#starting-the-report)
 1. [Formatting](#formatting)
 1. [Integrating it all together: Paired exercise](#integrating-it-all-together-paired-exercise)
-
-```{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("01-")
-```
 
 Recall that our  goal is to generate a report on how a country's life expectancy is related to GDP.
 
