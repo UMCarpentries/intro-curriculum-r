@@ -53,11 +53,11 @@ First, we will create a new RScript file for our work. Open RStudio. Choose "Fil
 
 We will start by importing the complete gapminder dataset that we used yesterday into our fresh new R session. Yesterday we did this using a "point-and-click" commands. Today let's type them into the console ourselves: `gapminder_data <- read_csv("../data/gapminder_data.csv")`
 
-> ### Assessment
+> ## Assessment
 >
 > If we look in the console now, we'll see we've received an error message saying that R "could not find the function `read_csv()`". *Hint: Packages...*
 >
-> > ### Solution
+> > ## Solution
 > >
 > > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again. {: .source} {: .keypoints}
 
@@ -96,11 +96,11 @@ gapminder_data %>%
 
 This command is made of several parts. First, we start with our data object (gapminder_data). Then, we use a special operator called the *pipe operator* `%>%` to pass the data value into the `summarize` function. The pipe operator allows us to "chain" together multiple function calls so that the output of the first function becomes the input to the next function.
 
-> ### Exercise: Practice using the `%>%`
+> ## Exercise: Practice using the `%>%`
 >
 > Write the last line of code without using the pipe operator.
 >
-> > ### Solution:
+> > ## Solution:
 > >
 > > You could also write the above code in the following way:
 > >
@@ -116,11 +116,11 @@ We name this new column so we can use in a future argument. So the `average=` pa
 
 Note that you don't have to quotes around this new name as long as it starts with a letter and doesn't include a space.
 
-> ### Exercise: Variable names with characters or spaces
+> ## Exercise: Variable names with characters or spaces
 >
 > What would our code look like if we wanted to have a new column name be "Average Life Expectancy"?
 >
-> > ### Solution:
+> > ## Solution:
 > >
 > > If you do want to use spaces or other characters, You should wrap the name in quotes.
 > >
@@ -153,11 +153,11 @@ gapminder_data %>%
   summarize(average=mean(lifeExp))
 ```
 
-> ### Exercise: Filtering the dataset
+> ## Exercise: Filtering the dataset
 >
 > What is the average GDP per capita for the first year in the dataset? *Hint: the column headers identified by `read_csv()` showed us there was a column called gdpPercap in the dataset*
 >
-> > ### Solution
+> > ## Solution
 > >
 > > Identify the earliest year in our dataset using `min()` and `summarize()`
 > >
@@ -192,11 +192,11 @@ gapminder_data %>%
 
 The `group_by()` function expects you to pass in the name of a column (or multiple columns separated by comma) in your data.
 
-> ### Exercise: Grouping the data
+> ## Exercise: Grouping the data
 >
 > Try calculating the average life expectancy by continent.
 >
-> > ### Solution
+> > ## Solution
 > >
 > > ```{r GroupByChallenge1}
 > >  gapminder_data %>%
@@ -272,11 +272,11 @@ gapminder_data %>%
   select(-continent)
 ```
 
-> ### Exercise: Using `select()` with a helper function
+> ## Exercise: Using `select()` with a helper function
 >
 > Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
 >
-> > ### Solution
+> > ## Solution
 > >
 > > The helper function `ends_with()` can help us here.
 > >
@@ -496,11 +496,11 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 Now we see that our recode enabled the join for all countries in the gapminder, and we are left with Puerto Rico. In the next exercise, Let's recode Puerto Rico as United States in the gapminder data and then use `group_by()` and `summarize()` to aggregate the data; we'll use the population data to weight the life expectancy and GDP values.
 
-> ### Exercise: Data cleaning to facilitate a join
+> ## Exercise: Data cleaning to facilitate a join
 >
 > In the gapminder data, Recode Puerto Rico as United States, aggregate the two, and calculate life expectancy and GDP values weighted by population data.
 >
-> > ### Solution
+> > ## Solution
 > >
 > > we can use the `mutate()` and `recode()` functions like we did earlier when altering the values of the "series" column.
 > >
@@ -614,11 +614,11 @@ The `if_else()` statment reads like, "if country equals "Canada" OR (\|) "United
 
 We see that although Canada, the United States, and Mexico account for close to half the population of the Americas, they account for 88% of the CO2 emitted. We just did this math quickly by plugging the numbers from our table into the console to get the percentages. Can we make that a little more reproducible by calculating percentages for population (pop) and total emissions (total) into our data before summarizing?
 
-> ### Exercise: Calculating percent
+> ## Exercise: Calculating percent
 >
 > What percentage of the population and CO2 emissions does the United States makeup? Summarized by region?
 >
-> > ### Solution
+> > ## Solution
 > >
 > > Create a new variable using `mutate()` that caluclates percentages for the pop and total variables.
 > >
