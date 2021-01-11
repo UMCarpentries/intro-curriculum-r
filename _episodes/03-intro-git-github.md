@@ -1672,7 +1672,7 @@ moving backward and forward in time becomes much easier.
 > > ## Solution
 > > The diff will show the difference between the current version of README.md
 > > and the version that existed 3 commits ago.
-> {. :solution}
+> {: .solution}
 >
 > Try another command, `git diff [ID] README.md`, where [ID] is replaced with
 > the unique identifier for your most recent commit. What do you think will happen,
@@ -1682,7 +1682,7 @@ moving backward and forward in time becomes much easier.
 > >
 > > The diff will show the difference between the current version of README.md
 > > and the version that exited in the commit from [ID].
-> {. :solution}
+> {: .solution}
 {: .challenge}
 
 > ## Getting Rid of Staged Changes
