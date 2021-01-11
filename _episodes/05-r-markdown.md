@@ -286,14 +286,21 @@ First, let's create a code chunk that summarizes features of our data that we ca
 ~~~
 {: .output}
 
-Now, all we need to do is reference the values we just computed to describe our plot. To do this, we enclose each value in one set of backticks (`cat('`<some R value name>`')`), while the `{r}` part once again indicates that it's a chunk of R code. When we knit our report, R will automatically fill in the values we just created in the above code chunk. Note that R will automatically update these values every time our data might change (if we were to decide to drop or add countries to this  analysis, for example).
+Now, all we need to do is reference the values we just computed to describe our
+plot. To do this, we enclose each value in one set of backticks 
+(`` `r some_R_variable_name` ``), while the ``r`` part 
+once again indicates that it's a chunk of R code. When we knit our report, R will
+automatically fill in the values we just created in the above code chunk. Note
+that R will automatically update these values every time our data might change
+(if we were to decide to drop or add countries to this  analysis, for example).
 
 ```
 The above plot shows the relationship between GDP per capita and life expectancy 
-for a total of "\u0060r nCountries\u0060" countries. For this set of countries, 
-economic wealth ranged from a minimum of USD "\u0060r minGDP\u0060" 
-to a maximum of USD "\u0060r maxGDP\u0060" per capita.
+for a total of `` `r nCountries `` countries. For this set of countries, 
+economic wealth ranged from a minimum of USD `` `r minGDP` ``
+to a maximum of USD `` `r maxGDP` `` per capita.
 ```
+{: .code}
 
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
