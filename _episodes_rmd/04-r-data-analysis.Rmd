@@ -617,7 +617,7 @@ gapminder_co2 %>%
             sumpop = sum(pop))
 ```
 
-The `if_else()` statment reads like, "if country equals "Canada" OR (\|) "United states" OR "Mexico", The new variable region should be "north", else "south"". It's worth exploring logical operators for "or" `|`, "and" `&&`, and "not" `!`, which opens up a great deal of possibilities for writing code to do what you want.
+The `if_else()` statement reads like, "if country equals "Canada" OR `|` "United states" OR "Mexico", The new variable region should be "north", else "south"". It's worth exploring logical operators for "or" `|`, "and" `&&`, and "not" `!`, which opens up a great deal of possibilities for writing code to do what you want.
 
 We see that although Canada, the United States, and Mexico account for close to half the population of the Americas, they account for 88% of the CO2 emitted. We just did this math quickly by plugging the numbers from our table into the console to get the percentages. Can we make that a little more reproducible by calculating percentages for population (pop) and total emissions (total) into our data before summarizing?
 
@@ -627,7 +627,7 @@ We see that although Canada, the United States, and Mexico account for close to 
 >
 > > ## Solution
 > >
-> > Create a new variable using `mutate()` that caluclates percentages for the pop and total variables.
+> > Create a new variable using `mutate()` that calculates percentages for the pop and total variables.
 > >
 > > ```{r PopPercExercise}
 > > gapminder_co2 %>%
