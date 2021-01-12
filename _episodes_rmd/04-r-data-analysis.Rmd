@@ -3,12 +3,12 @@ title: "R for Data Analysis"
 source: Rmd
 teaching: 150
 exercises: 15
-questions: 
+questions:
 - "How can I summarize my data in R?"
 - "How can R help make my research more reproducible?"
 - "How can I combine two datasets from different sources?"
 - "How can data tidying facilitate answering analysis questions?"
-objectives: 
+objectives:
 - "To become familiar with the functions of the `dplyr` package."
 - "To be able to use `dplyr` to prepare data for analysis."
 - "To be able to combine two different data sources using joins."
@@ -30,14 +30,14 @@ knitr_fig_path("04-")
 
 1.  [Getting started](#getting-started)
     -   [Loading in the data](#loading-in-the-data)
-2.  [An introduction to data analysis in R using `dplyr`]
+2.  [An introduction to data analysis in R using `dplyr`](#intro-data-analysis)
     -   [Get stats fast with `summarize()`](#get-stats-fast-with-summarize)
     -   [Narrow down rows with `filter()`](#narrow-down-rows-with-filter)
     -   [Grouping rows using `group_by()`](#grouping-rows-using-group_by)
     -   [Sort data with `arrange()`](#sort-data-with-arrange)
     -   [Make new variables with `mutate()`](#make-new-variables-with-mutate)
     -   [Subset columns using `select()`](#subset-columns-using-select)
-    -   [Changing the shape of the data]
+    -   [Changing the shape of the data](#changing-the-shape-of-the-data)
 3.  [Cleaning up data](#cleaning-up-data)
 4.  [Joining data frames](#joining-data-frames)
 5.  [Analyzing combined data](#analyzing-combined-data)
@@ -45,8 +45,8 @@ knitr_fig_path("04-")
 
 # Getting Started {#getting-started}
 
-First, navigate to the un-reports directory however you'd like and open `un-report.Rproj`. 
-This should open the un-report R project in RStudio. 
+First, navigate to the un-reports directory however you'd like and open `un-report.Rproj`.
+This should open the un-report R project in RStudio.
 You can checkt his by seeing if the Files in the bottom right of RStudio are the ones in your `un-report` directory.
 
 Yesterday we spent a lot of time making plots in R using the ggplot2 package. Visualizing data using plots is a very powerful skill in R, but what if we would like to work with only a subset of our data? Or clean up messy data, calculate summary statistics, create a new variable, or join two datasets together? There are several different methods for doing this in R, and we will touch on a few today using functions the `dplyr` package.
@@ -63,7 +63,7 @@ We will start by importing the complete gapminder dataset that we used yesterday
 >
 > > ## Solution
 > >
-> > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again. 
+> > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again.
 > {: .solution}
 {: .challenge}
 
@@ -87,7 +87,7 @@ Notice that the output of the `read_csv()` function is pretty informative. It te
 
 Now we have the tools necessary to work through this lesson.
 
-# An introduction to data analysis in R using `dplyr`
+# An introduction to data analysis in R using `dplyr` {#intro-data-analysis}
 
 ## Get stats fast with `summarize()` {#get-stats-fast-with-summarize}
 
@@ -113,7 +113,7 @@ This command is made of several parts. First, we start with our data object (gap
 > > ```{r AvgLifeExpNoPipe}
 > > summarize(gapminder_data, average=mean(lifeExp))
 > > ```
-> > Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac. 
+> > Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
 > {: .solution}
 {: .challenge}
 
@@ -134,7 +134,7 @@ Note that you don't have to quotes around this new name as long as it starts wit
 > > ```{r AvgLifeWithSpaces}
 > > summarize(gapminder_data, "Average Life Expectancy"=mean(lifeExp))
 > > ```
-> > {: .source} 
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -182,8 +182,8 @@ gapminder_data %>%
 > > summarize(average_gdp=mean(gdpPercap))
 > > ```
 > > {: .source}
-> > By combining `filter()` and `summarize()` we were able to calculate the mean GDP per capita in the year 1952. 
-> {: .solution} 
+> > By combining `filter()` and `summarize()` we were able to calculate the mean GDP per capita in the year 1952.
+> {: .solution}
 {: .challenge}
 
 Notice how the pipe operator (`%>%`) allows us to combine these two simple steps into a more complicated data extraction?. We took the data, filtered out the rows, then took the mean value. The argument we pass to `filter()` needs to be some expression that will return TRUE or FALSE. We can use comparisons like `>` (greater than) and `<` (less than) for example. Here we tested for equality using a double equals sign `==`. You use `==` (double equals) when testing if two values are equal, and you use `=` (single equals) when naming arguments that you are passing to functions). Try changing it to use `filter(year = 2007)` and see what happens.
@@ -214,9 +214,9 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 > > summarize(average=mean(lifeExp))
 > > ```
 > > {: .source}
-> > 
-> > By combining `group_by()` and `summarize()` we are able to calculate the mean life expectancy by continent. 
-> {: .solution} 
+> >
+> > By combining `group_by()` and `summarize()` we are able to calculate the mean life expectancy by continent.
+> {: .solution}
 {: .challenge}
 
 You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Let's calculate the minimum and maximum life expectancy for each year using the `min()` and `max()` functions
@@ -297,7 +297,7 @@ gapminder_data %>%
 > > gapminder_data %>%
 > > select(ends_with("p"))
 > > ```
-> > {: .source} 
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -493,7 +493,7 @@ If we look at the co2_emissions data with `View()`, we will see that Bolivia, Un
 
 ```{r Co2Recode}
 co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
-                          col_names=c("region", "country", "year", 
+                          col_names=c("region", "country", "year",
                                       "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
@@ -529,7 +529,7 @@ Now we see that our recode enabled the join for all countries in the gapminder, 
 > > summarize(lifeExp = sum(lifeExp * pop)/sum(pop), gdpPercap = sum(gdpPercap * pop)/sum(pop), pop = sum(pop))
 > > anti_join(gapminder_data, co2_emissions, by="country")
 > > ```
-> > {: .source} 
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -615,8 +615,8 @@ Now we can use this column to repeat our `group_by()` and `summarize()` steps
 
 ```{r GapRegionGroupSummary}
 gapminder_co2 %>%
-  mutate(region = if_else(country == "Canada" | 
-                            country == "United States" | 
+  mutate(region = if_else(country == "Canada" |
+                            country == "United States" |
                             country == "Mexico", "north", "south")) %>%
   group_by(region) %>%
   summarize(sumtotal = sum(total),
@@ -654,7 +654,7 @@ We see that although Canada, the United States, and Mexico account for close to 
 > >             sumPopPercent = sum(popPercent))
 > > ```
 > >
-> > {: .source} 
+> > {: .source}
 > {: .solution}
 {: .challenge}
 

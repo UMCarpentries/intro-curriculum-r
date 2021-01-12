@@ -5,12 +5,12 @@ title: "R for Data Analysis"
 source: Rmd
 teaching: 150
 exercises: 15
-questions: 
+questions:
 - "How can I summarize my data in R?"
 - "How can R help make my research more reproducible?"
 - "How can I combine two datasets from different sources?"
 - "How can data tidying facilitate answering analysis questions?"
-objectives: 
+objectives:
 - "To become familiar with the functions of the `dplyr` package."
 - "To be able to use `dplyr` to prepare data for analysis."
 - "To be able to combine two different data sources using joins."
@@ -29,14 +29,14 @@ keypoints:
 
 1.  [Getting started](#getting-started)
     -   [Loading in the data](#loading-in-the-data)
-2.  [An introduction to data analysis in R using `dplyr`]
+2.  [An introduction to data analysis in R using `dplyr`](#intro-data-analysis)
     -   [Get stats fast with `summarize()`](#get-stats-fast-with-summarize)
     -   [Narrow down rows with `filter()`](#narrow-down-rows-with-filter)
     -   [Grouping rows using `group_by()`](#grouping-rows-using-group_by)
     -   [Sort data with `arrange()`](#sort-data-with-arrange)
     -   [Make new variables with `mutate()`](#make-new-variables-with-mutate)
     -   [Subset columns using `select()`](#subset-columns-using-select)
-    -   [Changing the shape of the data]
+    -   [Changing the shape of the data](#changing-the-shape-of-the-data)
 3.  [Cleaning up data](#cleaning-up-data)
 4.  [Joining data frames](#joining-data-frames)
 5.  [Analyzing combined data](#analyzing-combined-data)
@@ -44,8 +44,8 @@ keypoints:
 
 # Getting Started {#getting-started}
 
-First, navigate to the un-reports directory however you'd like and open `un-report.Rproj`. 
-This should open the un-report R project in RStudio. 
+First, navigate to the un-reports directory however you'd like and open `un-report.Rproj`.
+This should open the un-report R project in RStudio.
 You can checkt his by seeing if the Files in the bottom right of RStudio are the ones in your `un-report` directory.
 
 Yesterday we spent a lot of time making plots in R using the ggplot2 package. Visualizing data using plots is a very powerful skill in R, but what if we would like to work with only a subset of our data? Or clean up messy data, calculate summary statistics, create a new variable, or join two datasets together? There are several different methods for doing this in R, and we will touch on a few today using functions the `dplyr` package.
@@ -62,7 +62,7 @@ We will start by importing the complete gapminder dataset that we used yesterday
 >
 > > ## Solution
 > >
-> > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again. 
+> > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again.
 > {: .solution}
 {: .challenge}
 
@@ -77,26 +77,26 @@ library(tidyverse)
 
 
 ~~~
-── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──
+── Attaching packages ───────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ~~~
 {: .output}
 
 
 
 ~~~
-[32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
-[32m✔[39m [34mtibble [39m 3.0.4     [32m✔[39m [34mdplyr  [39m 1.0.2
-[32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
-[32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.0
+✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+✔ tibble  3.0.4     ✔ dplyr   1.0.2
+✔ tidyr   1.1.2     ✔ stringr 1.4.0
+✔ readr   1.4.0     ✔ forcats 0.5.0
 ~~~
 {: .output}
 
 
 
 ~~~
-── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
-[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
-[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+── Conflicts ──────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
 ~~~
 {: .output}
 
@@ -116,14 +116,14 @@ gapminder_data <- read_csv("data/gapminder_data.csv")
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )
 ~~~
 {: .output}
@@ -132,7 +132,7 @@ Notice that the output of the `read_csv()` function is pretty informative. It te
 
 Now we have the tools necessary to work through this lesson.
 
-# An introduction to data analysis in R using `dplyr`
+# An introduction to data analysis in R using `dplyr` {#intro-data-analysis}
 
 ## Get stats fast with `summarize()` {#get-stats-fast-with-summarize}
 
@@ -150,10 +150,10 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 1 x 1[39m
+# A tibble: 1 x 1
   average
-    [3m[90m<dbl>[39m[23m
-[90m1[39m    59.5
+    <dbl>
+1    59.5
 ~~~
 {: .output}
 
@@ -176,13 +176,13 @@ This command is made of several parts. First, we start with our data object (gap
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 1 x 1[39m
+> > # A tibble: 1 x 1
 > >   average
-> >     [3m[90m<dbl>[39m[23m
-> > [90m1[39m    59.5
+> >     <dbl>
+> > 1    59.5
 > > ~~~
 > > {: .output}
-> > Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac. 
+> > Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
 > {: .solution}
 {: .challenge}
 
@@ -209,13 +209,13 @@ Note that you don't have to quotes around this new name as long as it starts wit
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 1 x 1[39m
+> > # A tibble: 1 x 1
 > >   `Average Life Expectancy`
-> >                       [3m[90m<dbl>[39m[23m
-> > [90m1[39m                      59.5
+> >                       <dbl>
+> > 1                      59.5
 > > ~~~
 > > {: .output}
-> > {: .source} 
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -239,10 +239,10 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 1 x 1[39m
+# A tibble: 1 x 1
   recent_year
-        [3m[90m<dbl>[39m[23m
-[90m1[39m        [4m2[24m007
+        <dbl>
+1        2007
 ~~~
 {: .output}
 
@@ -259,10 +259,10 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 1 x 1[39m
+# A tibble: 1 x 1
   average
-    [3m[90m<dbl>[39m[23m
-[90m1[39m    67.0
+    <dbl>
+1    67.0
 ~~~
 {: .output}
 
@@ -284,10 +284,10 @@ gapminder_data %>%
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 1 x 1[39m
+> > # A tibble: 1 x 1
 > >   first_year
-> >        [3m[90m<dbl>[39m[23m
-> > [90m1[39m       [4m1[24m952
+> >        <dbl>
+> > 1       1952
 > > ~~~
 > > {: .output}
 > >
@@ -304,15 +304,15 @@ gapminder_data %>%
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 1 x 1[39m
+> > # A tibble: 1 x 1
 > >   average_gdp
-> >         [3m[90m<dbl>[39m[23m
-> > [90m1[39m       [4m3[24m725.
+> >         <dbl>
+> > 1       3725.
 > > ~~~
 > > {: .output}
 > > {: .source}
-> > By combining `filter()` and `summarize()` we were able to calculate the mean GDP per capita in the year 1952. 
-> {: .solution} 
+> > By combining `filter()` and `summarize()` we were able to calculate the mean GDP per capita in the year 1952.
+> {: .solution}
 {: .challenge}
 
 Notice how the pipe operator (`%>%`) allows us to combine these two simple steps into a more complicated data extraction?. We took the data, filtered out the rows, then took the mean value. The argument we pass to `filter()` needs to be some expression that will return TRUE or FALSE. We can use comparisons like `>` (greater than) and `<` (less than) for example. Here we tested for equality using a double equals sign `==`. You use `==` (double equals) when testing if two values are equal, and you use `=` (single equals) when naming arguments that you are passing to functions). Try changing it to use `filter(year = 2007)` and see what happens.
@@ -341,21 +341,21 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 12 x 2[39m
+# A tibble: 12 x 2
     year average
-   [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m
-[90m 1[39m  [4m1[24m952    49.1
-[90m 2[39m  [4m1[24m957    51.5
-[90m 3[39m  [4m1[24m962    53.6
-[90m 4[39m  [4m1[24m967    55.7
-[90m 5[39m  [4m1[24m972    57.6
-[90m 6[39m  [4m1[24m977    59.6
-[90m 7[39m  [4m1[24m982    61.5
-[90m 8[39m  [4m1[24m987    63.2
-[90m 9[39m  [4m1[24m992    64.2
-[90m10[39m  [4m1[24m997    65.0
-[90m11[39m  [4m2[24m002    65.7
-[90m12[39m  [4m2[24m007    67.0
+   <dbl>   <dbl>
+ 1  1952    49.1
+ 2  1957    51.5
+ 3  1962    53.6
+ 4  1967    55.7
+ 5  1972    57.6
+ 6  1977    59.6
+ 7  1982    61.5
+ 8  1987    63.2
+ 9  1992    64.2
+10  1997    65.0
+11  2002    65.7
+12  2007    67.0
 ~~~
 {: .output}
 
@@ -385,20 +385,20 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 5 x 2[39m
+> > # A tibble: 5 x 2
 > >   continent average
-> >   [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m
-> > [90m1[39m Africa       48.9
-> > [90m2[39m Americas     64.7
-> > [90m3[39m Asia         60.1
-> > [90m4[39m Europe       71.9
-> > [90m5[39m Oceania      74.3
+> >   <chr>       <dbl>
+> > 1 Africa       48.9
+> > 2 Americas     64.7
+> > 3 Asia         60.1
+> > 4 Europe       71.9
+> > 5 Oceania      74.3
 > > ~~~
 > > {: .output}
 > > {: .source}
-> > 
-> > By combining `group_by()` and `summarize()` we are able to calculate the mean life expectancy by continent. 
-> {: .solution} 
+> >
+> > By combining `group_by()` and `summarize()` we are able to calculate the mean life expectancy by continent.
+> {: .solution}
 {: .challenge}
 
 You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Let's calculate the minimum and maximum life expectancy for each year using the `min()` and `max()` functions
@@ -421,21 +421,21 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 12 x 3[39m
+# A tibble: 12 x 3
     year   min   max
-   [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
-[90m 1[39m  [4m1[24m952  28.8  72.7
-[90m 2[39m  [4m1[24m957  30.3  73.5
-[90m 3[39m  [4m1[24m962  32.0  73.7
-[90m 4[39m  [4m1[24m967  34.0  74.2
-[90m 5[39m  [4m1[24m972  35.4  74.7
-[90m 6[39m  [4m1[24m977  31.2  76.1
-[90m 7[39m  [4m1[24m982  38.4  77.1
-[90m 8[39m  [4m1[24m987  39.9  78.7
-[90m 9[39m  [4m1[24m992  23.6  79.4
-[90m10[39m  [4m1[24m997  36.1  80.7
-[90m11[39m  [4m2[24m002  39.2  82  
-[90m12[39m  [4m2[24m007  39.6  82.6
+   <dbl> <dbl> <dbl>
+ 1  1952  28.8  72.7
+ 2  1957  30.3  73.5
+ 3  1962  32.0  73.7
+ 4  1967  34.0  74.2
+ 5  1972  35.4  74.7
+ 6  1977  31.2  76.1
+ 7  1982  38.4  77.1
+ 8  1987  39.9  78.7
+ 9  1992  23.6  79.4
+10  1997  36.1  80.7
+11  2002  39.2  82  
+12  2007  39.6  82.6
 ~~~
 {: .output}
 
@@ -467,14 +467,14 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 5 x 2[39m
+# A tibble: 5 x 2
   continent average
-  [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m
-[90m1[39m Oceania      80.7
-[90m2[39m Europe       77.6
-[90m3[39m Americas     73.6
-[90m4[39m Asia         70.7
-[90m5[39m Africa       54.8
+  <chr>       <dbl>
+1 Oceania      80.7
+2 Europe       77.6
+3 Americas     73.6
+4 Asia         70.7
+5 Africa       54.8
 ~~~
 {: .output}
 
@@ -498,20 +498,20 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 1,704 x 7[39m
+# A tibble: 1,704 x 7
    country      year      pop continent lifeExp gdpPercap          gdp
-   [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m    [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m        [3m[90m<dbl>[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.  [4m6[24m567[4m0[24m[4m8[24m[4m6[24m330.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.  [4m7[24m585[4m4[24m[4m4[24m[4m8[24m670.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.  [4m8[24m758[4m8[24m[4m5[24m[4m5[24m797.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.  [4m9[24m648[4m0[24m[4m1[24m[4m4[24m150.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.  [4m9[24m678[4m5[24m[4m5[24m[4m3[24m274.
-[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786. [4m1[24m[4m1[24m697[4m6[24m[4m5[24m[4m9[24m231.
-[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978. [4m1[24m[4m2[24m598[4m5[24m[4m6[24m[4m3[24m401.
-[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852. [4m1[24m[4m1[24m820[4m9[24m[4m9[24m[4m0[24m309.
-[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649. [4m1[24m[4m0[24m595[4m9[24m[4m0[24m[4m1[24m589.
-[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635. [4m1[24m[4m4[24m121[4m9[24m[4m9[24m[4m5[24m875.
-[90m# … with 1,694 more rows[39m
+   <chr>       <dbl>    <dbl> <chr>       <dbl>     <dbl>        <dbl>
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.  6567086330.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.  7585448670.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.  8758855797.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.  9648014150.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.  9678553274.
+ 6 Afghanistan  1977 14880372 Asia         38.4      786. 11697659231.
+ 7 Afghanistan  1982 12881816 Asia         39.9      978. 12598563401.
+ 8 Afghanistan  1987 13867957 Asia         40.8      852. 11820990309.
+ 9 Afghanistan  1992 16317921 Asia         41.7      649. 10595901589.
+10 Afghanistan  1997 22227415 Asia         41.8      635. 14121995875.
+# … with 1,694 more rows
 ~~~
 {: .output}
 
@@ -533,20 +533,20 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 1,704 x 2[39m
+# A tibble: 1,704 x 2
         pop  year
-      [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
-[90m 1[39m  8[4m4[24m[4m2[24m[4m5[24m333  [4m1[24m952
-[90m 2[39m  9[4m2[24m[4m4[24m[4m0[24m934  [4m1[24m957
-[90m 3[39m 10[4m2[24m[4m6[24m[4m7[24m083  [4m1[24m962
-[90m 4[39m 11[4m5[24m[4m3[24m[4m7[24m966  [4m1[24m967
-[90m 5[39m 13[4m0[24m[4m7[24m[4m9[24m460  [4m1[24m972
-[90m 6[39m 14[4m8[24m[4m8[24m[4m0[24m372  [4m1[24m977
-[90m 7[39m 12[4m8[24m[4m8[24m[4m1[24m816  [4m1[24m982
-[90m 8[39m 13[4m8[24m[4m6[24m[4m7[24m957  [4m1[24m987
-[90m 9[39m 16[4m3[24m[4m1[24m[4m7[24m921  [4m1[24m992
-[90m10[39m 22[4m2[24m[4m2[24m[4m7[24m415  [4m1[24m997
-[90m# … with 1,694 more rows[39m
+      <dbl> <dbl>
+ 1  8425333  1952
+ 2  9240934  1957
+ 3 10267083  1962
+ 4 11537966  1967
+ 5 13079460  1972
+ 6 14880372  1977
+ 7 12881816  1982
+ 8 13867957  1987
+ 9 16317921  1992
+10 22227415  1997
+# … with 1,694 more rows
 ~~~
 {: .output}
 
@@ -562,20 +562,20 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 1,704 x 3[39m
+# A tibble: 1,704 x 3
     year country     continent
-   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m       [3m[90m<chr>[39m[23m    
-[90m 1[39m  [4m1[24m952 Afghanistan Asia     
-[90m 2[39m  [4m1[24m957 Afghanistan Asia     
-[90m 3[39m  [4m1[24m962 Afghanistan Asia     
-[90m 4[39m  [4m1[24m967 Afghanistan Asia     
-[90m 5[39m  [4m1[24m972 Afghanistan Asia     
-[90m 6[39m  [4m1[24m977 Afghanistan Asia     
-[90m 7[39m  [4m1[24m982 Afghanistan Asia     
-[90m 8[39m  [4m1[24m987 Afghanistan Asia     
-[90m 9[39m  [4m1[24m992 Afghanistan Asia     
-[90m10[39m  [4m1[24m997 Afghanistan Asia     
-[90m# … with 1,694 more rows[39m
+   <dbl> <chr>       <chr>    
+ 1  1952 Afghanistan Asia     
+ 2  1957 Afghanistan Asia     
+ 3  1962 Afghanistan Asia     
+ 4  1967 Afghanistan Asia     
+ 5  1972 Afghanistan Asia     
+ 6  1977 Afghanistan Asia     
+ 7  1982 Afghanistan Asia     
+ 8  1987 Afghanistan Asia     
+ 9  1992 Afghanistan Asia     
+10  1997 Afghanistan Asia     
+# … with 1,694 more rows
 ~~~
 {: .output}
 
@@ -591,20 +591,20 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 1,704 x 5[39m
+# A tibble: 1,704 x 5
    country      year      pop lifeExp gdpPercap
-   [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m    [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333    28.8      779.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934    30.3      821.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083    32.0      853.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966    34.0      836.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460    36.1      740.
-[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372    38.4      786.
-[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816    39.9      978.
-[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957    40.8      852.
-[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921    41.7      649.
-[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415    41.8      635.
-[90m# … with 1,694 more rows[39m
+   <chr>       <dbl>    <dbl>   <dbl>     <dbl>
+ 1 Afghanistan  1952  8425333    28.8      779.
+ 2 Afghanistan  1957  9240934    30.3      821.
+ 3 Afghanistan  1962 10267083    32.0      853.
+ 4 Afghanistan  1967 11537966    34.0      836.
+ 5 Afghanistan  1972 13079460    36.1      740.
+ 6 Afghanistan  1977 14880372    38.4      786.
+ 7 Afghanistan  1982 12881816    39.9      978.
+ 8 Afghanistan  1987 13867957    40.8      852.
+ 9 Afghanistan  1992 16317921    41.7      649.
+10 Afghanistan  1997 22227415    41.8      635.
+# … with 1,694 more rows
 ~~~
 {: .output}
 
@@ -626,23 +626,23 @@ gapminder_data %>%
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 1,704 x 3[39m
+> > # A tibble: 1,704 x 3
 > >         pop lifeExp gdpPercap
-> >       [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
-> > [90m 1[39m  8[4m4[24m[4m2[24m[4m5[24m333    28.8      779.
-> > [90m 2[39m  9[4m2[24m[4m4[24m[4m0[24m934    30.3      821.
-> > [90m 3[39m 10[4m2[24m[4m6[24m[4m7[24m083    32.0      853.
-> > [90m 4[39m 11[4m5[24m[4m3[24m[4m7[24m966    34.0      836.
-> > [90m 5[39m 13[4m0[24m[4m7[24m[4m9[24m460    36.1      740.
-> > [90m 6[39m 14[4m8[24m[4m8[24m[4m0[24m372    38.4      786.
-> > [90m 7[39m 12[4m8[24m[4m8[24m[4m1[24m816    39.9      978.
-> > [90m 8[39m 13[4m8[24m[4m6[24m[4m7[24m957    40.8      852.
-> > [90m 9[39m 16[4m3[24m[4m1[24m[4m7[24m921    41.7      649.
-> > [90m10[39m 22[4m2[24m[4m2[24m[4m7[24m415    41.8      635.
-> > [90m# … with 1,694 more rows[39m
+> >       <dbl>   <dbl>     <dbl>
+> >  1  8425333    28.8      779.
+> >  2  9240934    30.3      821.
+> >  3 10267083    32.0      853.
+> >  4 11537966    34.0      836.
+> >  5 13079460    36.1      740.
+> >  6 14880372    38.4      786.
+> >  7 12881816    39.9      978.
+> >  8 13867957    40.8      852.
+> >  9 16317921    41.7      649.
+> > 10 22227415    41.8      635.
+> > # … with 1,694 more rows
 > > ~~~
 > > {: .output}
-> > {: .source} 
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -665,21 +665,21 @@ gapminder_data %>%
 
 
 ~~~
-[90m# A tibble: 142 x 14[39m
+# A tibble: 142 x 14
    country continent `1952` `1957` `1962` `1967` `1972` `1977` `1982` `1987`
-   [3m[90m<chr>[39m[23m   [3m[90m<chr>[39m[23m      [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m
-[90m 1[39m Afghan… Asia        28.8   30.3   32.0   34.0   36.1   38.4   39.9   40.8
-[90m 2[39m Albania Europe      55.2   59.3   64.8   66.2   67.7   68.9   70.4   72  
-[90m 3[39m Algeria Africa      43.1   45.7   48.3   51.4   54.5   58.0   61.4   65.8
-[90m 4[39m Angola  Africa      30.0   32.0   34     36.0   37.9   39.5   39.9   39.9
-[90m 5[39m Argent… Americas    62.5   64.4   65.1   65.6   67.1   68.5   69.9   70.8
-[90m 6[39m Austra… Oceania     69.1   70.3   70.9   71.1   71.9   73.5   74.7   76.3
-[90m 7[39m Austria Europe      66.8   67.5   69.5   70.1   70.6   72.2   73.2   74.9
-[90m 8[39m Bahrain Asia        50.9   53.8   56.9   59.9   63.3   65.6   69.1   70.8
-[90m 9[39m Bangla… Asia        37.5   39.3   41.2   43.5   45.3   46.9   50.0   52.8
-[90m10[39m Belgium Europe      68     69.2   70.2   70.9   71.4   72.8   73.9   75.4
-[90m# … with 132 more rows, and 4 more variables: `1992` [3m[90m<dbl>[90m[23m, `1997` [3m[90m<dbl>[90m[23m,[39m
-[90m#   `2002` [3m[90m<dbl>[90m[23m, `2007` [3m[90m<dbl>[90m[23m[39m
+   <chr>   <chr>      <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
+ 1 Afghan… Asia        28.8   30.3   32.0   34.0   36.1   38.4   39.9   40.8
+ 2 Albania Europe      55.2   59.3   64.8   66.2   67.7   68.9   70.4   72  
+ 3 Algeria Africa      43.1   45.7   48.3   51.4   54.5   58.0   61.4   65.8
+ 4 Angola  Africa      30.0   32.0   34     36.0   37.9   39.5   39.9   39.9
+ 5 Argent… Americas    62.5   64.4   65.1   65.6   67.1   68.5   69.9   70.8
+ 6 Austra… Oceania     69.1   70.3   70.9   71.1   71.9   73.5   74.7   76.3
+ 7 Austria Europe      66.8   67.5   69.5   70.1   70.6   72.2   73.2   74.9
+ 8 Bahrain Asia        50.9   53.8   56.9   59.9   63.3   65.6   69.1   70.8
+ 9 Bangla… Asia        37.5   39.3   41.2   43.5   45.3   46.9   50.0   52.8
+10 Belgium Europe      68     69.2   70.2   70.9   71.4   72.8   73.9   75.4
+# … with 132 more rows, and 4 more variables: `1992` <dbl>, `1997` <dbl>,
+#   `2002` <dbl>, `2007` <dbl>
 ~~~
 {: .output}
 
@@ -711,15 +711,15 @@ Warning: Missing column names filled in: 'X3' [3], 'X4' [4], 'X5' [5], 'X6' [6],
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  T24 = [31mcol_character()[39m,
-  `CO2 emission estimates` = [31mcol_character()[39m,
-  X3 = [31mcol_character()[39m,
-  X4 = [31mcol_character()[39m,
-  X5 = [31mcol_character()[39m,
-  X6 = [31mcol_character()[39m,
-  X7 = [31mcol_character()[39m
+  T24 = col_character(),
+  `CO2 emission estimates` = col_character(),
+  X3 = col_character(),
+  X4 = col_character(),
+  X5 = col_character(),
+  X6 = col_character(),
+  X7 = col_character()
 )
 ~~~
 {: .output}
@@ -727,20 +727,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 2,133 x 7[39m
+# A tibble: 2,133 x 7
    T24      `CO2 emission est… X3    X4            X5    X6    X7               
-   [3m[90m<chr>[39m[23m    [3m[90m<chr>[39m[23m              [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m            
-[90m 1[39m Region/… [31mNA[39m                 Year  Series        Value Foot… Source           
-[90m 2[39m 8        Albania            1975  Emissions (t… 4338… [31mNA[39m    International En…
-[90m 3[39m 8        Albania            1985  Emissions (t… 6929… [31mNA[39m    International En…
-[90m 4[39m 8        Albania            1995  Emissions (t… 1848… [31mNA[39m    International En…
-[90m 5[39m 8        Albania            2005  Emissions (t… 3825… [31mNA[39m    International En…
-[90m 6[39m 8        Albania            2010  Emissions (t… 3930… [31mNA[39m    International En…
-[90m 7[39m 8        Albania            2015  Emissions (t… 3824… [31mNA[39m    International En…
-[90m 8[39m 8        Albania            2016  Emissions (t… 3674… [31mNA[39m    International En…
-[90m 9[39m 8        Albania            2017  Emissions (t… 4342… [31mNA[39m    International En…
-[90m10[39m 8        Albania            1975  Emissions pe… 1.80… [31mNA[39m    International En…
-[90m# … with 2,123 more rows[39m
+   <chr>    <chr>              <chr> <chr>         <chr> <chr> <chr>            
+ 1 Region/… <NA>               Year  Series        Value Foot… Source           
+ 2 8        Albania            1975  Emissions (t… 4338… <NA>  International En…
+ 3 8        Albania            1985  Emissions (t… 6929… <NA>  International En…
+ 4 8        Albania            1995  Emissions (t… 1848… <NA>  International En…
+ 5 8        Albania            2005  Emissions (t… 3825… <NA>  International En…
+ 6 8        Albania            2010  Emissions (t… 3930… <NA>  International En…
+ 7 8        Albania            2015  Emissions (t… 3824… <NA>  International En…
+ 8 8        Albania            2016  Emissions (t… 3674… <NA>  International En…
+ 9 8        Albania            2017  Emissions (t… 4342… <NA>  International En…
+10 8        Albania            1975  Emissions pe… 1.80… <NA>  International En…
+# … with 2,123 more rows
 ~~~
 {: .output}
 
@@ -763,15 +763,15 @@ Warning: Missing column names filled in: 'X2' [2]
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  `Region/Country/Area` = [32mcol_double()[39m,
-  X2 = [31mcol_character()[39m,
-  Year = [32mcol_double()[39m,
-  Series = [31mcol_character()[39m,
-  Value = [32mcol_double()[39m,
-  Footnotes = [31mcol_character()[39m,
-  Source = [31mcol_character()[39m
+  `Region/Country/Area` = col_double(),
+  X2 = col_character(),
+  Year = col_double(),
+  Series = col_character(),
+  Value = col_double(),
+  Footnotes = col_character(),
+  Source = col_character()
 )
 ~~~
 {: .output}
@@ -779,20 +779,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 2,132 x 7[39m
+# A tibble: 2,132 x 7
    `Region/Country/… X2      Year Series        Value Footnotes Source          
-               [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m  [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m           
-[90m 1[39m                 8 Alban…  [4m1[24m975 Emissions (… 4.34[90me[39m3 [31mNA[39m        International E…
-[90m 2[39m                 8 Alban…  [4m1[24m985 Emissions (… 6.93[90me[39m3 [31mNA[39m        International E…
-[90m 3[39m                 8 Alban…  [4m1[24m995 Emissions (… 1.85[90me[39m3 [31mNA[39m        International E…
-[90m 4[39m                 8 Alban…  [4m2[24m005 Emissions (… 3.83[90me[39m3 [31mNA[39m        International E…
-[90m 5[39m                 8 Alban…  [4m2[24m010 Emissions (… 3.93[90me[39m3 [31mNA[39m        International E…
-[90m 6[39m                 8 Alban…  [4m2[24m015 Emissions (… 3.82[90me[39m3 [31mNA[39m        International E…
-[90m 7[39m                 8 Alban…  [4m2[24m016 Emissions (… 3.67[90me[39m3 [31mNA[39m        International E…
-[90m 8[39m                 8 Alban…  [4m2[24m017 Emissions (… 4.34[90me[39m3 [31mNA[39m        International E…
-[90m 9[39m                 8 Alban…  [4m1[24m975 Emissions p… 1.80[90me[39m0 [31mNA[39m        International E…
-[90m10[39m                 8 Alban…  [4m1[24m985 Emissions p… 2.34[90me[39m0 [31mNA[39m        International E…
-[90m# … with 2,122 more rows[39m
+               <dbl> <chr>  <dbl> <chr>         <dbl> <chr>     <chr>           
+ 1                 8 Alban…  1975 Emissions (… 4.34e3 <NA>      International E…
+ 2                 8 Alban…  1985 Emissions (… 6.93e3 <NA>      International E…
+ 3                 8 Alban…  1995 Emissions (… 1.85e3 <NA>      International E…
+ 4                 8 Alban…  2005 Emissions (… 3.83e3 <NA>      International E…
+ 5                 8 Alban…  2010 Emissions (… 3.93e3 <NA>      International E…
+ 6                 8 Alban…  2015 Emissions (… 3.82e3 <NA>      International E…
+ 7                 8 Alban…  2016 Emissions (… 3.67e3 <NA>      International E…
+ 8                 8 Alban…  2017 Emissions (… 4.34e3 <NA>      International E…
+ 9                 8 Alban…  1975 Emissions p… 1.80e0 <NA>      International E…
+10                 8 Alban…  1985 Emissions p… 2.34e0 <NA>      International E…
+# … with 2,122 more rows
 ~~~
 {: .output}
 
@@ -814,15 +814,15 @@ read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -830,20 +830,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 2,132 x 7[39m
+# A tibble: 2,132 x 7
    region country  year series             value footnotes source               
-    [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m              [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m                
-[90m 1[39m      8 Albania  [4m1[24m975 Emissions (thous… 4.34[90me[39m3 [31mNA[39m        International Energy…
-[90m 2[39m      8 Albania  [4m1[24m985 Emissions (thous… 6.93[90me[39m3 [31mNA[39m        International Energy…
-[90m 3[39m      8 Albania  [4m1[24m995 Emissions (thous… 1.85[90me[39m3 [31mNA[39m        International Energy…
-[90m 4[39m      8 Albania  [4m2[24m005 Emissions (thous… 3.83[90me[39m3 [31mNA[39m        International Energy…
-[90m 5[39m      8 Albania  [4m2[24m010 Emissions (thous… 3.93[90me[39m3 [31mNA[39m        International Energy…
-[90m 6[39m      8 Albania  [4m2[24m015 Emissions (thous… 3.82[90me[39m3 [31mNA[39m        International Energy…
-[90m 7[39m      8 Albania  [4m2[24m016 Emissions (thous… 3.67[90me[39m3 [31mNA[39m        International Energy…
-[90m 8[39m      8 Albania  [4m2[24m017 Emissions (thous… 4.34[90me[39m3 [31mNA[39m        International Energy…
-[90m 9[39m      8 Albania  [4m1[24m975 Emissions per ca… 1.80[90me[39m0 [31mNA[39m        International Energy…
-[90m10[39m      8 Albania  [4m1[24m985 Emissions per ca… 2.34[90me[39m0 [31mNA[39m        International Energy…
-[90m# … with 2,122 more rows[39m
+    <dbl> <chr>   <dbl> <chr>              <dbl> <chr>     <chr>                
+ 1      8 Albania  1975 Emissions (thous… 4.34e3 <NA>      International Energy…
+ 2      8 Albania  1985 Emissions (thous… 6.93e3 <NA>      International Energy…
+ 3      8 Albania  1995 Emissions (thous… 1.85e3 <NA>      International Energy…
+ 4      8 Albania  2005 Emissions (thous… 3.83e3 <NA>      International Energy…
+ 5      8 Albania  2010 Emissions (thous… 3.93e3 <NA>      International Energy…
+ 6      8 Albania  2015 Emissions (thous… 3.82e3 <NA>      International Energy…
+ 7      8 Albania  2016 Emissions (thous… 3.67e3 <NA>      International Energy…
+ 8      8 Albania  2017 Emissions (thous… 4.34e3 <NA>      International Energy…
+ 9      8 Albania  1975 Emissions per ca… 1.80e0 <NA>      International Energy…
+10      8 Albania  1985 Emissions per ca… 2.34e0 <NA>      International Energy…
+# … with 2,122 more rows
 ~~~
 {: .output}
 
@@ -867,15 +867,15 @@ Warning: Missing column names filled in: 'X2' [2]
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  `Region/Country/Area` = [32mcol_double()[39m,
-  X2 = [31mcol_character()[39m,
-  Year = [32mcol_double()[39m,
-  Series = [31mcol_character()[39m,
-  Value = [32mcol_double()[39m,
-  Footnotes = [31mcol_character()[39m,
-  Source = [31mcol_character()[39m
+  `Region/Country/Area` = col_double(),
+  X2 = col_character(),
+  Year = col_double(),
+  Series = col_character(),
+  Value = col_double(),
+  Footnotes = col_character(),
+  Source = col_character()
 )
 ~~~
 {: .output}
@@ -883,20 +883,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 2,132 x 7[39m
+# A tibble: 2,132 x 7
    `Region/Country/… country  Year Series        Value Footnotes Source         
-               [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m          
-[90m 1[39m                 8 Albania  [4m1[24m975 Emissions (… 4.34[90me[39m3 [31mNA[39m        International …
-[90m 2[39m                 8 Albania  [4m1[24m985 Emissions (… 6.93[90me[39m3 [31mNA[39m        International …
-[90m 3[39m                 8 Albania  [4m1[24m995 Emissions (… 1.85[90me[39m3 [31mNA[39m        International …
-[90m 4[39m                 8 Albania  [4m2[24m005 Emissions (… 3.83[90me[39m3 [31mNA[39m        International …
-[90m 5[39m                 8 Albania  [4m2[24m010 Emissions (… 3.93[90me[39m3 [31mNA[39m        International …
-[90m 6[39m                 8 Albania  [4m2[24m015 Emissions (… 3.82[90me[39m3 [31mNA[39m        International …
-[90m 7[39m                 8 Albania  [4m2[24m016 Emissions (… 3.67[90me[39m3 [31mNA[39m        International …
-[90m 8[39m                 8 Albania  [4m2[24m017 Emissions (… 4.34[90me[39m3 [31mNA[39m        International …
-[90m 9[39m                 8 Albania  [4m1[24m975 Emissions p… 1.80[90me[39m0 [31mNA[39m        International …
-[90m10[39m                 8 Albania  [4m1[24m985 Emissions p… 2.34[90me[39m0 [31mNA[39m        International …
-[90m# … with 2,122 more rows[39m
+               <dbl> <chr>   <dbl> <chr>         <dbl> <chr>     <chr>          
+ 1                 8 Albania  1975 Emissions (… 4.34e3 <NA>      International …
+ 2                 8 Albania  1985 Emissions (… 6.93e3 <NA>      International …
+ 3                 8 Albania  1995 Emissions (… 1.85e3 <NA>      International …
+ 4                 8 Albania  2005 Emissions (… 3.83e3 <NA>      International …
+ 5                 8 Albania  2010 Emissions (… 3.93e3 <NA>      International …
+ 6                 8 Albania  2015 Emissions (… 3.82e3 <NA>      International …
+ 7                 8 Albania  2016 Emissions (… 3.67e3 <NA>      International …
+ 8                 8 Albania  2017 Emissions (… 4.34e3 <NA>      International …
+ 9                 8 Albania  1975 Emissions p… 1.80e0 <NA>      International …
+10                 8 Albania  1985 Emissions p… 2.34e0 <NA>      International …
+# … with 2,122 more rows
 ~~~
 {: .output}
 
@@ -920,15 +920,15 @@ Warning: Missing column names filled in: 'X2' [2]
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  `Region/Country/Area` = [32mcol_double()[39m,
-  X2 = [31mcol_character()[39m,
-  Year = [32mcol_double()[39m,
-  Series = [31mcol_character()[39m,
-  Value = [32mcol_double()[39m,
-  Footnotes = [31mcol_character()[39m,
-  Source = [31mcol_character()[39m
+  `Region/Country/Area` = col_double(),
+  X2 = col_character(),
+  Year = col_double(),
+  Series = col_character(),
+  Value = col_double(),
+  Footnotes = col_character(),
+  Source = col_character()
 )
 ~~~
 {: .output}
@@ -936,20 +936,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 2,132 x 7[39m
+# A tibble: 2,132 x 7
    `region/country/… x2      year series        value footnotes source          
-               [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m  [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m           
-[90m 1[39m                 8 Alban…  [4m1[24m975 Emissions (… 4.34[90me[39m3 [31mNA[39m        International E…
-[90m 2[39m                 8 Alban…  [4m1[24m985 Emissions (… 6.93[90me[39m3 [31mNA[39m        International E…
-[90m 3[39m                 8 Alban…  [4m1[24m995 Emissions (… 1.85[90me[39m3 [31mNA[39m        International E…
-[90m 4[39m                 8 Alban…  [4m2[24m005 Emissions (… 3.83[90me[39m3 [31mNA[39m        International E…
-[90m 5[39m                 8 Alban…  [4m2[24m010 Emissions (… 3.93[90me[39m3 [31mNA[39m        International E…
-[90m 6[39m                 8 Alban…  [4m2[24m015 Emissions (… 3.82[90me[39m3 [31mNA[39m        International E…
-[90m 7[39m                 8 Alban…  [4m2[24m016 Emissions (… 3.67[90me[39m3 [31mNA[39m        International E…
-[90m 8[39m                 8 Alban…  [4m2[24m017 Emissions (… 4.34[90me[39m3 [31mNA[39m        International E…
-[90m 9[39m                 8 Alban…  [4m1[24m975 Emissions p… 1.80[90me[39m0 [31mNA[39m        International E…
-[90m10[39m                 8 Alban…  [4m1[24m985 Emissions p… 2.34[90me[39m0 [31mNA[39m        International E…
-[90m# … with 2,122 more rows[39m
+               <dbl> <chr>  <dbl> <chr>         <dbl> <chr>     <chr>           
+ 1                 8 Alban…  1975 Emissions (… 4.34e3 <NA>      International E…
+ 2                 8 Alban…  1985 Emissions (… 6.93e3 <NA>      International E…
+ 3                 8 Alban…  1995 Emissions (… 1.85e3 <NA>      International E…
+ 4                 8 Alban…  2005 Emissions (… 3.83e3 <NA>      International E…
+ 5                 8 Alban…  2010 Emissions (… 3.93e3 <NA>      International E…
+ 6                 8 Alban…  2015 Emissions (… 3.82e3 <NA>      International E…
+ 7                 8 Alban…  2016 Emissions (… 3.67e3 <NA>      International E…
+ 8                 8 Alban…  2017 Emissions (… 4.34e3 <NA>      International E…
+ 9                 8 Alban…  1975 Emissions p… 1.80e0 <NA>      International E…
+10                 8 Alban…  1985 Emissions p… 2.34e0 <NA>      International E…
+# … with 2,122 more rows
 ~~~
 {: .output}
 
@@ -966,15 +966,15 @@ read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -982,20 +982,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 2,132 x 7[39m
+# A tibble: 2,132 x 7
    region country  year series             value footnotes source               
-    [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m              [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m                
-[90m 1[39m      8 Albania  [4m1[24m975 Emissions (thous… 4.34[90me[39m3 [31mNA[39m        International Energy…
-[90m 2[39m      8 Albania  [4m1[24m985 Emissions (thous… 6.93[90me[39m3 [31mNA[39m        International Energy…
-[90m 3[39m      8 Albania  [4m1[24m995 Emissions (thous… 1.85[90me[39m3 [31mNA[39m        International Energy…
-[90m 4[39m      8 Albania  [4m2[24m005 Emissions (thous… 3.83[90me[39m3 [31mNA[39m        International Energy…
-[90m 5[39m      8 Albania  [4m2[24m010 Emissions (thous… 3.93[90me[39m3 [31mNA[39m        International Energy…
-[90m 6[39m      8 Albania  [4m2[24m015 Emissions (thous… 3.82[90me[39m3 [31mNA[39m        International Energy…
-[90m 7[39m      8 Albania  [4m2[24m016 Emissions (thous… 3.67[90me[39m3 [31mNA[39m        International Energy…
-[90m 8[39m      8 Albania  [4m2[24m017 Emissions (thous… 4.34[90me[39m3 [31mNA[39m        International Energy…
-[90m 9[39m      8 Albania  [4m1[24m975 Emissions per ca… 1.80[90me[39m0 [31mNA[39m        International Energy…
-[90m10[39m      8 Albania  [4m1[24m985 Emissions per ca… 2.34[90me[39m0 [31mNA[39m        International Energy…
-[90m# … with 2,122 more rows[39m
+    <dbl> <chr>   <dbl> <chr>              <dbl> <chr>     <chr>                
+ 1      8 Albania  1975 Emissions (thous… 4.34e3 <NA>      International Energy…
+ 2      8 Albania  1985 Emissions (thous… 6.93e3 <NA>      International Energy…
+ 3      8 Albania  1995 Emissions (thous… 1.85e3 <NA>      International Energy…
+ 4      8 Albania  2005 Emissions (thous… 3.83e3 <NA>      International Energy…
+ 5      8 Albania  2010 Emissions (thous… 3.93e3 <NA>      International Energy…
+ 6      8 Albania  2015 Emissions (thous… 3.82e3 <NA>      International Energy…
+ 7      8 Albania  2016 Emissions (thous… 3.67e3 <NA>      International Energy…
+ 8      8 Albania  2017 Emissions (thous… 4.34e3 <NA>      International Energy…
+ 9      8 Albania  1975 Emissions per ca… 1.80e0 <NA>      International Energy…
+10      8 Albania  1985 Emissions per ca… 2.34e0 <NA>      International Energy…
+# … with 2,122 more rows
 ~~~
 {: .output}
 
@@ -1013,15 +1013,15 @@ read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -1029,20 +1029,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 2,132 x 4[39m
+# A tibble: 2,132 x 4
    country  year series                                                 value
-   [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m                                                  [3m[90m<dbl>[39m[23m
-[90m 1[39m Albania  [4m1[24m975 Emissions (thousand metric tons of carbon dioxide)   [4m4[24m338.  
-[90m 2[39m Albania  [4m1[24m985 Emissions (thousand metric tons of carbon dioxide)   [4m6[24m930.  
-[90m 3[39m Albania  [4m1[24m995 Emissions (thousand metric tons of carbon dioxide)   [4m1[24m849.  
-[90m 4[39m Albania  [4m2[24m005 Emissions (thousand metric tons of carbon dioxide)   [4m3[24m825.  
-[90m 5[39m Albania  [4m2[24m010 Emissions (thousand metric tons of carbon dioxide)   [4m3[24m930.  
-[90m 6[39m Albania  [4m2[24m015 Emissions (thousand metric tons of carbon dioxide)   [4m3[24m825.  
-[90m 7[39m Albania  [4m2[24m016 Emissions (thousand metric tons of carbon dioxide)   [4m3[24m674.  
-[90m 8[39m Albania  [4m2[24m017 Emissions (thousand metric tons of carbon dioxide)   [4m4[24m342.  
-[90m 9[39m Albania  [4m1[24m975 Emissions per capita (metric tons of carbon dioxide)    1.80
-[90m10[39m Albania  [4m1[24m985 Emissions per capita (metric tons of carbon dioxide)    2.34
-[90m# … with 2,122 more rows[39m
+   <chr>   <dbl> <chr>                                                  <dbl>
+ 1 Albania  1975 Emissions (thousand metric tons of carbon dioxide)   4338.  
+ 2 Albania  1985 Emissions (thousand metric tons of carbon dioxide)   6930.  
+ 3 Albania  1995 Emissions (thousand metric tons of carbon dioxide)   1849.  
+ 4 Albania  2005 Emissions (thousand metric tons of carbon dioxide)   3825.  
+ 5 Albania  2010 Emissions (thousand metric tons of carbon dioxide)   3930.  
+ 6 Albania  2015 Emissions (thousand metric tons of carbon dioxide)   3825.  
+ 7 Albania  2016 Emissions (thousand metric tons of carbon dioxide)   3674.  
+ 8 Albania  2017 Emissions (thousand metric tons of carbon dioxide)   4342.  
+ 9 Albania  1975 Emissions per capita (metric tons of carbon dioxide)    1.80
+10 Albania  1985 Emissions per capita (metric tons of carbon dioxide)    2.34
+# … with 2,122 more rows
 ~~~
 {: .output}
 
@@ -1062,15 +1062,15 @@ read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -1078,20 +1078,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 2,132 x 4[39m
+# A tibble: 2,132 x 4
    country  year series       value
-   [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m        [3m[90m<dbl>[39m[23m
-[90m 1[39m Albania  [4m1[24m975 total      [4m4[24m338.  
-[90m 2[39m Albania  [4m1[24m985 total      [4m6[24m930.  
-[90m 3[39m Albania  [4m1[24m995 total      [4m1[24m849.  
-[90m 4[39m Albania  [4m2[24m005 total      [4m3[24m825.  
-[90m 5[39m Albania  [4m2[24m010 total      [4m3[24m930.  
-[90m 6[39m Albania  [4m2[24m015 total      [4m3[24m825.  
-[90m 7[39m Albania  [4m2[24m016 total      [4m3[24m674.  
-[90m 8[39m Albania  [4m2[24m017 total      [4m4[24m342.  
-[90m 9[39m Albania  [4m1[24m975 per_capita    1.80
-[90m10[39m Albania  [4m1[24m985 per_capita    2.34
-[90m# … with 2,122 more rows[39m
+   <chr>   <dbl> <chr>        <dbl>
+ 1 Albania  1975 total      4338.  
+ 2 Albania  1985 total      6930.  
+ 3 Albania  1995 total      1849.  
+ 4 Albania  2005 total      3825.  
+ 5 Albania  2010 total      3930.  
+ 6 Albania  2015 total      3825.  
+ 7 Albania  2016 total      3674.  
+ 8 Albania  2017 total      4342.  
+ 9 Albania  1975 per_capita    1.80
+10 Albania  1985 per_capita    2.34
+# … with 2,122 more rows
 ~~~
 {: .output}
 
@@ -1112,15 +1112,15 @@ read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -1128,20 +1128,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 1,066 x 4[39m
+# A tibble: 1,066 x 4
    country  year  total per_capita
-   [3m[90m<chr>[39m[23m   [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m
-[90m 1[39m Albania  [4m1[24m975  [4m4[24m338.      1.80 
-[90m 2[39m Albania  [4m1[24m985  [4m6[24m930.      2.34 
-[90m 3[39m Albania  [4m1[24m995  [4m1[24m849.      0.580
-[90m 4[39m Albania  [4m2[24m005  [4m3[24m825.      1.27 
-[90m 5[39m Albania  [4m2[24m010  [4m3[24m930.      1.35 
-[90m 6[39m Albania  [4m2[24m015  [4m3[24m825.      1.33 
-[90m 7[39m Albania  [4m2[24m016  [4m3[24m674.      1.28 
-[90m 8[39m Albania  [4m2[24m017  [4m4[24m342.      1.51 
-[90m 9[39m Algeria  [4m1[24m975 [4m1[24m[4m3[24m553.      0.811
-[90m10[39m Algeria  [4m1[24m985 [4m4[24m[4m2[24m073.      1.86 
-[90m# … with 1,056 more rows[39m
+   <chr>   <dbl>  <dbl>      <dbl>
+ 1 Albania  1975  4338.      1.80 
+ 2 Albania  1985  6930.      2.34 
+ 3 Albania  1995  1849.      0.580
+ 4 Albania  2005  3825.      1.27 
+ 5 Albania  2010  3930.      1.35 
+ 6 Albania  2015  3825.      1.33 
+ 7 Albania  2016  3674.      1.28 
+ 8 Albania  2017  4342.      1.51 
+ 9 Algeria  1975 13553.      0.811
+10 Algeria  1985 42073.      1.86 
+# … with 1,056 more rows
 ~~~
 {: .output}
 
@@ -1163,15 +1163,15 @@ read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -1179,17 +1179,17 @@ cols(
 
 
 ~~~
-[90m# A tibble: 8 x 2[39m
+# A tibble: 8 x 2
    year     n
-  [3m[90m<dbl>[39m[23m [3m[90m<int>[39m[23m
-[90m1[39m  [4m1[24m975   111
-[90m2[39m  [4m1[24m985   113
-[90m3[39m  [4m1[24m995   136
-[90m4[39m  [4m2[24m005   140
-[90m5[39m  [4m2[24m010   140
-[90m6[39m  [4m2[24m015   142
-[90m7[39m  [4m2[24m016   142
-[90m8[39m  [4m2[24m017   142
+  <dbl> <int>
+1  1975   111
+2  1985   113
+3  1995   136
+4  2005   140
+5  2010   140
+6  2015   142
+7  2016   142
+8  2017   142
 ~~~
 {: .output}
 
@@ -1212,15 +1212,15 @@ read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -1228,20 +1228,20 @@ cols(
 
 
 ~~~
-[90m# A tibble: 140 x 3[39m
+# A tibble: 140 x 3
    country      total per_capita
-   [3m[90m<chr>[39m[23m        [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m
-[90m 1[39m Albania      [4m3[24m825.      1.27 
-[90m 2[39m Algeria     [4m7[24m[4m7[24m474.      2.33 
-[90m 3[39m Angola       [4m6[24m147.      0.314
-[90m 4[39m Argentina  [4m1[24m[4m4[24m[4m9[24m476.      3.82 
-[90m 5[39m Armenia      [4m4[24m130.      1.38 
-[90m 6[39m Australia  [4m3[24m[4m6[24m[4m5[24m515.     17.9  
-[90m 7[39m Austria     [4m7[24m[4m4[24m764.      9.09 
-[90m 8[39m Azerbaijan  [4m2[24m[4m9[24m018.      3.46 
-[90m 9[39m Bahrain     [4m2[24m[4m0[24m565.     23.1  
-[90m10[39m Bangladesh  [4m3[24m[4m1[24m960.      0.223
-[90m# … with 130 more rows[39m
+   <chr>        <dbl>      <dbl>
+ 1 Albania      3825.      1.27 
+ 2 Algeria     77474.      2.33 
+ 3 Angola       6147.      0.314
+ 4 Argentina  149476.      3.82 
+ 5 Armenia      4130.      1.38 
+ 6 Australia  365515.     17.9  
+ 7 Austria     74764.      9.09 
+ 8 Azerbaijan  29018.      3.46 
+ 9 Bahrain     20565.     23.1  
+10 Bangladesh  31960.      0.223
+# … with 130 more rows
 ~~~
 {: .output}
 
@@ -1264,15 +1264,15 @@ co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -1298,14 +1298,14 @@ gapminder_data <- read_csv("data/gapminder_data.csv") %>%
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )
 ~~~
 {: .output}
@@ -1342,20 +1342,20 @@ Joining, by = "country"
 
 
 ~~~
-[90m# A tibble: 21 x 6[39m
+# A tibble: 21 x 6
    country                  pop lifeExp gdpPercap   total per_capita
-   [3m[90m<chr>[39m[23m                  [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m
-[90m 1[39m Argentina           40[4m3[24m[4m0[24m[4m1[24m927    75.3    [4m1[24m[4m2[24m779. [4m1[24m[4m4[24m[4m9[24m476.       3.82
-[90m 2[39m Brazil             190[4m0[24m[4m1[24m[4m0[24m647    72.4     [4m9[24m066. [4m3[24m[4m1[24m[4m1[24m624.       1.67
-[90m 3[39m Canada              33[4m3[24m[4m9[24m[4m0[24m141    80.7    [4m3[24m[4m6[24m319. [4m5[24m[4m4[24m[4m0[24m431.      16.8 
-[90m 4[39m Chile               16[4m2[24m[4m8[24m[4m4[24m741    78.6    [4m1[24m[4m3[24m172.  [4m5[24m[4m4[24m435.       3.34
-[90m 5[39m Colombia            44[4m2[24m[4m2[24m[4m7[24m550    72.9     [4m7[24m007.  [4m5[24m[4m3[24m585.       1.24
-[90m 6[39m Costa Rica           4[4m1[24m[4m3[24m[4m3[24m884    78.8     [4m9[24m645.   [4m5[24m463.       1.29
-[90m 7[39m Cuba                11[4m4[24m[4m1[24m[4m6[24m987    78.3     [4m8[24m948.  [4m2[24m[4m5[24m051.       2.22
-[90m 8[39m Dominican Republic   9[4m3[24m[4m1[24m[4m9[24m622    72.2     [4m6[24m025.  [4m1[24m[4m7[24m522.       1.90
-[90m 9[39m Ecuador             13[4m7[24m[4m5[24m[4m5[24m680    75.0     [4m6[24m873.  [4m2[24m[4m3[24m927.       1.74
-[90m10[39m El Salvador          6[4m9[24m[4m3[24m[4m9[24m688    71.9     [4m5[24m728.   [4m6[24m253.       1.04
-[90m# … with 11 more rows[39m
+   <chr>                  <dbl>   <dbl>     <dbl>   <dbl>      <dbl>
+ 1 Argentina           40301927    75.3    12779. 149476.       3.82
+ 2 Brazil             190010647    72.4     9066. 311624.       1.67
+ 3 Canada              33390141    80.7    36319. 540431.      16.8 
+ 4 Chile               16284741    78.6    13172.  54435.       3.34
+ 5 Colombia            44227550    72.9     7007.  53585.       1.24
+ 6 Costa Rica           4133884    78.8     9645.   5463.       1.29
+ 7 Cuba                11416987    78.3     8948.  25051.       2.22
+ 8 Dominican Republic   9319622    72.2     6025.  17522.       1.90
+ 9 Ecuador             13755680    75.0     6873.  23927.       1.74
+10 El Salvador          6939688    71.9     5728.   6253.       1.04
+# … with 11 more rows
 ~~~
 {: .output}
 
@@ -1370,20 +1370,20 @@ inner_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-[90m# A tibble: 21 x 6[39m
+# A tibble: 21 x 6
    country                  pop lifeExp gdpPercap   total per_capita
-   [3m[90m<chr>[39m[23m                  [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m
-[90m 1[39m Argentina           40[4m3[24m[4m0[24m[4m1[24m927    75.3    [4m1[24m[4m2[24m779. [4m1[24m[4m4[24m[4m9[24m476.       3.82
-[90m 2[39m Brazil             190[4m0[24m[4m1[24m[4m0[24m647    72.4     [4m9[24m066. [4m3[24m[4m1[24m[4m1[24m624.       1.67
-[90m 3[39m Canada              33[4m3[24m[4m9[24m[4m0[24m141    80.7    [4m3[24m[4m6[24m319. [4m5[24m[4m4[24m[4m0[24m431.      16.8 
-[90m 4[39m Chile               16[4m2[24m[4m8[24m[4m4[24m741    78.6    [4m1[24m[4m3[24m172.  [4m5[24m[4m4[24m435.       3.34
-[90m 5[39m Colombia            44[4m2[24m[4m2[24m[4m7[24m550    72.9     [4m7[24m007.  [4m5[24m[4m3[24m585.       1.24
-[90m 6[39m Costa Rica           4[4m1[24m[4m3[24m[4m3[24m884    78.8     [4m9[24m645.   [4m5[24m463.       1.29
-[90m 7[39m Cuba                11[4m4[24m[4m1[24m[4m6[24m987    78.3     [4m8[24m948.  [4m2[24m[4m5[24m051.       2.22
-[90m 8[39m Dominican Republic   9[4m3[24m[4m1[24m[4m9[24m622    72.2     [4m6[24m025.  [4m1[24m[4m7[24m522.       1.90
-[90m 9[39m Ecuador             13[4m7[24m[4m5[24m[4m5[24m680    75.0     [4m6[24m873.  [4m2[24m[4m3[24m927.       1.74
-[90m10[39m El Salvador          6[4m9[24m[4m3[24m[4m9[24m688    71.9     [4m5[24m728.   [4m6[24m253.       1.04
-[90m# … with 11 more rows[39m
+   <chr>                  <dbl>   <dbl>     <dbl>   <dbl>      <dbl>
+ 1 Argentina           40301927    75.3    12779. 149476.       3.82
+ 2 Brazil             190010647    72.4     9066. 311624.       1.67
+ 3 Canada              33390141    80.7    36319. 540431.      16.8 
+ 4 Chile               16284741    78.6    13172.  54435.       3.34
+ 5 Colombia            44227550    72.9     7007.  53585.       1.24
+ 6 Costa Rica           4133884    78.8     9645.   5463.       1.29
+ 7 Cuba                11416987    78.3     8948.  25051.       2.22
+ 8 Dominican Republic   9319622    72.2     6025.  17522.       1.90
+ 9 Ecuador             13755680    75.0     6873.  23927.       1.74
+10 El Salvador          6939688    71.9     5728.   6253.       1.04
+# … with 11 more rows
 ~~~
 {: .output}
 
@@ -1396,20 +1396,6 @@ View()
 ~~~
 {: .language-r}
 
-
-
-~~~
-Warning in View(.): unable to open display
-~~~
-{: .warning}
-
-
-
-~~~
-Error in .External2(C_dataviewer, x, title): unable to start data viewer
-~~~
-{: .error}
-
 We can see that the co2_emissions data were missing for Bolivia, Puerto Rico, United States, and Venezuela. Another way to get the same information a bit more directly is to use an `anti_join()`. This will show us the data for the keys on the left that are missing from the data frame on the right
 
 
@@ -1421,13 +1407,13 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-[90m# A tibble: 4 x 4[39m
+# A tibble: 4 x 4
   country             pop lifeExp gdpPercap
-  [3m[90m<chr>[39m[23m             [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
-[90m1[39m Bolivia         9[4m1[24m[4m1[24m[4m9[24m152    65.6     [4m3[24m822.
-[90m2[39m Puerto Rico     3[4m9[24m[4m4[24m[4m2[24m491    78.7    [4m1[24m[4m9[24m329.
-[90m3[39m United States 301[4m1[24m[4m3[24m[4m9[24m947    78.2    [4m4[24m[4m2[24m952.
-[90m4[39m Venezuela      26[4m0[24m[4m8[24m[4m4[24m662    73.7    [4m1[24m[4m1[24m416.
+  <chr>             <dbl>   <dbl>     <dbl>
+1 Bolivia         9119152    65.6     3822.
+2 Puerto Rico     3942491    78.7    19329.
+3 United States 301139947    78.2    42952.
+4 Venezuela      26084662    73.7    11416.
 ~~~
 {: .output}
 
@@ -1436,7 +1422,7 @@ If we look at the co2_emissions data with `View()`, we will see that Bolivia, Un
 
 ~~~
 co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
-                          col_names=c("region", "country", "year", 
+                          col_names=c("region", "country", "year",
                                       "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
@@ -1456,15 +1442,15 @@ co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -1479,10 +1465,10 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 
 ~~~
-[90m# A tibble: 1 x 4[39m
+# A tibble: 1 x 4
   country         pop lifeExp gdpPercap
-  [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
-[90m1[39m Puerto Rico 3[4m9[24m[4m4[24m[4m2[24m491    78.7    [4m1[24m[4m9[24m329.
+  <chr>         <dbl>   <dbl>     <dbl>
+1 Puerto Rico 3942491    78.7    19329.
 ~~~
 {: .output}
 
@@ -1511,14 +1497,14 @@ Now we see that our recode enabled the join for all countries in the gapminder, 
 > > 
 > > ~~~
 > > 
-> > [36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+> > ── Column specification ──────────────────────────────────────────────────────────────────────────────────
 > > cols(
-> >   country = [31mcol_character()[39m,
-> >   year = [32mcol_double()[39m,
-> >   pop = [32mcol_double()[39m,
-> >   continent = [31mcol_character()[39m,
-> >   lifeExp = [32mcol_double()[39m,
-> >   gdpPercap = [32mcol_double()[39m
+> >   country = col_character(),
+> >   year = col_double(),
+> >   pop = col_double(),
+> >   continent = col_character(),
+> >   lifeExp = col_double(),
+> >   gdpPercap = col_double()
 > > )
 > > ~~~
 > > {: .output}
@@ -1540,11 +1526,11 @@ Now we see that our recode enabled the join for all countries in the gapminder, 
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 0 x 4[39m
-> > [90m# … with 4 variables: country [3m[90m<chr>[90m[23m, lifeExp [3m[90m<dbl>[90m[23m, gdpPercap [3m[90m<dbl>[90m[23m, pop [3m[90m<dbl>[90m[23m[39m
+> > # A tibble: 0 x 4
+> > # … with 4 variables: country <chr>, lifeExp <dbl>, gdpPercap <dbl>, pop <dbl>
 > > ~~~
 > > {: .output}
-> > {: .source} 
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -1647,20 +1633,20 @@ gapminder_co2 %>%
 
 
 ~~~
-[90m# A tibble: 24 x 7[39m
+# A tibble: 24 x 7
    country            lifeExp gdpPercap       pop   total per_capita region
-   [3m[90m<chr>[39m[23m                [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m   [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m 
-[90m 1[39m Argentina             75.3    [4m1[24m[4m2[24m779.  40[4m3[24m[4m0[24m[4m1[24m927 [4m1[24m[4m4[24m[4m9[24m476.      3.82  south 
-[90m 2[39m Bolivia               65.6     [4m3[24m822.   9[4m1[24m[4m1[24m[4m9[24m152   [4m8[24m976.      0.984 south 
-[90m 3[39m Brazil                72.4     [4m9[24m066. 190[4m0[24m[4m1[24m[4m0[24m647 [4m3[24m[4m1[24m[4m1[24m624.      1.67  south 
-[90m 4[39m Canada                80.7    [4m3[24m[4m6[24m319.  33[4m3[24m[4m9[24m[4m0[24m141 [4m5[24m[4m4[24m[4m0[24m431.     16.8   north 
-[90m 5[39m Chile                 78.6    [4m1[24m[4m3[24m172.  16[4m2[24m[4m8[24m[4m4[24m741  [4m5[24m[4m4[24m435.      3.34  south 
-[90m 6[39m Colombia              72.9     [4m7[24m007.  44[4m2[24m[4m2[24m[4m7[24m550  [4m5[24m[4m3[24m585.      1.24  south 
-[90m 7[39m Costa Rica            78.8     [4m9[24m645.   4[4m1[24m[4m3[24m[4m3[24m884   [4m5[24m463.      1.29  south 
-[90m 8[39m Cuba                  78.3     [4m8[24m948.  11[4m4[24m[4m1[24m[4m6[24m987  [4m2[24m[4m5[24m051.      2.22  south 
-[90m 9[39m Dominican Republic    72.2     [4m6[24m025.   9[4m3[24m[4m1[24m[4m9[24m622  [4m1[24m[4m7[24m522.      1.90  south 
-[90m10[39m Ecuador               75.0     [4m6[24m873.  13[4m7[24m[4m5[24m[4m5[24m680  [4m2[24m[4m3[24m927.      1.74  south 
-[90m# … with 14 more rows[39m
+   <chr>                <dbl>     <dbl>     <dbl>   <dbl>      <dbl> <chr> 
+ 1 Argentina             75.3    12779.  40301927 149476.      3.82  south 
+ 2 Bolivia               65.6     3822.   9119152   8976.      0.984 south 
+ 3 Brazil                72.4     9066. 190010647 311624.      1.67  south 
+ 4 Canada                80.7    36319.  33390141 540431.     16.8   north 
+ 5 Chile                 78.6    13172.  16284741  54435.      3.34  south 
+ 6 Colombia              72.9     7007.  44227550  53585.      1.24  south 
+ 7 Costa Rica            78.8     9645.   4133884   5463.      1.29  south 
+ 8 Cuba                  78.3     8948.  11416987  25051.      2.22  south 
+ 9 Dominican Republic    72.2     6025.   9319622  17522.      1.90  south 
+10 Ecuador               75.0     6873.  13755680  23927.      1.74  south 
+# … with 14 more rows
 ~~~
 {: .output}
 
@@ -1669,8 +1655,8 @@ Now we can use this column to repeat our `group_by()` and `summarize()` steps
 
 ~~~
 gapminder_co2 %>%
-  mutate(region = if_else(country == "Canada" | 
-                            country == "United States" | 
+  mutate(region = if_else(country == "Canada" |
+                            country == "United States" |
                             country == "Mexico", "north", "south")) %>%
   group_by(region) %>%
   summarize(sumtotal = sum(total),
@@ -1688,11 +1674,11 @@ gapminder_co2 %>%
 
 
 ~~~
-[90m# A tibble: 2 x 3[39m
+# A tibble: 2 x 3
   region sumtotal    sumpop
-  [3m[90m<chr>[39m[23m     [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m
-[90m1[39m north  6[4m6[24m[4m5[24m[4m6[24m037. 447[4m1[24m[4m7[24m[4m3[24m470
-[90m2[39m south   [4m8[24m[4m8[24m[4m9[24m332. 451[4m6[24m[4m9[24m[4m7[24m714
+  <chr>     <dbl>     <dbl>
+1 north  6656037. 447173470
+2 south   889332. 451697714
 ~~~
 {: .output}
 
@@ -1720,20 +1706,20 @@ We see that although Canada, the United States, and Mexico account for close to 
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 24 x 9[39m
+> > # A tibble: 24 x 9
 > >    country lifeExp gdpPercap    pop  total per_capita region totalPercent
-> >    [3m[90m<chr>[39m[23m     [3m[90m<dbl>[39m[23m     [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m  [3m[90m<dbl>[39m[23m      [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m         [3m[90m<dbl>[39m[23m
-> > [90m 1[39m Argent…    75.3    [4m1[24m[4m2[24m779. 4.03[90me[39m7 1.49[90me[39m5      3.82  south        1.98  
-> > [90m 2[39m Bolivia    65.6     [4m3[24m822. 9.12[90me[39m6 8.98[90me[39m3      0.984 south        0.119 
-> > [90m 3[39m Brazil     72.4     [4m9[24m066. 1.90[90me[39m8 3.12[90me[39m5      1.67  south        4.13  
-> > [90m 4[39m Canada     80.7    [4m3[24m[4m6[24m319. 3.34[90me[39m7 5.40[90me[39m5     16.8   north        7.16  
-> > [90m 5[39m Chile      78.6    [4m1[24m[4m3[24m172. 1.63[90me[39m7 5.44[90me[39m4      3.34  south        0.721 
-> > [90m 6[39m Colomb…    72.9     [4m7[24m007. 4.42[90me[39m7 5.36[90me[39m4      1.24  south        0.710 
-> > [90m 7[39m Costa …    78.8     [4m9[24m645. 4.13[90me[39m6 5.46[90me[39m3      1.29  south        0.072[4m4[24m
-> > [90m 8[39m Cuba       78.3     [4m8[24m948. 1.14[90me[39m7 2.51[90me[39m4      2.22  south        0.332 
-> > [90m 9[39m Domini…    72.2     [4m6[24m025. 9.32[90me[39m6 1.75[90me[39m4      1.90  south        0.232 
-> > [90m10[39m Ecuador    75.0     [4m6[24m873. 1.38[90me[39m7 2.39[90me[39m4      1.74  south        0.317 
-> > [90m# … with 14 more rows, and 1 more variable: popPercent [3m[90m<dbl>[90m[23m[39m
+> >    <chr>     <dbl>     <dbl>  <dbl>  <dbl>      <dbl> <chr>         <dbl>
+> >  1 Argent…    75.3    12779. 4.03e7 1.49e5      3.82  south        1.98  
+> >  2 Bolivia    65.6     3822. 9.12e6 8.98e3      0.984 south        0.119 
+> >  3 Brazil     72.4     9066. 1.90e8 3.12e5      1.67  south        4.13  
+> >  4 Canada     80.7    36319. 3.34e7 5.40e5     16.8   north        7.16  
+> >  5 Chile      78.6    13172. 1.63e7 5.44e4      3.34  south        0.721 
+> >  6 Colomb…    72.9     7007. 4.42e7 5.36e4      1.24  south        0.710 
+> >  7 Costa …    78.8     9645. 4.13e6 5.46e3      1.29  south        0.0724
+> >  8 Cuba       78.3     8948. 1.14e7 2.51e4      2.22  south        0.332 
+> >  9 Domini…    72.2     6025. 9.32e6 1.75e4      1.90  south        0.232 
+> > 10 Ecuador    75.0     6873. 1.38e7 2.39e4      1.74  south        0.317 
+> > # … with 14 more rows, and 1 more variable: popPercent <dbl>
 > > ~~~
 > > {: .output}
 > >
@@ -1761,15 +1747,15 @@ We see that although Canada, the United States, and Mexico account for close to 
 > > 
 > > 
 > > ~~~
-> > [90m# A tibble: 2 x 3[39m
+> > # A tibble: 2 x 3
 > >   region sumTotalPercent sumPopPercent
-> >   [3m[90m<chr>[39m[23m            [3m[90m<dbl>[39m[23m         [3m[90m<dbl>[39m[23m
-> > [90m1[39m north             88.2          49.7
-> > [90m2[39m south             11.8          50.3
+> >   <chr>            <dbl>         <dbl>
+> > 1 north             88.2          49.7
+> > 2 south             11.8          50.3
 > > ~~~
 > > {: .output}
 > >
-> > {: .source} 
+> > {: .source}
 > {: .solution}
 {: .challenge}
 
@@ -1798,14 +1784,14 @@ gapminder_data <- read_csv("data/gapminder_data.csv") %>%
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )
 ~~~
 {: .output}
@@ -1841,15 +1827,15 @@ co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
 
 ~~~
 
-[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────[39m
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
 cols(
-  region = [32mcol_double()[39m,
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  series = [31mcol_character()[39m,
-  value = [32mcol_double()[39m,
-  footnotes = [31mcol_character()[39m,
-  source = [31mcol_character()[39m
+  region = col_double(),
+  country = col_character(),
+  year = col_double(),
+  series = col_character(),
+  value = col_double(),
+  footnotes = col_character(),
+  source = col_character()
 )
 ~~~
 {: .output}
@@ -1902,10 +1888,10 @@ gapminder_co2 %>%
 
 
 ~~~
-[90m# A tibble: 2 x 3[39m
+# A tibble: 2 x 3
   region sumTotalPercent sumPopPercent
-  [3m[90m<chr>[39m[23m            [3m[90m<dbl>[39m[23m         [3m[90m<dbl>[39m[23m
-[90m1[39m north             88.2          49.7
-[90m2[39m south             11.8          50.3
+  <chr>            <dbl>         <dbl>
+1 north             88.2          49.7
+2 south             11.8          50.3
 ~~~
 {: .output}
