@@ -375,7 +375,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "2021-01-11"
+[1] "2021-01-12"
 ~~~
 {: .output}
 
@@ -404,7 +404,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "2021-01-11"
+> [1] "2021-01-12"
 > ~~~
 > {: .output}
 > 

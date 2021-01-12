@@ -44,15 +44,19 @@ keypoints:
 
 # Getting Started {#getting-started}
 
+First, navigate to the un-reports directory however you'd like and open `un-report.Rproj`. 
+This should open the un-report R project in RStudio. 
+You can checkt his by seeing if the Files in the bottom right of RStudio are the ones in your `un-report` directory.
+
 Yesterday we spent a lot of time making plots in R using the ggplot2 package. Visualizing data using plots is a very powerful skill in R, but what if we would like to work with only a subset of our data? Or clean up messy data, calculate summary statistics, create a new variable, or join two datasets together? There are several different methods for doing this in R, and we will touch on a few today using functions the `dplyr` package.
 
 First, we will create a new RScript file for our work. Open RStudio. Choose "File" \> "New File" \> "RScript".
 
 ### Loading in the data {#loading-in-the-data}
 
-We will start by importing the complete gapminder dataset that we used yesterday into our fresh new R session. Yesterday we did this using a "point-and-click" commands. Today let's type them into the console ourselves: `gapminder_data <- read_csv("../data/gapminder_data.csv")`
+We will start by importing the complete gapminder dataset that we used yesterday into our fresh new R session. Yesterday we did this using a "point-and-click" commands. Today let's type them into the console ourselves: `gapminder_data <- read_csv("data/gapminder_data.csv")`
 
-> ## Assessment
+> ## Exercise
 >
 > If we look in the console now, we'll see we've received an error message saying that R "could not find the function `read_csv()`". *Hint: Packages...*
 >
@@ -60,7 +64,7 @@ We will start by importing the complete gapminder dataset that we used yesterday
 > >
 > > What this means is that R cannot find the function we are trying to call. The reason for this usually is that we are trying to run a function from a package that we have not yet loaded. This is a very common error message that you will probably see a lot when using R. It's important to remember that you will need to load any packages you want to use into R each time you start a new session. The `read_csv` function comes from the `readr` package which is included in the `tidyverse` package so we will just load the `tidyverse` package and run the import code again. 
 > {: .solution}
-{: .keypoints}
+{: .challenge}
 
 Now that we know what's wrong, We will use the `read_csv()` function from the Tidyverse `readr` package. Load the `tidyverse` package and gapminder dataset using the code below.
 
@@ -104,7 +108,7 @@ Reload your data:
 
 
 ~~~
-gapminder_data <- read_csv("../data/gapminder_data.csv")
+gapminder_data <- read_csv("data/gapminder_data.csv")
 ~~~
 {: .language-r}
 
@@ -213,7 +217,7 @@ Note that you don't have to quotes around this new name as long as it starts wit
 > > {: .output}
 > > {: .source} 
 > {: .solution}
-{: .callout}
+{: .challenge}
 
 ## Narrow down rows with `filter()` {#narrow-down-rows-with-filter}
 
@@ -691,7 +695,7 @@ It's always good to go into data cleaning with a clear goal in mind. Here, we'd 
 
 
 ~~~
-read_csv("../data/co2-un-data.csv")
+read_csv("data/co2-un-data.csv")
 ~~~
 {: .language-r}
 
@@ -744,7 +748,7 @@ The output gives us a warning about missing column names being filled in with th
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=1)
+read_csv("data/co2-un-data.csv", skip=1)
 ~~~
 {: .language-r}
 
@@ -795,12 +799,13 @@ cols(
 Now we get a similar Warning message as before, but the outputted table looks better.
 
 > **Warnings and Errors:**It's important to differentiate between Warnings and Errors in R. A warning tells us, "you might want to know about this issue, but R still did what you asked". An error tells us, "there's something wrong with your code or your data and R didn't do what you asked". You need to fix any errors that arise. Warnings, are probably best to resolve or at least understand why they are coming up.
+{.callout}
 
 We can resolve this warning by one of two methods. First, we can tell `read_csv()` what the column names should be with the `col_names()` argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings.
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=2,
+read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
 ~~~
 {: .language-r}
@@ -846,7 +851,7 @@ As an alternative, we can read in the table, get the warning and then fix the co
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=1) %>%
+read_csv("data/co2-un-data.csv", skip=1) %>%
   rename(country=X2)
 ~~~
 {: .language-r}
@@ -899,7 +904,7 @@ Many data analysts prefer to have their column headings and variable names be in
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=1) %>%
+read_csv("data/co2-un-data.csv", skip=1) %>%
   rename_all(tolower)
 ~~~
 {: .language-r}
@@ -952,7 +957,7 @@ Both of these strategies are useful for helping us to clean up our data. Which y
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=2,
+read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
 ~~~
 {: .language-r}
@@ -998,7 +1003,7 @@ We previously saw how we can subset columns from a data frame using the select f
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=2,
+read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value)
 ~~~
@@ -1045,7 +1050,7 @@ The series column has two methods of quantifying CO2 emissions - "Emissions (tho
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=2,
+read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
@@ -1094,7 +1099,7 @@ Recall that we'd like to have separate columns for the two ways that we CO2 emis
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=2,
+read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
@@ -1144,7 +1149,7 @@ Excellent! The last step before we can join this data frame is to get the most d
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=2,
+read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
@@ -1192,7 +1197,7 @@ It looks like we have data for 140 countries in 2005 and 2010. Let's filter our 
 
 
 ~~~
-read_csv("../data/co2-un-data.csv", skip=2,
+read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
@@ -1244,7 +1249,7 @@ Finally, let's go ahead and assign the output of this code chunk to a variable n
 
 
 ~~~
-co2_emissions <- read_csv("../data/co2-un-data.csv", skip=2,
+co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
                           col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
@@ -1273,6 +1278,7 @@ cols(
 {: .output}
 
 > **Looking at your data:** You can get a look at your data-cleaning hard work by navigating to the **Environment** tab in RStudio and clicking the table icon next to the variable name. Notice when we do this, RStudio automatically runs the `View()` command. We've made a lot of progress!
+{.callout}
 
 # Joining data frames {#joining-data-frames}
 
@@ -1282,7 +1288,7 @@ Now we're ready to join our CO2 emissions data to the gapminder data. Previously
 
 
 ~~~
-gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
+gapminder_data <- read_csv("data/gapminder_data.csv") %>%
   filter(year == 2007 & continent == "Americas") %>%
   select(-year, -continent)
 ~~~
@@ -1429,7 +1435,7 @@ If we look at the co2_emissions data with `View()`, we will see that Bolivia, Un
 
 
 ~~~
-co2_emissions <- read_csv("../data/co2-un-data.csv", skip=2,
+co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
                           col_names=c("region", "country", "year", 
                                       "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
@@ -1492,7 +1498,7 @@ Now we see that our recode enabled the join for all countries in the gapminder, 
 > >
 > > 
 > > ~~~
-> > gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
+> > gapminder_data <- read_csv("data/gapminder_data.csv") %>%
 > > filter(year == 2007 & continent == "Americas") %>%
 > > select(-year, -continent) %>%
 > > mutate(country = recode(country, "Puerto Rico" = "United States")) %>%
@@ -1776,7 +1782,7 @@ We've gone through many steps of cleaning, joining, and analyzing our data. As a
 
 ~~~
 # Load and prepare gapminder data
-gapminder_data <- read_csv("../data/gapminder_data.csv") %>%
+gapminder_data <- read_csv("data/gapminder_data.csv") %>%
   filter(year == 2007 & continent == "Americas") %>%
   select(-year, -continent) %>%
   mutate(country = recode(country, "Puerto Rico" = "United States")) %>%
@@ -1815,7 +1821,7 @@ cols(
 
 ~~~
 # Load and prepare co2 emissions data
-co2_emissions <- read_csv("../data/co2-un-data.csv", skip=2,
+co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
                           col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
