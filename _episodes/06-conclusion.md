@@ -19,7 +19,7 @@ keypoints:
 
 # Where to go from here?: Departing on your own coding journey
 
-![Learning and debugging throughout the data programming process.]({{ page.root }}/fig/fig-next-steps.001.jpeg =600x)
+![Learning and debugging throughout the data programming process.](../fig/fig-next-steps.001.jpeg)
 
 [//]: # (You can use above figure to review the workshop: the blue parts where addressed in the past two days - the three languages/tools, the four data processing steps; the yellow parts are what users will continue to learn as they progress on their programming journey- analytic techniques, debugging code)
 
