@@ -49,7 +49,7 @@ keypoints:
 
 
 > ## Exercise: Why learn to program?
-> In the etherpad, write down why you're interested in learning how to code. 
+> In the etherpad, write down why you're interested in learning how to code.
 > > ## Solution:
 > > There are lots of different reasons, including to perform data analysis and generate figures. I'm sure you have morespecific reasons for why you'd like to learn!
 > {: .solution}
@@ -351,7 +351,7 @@ Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_
 ~~~
 {: .error}
 
-We get an error message. Don't panic! Error messages pop all the time, and can be super helpful in debugging code.
+We get an error message. Don't panic! Error messages pop up all the time, and can be super helpful in debugging code.
 
 In this case, the message tells us "argument "file" is missing, with no default." Many functions, including `read_csv`, require additional pieces of information to do their job. We call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in.
 
@@ -521,7 +521,7 @@ Sometimes it is helpful - or even necessary - to include the argument name, but 
 > {: .source}
 >
 > > ## Solution
-> > One way is using the `read_excel` function in the `readxl` package. There are other ways, but this is our preferred method because the output will be the same as the output of `read_csv`. 
+> > One way is using the `read_excel` function in the `readxl` package. There are other ways, but this is our preferred method because the output will be the same as the output of `read_csv`.
 > {: .solution}
 {: .challenge}
 
@@ -672,34 +672,8 @@ There are also lots of other fun options:
 > > You can use RColorBrewer::display.brewer.all() to pick a color palette. As a bonus, you can also use one of the packages listed above. Here's an example:
 > > 
 > > ~~~
-> > install.packages("wesanderson") # install package from GitHub
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in contrib.url(repos, "source"): trying to use CRAN without setting a mirror
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
+> > #install.packages("wesanderson") # install package from GitHub
 > > library(wesanderson)
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in library(wesanderson): there is no package called 'wesanderson'
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > ggplot(data = gapminder_1997) +
 > > aes(x = gdpPercap) +
 > > labs(x = "GDP Per Capita") +
@@ -712,12 +686,7 @@ There are also lots of other fun options:
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in wes_palette("Cavalcanti1"): could not find function "wes_palette"
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-01-Color-1.png" title="plot of chunk Color" alt="plot of chunk Color" width="612" style="display: block; margin: auto;" />
 > > {: .source}
 > {: .solution}
 {: .challenge}
@@ -925,7 +894,7 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 
 > ## Exercise: More line plots
 > Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007?
-> 
+>
 > > ## Solution
 > > 
 > > ~~~
@@ -1405,17 +1374,18 @@ Sometimes it can be cool (and useful) to create animated graphs, like [this famo
 
 First, we need to install and load the `gganimate` package, which allows us to use ggplot to create animated visuals:
 
+
 ~~~
-install.packages("gganimate")
+install.packages(c("gganimate", "gifski"))
 library(gganimate)
+library(gifski)
 ~~~
 {: .language-r}
 
 > ## Exercise: Reviewing how to create a scatter plot
-<<<<<<< HEAD
-> **Part 1:** 
-> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent. 
-> 
+> **Part 1:**
+> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
+>
 > **Part 1:**
 > Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
 >
@@ -1475,19 +1445,7 @@ Ok, now we're getting somewhere! But right now we're plotting all of the years o
 animatedHansPlot <- staticHansPlot +
   transition_states(year,  transition_length = 1, state_length = 1)+
   ggtitle("{closest_state}")
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in transition_states(year, transition_length = 1, state_length = 1): could not find function "transition_states"
-~~~
-{: .error}
-
-
-
-~~~
 animatedHansPlot
 ~~~
 {: .language-r}
@@ -1495,9 +1453,92 @@ animatedHansPlot
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'animatedHansPlot' not found
+Rendering [--------------------------------------------] at 0.4 fps ~ eta: 4m
+Rendering [>------------------------------------------] at 0.49 fps ~ eta: 3m
+Rendering [>------------------------------------------] at 0.53 fps ~ eta: 3m
+Rendering [=>-----------------------------------------] at 0.46 fps ~ eta: 3m
+Rendering [=>-----------------------------------------] at 0.45 fps ~ eta: 4m
+Rendering [==>----------------------------------------] at 0.46 fps ~ eta: 3m
+Rendering [==>----------------------------------------] at 0.45 fps ~ eta: 3m
+Rendering [===>---------------------------------------] at 0.45 fps ~ eta: 3m
+Rendering [===>---------------------------------------] at 0.47 fps ~ eta: 3m
+Rendering [====>--------------------------------------] at 0.46 fps ~ eta: 3m
+Rendering [====>--------------------------------------] at 0.45 fps ~ eta: 3m
+Rendering [=====>-------------------------------------] at 0.46 fps ~ eta: 3m
+Rendering [=====>-------------------------------------] at 0.47 fps ~ eta: 3m
+Rendering [=====>-------------------------------------] at 0.48 fps ~ eta: 3m
+Rendering [======>-------------------------------------] at 0.5 fps ~ eta: 3m
+Rendering [======>------------------------------------] at 0.51 fps ~ eta: 3m
+Rendering [=======>-----------------------------------] at 0.51 fps ~ eta: 3m
+Rendering [========>-----------------------------------] at 0.5 fps ~ eta: 3m
+Rendering [========>----------------------------------] at 0.51 fps ~ eta: 3m
+Rendering [=========>---------------------------------] at 0.52 fps ~ eta: 2m
+Rendering [=========>---------------------------------] at 0.53 fps ~ eta: 2m
+Rendering [==========>--------------------------------] at 0.53 fps ~ eta: 2m
+Rendering [==========>--------------------------------] at 0.54 fps ~ eta: 2m
+Rendering [===========>-------------------------------] at 0.54 fps ~ eta: 2m
+Rendering [===========>-------------------------------] at 0.55 fps ~ eta: 2m
+Rendering [============>------------------------------] at 0.55 fps ~ eta: 2m
+Rendering [============>------------------------------] at 0.54 fps ~ eta: 2m
+Rendering [=============>-----------------------------] at 0.53 fps ~ eta: 2m
+Rendering [=============>-----------------------------] at 0.54 fps ~ eta: 2m
+Rendering [==============>----------------------------] at 0.55 fps ~ eta: 2m
+Rendering [===============>---------------------------] at 0.54 fps ~ eta: 2m
+Rendering [===============>---------------------------] at 0.55 fps ~ eta: 2m
+Rendering [================>--------------------------] at 0.55 fps ~ eta: 2m
+Rendering [================>--------------------------] at 0.56 fps ~ eta: 2m
+Rendering [=================>-------------------------] at 0.56 fps ~ eta: 2m
+Rendering [=================>-------------------------] at 0.57 fps ~ eta: 2m
+Rendering [==================>------------------------] at 0.57 fps ~ eta: 2m
+Rendering [===================>-----------------------] at 0.57 fps ~ eta: 2m
+Rendering [===================>-----------------------] at 0.58 fps ~ eta: 2m
+Rendering [====================>----------------------] at 0.58 fps ~ eta: 1m
+Rendering [====================>----------------------] at 0.59 fps ~ eta: 1m
+Rendering [=====================>---------------------] at 0.59 fps ~ eta: 1m
+Rendering [======================>---------------------] at 0.6 fps ~ eta: 1m
+Rendering [=======================>--------------------] at 0.6 fps ~ eta: 1m
+Rendering [=======================>-------------------] at 0.61 fps ~ eta: 1m
+Rendering [========================>------------------] at 0.61 fps ~ eta: 1m
+Rendering [=========================>------------------] at 0.6 fps ~ eta: 1m
+Rendering [==========================>-----------------] at 0.6 fps ~ eta: 1m
+Rendering [==========================>----------------] at 0.59 fps ~ eta: 1m
+Rendering [===========================>---------------] at 0.59 fps ~ eta: 1m
+Rendering [============================>--------------] at 0.59 fps ~ eta: 1m
+Rendering [=============================>-------------] at 0.59 fps ~ eta: 1m
+Rendering [==============================>-------------] at 0.6 fps ~ eta: 49s
+Rendering [===============================>------------] at 0.6 fps ~ eta: 47s
+Rendering [===============================>------------] at 0.6 fps ~ eta: 45s
+Rendering [================================>-----------] at 0.6 fps ~ eta: 43s
+Rendering [===============================>-----------] at 0.61 fps ~ eta: 41s
+Rendering [================================>----------] at 0.61 fps ~ eta: 39s
+Rendering [================================>----------] at 0.61 fps ~ eta: 38s
+Rendering [=================================>---------] at 0.61 fps ~ eta: 36s
+Rendering [=================================>---------] at 0.61 fps ~ eta: 34s
+Rendering [=================================>---------] at 0.62 fps ~ eta: 33s
+Rendering [==================================>--------] at 0.62 fps ~ eta: 31s
+Rendering [==================================>--------] at 0.62 fps ~ eta: 29s
+Rendering [===================================>-------] at 0.62 fps ~ eta: 28s
+Rendering [===================================>-------] at 0.61 fps ~ eta: 26s
+Rendering [====================================>------] at 0.61 fps ~ eta: 24s
+Rendering [====================================>------] at 0.61 fps ~ eta: 23s
+Rendering [====================================>------] at 0.61 fps ~ eta: 21s
+Rendering [=====================================>-----] at 0.61 fps ~ eta: 20s
+Rendering [=====================================>-----] at 0.61 fps ~ eta: 18s
+Rendering [======================================>----] at 0.62 fps ~ eta: 16s
+Rendering [======================================>----] at 0.62 fps ~ eta: 15s
+Rendering [=======================================>---] at 0.62 fps ~ eta: 13s
+Rendering [=======================================>---] at 0.62 fps ~ eta: 11s
+Rendering [=======================================>---] at 0.62 fps ~ eta: 10s
+Rendering [========================================>--] at 0.62 fps ~ eta: 8s
+Rendering [========================================>--] at 0.63 fps ~ eta: 6s
+Rendering [=========================================>-] at 0.63 fps ~ eta: 5s
+Rendering [=========================================>-] at 0.63 fps ~ eta: 3s
+Rendering [==========================================>] at 0.63 fps ~ eta: 2s
+Rendering [===========================================] at 0.63 fps ~ eta: 0s
 ~~~
-{: .error}
+{: .output}
+
+<img src="fig/rmd-01-hansGraphAnimated-1.gif" title="plot of chunk hansGraphAnimated" alt="plot of chunk hansGraphAnimated" style="display: block; margin: auto;" />
 
 Awesome! This is looking sweet! Let's make sure we understand the code above:
 1. The first argument of the `transition_states()` function tells `ggplot()` which variable should be different in each frame of our animation: in this case, we want each frame to be a different `year`.
@@ -1506,18 +1547,14 @@ Awesome! This is looking sweet! Let's make sure we understand the code above:
 
 So we've made this cool animated plot - how do we save it? For `gganimate` objects, we can use the `anim_save()` function. It works just like `ggsave()`, but for animated objects.
 
+<!-- TODO: mention renderer / save_animation options -->
 
 ~~~
-anim_save("hansAnimatedPlot.gif", plot = animatedHansPlot)
+anim_save("hansAnimatedPlot.gif", 
+          plot = animatedHansPlot,
+          renderer = gifski_renderer())
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in anim_save("hansAnimatedPlot.gif", plot = animatedHansPlot): could not find function "anim_save"
-~~~
-{: .error}
 
 
 ## Glossary of terms
@@ -1542,22 +1579,9 @@ mapdata <- map_data("world") %>%
   mutate(region = recode(region,
                          USA="United States",
                          UK="United Kingdom"))
-~~~
-{: .language-r}
 
-
-
-~~~
-Error:   Package `maps` required for `map_data`.
-  Please install and try again.
-~~~
-{: .error}
-
-
-
-~~~
 #install.packages("mapproj")
-gapminder %>% filter(year==2007) %>%
+gapminder_data %>% filter(year==2007) %>%
   ggplot() +
   geom_map(aes(map_id=country, fill=lifeExp), map=mapdata) +
   expand_limits(x = mapdata$long, y = mapdata$lat) +
@@ -1566,10 +1590,5 @@ gapminder %>% filter(year==2007) %>%
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in filter(., year == 2007): object 'gapminder' not found
-~~~
-{: .error}
+<img src="../fig/rmd-01-mapPlots-1.png" title="plot of chunk mapPlots" alt="plot of chunk mapPlots" width="612" style="display: block; margin: auto;" />
 

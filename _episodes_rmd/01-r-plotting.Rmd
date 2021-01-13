@@ -53,7 +53,7 @@ set.seed(20210109)
 
 
 > ## Exercise: Why learn to program?
-> In the etherpad, write down why you're interested in learning how to code. 
+> In the etherpad, write down why you're interested in learning how to code.
 > > ## Solution:
 > > There are lots of different reasons, including to perform data analysis and generate figures. I'm sure you have morespecific reasons for why you'd like to learn!
 > {: .solution}
@@ -302,7 +302,7 @@ The next part of the command is `read_csv("gapminder_1997.csv")`. This has a few
 read_csv()
 ```
 
-We get an error message. Don't panic! Error messages pop all the time, and can be super helpful in debugging code.
+We get an error message. Don't panic! Error messages pop up all the time, and can be super helpful in debugging code.
 
 In this case, the message tells us "argument "file" is missing, with no default." Many functions, including `read_csv`, require additional pieces of information to do their job. We call these additional values "arguments" or "parameters." You pass **arguments** to a function by placing values in between the parenthesis. A function takes in these arguments and does a bunch of "magic" behind the scenes to output something we're interested in.
 
@@ -383,7 +383,7 @@ Sometimes it is helpful - or even necessary - to include the argument name, but 
 > {: .source}
 >
 > > ## Solution
-> > One way is using the `read_excel` function in the `readxl` package. There are other ways, but this is our preferred method because the output will be the same as the output of `read_csv`. 
+> > One way is using the `read_excel` function in the `readxl` package. There are other ways, but this is our preferred method because the output will be the same as the output of `read_csv`.
 > {: .solution}
 {: .challenge}
 
@@ -501,7 +501,7 @@ There are also lots of other fun options:
 > > ## Solution
 > > You can use RColorBrewer::display.brewer.all() to pick a color palette. As a bonus, you can also use one of the packages listed above. Here's an example:
 > > ```{r Color}
-> > install.packages("wesanderson") # install package from GitHub
+> > #install.packages("wesanderson") # install package from GitHub
 > > library(wesanderson)
 > > ggplot(data = gapminder_1997) +
 > > aes(x = gdpPercap) +
@@ -601,7 +601,7 @@ To start, we will read in the data without using the interactive RStudio file na
 
 ```{r ImportFullDataSolutionEval, echo = FALSE}
 # required for below code chunks to work.
-# currently, gapminder isn't in a data folder on learners' machines 
+# currently, gapminder isn't in a data folder on learners' machines
 # because they haven't done the unix lesson yet.
 gapminder_data <- read_csv("data/gapminder_data.csv")
 ```
@@ -682,7 +682,7 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 
 > ## Exercise: More line plots
 > Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007?
-> 
+>
 > > ## Solution
 > > ```{r gapminderMoreLines}
 > > ggplot(data = gapminder_data) +
@@ -1034,16 +1034,20 @@ _[Back to top](#contents)_
 Sometimes it can be cool (and useful) to create animated graphs, like [this famous one](https://www.youtube.com/watch?v=FTu4dDHpfdU&feature=youtu.be) by Hans Rosling using the Gapminder dataset that plots GDP vs. Life Expectancy over time. Let's try to recreate this plot!
 
 First, we need to install and load the `gganimate` package, which allows us to use ggplot to create animated visuals:
-```{r installGGanimate, eval=FALSE}
-install.packages("gganimate")
-library(gganimate)
-```
 
+```{r installGGanimate, eval=FALSE}
+install.packages(c("gganimate", "gifski"))
+library(gganimate)
+library(gifski)
+```
+```{r loadGGanimate, echo=FALSE, eval=TRUE}
+library(gganimate)
+library(gifski)
+```
 > ## Exercise: Reviewing how to create a scatter plot
-<<<<<<< HEAD
-> **Part 1:** 
-> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent. 
-> 
+> **Part 1:**
+> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
+>
 > **Part 1:**
 > Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
 >
@@ -1101,8 +1105,11 @@ Awesome! This is looking sweet! Let's make sure we understand the code above:
 
 So we've made this cool animated plot - how do we save it? For `gganimate` objects, we can use the `anim_save()` function. It works just like `ggsave()`, but for animated objects.
 
+<!-- TODO: mention renderer / save_animation options -->
 ```{r, saveAnim}
-anim_save("hansAnimatedPlot.gif", plot = animatedHansPlot)
+anim_save("hansAnimatedPlot.gif", 
+          plot = animatedHansPlot,
+          renderer = gifski_renderer())
 ```
 
 
@@ -1129,7 +1136,7 @@ mapdata <- map_data("world") %>%
                          UK="United Kingdom"))
 
 #install.packages("mapproj")
-gapminder %>% filter(year==2007) %>%
+gapminder_data %>% filter(year==2007) %>%
   ggplot() +
   geom_map(aes(map_id=country, fill=lifeExp), map=mapdata) +
   expand_limits(x = mapdata$long, y = mapdata$lat) +
