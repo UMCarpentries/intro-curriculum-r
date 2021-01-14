@@ -451,16 +451,16 @@ $ cd ~/Desktop/un-report
 ```
 {: .language-bash}
 
-Let's create a file called `README.md`. We'll write some notes about the plot we
+Let's create a file called `notes.txt`. We'll write some notes about the plot we
 have made so far -- later we'll add more details about the project. We'll use
 `nano` to edit the file; you can use whatever text editor you like.
 
 ```
-$ nano README.md
+$ nano notes.txt
 ```
 {: .language-bash}
 
-Type the text below into the `README.md` file:
+Type the text below into the `notes.txt` file:
 
 ```
 We plotted life expectancy over time.
@@ -475,15 +475,15 @@ $ ls
 {: .language-bash}
 
 ```
-README.md
+notes.txt
 ```
 {: .output}
 
 
-`README.md` contains a single line, which we can see by running:
+`notes.txt` contains a single line, which we can see by running:
 
 ```
-$ cat README.md
+$ cat notes.txt
 ```
 {: .language-bash}
 
@@ -508,7 +508,7 @@ No commits yet
 Untracked files:
    (use "git add <file>..." to include in what will be committed)
 
-	README.md
+	notes.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
@@ -519,7 +519,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ```
-$ git add README.md
+$ git add notes.txt
 ```
 {: .language-bash}
 
@@ -538,12 +538,12 @@ No commits yet
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   README.md
+	new file:   notes.txt
 
 ```
 {: .output}
 
-Git now knows that it's supposed to keep track of `README.md`,
+Git now knows that it's supposed to keep track of `notes.txt`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
@@ -556,7 +556,7 @@ $ git commit -m "Start notes on analysis"
 ```
 [master (root-commit) f22b25e] Start notes on analysis
  1 file changed, 1 insertion(+)
- create mode 100644 README.md
+ create mode 100644 notes.txt
 ```
 {: .output}
 
@@ -618,7 +618,7 @@ and the log message Git was given when the commit was created.
 
 > ## Where Are My Changes?
 >
-> If we run `ls` at this point, we will still see just one file called `README.md`.
+> If we run `ls` at this point, we will still see just one file called `notes.txt`.
 > That's because Git saves information about files' history
 > in the special `.git` directory mentioned earlier
 > so that our filesystem doesn't become cluttered
@@ -630,8 +630,8 @@ Now suppose Riley adds more information to the file.
 you may use a different editor, and don't need to `cat`.)
 
 ```
-$ nano README.md
-$ cat README.md
+$ nano notes.txt
+$ cat notes.txt
 ```
 {: .language-bash}
 
@@ -655,7 +655,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   README.md
+	modified:   notes.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -678,10 +678,10 @@ $ git diff
 {: .language-bash}
 
 ```
-diff --git a/README.md b/README.md
+diff --git a/notes.txt b/notes.txt
 index df0654a..315bf3a 100644
---- a/README.md
-+++ b/README.md
+--- a/notes.txt
++++ b/notes.txt
 @@ -1 +1,2 @@
  We plotted life expectancy over time.
 +Each point represents a country.
@@ -718,7 +718,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   README.md
+	modified:   notes.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -729,7 +729,7 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ```
-$ git add README.md
+$ git add notes.txt
 $ git commit -m "Add information on points"
 ```
 {: .language-bash}
@@ -787,8 +787,8 @@ First,
 we'll add another line to the file:
 
 ```
-$ nano README.md
-$ cat README.md
+$ nano notes.txt
+$ cat notes.txt
 ```
 {: .language-bash}
 
@@ -805,10 +805,10 @@ $ git diff
 {: .language-bash}
 
 ```
-diff --git a/README.md b/README.md
+diff --git a/notes.txt b/notes.txt
 index 315bf3a..b36abfd 100644
---- a/README.md
-+++ b/README.md
+--- a/notes.txt
++++ b/notes.txt
 @@ -1,2 +1,3 @@
  We plotted life expectancy over time.
  Each point represents a country.
@@ -823,7 +823,7 @@ Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ```
-$ git add README.md
+$ git add notes.txt
 $ git diff
 ```
 {: .language-bash}
@@ -841,10 +841,10 @@ $ git diff --staged
 {: .language-bash}
 
 ```
-diff --git a/README.md b/README.md
+diff --git a/notes.txt b/notes.txt
 index 315bf3a..b36abfd 100644
---- a/README.md
-+++ b/README.md
+--- a/notes.txt
++++ b/notes.txt
 @@ -1,2 +1,3 @@
  We plotted life expectancy over time.
  Each point represents a country.
@@ -1047,10 +1047,10 @@ repository (`git commit`):
 > ## Choosing a Commit Message
 >
 > Which of the following commit messages would be most appropriate for the
-> last commit made to `README.md`?
+> last commit made to `notes.txt`?
 >
 > 1. "Changes"
-> 2. "Added line 'Continents are grouped by color.' to README.md"
+> 2. "Added line 'Continents are grouped by color.' to notes.txt"
 > 3. "Describe grouping"
 >
 > > ## Solution
@@ -1098,7 +1098,7 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `README.md` noting your decision
+> 1. Add some text to `notes.txt` noting your decision
 > to consider writing a manuscript.
 > 2. Create a new file `manuscript.txt` with your initial thoughts.
 > 3. Add changes from both files to the staging area,
@@ -1106,10 +1106,10 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > First we make our changes to the `README.md` and `manuscript.txt` files:
+> > First we make our changes to the `notes.txt` and `manuscript.txt` files:
 > > ```
-> > $ nano README.md
-> > $ cat README.md
+> > $ nano notes.txt
+> > $ cat notes.txt
 > > ```
 > > {: .language-bash}
 > > ```
@@ -1128,12 +1128,12 @@ repository (`git commit`):
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ```
-> > $ git add README.md manuscript.txt
+> > $ git add notes.txt manuscript.txt
 > > ```
 > > {: .language-bash}
 > > Or with multiple commands:
 > > ```
-> > $ git add README.md
+> > $ git add notes.txt
 > > $ git add manuscript.txt
 > > ```
 > > {: .language-bash}
@@ -1218,13 +1218,13 @@ As we saw in the previous lesson, we can refer to commits by their
 identifiers.  You can refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
-We've been adding one line at a time to `README.md`, so it's easy to track our
+We've been adding one line at a time to `notes.txt`, so it's easy to track our
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
-let's make a change to `README.md`, adding yet another line.
+let's make a change to `notes.txt`, adding yet another line.
 
 ```
-$ nano README.md
-$ cat README.md
+$ nano notes.txt
+$ cat notes.txt
 ```
 {: .language-bash}
 
@@ -1239,15 +1239,15 @@ An ill-considered change.
 Now, let's see what we get.
 
 ```
-$ git diff HEAD README.md
+$ git diff HEAD notes.txt
 ```
 {: .language-bash}
 
 ```
-diff --git a/README.md b/README.md
+diff --git a/notes.txt b/notes.txt
 index b36abfd..0848c8d 100644
---- a/README.md
-+++ b/README.md
+--- a/notes.txt
++++ b/notes.txt
 @@ -1,3 +1,4 @@
  We plotted life expectancy over time.
  Each point represents a country.
@@ -1263,7 +1263,7 @@ that by adding `~1`
 to refer to the commit one before `HEAD`.
 
 ```
-$ git diff HEAD~1 README.md
+$ git diff HEAD~1 notes.txt
 ```
 {: .language-bash}
 
@@ -1271,15 +1271,15 @@ If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
 ```
-$ git diff HEAD~3 README.md
+$ git diff HEAD~3 notes.txt
 ```
 {: .language-bash}
 
 ```
-diff --git a/README.md b/README.md
+diff --git a/notes.txt b/notes.txt
 index df0654a..b36abfd 100644
---- a/README.md
-+++ b/README.md
+--- a/notes.txt
++++ b/notes.txt
 @@ -1 +1,4 @@
  We plotted life expectancy over time.
 +Each point represents a country.
@@ -1293,7 +1293,7 @@ well as the commit message, rather than the _differences_ between a commit and o
 working directory that we see by using `git diff`.
 
 ```
-$ git show HEAD~3 README.md
+$ git show HEAD~3 notes.txt
 ```
 {: .language-bash}
 
@@ -1304,11 +1304,11 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 
     Make a change that I'll regret later
 
-diff --git a/README.md b/README.md
+diff --git a/notes.txt b/notes.txt
 new file mode 100644
 index 0000000..df0654a
 --- /dev/null
-+++ b/README.md
++++ b/notes.txt
 @@ -0,0 +1 @@
 +We plotted life expectancy over time.
 ```
@@ -1334,15 +1334,15 @@ Our first commit was given the ID
 so let's try this:
 
 ```
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b README.md
+$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b notes.txt
 ```
 {: .language-bash}
 
 ```
-diff --git a/README.md b/README.md
+diff --git a/notes.txt b/notes.txt
 index df0654a..93a3e13 100644
---- a/README.md
-+++ b/README.md
+--- a/notes.txt
++++ b/notes.txt
 @@ -1 +1,4 @@
  We plotted life expectancy over time.
 +Each point represents a country.
@@ -1356,15 +1356,15 @@ but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters (typically seven for normal size projects):
 
 ```
-$ git diff f22b25e README.md
+$ git diff f22b25e notes.txt
 ```
 {: .language-bash}
 
 ```
-diff --git a/README.md b/README.md
+diff --git a/notes.txt b/notes.txt
 index df0654a..93a3e13 100644
---- a/README.md
-+++ b/README.md
+--- a/notes.txt
++++ b/notes.txt
 @@ -1 +1,4 @@
  We plotted life expectancy over time.
 +Each point represents a country.
@@ -1377,7 +1377,7 @@ All right! So
 we can save changes to files and see what we've changed. Now, how
 can we restore older versions of things?
 Let's suppose we change our mind about the last update to
-`README.md` (the "ill-considered change").
+`notes.txt` (the "ill-considered change").
 
 `git status` now tells us that the file has been changed,
 but those changes haven't been staged:
@@ -1393,7 +1393,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-    modified:   README.md
+    modified:   notes.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -1403,8 +1403,8 @@ We can put things back the way they were
 by using `git checkout`:
 
 ```
-$ git checkout HEAD README.md
-$ cat README.md
+$ git checkout HEAD notes.txt
+$ cat notes.txt
 ```
 {: .language-bash}
 
@@ -1424,12 +1424,12 @@ If we want to go back even further,
 we can use a commit identifier instead:
 
 ```
-$ git checkout f22b25e README.md
+$ git checkout f22b25e notes.txt
 ```
 {: .language-bash}
 
 ```
-$ cat README.md
+$ cat notes.txt
 ```
 {: .language-bash}
 
@@ -1448,7 +1448,7 @@ On branch master
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
-    modified:   README.md
+    modified:   notes.txt
 
 ```
 {: .output}
@@ -1458,7 +1458,7 @@ Again, we can put things back the way they were
 by using `git checkout`:
 
 ```
-$ git checkout HEAD README.md
+$ git checkout HEAD notes.txt
 ```
 {: .language-bash}
 
@@ -1467,14 +1467,14 @@ $ git checkout HEAD README.md
 > Above we used
 >
 > ```
-> $ git checkout f22b25e README.md
+> $ git checkout f22b25e notes.txt
 > ```
 > {: .language-bash}
 >
-> to revert `README.md` to its state after the commit `f22b25e`. But be careful!
+> to revert `notes.txt` to its state after the commit `f22b25e`. But be careful!
 > The command `checkout` has other important functionalities and Git will misunderstand
 > your intentions if you are not accurate with the typing. For example,
-> if you forget `README.md` in the previous command.
+> if you forget `notes.txt` in the previous command.
 >
 > ```
 > $ git checkout f22b25e
@@ -1670,21 +1670,21 @@ moving backward and forward in time becomes much easier.
 
 > ## Checking Understanding of `git diff`
 >
-> Consider this command: `git diff HEAD~3 README.md`. What do you predict this command
+> Consider this command: `git diff HEAD~3 notes.txt`. What do you predict this command
 > will do if you execute it? What happens when you do execute it? Why?
 >
 > > ## Solution
-> > The diff will show the difference between the current version of README.md
+> > The diff will show the difference between the current version of notes.txt
 > > and the version that existed 3 commits ago.
 > {: .solution}
 >
-> Try another command, `git diff [ID] README.md`, where [ID] is replaced with
+> Try another command, `git diff [ID] notes.txt`, where [ID] is replaced with
 > the unique identifier for your most recent commit. What do you think will happen,
 > and what does happen?
 >
 > > ## Solution
 > >
-> > The diff will show the difference between the current version of README.md
+> > The diff will show the difference between the current version of notes.txt
 > > and the version that exited in the commit from [ID].
 > {: .solution}
 {: .challenge}
@@ -1693,14 +1693,14 @@ moving backward and forward in time becomes much easier.
 >
 > `git checkout` can be used to restore a previous commit when unstaged changes have
 > been made, but will it also work for changes that have been staged but not committed?
-> Make a change to `README.md`, add that change, and use `git checkout` to see if
+> Make a change to `notes.txt`, add that change, and use `git checkout` to see if
 > you can remove your change.
 >
 > > ## Solution
 > >
-> > `git checkout README.md` does not work for this purpose.
+> > `git checkout notes.txt` does not work for this purpose.
 > > Instead, use the restore command with the staged flag:
-> > `git restore --staged README.md`
+> > `git restore --staged notes.txt`
 > {: .solution}
 {: .challenge}
 
@@ -1710,15 +1710,15 @@ moving backward and forward in time becomes much easier.
 > the right commit ID, especially if the commit is from several months ago.
 >
 > Imagine the `analysis` project has more than 50 files.
-> You would like to find a commit that modifies some specific text in `README.md`.
+> You would like to find a commit that modifies some specific text in `notes.txt`.
 > When you type `git log`, a very long list appeared.
 > How can you narrow down the search?
 >
 > Recall that the `git diff` command allows us to explore one specific file,
-> e.g., `git diff README.md`. We can apply a similar idea here.
+> e.g., `git diff notes.txt`. We can apply a similar idea here.
 >
 > ```
-> $ git log README.md
+> $ git log notes.txt
 > ```
 > {: .language-bash}
 >
@@ -1730,7 +1730,7 @@ moving backward and forward in time becomes much easier.
 > Is it possible to combine both? Let's try the following:
 >
 > ```
-> $ git log --patch README.md
+> $ git log --patch notes.txt
 > ```
 > {: .language-bash}
 >
@@ -1793,7 +1793,7 @@ $ git init
 {: .language-bash}
 
 If you remember back to the earlier [lesson]({{ page.root }}/04-changes/) where we added and
-committed our earlier work on `README.md`, we had a diagram of the local repository
+committed our earlier work on `notes.txt`, we had a diagram of the local repository
 which looked like this:
 
 ![The Local Repository with Git Staging Area]({{ page.root }}/fig/git/git-staging-area.svg)
@@ -1802,7 +1802,7 @@ Now that we have two repositories, we need a diagram like this:
 
 ![Freshly-Made GitHub Repository]({{ page.root }}/fig/git/git-freshly-made-github-repo.svg)
 
-Note that our local repository still contains our earlier work on `README.md`, but the
+Note that our local repository still contains our earlier work on `notes.txt`, but the
 remote repository on GitHub appears empty as it doesn't contain any files yet.
 
 The next step is to connect the two repositories.  We do this by making the
@@ -1943,12 +1943,12 @@ GitHub, though, this command would download them to our local repository.
 > ## GitHub License and README files
 >
 > In this section we learned about creating a remote repository on GitHub, but when you initialized
-> your GitHub repo, you didn't add a README.md or a license file. If you had, what do you think
+> your GitHub repo, you didn't add a readme or a license file. If you had, what do you think
 > would have happened when you tried to link your local and remote repositories?
 >
 > > ## Solution
 > > In this case, we'd see a merge conflict due to unrelated histories. When GitHub creates a
-> > README.md file, it performs a commit in the remote repository. When you try to pull the remote
+> > readme file, it performs a commit in the remote repository. When you try to pull the remote
 > > repository to your local repository, Git detects that they have histories that do not share a
 > > common origin and refuses to merge.
 > > ```
@@ -1981,9 +1981,9 @@ GitHub, though, this command would download them to our local repository.
 > > From https://github.com/USERNAME/un-report
 > >  * branch            master     -> FETCH_HEAD
 > > Merge made by the 'recursive' strategy.
-> > README.md | 1 +
+> > notes.txt | 1 +
 > > 1 file changed, 1 insertion(+)
-> > create mode 100644 README.md
+> > create mode 100644 notes.txt
 > > ```
 > > {: .output}
 > >
@@ -2032,8 +2032,8 @@ exactly the same way as we've been doing before:
 
 ```
 $ cd ~/Desktop/USERNAME-un-report
-$ nano README.md
-$ cat README.md
+$ nano notes.txt
+$ cat notes.txt
 ```
 {: .language-bash}
 
@@ -2048,14 +2048,14 @@ Dependencies:
 {: .output}
 
 ```
-$ git add README.md
+$ git add notes.txt
 $ git commit -m "List dependencies"
 ```
 {: .language-bash}
 
 ```
  1 file changed, 1 insertion(+)
- create mode 100644 README.md
+ create mode 100644 notes.txt
 ```
 {: .output}
 
@@ -2104,9 +2104,9 @@ From https://github.com/USERNAME/un-report
    9272da5..29aba7c  master     -> origin/master
 Updating 9272da5..29aba7c
 Fast-forward
- README.md | 1 +
+ notes.txt | 1 +
  1 file changed, 1 insertion(+)
- create mode 100644 README.md
+ create mode 100644 notes.txt
 ```
 {: .output}
 
