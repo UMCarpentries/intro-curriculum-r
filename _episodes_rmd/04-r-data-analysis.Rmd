@@ -278,6 +278,18 @@ gapminder_data %>%
 
 This will add a new column called "gdp" to our data. We use the column names as if they were regular values that we want to perform mathematical operations on and provide the name in front of an equals sign like we have done with `summarize()`
 
+> Exercise: `mutate()`
+> We can also multiply by constants or other numbers using mutate - remember how in the plotting lesson we made a plot with population in millions? Try making a new column for this dataframe called popInMillions that is the population in million. 
+> 
+> > Solution: 
+> > ```{r mutateExercise}  
+> > gapminder_data %>%  
+> > mutate(gdp = pop * gdpPercap, popInMillions = pop / 1000000)  
+> > ```  
+> {: .solution}
+{: .challenge}
+ 
+
 ## Subset columns using `select()` {#subset-columns-using-select}
 
 [*Back to top*](#contents)
@@ -289,19 +301,38 @@ gapminder_data %>%
   select(pop, year)
 ```
 
+We can also use `select()` to drop/remove particular columns by putting a minus sign (`-`) in front of the column name. For example, if we want everything but the continent column, we can do:
+
+```{r GapSelectDrop}
+gapminder_data %>%
+  select(-continent)
+```
+
+> Exercise: selecting columns 
+> Create a dataframe with only the `country`, `continent`, `year`, and `lifeExp` columns. 
+> 
+> > Solution: 
+> > There are multiple ways to do this exercise. Here are two different possibilities. 
+> > 
+> > ```{r selectExerciseOption1}
+> > gapminder_data %>%
+> >   select(country, continent, year, lifeExp)
+> > ```
+> > ```{r selectExerciseOption2}
+> > gapminder_data %>%
+> >   select(-pop, -gdpPercap)
+> > ```
+> {: .solution}
+{: .challenge}
+
+
 The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
 
 ```{r GapSelectFancy}
 gapminder_data %>%
   select(year, starts_with("c"))
 ```
-
-This returns just the three columns we are interested in. We can also use `select()` to drop/remove particular columns by putting a minus sign (`-`) in front of the column name. For example, if we want everything but the continent column, we can do:
-
-```{r GapSelectDrop}
-gapminder_data %>%
-  select(-continent)
-```
+This returns just the three columns we are interested in. 
 
 > ## Exercise: Using `select()` with a helper function
 >
@@ -429,13 +460,19 @@ read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
 ```
 
-We previously saw how we can subset columns from a data frame using the select function. Let's get the country, year, series, and value columns:
+We previously saw how we can subset columns from a data frame using the select function. There are a lot of columns with extraneous information in this dataset, let's subset out the columns we are interested in. 
 
-```{r CleanEmissionsSelect}
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-  select(country, year, series, value)
-```
+> Exercise: reviewing selecting columns
+> Select the country, year, series, and value columns from our dataset. 
+> 
+> > Solution: 
+> > ```{r CleanEmissionsSelect}
+> > read_csv("data/co2-un-data.csv", skip=2,
+> >          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> >   select(country, year, series, value)
+> > ```
+> {: .solution}
+{: .challenge}
 
 The series column has two methods of quantifying CO2 emissions - "Emissions (thousand metric tons of carbon dioxide)" and "Emissions per capita (metric tons of carbon dioxide)". Those are long titles that we'd like to shorten to make them easier to work with. We can shorten them to "total" and "per_capita" using the recode function. We need to do this within the mutate function where we will mutate the series column. The syntax in the recode function is to tell recode which column we want to recode and then what the old value (e.g. "Emissions (thousand metric tons of carbon dioxide)") should equal after recoding (e.g. "total").
 
