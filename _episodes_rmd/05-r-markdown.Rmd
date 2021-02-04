@@ -203,12 +203,12 @@ Amazing! We've created a report! Let's push this to GitHub to make sure we prese
 
 Now, all we need to do is commit our new report to git version control and update our remote repository using Git.
 
-Returning to the command line, type
-`git status` ##to get an idea of which files just changed
-`git add <filename(s)>` ##to add any file(s) that you just created and that you would like to version control
-`git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
-`git push` ##to upload your changes to the git directory on the remote server
-
+Returning to the command line, 
+First, we will check the status of our repository with the `git status`. This will tell us which files just changed.  
+Next, we will add the new files that we want tracked by git up with `git add <filename(s)>`.  This adds any file(s) we list to version control.  
+Then we commit the file or changes with `git commit -m "<your commit message>"` and we add a message with the commit to describe the changes you are committing and it adds them to the git log.  
+Now, we can push those changes from our local computer to our github repo with `git push`. This will upload the changes to the git directory on the remote server.  
+If you don't remember how to do this, you can review the [git lesson](_episodes/03-intro-git-github.md).
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
 
