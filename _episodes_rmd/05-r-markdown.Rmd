@@ -299,7 +299,12 @@ This is useful if we are reporting a few values, but can get tedious for larger 
 ```{r,comment=NA,echo=F,collapse=T}
 gapminder_1997 %>%
   filter(continent == "Oceania") %>%
-  kable())
+  knitr::kable())
+  # kable is from the knitr package. Since we are only using this one function we
+  # can call it directly from the package with :: instead of using library(knitr)
+  # which will load in all the functions. Either method of accessing the function
+  # will not have a noticable effect but is useful to know about in the case there
+  # are two packages with a function by the same name.
 ```
 Which will render like this:
 ![](../fig/r-markdown/kable_table.png)
