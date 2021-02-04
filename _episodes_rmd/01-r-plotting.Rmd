@@ -46,14 +46,13 @@ set.seed(20210109)
     + [Univariate plots](#univariate-plots)
     + [Plot themes](#plot-themes)
     + [Saving plots](#saving-plots)
-1. [Bonus topics: Creating complex plots](#bonus-topics:-creating-complex-plots)
-    + [Facets](#facets)
-    + [Animated plots](#animated-plots)
+1. [Bonus topics!] 
+    + [Creating complex plots](#bonus-topics:-creating-complex-plots)
+      + [Animated plots](#animated-plots)
 1. [Glossary of terms](#glossary-of-terms)
 
-
-> ## Exercise: Why learn to program?
-> In the etherpad, write down why you're interested in learning how to code.
+> ## Bonus: why learn to program?
+> Share why you're interested in learning how to code.
 > > ## Solution:
 > > There are lots of different reasons, including to perform data analysis and generate figures. I'm sure you have morespecific reasons for why you'd like to learn!
 > {: .solution}
@@ -81,8 +80,7 @@ To run R, all you really need is the R program, which is available for computers
 
 To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
-> ## Exercise
-> Can you think of a reason you might not want to use RStudio?
+> Bonus Exercise: Can you think of a reason you might not want to use RStudio?
 >
 > > ## Solution:
 > > On some high-performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](https://arc-ts.umich.edu/greatlakes/user-guide/#document-3) to run RStudio on Great Lakes.
@@ -238,12 +236,9 @@ Let's take a closer look at the parts of this command.
 
 Starting from the left, the first thing we see is `gapminder_1997`. We viewed the contents of this file after it was imported so we know that `gapminder_1997` acts as a placeholder for a table of data.
 
-> ## Exercise: Running parts of our code
-> If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
-> > ## Solution
-> > We see a data table outputted, similar to what we saw in the Viewer tab.
-> {: .solution}
-{: .challenge}
+If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
+
+We should see a data table outputted, similar to what we saw in the Viewer tab.
 
 In R terms, `gapminder_1997` is a named **object** that references or stores something. In this case, `gapminder_1997` stores a specific table of data.
 
@@ -280,7 +275,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > - Be consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. One popular style guide can be found through the [tidyverse](https://style.tidyverse.org/).
 {: .solution}
 
-> ## Challenge (optional): Bad names for objects
+> ## Bonus Exercise: Bad names for objects
 > Try to assign values to some new objects. What do you notice? After running all four lines of code bellow, what value do you think the object `Flower` holds?
 >
 > ```{r BadObjects, eval = FALSE}
@@ -494,7 +489,7 @@ There are also lots of other fun options:
 - [LaCroix](https://github.com/johannesbjork/LaCroixColoR)
 - [Wes Anderson](https://github.com/karthik/wesanderson)
 
-> ## Exercise: Changing colors
+> ## Bonus Exercise: Changing colors
 > Play around with different color palettes. Feel free to install another package and choose one of those if you want. Pick your favorite!
 > {: .source}
 >
@@ -680,7 +675,7 @@ Hmm. This doesn't look right. By setting the color value, we got a line for each
 
 Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
 
-> ## Exercise: More line plots
+> ## Bonus Exercise: More line plots
 > Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007?
 >
 > > ## Solution
@@ -692,7 +687,6 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 > > (China and India are the two Asian countries that have experience massive population growth from 1952-2007.)
 > {: .solution}
 {: .challenge}
-
 
 ## Discrete Plots
 _[Back to top](#contents)_
@@ -755,21 +749,16 @@ ggplot(data = gapminder_1997) +
 
 Be aware that these movements are random so your plot will look a bit different each time you run it!
 
-> ## Exercise: Ordering `ggplot` layers
-> Try switching the order of `geom_violin` and `geom_jitter`. What happens? Why?
->
-> > ## Solution:
-> >
-> >```{r GapViolinJitterSolution}
-> > ggplot(data = gapminder_1997) +
-> >  aes(x = continent, y = lifeExp) +
-> >  geom_jitter() +
-> >  geom_violin()
-> >```
-> >
-> > Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points.
->{: .solution}
-{: .challenge}
+Now let's try switching the order of `geom_violin` and `geom_jitter`. What happens? Why?
+
+```{r GapViolinJitterLayers}
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_jitter() +
+  geom_violin()
+```
+
+Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points.
 
 Note that each layer can have it's own set of aesthetic mappings. So far we've been using `aes()` outside of the other functions. When we do this, we are setting the "default" aesthetic mappings for the plot. We could do the same thing by passing the values to the `ggplot()` function call as is sometimes more common:
 
@@ -840,7 +829,8 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 >
 {: .challenge}
 
-> ## Exercise: transparency
+
+> ## Bonus Exercise: Transparency
 > Another aesthetic that can be changed is how transparent our colors/fills are. The `alpha` parameter decides how transparent to make the colors. By default, `alpha = 1`, and our colors are completely opaque. Decreasing `alpha` increases the transparency of our colors/fills. Try changing the transparency of our violin plot. (**Hint:** Should alpha be inside or outside `aes()`?)
 > > ## Solution
 > > ```{r GapViolinFillSoln}
@@ -851,9 +841,7 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > {: .solution}
 {: .challenge}
 
-
-
-> ## Exercise (optional): changing colors
+> ## Changing colors
 > What happens if you run:
 > ```{r GapViolinAesFillMap}
 >  ggplot(data = gapminder_1997) +
@@ -866,7 +854,6 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > > In this example, you placed the fill inside the `aes()` function. Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values - in this case, you only have one value: the word "springgreen." Instead, try `geom_violin(fill = "springgreen")`.
 > {: .solution}
 {: .challenge}
-
 
 ## Univariate Plots
 _[Back to top](#contents)_
@@ -889,7 +876,7 @@ ggplot(gapminder_1997) +
 
 Try different values like 5 or 50 to see how the plot changes.
 
-> ## Exercise: One variable plots
+> ## Bonus Exercise: One variable plots
 > Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continuous values. If you want to try the discrete options, try mapping `continent` to x instead.
 >
 > > ## Example solution
@@ -900,6 +887,7 @@ Try different values like 5 or 50 to see how the plot changes.
 > > ```
 > {: .solution}
 {: .challenge}
+
 
 ## Plot Themes
 _[Back to top](#contents)_
@@ -978,7 +966,7 @@ We can also save any plot object we have named, even if they were not the plot t
 ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 ```
 
-> ## Exercise: create and save a plot
+> ## Bonus Exercise: Create and save a plot
 > Now try it yourself! Create your own plot using `ggplot()`, store it in an object named `my_plot`, and save the plot using `ggsave()`.
 >
 > > ## Example solution
@@ -995,7 +983,10 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 {: .challenge}
 
 
-# Bonus topics: creating complex plots
+
+# <p style="color:blue">Bonus topics!</p>
+
+# Creating complex plots
 
 ## Facets
 _[Back to top](#contents)_
@@ -1112,21 +1103,6 @@ anim_save("hansAnimatedPlot.gif",
           renderer = gifski_renderer())
 ```
 
-
-## Glossary of terms
-_[Back to top](#contents)_
-
-- Aesthetic: a visual property of the objects (geoms) drawn in your plot (like x position, y position, color, size, etc)
-- Aesthetic mapping (aes): This is how we connect a visual property of the plot to a column of our data
-- Comments: lines of text in our code after a `#` that are ignored (not evaluated) by R
-- Geometry (geom): this describes the things that are actually drawn on the plot (like points or lines)
-- Facets: Dividing your data into non-overlapping groups and making a small plot for each subgroup
-- Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
-- Factor: a way of storing data to let R know the values are discrete so they get special treatment
-
-
-# Bonus topics we haven't expanded on yet
-
 ## Map plot
 
 ```{r mapPlots}
@@ -1143,4 +1119,17 @@ gapminder_data %>% filter(year==2007) %>%
   coord_map(projection = "mollweide", xlim = c(-180, 180)) +
   ggthemes::theme_map()
 ```
+
+
+
+# Glossary of terms
+_[Back to top](#contents)_
+
+- Aesthetic: a visual property of the objects (geoms) drawn in your plot (like x position, y position, color, size, etc)
+- Aesthetic mapping (aes): This is how we connect a visual property of the plot to a column of our data
+- Comments: lines of text in our code after a `#` that are ignored (not evaluated) by R
+- Geometry (geom): this describes the things that are actually drawn on the plot (like points or lines)
+- Facets: Dividing your data into non-overlapping groups and making a small plot for each subgroup
+- Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
+- Factor: a way of storing data to let R know the values are discrete so they get special treatment
 
