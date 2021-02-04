@@ -101,24 +101,7 @@ When we call `summarize()`, we can use any of the column names of our data objec
 
 > **Note:** The `summarize()` and `summarise()` perform identical functions.
 
-We name this new column so we can use in a future argument. So the `averageLifeExp=` part tells `summarize()` to use "averageLifeExp" as the name of the new column.
-
-Note that you don't have to quotes around this new name as long as it starts with a letter and doesn't include a space.
-
-> ## Exercise: Variable names with characters or spaces
->
-> What would our code look like if we wanted to have a new column name be "Average Life Expectancy"?
->
-> > ## Solution:
-> >
-> > If you do want to use spaces or other characters, You should wrap the name in quotes.
-> >
-> > ```{r AvgLifeWithSpaces}
-> > summarize(gapminder_data, "Average Life Expectancy"=mean(lifeExp))
-> > ```
-> > {: .source}
-> {: .solution}
-{: .challenge}
+We name this new column so we can use in a future argument. So the `averageLifeExp=` part tells `summarize()` to use "averageLifeExp" as the name of the new column. Note that you don't have to quotes around this new name as long as it starts with a letter and doesn't include a space.
 
 Instead of including the data as an argument, we can use the *pipe operator* `%>%` to pass the data value into the `summarize` function. 
 
@@ -138,20 +121,6 @@ gapminder_data %>%
 
 Using the *pipe operator* `%>%` and enter command makes our code more readable. The  *pipe operator* `%>%` also helps to avoid using nested function and minimizes the need for new variables.
 
-> ## Exercise: Practice using the `%>%` to summarize data
->
-> Find the mean population using the piping function.
->
-> > ## Solution:
-> >
-> > ```{r PipeExercise}
-> > gapminder_data %>%  
-> >  summarize(averagePop = mean(pop))
-> > ```
-> > 
-> {: .solution}
-{: .challenge}
-
 Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
 
 
@@ -165,10 +134,19 @@ Well, remember the dataset contains rows from many different years and many diff
 
 Use `summarize()` to find the most recent year in the data set. We can use the `max()` function to return the maximum value.
 
-```{r GapMaxYear}
-gapminder_data %>%
-     summarize(recent_year=max(year))
-```
+> ## Exercise: Practice using the `%>%` to summarize data
+>
+> Find the mean population using the piping function.
+>
+> > ## Solution:
+> >
+> > ```{r PipeExercise}
+> > gapminder_data %>%  
+> >  summarize(recent_year = max(year))
+> > ```
+> > 
+> {: .solution}
+{: .challenge}
 
 So we see that the most recent year in the dataset is 2007. Let's calculate the life expectancy for all countries for only that year. To do that, we will use the `filter()` function to only use rows for that year before calculating the mean value.
 
@@ -236,16 +214,13 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 > {: .solution}
 {: .challenge}
 
-You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Let's calculate the minimum and maximum life expectancy for each year using the `min()` and `max()` functions
+You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Building on the code from the last exercise, let's add a new column that calculates the minimum life expectancy for each continent. 
 
 ```{r GapLifeExpMinMax}
 gapminder_data %>%
-  group_by(year) %>%
-  summarize(min=min(lifeExp), max=max(lifeExp))
+  group_by(continent) %>%
+  summarize(average=mean(lifeExp), min=min(lifeExp))
 ```
-
-We can now see just how large a gap there is between different years.
-
 
 
 ## Make new variables with `mutate()` {#make-new-variables-with-mutate}
