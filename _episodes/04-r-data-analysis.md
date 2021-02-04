@@ -25,7 +25,7 @@ keypoints:
 
 
 
-### Contents {#contents}
+### Contents
 
 1.  [Getting started](#getting-started)
     -   [Loading in the data](#loading-in-the-data)
@@ -42,7 +42,8 @@ keypoints:
 5.  [Analyzing combined data](#analyzing-combined-data)
 6.  [Putting it all together](#putting-it-all-together)
 
-# Getting Started {#getting-started}
+# Getting Started
+_[Back to top](#contents)_
 
 First, navigate to the un-reports directory however you'd like and open `un-report.Rproj`.
 This should open the un-report R project in RStudio.
@@ -52,7 +53,8 @@ Yesterday we spent a lot of time making plots in R using the ggplot2 package. Vi
 
 First, we will create a new RScript file for our work. Open RStudio. Choose "File" \> "New File" \> "RScript".
 
-### Loading in the data {#loading-in-the-data}
+### Loading in the data
+_[Back to top](#contents)_
 
 We will start by importing the complete gapminder dataset that we used yesterday into our fresh new R session. Yesterday we did this using a "point-and-click" commands. Today let's type them into the console ourselves: `gapminder_data <- read_csv("data/gapminder_data.csv")`
 
@@ -133,10 +135,10 @@ Notice that the output of the `read_csv()` function is pretty informative. It te
 Now we have the tools necessary to work through this lesson.
 
 # An introduction to data analysis in R using `dplyr` {#intro-data-analysis}
+_[Back to top](#contents)_
 
 ## Get stats fast with `summarize()` {#get-stats-fast-with-summarize}
-
-[*Back to top*](#contents)
+_[Back to top](#contents)_
 
 Let's say we would like to know what is the mean (average) life expecteny in the dataset. R has a built in function function called `mean()` that will calculate this value for us. We can apply that function to our lifeExp column using the `summarize()` function. Here's what that looks like:
 
@@ -220,8 +222,7 @@ Note that you don't have to quotes around this new name as long as it starts wit
 {: .challenge}
 
 ## Narrow down rows with `filter()` {#narrow-down-rows-with-filter}
-
-[*Back to top*](#contents)
+_[Back to top](#contents)_
 
 Let's take a look at the value we just calculated, which tells us the average life expectancy for all rows in the data was 59.5. That seems a bit low, doesn't it? What's going on?
 
@@ -318,8 +319,7 @@ gapminder_data %>%
 Notice how the pipe operator (`%>%`) allows us to combine these two simple steps into a more complicated data extraction?. We took the data, filtered out the rows, then took the mean value. The argument we pass to `filter()` needs to be some expression that will return TRUE or FALSE. We can use comparisons like `>` (greater than) and `<` (less than) for example. Here we tested for equality using a double equals sign `==`. You use `==` (double equals) when testing if two values are equal, and you use `=` (single equals) when naming arguments that you are passing to functions). Try changing it to use `filter(year = 2007)` and see what happens.
 
 ## Grouping rows using `group_by()` {#grouping-rows-using-group_by}
-
-[*Back to top*](#contents)
+_[Back to top](#contents)_
 
 We see that the life expectancy in 2007 is much larger than the value we got using all of the rows. It seems life expectancy is increasing which is good news. But now we might be interested in calculating the average for each year. Rather that doing a bunch of different `filter()` statements, we can instead use the `group_by()` function. The function allows us to tell the code to treat the rows in logical groups, so rather than summarizing over all the rows, we will get one summary value for each group. Here's what that will look like:
 
@@ -442,8 +442,7 @@ gapminder_data %>%
 We can now see just how large a gap there is between different years.
 
 ## Sort data with `arrange()` {#sort-data-with-arrange}
-
-[*Back to top*](#contents)
+_[Back to top](#contents)_
 
 The `arrange()` function allows us to sort our data by some value. Let's take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
 
@@ -481,8 +480,7 @@ gapminder_data %>%
 Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
 
 ## Make new variables with `mutate()` {#make-new-variables-with-mutate}
-
-[*Back to top*](#contents)
+_[Back to top](#contents)_
 
 Each time we ran `summarize()`, we got back fewer rows than passed in. We either got one row back, or one row per group. But sometimes we want to create a new column in our data without changing the number of rows. The function we use to create new columns is called `mutate()`.
 
@@ -518,8 +516,7 @@ gapminder_data %>%
 This will add a new column called "gdp" to our data. We use the column names as if they were regular values that we want to perform mathematical operations on and provide the name in front of an equals sign like we have done with `summarize()`
 
 ## Subset columns using `select()` {#subset-columns-using-select}
-
-[*Back to top*](#contents)
+_[Back to top](#contents)_
 
 We use the `filter()` function to choose a subset of the rows from our data, but when we want to choose a subset of columns from our data we use `select()`. For example, if we only wanted to see the population ("pop") and year values, we can do:
 
@@ -647,8 +644,7 @@ gapminder_data %>%
 {: .challenge}
 
 ## Changing the shape of the data
-
-[*Back to top*](#contents)
+_[Back to top](#contents)_
 
 Data comes in many shapes and sizes, and one way we classify data is either "wide" or "long." Data that is "long" has one row per observation. The gapminder_data data is in a long format. We have one row for each country for each year and each different measurement for that country is in a different column. We might describe this data as "tidy" because it makes it easy to work with `ggplot2` and `dplyr` functions (this is where the "tidy" in "tidyverse" comes from). As tidy as it may be, sometimes we may want our data in a "wide" format. Typically in "wide" format each row represents a group of observations and each value is placed in a different column rather than a different row. For example maybe we want only one row per country and want to spread the life expectancy values into different columns (one for each year).
 
@@ -685,9 +681,8 @@ gapminder_data %>%
 
 Notice here that we tell `pivot_wider()` which columns to pull the names we wish our new columns to be named from the year variable, and the values to populate those columns from the lifeExp variable. (Again, neither of which have to be in quotes in the code when there are no special characters or spaces - certainly an incentive not to use special characters or spaces!) We see that the resulting tables have new columns by year, and the values populate it with our remaining variables dictating the rows.
 
-# Cleaning up data {#cleaning-up-data}
-
-[*Back to top*](#contents)
+# Cleaning up data
+_[Back to top](#contents)_
 
 Researchers are often pulling data from several sources, and the process of making data compatible with one another and prepared for analysis can be a large undertaking. Luckily, there are many functions that allow us to do this in R. We've been working with the gapminder dataset, which contains population and GDP data by year. In this section, we practice cleaning and preparing a second dataset containing CO2 emissions data by country and year, sourced from [the UN](https://data.un.org/_Docs/SYB/CSV/SYB63_310_202009_Carbon%20Dioxide%20Emission%20Estimates.csv).
 
@@ -1280,9 +1275,8 @@ cols(
 > **Looking at your data:** You can get a look at your data-cleaning hard work by navigating to the **Environment** tab in RStudio and clicking the table icon next to the variable name. Notice when we do this, RStudio automatically runs the `View()` command. We've made a lot of progress!
 {.callout}
 
-# Joining data frames {#joining-data-frames}
-
-[*Back to top*](#contents)
+# Joining data frames
+_[Back to top](#contents)_
 
 Now we're ready to join our CO2 emissions data to the gapminder data. Previously we saw that we could read in and filter the gapminder data like this to get the data from the Americas for 2007 (this will overwrite our previous gapminder_data:
 
@@ -1548,9 +1542,8 @@ gapminder_co2 <- inner_join(gapminder_data, co2_emissions, by="country")
 
 We have reached our data cleaning goals and can now move on to the analysis! One of the best aspects of doing all of these steps coded in R is that our efforts are reproducible, and the raw data is maintained. With good documentation of data cleaning and analysis steps, we could easily share our work with another researcher who would be able to repeat what we've done.
 
-# Analyzing combined data {#analyzing-combined-data}
-
-[*Back to top*](#contents)
+# Analyzing combined data
+_[Back to top](#contents)_
 
 For our analysis, we have two questions we'd like to answer. First, is there a relationship between the GDP of a country and the amount of CO2 emitted (per capita)? Second, Canada, the United States, and Mexico account for nearly half of the population of the Americas. What percent of the total CO2 production do they account for?
 
@@ -1759,9 +1752,8 @@ We see that although Canada, the United States, and Mexico account for close to 
 > {: .solution}
 {: .challenge}
 
-# Putting it all together {#putting-it-all-together}
-
-[*Back to top*](#contents)
+# Putting it all together
+_[Back to top](#contents)_
 
 We've gone through many steps of cleaning, joining, and analyzing our data. As a challenge, create an RScript file that contains the code to clean up the gapminder and CO2 emissions data, joins the two data frames, and builds the plot and summary table comparing Canada, the United States, and Mexico to the rest of the Americas. You can even practice some of the `ggplot` skills you learned earlier to move that plot beyond the ggplot2 defaults.
 
