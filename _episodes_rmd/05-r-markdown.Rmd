@@ -18,7 +18,7 @@ keypoints:
   - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
 ```{r, include=FALSE}
-knitr::opts_chunk$set(root.dir = normalizePath("..")
+knitr::opts_knit$set(root.dir = normalizePath("..")
 source("bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
@@ -121,7 +121,7 @@ _[Back to top](#contents)_
 The next section is a *code chunk*, or embedded R code, that sets up options for all code chunks. Here is the default when you create a new R Markdown file:
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r setup, include=FALSE}\nknitr::opts_chunk$set(root.dir = normalizePath("..")\n```\n')
+cat('```{r setup, include=FALSE}\nknitr::opts_knit$set(root.dir = normalizePath("..")\n```\n')
 cat('```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n')
 ```
 
