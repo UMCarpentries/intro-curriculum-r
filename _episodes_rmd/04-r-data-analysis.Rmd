@@ -1,4 +1,4 @@
----
+  ---
 title: "R for Data Analysis"
 source: Rmd
 teaching: 150
@@ -555,7 +555,13 @@ Finally, let's use the `inner_join()` to create a new data frame:
 gapminder_co2 <- inner_join(gapminder_data, co2_emissions, by="country")
 ```
 
-We have reached our data cleaning goals and can now move on to the analysis! One of the best aspects of doing all of these steps coded in R is that our efforts are reproducible, and the raw data is maintained. With good documentation of data cleaning and analysis steps, we could easily share our work with another researcher who would be able to repeat what we've done.
+We have reached our data cleaning goals! One of the best aspects of doing all of these steps coded in R is that our efforts are reproducible, and the raw data is maintained. With good documentation of data cleaning and analysis steps, we could easily share our work with another researcher who would be able to repeat what we've done. However, it's also nice to have a saved `csv` copy of our clean data. That way we can access it later without needing to redo our data cleaning, and we can also share the cleaned data with collaborators. To save our dataframe, we'll use `write_csv()`. 
+
+```{r}
+write_csv(gapminder_co2, "data/gapminder_co2.csv")
+```
+
+Great - Now we can move on to the analysis! 
 
 # Analyzing combined data {#analyzing-combined-data}
 
