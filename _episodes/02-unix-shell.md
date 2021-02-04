@@ -108,9 +108,7 @@ The output is a file path to a location (a directory) on your computer.
 The output will look a little different depending on what operating system you're using:
 - Mac: `/Users/USERNAME`
 - Linux: `/home/USERNAME`
-- Windows:  `/mnt/c/Users/USERNAME`
-
-Usually you start in your home directory, but for Unix subsystem for Windows, it's a bit different.
+- Windows:  `/c/Users/USERNAME`
 
 Let's check to see what's in your home directory using the `ls` command, which lists all of the files in your working directory:
 
@@ -125,7 +123,7 @@ Documents   Library     Music       Public
 ```
 {: .output}
 
-If you're using the Unix subsystem for Windows, you'll probably see unfamiliar things. If you're using a Mac or git bash, you should see some files and directories you're familiar with such as `Documents` and `Desktop`.
+You should see some files and directories you're familiar with such as `Documents` and `Desktop`.
 
 If you make a typo, don't worry. If the shell can’t find a command you type, it will show you a helpful error message.
 
@@ -143,16 +141,10 @@ This error message tells us the command we tried to run, `ks`, is not a command 
 
 Next, let's move to our Desktop. To do this, we use `cd` to change directories.
 
-On Mac or git bash, run the following command:
+Run the following command:
 
 ```
 cd Desktop
-```
-{: .language-bash}
-
-On Unix subsystem for Windows, run:
-```
-cd /mnt/c/USERNAME/Desktop
 ```
 {: .language-bash}
 
@@ -282,23 +274,14 @@ pwd
 ```
 {: .output}
 
-It takes you back to your home directory! (Or for Unix subsytem for Windows, your `/mnt` directory.
+It takes you back to your home directory!
 
 To get back to your projects directory you can use the following command:
-
-Mac/git-bash:
 
 ```
 cd Desktop/un-report
 ```
 {: .language-bash}
-
-
-Unix subsystem for Windows:
-```
-cd /mnt/c/USERNAME/Desktop/un-report
-```
-{: .language-bask}
 
 We have been using _relative paths_, meaning you use your current working directory to get to where you want to go.
 
