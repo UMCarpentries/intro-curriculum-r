@@ -89,6 +89,11 @@ To make your life in R easier, there is a great (and free!) program called RStud
 > {: .solution}
 {: challenge}
 
+> ## Tidyverse vs Base R
+> If you've used R before, you may have learned commands that are different than the ones we will be using during this workshop. We will be focusing on functions from the [Tidyverse](https://www.tidyverse.org/). The "tidyverse" is a collection of R packages that have been designed to work well together and offer many convenient features that do not come with a fresh install of R (aka "base R"). These packages are very popular and have a lot of developer support including many staff members from RStudio. These functions generally help you to write code that is easier to read and maintain. We believe learning these tools will help you become more productive more quickly.
+{: .callout}
+
+
 To get started, we'll spend a little time getting familiar with the RStudio environment and setting it up to suit your tastes. When you start RStudio, you'll have three panels.
 
 ![](01-r-plotting-assets/initial_rstudio.png)
