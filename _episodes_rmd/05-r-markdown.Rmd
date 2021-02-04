@@ -18,6 +18,7 @@ keypoints:
   - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
 ```{r, include=FALSE}
+knitr::opts_chunk$set(root.dir = normalizePath("..")
 source("../bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
@@ -120,6 +121,7 @@ _[Back to top](#contents)_
 The next section is a *code chunk*, or embedded R code, that sets up options for all code chunks. Here is the default when you create a new R Markdown file:
 
 ```{r,comment=NA,echo=F,collapse=T}
+cat('```{r setup, include=FALSE}\nknitr::opts_chunk$set(root.dir = normalizePath("..")\n```\n')
 cat('```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n')
 ```
 
@@ -180,7 +182,7 @@ This report was prepared to the attention of the United Nations. It analyzes the
 Now, since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r data}\ngapminder_1997 <- read_csv("./data/gapminder_1997.csv")\n```\n')
+cat('```{r data}\ngapminder_1997 <- read_csv("data/gapminder_1997.csv")\n```\n')
 ```
 
 Now that we have the data, we need to produce the plot. Let's create it!
