@@ -263,6 +263,25 @@ to a maximum of USD `r '\x60r maxGDP\x60'` per capita.
 ```
 {: .code}
 
+
+We can also make a table directly from our data. To do so we will use the `kable()` function. This function allows for customization of the output table. To see all the options you can look at the help `?kable` or search online.
+
+```{r,comment=NA,echo=F,collapse=T}
+cat('```{r data_summary, include=FALSE}\n
+  summary_table <- gapminder_1997 %>% \n
+    group_by(continent) %>% \n
+    summarise(nCountries = length(country),\n
+      minGDP = round(min(gdpPercap), digits = 0),\n
+      maxGDP = round(max(gdpPercap), digits = 0))\n
+  knitr::kable(summary_table)\n
+  #kable is from the knitr package. Since we are only using this one function we\n 
+  # can call it directly from the package with :: instead of using library(knitr)\n
+  # which will load in all the functions. Either method of accessing the function\n
+  # will not have a noticable effect but is useful to know about in the case there\n
+  # are two packages with a function by the same name.\n```\n')
+```
+
+
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
 ## Formatting
