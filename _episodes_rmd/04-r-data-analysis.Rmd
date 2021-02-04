@@ -51,7 +51,7 @@ You can checkt his by seeing if the Files in the bottom right of RStudio are the
 
 Yesterday we spent a lot of time making plots in R using the ggplot2 package. Visualizing data using plots is a very powerful skill in R, but what if we would like to work with only a subset of our data? Or clean up messy data, calculate summary statistics, create a new variable, or join two datasets together? There are several different methods for doing this in R, and we will touch on a few today using functions the `dplyr` package.
 
-First, we will create a new RScript file for our work. Open RStudio. Choose "File" \> "New File" \> "RScript".
+First, we will create a new RScript file for our work. Open RStudio. Choose "File" \> "New File" \> "RScript". We will save this file as `un_data_analysis.R`
 
 ### Loading in the data {#loading-in-the-data}
 
@@ -154,7 +154,6 @@ Using the *pipe operator* `%>%` and enter command makes our code more readable. 
 {: .challenge}
 
 Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
-
 
 ## Narrow down rows with `filter()` {#narrow-down-rows-with-filter}
 
@@ -437,14 +436,14 @@ read_csv("data/co2-un-data.csv", skip=2,
   select(country, year, series, value)
 ```
 
-The series column has two methods of quantifying CO2 emissions - "Emissions (thousand metric tons of carbon dioxide)" and "Emissions per capita (metric tons of carbon dioxide)". Those are long titles that we'd like to shorten to make them easier to work with. We can shorten them to "total" and "per_capita" using the recode function. We need to do this within the mutate function where we will mutate the series column. The syntax in the recode function is to tell recode which column we want to recode and then what the old value (e.g. "Emissions (thousand metric tons of carbon dioxide)") should equal after recoding (e.g. "total").
+The series column has two methods of quantifying CO2 emissions - "Emissions (thousand metric tons of carbon dioxide)" and "Emissions per capita (metric tons of carbon dioxide)". Those are long titles that we'd like to shorten to make them easier to work with. We can shorten them to "total_emissions" and "per_capita_emissions" using the recode function. We need to do this within the mutate function where we will mutate the series column. The syntax in the recode function is to tell recode which column we want to recode and then what the old value (e.g. "Emissions (thousand metric tons of carbon dioxide)") should equal after recoding (e.g. "total").
 
 ```{r CleanEmissionsMutateRecode}
 read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita"))
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emissions",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emissions"))
 ```
 
 Recall that we'd like to have separate columns for the two ways that we CO2 emissions data. To achieve this, we'll use the pivot_wider function that we saw previously. The columns we want to spread out are series (i.e. names_from) and value (i.e. values_from).
@@ -453,8 +452,8 @@ Recall that we'd like to have separate columns for the two ways that we CO2 emis
 read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
   pivot_wider(names_from=series, values_from=value)
 ```
 
@@ -464,8 +463,8 @@ Excellent! The last step before we can join this data frame is to get the most d
 read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
   pivot_wider(names_from=series, values_from=value) %>%
   count(year)
 ```
@@ -476,8 +475,8 @@ It looks like we have data for 140 countries in 2005 and 2010. Let's filter our 
 read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
   pivot_wider(names_from=series, values_from=value) %>%
   filter(year==2005) %>%
   select(-year)
@@ -489,8 +488,8 @@ Finally, let's go ahead and assign the output of this code chunk to a variable n
 co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
                           col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
   select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
+                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
   pivot_wider(names_from=series, values_from=value) %>%
   filter(year==2005) %>%
   select(-year)
@@ -503,10 +502,10 @@ co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
 
 [*Back to top*](#contents)
 
-Now we're ready to join our CO2 emissions data to the gapminder data. Previously we saw that we could read in and filter the gapminder data like this to get the data from the Americas for 2007 (this will overwrite our previous gapminder_data:
+Now we're ready to join our CO2 emissions data to the gapminder data. Previously we saw that we could read in and filter the gapminder data like this to get the data from the Americas for 2007 so we can create a new dataframe with our filtered data:
 
 ```{r LoadGapminder2007}
-gapminder_data <- read_csv("data/gapminder_data.csv") %>%
+gapminder_data_2007 <- read_csv("data/gapminder_data.csv") %>%
   filter(year == 2007 & continent == "Americas") %>%
   select(-year, -continent)
 ```
