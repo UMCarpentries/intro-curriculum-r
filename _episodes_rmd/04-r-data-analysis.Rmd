@@ -474,7 +474,23 @@ We can resolve this warning by telling `read_csv()` what the column names should
 read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
 ```
-There are often multiple ways to clean data. Another way to deal with the warning message is given in the bonus content, if you're interested in checking it out. 
+
+> ## Bonus: Another way to deal with this error
+> 
+> There are often multiple ways to clean data. Here we  read in the table, get the warning and then fix the column names using the rename function.
+> 
+> ```{r CleanEmissionsRename}
+> read_csv("data/co2-un-data.csv", skip=1) %>%
+>   rename(country=X2)
+> ```
+>
+> Many data analysts prefer to have their column headings and variable names be in all lower case. We can use a variation of `rename()`, which is `rename_all()` that allows us to set all of the column headings to lower case by giving it the name of the tolower function, which makes everything lowercase.
+> 
+> ```{r CleanEmissionsRenameLower}
+> read_csv("data/co2-un-data.csv", skip=1) %>%
+>  rename_all(tolower)
+> ```
+{: .solution}
 
 We previously saw how we can subset columns from a data frame using the select function. There are a lot of columns with extraneous information in this dataset, let's subset out the columns we are interested in. 
 
@@ -511,7 +527,24 @@ read_csv("data/co2-un-data.csv", skip=2,
   pivot_wider(names_from=series, values_from=value)
 ```
 
-Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. For the sake of time, we'll just tell you that we want data form 2005. (If you want to know how we figured this out, check out the bonus content at the end of this lesson.)
+Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. For the sake of time, we'll just tell you that we want data form 2005. 
+
+> ## Bonus: Why did determine that 2005 is the closest year to 2007? 
+> 
+> We want to make sure we pick a year that is close to 2005, but also a year that has a decent amount of data to work with. One useful tool is the `count()` function, which will tell us how many times a value is repeated in a column of a data frame. Let's use this function on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year.
+> 
+> ```{r CleanEmissionsyearCountryCount}
+> read_csv("data/co2-un-data.csv", skip=2,
+>         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+>  select(country, year, series, value) %>%
+>  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+>                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+>   pivot_wider(names_from=series, values_from=value) %>%
+>  count(year)
+> ```
+> 
+> It looks like we have data for 140 countries in 2005 and 2010. We chose 2005 because it is closer to 2007. 
+{: .solution}
 
 > Exercise: 
 > Filter out data from 2005 and then drop the year column. (Since we will have only data from one year, it is now irrelevant.)
@@ -557,14 +590,20 @@ Look at the data in `co2_emissions` and `gapminder_data_2007`. If you had to mer
 
 We'll call country our "key". Now, when we join them together, can you think of any problems we might run into when we merge things? We might not have CO2 emissions data for all of the countries in the gapminder dataset and vice versa. Also, a country might be represented in both data frames but not by the same name in both places. 
 
-The dplyr package has a number of tools for joining data frames together depending on what we want to do with the rows of the data of countries that are not represented in both data frames. Let's look at some cartoon examples and then come back to our own data. Here we'll talk about `inner_join()` and `anti_join()`, but other options are discussed in the bonus content. 
+The dplyr package has a number of tools for joining data frames together depending on what we want to do with the rows of the data of countries that are not represented in both data frames. Here we'll be using `inner_join()` and `anti_join()`. 
 
-The first join we'll discuss is achieved using `inner_join()`. In an "inner join", the new data frame only has those rows where the same key is found in both data frames. This is a very commonly used join.
+In an "inner join", the new data frame only has those rows where the same key is found in both data frames. This is a very commonly used join.
 
 ![](04-r-data-analysis-assets/join-inner.png)
 
-Let's give the `inner_join()` function a try.
+> ## Bonus: Other dplyr join functions 
+>
+> Outer joins and can be performed using `left_join()`, `right_join()`, and `full_join()`. In a "left join", if the key is present in the left hand data frame, it will appear in the output, even if it is not found in the the right hand data frame. For a right join, the opposite is true. For a full join, all possible keys are included in the output data frame.
+> 
+> ![](04-r-data-analysis-assets/join-outer.png)
+{: .solution}
 
+Let's give the `inner_join()` function a try.
 ```{r InnerJoin}
 inner_join(gapminder_data, co2_emissions)
 ```
@@ -577,7 +616,7 @@ inner_join(gapminder_data, co2_emissions, by="country")
 
 One thing to notice is that gapminder data had 25 rows, but the output of our join only had 21. Let's investigate. It appears that there must have been countries in the gapminder data that did not appear in our co2_emissions data frame. 
 
-Let's use `anti_join()` for this- this will show us the data for the keys on the left that are missing from the data frame on the right. 
+Let's use `anti_join()` for this - this will show us the data for the keys on the left that are missing from the data frame on the right. 
 
 ```{r AntiJoin}
 anti_join(gapminder_data, co2_emissions, by="country")
@@ -767,49 +806,8 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 {: .challenge}
 
 
-# Bonus content
+# Bonus exercises
 
-## Second method of changing the column names of the CO2 dataframe 
-Here we  read in the table, get the warning and then fix the column names using the rename function.
-
-```{r CleanEmissionsRename}
-read_csv("data/co2-un-data.csv", skip=1) %>%
-  rename(country=X2)
-```
-
-Many data analysts prefer to have their column headings and variable names be in all lower case. We can use a variation of `rename()`, which is `rename_all()` that allows us to set all of the column headings to lower case by giving it the name of the tolower function, which makes everything lowercase.
-
-```{r CleanEmissionsRenameLower}
-read_csv("data/co2-un-data.csv", skip=1) %>%
-  rename_all(tolower)
-```
-
-## Finding the year 2005 
-
-Here we show how we decided to use data from 2005 in the CO2 dataset. 
-
-One useful tool is the `count()` function, which will tell us how many times a value is repeated in a column of a data frame. Let's use this function on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year.
-
-```{r CleanEmissionsyearCountryCount}
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-  select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
-  pivot_wider(names_from=series, values_from=value) %>%
-  count(year)
-```
-
-It looks like we have data for 140 countries in 2005 and 2010. Let's filter our data to get the rows that correspond to 2005. Also, because we will only have data from one year, we can drop the year column from our data frame by giving it year with a minus sign before it.
-
-## More join functions 
-
-Outer joins and can be performed using `left_join()`, `right_join()`, and `full_join()`. In a "left join", if the key is present in the left hand data frame, it will appear in the output, even if it is not found in the the right hand data frame. For a right join, the opposite is true. For a full join, all possible keys are included in the output data frame.
-
-![](04-r-data-analysis-assets/join-outer.png)
-
-
-## Exercises 
 > ## Exercise: Calculating percent
 >
 > What percentage of the population and CO2 emissions does the United States makeup? Summarized by region?
@@ -838,5 +836,67 @@ Outer joins and can be performed using `left_join()`, `right_join()`, and `full_
 > > ```
 > >
 > > {: .source}
+> {: .solution}
+{: .challenge}
+
+
+
+> ## Exercise: CO2 bar plot
+> Create a bar plot of the percent of emissions for each country, colored by north and south america (HINT: use geom_col())  
+> > ## Solution 
+> > ```{r}
+> > gapminder_co2 %>% ggplot(aes(x = country, y = total_emissionsPercent, fill = region)) +  
+> > geom_col()  
+> > ```
+> {: .solution}
+> 
+> Now rotate the x-labels by 90 degrees (if you don't remember how, google it again or look at our code from the ggplot lesson)  
+> 
+> > ## Solution 
+> > ```{r}
+> > gapminder_co2 %>% ggplot(aes(x = country, y = total_emissionsPercent, fill = region)) +  
+> > geom_col() +  
+> > theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) 
+> > ```
+> {: .solution}
+> 
+> Reorder the bars in descending order. 
+> > ## Solution 
+> > ```{r}
+> > gapminder_co2 %>% ggplot(aes(x = reorder(country, - total_emissionsPercent), y = total_emissionsPercent, fill = region)) +  
+> > geom_col() +  
+> > theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) 
+> > ```
+> {: .solution}
+> 
+> Practice making it look pretty! 
+{: .challenge}
+
+
+> ## Exercise: low emissions
+> Find the 3 countries with lowest per capita emissions:  
+> 
+> > ## Solution 
+> > ```{r} 
+> > gapminder_co2 %>% arrange(per_capita_emissions)  
+> > ```
+> {: .solution}
+> 
+> Create a bar chart for the per capita emissions for just those three countries. 
+> > ## Solution 
+> > ```{r} 
+> > gapminder_co2 %>% filter(country == "Haiti" | country == "Paraguay" | country == "Nicaragua") %>%  
+> > ggplot(aes(x = country, y = per_capita_emissions)) +  
+> > geom_col() 
+> > ```
+> {: .solution}
+> 
+> Reorder them in descending order. 
+> > ## Solution 
+> > ```{r} 
+> > gapminder_co2 %>% filter(country == "Haiti" | country == "Paraguay" | country == "Nicaragua") %>%  
+> > ggplot(aes(x = reorder(country, - per_capita_emissions), y = per_capita_emissions)) +  
+> > geom_col() 
+> > ```
 > {: .solution}
 {: .challenge}
