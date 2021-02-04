@@ -425,7 +425,7 @@ ggplot(data = gapminder_1997) +
 
 OK. That looks better. Notice that when we added the label value we did so by placing the values inside quotes. This is because we are not using a value from inside our data object - we are providing the name directly. When you need to include actual text values in R, they will be placed inside quotes to tell them apart from other object or variable names.
 
-> ## Exercise: Reading in an excel file
+> ## Exercise: Mapping life expectancy to the y axis
 > Map our `lifeExp` values to the y axis and give them a nice label.
 > {: .source}
 >
