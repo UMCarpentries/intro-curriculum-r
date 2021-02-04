@@ -1,0 +1,52 @@
+---
+title: "Coding for reproducible research workshop curriculum"
+output: 
+  rmarkdown::html_vignette:
+    keep_md: true
+tags:
+  - R
+  - unix shell
+  - git
+  - GitHub
+  - learning
+  - teaching
+  - the carpentries
+  - live coding
+author: Zena Lapp, Kelly L. Sovacool, EVERYONE ELSE, Patrick D. Schloss
+authors:
+  - name: Zena Lapp^[co-first author]
+    orcid: 0000-0003-4674-2176
+    affiliation: 1
+  - name: Kelly L. Sovacool^[co-first author]
+    orcid: 0000-0003-3283-829X
+    affiliation: 1
+  - name: Patrick D. Schloss^[corresponding author]
+    orcid: 0000-0002-6935-4275
+    affiliation: 2
+affiliations:
+  - name: Department of Computational Medicine & Bioinformatics, University of Michigan
+    index: 1
+  - name: Department of Microbiology & Immunology, University of Michigan
+    index: 3
+date: 2021
+bibliography: paper.bib
+vignette: >
+  %\VignetteIndexEntry{curriculum paper}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+options(rmarkdown.html_vignette.check_title = FALSE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+```{r render, eval = FALSE, echo = FALSE}
+rmarkdown::render(here::here('vignettes','paper.Rmd'))
+pkgdown::build_article('paper')
+```
+
+# Summary
+

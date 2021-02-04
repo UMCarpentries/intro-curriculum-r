@@ -48,15 +48,10 @@ set.seed(20210109)
     + [Saving plots](#saving-plots)
 1. [Bonus topics!] 
     + [Creating complex plots](#bonus-topics:-creating-complex-plots)
-      + [Facets](#facets)
       + [Animated plots](#animated-plots)
 1. [Glossary of terms](#glossary-of-terms)
 
-
-
-## <p style="color:blue">Bonus Exercise</p>
-
-> ## Why learn to program?
+> ## Bonus: why learn to program?
 > Share why you're interested in learning how to code.
 > > ## Solution:
 > > There are lots of different reasons, including to perform data analysis and generate figures. I'm sure you have morespecific reasons for why you'd like to learn!
@@ -85,9 +80,7 @@ To run R, all you really need is the R program, which is available for computers
 
 To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
-## <p style="color:blue">Bonus Exercise</p>
-
-> Can you think of a reason you might not want to use RStudio?
+> Bonus Exercise: Can you think of a reason you might not want to use RStudio?
 >
 > > ## Solution:
 > > On some high-performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](https://arc-ts.umich.edu/greatlakes/user-guide/#document-3) to run RStudio on Great Lakes.
@@ -282,10 +275,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > - Be consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. One popular style guide can be found through the [tidyverse](https://style.tidyverse.org/).
 {: .solution}
 
-
-## <p style="color:blue">Bonus Exercise</p>
-
-> ## Bad names for objects
+> ## Bonus Exercise: Bad names for objects
 > Try to assign values to some new objects. What do you notice? After running all four lines of code bellow, what value do you think the object `Flower` holds?
 >
 > ```{r BadObjects, eval = FALSE}
@@ -300,7 +290,6 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > > Notice that we get an error when we try to assign values to `1number` and `favorite number`. This is because we cannot start an object name with a numeral and we cannot have spaces in object names. The object `Flower` still holds "marigold." This is because R is case-sensitive, so running `flower <- "rose"` does NOT change the `Flower` object. This can get confusing, and is why we generally avoid having objects with the same name and different capitalization.
 > {: .solution}
 {: .challenge}
-
 
 The next part of the command is `read_csv("gapminder_1997.csv")`. This has a few different key parts. The first part is the `read_csv` function. You call a function in R by typing it's name followed by opening then closing parenthesis. Each function has a purpose, which is often hinted at by the name of the function. Let's try to run the function without anything inside the parenthesis.
 
@@ -500,7 +489,7 @@ There are also lots of other fun options:
 - [LaCroix](https://github.com/johannesbjork/LaCroixColoR)
 - [Wes Anderson](https://github.com/karthik/wesanderson)
 
-> ## Exercise: Changing colors
+> ## Bonus Exercise: Changing colors
 > Play around with different color palettes. Feel free to install another package and choose one of those if you want. Pick your favorite!
 > {: .source}
 >
@@ -686,10 +675,7 @@ Hmm. This doesn't look right. By setting the color value, we got a line for each
 
 Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
 
-
-## <p style="color:blue">Bonus Exercise</p>
-
-> ## More line plots
+> ## Bonus Exercise: More line plots
 > Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007?
 >
 > > ## Solution
@@ -701,8 +687,6 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 > > (China and India are the two Asian countries that have experience massive population growth from 1952-2007.)
 > {: .solution}
 {: .challenge}
-
-
 
 ## Discrete Plots
 _[Back to top](#contents)_
@@ -846,9 +830,7 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 {: .challenge}
 
 
-## <p style="color:blue">Bonus Exercises</p>
-
-> ## Transparency
+> ## Bonus Exercise: Transparency
 > Another aesthetic that can be changed is how transparent our colors/fills are. The `alpha` parameter decides how transparent to make the colors. By default, `alpha = 1`, and our colors are completely opaque. Decreasing `alpha` increases the transparency of our colors/fills. Try changing the transparency of our violin plot. (**Hint:** Should alpha be inside or outside `aes()`?)
 > > ## Solution
 > > ```{r GapViolinFillSoln}
@@ -873,8 +855,6 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > {: .solution}
 {: .challenge}
 
-
-
 ## Univariate Plots
 _[Back to top](#contents)_
 
@@ -896,10 +876,7 @@ ggplot(gapminder_1997) +
 
 Try different values like 5 or 50 to see how the plot changes.
 
-
-## <p style="color:blue">Bonus Exercise</p>
-
-> ## One variable plots
+> ## Bonus Exercise: One variable plots
 > Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continuous values. If you want to try the discrete options, try mapping `continent` to x instead.
 >
 > > ## Example solution
@@ -989,10 +966,7 @@ We can also save any plot object we have named, even if they were not the plot t
 ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 ```
 
-
-## <p style="color:blue">Bonus Exercise</p>
-
-> ## Create and save a plot
+> ## Bonus Exercise: Create and save a plot
 > Now try it yourself! Create your own plot using `ggplot()`, store it in an object named `my_plot`, and save the plot using `ggsave()`.
 >
 > > ## Example solution
