@@ -428,7 +428,12 @@ ggplot(data = gapminder_1997) +
   labs(x = "GDP Per Capita")
 ```
 
-OK. That looks better. Notice that when we added the label value we did so by placing the values inside quotes. This is because we are not using a value from inside our data object - we are providing the name directly. When you need to include actual text values in R, they will be placed inside quotes to tell them apart from other object or variable names.
+OK. That looks better. 
+
+> ## Quotes vs No Quotes
+> Notice that when we added the label value we did so by placing the values inside quotes. This is because we are not using a value from inside our data object - we are providing the name directly. When you need to include actual text values in R, they will be placed inside quotes to tell them apart from other object or variable names.
+> The general rule is that if you want to use values from the columns of your data object, then you supply the name of the column without quotes, but if you want to specify a value that does not come from your data, then use quotes.
+{: .callout}
 
 Let's now map our `lifeExp` values to the y axis and give them a nice label.
 
