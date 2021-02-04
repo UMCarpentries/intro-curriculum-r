@@ -317,6 +317,49 @@ gapminder_data %>%
 
 Notice here that we tell `pivot_wider()` which columns to pull the names we wish our new columns to be named from the year variable, and the values to populate those columns from the lifeExp variable. (Again, neither of which have to be in quotes in the code when there are no special characters or spaces - certainly an incentive not to use special characters or spaces!) We see that the resulting tables have new columns by year, and the values populate it with our remaining variables dictating the rows.
 
+<-- Move creation of final gapminder_data_2007 as exercise here --> 
+
+
+## Reviewing Git and GitHub
+Great! Now that we have our gapminder data prepared, let's use what we learned about git and GitHub in the previous lesson to add, commit, and push our changes.  
+
+Open Terminal/Git Bash, if you do not have it open already. First we'll need to navigate to our un-report directory.
+
+Let's start by print our current working directory and listing the items in the directory, to see where we are. 
+``` 
+pwd
+ls
+```
+
+Now, we'll navigate to the un-report directory. 
+```
+cd ~/Desktop/un-report  
+ls
+```
+
+To start, let's pull to make sure our local repository is up to date. 
+```
+git status
+git pull
+```
+
+Not let's add and commit our changes. 
+```
+git status
+git add
+git status "un_data_analysis.R"  
+git commit -m "Create data analysis file"  
+```
+
+Finally, let's check our commits and then push the commits to GitHub. 
+```
+git status
+git log --online  
+git push 
+git status
+``` 
+
+
 # Cleaning up data {#cleaning-up-data}
 
 [*Back to top*](#contents)
@@ -557,7 +600,7 @@ gapminder_co2 <- inner_join(gapminder_data, co2_emissions, by="country")
 
 We have reached our data cleaning goals! One of the best aspects of doing all of these steps coded in R is that our efforts are reproducible, and the raw data is maintained. With good documentation of data cleaning and analysis steps, we could easily share our work with another researcher who would be able to repeat what we've done. However, it's also nice to have a saved `csv` copy of our clean data. That way we can access it later without needing to redo our data cleaning, and we can also share the cleaned data with collaborators. To save our dataframe, we'll use `write_csv()`. 
 
-```{r}
+```{r writeCSV}
 write_csv(gapminder_co2, "data/gapminder_co2.csv")
 ```
 
@@ -717,3 +760,38 @@ gapminder_co2 %>%
             sumPopPercent = sum(popPercent))
 
 ```
+
+## Finishing with Git and GitHub
+Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and push our changes to GitHub again - do you remember how?
+
+> ## Exercise: changing directories
+> Print your current working directory and list the items in the directory to check where you are. If you are not in the un-report directory, navigate there. 
+> > Solution: 
+> > ```
+> > pwd  
+> > ls 
+> > cd ~/Desktop/un-report  
+> > ls
+> > ```
+> {: .solution}
+{: .challenge}
+
+> ## Exercise: reviewing git and GitHub
+> 
+> Pull to make sure our local repository is up to date. Then add, commit, and push your commits to GitHub. Don't forget to check your git status periodically to make sure everything is going as expected! 
+> 
+> > Solution: 
+> > ```
+> > git status 
+> > git pull
+> > git status 
+> > git add "data-analysis.R"  
+> > git status 
+> > git commit -m "Create data analysis file"  
+> > git status 
+> > git log --online  
+> > git push
+> > git status 
+> > ```
+> {: .solution}
+{: .challenge}
