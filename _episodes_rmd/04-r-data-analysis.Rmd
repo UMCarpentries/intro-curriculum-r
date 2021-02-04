@@ -311,37 +311,37 @@ gapminder_data %>%
 {: .challenge}
 
 
+> ## Bonus: Using helper functions with `select()`
+>
+> The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
+> 
+> ```{r GapSelectFancy}
+> gapminder_data %>%
+>   select(year, starts_with("c"))
+> ```
+> This returns just the three columns we are interested in. 
+>
+> > ## Exercise: Using `select()` with a helper function
+> >
+> > Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
+> >
+> > > ## Solution
+> > >
+> > > The helper function `ends_with()` can help us here.
+> > >
+> > > ```{r GroupByChallenge2}
+> > > gapminder_data %>%
+> > > select(ends_with("p"))
+> > > ```
+> > {: .solution}
+> {: .challenge}
+> 
+{: .solution}
 
-> ## Exercise: Using `select()` with a helper function
->
-> Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
->
-> > ## Solution
-> >
-> > The helper function `ends_with()` can help us here.
-> >
-> > ```{r GroupByChallenge2}
-> > gapminder_data %>%
-> > select(ends_with("p"))
-> > ```
-> > {: .source}
-> {: .solution}
-{: .challenge}
 
 <-- To move to bonus content -->
 
-> ## Bonus Exercise: Using helper functions with `select()`
->
-> The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
-> > ## Solution
-> >
-> > ```{r GapSelectFancy}
-> > gapminder_data %>%
-> >   select(year, starts_with("c"))
-> > ```
-> > This returns just the three columns we are interested in. 
-
-> ## Bonus Exercise: Sort data with `arrange()`
+> ## Bonus: Sort data with `arrange()`
 >
 > The `arrange()` function allows us to sort our data by some value. Let's take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
 >
@@ -360,8 +360,6 @@ gapminder_data %>%
 > > {: .source}
 > {: .solution}
 {: .challenge}
-
-
 
 <-- End bonus content -->
 
