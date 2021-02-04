@@ -49,6 +49,7 @@ set.seed(20210109)
     + [Saving plots](#saving-plots)
 1. [Bonus topics: Creating complex plots](#bonus-topics:-creating-complex-plots)
     + [Animated plots](#animated-plots)
+    + [Map plots](#map-plots)
 1. [Glossary of terms](#glossary-of-terms)
 
 
@@ -1126,6 +1127,28 @@ anim_save("hansAnimatedPlot.gif",
           renderer = gifski_renderer())
 ```
 
+## Map plots
+
+The `ggplot` library also has useful functions to draw your data on a map. There are lots of different ways to draw maps but here's a quick example using the gampminder data. Here we will plot each country with a color indicating the life expectancy in 1997.
+
+```{r mapPlots}
+# make sure names of countries match between the map info and the data
+mapdata <- map_data("world") %>%
+  mutate(region = recode(region,
+                         USA="United States",
+                         UK="United Kingdom"))
+
+#install.packages("mapproj")
+gapminder_1997 %>%
+  ggplot() +
+  geom_map(aes(map_id=country, fill=lifeExp), map=mapdata) +
+  expand_limits(x = mapdata$long, y = mapdata$lat) +
+  coord_map(projection = "mollweide", xlim = c(-180, 180)) +
+  ggthemes::theme_map()
+```
+
+Notice that this map helps to show that we actually have some gaps in the data. We are missing observations for counties like Russia and many countries in central Africa. Thus it's important to acknowledge that any patterns or trends we see in the data might not apply to those regions.
+
 
 ## Glossary of terms
 _[Back to top](#contents)_
@@ -1137,24 +1160,3 @@ _[Back to top](#contents)_
 - Facets: Dividing your data into non-overlapping groups and making a small plot for each subgroup
 - Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
 - Factor: a way of storing data to let R know the values are discrete so they get special treatment
-
-
-# Bonus topics we haven't expanded on yet
-
-## Map plot
-
-```{r mapPlots}
-mapdata <- map_data("world") %>%
-  mutate(region = recode(region,
-                         USA="United States",
-                         UK="United Kingdom"))
-
-#install.packages("mapproj")
-gapminder_data %>% filter(year==2007) %>%
-  ggplot() +
-  geom_map(aes(map_id=country, fill=lifeExp), map=mapdata) +
-  expand_limits(x = mapdata$long, y = mapdata$lat) +
-  coord_map(projection = "mollweide", xlim = c(-180, 180)) +
-  ggthemes::theme_map()
-```
-
