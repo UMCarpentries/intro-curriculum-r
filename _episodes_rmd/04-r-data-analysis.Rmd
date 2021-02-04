@@ -34,7 +34,6 @@ knitr_fig_path("04-")
     -   [Get stats fast with `summarize()`](#get-stats-fast-with-summarize)
     -   [Narrow down rows with `filter()`](#narrow-down-rows-with-filter)
     -   [Grouping rows using `group_by()`](#grouping-rows-using-group_by)
-    -   [Sort data with `arrange()`](#sort-data-with-arrange)
     -   [Make new variables with `mutate()`](#make-new-variables-with-mutate)
     -   [Subset columns using `select()`](#subset-columns-using-select)
     -   [Changing the shape of the data](#changing-the-shape-of-the-data)
@@ -247,21 +246,7 @@ gapminder_data %>%
 
 We can now see just how large a gap there is between different years.
 
-## Sort data with `arrange()` {#sort-data-with-arrange}
 
-[*Back to top*](#contents)
-
-The `arrange()` function allows us to sort our data by some value. Let's take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
-
-```{r GapLifeContinentArrange}
-gapminder_data %>%
-  filter(year==2007) %>%
-  group_by(continent) %>%
-  summarise(average= mean(lifeExp)) %>%
-  arrange(desc(average))
-```
-
-Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
 
 ## Make new variables with `mutate()` {#make-new-variables-with-mutate}
 
@@ -326,13 +311,6 @@ gapminder_data %>%
 {: .challenge}
 
 
-The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
-
-```{r GapSelectFancy}
-gapminder_data %>%
-  select(year, starts_with("c"))
-```
-This returns just the three columns we are interested in. 
 
 > ## Exercise: Using `select()` with a helper function
 >
@@ -349,6 +327,43 @@ This returns just the three columns we are interested in.
 > > {: .source}
 > {: .solution}
 {: .challenge}
+
+<-- To move to bonus content -->
+
+> ## Bonus Exercise: Using helper functions with `select()`
+>
+> The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
+> > ## Solution
+> >
+> > ```{r GapSelectFancy}
+> > gapminder_data %>%
+> >   select(year, starts_with("c"))
+> > ```
+> > This returns just the three columns we are interested in. 
+
+> ## Bonus Exercise: Sort data with `arrange()`
+>
+> The `arrange()` function allows us to sort our data by some value. Let's take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
+>
+> > ## Solution
+> >
+> > The helper function `ends_with()` can help us here.
+> >
+> > ```{r GapLifeContinentArrange}
+> > gapminder_data %>%
+> >  filter(year==2007) %>%
+> >  group_by(continent) %>%
+> >  summarise(average= mean(lifeExp)) %>%
+> >  arrange(desc(average))
+> > ```
+> > Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
+> > {: .source}
+> {: .solution}
+{: .challenge}
+
+
+
+<-- End bonus content -->
 
 ## Changing the shape of the data
 
@@ -407,7 +422,6 @@ git log --online
 git push 
 git status
 ``` 
-
 
 # Cleaning up data {#cleaning-up-data}
 
