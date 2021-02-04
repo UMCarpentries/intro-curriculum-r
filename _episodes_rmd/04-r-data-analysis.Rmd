@@ -155,6 +155,28 @@ Using the *pipe operator* `%>%` and enter command makes our code more readable. 
 
 Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
 
+> Helpful hint: Saving a new dataframe
+> Notice that when we run the following code, we are not actually saving a new variable: 
+> ```{r AvgLifeExpWithPipe3, eval = FALSE}
+> gapminder_data %>%
+>   summarize(averageLifeExp=mean(lifeExp))
+> ```
+> This simply outputs what we have created, but does not change actually change `gapminder_data` or save a new dataframe. To save a new dataframe, we could run: 
+> ```{r saveNewDF, eval = FALSE}
+> gapminder_data_summarized <- gapminder_data %>%
+>   summarize(averageLifeExp=mean(lifeExp))
+> ```
+> Or if we want to change `gapminder_data` itself: 
+> ```{r overwriteDF, eval = FALSE}
+> gapminder_data <- gapminder_data %>%
+>   summarize(averageLifeExp=mean(lifeExp))
+> ```
+> IMPORTANT: This would overwrite the existing `gapminder_data` object. 
+> 
+> For now, we will not be saving dataframes, since we are just experimenting with `dyplr` functions, but it will be useful later on in this lesson. 
+> 
+{: .callout}
+
 
 ## Narrow down rows with `filter()` {#narrow-down-rows-with-filter}
 
