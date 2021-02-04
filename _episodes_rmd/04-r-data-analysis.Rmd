@@ -94,32 +94,15 @@ Now we have the tools necessary to work through this lesson.
 [*Back to top*](#contents)
 
 Let's say we would like to know what is the mean (average) life expecteny in the dataset. R has a built in function function called `mean()` that will calculate this value for us. We can apply that function to our lifeExp column using the `summarize()` function. Here's what that looks like:
-
 ```{r AvgLifeExp}
-gapminder_data %>%
-  summarize(average=mean(lifeExp))
+summarize(gapminder_data, averageLifeExp=mean(lifeExp))
 ```
-
-This command is made of several parts. First, we start with our data object (gapminder_data). Then, we use a special operator called the *pipe operator* `%>%` to pass the data value into the `summarize` function. The pipe operator allows us to "chain" together multiple function calls so that the output of the first function becomes the input to the next function.
-
-> ## Exercise: Practice using the `%>%`
->
-> Write the last line of code without using the pipe operator.
->
-> > ## Solution:
-> >
-> > You could also write the above code in the following way:
-> >
-> > ```{r AvgLifeExpNoPipe}
-> > summarize(gapminder_data, average=mean(lifeExp))
-> > ```
-> > Here we pass the data directly to `summarize()` as an argument rather than piping the value. But as soon as we start writing more functions, we will see that using pipes makes this easier to read. Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
-> {: .solution}
-{: .challenge}
 
 When we call `summarize()`, we can use any of the column names of our data object as values to pass to other functions. `summarize()` will return a new data object and our value will be returned as a column.
 
-We name this new column so we can use in a future argument. So the `average=` part tells `summarize()` to use "average" as the name of the new column.
+> **Note:** The `summarize()` and `summarise()` perform identical functions.
+
+We name this new column so we can use in a future argument. So the `averageLifeExp=` part tells `summarize()` to use "averageLifeExp" as the name of the new column.
 
 Note that you don't have to quotes around this new name as long as it starts with a letter and doesn't include a space.
 
@@ -137,6 +120,41 @@ Note that you don't have to quotes around this new name as long as it starts wit
 > > {: .source}
 > {: .solution}
 {: .challenge}
+
+Instead of including the data as an argument, we can use the *pipe operator* `%>%` to pass the data value into the `summarize` function. 
+
+```{r AvgLifeExpWithPipe}
+gapminder_data %>% summarize(averageLifeExp=mean(lifeExp))
+```
+ 
+This line of code will do the exact same thing as our first summary command, but the piping function tells R to use the `gapminder_data` dataframe as the first argument in the next function.
+
+This lets us "chain" together multiple functions, which will be helpful later.
+ 
+We can also add an <kdb>Enter</kdb> to make it look nicer:  
+```{r AvgLifeExpWithPipe2}
+gapminder_data %>%
+  summarize(averageLifeExp=mean(lifeExp))
+```
+
+Using the *pipe operator* `%>%` and enter command makes our code more readable. The  *pipe operator* `%>%` also helps to avoid using nested function and minimizes the need for new variables.
+
+> ## Exercise: Practice using the `%>%` to summarize data
+>
+> Find the mean population using the piping function.
+>
+> > ## Solution:
+> >
+> > ```{r PipeExercise}
+> > gapminder_data %>%  
+> >  summarize(averagePop = mean(pop))
+> > ```
+> > 
+> {: .solution}
+{: .challenge}
+
+Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
+
 
 ## Narrow down rows with `filter()` {#narrow-down-rows-with-filter}
 
