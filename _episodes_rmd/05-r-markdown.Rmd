@@ -18,7 +18,8 @@ keypoints:
   - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
 ```{r, include=FALSE}
-source("../bin/chunk-options.R")
+knitr::opts_chunk$set(root.dir = normalizePath("..")
+source("bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
 
@@ -120,6 +121,7 @@ _[Back to top](#contents)_
 The next section is a *code chunk*, or embedded R code, that sets up options for all code chunks. Here is the default when you create a new R Markdown file:
 
 ```{r,comment=NA,echo=F,collapse=T}
+cat('```{r setup, include=FALSE}\nknitr::opts_chunk$set(root.dir = normalizePath("..")\n```\n')
 cat('```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n')
 ```
 
@@ -180,7 +182,7 @@ This report was prepared to the attention of the United Nations. It analyzes the
 Now, since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r data}\ngapminder_1997 <- read.csv("./data/gapminder_1997.csv")\n```\n')
+cat('```{r data}\ngapminder_1997 <- read_csv("data/gapminder_1997.csv")\n```\n')
 ```
 
 Now that we have the data, we need to produce the plot. Let's create it!
@@ -195,7 +197,7 @@ cat('```{r gdp_lifeexp_1997}\nggplot(data = gapminder_1997) + \n
 
 Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd> button in the top left of the screen.
 
-![](../fig/r-markdown/first_report_render.png)
+![](fig/r-markdown/first_report_render.png)
 
 Amazing! We've created a report! Let's push this to GitHub to make sure we preserve this document.
 
@@ -210,7 +212,7 @@ Returning to the command line, type
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
 
-![](../fig/r-markdown/tidyverse_messages.png)
+![](fig/r-markdown/tidyverse_messages.png)
 
 To get rid of this, we can revise our packages code chunk by adding `include=FALSE` just like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
 
@@ -220,7 +222,7 @@ cat('```{r packages, include=FALSE}\nlibrary(tidyverse)\n```\n')
 
 We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If you don't want the code to appear, how can you prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
 
-![](../fig/r-markdown/includeFalse.png)
+![](fig/r-markdown/includeFalse.png)
 
 Oops! Now the plot doesn't show up in our report at all. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE`  to tell this code chunk that we don't want to see the code but just the output.
 
@@ -234,7 +236,7 @@ cat('```{r gdp_lifeexp_1997, echo=FALSE}\nggplot(data = gapminder_1997) + \n
 
 When we knit this again, our plot is back!
 
-![](../fig/r-markdown/echoFalse.png)
+![](fig/r-markdown/echoFalse.png)
 
 Before we finalize our report, let's look at one more cool feature. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
 
