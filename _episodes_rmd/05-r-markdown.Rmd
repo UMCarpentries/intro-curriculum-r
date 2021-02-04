@@ -52,9 +52,9 @@ We're going to learn a way to create a report in R using something called R Mark
 
 Combining Markdown and R code in the same document allows you to integrate the text of the report, the code you used, and your figures, tables, and other output into one document. The text can be your introduction, description of the research design and  experimental methods, your analysis and discussion of the results, the conclusion, or whatever else you want to include. R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, or keeping a computational notebook of your work. (If you are familiar with Jupyter notebooks in the Python programming environment, R Markdown is  R's equivalent of a Jupyter notebook.)
 
-![](../fig/r-markdown/report-no-code.png)
-![](../fig/r-markdown/report-with-code.png)
-![](../fig/r-markdown/r-markdown-code-only.png)
+![](fig/r-markdown/report-no-code.png)
+![](fig/r-markdown/report-with-code.png)
+![](fig/r-markdown/r-markdown-code-only.png)
 
 
 
