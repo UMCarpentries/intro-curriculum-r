@@ -220,6 +220,10 @@ Now look in the **Environment** tab in the upper right corner of RStudio. Here y
 
 Finally, take a look at the **Console** at the bottom left part of the RStudio screen. Here you will see the commands that were run for you to import your data in addition to associated metadata and warnings.
 
+> ## Data objects
+> There are many different ways to store data in R. Most objects have a table-like structure with rows and columns. We will refer to these objects generally as "data objects". If you've used R before, you many be used to calling them "data.frames". Functions from the "tidyverse" such as `read_csv` work with a objects called "tibbles" which are a specialized kind of "data.frame." Another common way to store data is a "data.table". All of these types of data objects (tibbles, data.frames, and data.tables) can be used with the commands we will learn in this lesson to make plots. We may sometimes use these terms interchangeably.
+{: .callout}
+
 # Understanding commands
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
@@ -241,7 +245,7 @@ This will run the line of code that currently contains your cursor and will move
 
 Let's take a closer look at the parts of this command.
 
-Starting from the left, the first thing we see is `gapminder_1997`. We viewed the contents of this file after it was imported so we know that `gapminder_1997` acts as a placeholder for a table of data.
+Starting from the left, the first thing we see is `gapminder_1997`. We viewed the contents of this file after it was imported so we know that `gapminder_1997` acts as a placeholder for our data.
 
 > ## Exercise: Running parts of our code
 > If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
@@ -318,7 +322,7 @@ For example, when we loaded in our data, the command contained `"gapminder_1997.
 > For example, try running `?read_csv`. A help page should pop up with information about what the function is used for and how to use it, as well as useful examples of the function in action. As you can see, the first **argument** of `read_csv` is the file path.
 {: .callout}
 
-The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R dataframe with the data stored in that csv file. All that, with one short line of code!
+The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R object with the data stored in that csv file. All that, with one short line of code!
 
 Do all functions need arguments? Let's test some other functions:
 
@@ -632,7 +636,7 @@ gapminder_data <- read_csv("data/gapminder_data.csv")
 > {: .solution}
 {: .challenge}
 
-Let's take a look at the full dataset. We could use `View()`, the way we did for the smaller dataset, but if your dataframe is too big, it might take too long to load. Luckily, R offers way to look at parts of the data to get an idea of what your dataset looks like, without having to examine the whole thing. Here are some commands that allow us to get the dimensions of our dataframe and look at a snapshot of the data. Try them out!
+Let's take a look at the full dataset. We could use `View()`, the way we did for the smaller dataset, but if your data is too big, it might take too long to load. Luckily, R offers way to look at parts of the data to get an idea of what your dataset looks like, without having to examine the whole thing. Here are some commands that allow us to get the dimensions of our data and look at a snapshot of the data. Try them out!
 
 ```{r InitialExploration, eval = FALSE}
 dim(gapminder_data)
@@ -655,7 +659,7 @@ Notice that this dataset has an additional column `year` compared to the smaller
 
 Hmm, the plot we created in the last challenge isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
 
-Let's review the columns and the type of data stored in the full table to decide how we should group things together. To get an overview of our dataframe, we can look at the structure of `gapminder_data` using the `str()` function.
+Let's review the columns and the types of data stored in out dataset to decide how we should group things together. To get an overview of our data object, we can look at the structure of `gapminder_data` using the `str()` function.
 ```{r DataExploration, eval=FALSE}
 str(gapminder_data)
 ```
