@@ -53,9 +53,9 @@ TO-DOs:
     + [Motivation](#motivation)
     + [What the Shell looks like](#what-the-shell-looks-like)
     + [Tree Structure](#tree-structure)
+    + [Man and Help](#man-and-help)
 1. [Working with files and directories](#working-with-files-and-directories)
     + [Viewing Files](#viewing-files)
-    + [Man and Help](#man-and-help)
     + [Editing Files](#editing-files)
 1. [Glossary of terms](#glossary-of-terms)
 
@@ -157,6 +157,7 @@ ks: command not found
 This error message tells us the command we tried to run, `ks`, is not a command that is recognized, letting us know we might have made a mistake when typing.
 
 ## Man and Help
+_[Back to top](#contents)_
 
 Now that we know how to list files with `ls`, we can learn how to look up the manual pages for unix shell commands. If you want to learn more about a command we can use `man` to look up its manual page. which will open with `ls`. We can navigate the man page to view the description of a command and its options. For example, if you want to know more about the navigation options of `ls` you can type `man ls` on the command line.
 
