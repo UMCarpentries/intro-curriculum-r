@@ -527,9 +527,9 @@ read_csv("data/co2-un-data.csv", skip=2,
   pivot_wider(names_from=series, values_from=value)
 ```
 
-Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. For the sake of time, we'll just tell you that we want data form 2005. 
+Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. For the sake of time, we'll just tell you that we want data from 2005. 
 
-> ## Bonus: Why did determine that 2005 is the closest year to 2007? 
+> ## Bonus: How did we determine that 2005 is the closest year to 2007? 
 > 
 > We want to make sure we pick a year that is close to 2005, but also a year that has a decent amount of data to work with. One useful tool is the `count()` function, which will tell us how many times a value is repeated in a column of a data frame. Let's use this function on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year.
 > 
@@ -810,7 +810,7 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 
 > ## Exercise: Calculating percent
 >
-> What percentage of the population and CO2 emissions does the United States makeup? Summarized by region?
+> What percentage of the population and CO2 emissions in the Americas does the United States make up? What percentage of the population and CO2 emission does North America make up? 
 >
 > > ## Solution
 > >
@@ -823,7 +823,7 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 > >          popPercent = pop/sum(pop)*100)
 > > ```
 > >
-> > This table shows that the United states makes up 33% of the population of the Americas, but accounts for 77% of total emissions. That's a big proportion of the northern region's emissions, as summarized below:
+> > This table shows that the United states makes up 33% of the population of the Americas, but accounts for 77% of total emissions. Now let's take a look at population and emission for the two different continents: 
 > >
 > > ```{r}
 > > gapminder_co2 %>%
@@ -834,8 +834,7 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 > >   summarize(sumTotalPercent = sum(totalPercent),
 > >             sumPopPercent = sum(popPercent))
 > > ```
-> >
-> > {: .source}
+> > 
 > {: .solution}
 {: .challenge}
 
@@ -860,7 +859,7 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 > > ```
 > {: .solution}
 > 
-> Reorder the bars in descending order. 
+> Reorder the bars in descending order. **Hint:** try Googling how to use the `reorder()` function with ggplot.
 > > ## Solution 
 > > ```{r}
 > > gapminder_co2 %>% ggplot(aes(x = reorder(country, - total_emissionsPercent), y = total_emissionsPercent, fill = region)) +  
@@ -874,7 +873,7 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 
 
 > ## Exercise: low emissions
-> Find the 3 countries with lowest per capita emissions:  
+> Find the 3 countries with lowest per capita emissions. **Hint:** use the `arrange()` function. 
 > 
 > > ## Solution 
 > > ```{r} 
@@ -891,7 +890,7 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 > > ```
 > {: .solution}
 > 
-> Reorder them in descending order. 
+> Reorder them in descending order. **Hint:** use the `reorder()` function. 
 > > ## Solution 
 > > ```{r} 
 > > gapminder_co2 %>% filter(country == "Haiti" | country == "Paraguay" | country == "Nicaragua") %>%  
