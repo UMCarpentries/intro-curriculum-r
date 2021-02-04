@@ -91,11 +91,11 @@ To make your life in R easier, there is a great (and free!) program called RStud
 
 To get started, we'll spend a little time getting familiar with the RStudio environment and setting it up to suit your tastes. When you start RStudio, you'll have three panels.
 
-![](01-r-plotting-assets/initial_rstudio.png)
+![]({{ page.root }}/fig/r-plotting/initial_rstudio.png)
 
 On the left you'll have a panel with three tabs - Console, Terminal, and Jobs. The Console tab is what running R from the command line looks like. This is where you can enter R code. Try typing in `2+2` at the prompt (>). In the upper right panel are tabs indicating the Environment, History, and a few other things. If you click on the History tab, you'll see the command you ran at the R prompt.
 
-![](01-r-plotting-assets/history.png)
+![]({{ page.root }}/fig/r-plotting/history.png)
 
 In the lower right panel are tabs for Files, Plots, Packages, Help, and Viewer. You used the Packages tab to install tidyverse.
 
@@ -103,13 +103,13 @@ We'll spend more time in each of these tabs as we go through the workshop, so we
 
 You might want to alter the appearance of your RStudio window. The default appearance has a white background with black text. If you go to the Tools menu at the top of your screen, you'll see a "Global options" menu at the bottom of the drop down; select that.
 
-![](01-r-plotting-assets/global_options.png)
+![]({{ page.root }}/fig/r-plotting/global_options.png)
 
 From there you will see the ability to alter numerous things about RStudio. Under the Appearances tab you can select the theme you like most. As you can see there's a lot in Global options that you can set to improve your experience in RStudio. Most of these settings are a matter of personal preference.
 
 However, you can update settings to help you to insure the reproducibility of your code. In the General tab, none of the selectors in the R Sessions, Workspace, and History should be selected. In addition, the toggle next to "Save workspace to .RData on exit" should be set to never. These setting will help ensure that things you worked on previously don't carry over between sessions.
 
-![](01-r-plotting-assets/general_options.png)
+![]({{ page.root }}/fig/r-plotting/general_options.png)
 
 Let's get going on our analysis!
 
@@ -117,20 +117,20 @@ One of the helpful features in RStudio is the ability to create a project. A pro
 
 At the top of your screen you'll see the "File" menu. Select that menu and then the menu for "New Project...".
 
-![](01-r-plotting-assets/new_project_menu.png)
+![]({{ page.root }}/fig/r-plotting/new_project_menu.png)
 
 When the smaller window opens, select "Existing Directory" and then the "Browse" button in the next window.
 
-![](01-r-plotting-assets/existing_directory.png)
-![](01-r-plotting-assets/browse.png)
+![]({{ page.root }}/fig/r-plotting/existing_directory.png)
+![]({{ page.root }}/fig/r-plotting/browse.png)
 
 Navigate to the directory that contains your code and data from the setup instructions and click the "Open" button.
 
-![](01-r-plotting-assets/navigate_to_project.png)
+![]({{ page.root }}/fig/r-plotting/navigate_to_project.png)
 
 Then click the "Create Project" button.
 
-![](01-r-plotting-assets/create_project.png)
+![]({{ page.root }}/fig/r-plotting/create_project.png)
 
 Did you notice anything change?
 
@@ -138,7 +138,7 @@ In the lower right corner of your RStudio session, you should notice that your F
 
 From now on, you should start RStudio by double clicking on that file. This will make sure you are in the correct directory when you run your analysis.
 
-![](01-r-plotting-assets/files_with_rproj.png)
+![]({{ page.root }}/fig/r-plotting/files_with_rproj.png)
 
 We'd like to create a file where we can keep track of our R code.
 
