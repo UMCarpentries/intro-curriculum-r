@@ -819,7 +819,7 @@ Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(con
 > sum(2, 8)
 > ```
 >
-{: .callout}
+{: .solution}
 
 
 ## Color vs. Fill
