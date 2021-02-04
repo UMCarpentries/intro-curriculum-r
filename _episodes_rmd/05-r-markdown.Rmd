@@ -180,7 +180,7 @@ This report was prepared to the attention of the United Nations. It analyzes the
 Now, since we want to show our results comparing GDP and life expectancy by country, we need to read in this data so we can regenerate our plot. We will add another code chunk to prepare the data.
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r data}\ngapminder_1997 <- read.csv("./data/gapminder_1997.csv")\n```\n')
+cat('```{r data}\ngapminder_1997 <- read_csv("./data/gapminder_1997.csv")\n```\n')
 ```
 
 Now that we have the data, we need to produce the plot. Let's create it!
