@@ -238,32 +238,78 @@ When we knit this again, our plot is back!
 
 ![](fig/r-markdown/echoFalse.png)
 
-Before we finalize our report, let's look at one more cool feature. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
+Before we finalize our report, let's look at a few other cool features. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
 
 First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values.
 
 ```{r,comment=NA,echo=F,collapse=T}
-cat('```{r data_summary, include=FALSE}\n
-  nCountries <- length(unique(gapminder_1997$country)) \n
-  minGDP <- round(min(gapminder_1997$gdpPercap), digits=0) \n
-  maxGDP <- round(max(gapminder_1997$gdpPercap), digits=0)\n```\n')
+cat('```{r data_summary, include=FALSE}
+  nCountries <- gapminder_1997 %>%  
+    select(country) %>%
+    n_distinct()
+
+  minGDP <- gapminder_1997 %>%
+    summarise(round(min(gdpPercap))) %>%
+    pull()
+
+  maxGDP <- gapminder_1997 %>%
+    summarise(round(max(gdpPercap))) %>%
+    pull()
 ```
 
 Now, all we need to do is reference the values we just computed to describe our
-plot. To do this, we enclose each value in one set of backticks 
-(`` `r '\x60r some_R_variable_name\x60'` ``), while the ``r`` part 
+plot. To do this, we enclose each value in one set of backticks
+(`` `r '\x60r some_R_variable_name\x60'` ``), while the ``r`` part
 once again indicates that it's a chunk of R code. When we knit our report, R will
 automatically fill in the values we just created in the above code chunk. Note
 that R will automatically update these values every time our data might change
 (if we were to decide to drop or add countries to this  analysis, for example).
 
 ```
-The above plot shows the relationship between GDP per capita and life expectancy 
-for a total of `r '\x60r nCountries\x60'` countries. For this set of countries, 
+The above plot shows the relationship between GDP per capita and life expectancy
+for a total of `r '\x60r nCountries\x60'` countries. For this set of countries,
 economic wealth ranged from a minimum of USD `r '\x60r minGDP\x60'`
 to a maximum of USD `r '\x60r maxGDP\x60'` per capita.
 ```
 {: .code}
+
+In addition to reporting specific values in the text, we may also want to show a table of values. With R Markdown there are multiple ways to product tables. One way to generate smaller tables is manually. Using a special format we can generate a table in our output. Note that this does not get generated in a code chunk because it is markdown formatting not R code.
+
+```
+|HEADER 1|HEADER 2|
+|-------------|-------------|
+|row 1, column1|row 1, column 2|
+|row 2, column1|row 2, column 2|
+```
+Columns are separated by the pipe key <kbd>|</kbd> located above <kbd>Enter</kbd> on the keyboard. The dashes distinguish the header row from the rest of the table. This header could be a name for each column or a Header for the whole table. Now that we know the basic structure we can fill in our table. This is how we could present the same numbers from the previous paragraph as a table instead, again using in-line code.
+When we knit the report again, the code above will render like this:
+![](../fig/r-markdown/table_format.png)
+
+```
+|Summary of Data|
+|------|------|
+|Number of Countries|`r nCountries`|
+|Minimum GDP per capita|`r minGDP`|
+|Maximum GDP per capita|`r maxGDP`|
+
+```
+This will render like this:
+![](../fig/r-markdown/table_fillin.png)
+
+This is useful if we are reporting a few values, but can get tedious for larger tables. Another way we can add tables to our reports is using an R function called `kable()`. Since this is an R function, we will use it within a code chunk. We can give the `kable()` function a data table and it will format it to a nice looking table in the report. For example, we could use the following code to generate a table of all the countries in Oceania.
+
+```{r,comment=NA,echo=F,collapse=T}
+gapminder_1997 %>%
+  filter(continent == "Oceania") %>%
+  knitr::kable())
+  # kable is from the knitr package. Since we are only using this one function we
+  # can call it directly from the package with :: instead of using library(knitr)
+  # which will load in all the functions. Either method of accessing the function
+  # will not have a noticable effect but is useful to know about in the case there
+  # are two packages with a function by the same name.
+```
+Which will render like this:
+![](../fig/r-markdown/kable_table.png)
 
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
@@ -689,4 +735,3 @@ _[Back to top](#contents)_
 9. For a specific continent (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
 
 10. Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
-
