@@ -436,15 +436,22 @@ OK. That looks better.
 > The general rule is that if you want to use values from the columns of your data object, then you supply the name of the column without quotes, but if you want to specify a value that does not come from your data, then use quotes.
 {: .callout}
 
-Let's now map our `lifeExp` values to the y axis and give them a nice label.
-
-```{r FirstPlotAddY}
-ggplot(data = gapminder_1997) +
-  aes(x = gdpPercap) +
-  labs(x = "GDP Per Capita") +
-  aes(y = lifeExp) +
-  labs(y = "Life Expectancy")
-```
+> ## Exercise: Mapping life expectancy to the y axis
+> Map our `lifeExp` values to the y axis and give them a nice label.
+> {: .source}
+>
+>
+> > ## Solution
+> > ```{r FirstPlotAddY}
+> > ggplot(data = gapminder_1997) +
+> >   aes(x = gdpPercap) +
+> >   labs(x = "GDP Per Capita") +
+> >   aes(y = lifeExp) +
+> >   labs(y = "Life Expectancy")
+> > ```
+> > {: .source}
+> {: .solution}
+{: .challenge}
 
 Excellent. We've now told our plot object where the x and y values are coming from and what they stand for. But we haven't told our object how we want it to draw the data. There are many different plot types (bar charts, scatter plots, histograms, etc). We tell our plot object what to draw by adding a "geometry" ("geom" for short) to our object. We will talk about many different geometries today, but for our first plot, let's draw our data using the "points" geometry for each value in the data set. To do this, we add `geom_point()` to our plot object:
 
@@ -709,18 +716,23 @@ _[Back to top](#contents)_
 
 So far we've looked at two plot types (`geom_point` and `geom_line`) which work when both the x and y values are numeric. But sometimes you may have one of your values be discrete (a factor or character).
 
-We've previously used the discrete values of the `continent` column to color in our points and lines. But now let's try moving that variable to the `x` axis. Let's say we are curious about comparing the distribution of the life expectancy values for each of the different continents for the `gapminder_1997` data. We can do so using a box plot. Here's what that code would look like:
+We've previously used the discrete values of the `continent` column to color in our points and lines. But now let's try moving that variable to the `x` axis. Let's say we are curious about comparing the distribution of the life expectancy values for each of the different continents for the `gapminder_1997` data. We can do so using a box plot. Try this out yourself in the exercise below!
 
-```{r GapBox}
-ggplot(data = gapminder_1997) +
-  aes(x = continent, y = lifeExp) +
-  geom_boxplot()
-```
+> ## Exercise: Box plots
+> Using the `gapminder_1997` data, use ggplot to create a box plot with continent on the x axis and life expectancy on the y axis. You can use the examples from earlier in the lesson as a template to remember how to pass ggplot data and map aesthetics and geometries onto the plot. If you're really stuck, feel free to use the internet as well!
+>
+> > ## Solution
+> > ```{r GapBox}
+> > ggplot(data = gapminder_1997) +
+> >  aes(x = continent, y = lifeExp) +
+> >  geom_boxplot()
+> > ```
+> {: .solution}
+{: .challenge}
 
 This type of visualization makes it easy to compare the range and spread of values across groups. The "middle" 50% of the data is located inside the box and outliers that are far away from the central mass of the data are drawn as points.
 
-
-> ## Exercise:
+> ## Bonus Exercise:
 > Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other functions.
 >
 > > ## Example solution
@@ -731,8 +743,6 @@ This type of visualization makes it easy to compare the range and spread of valu
 > > ```
 > {: .solution}
 {: .challenge}
-
-
 
 ## Layers
 _[Back to top](#contents)_
@@ -913,11 +923,24 @@ Our plots are looking pretty nice, but what's with that grey background? While y
 ```{r GapLifeHistBinsClassicTheme}
 ggplot(gapminder_1997) +
   aes(x = lifeExp) +
-  geom_histogram(bins = 20)+
+  geom_histogram(bins = 20) +
   theme_classic()
 ```
 
 Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw()`, `theme_minimal()`.
+
+> ## Exercise: Rotating x axis labels
+> Often, you'll want to change something about the theme that you don't know how to do off the top of your head. When this happens, you can do an Internet search to help find what you're looking for. To practice this, search the Internet to figure out how to rotate the x axis labels 90 degrees. Then try it out using the histogram plot we made above. 
+>
+> > ## Solution
+> > ```{r GapLifeDens}
+> > ggplot(gapminder_1997) +
+> >   aes(x = lifeExp) +
+> >   geom_histogram(bins = 20) + 
+> >   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+> > ```
+> {: .solution}
+{: .challenge}
 
 ## Facets
 _[Back to top](#contents)_
@@ -949,6 +972,7 @@ ggplot(gapminder_1997) +
 ```
 
 Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
+>>>>>>> gh-pages
 
 ## Saving plots
 _[Back to top](#contents)_
