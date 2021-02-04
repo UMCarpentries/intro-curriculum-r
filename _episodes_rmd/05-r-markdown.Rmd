@@ -283,7 +283,7 @@ In addition to reporting specific values in the text, we may also want to show a
 ```
 Columns are separated by the pipe key <kbd>|</kbd> located above <kbd>Enter</kbd> on the keyboard. The dashes distinguish the header row from the rest of the table. This header could be a name for each column or a Header for the whole table. Now that we know the basic structure we can fill in our table. This is how we could present the same numbers from the previous paragraph as a table instead, again using in-line code.
 When we knit the report again, the code above will render like this:
-![](../fig/r-markdown/table_format.png)
+![](fig/r-markdown/table_format.png)
 
 ```
 |Summary of Data|
@@ -294,7 +294,7 @@ When we knit the report again, the code above will render like this:
 
 ```
 This will render like this:
-![](../fig/r-markdown/table_fillin.png)
+![](fig/r-markdown/table_fillin.png)
 
 This is useful if we are reporting a few values, but can get tedious for larger tables. Another way we can add tables to our reports is using an R function called `kable()`. Since this is an R function, we will use it within a code chunk. We can give the `kable()` function a data table and it will format it to a nice looking table in the report. For example, we could use the following code to generate a table of all the countries in Oceania.
 
@@ -309,7 +309,7 @@ gapminder_1997 %>%
   # are two packages with a function by the same name.
 ```
 Which will render like this:
-![](../fig/r-markdown/kable_table.png)
+![](fig/r-markdown/kable_table.png)
 
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
