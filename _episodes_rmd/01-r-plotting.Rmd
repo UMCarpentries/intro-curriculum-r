@@ -45,9 +45,9 @@ set.seed(20210109)
     + [Color vs. Fill](#color-vs.-fill)
     + [Univariate plots](#univariate-plots)
     + [Plot themes](#plot-themes)
+    + [Facets](#facets)
     + [Saving plots](#saving-plots)
 1. [Bonus topics: Creating complex plots](#bonus-topics:-creating-complex-plots)
-    + [Facets](#facets)
     + [Animated plots](#animated-plots)
 1. [Glossary of terms](#glossary-of-terms)
 
@@ -929,6 +929,37 @@ ggplot(gapminder_1997) +
 
 Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw()`, `theme_minimal()`.
 
+## Facets
+_[Back to top](#contents)_
+
+If you have a lot of different columns to try to plot or have distinguishable subgroups in your data, a powerful plotting technique called faceting might come in handy. When you facet your plot, you basically make a much of smaller plots and combine them together into a single image. Luckily, `ggplot` makes this very easy. Let's start with a simplified version of our first plot
+
+```{r GapNoFacet}
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point()
+```
+
+The first time we made this plot, we colored the points differently for each of the continents. This time let's actually draw a separate box for each continent. We can do this with `facet_wrap()`
+
+```{r GapFacetWrap}
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point() +
+  facet_wrap(vars(continent))
+```
+Note that `facet_wrap` requires this extra helper function called `vars()` in order to pass in the column names. It's a lot like the `aes()` function, but it doesn't require an aesthetic name. We can see in this output we get a separate box with a label for each continent so that only the points for that continent are in that box.
+
+The other faceting function ggplot provides is `facet_grid()`. The main difference is that `facet_grid()` will make sure all of your smaller boxes share a common axis. In this example, we will stack all the boxes on top of each other into rows so that their x axes all line up.
+```{r GapFacetGrid}
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point() +
+  facet_grid(rows = vars(continent))
+```
+
+Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
+
 ## Saving plots
 _[Back to top](#contents)_
 
@@ -1010,37 +1041,6 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 
 
 # Bonus topics: creating complex plots
-
-## Facets
-_[Back to top](#contents)_
-
-If you have a lot of different columns to try to plot or have distinguishable subgroups in your data, a powerful plotting technique called faceting might come in handy. When you facet your plot, you basically make a much of smaller plots and combine them together into a single image. Let's start with a simplified version of our first plot
-
-```{r GapNoFacet}
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point()
-```
-
-The first time we made this plot, we colored the points differently for each of the continents. This time let's actually draw a separate box for each continent. We can do this with `facet_wrap()`
-
-```{r GapFacetWrap}
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point() +
-  facet_wrap(vars(continent))
-```
-Note that `facet_wrap` requires this extra helper function called `vars()` in order to pass in the column names. It's a lot like the `aes()` function, but it doesn't require an aesthetic name. We can see in this output we get a separate box with a label for each continent so that only the points for that continent are in that box.
-
-The other faceting function ggplot provides is `facet_grid()`. The main difference is that `facet_grid()` will make sure all of your smaller boxes share a common axis. In this example, we will stack all the boxes on top of each other into rows so that their x axes all line up.
-```{r GapFacetGrid}
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point() +
-  facet_grid(rows = vars(continent))
-```
-
-Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
 
 ## Animated plots
 _[Back to top](#contents)_
