@@ -31,6 +31,22 @@ It is under active development and is not yet ready to be used to teach a worksh
     - `guide.md` - The instructor's guide for the curriculum.
     - `bonus_exercises.md` - Bonus exercises for learners who want to practice more.
 
+## Rendering R Markdown episodes
+
+To render all episodes in `_episodes_rmd/`, run:
+
+```
+make site
+```
+
+This will create markdown files in `_episodes/` for GitHub Pages.
+
+To render just one episode, e.g. `_episodes_rmd/01-r-plotting.Rmd`, run:
+
+```
+make _episodes/01-r-plotting.md
+```
+
 ## Workshop Schedule
 
 For a typical 2-day workshop. Can be modified for different workshop formats.

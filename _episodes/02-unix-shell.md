@@ -48,9 +48,24 @@ TO-DOs:
 - Tree structure / navigating files and directories.
 -->
 
+## Contents
+1. [Introducing the Shell](#introducing-the-shell)
+    + [Motivation](#motivation)
+    + [What the Shell looks like](#what-the-shell-looks-like)
+    + [Tree Structure](#tree-structure)
+1. [Working with files and directories](#working-with-files-and-directories)
+    + [Viewing Files](#viewing-files)
+    + [Man and Help](#man-and-help)
+    + [Editing Files](#editing-files)
+1. [Glossary of terms](#glossary-of-terms)
+
+
+
 ## Introducing the Shell
+_[Back to top](#contents)_
 
 ## Motivation
+_[Back to top](#contents)_
 
 Usually you move around your computer and run programs through graphical user interfaces (GUIs).
 For example, Finder for Mac and Explorer for Windows.
@@ -67,6 +82,7 @@ We’re going to use it to:
 1. Perform version control using git during the rest of the workshop.
 
 ## What the Shell looks like
+_[Back to top](#contents)_
 
 When you open up the terminal for the first time, it can look pretty scary - it’s basically just a blank screen.
 Don’t worry - we’ll take you through how to use it step by step.
@@ -81,13 +97,14 @@ PS1=’$ ‘
 {: .language-bash}
 
 ## Tree Structure
+_[Back to top](#contents)_
 
 The first thing we need to learn when using the shell is how to get around our computer.
 The shell folder (directory) structure is the same file structure as you're used to.
 We call the way that different directories are nested the "directory tree".
 You start at the root directory (`/`) and you can move "up" and "down" the tree. Here's an example:
 
-![]({{ page.root }}/fig/unix-shell/directory_tree_blank.png =400x)
+![Directory Tree]({{ page.root }}/fig/unix-shell/directory_tree_blank.png)
 
 Now that we understand directory trees a bit, let's check it out from the command line.
 We can see where we are by using the command `pwd` which stands for "print working directory", or the directory we are currently in:
@@ -108,9 +125,7 @@ The output is a file path to a location (a directory) on your computer.
 The output will look a little different depending on what operating system you're using:
 - Mac: `/Users/USERNAME`
 - Linux: `/home/USERNAME`
-- Windows:  `/mnt/c/Users/USERNAME`
-
-Usually you start in your home directory, but for Unix subsystem for Windows, it's a bit different.
+- Windows:  `/c/Users/USERNAME`
 
 Let's check to see what's in your home directory using the `ls` command, which lists all of the files in your working directory:
 
@@ -125,7 +140,7 @@ Documents   Library     Music       Public
 ```
 {: .output}
 
-If you're using the Unix subsystem for Windows, you'll probably see unfamiliar things. If you're using a Mac or git bash, you should see some files and directories you're familiar with such as `Documents` and `Desktop`.
+You should see some files and directories you're familiar with such as `Documents` and `Desktop`.
 
 If you make a typo, don't worry. If the shell can’t find a command you type, it will show you a helpful error message.
 
@@ -143,16 +158,10 @@ This error message tells us the command we tried to run, `ks`, is not a command 
 
 Next, let's move to our Desktop. To do this, we use `cd` to change directories.
 
-On Mac or git bash, run the following command:
+Run the following command:
 
 ```
 cd Desktop
-```
-{: .language-bash}
-
-On Unix subsystem for Windows, run:
-```
-cd /mnt/c/USERNAME/Desktop
 ```
 {: .language-bash}
 
@@ -216,16 +225,16 @@ Is it what you expect? Are the files you made in the R plotting lesson there?
 Now let's move back _up_ the directory tree. First, let's try this command:
 
 ```
-cd un-report
+cd Desktop
 ```
 {: .language-bash}
 
 ```
-cd: no such file or directory: un-report
+cd: Desktop: No such file or directory
 ```
 {: .output}
 
-This doesn't work because the `un-report` directory is not within the directory that we are currently in.
+This doesn't work because the `Desktop` directory is not within the directory that we are currently in.
 
 To move up the directory tree, you can use `..`, which is the parent of the current directory:
 ```
@@ -282,23 +291,14 @@ pwd
 ```
 {: .output}
 
-It takes you back to your home directory! (Or for Unix subsytem for Windows, your `/mnt` directory.
+It takes you back to your home directory!
 
 To get back to your projects directory you can use the following command:
-
-Mac/git-bash:
 
 ```
 cd Desktop/un-report
 ```
 {: .language-bash}
-
-
-Unix subsystem for Windows:
-```
-cd /mnt/c/USERNAME/Desktop/un-report
-```
-{: .language-bask}
 
 We have been using _relative paths_, meaning you use your current working directory to get to where you want to go.
 
@@ -352,6 +352,7 @@ pwd
 {: .challenge}
 
 ## Working with files and directories
+_[Back to top](#contents)_
 
 Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html)
 You might ask: why would I use the command line when I could just use the GUI?
@@ -493,21 +494,6 @@ gdp_population.R
 
 There it is!
 
-Great, now for an exercise:
-
-> ## Creating directories and moving files
->
-> Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
-> > ## Solution
-> > From the `un-report` directory:
-> >  ```
-> > mkdir data
-> > mv gapminder_data.csv data
-> > mv gapminder_1997.csv data
-> > ```
-> {: .solution}
-{: .challenge}
-
 Okay, now we have the code and data in the right place. But we have several figures that should still be in their own directory.
 
 First, let’s make a `figures` directory:
@@ -589,13 +575,27 @@ This output shows each directory name, followed by its contents on the next line
 > {: .solution}
 {: .challenge}
 
+> ## Creating directories and moving files
+>
+> Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
+> > ## Solution
+> > From the `un-report` directory:
+> >  ```
+> > mkdir data
+> > mv gapminder_data.csv data
+> > mv gapminder_1997.csv data
+> > ```
+> {: .solution}
+{: .challenge}
+
 ## Viewing Files
+_[Back to top](#contents)_
 
 To view and navigate the contents of a file we can use the command `less`. This will open a full screen view of the file.
 
 Here is what we should expect to see when running the command `less` on our `gapminder_data.csv` file:
 
-![]({{ page.root }}/fig/unix-shell/less_example.png =400x)
+![]({{ page.root }}/fig/unix-shell/less_example.png)
 
 To navigate, press `spacebar` to scroll to the next page and `b` to scroll up to the previous page. You can also use the up and down arrows to scroll line-by-line. Note that `less` defaults to line wrapping, meaning that any lines longer than the width of the screen will be wrapped to the next line, (to disable this use the option `-S` when running `less`, ex `less -S file.txt`). To exit less, press the letter `q`.
 
@@ -615,6 +615,7 @@ If we say "yes", less will render the file but it will appear as a seemingly ran
 ![]({{ page.root }}/fig/unix-shell/less_pdf_example.png)
 
 ## Man and Help
+_[Back to top](#contents)_
 
 Now that we know how to view files with `less`, we can learn how to look up the manual pages for unix shell commands. If you want to learn more about a command we can use `man` to look up its manual page. which will open with `less`. We can navigate the man page to view the description of a command and its options. For example, if you want to know more about the navigation options of `less` you can type `man less` on the command line.
 
@@ -635,7 +636,7 @@ less --help
 ```
 {: .language-bash}
 
-![]({{ page.root }}/fig/unix-shell/less_help.png =400x)
+![]({{ page.root }}/fig/unix-shell/less_help.png)
 
 Sometimes, commands will have multiple flags that we want to use at the same time. For example, `less` has a flag `-w` which highlights unread text, and `-S` which cuts off really long lines (rather than having the text wrap around). There are two ways to run `less` using both of these flags:
 
@@ -665,6 +666,7 @@ Sometimes, commands will have multiple flags that we want to use at the same tim
 {: .challenge}
 
 ## Editing Files
+_[Back to top](#contents)_
 
 Beyond viewing the content of files, we may want to be able to edit or write files on the command line. There are many different text editors you can use to edit files on the command line, but we will talk about `nano` since it is a bit easier to learn. To edit a file with nano type `nano file.txt`. If the file exists, it will open the file in a nano window, if the file does not exist it will be created. One nice feature of nano is that it has a cheat sheet along the bottom with some common commands you’ll need. When you are ready to save (write) your file, you type <kbd>Ctrl</kbd>+<kbd>O</kbd>. Along the bottom will appear a prompt for the file name to write to. The current name of the file will appear here, to keep the name as it is hit `enter` otherwise you can change the name of the file then hit `enter`. To exit nano, press <kbd>Ctrl</kbd>+<kbd>X</kbd>. If you forget to save before exiting, no worries nano will prompt you to first save the file.
 
@@ -700,6 +702,7 @@ Great! Now as an exercise we can change the paths to write out figures.
 {: .challenge}
 
 ## Glossary of terms
+_[Back to top](#contents)_
 
 - root: the very top of the file system tree
 - absolute path: the location of a specific file or directory starting from the root of the file system tree
@@ -716,4 +719,3 @@ Great! Now as an exercise we can change the paths to write out figures.
 - `-h/--help`: Help - argument that pulls up the help manual for a program
 - `nano`: a user-friendly text editor
 - `*`: Wildcard - matches zero of more characters in a filename
-
