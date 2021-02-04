@@ -67,5 +67,3 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 - Already-established SWC curricula: https://github.com/swcarpentry/swcarpentry#lesson-repositories
 - Lesson style guide: https://carpentries.github.io/lesson-example/06-style-guide/index.html
 - Guide to contributing with git and GitHub: https://github.com/dmgt/swc_github_flow/blob/master/for_novice_contributors.md#
-
-test 1 2
