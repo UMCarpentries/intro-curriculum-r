@@ -1759,7 +1759,7 @@ GitHub) are back in sync!
 > * upload the changes to GitHub with `git push`
 >
 > It is better to make many commits with smaller changes rather than
-> of one commit with massive changes: small commits are easier to
+> one commit with massive changes: small commits are easier to
 > read and review.
 {: .callout}
 
