@@ -4,6 +4,8 @@ U-M SWC Curriculum
 This is the custom curriculum developed by the University of Michigan Software Carpentry instance.
 It is under active development and is not yet ready to be used to teach a workshop.
 
+The rendered website can be found [here](https://umswc.github.io/curriculum/).
+
 ## Repo Layout
 
 1. Top level files
