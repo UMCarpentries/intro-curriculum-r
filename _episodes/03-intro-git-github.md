@@ -1751,7 +1751,7 @@ GitHub) are back in sync!
 >
 > In practice, it is good to be sure that you have an updated version of the
 > repository you are collaborating on, so you should `git pull` before making
-> our changes. The basic collaborative workflow would be:
+> your changes. The basic collaborative workflow would be:
 >
 > * update your local repo with `git pull`,
 > * make your changes and stage them with `git add`,
