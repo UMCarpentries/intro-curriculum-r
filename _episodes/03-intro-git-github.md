@@ -2153,8 +2153,6 @@ recent commit (`HEAD~1`), which is commit `f22b25e`:
 
 We have now reverted our current file and commit to the latest version without the bug. But we have kept the commit and history from the commit that had the error.
 
-In the next section, we will learn how to share our git repository across networks. We can do this by creating a link to another location, like Github (remote repository) which we can `push` and `pull` our repository to and from to share our files with others as well as backing up our local repository.
-
 > ## Simplifying the Common Case
 >
 > If you read the output of `git status` carefully,
