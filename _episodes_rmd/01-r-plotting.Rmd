@@ -906,7 +906,7 @@ Try different values like 5 or 50 to see how the plot changes.
 > Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continuous values. If you want to try the discrete options, try mapping `continent` to x instead.
 >
 > > ## Example solution
-> > ```{r GapLifeDens}
+> > ```{r GapLifeDens1}
 > > ggplot(gapminder_1997) +
 > >   aes(x = lifeExp) +
 > >   geom_density()
@@ -933,7 +933,7 @@ Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw
 > Often, you'll want to change something about the theme that you don't know how to do off the top of your head. When this happens, you can do an Internet search to help find what you're looking for. To practice this, search the Internet to figure out how to rotate the x axis labels 90 degrees. Then try it out using the histogram plot we made above. 
 >
 > > ## Solution
-> > ```{r GapLifeDens}
+> > ```{r GapLifeDens2}
 > > ggplot(gapminder_1997) +
 > >   aes(x = lifeExp) +
 > >   geom_histogram(bins = 20) + 
