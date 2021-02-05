@@ -54,9 +54,9 @@ We're going to learn a way to create a report in R using something called R Mark
 
 Combining Markdown and R code in the same document allows you to integrate the text of the report, the code you used, and your figures, tables, and other output into one document. The text can be your introduction, description of the research design and  experimental methods, your analysis and discussion of the results, the conclusion, or whatever else you want to include. R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, or keeping a computational notebook of your work. (If you are familiar with Jupyter notebooks in the Python programming environment, R Markdown is  R's equivalent of a Jupyter notebook.)
 
-![](fig/r-markdown/report-no-code.png)
-![](fig/r-markdown/report-with-code.png)
-![](fig/r-markdown/r-markdown-code-only.png)
+![]({{ page.root }}/fig/r-markdown/report-no-code.png)
+![]({{ page.root }}/fig/r-markdown/report-with-code.png)
+![]({{ page.root }}/fig/r-markdown/r-markdown-code-only.png)
 
 
 
@@ -202,7 +202,7 @@ cat('```{r gdp_lifeexp_1997}\nggplot(data = gapminder_1997) + \n
 
 Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd> button in the top left of the screen.
 
-![](fig/r-markdown/first_report_render.png)
+![]({{ page.root }}/fig/r-markdown/first_report_render.png)
 
 Amazing! We've created a report! Let's push this to GitHub to make sure we preserve this document.
 
@@ -217,7 +217,7 @@ If you don't remember how to do this, you can review the [git lesson](_episodes/
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
 
-![](fig/r-markdown/tidyverse_messages.png)
+![]({{ page.root }}/fig/r-markdown/tidyverse_messages.png)
 
 To get rid of this, we can revise our packages code chunk by adding `include=FALSE` just like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
 
@@ -227,7 +227,7 @@ cat('```{r packages, include=FALSE}\nlibrary(tidyverse)\n```\n')
 
 We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If you don't want the code to appear, how can you prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
 
-![](fig/r-markdown/includeFalse.png)
+![]({{ page.root }}/fig/r-markdown/includeFalse.png)
 
 Oops! Now the plot doesn't show up in our report at all. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE`  to tell this code chunk that we don't want to see the code but just the output.
 
@@ -241,38 +241,37 @@ cat('```{r gdp_lifeexp_1997, echo=FALSE}\nggplot(data = gapminder_1997) + \n
 
 When we knit this again, our plot is back!
 
-![](fig/r-markdown/echoFalse.png)
+![]({{ page.root }}/fig/r-markdown/echoFalse.png)
 
 Before we finalize our report, let's look at a few other cool features. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
 
 First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values.
 
-```{r,comment=NA,echo=F,collapse=T}
-cat('```{r data_summary, include=FALSE}
-  nCountries <- gapminder_1997 %>%  
-    select(country) %>%
-    n_distinct()
+```{r data_summary, echo = FALSE}
+nCountries <- gapminder_1997 %>%
+  select(country) %>%
+  n_distinct()
 
-  minGDP <- gapminder_1997 %>%
-    summarise(round(min(gdpPercap))) %>%
-    pull()
+minGDP <- gapminder_1997 %>%
+  summarise(round(min(gdpPercap))) %>%
+  pull()
 
-  maxGDP <- gapminder_1997 %>%
-    summarise(round(max(gdpPercap))) %>%
-    pull()
+maxGDP <- gapminder_1997 %>%
+  summarise(round(max(gdpPercap))) %>%
+  pull()
 ```
 
 Now, all we need to do is reference the values we just computed to describe our
-plot. To do this, we enclose each value in one set of backticks
-(`` `r '\x60r some_R_variable_name\x60'` ``), while the ``r`` part
-once again indicates that it's a chunk of R code. When we knit our report, R will
+plot. To do this, we enclose each value in one set of backticks 
+(`` `r '\x60r some_R_variable_name \x60'` ``), while the ``r`` part once again
+indicates that it's a chunk of R code. When we knit our report, R will
 automatically fill in the values we just created in the above code chunk. Note
 that R will automatically update these values every time our data might change
 (if we were to decide to drop or add countries to this  analysis, for example).
 
 ```
 The above plot shows the relationship between GDP per capita and life expectancy
-for a total of `r '\x60r nCountries\x60'` countries. For this set of countries,
+for a total of `r '\x60r nCountries \x60'` countries. For this set of countries,
 economic wealth ranged from a minimum of USD `r '\x60r minGDP\x60'`
 to a maximum of USD `r '\x60r maxGDP\x60'` per capita.
 ```
@@ -288,7 +287,7 @@ In addition to reporting specific values in the text, we may also want to show a
 ```
 Columns are separated by the pipe key <kbd>|</kbd> located above <kbd>Enter</kbd> on the keyboard. The dashes distinguish the header row from the rest of the table. This header could be a name for each column or a Header for the whole table. Now that we know the basic structure we can fill in our table. This is how we could present the same numbers from the previous paragraph as a table instead, again using in-line code.
 When we knit the report again, the code above will render like this:
-![](fig/r-markdown/table_format.png)
+![]({{ page.root }}/fig/r-markdown/table_format.png)
 
 ```
 |Summary of Data|
@@ -299,22 +298,23 @@ When we knit the report again, the code above will render like this:
 
 ```
 This will render like this:
-![](fig/r-markdown/table_fillin.png)
+![]({{ page.root }}/fig/r-markdown/table_fillin.png)
 
 This is useful if we are reporting a few values, but can get tedious for larger tables. Another way we can add tables to our reports is using an R function called `kable()`. Since this is an R function, we will use it within a code chunk. We can give the `kable()` function a data table and it will format it to a nice looking table in the report. For example, we could use the following code to generate a table of all the countries in Oceania.
 
 ```{r,comment=NA,echo=F,collapse=T}
 gapminder_1997 %>%
   filter(continent == "Oceania") %>%
-  knitr::kable())
+  knitr::kable()
   # kable is from the knitr package. Since we are only using this one function we
   # can call it directly from the package with :: instead of using library(knitr)
   # which will load in all the functions. Either method of accessing the function
   # will not have a noticable effect but is useful to know about in the case there
   # are two packages with a function by the same name.
 ```
+
 Which will render like this:
-![](fig/r-markdown/kable_table.png)
+![]({{ page.root }}/fig/r-markdown/kable_table.png)
 
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
