@@ -23,6 +23,10 @@ source("../bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
 
+```{r deps, echo=FALSE, message=FALSE}
+library(tidyverse)
+```
+
 
 ```{r echo=FALSE}
 # prevents jitter plots from changing
@@ -247,7 +251,8 @@ Before we finalize our report, let's look at a few other cool features. Sometime
 
 First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values.
 
-```{r data_summary, echo = FALSE}
+```{r data_summary, echo = FALSE, message = FALSE}
+gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 nCountries <- gapminder_1997 %>%
   select(country) %>%
   n_distinct()
