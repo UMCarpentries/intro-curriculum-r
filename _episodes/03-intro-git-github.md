@@ -1771,7 +1771,7 @@ GitHub) are back in sync!
 > ## Review Changes
 >
 > The Owner pushed commits to the repository without giving any information
-> to the Collaborator. How can the Collaborator find out what has changed with
+> to the Collaborator. How can the Collaborator find out what has changed
 > on GitHub?
 >
 > > ## Solution
