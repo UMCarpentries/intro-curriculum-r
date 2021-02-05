@@ -34,7 +34,6 @@ knitr_fig_path("04-")
     -   [Get stats fast with `summarize()`](#get-stats-fast-with-summarize)
     -   [Narrow down rows with `filter()`](#narrow-down-rows-with-filter)
     -   [Grouping rows using `group_by()`](#grouping-rows-using-group_by)
-    -   [Sort data with `arrange()`](#sort-data-with-arrange)
     -   [Make new variables with `mutate()`](#make-new-variables-with-mutate)
     -   [Subset columns using `select()`](#subset-columns-using-select)
     -   [Changing the shape of the data](#changing-the-shape-of-the-data)
@@ -102,24 +101,7 @@ When we call `summarize()`, we can use any of the column names of our data objec
 
 > **Note:** The `summarize()` and `summarise()` perform identical functions.
 
-We name this new column so we can use in a future argument. So the `averageLifeExp=` part tells `summarize()` to use "averageLifeExp" as the name of the new column.
-
-Note that you don't have to quotes around this new name as long as it starts with a letter and doesn't include a space.
-
-> ## Exercise: Variable names with characters or spaces
->
-> What would our code look like if we wanted to have a new column name be "Average Life Expectancy"?
->
-> > ## Solution:
-> >
-> > If you do want to use spaces or other characters, You should wrap the name in quotes.
-> >
-> > ```{r AvgLifeWithSpaces}
-> > summarize(gapminder_data, "Average Life Expectancy"=mean(lifeExp))
-> > ```
-> > {: .source}
-> {: .solution}
-{: .challenge}
+We name this new column so we can use in a future argument. So the `averageLifeExp=` part tells `summarize()` to use "averageLifeExp" as the name of the new column. Note that you don't have to quotes around this new name as long as it starts with a letter and doesn't include a space.
 
 Instead of including the data as an argument, we can use the *pipe operator* `%>%` to pass the data value into the `summarize` function. 
 
@@ -138,20 +120,6 @@ gapminder_data %>%
 ```
 
 Using the *pipe operator* `%>%` and enter command makes our code more readable. The  *pipe operator* `%>%` also helps to avoid using nested function and minimizes the need for new variables.
-
-> ## Exercise: Practice using the `%>%` to summarize data
->
-> Find the mean population using the piping function.
->
-> > ## Solution:
-> >
-> > ```{r PipeExercise}
-> > gapminder_data %>%  
-> >  summarize(averagePop = mean(pop))
-> > ```
-> > 
-> {: .solution}
-{: .challenge}
 
 Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
 
@@ -188,10 +156,19 @@ Well, remember the dataset contains rows from many different years and many diff
 
 Use `summarize()` to find the most recent year in the data set. We can use the `max()` function to return the maximum value.
 
-```{r GapMaxYear}
-gapminder_data %>%
-     summarize(recent_year=max(year))
-```
+> ## Exercise: Practice using the `%>%` to summarize data
+>
+> Find the mean population using the piping function.
+>
+> > ## Solution:
+> >
+> > ```{r PipeExercise}
+> > gapminder_data %>%  
+> >  summarize(recent_year = max(year))
+> > ```
+> > 
+> {: .solution}
+{: .challenge}
 
 So we see that the most recent year in the dataset is 2007. Let's calculate the life expectancy for all countries for only that year. To do that, we will use the `filter()` function to only use rows for that year before calculating the mean value.
 
@@ -259,31 +236,14 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 > {: .solution}
 {: .challenge}
 
-You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Let's calculate the minimum and maximum life expectancy for each year using the `min()` and `max()` functions
+You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Building on the code from the last exercise, let's add a new column that calculates the minimum life expectancy for each continent. 
 
 ```{r GapLifeExpMinMax}
 gapminder_data %>%
-  group_by(year) %>%
-  summarize(min=min(lifeExp), max=max(lifeExp))
-```
-
-We can now see just how large a gap there is between different years.
-
-## Sort data with `arrange()` {#sort-data-with-arrange}
-
-[*Back to top*](#contents)
-
-The `arrange()` function allows us to sort our data by some value. Let's take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
-
-```{r GapLifeContinentArrange}
-gapminder_data %>%
-  filter(year==2007) %>%
   group_by(continent) %>%
-  summarise(average= mean(lifeExp)) %>%
-  arrange(desc(average))
+  summarize(average=mean(lifeExp), min=min(lifeExp))
 ```
 
-Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
 
 ## Make new variables with `mutate()` {#make-new-variables-with-mutate}
 
@@ -348,29 +308,33 @@ gapminder_data %>%
 {: .challenge}
 
 
-The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
-
-```{r GapSelectFancy}
-gapminder_data %>%
-  select(year, starts_with("c"))
-```
-This returns just the three columns we are interested in. 
-
-> ## Exercise: Using `select()` with a helper function
+> ## Bonus: Using helper functions with `select()`
 >
-> Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
+> The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
+> 
+> ```{r GapSelectFancy}
+> gapminder_data %>%
+>   select(year, starts_with("c"))
+> ```
+> This returns just the three columns we are interested in. 
 >
-> > ## Solution
+> > ## Exercise: Using `select()` with a helper function
 > >
-> > The helper function `ends_with()` can help us here.
+> > Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
 > >
-> > ```{r GroupByChallenge2}
-> > gapminder_data %>%
-> > select(ends_with("p"))
-> > ```
-> > {: .source}
-> {: .solution}
-{: .challenge}
+> > > ## Solution
+> > >
+> > > The helper function `ends_with()` can help us here.
+> > >
+> > > ```{r GroupByChallenge2}
+> > > gapminder_data %>%
+> > > select(ends_with("p"))
+> > > ```
+> > {: .solution}
+> {: .challenge}
+> 
+{: .solution}
+
 
 ## Changing the shape of the data
 
@@ -443,7 +407,6 @@ git log --online
 git push 
 git status
 ``` 
-
 
 # Cleaning up data {#cleaning-up-data}
 
@@ -806,7 +769,27 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 {: .challenge}
 
 
-# Bonus exercises
+# Bonus 
+
+## Bonus content
+
+### Sort data with `arrange()`
+
+The `arrange()` function allows us to sort our data by some value. Let's use the `gapminder_data` dataframe. We will take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
+
+The helper function `ends_with()` can help us here.
+```{r GapLifeContinentArrange}
+gapminder_data %>%
+ filter(year==2007) %>%
+ group_by(continent) %>%
+ summarise(average= mean(lifeExp)) %>%
+ arrange(desc(average))
+```
+
+Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
+
+
+## Bonus exercises
 
 > ## Exercise: Calculating percent
 >
