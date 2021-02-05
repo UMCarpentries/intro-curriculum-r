@@ -23,9 +23,13 @@ keypoints:
 
 
 
+
+
+
+
 ### Contents
+1. [What is R Markdown and why use it?](#why-use-r-markdown?)
 1. [Creating a reports directory](#creating-a-reports-directory)
-1. [Why use R Markdown?](#why-use-r-markdown?)
 1. [Creating an R Markdown file](#creating-an-r-markdown-file)
 1. [Basic components of R Markdown](#basic-components-of-r-markdown)
     + [Header](#header)
@@ -35,13 +39,34 @@ keypoints:
 1. [Formatting](#formatting)
 1. [Integrating it all together: Paired exercise](#integrating-it-all-together-paired-exercise)
 
-Recall that our  goal is to generate a report on how a country's life expectancy is related to GDP.
+Recall that our  goal is to generate a report to the United Nations on how a country's life expectancy is related to GDP.
+
+> ## Discusion
+> How do you usually share data analyses with your collaborators? Many people share them through a Word or PDF document, a spreadsheet, slides, a  graphic, etc.
+{: .discussion}
+
+## What is R Markdown and why use it?
+_[Back to top](#contents)_
+
+We're going to learn a way to create a report in R using something called R Markdown. R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures. R Markdown enables you to "render"  report of our analysis and results into an html, PDF or Word file that you can share with others. 
+
+Combining Markdown and R code in the same document allows you to integrate the text of the report, the code you used, and your figures, tables, and other output into one document. The text can be your introduction, description of the research design and  experimental methods, your analysis and discussion of the results, the conclusion, or whatever else you want to include. R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, or keeping a computational notebook of your work. (If you are familiar with Jupyter notebooks in the Python programming environment, R Markdown is  R's equivalent of a Jupyter notebook.)
+
+![]({{ page.root }}/fig/r-markdown/report-no-code.png)
+![]({{ page.root }}/fig/r-markdown/report-with-code.png)
+![]({{ page.root }}/fig/r-markdown/r-markdown-code-only.png)
+
+
+
+
+We call  reports *reproducible*  when the code is embedded in the document and anyone can take the report and re-run the code to get the same output. If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can  hide the code in the final, rendered output file while keeping it in the R Markdown file for your own record.
+Writing reports with R Markdown is also useful because if you find an error or want to modify the text or a figure later on, you can simply change the code and re-run the R Markdown file to get the updated output!
+
 
 ## Creating a reports directory
 _[Back to top](#contents)_
 
-
-Let's start by using the Unix Shell to create a directory within `un-report` called `reports` where we will write our reports to the UN.
+To get started, let's use the Unix Shell to create a directory within `un-report` called `reports` where we will write our reports to the UN.
 First, open the Unix Shell and `cd` to `un-report`
 
 ~~~
@@ -55,23 +80,6 @@ mkdir reports
 ~~~
 {: .output}
 
-
-> ## Discusion
-> How do you usually share data analyses with your collaborators? Many people share them through a Word document, a spreadsheet, slides, a  graphic, etc.
-{: .discussion}
-
-## Why use R Markdown?
-_[Back to top](#contents)_
-
-We're going to learn a way to create a report in R using something called R Markdown.
-This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html, PDF or Word file and share with others.
-The text can be experimental methods, an analysis and discussion of the results, or whatever else you want to include.
-We call  reports *reproducible*  when the code is embedded in the document and anyone can take the report and re-run the code to get the same output.
-R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, or keeping a computational notebook of your work.
-If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can  hide the code in the final, rendered output file while keeping it in the R Markdown file for your own record.
-Writing reports with R Markdown is also useful because if you find an error or want to modify the text or a figure later on, you can simply change the code and re-run the R Markdown file to get the updated output!
-
-R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures.
 
 ## Creating an R Markdown file
 _[Back to top](#contents)_
@@ -114,6 +122,15 @@ output: html_document
 _[Back to top](#contents)_
 
 The next section is a *code chunk*, or embedded R code, that sets up options for all code chunks. Here is the default when you create a new R Markdown file:
+
+
+~~~
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("..")
+```
+~~~
+{: .output}
+
 
 
 ~~~
@@ -190,7 +207,7 @@ Now, since we want to show our results comparing GDP and life expectancy by coun
 
 ~~~
 ```{r data}
-gapminder_1997 <- read.csv("./data/gapminder_1997.csv")
+gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 ```
 ~~~
 {: .output}
@@ -215,22 +232,22 @@ ggplot(data = gapminder_1997) +
 
 Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd> button in the top left of the screen.
 
-![](../fig/r-markdown/first_report_render.png)
+![]({{ page.root }}/fig/r-markdown/first_report_render.png)
 
 Amazing! We've created a report! Let's push this to GitHub to make sure we preserve this document.
 
 Now, all we need to do is commit our new report to git version control and update our remote repository using Git.
 
-Returning to the command line, type
-`git status` ##to get an idea of which files just changed
-`git add <filename(s)>` ##to add any file(s) that you just created and that you would like to version control
-`git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
-`git push` ##to upload your changes to the git directory on the remote server
-
+Returning to the command line, 
+First, we will check the status of our repository with the `git status`. This will tell us which files just changed.  
+Next, we will add the new files that we want tracked by git up with `git add <filename(s)>`.  This adds any file(s) we list to version control.  
+Then we commit the file or changes with `git commit -m "<your commit message>"` and we add a message with the commit to describe the changes you are committing and it adds them to the git log.  
+Now, we can push those changes from our local computer to our github repo with `git push`. This will upload the changes to the git directory on the remote server.  
+If you don't remember how to do this, you can review the [git lesson](_episodes/03-intro-git-github.md).
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
 
-![](../fig/r-markdown/tidyverse_messages.png)
+![]({{ page.root }}/fig/r-markdown/tidyverse_messages.png)
 
 To get rid of this, we can revise our packages code chunk by adding `include=FALSE` just like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
 
@@ -244,7 +261,7 @@ library(tidyverse)
 
 We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If you don't want the code to appear, how can you prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
 
-![](../fig/r-markdown/includeFalse.png)
+![]({{ page.root }}/fig/r-markdown/includeFalse.png)
 
 Oops! Now the plot doesn't show up in our report at all. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE`  to tell this code chunk that we don't want to see the code but just the output.
 
@@ -266,40 +283,63 @@ ggplot(data = gapminder_1997) +
 
 When we knit this again, our plot is back!
 
-![](../fig/r-markdown/echoFalse.png)
+![]({{ page.root }}/fig/r-markdown/echoFalse.png)
 
-Before we finalize our report, let's look at one more cool feature. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
+Before we finalize our report, let's look at a few other cool features. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
 
 First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values.
 
 
-~~~
-```{r data_summary, include=FALSE}
-
-  nCountries <- length(unique(gapminder_1997$country)) 
-
-  minGDP <- round(min(gapminder_1997$gdpPercap), digits=0) 
-
-  maxGDP <- round(max(gapminder_1997$gdpPercap), digits=0)
-```
-~~~
-{: .output}
 
 Now, all we need to do is reference the values we just computed to describe our
 plot. To do this, we enclose each value in one set of backticks 
-(`` `r some_R_variable_name` ``), while the ``r`` part 
-once again indicates that it's a chunk of R code. When we knit our report, R will
+(`` `r some_R_variable_name ` ``), while the ``r`` part once again
+indicates that it's a chunk of R code. When we knit our report, R will
 automatically fill in the values we just created in the above code chunk. Note
 that R will automatically update these values every time our data might change
 (if we were to decide to drop or add countries to this  analysis, for example).
 
 ```
-The above plot shows the relationship between GDP per capita and life expectancy 
-for a total of `r nCountries` countries. For this set of countries, 
+The above plot shows the relationship between GDP per capita and life expectancy
+for a total of `r nCountries ` countries. For this set of countries,
 economic wealth ranged from a minimum of USD `r minGDP`
 to a maximum of USD `r maxGDP` per capita.
 ```
 {: .code}
+
+In addition to reporting specific values in the text, we may also want to show a table of values. With R Markdown there are multiple ways to product tables. One way to generate smaller tables is manually. Using a special format we can generate a table in our output. Note that this does not get generated in a code chunk because it is markdown formatting not R code.
+
+```
+|HEADER 1|HEADER 2|
+|-------------|-------------|
+|row 1, column1|row 1, column 2|
+|row 2, column1|row 2, column 2|
+```
+Columns are separated by the pipe key <kbd>|</kbd> located above <kbd>Enter</kbd> on the keyboard. The dashes distinguish the header row from the rest of the table. This header could be a name for each column or a Header for the whole table. Now that we know the basic structure we can fill in our table. This is how we could present the same numbers from the previous paragraph as a table instead, again using in-line code.
+When we knit the report again, the code above will render like this:
+![]({{ page.root }}/fig/r-markdown/table_format.png)
+
+```
+|Summary of Data|
+|------|------|
+|Number of Countries|142|
+|Minimum GDP per capita|312|
+|Maximum GDP per capita|4.1283 &times; 10<sup>4</sup>|
+
+```
+This will render like this:
+![]({{ page.root }}/fig/r-markdown/table_fillin.png)
+
+This is useful if we are reporting a few values, but can get tedious for larger tables. Another way we can add tables to our reports is using an R function called `kable()`. Since this is an R function, we will use it within a code chunk. We can give the `kable()` function a data table and it will format it to a nice looking table in the report. For example, we could use the following code to generate a table of all the countries in Oceania.
+
+
+|country     |      pop|continent | lifeExp| gdpPercap|
+|:-----------|--------:|:---------|-------:|---------:|
+|Australia   | 18565243|Oceania   |   78.83|  26997.94|
+|New Zealand |  3676187|Oceania   |   77.55|  21050.41|
+
+Which will render like this:
+![]({{ page.root }}/fig/r-markdown/kable_table.png)
 
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
@@ -377,38 +417,6 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > ~~~
 > library(tidyverse)
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> ── Attaching packages ───────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-> ✔ tibble  3.0.4     ✔ dplyr   1.0.2
-> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-> ✔ readr   1.4.0     ✔ forcats 0.5.0
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> ── Conflicts ──────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-> ✖ dplyr::filter() masks stats::filter()
-> ✖ dplyr::lag()    masks stats::lag()
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > gapminder <- read_csv('data/gapminder_data.csv')
 > ~~~
 > {: .language-r}
@@ -417,7 +425,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > ~~~
 > 
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ──────────────────────────────────────────────────────────────────
 > cols(
 >   country = col_character(),
 >   year = col_double(),
@@ -700,7 +708,7 @@ _[Back to top](#contents)_
 > 
 > ~~~
 > 
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ──────────────────────────────────────────────────────────────────
 > cols(
 >   `Region/Country/Area` = col_double(),
 >   X2 = col_character(),
@@ -815,7 +823,7 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > ~~~
 > 
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ──────────────────────────────────────────────────────────────────
 > cols(
 >   region = col_double(),
 >   country = col_character(),
@@ -868,16 +876,9 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > 
 > ~~~
-> `summarise()` ungrouping output (override with `.groups` argument)
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > # A tibble: 5 x 2
 >    year count
->   <dbl> <int>
+> * <dbl> <int>
 > 1  2005    83
 > 2  2010    86
 > 3  2015    94
@@ -934,13 +935,6 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> `summarise()` ungrouping output (override with `.groups` argument)
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > # A tibble: 3 x 2
 >   country    count
 >   <chr>      <int>
@@ -983,4 +977,3 @@ _[Back to top](#contents)_
 9. For a specific continent (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
 
 10. Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
-
