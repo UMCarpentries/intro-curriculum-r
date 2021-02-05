@@ -17,11 +17,12 @@ keypoints:
   - "Options such as `include` and `echo` determine what parts of an R code chunk are included in the R Markdown report. "
   - "R Markdown can render HTML, PDF, and Microsoft Word outputs."
 ---
+
 ```{r, include=FALSE}
-knitr::opts_knit$set(root.dir = normalizePath("..")
-source("bin/chunk-options.R")
+source("../bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
+
 
 ```{r echo=FALSE}
 # prevents jitter plots from changing
