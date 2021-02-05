@@ -22,7 +22,7 @@ keypoints:
 The Carpentries is a global organization whose mission is to teach researchers, and others, the basics of coding so that you can use it in your own work. 
 We believe everyone can learn to code, and that a lot of you will find it very useful for things such as data analysis and plotting.
 
-Our workshops are targeted to absolute beginners, and we expect you to have no coding experience coming in. 
+Our workshops are targeted to absolute beginners, and we expect that you have zero coding experience coming in. 
 That being said, you're welcome to attend a workshop if you already have a coding background but want to learn more!
 
 To provide an inclusive learning environment, we follow The Carpentries [Code of Conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html). 
