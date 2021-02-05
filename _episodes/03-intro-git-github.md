@@ -1802,7 +1802,7 @@ GitHub) are back in sync!
 >
 > > ## Solution
 > >
-> > Automated back software gives you less control over how often backups are
+> > Automated backup software gives you less control over how often backups are
 > > created and it is often difficult to compare changes between backups.
 > > However, Git has a steeper learning curve than backup software.
 > > Advantages of using Git and GitHub for version control include:
