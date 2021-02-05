@@ -41,15 +41,16 @@ keypoints:
     + [Color vs. Fill](#color-vs.-fill)
     + [Univariate plots](#univariate-plots)
     + [Plot themes](#plot-themes)
-    + [Saving plots](#saving-plots)
-1. [Bonus topics: Creating complex plots](#bonus-topics:-creating-complex-plots)
     + [Facets](#facets)
-    + [Animated plots](#animated-plots)
+    + [Saving plots](#saving-plots)
+1. [Bonus topics!] 
+    + [Creating complex plots](#bonus-topics:-creating-complex-plots)
+      + [Animated plots](#animated-plots)
+      + [Map plots](#map-plots)
 1. [Glossary of terms](#glossary-of-terms)
 
-
-> ## Exercise: Why learn to program?
-> In the etherpad, write down why you're interested in learning how to code.
+> ## Bonus: why learn to program?
+> Share why you're interested in learning how to code.
 > > ## Solution:
 > > There are lots of different reasons, including to perform data analysis and generate figures. I'm sure you have morespecific reasons for why you'd like to learn!
 > {: .solution}
@@ -77,13 +78,17 @@ To run R, all you really need is the R program, which is available for computers
 
 To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
-> ## Exercise
-> Can you think of a reason you might not want to use RStudio?
+> Bonus Exercise: Can you think of a reason you might not want to use RStudio?
 >
 > > ## Solution:
 > > On some high-performance computer systems (e.g. Amazon Web Services) you typically can't get a display like RStudio to open. If you're at the University of Michigan and have access to Great Lakes, then you might want to learn more about [resources](https://arc-ts.umich.edu/greatlakes/user-guide/#document-3) to run RStudio on Great Lakes.
 > {: .solution}
 {: challenge}
+
+> ## Tidyverse vs Base R
+> If you've used R before, you may have learned commands that are different than the ones we will be using during this workshop. We will be focusing on functions from the [Tidyverse](https://www.tidyverse.org/). The "tidyverse" is a collection of R packages that have been designed to work well together and offer many convenient features that do not come with a fresh install of R (aka "base R"). These packages are very popular and have a lot of developer support including many staff members from RStudio. These functions generally help you to write code that is easier to read and maintain. We believe learning these tools will help you become more productive more quickly.
+{: .callout}
+
 
 To get started, we'll spend a little time getting familiar with the RStudio environment and setting it up to suit your tastes. When you start RStudio, you'll have three panels.
 
@@ -163,7 +168,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ───────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+── Attaching packages ───────────────────────────────────────────────── tidyverse 1.3.0 ──
 ~~~
 {: .output}
 
@@ -180,7 +185,7 @@ library(tidyverse)
 
 
 ~~~
-── Conflicts ──────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ──────────────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -239,6 +244,10 @@ Now look in the **Environment** tab in the upper right corner of RStudio. Here y
 
 Finally, take a look at the **Console** at the bottom left part of the RStudio screen. Here you will see the commands that were run for you to import your data in addition to associated metadata and warnings.
 
+> ## Data objects
+> There are many different ways to store data in R. Most objects have a table-like structure with rows and columns. We will refer to these objects generally as "data objects". If you've used R before, you many be used to calling them "data.frames". Functions from the "tidyverse" such as `read_csv` work with objects called "tibbles", which are a specialized kind of "data.frame." Another common way to store data is a "data.table". All of these types of data objects (tibbles, data.frames, and data.tables) can be used with the commands we will learn in this lesson to make plots. We may sometimes use these terms interchangeably.
+{: .callout}
+
 # Understanding commands
 
 Let's start by looking at the code RStudio ran for us by copying and pasting the first line from the console into our `gdp_population.R` file that is open in the **Editor** window.
@@ -251,7 +260,7 @@ gapminder_1997 <- read_csv("gapminder_1997.csv")
 
 ~~~
 
-── Column specification ──────────────────────────────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────
 cols(
   country = col_character(),
   pop = col_double(),
@@ -272,14 +281,11 @@ This will run the line of code that currently contains your cursor and will move
 
 Let's take a closer look at the parts of this command.
 
-Starting from the left, the first thing we see is `gapminder_1997`. We viewed the contents of this file after it was imported so we know that `gapminder_1997` acts as a placeholder for a table of data.
+Starting from the left, the first thing we see is `gapminder_1997`. We viewed the contents of this file after it was imported so we know that `gapminder_1997` acts as a placeholder for our data.
 
-> ## Exercise: Running parts of our code
-> If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
-> > ## Solution
-> > We see a data table outputted, similar to what we saw in the Viewer tab.
-> {: .solution}
-{: .challenge}
+If we highlight just `gapminder_1997` within our code file and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on our keyboard, what do we see?
+
+We should see a data table outputted, similar to what we saw in the Viewer tab.
 
 In R terms, `gapminder_1997` is a named **object** that references or stores something. In this case, `gapminder_1997` stores a specific table of data.
 
@@ -318,7 +324,7 @@ Looking back at the command in our code file, the second thing we see is a `<-` 
 > - Be consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. One popular style guide can be found through the [tidyverse](https://style.tidyverse.org/).
 {: .solution}
 
-> ## Challenge (optional): Bad names for objects
+> ## Bonus Exercise: Bad names for objects
 > Try to assign values to some new objects. What do you notice? After running all four lines of code bellow, what value do you think the object `Flower` holds?
 >
 > 
@@ -362,7 +368,7 @@ For example, when we loaded in our data, the command contained `"gapminder_1997.
 > For example, try running `?read_csv`. A help page should pop up with information about what the function is used for and how to use it, as well as useful examples of the function in action. As you can see, the first **argument** of `read_csv` is the file path.
 {: .callout}
 
-The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R dataframe with the data stored in that csv file. All that, with one short line of code!
+The `read_csv()` function took the file path we provided, did who-knows-what behind the scenes, and then outputted an R object with the data stored in that csv file. All that, with one short line of code!
 
 Do all functions need arguments? Let's test some other functions:
 
@@ -375,7 +381,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "2021-02-04"
+[1] "2021-02-05"
 ~~~
 {: .output}
 
@@ -404,7 +410,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "2021-02-04"
+> [1] "2021-02-05"
 > ~~~
 > {: .output}
 > 
@@ -464,7 +470,7 @@ read_csv(file = 'gapminder_1997.csv')
 
 ~~~
 
-── Column specification ──────────────────────────────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────
 cols(
   country = col_character(),
   pop = col_double(),
@@ -573,21 +579,33 @@ ggplot(data = gapminder_1997) +
 
 <img src="../fig/rmd-01-FirstPlotAddXLabel-1.png" title="plot of chunk FirstPlotAddXLabel" alt="plot of chunk FirstPlotAddXLabel" width="612" style="display: block; margin: auto;" />
 
-OK. That looks better. Notice that when we added the label value we did so by placing the values inside quotes. This is because we are not using a value from inside our data object - we are providing the name directly. When you need to include actual text values in R, they will be placed inside quotes to tell them apart from other object or variable names.
+OK. That looks better. 
 
-Let's now map our `lifeExp` values to the y axis and give them a nice label.
+> ## Quotes vs No Quotes
+> Notice that when we added the label value we did so by placing the values inside quotes. This is because we are not using a value from inside our data object - we are providing the name directly. When you need to include actual text values in R, they will be placed inside quotes to tell them apart from other object or variable names.
+> The general rule is that if you want to use values from the columns of your data object, then you supply the name of the column without quotes, but if you want to specify a value that does not come from your data, then use quotes.
+{: .callout}
 
-
-~~~
-ggplot(data = gapminder_1997) +
-  aes(x = gdpPercap) +
-  labs(x = "GDP Per Capita") +
-  aes(y = lifeExp) +
-  labs(y = "Life Expectancy")
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-FirstPlotAddY-1.png" title="plot of chunk FirstPlotAddY" alt="plot of chunk FirstPlotAddY" width="612" style="display: block; margin: auto;" />
+> ## Exercise: Mapping life expectancy to the y axis
+> Map our `lifeExp` values to the y axis and give them a nice label.
+> {: .source}
+>
+>
+> > ## Solution
+> > 
+> > ~~~
+> > ggplot(data = gapminder_1997) +
+> >   aes(x = gdpPercap) +
+> >   labs(x = "GDP Per Capita") +
+> >   aes(y = lifeExp) +
+> >   labs(y = "Life Expectancy")
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/rmd-01-FirstPlotAddY-1.png" title="plot of chunk FirstPlotAddY" alt="plot of chunk FirstPlotAddY" width="612" style="display: block; margin: auto;" />
+> > {: .source}
+> {: .solution}
+{: .challenge}
 
 Excellent. We've now told our plot object where the x and y values are coming from and what they stand for. But we haven't told our object how we want it to draw the data. There are many different plot types (bar charts, scatter plots, histograms, etc). We tell our plot object what to draw by adding a "geometry" ("geom" for short) to our object. We will talk about many different geometries today, but for our first plot, let's draw our data using the "points" geometry for each value in the data set. To do this, we add `geom_point()` to our plot object:
 
@@ -664,7 +682,7 @@ There are also lots of other fun options:
 - [LaCroix](https://github.com/johannesbjork/LaCroixColoR)
 - [Wes Anderson](https://github.com/karthik/wesanderson)
 
-> ## Exercise: Changing colors
+> ## Bonus Exercise: Changing colors
 > Play around with different color palettes. Feel free to install another package and choose one of those if you want. Pick your favorite!
 > {: .source}
 >
@@ -792,7 +810,7 @@ To start, we will read in the data without using the interactive RStudio file na
 
 ~~~
 
-── Column specification ──────────────────────────────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────
 cols(
   country = col_character(),
   year = col_double(),
@@ -824,7 +842,7 @@ cols(
 > {: .solution}
 {: .challenge}
 
-Let's take a look at the full dataset. We could use `View()`, the way we did for the smaller dataset, but if your dataframe is too big, it might take too long to load. Luckily, R offers way to look at parts of the data to get an idea of what your dataset looks like, without having to examine the whole thing. Here are some commands that allow us to get the dimensions of our dataframe and look at a snapshot of the data. Try them out!
+Let's take a look at the full dataset. We could use `View()`, the way we did for the smaller dataset, but if your data is too big, it might take too long to load. Luckily, R offers a way to look at parts of the data to get an idea of what your dataset looks like, without having to examine the whole thing. Here are some commands that allow us to get the dimensions of our data and look at a snapshot of the data. Try them out!
 
 
 ~~~
@@ -851,7 +869,7 @@ Notice that this dataset has an additional column `year` compared to the smaller
 
 Hmm, the plot we created in the last challenge isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
 
-Let's review the columns and the type of data stored in the full table to decide how we should group things together. To get an overview of our dataframe, we can look at the structure of `gapminder_data` using the `str()` function.
+Let's review the columns and the types of data stored in our dataset to decide how we should group things together. To get an overview of our data object, we can look at the structure of `gapminder_data` using the `str()` function.
 
 ~~~
 str(gapminder_data)
@@ -892,7 +910,7 @@ Hmm. This doesn't look right. By setting the color value, we got a line for each
 
 Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
 
-> ## Exercise: More line plots
+> ## Bonus Exercise: More line plots
 > Now create your own line plot comparing population and life expectancy! Looking at your plot, can you guess which two countries have experienced massive change in population from 1952-2007?
 >
 > > ## Solution
@@ -909,28 +927,32 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 > {: .solution}
 {: .challenge}
 
-
 ## Discrete Plots
 _[Back to top](#contents)_
 
 So far we've looked at two plot types (`geom_point` and `geom_line`) which work when both the x and y values are numeric. But sometimes you may have one of your values be discrete (a factor or character).
 
-We've previously used the discrete values of the `continent` column to color in our points and lines. But now let's try moving that variable to the `x` axis. Let's say we are curious about comparing the distribution of the life expectancy values for each of the different continents for the `gapminder_1997` data. We can do so using a box plot. Here's what that code would look like:
+We've previously used the discrete values of the `continent` column to color in our points and lines. But now let's try moving that variable to the `x` axis. Let's say we are curious about comparing the distribution of the life expectancy values for each of the different continents for the `gapminder_1997` data. We can do so using a box plot. Try this out yourself in the exercise below!
 
-
-~~~
-ggplot(data = gapminder_1997) +
-  aes(x = continent, y = lifeExp) +
-  geom_boxplot()
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-GapBox-1.png" title="plot of chunk GapBox" alt="plot of chunk GapBox" width="612" style="display: block; margin: auto;" />
+> ## Exercise: Box plots
+> Using the `gapminder_1997` data, use ggplot to create a box plot with continent on the x axis and life expectancy on the y axis. You can use the examples from earlier in the lesson as a template to remember how to pass ggplot data and map aesthetics and geometries onto the plot. If you're really stuck, feel free to use the internet as well!
+>
+> > ## Solution
+> > 
+> > ~~~
+> > ggplot(data = gapminder_1997) +
+> >  aes(x = continent, y = lifeExp) +
+> >  geom_boxplot()
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/rmd-01-GapBox-1.png" title="plot of chunk GapBox" alt="plot of chunk GapBox" width="612" style="display: block; margin: auto;" />
+> {: .solution}
+{: .challenge}
 
 This type of visualization makes it easy to compare the range and spread of values across groups. The "middle" 50% of the data is located inside the box and outliers that are far away from the central mass of the data are drawn as points.
 
-
-> ## Exercise:
+> ## Bonus Exercise:
 > Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other functions.
 >
 > > ## Example solution
@@ -945,8 +967,6 @@ This type of visualization makes it easy to compare the range and spread of valu
 > > <img src="../fig/rmd-01-GapViol-1.png" title="plot of chunk GapViol" alt="plot of chunk GapViol" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
-
-
 
 ## Layers
 _[Back to top](#contents)_
@@ -991,25 +1011,20 @@ ggplot(data = gapminder_1997) +
 
 Be aware that these movements are random so your plot will look a bit different each time you run it!
 
-> ## Exercise: Ordering `ggplot` layers
-> Try switching the order of `geom_violin` and `geom_jitter`. What happens? Why?
->
-> > ## Solution:
-> >
-> >
-> >~~~
-> > ggplot(data = gapminder_1997) +
-> >  aes(x = continent, y = lifeExp) +
-> >  geom_jitter() +
-> >  geom_violin()
-> >~~~
-> >{: .language-r}
-> >
-> ><img src="../fig/rmd-01-GapViolinJitterSolution-1.png" title="plot of chunk GapViolinJitterSolution" alt="plot of chunk GapViolinJitterSolution" width="612" style="display: block; margin: auto;" />
-> >
-> > Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points.
->{: .solution}
-{: .challenge}
+Now let's try switching the order of `geom_violin` and `geom_jitter`. What happens? Why?
+
+
+~~~
+ggplot(data = gapminder_1997) +
+  aes(x = continent, y = lifeExp) +
+  geom_jitter() +
+  geom_violin()
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-01-GapViolinJitterLayers-1.png" title="plot of chunk GapViolinJitterLayers" alt="plot of chunk GapViolinJitterLayers" width="612" style="display: block; margin: auto;" />
+
+Since we plot the `geom_jitter` layer first, the violin plot layer is placed on top of the `geom_jitter` layer, so we cannot see most of the points.
 
 Note that each layer can have it's own set of aesthetic mappings. So far we've been using `aes()` outside of the other functions. When we do this, we are setting the "default" aesthetic mappings for the plot. We could do the same thing by passing the values to the `ggplot()` function call as is sometimes more common:
 
@@ -1063,7 +1078,7 @@ Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(con
 > ~~~
 > {: .output}
 >
-{: .callout}
+{: .solution}
 
 
 ## Color vs. Fill
@@ -1111,7 +1126,8 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 >
 {: .challenge}
 
-> ## Exercise: transparency
+
+> ## Bonus Exercise: Transparency
 > Another aesthetic that can be changed is how transparent our colors/fills are. The `alpha` parameter decides how transparent to make the colors. By default, `alpha = 1`, and our colors are completely opaque. Decreasing `alpha` increases the transparency of our colors/fills. Try changing the transparency of our violin plot. (**Hint:** Should alpha be inside or outside `aes()`?)
 > > ## Solution
 > > 
@@ -1126,9 +1142,7 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > {: .solution}
 {: .challenge}
 
-
-
-> ## Exercise (optional): changing colors
+> ## Changing colors
 > What happens if you run:
 > 
 > ~~~
@@ -1145,7 +1159,6 @@ So "darkolivegreen" maybe wasn't the prettiest color. R knows lots of color name
 > > In this example, you placed the fill inside the `aes()` function. Because you are using an aesthetic mapping, the "scale" for the fill will assign colors to values - in this case, you only have one value: the word "springgreen." Instead, try `geom_violin(fill = "springgreen")`.
 > {: .solution}
 {: .challenge}
-
 
 ## Univariate Plots
 _[Back to top](#contents)_
@@ -1183,7 +1196,7 @@ ggplot(gapminder_1997) +
 
 Try different values like 5 or 50 to see how the plot changes.
 
-> ## Exercise: One variable plots
+> ## Bonus Exercise: One variable plots
 > Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continuous values. If you want to try the discrete options, try mapping `continent` to x instead.
 >
 > > ## Example solution
@@ -1195,9 +1208,10 @@ Try different values like 5 or 50 to see how the plot changes.
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-01-GapLifeDens-1.png" title="plot of chunk GapLifeDens" alt="plot of chunk GapLifeDens" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-01-GapLifeDens1-1.png" title="plot of chunk GapLifeDens1" alt="plot of chunk GapLifeDens1" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
+
 
 ## Plot Themes
 _[Back to top](#contents)_
@@ -1208,7 +1222,7 @@ Our plots are looking pretty nice, but what's with that grey background? While y
 ~~~
 ggplot(gapminder_1997) +
   aes(x = lifeExp) +
-  geom_histogram(bins = 20)+
+  geom_histogram(bins = 20) +
   theme_classic()
 ~~~
 {: .language-r}
@@ -1216,6 +1230,67 @@ ggplot(gapminder_1997) +
 <img src="../fig/rmd-01-GapLifeHistBinsClassicTheme-1.png" title="plot of chunk GapLifeHistBinsClassicTheme" alt="plot of chunk GapLifeHistBinsClassicTheme" width="612" style="display: block; margin: auto;" />
 
 Try out a few other themes, to see which you like: `theme_bw()`, `theme_linedraw()`, `theme_minimal()`.
+
+> ## Exercise: Rotating x axis labels
+> Often, you'll want to change something about the theme that you don't know how to do off the top of your head. When this happens, you can do an Internet search to help find what you're looking for. To practice this, search the Internet to figure out how to rotate the x axis labels 90 degrees. Then try it out using the histogram plot we made above. 
+>
+> > ## Solution
+> > 
+> > ~~~
+> > ggplot(gapminder_1997) +
+> >   aes(x = lifeExp) +
+> >   geom_histogram(bins = 20) + 
+> >   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/rmd-01-GapLifeDens2-1.png" title="plot of chunk GapLifeDens2" alt="plot of chunk GapLifeDens2" width="612" style="display: block; margin: auto;" />
+> {: .solution}
+{: .challenge}
+
+## Facets
+_[Back to top](#contents)_
+
+If you have a lot of different columns to try to plot or have distinguishable subgroups in your data, a powerful plotting technique called faceting might come in handy. When you facet your plot, you basically make a bunch of smaller plots and combine them together into a single image. Luckily, `ggplot` makes this very easy. Let's start with a simplified version of our first plot
+
+
+~~~
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point()
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-01-GapNoFacet-1.png" title="plot of chunk GapNoFacet" alt="plot of chunk GapNoFacet" width="612" style="display: block; margin: auto;" />
+
+The first time we made this plot, we colored the points differently for each of the continents. This time let's actually draw a separate box for each continent. We can do this with `facet_wrap()`
+
+
+~~~
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point() +
+  facet_wrap(vars(continent))
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-01-GapFacetWrap-1.png" title="plot of chunk GapFacetWrap" alt="plot of chunk GapFacetWrap" width="612" style="display: block; margin: auto;" />
+Note that `facet_wrap` requires this extra helper function called `vars()` in order to pass in the column names. It's a lot like the `aes()` function, but it doesn't require an aesthetic name. We can see in this output that we get a separate box with a label for each continent so that only the points for that continent are in that box.
+
+The other faceting function ggplot provides is `facet_grid()`. The main difference is that `facet_grid()` will make sure all of your smaller boxes share a common axis. In this example, we will stack all the boxes on top of each other into rows so that their x axes all line up.
+
+~~~
+ggplot(gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point() +
+  facet_grid(rows = vars(continent))
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-01-GapFacetGrid-1.png" title="plot of chunk GapFacetGrid" alt="plot of chunk GapFacetGrid" width="612" style="display: block; margin: auto;" />
+
+Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
+>>>>>>> gh-pages
 
 ## Saving plots
 _[Back to top](#contents)_
@@ -1303,7 +1378,7 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 ~~~
 {: .language-r}
 
-> ## Exercise: create and save a plot
+> ## Bonus Exercise: Create and save a plot
 > Now try it yourself! Create your own plot using `ggplot()`, store it in an object named `my_plot`, and save the plot using `ggsave()`.
 >
 > > ## Example solution
@@ -1322,50 +1397,10 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 {: .challenge}
 
 
-# Bonus topics: creating complex plots
 
-## Facets
-_[Back to top](#contents)_
+# <p style="color:blue">Bonus topics!</p>
 
-If you have a lot of different columns to try to plot or have distinguishable subgroups in your data, a powerful plotting technique called faceting might come in handy. When you facet your plot, you basically make a much of smaller plots and combine them together into a single image. Let's start with a simplified version of our first plot
-
-
-~~~
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point()
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-GapNoFacet-1.png" title="plot of chunk GapNoFacet" alt="plot of chunk GapNoFacet" width="612" style="display: block; margin: auto;" />
-
-The first time we made this plot, we colored the points differently for each of the continents. This time let's actually draw a separate box for each continent. We can do this with `facet_wrap()`
-
-
-~~~
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point() +
-  facet_wrap(vars(continent))
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-GapFacetWrap-1.png" title="plot of chunk GapFacetWrap" alt="plot of chunk GapFacetWrap" width="612" style="display: block; margin: auto;" />
-Note that `facet_wrap` requires this extra helper function called `vars()` in order to pass in the column names. It's a lot like the `aes()` function, but it doesn't require an aesthetic name. We can see in this output we get a separate box with a label for each continent so that only the points for that continent are in that box.
-
-The other faceting function ggplot provides is `facet_grid()`. The main difference is that `facet_grid()` will make sure all of your smaller boxes share a common axis. In this example, we will stack all the boxes on top of each other into rows so that their x axes all line up.
-
-~~~
-ggplot(gapminder_1997) +
-  aes(x = gdpPercap, y = lifeExp) +
-  geom_point() +
-  facet_grid(rows = vars(continent))
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-GapFacetGrid-1.png" title="plot of chunk GapFacetGrid" alt="plot of chunk GapFacetGrid" width="612" style="display: block; margin: auto;" />
-
-Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
+# Creating complex plots
 
 ## Animated plots
 _[Back to top](#contents)_
@@ -1453,85 +1488,84 @@ animatedHansPlot
 
 
 ~~~
-Rendering [-------------------------------------------] at 0.87 fps ~ eta: 2m
-Rendering [>------------------------------------------] at 0.57 fps ~ eta: 3m
-Rendering [>------------------------------------------] at 0.65 fps ~ eta: 2m
-Rendering [=>-----------------------------------------] at 0.54 fps ~ eta: 3m
-Rendering [=>-----------------------------------------] at 0.49 fps ~ eta: 3m
-Rendering [==>----------------------------------------] at 0.47 fps ~ eta: 3m
-Rendering [==>----------------------------------------] at 0.51 fps ~ eta: 3m
-Rendering [==>----------------------------------------] at 0.54 fps ~ eta: 3m
-Rendering [===>---------------------------------------] at 0.56 fps ~ eta: 3m
-Rendering [===>---------------------------------------] at 0.55 fps ~ eta: 3m
-Rendering [====>--------------------------------------] at 0.57 fps ~ eta: 3m
-Rendering [====>--------------------------------------] at 0.59 fps ~ eta: 2m
-Rendering [=====>--------------------------------------] at 0.6 fps ~ eta: 2m
-Rendering [=====>-------------------------------------] at 0.61 fps ~ eta: 2m
-Rendering [=====>-------------------------------------] at 0.59 fps ~ eta: 2m
-Rendering [======>------------------------------------] at 0.55 fps ~ eta: 3m
-Rendering [======>------------------------------------] at 0.53 fps ~ eta: 3m
-Rendering [=======>-----------------------------------] at 0.53 fps ~ eta: 3m
-Rendering [========>----------------------------------] at 0.52 fps ~ eta: 3m
-Rendering [========>----------------------------------] at 0.53 fps ~ eta: 2m
-Rendering [=========>---------------------------------] at 0.53 fps ~ eta: 2m
-Rendering [=========>---------------------------------] at 0.54 fps ~ eta: 2m
-Rendering [==========>--------------------------------] at 0.55 fps ~ eta: 2m
-Rendering [===========>-------------------------------] at 0.54 fps ~ eta: 2m
-Rendering [===========>-------------------------------] at 0.53 fps ~ eta: 2m
-Rendering [============>------------------------------] at 0.53 fps ~ eta: 2m
-Rendering [=============>-----------------------------] at 0.54 fps ~ eta: 2m
-Rendering [==============>----------------------------] at 0.54 fps ~ eta: 2m
-Rendering [==============>----------------------------] at 0.55 fps ~ eta: 2m
-Rendering [===============>---------------------------] at 0.56 fps ~ eta: 2m
-Rendering [================>--------------------------] at 0.56 fps ~ eta: 2m
-Rendering [=================>-------------------------] at 0.56 fps ~ eta: 2m
-Rendering [=================>-------------------------] at 0.57 fps ~ eta: 2m
-Rendering [==================>------------------------] at 0.57 fps ~ eta: 2m
-Rendering [===================>-----------------------] at 0.58 fps ~ eta: 2m
-Rendering [====================>----------------------] at 0.57 fps ~ eta: 2m
-Rendering [====================>----------------------] at 0.57 fps ~ eta: 1m
-Rendering [=====================>---------------------] at 0.58 fps ~ eta: 1m
-Rendering [======================>--------------------] at 0.59 fps ~ eta: 1m
-Rendering [=======================>-------------------] at 0.59 fps ~ eta: 1m
-Rendering [========================>-------------------] at 0.6 fps ~ eta: 1m
-Rendering [=========================>------------------] at 0.6 fps ~ eta: 1m
-Rendering [=========================>-----------------] at 0.61 fps ~ eta: 1m
-Rendering [==========================>-----------------] at 0.6 fps ~ eta: 1m
-Rendering [===========================>----------------] at 0.6 fps ~ eta: 1m
-Rendering [===========================>---------------] at 0.61 fps ~ eta: 1m
-Rendering [============================>--------------] at 0.61 fps ~ eta: 1m
-Rendering [=============================>-------------] at 0.62 fps ~ eta: 1m
-Rendering [=============================>-------------] at 0.62 fps ~ eta: 48s
-Rendering [==============================>------------] at 0.62 fps ~ eta: 47s
-Rendering [==============================>------------] at 0.62 fps ~ eta: 45s
-Rendering [==============================>------------] at 0.62 fps ~ eta: 43s
-Rendering [===============================>-----------] at 0.62 fps ~ eta: 42s
-Rendering [===============================>-----------] at 0.62 fps ~ eta: 40s
-Rendering [================================>----------] at 0.62 fps ~ eta: 39s
-Rendering [================================>----------] at 0.62 fps ~ eta: 37s
-Rendering [=================================>---------] at 0.63 fps ~ eta: 35s
-Rendering [=================================>---------] at 0.63 fps ~ eta: 34s
-Rendering [=================================>---------] at 0.62 fps ~ eta: 32s
-Rendering [==================================>--------] at 0.63 fps ~ eta: 30s
-Rendering [==================================>--------] at 0.63 fps ~ eta: 29s
-Rendering [===================================>-------] at 0.63 fps ~ eta: 27s
-Rendering [===================================>-------] at 0.62 fps ~ eta: 26s
-Rendering [====================================>------] at 0.62 fps ~ eta: 24s
-Rendering [====================================>------] at 0.62 fps ~ eta: 22s
-Rendering [====================================>------] at 0.62 fps ~ eta: 21s
-Rendering [=====================================>-----] at 0.62 fps ~ eta: 19s
-Rendering [=====================================>-----] at 0.62 fps ~ eta: 18s
-Rendering [======================================>----] at 0.62 fps ~ eta: 16s
-Rendering [======================================>----] at 0.62 fps ~ eta: 14s
-Rendering [=======================================>---] at 0.62 fps ~ eta: 13s
-Rendering [=======================================>---] at 0.62 fps ~ eta: 11s
-Rendering [=======================================>---] at 0.62 fps ~ eta: 10s
-Rendering [========================================>--] at 0.62 fps ~ eta: 8s
-Rendering [========================================>--] at 0.63 fps ~ eta: 6s
-Rendering [=========================================>-] at 0.63 fps ~ eta: 5s
-Rendering [=========================================>-] at 0.63 fps ~ eta: 3s
-Rendering [==========================================>] at 0.62 fps ~ eta: 2s
-Rendering [===========================================] at 0.62 fps ~ eta: 0s
+Rendering [--------------------------------------------] at 2.1 fps ~ eta: 48s
+Rendering [>-------------------------------------------] at 1.9 fps ~ eta: 1m
+Rendering [=>------------------------------------------] at 1.9 fps ~ eta: 1m
+Rendering [==>-----------------------------------------] at 1.9 fps ~ eta: 1m
+Rendering [==>-----------------------------------------] at 1.9 fps ~ eta: 49s
+Rendering [===>----------------------------------------] at 1.9 fps ~ eta: 49s
+Rendering [===>----------------------------------------] at 1.9 fps ~ eta: 48s
+Rendering [===>----------------------------------------] at 1.8 fps ~ eta: 49s
+Rendering [====>---------------------------------------] at 1.9 fps ~ eta: 48s
+Rendering [====>---------------------------------------] at 1.9 fps ~ eta: 47s
+Rendering [=====>--------------------------------------] at 1.9 fps ~ eta: 46s
+Rendering [=====>--------------------------------------] at 1.9 fps ~ eta: 45s
+Rendering [======>-------------------------------------] at 1.9 fps ~ eta: 45s
+Rendering [======>-------------------------------------] at 1.9 fps ~ eta: 44s
+Rendering [======>-------------------------------------] at 1.9 fps ~ eta: 43s
+Rendering [=======>------------------------------------] at 1.9 fps ~ eta: 42s
+Rendering [========>-----------------------------------] at 1.9 fps ~ eta: 41s
+Rendering [=========>----------------------------------] at 1.9 fps ~ eta: 40s
+Rendering [==========>---------------------------------] at 1.9 fps ~ eta: 39s
+Rendering [==========>---------------------------------] at 1.9 fps ~ eta: 38s
+Rendering [===========>--------------------------------] at 1.9 fps ~ eta: 38s
+Rendering [===========>--------------------------------] at 1.9 fps ~ eta: 37s
+Rendering [============>-------------------------------] at 1.9 fps ~ eta: 37s
+Rendering [============>-------------------------------] at 1.9 fps ~ eta: 36s
+Rendering [=============>------------------------------] at 1.9 fps ~ eta: 36s
+Rendering [=============>------------------------------] at 1.9 fps ~ eta: 35s
+Rendering [==============>-----------------------------] at 1.9 fps ~ eta: 35s
+Rendering [==============>-----------------------------] at 1.9 fps ~ eta: 34s
+Rendering [===============>----------------------------] at 1.9 fps ~ eta: 33s
+Rendering [================>---------------------------] at 1.9 fps ~ eta: 32s
+Rendering [=================>--------------------------] at 1.9 fps ~ eta: 31s
+Rendering [=================>--------------------------] at 1.9 fps ~ eta: 30s
+Rendering [==================>-------------------------] at 1.9 fps ~ eta: 30s
+Rendering [==================>-------------------------] at 1.9 fps ~ eta: 29s
+Rendering [===================>------------------------] at 1.9 fps ~ eta: 29s
+Rendering [===================>------------------------] at 1.9 fps ~ eta: 28s
+Rendering [====================>-----------------------] at 1.9 fps ~ eta: 28s
+Rendering [====================>-----------------------] at 1.9 fps ~ eta: 27s
+Rendering [=====================>----------------------] at 1.9 fps ~ eta: 27s
+Rendering [=====================>----------------------] at 1.9 fps ~ eta: 26s
+Rendering [======================>---------------------] at 1.9 fps ~ eta: 25s
+Rendering [=======================>--------------------] at 1.9 fps ~ eta: 24s
+Rendering [========================>-------------------] at 1.9 fps ~ eta: 23s
+Rendering [========================>-------------------] at 1.9 fps ~ eta: 22s
+Rendering [=========================>------------------] at 1.9 fps ~ eta: 22s
+Rendering [=========================>------------------] at 1.9 fps ~ eta: 21s
+Rendering [==========================>-----------------] at 1.9 fps ~ eta: 20s
+Rendering [===========================>----------------] at 1.9 fps ~ eta: 19s
+Rendering [============================>---------------] at 1.9 fps ~ eta: 18s
+Rendering [============================>---------------] at 1.9 fps ~ eta: 17s
+Rendering [=============================>--------------] at 1.9 fps ~ eta: 17s
+Rendering [=============================>--------------] at 1.9 fps ~ eta: 16s
+Rendering [==============================>-------------] at 1.9 fps ~ eta: 16s
+Rendering [==============================>-------------] at 1.9 fps ~ eta: 15s
+Rendering [===============================>------------] at 1.9 fps ~ eta: 15s
+Rendering [===============================>------------] at 1.9 fps ~ eta: 14s
+Rendering [================================>-----------] at 1.9 fps ~ eta: 14s
+Rendering [================================>-----------] at 1.9 fps ~ eta: 13s
+Rendering [=================================>----------] at 1.9 fps ~ eta: 12s
+Rendering [=================================>----------] at 1.9 fps ~ eta: 11s
+Rendering [==================================>---------] at 1.9 fps ~ eta: 11s
+Rendering [==================================>---------] at 1.9 fps ~ eta: 10s
+Rendering [===================================>--------] at 1.9 fps ~ eta: 10s
+Rendering [===================================>--------] at 1.9 fps ~ eta: 9s
+Rendering [====================================>-------] at 1.9 fps ~ eta: 9s
+Rendering [====================================>-------] at 1.9 fps ~ eta: 8s
+Rendering [=====================================>------] at 1.9 fps ~ eta: 7s
+Rendering [======================================>-----] at 1.9 fps ~ eta: 6s
+Rendering [=======================================>----] at 1.9 fps ~ eta: 5s
+Rendering [=======================================>----] at 1.9 fps ~ eta: 4s
+Rendering [========================================>---] at 1.9 fps ~ eta: 4s
+Rendering [========================================>---] at 1.9 fps ~ eta: 3s
+Rendering [=========================================>--] at 1.9 fps ~ eta: 3s
+Rendering [=========================================>--] at 1.9 fps ~ eta: 2s
+Rendering [==========================================>-] at 1.9 fps ~ eta: 2s
+Rendering [==========================================>-] at 1.9 fps ~ eta: 1s
+Rendering [===========================================>] at 1.9 fps ~ eta: 1s
+Rendering [============================================] at 1.9 fps ~ eta: 0s
 ~~~
 {: .output}
 
@@ -1553,8 +1587,33 @@ anim_save("hansAnimatedPlot.gif",
 ~~~
 {: .language-r}
 
+## Map plots
 
-## Glossary of terms
+The `ggplot` library also has useful functions to draw your data on a map. There are lots of different ways to draw maps but here's a quick example using the gampminder data. Here we will plot each country with a color indicating the life expectancy in 1997.
+
+
+~~~
+# make sure names of countries match between the map info and the data
+mapdata <- map_data("world") %>%
+  mutate(region = recode(region,
+                         USA="United States",
+                         UK="United Kingdom"))
+
+#install.packages("mapproj")
+gapminder_1997 %>%
+  ggplot() +
+  geom_map(aes(map_id=country, fill=lifeExp), map=mapdata) +
+  expand_limits(x = mapdata$long, y = mapdata$lat) +
+  coord_map(projection = "mollweide", xlim = c(-180, 180)) +
+  ggthemes::theme_map()
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-01-mapPlots-1.png" title="plot of chunk mapPlots" alt="plot of chunk mapPlots" width="612" style="display: block; margin: auto;" />
+
+Notice that this map helps to show that we actually have some gaps in the data. We are missing observations for counties like Russia and many countries in central Africa. Thus, it's important to acknowledge that any patterns or trends we see in the data might not apply to those regions.
+
+# Glossary of terms
 _[Back to top](#contents)_
 
 - Aesthetic: a visual property of the objects (geoms) drawn in your plot (like x position, y position, color, size, etc)
@@ -1565,27 +1624,4 @@ _[Back to top](#contents)_
 - Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
 - Factor: a way of storing data to let R know the values are discrete so they get special treatment
 
-
-# Bonus topics we haven't expanded on yet
-
-## Map plot
-
-
-~~~
-mapdata <- map_data("world") %>%
-  mutate(region = recode(region,
-                         USA="United States",
-                         UK="United Kingdom"))
-
-#install.packages("mapproj")
-gapminder_data %>% filter(year==2007) %>%
-  ggplot() +
-  geom_map(aes(map_id=country, fill=lifeExp), map=mapdata) +
-  expand_limits(x = mapdata$long, y = mapdata$lat) +
-  coord_map(projection = "mollweide", xlim = c(-180, 180)) +
-  ggthemes::theme_map()
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-mapPlots-1.png" title="plot of chunk mapPlots" alt="plot of chunk mapPlots" width="612" style="display: block; margin: auto;" />
 
