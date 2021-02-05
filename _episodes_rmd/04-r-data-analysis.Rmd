@@ -336,30 +336,6 @@ gapminder_data %>%
 {: .solution}
 
 
-<-- To move to bonus content -->
-
-> ## Bonus: Sort data with `arrange()`
->
-> The `arrange()` function allows us to sort our data by some value. Let's take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
->
-> > ## Solution
-> >
-> > The helper function `ends_with()` can help us here.
-> >
-> > ```{r GapLifeContinentArrange}
-> > gapminder_data %>%
-> >  filter(year==2007) %>%
-> >  group_by(continent) %>%
-> >  summarise(average= mean(lifeExp)) %>%
-> >  arrange(desc(average))
-> > ```
-> > Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
-> > {: .source}
-> {: .solution}
-{: .challenge}
-
-<-- End bonus content -->
-
 ## Changing the shape of the data
 
 [*Back to top*](#contents)
@@ -793,7 +769,27 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 {: .challenge}
 
 
-# Bonus exercises
+# Bonus 
+
+## Bonus content
+
+### Sort data with `arrange()`
+
+The `arrange()` function allows us to sort our data by some value. Let's use the `gapminder_data` dataframe. We will take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
+
+The helper function `ends_with()` can help us here.
+```{r GapLifeContinentArrange}
+gapminder_data %>%
+ filter(year==2007) %>%
+ group_by(continent) %>%
+ summarise(average= mean(lifeExp)) %>%
+ arrange(desc(average))
+```
+
+Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
+
+
+## Bonus exercises
 
 > ## Exercise: Calculating percent
 >
