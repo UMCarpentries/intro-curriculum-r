@@ -220,6 +220,22 @@ They must send screenshots of the script output to the workshop lead prior to th
 ## Pilot Workshop
 <!-- experience of use -->
 
+We piloted our curriculum during a two-day Carpentries virtual workshop.
+In line with the Carpentries style, we had __ instructors and __ helpers at the workshop to assist with learner questions and technical issues.
+We also used the "sticky note" system where learners can indicate their progress on exercises and requests for help by using different colored sticky notes. 
+As the workshop was virtual, we used Zoom reaction icons as sticky notes.
+We had __ participants of various skill levels from countries worldwide, the vast majority of whom provided very positive reviews of the workshop.
+
+### Tips for running a virtual workshop
+
+We credit the success of our first virtual workshop in large part due to the curriculum structure and content, as well as the awesome instructors. However, we also believe that the following tips helped make the workshop as smooth as possible:
+
+1. We suggested that learners have Zoom and RStudio/the unix shell open side by side on their computer to minimize toggling between different panels.
+1. We used Slack for communication among instructors and helpers, as well as between helpers and learners. 
+Learners asked questions in a group Slack channel where helpers could respond.
+1. If a learner needed more help than was possible on Slack, a helper and the learner would enter a breakout room together to troubleshoot.
+However, we tried to minimize this option as then the learner is often very confused about what's happening when they return to the main room.
+
 # Acknowledgements
 
 We thank the Carpentries organization for their workshop protocols and
