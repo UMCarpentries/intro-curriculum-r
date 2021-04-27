@@ -107,9 +107,19 @@ goals for our curriculum:
 
 TODO: curriculum sprint, pilot workshop, continuing development.
 
+
 # The Curriculum
 
-![The curriculum development workflow and curriculum structure.](development-workflow.png)
+![The curriculum development framework and curriculum structure.](development-framework.png)
+
+## Learning Objectives
+
+## Course Content
+
+## Instructional Design
+<!-- teaching philosophy / pedagogy -->
+
+## Pilot Workshop
 
 # Acknowledgements
 
