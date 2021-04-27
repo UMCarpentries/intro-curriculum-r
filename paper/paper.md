@@ -128,7 +128,7 @@ and reduce the burden for new instructors to get involved.
 
 We drew on the expertise of the vibrant Carpentries community at the
 University of Michigan to develop a custom curriculum that would meet the needs
-of our learners.
+of our learners (Figure 1).
 We planned a two-day sprint, where members of our community worked
 collaboratively to create an initial draft of the content.
 During the sprint, we met virtually to discuss our goals, then broke up into
@@ -163,7 +163,7 @@ curriculum in order to gather even more feedback.
 # Curriculum
 
 Our curriculum is tailored to people with no prior coding experience who want to
-learn how to use programming to perform data analysis.
+learn how to use programming to perform data analysis (Figure 2).
 We aim to teach our learners not only the basics of performing data analysis,
 but also to provide them with a framework to perform rigorous reproducible
 research that can easily be shared with others.
