@@ -86,13 +86,24 @@ using the Software Carpentry curriculum.
 Pros:
 - modular: so you can choose any programming language lesson (e.g. R or Python) to pair with lessons on the unix shell and version control.
 - well-established: it has been refined over years by many contributors and taught at workshops around the world.
-- pedagogy: .
+- pedagogy: contains short quizzes & exercises at the end of topic chunks for formative assessment.
 
 Cons:
-- the modular nature of the curriculum means that each lesson is isolated/disjoint from the others, so there is not a natural flow and it is not apparent to learners how to integrate all of the skills together for reproducible research projects.
-- there is too much content for the time allotted in a two-day workshop, so instructors are expected to pick what content to teach and what to skip. this makes workshops inconsistent (because slightly different content is taught each time). it also takes a significant time investment for instructors to prepare to teach, which is especially burdensome for new instructors.
+- the modular nature of the curriculum means that each lesson is independent from the others, so there is not a natural flow and it is not apparent to learners how to integrate all of the skills together for reproducible research projects.
+- there is too much content for the time allotted in a two-day workshop, so instructors are expected to pick what content to teach and what to skip. this makes workshops inconsistent (because slightly different content is taught each time). it also takes a significant time investment for instructors to prepare to teach, which is especially burdensome/overwhelming for new instructors.
 
 TODO: We sought to create a new curriculum that...
+
+goals for our curriculum:
+- Flexible for virtual or in-person format.
+- Lessons should build on each other, rather than being completely independent/disconnected.
+- Use the same dataset (gapminder).
+- Showcase the workflow we use in our own work. e.g. lessons after Git & GitHub should use the add/commit/push/pull workflow throughout.
+- Appropriate amount of content for the time allotted. Instructors should not have to customize the curriculum to fit into the workshop time frame
+- Have challenge questions available for fast learners / in case the workshop goes faster than usual.
+- Have short quizzes & exercises at the end of topic chunks just like Carpentries do for “Formative assessment”.
+- Teach learners what we actually use in our work, don't teach them what we don't use.
+
 
 TODO: curriculum sprint, pilot workshop, continuing development.
 
