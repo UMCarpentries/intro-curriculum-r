@@ -78,29 +78,29 @@ TODO
 
 # Statement of need
 
-The University of Michigan instance of Software Carpentry has taught workshops
+The University of Michigan instance of the Carpentries has taught workshops
 using the curriculum created by the Software Carpentry organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
 using the Software Carpentry curriculum.
 Some advantages that we found are:
-1. it is modular, so workshop organizers can choose any programming language
+1. It is modular, so workshop organizers can choose any programming language
 lesson (e.g. R or Python) to pair with lessons on the unix shell and version
 control;
-1. it has been refined over years by many contributors and taught at workshops
+1. It has been refined over years by many contributors and taught at workshops
 around the world; and
-1. it demonstrates good pedagogy for teaching beginner data science
+1. It demonstrates good pedagogy for teaching beginner data science
 practitioners.
 
 However, we found that the curriculum did not meet all of our needs.
 The disadvantages that we found are:
-1. the modular nature of the curriculum means that each lesson is independent
+1. The modular nature of the curriculum means that each lesson is independent
 from the others, so it is not apparent to learners how to integrate all of the
 skills together for reproducible research projects;
-1. there is too much content for the time allotted in a two-day workshop, so
+1. There is too much content for the time allotted in a two-day workshop, so
 workshops contain inconsistent content depending on who teaches, and new
 instructors face an overwhelming amount of work to prepare for their first
 workshop; and
-1. some lessons include niche content that we do not use ourselves in our
+1. Some lessons include niche content that we do not use ourselves in our
 research projects.
 
 We sought to create a new curriculum that would
@@ -115,19 +115,20 @@ and reduce the burden for new instructors to get involved.
 We drew on the expertise of the vibrant Software Carpentry community at the
 University of Michigan to develop a custom curriculum that would meet the needs
 of our learners.
-We planned a two day sprint, where members of our community worked
+We planned a two-day sprint, where members of our community worked
 collaboratively to create an initial draft of the content.
 During the sprint, we met virtually to discuss our goals, then broke up into
 teams to work on individual lessons before coming back together to review our
 progress.
-We hosted the curriculum in a public GitHub repository to facilitate
+We hosted the curriculum in a public GitHub repository 
+(https://github.com/UMSWC/curriculum TODO: change link) to facilitate
 collaborative work and peer review using issues, branches, and pull requests.
 Under this model, a team member creates or edits content in a new branch to
 resolve an issue,
 then creates a pull request and asks for review from another team member,
 who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website which
-hosts the polished curriculum.
+hosts the polished curriculum (https://umswc.github.io/curriculum/).
 This model ensures that at least two pairs of eyes view the changes before they
 can be included the curriculum, which reduces mistakes and contributes to better
 quality content.
@@ -136,7 +137,7 @@ Following the sprint, contributors finalized edits and continued to review each
 others' pull requests to complete the alpha version of our curriculum.
 Next, we hosted a workshop for instructors to pilot the curriculum.
 We collected feedback from the learners and instructors at the end of the pilot
-workshop, then held a smaller half day sprint to revise the curriculum based on
+workshop, then held a smaller half-day sprint to revise the curriculum based on
 the feedback.
 Community members continue to create issues, make edits, and review pull
 requests for the ongoing refinement of the curriculum.
