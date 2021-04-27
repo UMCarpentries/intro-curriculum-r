@@ -74,21 +74,23 @@ TODO: revisit the title after we draft the manuscript.
 
 # Summary
 
-Building off of excellent material and pedagogy provided by the Carpentries, 
-we developed a two-day workshop that teaches introductory R for plotting and data analysis,
-unix shell, git, and GitHub.
-Our curriculum (https://umswc.github.io/curriculum/ TODO: change link), which is hosted on GitHub, 
+Building off of excellent material and pedagogy provided by the Carpentries, we
+developed a two-day workshop that teaches introductory R for plotting and data
+analysis, the Unix shell, version control with git, and GitHub.
+Our curriculum, which is hosted on GitHub (https://umswc.github.io/curriculum/ TODO: change link after we re-brand),
 aims to teach novices how to use programming to perform data analysis.
-It emphasizes the iterative nature of coding and data analysis
-through integrated live coding lessons and practice exercises.
-This curriculum lowers the barrier for new instructors as they do not have to 
-develop their own curriculum or sift through extensive Carpentries lessons with too much content, 
-and provides a succinct resource for learners to reference both during and after the workshop.
+It emphasizes the iterative nature of coding and data analysis through
+integrated live coding lessons and practice exercises.
+This curriculum lowers the barrier for new instructors,
+as they do not have to develop their own curriculum or sift through extensive
+Carpentries lessons with too much content,
+and provides a succinct resource for learners to reference both during and after
+the workshop.
 We developed this curriculum during a two-day sprint,
- successfully used the curriculum to host a two-day virtual workshop, and 
-updated the material based on instructor and learner feedback.
-We hope that this curriculum wil be of use to other instructors interested
-in teaching workshops with similar learning objectives. 
+successfully used the curriculum to host a two-day virtual workshop,
+and updated the material based on instructor and learner feedback.
+We hope that this curriculum will useful to other instructors interested in
+teaching workshops with similar learning objectives.
 
 # Statement of Need
 
@@ -134,15 +136,15 @@ collaboratively to create an initial draft of the content.
 During the sprint, we met virtually to discuss our goals, then broke up into
 teams to work on individual lessons before coming back together to review our
 progress.
-We hosted the curriculum in a public GitHub repository 
-(https://github.com/UMSWC/curriculum TODO: change link) to facilitate
+We hosted the curriculum in a public GitHub repository
+(https://github.com/UMSWC/curriculum TODO: change link after we re-brand) to facilitate
 collaborative work and peer review using issues, branches, and pull requests.
 Under this model, a team member creates or edits content in a new branch to
 resolve an issue,
 then creates a pull request and asks for review from another team member,
 who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website which
-hosts the polished curriculum (https://umswc.github.io/curriculum/ TODO: change link).
+hosts the polished curriculum (https://umswc.github.io/curriculum/ TODO: change link after we re-brand).
 This model ensures that at least two pairs of eyes view the changes before they
 can be included the curriculum, which reduces mistakes and contributes to better
 quality content.
