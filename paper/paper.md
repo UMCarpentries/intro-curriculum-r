@@ -110,17 +110,22 @@ utilize the same inclusive pedagogy refined by the Carpentries,
 and contain an appropriate amount of content to deliver consistent workshops
 and reduce the burden for new instructors to get involved.
 
-## Collaborative Curriculum Develpment
+# Collaborative Curriculum Develpment
 
 TODO: curriculum sprint, pilot workshop, continuing development.
 
-![The curriculum development framework and curriculum structure.](development-framework.png)
+![The curriculum development framework.](development-framework.png)
+
+# Curriculum
+
+Our curriculum is tailored to people with no prior coding experience who want to learn how to use programming perform data analysis.
+We aim to teach our learners not only the basics of performing data analysis, but also provide them with a framework to perform rigorous reproducible research that can easily be shared with others.
+
+![Curriculum overview.](curriculum-overview.png)
 
 ## Learning Objectives
 
-Our curriculum is tailored to people with no prior coding experience who want to learn how to use programming perform data analysis. 
-We aim to teach our learners not only the basics of performing data analysis, but also provide them with a framework to perform rigorous reproducible research that can easily be shared with others. 
-Therefore, the key learning objectives for our curriculum are:
+The key learning objectives for our curriculum are:
 
 1. Create clear and informative data visualizations in R, starting with unclean data.
 1. Perform version control using the unix shell and git.
