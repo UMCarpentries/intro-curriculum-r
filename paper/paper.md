@@ -114,6 +114,35 @@ and reduce the burden for new instructors to get involved.
 
 TODO: curriculum sprint, pilot workshop, continuing development.
 
+We drew on the expertise of the vibrant Software Carpentry community at the
+University of Michigan to develop a custom curriculum that would meet the needs
+of our learners.
+We planned a two day sprint, where members of our community worked
+collaboratively to create an initial draft of the content.
+During the sprint, we met virtually to discuss our goals, then broke up into
+teams to work on individual lessons before coming back together to review our
+progress.
+We hosted the curriculum in a public GitHub repository to facilitate
+collaborative work and peer review using issues, branches, and pull requests.
+Under this model, a team member creates or edits content in a new branch to
+resolve an issue,
+then creates a pull request and asks for review from another team member,
+who finally merges the changes into the default branch.
+GitHub pages automatically uses the default branch to build a website which
+hosts the polished curriculum.
+This model ensures that at least two pairs of eyes view the changes before they
+can be included the curriculum, which reduces mistakes and contributes to better
+quality content.
+
+Following the sprint, contributors finalized edits and continued to review each
+others' pull requests to complete the alpha version of our curriculum.
+Next, we hosted a workshop for instructors to pilot the curriculum.
+We collected feedback from the learners and instructors at the end of the pilot
+workshop, then held a smaller half day sprint to revise the curriculum based on
+the feedback.
+Community members continue to create issues, make edits, and review pull
+requests for the ongoing refinement of the curriculum.
+
 ![The curriculum development framework and curriculum structure.](development-framework.png)
 
 ## Learning Objectives
@@ -124,6 +153,7 @@ TODO: curriculum sprint, pilot workshop, continuing development.
 <!-- teaching philosophy / pedagogy -->
 
 ## Pilot Workshop
+<!-- experience of use -->
 
 # Acknowledgements
 
