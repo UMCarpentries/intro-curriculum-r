@@ -72,9 +72,10 @@ bibliography: paper.bib
 
 # Summary
 
-Building off of excellent material and pedagogy provided by the Carpentries, we
-developed a two-day workshop that teaches introductory R for plotting and data
-analysis, the Unix shell, version control with git, and GitHub.
+Building off of excellent material and pedagogy provided by the Carpentries
+[@wilson_software_2016], we developed a two-day workshop that teaches
+introductory R for plotting and data analysis, the Unix shell, version control
+with git, and GitHub.
 Our curriculum, which is hosted on GitHub (https://umswc.github.io/curriculum/ TODO: change link after we re-brand),
 aims to teach novices how to use programming to perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
