@@ -82,33 +82,37 @@ The University of Michigan instance of Software Carpentry has taught workshops
 using the curriculum created by the Software Carpentry organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
 using the Software Carpentry curriculum.
+Some advantages that we found are:
+1) it is modular, so workshop organizers can choose any programming language
+lesson (e.g. R or Python) to pair with lessons on the unix shell and version
+control;
+2) it has been refined over years by many contributors and taught at workshops
+around the world; and
+3) it demonstrates good pedagogy for teaching beginner data science
+practitioners.
 
-Pros:
-- modular: so you can choose any programming language lesson (e.g. R or Python) to pair with lessons on the unix shell and version control.
-- well-established: it has been refined over years by many contributors and taught at workshops around the world.
-- pedagogy: contains short quizzes & exercises at the end of topic chunks for formative assessment.
+However, we found that the curriculum did not meet all of our needs.
+The disadvantages that we found are:
+1) the modular nature of the curriculum means that each lesson is independent
+from the others, so it is not apparent to learners how to integrate all of the
+skills together for reproducible research projects;
+2) there is too much content for the time allotted in a two-day workshop, so
+workshops contain inconsistent content depending on who teaches, and new
+instructors face an overwhelming amount of work to prepare for their first
+workshop; and
+3) some lessons include niche content that we do not use ourselves in our
+research projects.
 
-Cons:
-- the modular nature of the curriculum means that each lesson is independent from the others, so there is not a natural flow and it is not apparent to learners how to integrate all of the skills together for reproducible research projects.
-- there is too much content for the time allotted in a two-day workshop, so instructors are expected to pick what content to teach and what to skip. this makes workshops inconsistent (because slightly different content is taught each time). it also takes a significant time investment for instructors to prepare to teach, which is especially burdensome/overwhelming for new instructors.
+We sought to create a new curriculum that would
+teach computational skills in an integrated manner to demonstrate the
+reproducible research workflows we use in our own work,
+utilize the same inclusive pedagogy refined by the Carpentries,
+and contain an appropriate amount of content to deliver consistent workshops
+and reduce the burden for new instructors to get involved.
 
-TODO: We sought to create a new curriculum that...
-
-goals for our curriculum:
-- Flexible for virtual or in-person format.
-- Lessons should build on each other, rather than being completely independent/disconnected.
-- Use the same dataset (gapminder).
-- Showcase the workflow we use in our own work. e.g. lessons after Git & GitHub should use the add/commit/push/pull workflow throughout.
-- Appropriate amount of content for the time allotted. Instructors should not have to customize the curriculum to fit into the workshop time frame
-- Have challenge questions available for fast learners / in case the workshop goes faster than usual.
-- Have short quizzes & exercises at the end of topic chunks just like Carpentries do for “Formative assessment”.
-- Teach learners what we actually use in our work, don't teach them what we don't use.
-
+## Collaborative Curriculum Develpment
 
 TODO: curriculum sprint, pilot workshop, continuing development.
-
-
-# The Curriculum
 
 ![The curriculum development framework and curriculum structure.](development-framework.png)
 
