@@ -203,7 +203,7 @@ The modules are:
 1. Group practice exercises
 1. Where to go from here
 
-Each exercise builds on the previous exercises.
+Each lesson builds on the previous lessons.
 The Unix shell, git, and GitHub are introduced using the files generated in the
 R for plotting lesson.
 The lesson content for subsequent modules is then intermittently committed and
@@ -235,7 +235,7 @@ instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
 
-1. We structured the curriculum in such that it could be taught through an
+1. We structured the curriculum such that it could be taught through an
 in-person or virtual workshop.
 1. We require learners to install all software before the workshop (as the
 Carpentries also requires), and ask them to run an example script that tests
@@ -245,10 +245,9 @@ advance so that any installation issues can be addressed before the workshop
 begins.
 1. An extensive small group practice module towards the end of the workshop
 allows learners to more independently practice the skills they have learned
-throughout the workshop.
+throughout.
 1. The workshop concludes with a recap of what was covered and resources
-available for learners to continue learning and getting help after the workshop
-concludes.
+available for learners to continue learning and getting help down the line.
 
 ## Pilot Workshop
 <!-- experience of use -->
@@ -259,7 +258,7 @@ workshop to assist with learner questions and technical issues.
 We also used the "sticky note" system where learners can indicate their progress
 on exercises and requests for help by using different colored sticky notes.
 As the workshop was virtual, we used Zoom reaction icons as sticky notes.
-We had _Z_ participants of various skill levels from countries worldwide, the vast majority of whom provided very positive reviews of the workshop.
+We had _Z_ participants of various skill levels from countries worldwide, all of whom provided very positive reviews of the workshop.
 
 <!-- TODO: follow-up with SWC on whether we can use our surveys -->
 
@@ -267,7 +266,7 @@ We had _Z_ participants of various skill levels from countries worldwide, the va
 
 We credit the success of our first virtual workshop in large part due to the
 curriculum structure and content, as well as the awesome instructors.
-However, we also believe that the following tips helped make the workshop as
+However, we also believe that the following helped make the workshop as
 smooth as possible:
 
 1. We suggested that learners have Zoom and RStudio (or the Unix shell) open side-by-side on their computer to minimize toggling between different panels.
