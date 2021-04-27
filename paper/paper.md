@@ -109,7 +109,7 @@ TODO: curriculum sprint, pilot workshop, continuing development.
 
 # The Curriculum
 
-![The curriculum development workflow and curriculum structure.](paper/development-workflow.png)
+![The curriculum development workflow and curriculum structure.](development-workflow.png)
 
 # Acknowledgements
 
