@@ -140,6 +140,8 @@ workshop, then held a smaller half day sprint to revise the curriculum based on
 the feedback.
 Community members continue to create issues, make edits, and review pull
 requests for the ongoing refinement of the curriculum.
+We have plans to teach more workshops with instructors who did not develop the
+curriculum in order to gather even more feedback.
 
 ![The curriculum development framework.](development-framework.png)
 
