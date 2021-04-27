@@ -148,10 +148,10 @@ curriculum in order to gather even more feedback.
 # Curriculum
 
 Our curriculum is tailored to people with no prior coding experience who want to
-learn how to use programming perform data analysis.
+learn how to use programming to perform data analysis.
 We aim to teach our learners not only the basics of performing data analysis,
-but also provide them with a framework to perform rigorous reproducible research
-that can easily be shared with others.
+but also to provide them with a framework to perform rigorous reproducible
+research that can easily be shared with others.
 
 ![Curriculum overview.](curriculum-overview.png)
 
@@ -159,20 +159,20 @@ that can easily be shared with others.
 
 The key learning objectives for our curriculum are:
 
-1. Create clear and informative data visualizations in R, starting with unclean data.
+1. Create clear and informative data visualizations in R, starting with messy data.
 1. Perform version control using the unix shell and git.
 1. Create reproducible reports using R markdown.
 1. Share code with others on GitHub.
 
-We believe these skills provide a foundation off of which learners can teach
-themselves additional coding skills that they will need in the future.
+We believe these skills provide a solid foundation from which learners can teach
+themselves any additional coding skills that they will need in the future.
 
 ## Course Content
 
 Our curriculum consists of modules that cover setup, data analysis and
 visualization, version control, and writing reports.
-We also provide a goal for the workshop: to create a report for the United
-Nations on the relationship between gross domestic product (GDP), life
+We also provide a goal for the workshop: to create a fictitious report for the
+United Nations on the relationship between gross domestic product (GDP), life
 expectancy, and CO2 emissions.
 The modules are:
 
@@ -186,13 +186,13 @@ The modules are:
 1. Group practice exercises
 1. Where to go from here
 
-Each exercise builds off of the previous exercises.
+Each exercise builds on the previous exercises.
 The unix shell, git, and GitHub are introduced using the files generated in the
 R for plotting lesson.
-The lesson content for subsequent modules is then intermittently committed to
-git and pushed to GitHub.
+The lesson content for subsequent modules is then intermittently committed and
+pushed to GitHub.
 The written report combines all of the skills learned previously to write a
-report to share with the United Nations.
+report that one could share with the United Nations.
 Then, the learners have a chance to put everything they have learned into
 practice by working in small groups on practice problems that cover the course
 content.
@@ -204,37 +204,62 @@ learners can continue to get help and learn more after the workshop ends.
 
 Our modules and instructor suggestions are developed in the style of the Carpentries:
 
-1. Each module contains learning objectives at the beginning of each lesson and a summary of key points.
-1. The five core modules (3 to 7) are designed to be taught via live coding of the content to learners.
-This is a core feature of Carpentries lessons, and we believe it is an excellent way to learn how to program because it requires learners to follow along and encounter errors that they must debug along the way, fostering additional questions about the course content.
-1. We incorporate formative assessments in the form of short practice exercises throughout each lesson so that learners can practice what they have learned an instructors can gauge learner understanding of the material.
+1. Each module contains learning objectives at the beginning of each lesson and
+a summary of key points.
+1. The five core modules (3 to 7) are designed to be taught via live coding of
+the content to learners.
+This is a core feature of Carpentries lessons, and we believe it is an excellent
+way to learn how to program because it requires learners to follow along and
+encounter errors that they must debug along the way, fostering additional
+questions about the course content.
+1. We incorporate formative assessments in the form of short practice exercises
+throughout each lesson so that learners can practice what they have learned an
+instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
 
-1. We developed the curriculum in such a way that it could be taught throught an in person or virtual workshop.
-1. We require learners to install all software before the workshop (as the Carpentries also requires), and have them run an example script that tests whether everything is installed correctly.
-They must send screenshots of the script output to the workshop lead prior to the workshop so that any issues that arise can be addressed before the workshop begins.
-1. An extensive small group practice module towards the end of the workshop allows learners to more independently pratice the skills they have learned throughout the workshop.
-1. The workshop concludes with a recap of what was covered and resources available for learners to continue learning and getting help after the workshop concludes.
+1. We structured the curriculum in such that it could be taught through an
+in-person or virtual workshop.
+1. We require learners to install all software before the workshop (as the
+Carpentries also requires), and ask them to run an example script that tests
+whether everything is installed correctly.
+Learners must send screenshots of the script output to the workshop lead in
+advance so that any installation issues can be addressed before the workshop
+begins.
+1. An extensive small group practice module towards the end of the workshop
+allows learners to more independently practice the skills they have learned
+throughout the workshop.
+1. The workshop concludes with a recap of what was covered and resources
+available for learners to continue learning and getting help after the workshop
+concludes.
 
 ## Pilot Workshop
 <!-- experience of use -->
 
-We piloted our curriculum during a two-day Carpentries virtual workshop.
-In line with the Carpentries style, we had __ instructors and __ helpers at the workshop to assist with learner questions and technical issues.
-We also used the "sticky note" system where learners can indicate their progress on exercises and requests for help by using different colored sticky notes. 
+We piloted our curriculum during a virtual two-day Software Carpentry workshop.
+In line with the Carpentries style, we had _X_ instructors and _Y_ helpers at the
+workshop to assist with learner questions and technical issues.
+We also used the "sticky note" system where learners can indicate their progress
+on exercises and requests for help by using different colored sticky notes.
 As the workshop was virtual, we used Zoom reaction icons as sticky notes.
-We had __ participants of various skill levels from countries worldwide, the vast majority of whom provided very positive reviews of the workshop.
+We had _Z_ participants of various skill levels from countries worldwide, the vast majority of whom provided very positive reviews of the workshop.
+
+<!-- TODO: follow-up with SWC on whether we can use our surveys -->
 
 ### Tips for running a virtual workshop
 
-We credit the success of our first virtual workshop in large part due to the curriculum structure and content, as well as the awesome instructors. However, we also believe that the following tips helped make the workshop as smooth as possible:
+We credit the success of our first virtual workshop in large part due to the
+curriculum structure and content, as well as the awesome instructors.
+However, we also believe that the following tips helped make the workshop as
+smooth as possible:
 
-1. We suggested that learners have Zoom and RStudio/the unix shell open side by side on their computer to minimize toggling between different panels.
-1. We used Slack for communication among instructors and helpers, as well as between helpers and learners. 
+1. We suggested that learners have Zoom and RStudio (or the Unix shell) open side-by-side on their computer to minimize toggling between different panels.
+1. We used Slack for communication among instructors and helpers, as well as between helpers and learners.
 Learners asked questions in a group Slack channel where helpers could respond.
-1. If a learner needed more help than was possible on Slack, a helper and the learner would enter a breakout room together to troubleshoot.
-However, we tried to minimize this option as then the learner is often very confused about what's happening when they return to the main room.
+1. When a learner needed more help than was possible on Slack, a helper and the
+learner entered a breakout room together to troubleshoot.
+However, we tried to minimize this option as then the learner misses content
+covered in the main room.
 
 # Acknowledgements
 
