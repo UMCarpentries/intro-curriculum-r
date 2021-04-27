@@ -254,12 +254,14 @@ concludes.
 <!-- experience of use -->
 
 We piloted our curriculum during a virtual two-day Software Carpentry workshop.
-In line with the Carpentries style, we had _X_ instructors and _Y_ helpers at the
-workshop to assist with learner questions and technical issues.
+In line with the Carpentries style, we had four instructors and six helpers at
+the workshop to assist with learner questions and technical issues.
 We also used the "sticky note" system where learners can indicate their progress
 on exercises and requests for help by using different colored sticky notes.
 As the workshop was virtual, we used Zoom reaction icons as sticky notes.
-We had _Z_ participants of various skill levels from countries worldwide, the vast majority of whom provided very positive reviews of the workshop.
+We had thirty-nine learners of various skill levels from countries
+worldwide, the vast majority of whom provided very positive reviews of the
+workshop.
 
 <!-- TODO: follow-up with SWC on whether we can use our surveys -->
 
