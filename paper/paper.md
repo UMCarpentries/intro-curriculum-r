@@ -77,7 +77,7 @@ TODO: revisit the title after we draft the manuscript.
 Building off of excellent material and pedagogy provided by the Carpentries, we
 developed a two-day workshop that teaches introductory R for plotting and data
 analysis, the Unix shell, version control with git, and GitHub.
-Our curriculum, which is hosted on GitHub (https://umswc.github.io/curriculum/),
+Our curriculum, which is hosted on GitHub (https://umswc.github.io/curriculum/ TODO: change link after we re-brand),
 aims to teach novices how to use programming to perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
@@ -95,9 +95,9 @@ teaching workshops with similar learning objectives.
 # Statement of need
 
 The University of Michigan instance of the Carpentries has taught workshops
-using the curriculum created by the Software Carpentry organization since 2015.
+using the curriculum created by the Carpentries organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
-using the Software Carpentry curriculum.
+using the Carpentries curriculum.
 Some advantages that we found are:
 1. It is modular, so workshop organizers can choose any programming language
 lesson (e.g. R or Python) to pair with lessons on the unix shell and version
@@ -128,9 +128,9 @@ and reduce the burden for new instructors to get involved.
 
 # Collaborative Curriculum Development
 
-We drew on the expertise of the vibrant Software Carpentry community at the
+We drew on the expertise of the vibrant Carpentries community at the
 University of Michigan to develop a custom curriculum that would meet the needs
-of our learners.
+of our learners (Figure 1).
 We planned a two-day sprint, where members of our community worked
 collaboratively to create an initial draft of the content.
 During the sprint, we met virtually to discuss our goals, then broke up into
@@ -165,7 +165,7 @@ curriculum in order to gather even more feedback.
 # Curriculum
 
 Our curriculum is tailored to people with no prior coding experience who want to
-learn how to use programming to perform data analysis.
+learn how to use programming to perform data analysis (Figure 2).
 We aim to teach our learners not only the basics of performing data analysis,
 but also to provide them with a framework to perform rigorous reproducible
 research that can easily be shared with others.
