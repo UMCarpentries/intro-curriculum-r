@@ -5,7 +5,7 @@ tags:
   - data science
   - R
   - git
-  - unix shell
+  - Unix shell
  authors:
   - name: Zena Lapp^[co-first author]
     orcid: 0000-0003-4674-2176
@@ -100,7 +100,7 @@ In that time, our instructors have found several advantages and disadvantages to
 using the Carpentries curriculum.
 Some advantages that we found are:
 1. It is modular, so workshop organizers can choose any programming language
-lesson (e.g. R or Python) to pair with lessons on the unix shell and version
+lesson (e.g. R or Python) to pair with lessons on the Unix shell and version
 control;
 1. It has been refined over years by many contributors and taught at workshops
 around the world; and
@@ -177,7 +177,7 @@ research that can easily be shared with others.
 The key learning objectives for our curriculum are:
 
 1. Create clear and informative data visualizations in R, starting with messy data.
-1. Perform version control using the unix shell and git.
+1. Perform version control using the Unix shell and git.
 1. Create reproducible reports using R markdown.
 1. Share code with others on GitHub.
 
@@ -204,7 +204,7 @@ The modules are:
 1. Where to go from here
 
 Each exercise builds on the previous exercises.
-The unix shell, git, and GitHub are introduced using the files generated in the
+The Unix shell, git, and GitHub are introduced using the files generated in the
 R for plotting lesson.
 The lesson content for subsequent modules is then intermittently committed and
 pushed to GitHub.
