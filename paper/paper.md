@@ -5,7 +5,7 @@ tags:
   - data science
   - R
   - git
-  - unix shell
+  - Unix shell
  authors:
   - name: Zena Lapp^[co-first author]
     orcid: 0000-0003-4674-2176
@@ -92,7 +92,7 @@ and updated the material based on instructor and learner feedback.
 We hope that this curriculum will useful to other instructors interested in
 teaching workshops with similar learning objectives.
 
-# Statement of need
+# Statement of Need
 
 The University of Michigan instance of the Carpentries has taught workshops
 using the curriculum created by the Carpentries organization since 2015.
@@ -100,7 +100,7 @@ In that time, our instructors have found several advantages and disadvantages to
 using the Carpentries curriculum.
 Some advantages that we found are:
 1. It is modular, so workshop organizers can choose any programming language
-lesson (e.g. R or Python) to pair with lessons on the unix shell and version
+lesson (e.g. R or Python) to pair with lessons on the Unix shell and version
 control;
 1. It has been refined over years by many contributors and taught at workshops
 around the world; and
@@ -177,7 +177,7 @@ research that can easily be shared with others.
 The key learning objectives for our curriculum are:
 
 1. Create clear and informative data visualizations in R, starting with messy data.
-1. Perform version control using the unix shell and git.
+1. Perform version control using the Unix shell and git.
 1. Create reproducible reports using R markdown.
 1. Share code with others on GitHub.
 
@@ -204,7 +204,7 @@ The modules are:
 1. Where to go from here
 
 Each exercise builds on the previous exercises.
-The unix shell, git, and GitHub are introduced using the files generated in the
+The Unix shell, git, and GitHub are introduced using the files generated in the
 R for plotting lesson.
 The lesson content for subsequent modules is then intermittently committed and
 pushed to GitHub.
@@ -223,7 +223,7 @@ Our modules and instructor suggestions are developed in the style of the Carpent
 
 1. Each module contains learning objectives at the beginning of each lesson and
 a summary of key points.
-1. The five core modules (3 to 7) are designed to be taught via live coding of
+1. The five core modules (2 to 6) are designed to be taught via live coding of
 the content to learners.
 This is a core feature of Carpentries lessons, and we believe it is an excellent
 way to learn how to program because it requires learners to follow along and
@@ -265,7 +265,7 @@ workshop.
 
 <!-- TODO: follow-up with SWC on whether we can use our surveys -->
 
-### Tips for running a virtual workshop
+### Virtual Workshop Reflection
 
 We credit the success of our first virtual workshop in large part due to the
 curriculum structure and content, as well as the awesome instructors.
@@ -300,7 +300,7 @@ Any opinions, findings, and conclusions or recommendations expressed in this
 material are those of the authors and do not necessarily reflect the views of
 the National Science Foundation.
 
-# Author contributions
+# Author Contributions
 
 ZL and KLS contributed equally. ZL is first among the co-first authors because
 KLS threatened to reject all pull requests where ZL put KLS first.
@@ -312,7 +312,7 @@ ZL, KLS, JK, and ML instructed at the first pilot workshop
 while CA, JM, ST, SKL, SJ, and CB assisted learners.
 All authors contributed to the development of the curriculum.
 
-# Conflicts of interest
+# Conflicts of Interest
 
 None.
 
