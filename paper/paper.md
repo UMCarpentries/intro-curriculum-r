@@ -78,7 +78,7 @@ TODO
 
 # Statement of need
 
-The University of Michigan instance of Software Carpentry has taught workshops
+The University of Michigan instance of the Carpentries has taught workshops
 using the curriculum created by the Software Carpentry organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
 using the Software Carpentry curriculum.
