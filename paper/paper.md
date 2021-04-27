@@ -90,7 +90,7 @@ updated the material based on instructor and learner feedback.
 We hope that this curriculum wil be of use to other instructors interested
 in teaching workshops with similar learning objectives. 
 
-# Statement of need
+# Statement of Need
 
 The University of Michigan instance of the Carpentries has taught workshops
 using the curriculum created by the Carpentries organization since 2015.
@@ -261,7 +261,7 @@ We had _Z_ participants of various skill levels from countries worldwide, the va
 
 <!-- TODO: follow-up with SWC on whether we can use our surveys -->
 
-### Tips for running a virtual workshop
+### Virtual Workshop Reflection
 
 We credit the success of our first virtual workshop in large part due to the
 curriculum structure and content, as well as the awesome instructors.
@@ -296,7 +296,7 @@ Any opinions, findings, and conclusions or recommendations expressed in this
 material are those of the authors and do not necessarily reflect the views of
 the National Science Foundation.
 
-# Author contributions
+# Author Contributions
 
 ZL and KLS contributed equally. ZL is first among the co-first authors because
 KLS threatened to reject all pull requests where ZL put KLS first.
@@ -308,7 +308,7 @@ ZL, KLS, JK, and ML instructed at the first pilot workshop
 while CA, JM, ST, SKL, SJ, and CB assisted learners.
 All authors contributed to the development of the curriculum.
 
-# Conflicts of interest
+# Conflicts of Interest
 
 None.
 
