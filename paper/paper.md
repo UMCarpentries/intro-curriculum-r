@@ -74,7 +74,21 @@ TODO: revisit the title after we draft the manuscript.
 
 # Summary
 
-TODO
+Building off of excellent material and pedagogy provided by the Carpentries, 
+we developed a two-day workshop that teaches introductory R for plotting and data analysis,
+unix shell, git, and GitHub.
+Our curriculum (https://umswc.github.io/curriculum/), which is hosted on GitHub, 
+aims to teach novices how to use programming to perform data analysis.
+It emphasizes the iterative nature of coding and data analysis
+through integrated live coding lessons and practice exercises.
+This curriculum lowers the barrier for new instructors as they do not have to 
+sift through extensive lessons with too much content, 
+and provides a succinct resource for learners to reference both during and after the workshop.
+We developed this curriculum during a two-day sprint,
+ successfully used the curriculum to host a two-day virtual workshop, and 
+updated the material based on instructor and learner feedback.
+We hope that this curriculum wil be of use to other instructors interested
+in teaching workshops with similar learning objectives. 
 
 # Statement of need
 
