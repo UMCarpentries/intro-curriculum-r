@@ -93,9 +93,9 @@ in teaching workshops with similar learning objectives.
 # Statement of need
 
 The University of Michigan instance of the Carpentries has taught workshops
-using the curriculum created by the Software Carpentry organization since 2015.
+using the curriculum created by the Carpentries organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
-using the Software Carpentry curriculum.
+using the Carpentries curriculum.
 Some advantages that we found are:
 1. It is modular, so workshop organizers can choose any programming language
 lesson (e.g. R or Python) to pair with lessons on the unix shell and version
