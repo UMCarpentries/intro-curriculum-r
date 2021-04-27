@@ -194,11 +194,11 @@ The modules are:
 
 0. Setup
 1. Welcome
-1. R for plotting
+1. R for plotting (uses the tidyverse R package [@wickham_welcome_2019])
 1. The Unix shell
 1. Git and GitHub
-1. R for data analysis
-1. Writing reports in R markdown
+1. R for data analysis (uses the tidyverse R package [@wickham_welcome_2019])
+1. Writing reports in R markdown (uses the rmarkdown R package [@xie_r_2018])
 1. Group practice exercises
 1. Where to go from here
 
