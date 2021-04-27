@@ -223,7 +223,7 @@ Our modules and instructor suggestions are developed in the style of the Carpent
 
 1. Each module contains learning objectives at the beginning of each lesson and
 a summary of key points.
-1. The five core modules (3 to 7) are designed to be taught via live coding of
+1. The five core modules (2 to 6) are designed to be taught via live coding of
 the content to learners.
 This is a core feature of Carpentries lessons, and we believe it is an excellent
 way to learn how to program because it requires learners to follow along and
