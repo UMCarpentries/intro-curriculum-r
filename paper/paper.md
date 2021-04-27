@@ -76,7 +76,7 @@ Building off of excellent material and pedagogy provided by the Carpentries
 [@wilson_software_2016], we developed a two-day workshop that teaches
 introductory R for plotting and data analysis, the Unix shell, version control
 with git, and GitHub.
-Our curriculum, which is hosted on GitHub (https://umswc.github.io/curriculum/ TODO: change link after we re-brand),
+Our curriculum, which is hosted on GitHub (https://umcarpentries.github.io/curriculum/ TODO: change link after we rename),
 aims to teach novices how to use programming to perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
@@ -138,14 +138,14 @@ During the sprint, we met virtually to discuss our goals, then broke up into
 teams to work on individual lessons before coming back together to review our
 progress.
 We hosted the curriculum in a public GitHub repository
-(https://github.com/UMSWC/curriculum TODO: change link after we re-brand) to facilitate
+(https://github.com/umcarpentries/curriculum TODO: change link after we rename) to facilitate
 collaborative work and peer review using issues, branches, and pull requests.
 Under this model, a team member creates or edits content in a new branch to
 resolve an issue,
 then creates a pull request and asks for review from another team member,
 who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website which
-hosts the polished curriculum (https://umswc.github.io/curriculum/ TODO: change link after we re-brand).
+hosts the polished curriculum (https://umcarpentries.github.io/curriculum/ TODO: change link after we rename).
 This model ensures that at least two pairs of eyes view the changes before they
 can be included the curriculum, which reduces mistakes and contributes to better
 quality content.
