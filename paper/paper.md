@@ -109,7 +109,7 @@ TODO: curriculum sprint, pilot workshop, continuing development.
 
 # The Curriculum
 
-TODO: Zena's figure in here somewhere.
+![The curriculum development workflow and curriculum structure.](paper/development-workflow.png)
 
 # Acknowledgements
 
