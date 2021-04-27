@@ -1,5 +1,5 @@
 ---
-title: 'A project-based workshop curriculum teaching computational skills for reproducible research'
+title: 'An integrated workshop curriculum teaching computational skills for reproducible research'
 tags:
   - reproducible research
   - data science
@@ -69,8 +69,6 @@ affiliations:
 date: 2021
 bibliography: paper.bib
 ---
-
-TODO: revisit the title after we draft the manuscript.
 
 # Summary
 
