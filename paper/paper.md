@@ -137,14 +137,14 @@ During the sprint, we met virtually to discuss our goals, then broke up into
 teams to work on individual lessons before coming back together to review our
 progress.
 We hosted the curriculum in a public GitHub repository
-(https://github.com/UMSWC/curriculum TODO: change link) to facilitate
+(https://github.com/UMSWC/curriculum TODO: change link after we re-brand) to facilitate
 collaborative work and peer review using issues, branches, and pull requests.
 Under this model, a team member creates or edits content in a new branch to
 resolve an issue,
 then creates a pull request and asks for review from another team member,
 who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website which
-hosts the polished curriculum (https://umswc.github.io/curriculum/).
+hosts the polished curriculum (https://umswc.github.io/curriculum/ TODO: change link after we re-brand).
 This model ensures that at least two pairs of eyes view the changes before they
 can be included the curriculum, which reduces mistakes and contributes to better
 quality content.
