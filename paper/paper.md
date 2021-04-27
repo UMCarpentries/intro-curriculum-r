@@ -6,7 +6,7 @@ tags:
   - R
   - git
   - Unix shell
- authors:
+authors:
   - name: Zena Lapp^[co-first author]
     orcid: 0000-0003-4674-2176
     affiliation: 1
@@ -66,7 +66,7 @@ affiliations:
     index: 1
   - name: Department of Microbiology & Immunology, University of Michigan
     index: 2
-date: 2021
+date: 27 Apr. 2021
 bibliography: paper.bib
 ---
 
