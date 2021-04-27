@@ -126,7 +126,7 @@ and reduce the burden for new instructors to get involved.
 
 # Collaborative Curriculum Development
 
-We drew on the expertise of the vibrant Software Carpentry community at the
+We drew on the expertise of the vibrant Carpentries community at the
 University of Michigan to develop a custom curriculum that would meet the needs
 of our learners.
 We planned a two-day sprint, where members of our community worked
