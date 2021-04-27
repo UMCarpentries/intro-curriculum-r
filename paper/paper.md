@@ -82,7 +82,7 @@ aims to teach novices how to use programming to perform data analysis.
 It emphasizes the iterative nature of coding and data analysis
 through integrated live coding lessons and practice exercises.
 This curriculum lowers the barrier for new instructors as they do not have to 
-sift through extensive lessons with too much content, 
+develop their own curriculum or sift through extensive Carpentries lessons with too much content, 
 and provides a succinct resource for learners to reference both during and after the workshop.
 We developed this curriculum during a two-day sprint,
  successfully used the curriculum to host a two-day virtual workshop, and 
