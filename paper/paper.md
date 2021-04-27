@@ -70,22 +70,55 @@ date: 2021
 bibliography: paper.bib
 ---
 
+TODO: revisit the title after we draft the manuscript.
+
 # Summary
+
+TODO
 
 # Statement of need
 
+The University of Michigan instance of Software Carpentry has taught workshops
+using the curriculum created by the Software Carpentry organization since 2015.
+In that time, our instructors have found several advantages and disadvantages to
+using the Software Carpentry curriculum.
+
+Pros:
+- modular: so you can choose any programming language lesson (e.g. R or Python) to pair with lessons on the unix shell and version control.
+- well-established: it has been refined over years by many contributors and taught at workshops around the world.
+- pedagogy: .
+
+Cons:
+- the modular nature of the curriculum means that each lesson is isolated/disjoint from the others, so there is not a natural flow and it is not apparent to learners how to integrate all of the skills together for reproducible research projects.
+- there is too much content for the time allotted in a two-day workshop, so instructors are expected to pick what content to teach and what to skip. this makes workshops inconsistent (because slightly different content is taught each time). it also takes a significant time investment for instructors to prepare to teach, which is especially burdensome for new instructors.
+
+TODO: We sought to create a new curriculum that...
+
+TODO: curriculum sprint, pilot workshop, continuing development.
+
 # The Curriculum
+
+TODO: Zena's figure in here somewhere.
 
 # Acknowledgements
 
 We thank the Carpentries organization for their workshop protocols and
-open-source Software Carpentry curricula, upon which this curriculum is based.
+open-source Software Carpentry curriculum, upon which this curriculum is based.
 
 We thank Victoria Alden and Scott Martin for assisting us in organizing and
 advertising our workshop.
 We thank the learners who participated in the workshop.
 
 # Funding
+
+Salary support for PDS came from NIH grant 1R01CA215574.
+KLS received support from the NIH Training Program in Bioinformatics (T32
+GM070449).
+ZL received support from the National Science Foundation Graduate Research
+Fellowship Program under Grant No. DGE 1256260.
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the authors and do not necessarily reflect the views of
+the National Science Foundation.
 
 # Author contributions
 
