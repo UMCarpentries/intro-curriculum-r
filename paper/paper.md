@@ -98,6 +98,7 @@ using the curriculum created by the Carpentries organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
 using the Carpentries curriculum.
 Some advantages that we found are:
+
 1. It is modular, so workshop organizers can choose any programming language
 lesson (e.g. R or Python) to pair with lessons on the Unix shell and version
 control;
@@ -108,6 +109,7 @@ practitioners.
 
 However, we found that the curriculum did not meet all of our needs.
 The disadvantages that we found are:
+
 1. The modular nature of the curriculum means that each lesson is independent
 from the others, so it is not apparent to learners how to integrate all of the
 skills together for reproducible research projects;
