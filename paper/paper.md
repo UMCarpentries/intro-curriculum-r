@@ -147,8 +147,8 @@ who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website which
 hosts the polished curriculum (https://umcarpentries.github.io/curriculum/ TODO: change link after we rename).
 This model ensures that at least two pairs of eyes view the changes before they
-can be included the curriculum, which reduces mistakes and contributes to better
-quality content.
+can be included in the curriculum, which reduces mistakes and contributes to
+better quality content.
 
 Following the sprint, contributors finalized edits and continued to review each
 others' pull requests to complete the alpha version of our curriculum.
