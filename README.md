@@ -2,7 +2,9 @@ U-M SWC Curriculum
 ==================
 
 This is the custom curriculum developed by the University of Michigan Software Carpentry instance.
-It is under active development and is not yet ready to be used to teach a workshop.
+It is in the `alpha` stage of development; we are hosting pilot workshops to gather feedback.
+
+The rendered website can be found [here](https://umswc.github.io/curriculum/).
 
 ## Repo Layout
 
@@ -30,6 +32,22 @@ It is under active development and is not yet ready to be used to teach a worksh
     - `discussion.md` - For learners who would like to learn more.
     - `guide.md` - The instructor's guide for the curriculum.
     - `bonus_exercises.md` - Bonus exercises for learners who want to practice more.
+
+## Rendering R Markdown episodes
+
+To render all episodes in `_episodes_rmd/`, run:
+
+```
+make site
+```
+
+This will create markdown files in `_episodes/` for GitHub Pages.
+
+To render just one episode, e.g. `_episodes_rmd/01-r-plotting.Rmd`, run:
+
+```
+make _episodes/01-r-plotting.md
+```
 
 ## Workshop Schedule
 

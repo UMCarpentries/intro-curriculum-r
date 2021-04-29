@@ -48,9 +48,24 @@ TO-DOs:
 - Tree structure / navigating files and directories.
 -->
 
+## Contents
+1. [Introducing the Shell](#introducing-the-shell)
+    + [Motivation](#motivation)
+    + [What the Shell looks like](#what-the-shell-looks-like)
+    + [Tree Structure](#tree-structure)
+    + [Man and Help](#man-and-help)
+1. [Working with files and directories](#working-with-files-and-directories)
+    + [Viewing Files](#viewing-files)
+    + [Editing Files](#editing-files)
+1. [Glossary of terms](#glossary-of-terms)
+
+
+
 ## Introducing the Shell
+_[Back to top](#contents)_
 
 ## Motivation
+_[Back to top](#contents)_
 
 Usually you move around your computer and run programs through graphical user interfaces (GUIs).
 For example, Finder for Mac and Explorer for Windows.
@@ -67,6 +82,7 @@ We’re going to use it to:
 1. Perform version control using git during the rest of the workshop.
 
 ## What the Shell looks like
+_[Back to top](#contents)_
 
 When you open up the terminal for the first time, it can look pretty scary - it’s basically just a blank screen.
 Don’t worry - we’ll take you through how to use it step by step.
@@ -81,6 +97,7 @@ PS1=’$ ‘
 {: .language-bash}
 
 ## Tree Structure
+_[Back to top](#contents)_
 
 The first thing we need to learn when using the shell is how to get around our computer.
 The shell folder (directory) structure is the same file structure as you're used to.
@@ -138,6 +155,53 @@ ks: command not found
 {: .output}
 
 This error message tells us the command we tried to run, `ks`, is not a command that is recognized, letting us know we might have made a mistake when typing.
+
+## Man and Help
+_[Back to top](#contents)_
+
+Now that we know how to list files with `ls`, we can learn how to look up the manual pages for unix shell commands. If you want to learn more about a command we can use `man` to look up its manual page. which will open with `ls`. We can navigate the man page to view the description of a command and its options. For example, if you want to know more about the navigation options of `ls` you can type `man ls` on the command line.
+
+```
+man ls
+```
+{: .language-bash}
+
+![]({{ page.root }}/fig/unix-shell/man_ls.png)
+
+On the manual page for `ls`, we see a section titled **options**. These options, also called **flags**, allow us to customize how `ls` runs.
+
+One very helpful flag that is available for any command is `-h or --help` which will print brief documentation for the command.
+
+```
+man -h
+man --help
+```
+{: .language-bash}
+
+![]({{ page.root }}/fig/unix-shell/man_help.png)
+
+> ## Using the Manual Pages
+>
+> Use `man` to open the manual for the command `ls`.
+>
+> What flags would you use to...
+> 1. Print files in order of size?
+> 2. Print files in order of the last time they were edited?
+> 3. Print hidden files (files that begin with `.`)?
+> 4. Print more information about the files?
+> 5. Print more information about the files with unit suffixes?
+> 6. Print files in order of size AND also print more information about the files?
+>
+> > ## Solution
+> > 1. `ls -S`
+> > 2. `ls -t`
+> > 3. `ls -a`
+> > 4. `ls -l`
+> > 5. `ls -lh`
+> > 6. `ls -lS`
+>
+> {: .solution}
+{: .challenge}
 
 Next, let's move to our Desktop. To do this, we use `cd` to change directories.
 
@@ -335,6 +399,7 @@ pwd
 {: .challenge}
 
 ## Working with files and directories
+_[Back to top](#contents)_
 
 Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html)
 You might ask: why would I use the command line when I could just use the GUI?
@@ -571,6 +636,7 @@ This output shows each directory name, followed by its contents on the next line
 {: .challenge}
 
 ## Viewing Files
+_[Back to top](#contents)_
 
 To view and navigate the contents of a file we can use the command `less`. This will open a full screen view of the file.
 
@@ -595,57 +661,14 @@ If we say "yes", less will render the file but it will appear as a seemingly ran
 
 ![]({{ page.root }}/fig/unix-shell/less_pdf_example.png)
 
-## Man and Help
-
-Now that we know how to view files with `less`, we can learn how to look up the manual pages for unix shell commands. If you want to learn more about a command we can use `man` to look up its manual page. which will open with `less`. We can navigate the man page to view the description of a command and its options. For example, if you want to know more about the navigation options of `less` you can type `man less` on the command line.
-
-```
-man less
-```
-{: .language-bash}
-
-![]({{ page.root }}/fig/unix-shell/man_less.png)
-
-On the manual page for `less`, we see a section titled **options**. These options, also called **flags**, allow us to customize how `less` runs.
-
-One very helpful flag that is available for any command is `-h or --help` which will print brief documentation for the command.
-
-```
-less -h
-less --help
-```
-{: .language-bash}
-
-![]({{ page.root }}/fig/unix-shell/less_help.png)
-
 Sometimes, commands will have multiple flags that we want to use at the same time. For example, `less` has a flag `-w` which highlights unread text, and `-S` which cuts off really long lines (rather than having the text wrap around). There are two ways to run `less` using both of these flags:
 
 `less -w -S [FILE]`
 
 `less -wS [FILE]`
 
-> ## Using the Manual Pages
->
-> Use `man` to open the manual for the command `ls`.
->
-> What flags would you use to...
-> 1. Print files in order of size?
-> 2. Print files in order of the last time they were edited?
-> 3. Print hidden files (files that begin with `.`)?
-> 4. Print more information about the files?
-> 5. Print files in order of size AND also print more information about the files?
->
-> > ## Solution
-> > 1. `ls -S`
-> > 2. `ls -t`
-> > 3. `ls -a`
-> > 4. `ls -l`
-> > 5. `ls -lS`
->
-> {: .solution}
-{: .challenge}
-
 ## Editing Files
+_[Back to top](#contents)_
 
 Beyond viewing the content of files, we may want to be able to edit or write files on the command line. There are many different text editors you can use to edit files on the command line, but we will talk about `nano` since it is a bit easier to learn. To edit a file with nano type `nano file.txt`. If the file exists, it will open the file in a nano window, if the file does not exist it will be created. One nice feature of nano is that it has a cheat sheet along the bottom with some common commands you’ll need. When you are ready to save (write) your file, you type <kbd>Ctrl</kbd>+<kbd>O</kbd>. Along the bottom will appear a prompt for the file name to write to. The current name of the file will appear here, to keep the name as it is hit `enter` otherwise you can change the name of the file then hit `enter`. To exit nano, press <kbd>Ctrl</kbd>+<kbd>X</kbd>. If you forget to save before exiting, no worries nano will prompt you to first save the file.
 
@@ -681,6 +704,7 @@ Great! Now as an exercise we can change the paths to write out figures.
 {: .challenge}
 
 ## Glossary of terms
+_[Back to top](#contents)_
 
 - root: the very top of the file system tree
 - absolute path: the location of a specific file or directory starting from the root of the file system tree

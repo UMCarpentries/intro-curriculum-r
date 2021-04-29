@@ -34,7 +34,6 @@ knitr_fig_path("04-")
     -   [Get stats fast with `summarize()`](#get-stats-fast-with-summarize)
     -   [Narrow down rows with `filter()`](#narrow-down-rows-with-filter)
     -   [Grouping rows using `group_by()`](#grouping-rows-using-group_by)
-    -   [Sort data with `arrange()`](#sort-data-with-arrange)
     -   [Make new variables with `mutate()`](#make-new-variables-with-mutate)
     -   [Subset columns using `select()`](#subset-columns-using-select)
     -   [Changing the shape of the data](#changing-the-shape-of-the-data)
@@ -102,24 +101,7 @@ When we call `summarize()`, we can use any of the column names of our data objec
 
 > **Note:** The `summarize()` and `summarise()` perform identical functions.
 
-We name this new column so we can use in a future argument. So the `averageLifeExp=` part tells `summarize()` to use "averageLifeExp" as the name of the new column.
-
-Note that you don't have to quotes around this new name as long as it starts with a letter and doesn't include a space.
-
-> ## Exercise: Variable names with characters or spaces
->
-> What would our code look like if we wanted to have a new column name be "Average Life Expectancy"?
->
-> > ## Solution:
-> >
-> > If you do want to use spaces or other characters, You should wrap the name in quotes.
-> >
-> > ```{r AvgLifeWithSpaces}
-> > summarize(gapminder_data, "Average Life Expectancy"=mean(lifeExp))
-> > ```
-> > {: .source}
-> {: .solution}
-{: .challenge}
+We name this new column so we can use in a future argument. So the `averageLifeExp=` part tells `summarize()` to use "averageLifeExp" as the name of the new column. Note that you don't have to quotes around this new name as long as it starts with a letter and doesn't include a space.
 
 Instead of including the data as an argument, we can use the *pipe operator* `%>%` to pass the data value into the `summarize` function. 
 
@@ -139,21 +121,29 @@ gapminder_data %>%
 
 Using the *pipe operator* `%>%` and enter command makes our code more readable. The  *pipe operator* `%>%` also helps to avoid using nested function and minimizes the need for new variables.
 
-> ## Exercise: Practice using the `%>%` to summarize data
->
-> Find the mean population using the piping function.
->
-> > ## Solution:
-> >
-> > ```{r PipeExercise}
-> > gapminder_data %>%  
-> >  summarize(averagePop = mean(pop))
-> > ```
-> > 
-> {: .solution}
-{: .challenge}
-
 Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
+
+> Helpful hint: Saving a new dataframe
+> Notice that when we run the following code, we are not actually saving a new variable: 
+> ```{r AvgLifeExpWithPipe3, eval = FALSE}
+> gapminder_data %>%
+>   summarize(averageLifeExp=mean(lifeExp))
+> ```
+> This simply outputs what we have created, but does not change actually change `gapminder_data` or save a new dataframe. To save a new dataframe, we could run: 
+> ```{r saveNewDF, eval = FALSE}
+> gapminder_data_summarized <- gapminder_data %>%
+>   summarize(averageLifeExp=mean(lifeExp))
+> ```
+> Or if we want to change `gapminder_data` itself: 
+> ```{r overwriteDF, eval = FALSE}
+> gapminder_data <- gapminder_data %>%
+>   summarize(averageLifeExp=mean(lifeExp))
+> ```
+> IMPORTANT: This would overwrite the existing `gapminder_data` object. 
+> 
+> For now, we will not be saving dataframes, since we are just experimenting with `dyplr` functions, but it will be useful later on in this lesson. 
+> 
+{: .callout}
 
 ## Narrow down rows with `filter()` {#narrow-down-rows-with-filter}
 
@@ -165,10 +155,19 @@ Well, remember the dataset contains rows from many different years and many diff
 
 Use `summarize()` to find the most recent year in the data set. We can use the `max()` function to return the maximum value.
 
-```{r GapMaxYear}
-gapminder_data %>%
-     summarize(recent_year=max(year))
-```
+> ## Exercise: Practice using the `%>%` to summarize data
+>
+> Find the mean population using the piping function.
+>
+> > ## Solution:
+> >
+> > ```{r PipeExercise}
+> > gapminder_data %>%  
+> >  summarize(recent_year = max(year))
+> > ```
+> > 
+> {: .solution}
+{: .challenge}
 
 So we see that the most recent year in the dataset is 2007. Let's calculate the life expectancy for all countries for only that year. To do that, we will use the `filter()` function to only use rows for that year before calculating the mean value.
 
@@ -236,31 +235,14 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 > {: .solution}
 {: .challenge}
 
-You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Let's calculate the minimum and maximum life expectancy for each year using the `min()` and `max()` functions
+You can also create more than one new column when you call `summarize()`. To do so, you must separate your columns with a comma. Building on the code from the last exercise, let's add a new column that calculates the minimum life expectancy for each continent. 
 
 ```{r GapLifeExpMinMax}
 gapminder_data %>%
-  group_by(year) %>%
-  summarize(min=min(lifeExp), max=max(lifeExp))
-```
-
-We can now see just how large a gap there is between different years.
-
-## Sort data with `arrange()` {#sort-data-with-arrange}
-
-[*Back to top*](#contents)
-
-The `arrange()` function allows us to sort our data by some value. Let's take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
-
-```{r GapLifeContinentArrange}
-gapminder_data %>%
-  filter(year==2007) %>%
   group_by(continent) %>%
-  summarise(average= mean(lifeExp)) %>%
-  arrange(desc(average))
+  summarize(average=mean(lifeExp), min=min(lifeExp))
 ```
 
-Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
 
 ## Make new variables with `mutate()` {#make-new-variables-with-mutate}
 
@@ -277,6 +259,18 @@ gapminder_data %>%
 
 This will add a new column called "gdp" to our data. We use the column names as if they were regular values that we want to perform mathematical operations on and provide the name in front of an equals sign like we have done with `summarize()`
 
+> Exercise: `mutate()`
+> We can also multiply by constants or other numbers using mutate - remember how in the plotting lesson we made a plot with population in millions? Try making a new column for this dataframe called popInMillions that is the population in million. 
+> 
+> > Solution: 
+> > ```{r mutateExercise}  
+> > gapminder_data %>%  
+> > mutate(gdp = pop * gdpPercap, popInMillions = pop / 1000000)  
+> > ```  
+> {: .solution}
+{: .challenge}
+ 
+
 ## Subset columns using `select()` {#subset-columns-using-select}
 
 [*Back to top*](#contents)
@@ -288,35 +282,58 @@ gapminder_data %>%
   select(pop, year)
 ```
 
-The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
-
-```{r GapSelectFancy}
-gapminder_data %>%
-  select(year, starts_with("c"))
-```
-
-This returns just the three columns we are interested in. We can also use `select()` to drop/remove particular columns by putting a minus sign (`-`) in front of the column name. For example, if we want everything but the continent column, we can do:
+We can also use `select()` to drop/remove particular columns by putting a minus sign (`-`) in front of the column name. For example, if we want everything but the continent column, we can do:
 
 ```{r GapSelectDrop}
 gapminder_data %>%
   select(-continent)
 ```
 
-> ## Exercise: Using `select()` with a helper function
->
-> Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
->
-> > ## Solution
-> >
-> > The helper function `ends_with()` can help us here.
-> >
-> > ```{r GroupByChallenge2}
+> Exercise: selecting columns 
+> Create a dataframe with only the `country`, `continent`, `year`, and `lifeExp` columns. 
+> 
+> > Solution: 
+> > There are multiple ways to do this exercise. Here are two different possibilities. 
+> > 
+> > ```{r selectExerciseOption1}
 > > gapminder_data %>%
-> > select(ends_with("p"))
+> >   select(country, continent, year, lifeExp)
 > > ```
-> > {: .source}
+> > ```{r selectExerciseOption2}
+> > gapminder_data %>%
+> >   select(-pop, -gdpPercap)
+> > ```
 > {: .solution}
 {: .challenge}
+
+
+> ## Bonus: Using helper functions with `select()`
+>
+> The `select()` function has a bunch of helper functions that are handy if you are working with a dataset that has a lot of columns. You can see these helper functions on the `?select` help page. For example, let's say we wanted to select the year column and all the columns that start with the letter "c". You can do that with:
+> 
+> ```{r GapSelectFancy}
+> gapminder_data %>%
+>   select(year, starts_with("c"))
+> ```
+> This returns just the three columns we are interested in. 
+>
+> > ## Exercise: Using `select()` with a helper function
+> >
+> > Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
+> >
+> > > ## Solution
+> > >
+> > > The helper function `ends_with()` can help us here.
+> > >
+> > > ```{r GroupByChallenge2}
+> > > gapminder_data %>%
+> > > select(ends_with("p"))
+> > > ```
+> > {: .solution}
+> {: .challenge}
+> 
+{: .solution}
+
 
 ## Changing the shape of the data
 
@@ -334,11 +351,25 @@ gapminder_data %>%
 
 Notice here that we tell `pivot_wider()` which columns to pull the names we wish our new columns to be named from the year variable, and the values to populate those columns from the lifeExp variable. (Again, neither of which have to be in quotes in the code when there are no special characters or spaces - certainly an incentive not to use special characters or spaces!) We see that the resulting tables have new columns by year, and the values populate it with our remaining variables dictating the rows.
 
-<-- Move creation of final gapminder_data_2007 as exercise here --> 
+Before we move on to more data cleaning, let's create the final gapminder dataframe we will be working with for the rest of the lesson! 
+
+> Exercise: final Americas 2007 gapminder dataset
+> Read in the `gapminder_data.csv` file, filter out the year 2007 and the continent "Americas." Then drop the `year` and `continent` columns from the dataframe. Then save the new dataframe into a variable called `gapminder_data_2007`. 
+> 
+> > Solution: 
+> > ```{r LoadGapminder2007}
+> > gapminder_data_2007 <- read_csv("data/gapminder_data.csv") %>%
+> >   filter(year == 2007 & continent == "Americas") %>%
+> >   select(-year, -continent)
+> > ```
+> {: .solution}
+{: .challenge}
+
+Awesome! This is the dataframe we will be using later on in this lesson. 
 
 
 ## Reviewing Git and GitHub
-Great! Now that we have our gapminder data prepared, let's use what we learned about git and GitHub in the previous lesson to add, commit, and push our changes.  
+Now that we have our gapminder data prepared, let's use what we learned about git and GitHub in the previous lesson to add, commit, and push our changes.  
 
 Open Terminal/Git Bash, if you do not have it open already. First we'll need to navigate to our un-report directory.
 
@@ -376,7 +407,6 @@ git push
 git status
 ``` 
 
-
 # Cleaning up data {#cleaning-up-data}
 
 [*Back to top*](#contents)
@@ -400,41 +430,43 @@ Now we get a similar Warning message as before, but the outputted table looks be
 > **Warnings and Errors:**It's important to differentiate between Warnings and Errors in R. A warning tells us, "you might want to know about this issue, but R still did what you asked". An error tells us, "there's something wrong with your code or your data and R didn't do what you asked". You need to fix any errors that arise. Warnings, are probably best to resolve or at least understand why they are coming up.
 {.callout}
 
-We can resolve this warning by one of two methods. First, we can tell `read_csv()` what the column names should be with the `col_names()` argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings.
+We can resolve this warning by telling `read_csv()` what the column names should be with the `col_names()` argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings.
 
 ```{r CleanEmissionsColNames1}
 read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
 ```
 
-As an alternative, we can read in the table, get the warning and then fix the column names using the rename function.
+> ## Bonus: Another way to deal with this error
+> 
+> There are often multiple ways to clean data. Here we  read in the table, get the warning and then fix the column names using the rename function.
+> 
+> ```{r CleanEmissionsRename}
+> read_csv("data/co2-un-data.csv", skip=1) %>%
+>   rename(country=X2)
+> ```
+>
+> Many data analysts prefer to have their column headings and variable names be in all lower case. We can use a variation of `rename()`, which is `rename_all()` that allows us to set all of the column headings to lower case by giving it the name of the tolower function, which makes everything lowercase.
+> 
+> ```{r CleanEmissionsRenameLower}
+> read_csv("data/co2-un-data.csv", skip=1) %>%
+>  rename_all(tolower)
+> ```
+{: .solution}
 
-```{r CleanEmissionsRename}
-read_csv("data/co2-un-data.csv", skip=1) %>%
-  rename(country=X2)
-```
+We previously saw how we can subset columns from a data frame using the select function. There are a lot of columns with extraneous information in this dataset, let's subset out the columns we are interested in. 
 
-Many data analysts prefer to have their column headings and variable names be in all lower case. We can use a variation of `rename()`, which is `rename_all()` that allows us to set all of the column headings to lower case by giving it the name of the tolower function, which makes everything lowercase.
-
-```{r CleanEmissionsRenameLower}
-read_csv("data/co2-un-data.csv", skip=1) %>%
-  rename_all(tolower)
-```
-
-Both of these strategies are useful for helping us to clean up our data. Which you ultimately use for this project is a matter of personal preference. We'll go with the first option where we used col_names so that we don't have to worry about the Warning message.
-
-```{r CleanEmissionsColNames2}
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
-```
-
-We previously saw how we can subset columns from a data frame using the select function. Let's get the country, year, series, and value columns:
-
-```{r CleanEmissionsSelect}
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-  select(country, year, series, value)
-```
+> Exercise: reviewing selecting columns
+> Select the country, year, series, and value columns from our dataset. 
+> 
+> > Solution: 
+> > ```{r CleanEmissionsSelect}
+> > read_csv("data/co2-un-data.csv", skip=2,
+> >          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> >   select(country, year, series, value)
+> > ```
+> {: .solution}
+{: .challenge}
 
 The series column has two methods of quantifying CO2 emissions - "Emissions (thousand metric tons of carbon dioxide)" and "Emissions per capita (metric tons of carbon dioxide)". Those are long titles that we'd like to shorten to make them easier to work with. We can shorten them to "total_emissions" and "per_capita_emissions" using the recode function. We need to do this within the mutate function where we will mutate the series column. The syntax in the recode function is to tell recode which column we want to recode and then what the old value (e.g. "Emissions (thousand metric tons of carbon dioxide)") should equal after recoding (e.g. "total").
 
@@ -457,30 +489,43 @@ read_csv("data/co2-un-data.csv", skip=2,
   pivot_wider(names_from=series, values_from=value)
 ```
 
-Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. One useful tool is the `count()` function, which will tell us how many times a value is repeated in a column of a data frame. Let's use this function on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year.
+Excellent! The last step before we can join this data frame is to get the most data that is for the year closest to 2007 so we can make a more direct comparison to the most recent data we have from gapminder. For the sake of time, we'll just tell you that we want data from 2005. 
 
-```{r CleanEmissionsyearCountryCount}
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-  select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
-  pivot_wider(names_from=series, values_from=value) %>%
-  count(year)
-```
+> ## Bonus: How did we determine that 2005 is the closest year to 2007? 
+> 
+> We want to make sure we pick a year that is close to 2005, but also a year that has a decent amount of data to work with. One useful tool is the `count()` function, which will tell us how many times a value is repeated in a column of a data frame. Let's use this function on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year.
+> 
+> ```{r CleanEmissionsyearCountryCount}
+> read_csv("data/co2-un-data.csv", skip=2,
+>         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+>  select(country, year, series, value) %>%
+>  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+>                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+>   pivot_wider(names_from=series, values_from=value) %>%
+>  count(year)
+> ```
+> 
+> It looks like we have data for 140 countries in 2005 and 2010. We chose 2005 because it is closer to 2007. 
+{: .solution}
 
-It looks like we have data for 140 countries in 2005 and 2010. Let's filter our data to get the rows that correspond to 2005. Also, because we will only have data from one year, we can drop the year column from our data frame by giving it year with a minus sign before it.
 
-```{r CleanEmissionsByYear}
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-  select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
-  pivot_wider(names_from=series, values_from=value) %>%
-  filter(year==2005) %>%
-  select(-year)
-```
+> Exercise: 
+> Filter out data from 2005 and then drop the year column. (Since we will have only data from one year, it is now irrelevant.)
+> 
+> > Solution: 
+> > ```{r CleanEmissionsByYear}
+> > read_csv("data/co2-un-data.csv", skip=2,
+> >         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> >  select(country, year, series, value) %>%
+> >  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
+> >                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
+> >  pivot_wider(names_from=series, values_from=value) %>%
+> >  filter(year==2005) %>%
+> >  select(-year)
+> > ```
+> {: .solution}
+{: .challenge}
+
 
 Finally, let's go ahead and assign the output of this code chunk to a variable name:
 
@@ -502,6 +547,7 @@ co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
 
 [*Back to top*](#contents)
 
+
 Now we're ready to join our CO2 emissions data to the gapminder data. Previously we saw that we could read in and filter the gapminder data like this to get the data from the Americas for 2007 so we can create a new dataframe with our filtered data:
 
 ```{r LoadGapminder2007}
@@ -510,22 +556,24 @@ gapminder_data_2007 <- read_csv("data/gapminder_data.csv") %>%
   select(-year, -continent)
 ```
 
-Look at the data in co2_emissions and gapminder_data. If you had to merge these two data frames together, which column would you use to merge them together? If you said "country" - good job!
+Look at the data in `co2_emissions` and `gapminder_data_2007`. If you had to merge these two data frames together, which column would you use to merge them together? If you said "country" - good job!
 
-We'll call country our "key". Now, when we join them together, can you think of any problems we might run into when we merge things? We might not have CO2 emissions data for all of the countries in the gapminder dataset and vice versa. Also, a country might be represented in both data frames but not by the same name in both places. As an example, write down the name of the country that the University of Michigan is in - we'll come back to you answer shortly!
+We'll call country our "key". Now, when we join them together, can you think of any problems we might run into when we merge things? We might not have CO2 emissions data for all of the countries in the gapminder dataset and vice versa. Also, a country might be represented in both data frames but not by the same name in both places. 
 
-The dplyr package has a number of tools for joining data frames together depending on what we want to do with the rows of the data of countries that are not represented in both data frames. Let's look at some cartoon examples and then come back to our own data.
+The dplyr package has a number of tools for joining data frames together depending on what we want to do with the rows of the data of countries that are not represented in both data frames. Here we'll be using `inner_join()` and `anti_join()`. 
 
-The first join we'll discuss is achieved using `inner_join()`. In an "inner join", the new data frame only has those rows where the same key is found in both data frames. This is a very commonly used join.
+In an "inner join", the new data frame only has those rows where the same key is found in both data frames. This is a very commonly used join.
 
 ![](04-r-data-analysis-assets/join-inner.png)
 
-The second group of joins are called outer joins and can be performed using `left_join()`, `right_join()`, and `full_join()`. In a "left join", if the key is present in the left hand data frame, it will appear in the output, even if it is not found in the the right hand data frame. For a right join, the opposite is true. For a full join, all possible keys are included in the output data frame.
+> ## Bonus: Other dplyr join functions 
+>
+> Outer joins and can be performed using `left_join()`, `right_join()`, and `full_join()`. In a "left join", if the key is present in the left hand data frame, it will appear in the output, even if it is not found in the the right hand data frame. For a right join, the opposite is true. For a full join, all possible keys are included in the output data frame.
+> 
+> ![](04-r-data-analysis-assets/join-outer.png)
+{: .solution}
 
-![](04-r-data-analysis-assets/join-outer.png)
-
-For our data, which join do you think we'd want to use? Most likely, we'd like to use `inner_join()` or a `left_join()` where the gapminder data frame is on the left and the CO2 emissions data frame is on the right. The advantage of these joins over the others is that because our gapminder data is filtered only to represent the Americas, then only the countries from the Americas will be represented in the CO2 emissions data. Let's give the `inner_join()` function a try.
-
+Let's give the `inner_join()` function a try.
 ```{r InnerJoin}
 inner_join(gapminder_data, co2_emissions)
 ```
@@ -536,18 +584,14 @@ Do you see that we now have data from both data frames joined together in the sa
 inner_join(gapminder_data, co2_emissions, by="country")
 ```
 
-One thing to notice is that gapminder data had 25 rows, but the output of our join only had 21. Let's investigate. It appears that there must have been countries in the gapminder data that did not appear in our co2_emissions data frame. We could look at which countries are missing using `left_join()` and piping the output to `View()`
+One thing to notice is that gapminder data had 25 rows, but the output of our join only had 21. Let's investigate. It appears that there must have been countries in the gapminder data that did not appear in our co2_emissions data frame. 
 
-```{r LeftJoin}
-left_join(gapminder_data, co2_emissions, by="country") %>%
-View()
-```
-
-We can see that the co2_emissions data were missing for Bolivia, Puerto Rico, United States, and Venezuela. Another way to get the same information a bit more directly is to use an `anti_join()`. This will show us the data for the keys on the left that are missing from the data frame on the right
+Let's use `anti_join()` for this - this will show us the data for the keys on the left that are missing from the data frame on the right. 
 
 ```{r AntiJoin}
 anti_join(gapminder_data, co2_emissions, by="country")
 ```
+We can see that the co2_emissions data were missing for Bolivia, Puerto Rico, United States, and Venezuela. 
 
 If we look at the co2_emissions data with `View()`, we will see that Bolivia, United States, and Venezuela are called different things in the co2_emissions data frame. They're called "Bolivia (Plurin. State of)", "United States of America", and "Venezuela (Boliv. Rep. of)". Puerto Rico isn't a country; it's part of the United States. Using `mutate()` and `recode()`, we can re-import the co2_emissions data so that the country names for Bolivia, United States, and Venezuela, match those in the gapminder data.
 
@@ -572,28 +616,18 @@ anti_join(gapminder_data, co2_emissions, by="country")
 
 Now we see that our recode enabled the join for all countries in the gapminder, and we are left with Puerto Rico. In the next exercise, Let's recode Puerto Rico as United States in the gapminder data and then use `group_by()` and `summarize()` to aggregate the data; we'll use the population data to weight the life expectancy and GDP values.
 
-> ## Exercise: Data cleaning to facilitate a join
->
-> In the gapminder data, Recode Puerto Rico as United States, aggregate the two, and calculate life expectancy and GDP values weighted by population data.
->
-> > ## Solution
-> >
-> > we can use the `mutate()` and `recode()` functions like we did earlier when altering the values of the "series" column.
-> >
-> > ```{r RecodeJoinExercise1}
-> > gapminder_data <- read_csv("data/gapminder_data.csv") %>%
-> > filter(year == 2007 & continent == "Americas") %>%
-> > select(-year, -continent) %>%
-> > mutate(country = recode(country, "Puerto Rico" = "United States")) %>%
-> > group_by(country) %>%
-> > summarize(lifeExp = sum(lifeExp * pop)/sum(pop), gdpPercap = sum(gdpPercap * pop)/sum(pop), pop = sum(pop))
-> > anti_join(gapminder_data, co2_emissions, by="country")
-> > ```
-> > {: .source}
-> {: .solution}
-{: .challenge}
 
-```{r RecodeJoinExercise2, include=FALSE}
+In the gapminder data, let's recode Puerto Rico as United States. 
+```{r RecodePR}
+gapminder_data <- read_csv("data/gapminder_data.csv") %>%
+filter(year == 2007 & continent == "Americas") %>%
+select(-year, -continent) %>%
+mutate(country = recode(country, "Puerto Rico" = "United States")) 
+```
+
+Now we have to group Puerto Rico and the US together, aggregating and calculating the data for all of the other columns. This is a little tricky - we will need a weighted average of lifeExp and gdpPercap. 
+
+```{r RecodeJoinExercise2}
 gapminder_data <- read_csv("data/gapminder_data.csv") %>%
   filter(year == 2007 & continent == "Americas") %>%
   select(-year, -continent) %>%
@@ -603,17 +637,29 @@ gapminder_data <- read_csv("data/gapminder_data.csv") %>%
             gdpPercap = sum(gdpPercap * pop)/sum(pop),
             pop = sum(pop)
   )
-
-anti_join(gapminder_data, co2_emissions, by="country")
 ```
 
-Run the code from the exercise solution above. Now our `anti_join()` returns an empty data frame, which tells us that we have reconciled all of the keys from the gapminder data with the data in the co2_emissions data frame.
+Let's check to see if it worked! 
+```{r anticheckPRJoin}
+anti_join(gapminder_data, co2_emissions, by="country")
+```
+Now our `anti_join()` returns an empty data frame, which tells us that we have reconciled all of the keys from the gapminder data with the data in the co2_emissions data frame.
 
 Finally, let's use the `inner_join()` to create a new data frame:
 
 ```{r CleanInnerJoin}
 gapminder_co2 <- inner_join(gapminder_data, co2_emissions, by="country")
 ```
+
+One last thing! What if we're interested in distinguishing between countries in North America and South America? We want to create two groups - Canada, the United States, and Mexico in one and the other countries in another.  
+
+We can create a grouping variable using `mutate()` combined with an `if_else()` function - a very useful pairing.  
+ 
+```{r GapRegion}  
+gapminder_co2 %>%  
+mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south"))  
+```  
+Let's look at the output - see how the Canada, US, and Mexico rows are all labeled as "north" and everything else is labeled as "south"  
 
 We have reached our data cleaning goals! One of the best aspects of doing all of these steps coded in R is that our efforts are reproducible, and the raw data is maintained. With good documentation of data cleaning and analysis steps, we could easily share our work with another researcher who would be able to repeat what we've done. However, it's also nice to have a saved `csv` copy of our clean data. That way we can access it later without needing to redo our data cleaning, and we can also share the cleaned data with collaborators. To save our dataframe, we'll use `write_csv()`. 
 
@@ -693,90 +739,6 @@ The `if_else()` statement reads like, "if country equals "Canada" OR `|` "United
 
 We see that although Canada, the United States, and Mexico account for close to half the population of the Americas, they account for 88% of the CO2 emitted. We just did this math quickly by plugging the numbers from our table into the console to get the percentages. Can we make that a little more reproducible by calculating percentages for population (pop) and total emissions (total) into our data before summarizing?
 
-> ## Exercise: Calculating percent
->
-> What percentage of the population and CO2 emissions does the United States makeup? Summarized by region?
->
-> > ## Solution
-> >
-> > Create a new variable using `mutate()` that calculates percentages for the pop and total variables.
-> >
-> > ```{r PopPercExercise}
-> > gapminder_co2 %>%
-> >   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
-> >   mutate(totalPercent = total/sum(total)*100,
-> >          popPercent = pop/sum(pop)*100)
-> > ```
-> >
-> > This table shows that the United states makes up 33% of the population of the Americas, but accounts for 77% of total emissions. That's a big proportion of the northern region's emissions, as summarized below:
-> >
-> > ```{r}
-> > gapminder_co2 %>%
-> >   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
-> >   mutate(totalPercent = total/sum(total)*100,
-> >          popPercent = pop/sum(pop)*100) %>%
-> >   group_by(region) %>%
-> >   summarize(sumTotalPercent = sum(totalPercent),
-> >             sumPopPercent = sum(popPercent))
-> > ```
-> >
-> > {: .source}
-> {: .solution}
-{: .challenge}
-
-# Putting it all together {#putting-it-all-together}
-
-[*Back to top*](#contents)
-
-We've gone through many steps of cleaning, joining, and analyzing our data. As a challenge, create an RScript file that contains the code to clean up the gapminder and CO2 emissions data, joins the two data frames, and builds the plot and summary table comparing Canada, the United States, and Mexico to the rest of the Americas. You can even practice some of the `ggplot` skills you learned earlier to move that plot beyond the ggplot2 defaults.
-
-```{r FinalAnalysisScript}
-# Load and prepare gapminder data
-gapminder_data <- read_csv("data/gapminder_data.csv") %>%
-  filter(year == 2007 & continent == "Americas") %>%
-  select(-year, -continent) %>%
-  mutate(country = recode(country, "Puerto Rico" = "United States")) %>%
-  group_by(country) %>%
-  summarize(lifeExp = sum(lifeExp * pop)/sum(pop),
-            gdpPercap = sum(gdpPercap * pop)/sum(pop),
-            pop = sum(pop)
-  )
-# Load and prepare co2 emissions data
-co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
-                          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
-  select(country, year, series, value) %>%
-  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
-                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
-  pivot_wider(names_from=series, values_from=value) %>%
-  filter(year==2005) %>%
-  select(-year) %>%
-  mutate(country=recode(country,
-                        "Bolivia (Plurin. State of)" = "Bolivia",
-                        "United States of America" = "United States",
-                        "Venezuela (Boliv. Rep. of)" = "Venezuela")
-  )
-# Join the two data frames
-gapminder_co2 <- inner_join(gapminder_data, co2_emissions, by="country")
-
-# Plot
-ggplot(gapminder_co2, aes(x=gdpPercap, y=per_capita)) +
-  geom_point() +
-  labs(x="GDP (per capita)",
-       y="CO2 emitted (per capita)",
-       title="There is a strong association between a nation's GDP \nand the amount of CO2 it produces"
-  ) +
-  geom_smooth(method="lm")
-
-# Table
-gapminder_co2 %>%
-  mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
-  mutate(totalPercent = total/sum(total)*100,
-         popPercent = pop/sum(pop)*100) %>%
-  group_by(region) %>%
-  summarize(sumTotalPercent = sum(totalPercent),
-            sumPopPercent = sum(popPercent))
-
-```
 
 ## Finishing with Git and GitHub
 Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and push our changes to GitHub again - do you remember how?
@@ -809,6 +771,121 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 > > git log --online  
 > > git push
 > > git status 
+> > ```
+> {: .solution}
+{: .challenge}
+
+
+# Bonus 
+
+## Bonus content
+
+### Sort data with `arrange()`
+
+The `arrange()` function allows us to sort our data by some value. Let's use the `gapminder_data` dataframe. We will take the average value for each continent in 2007 and then sort it so the continents with the longest life expectancy are on top. Which continent might you guess has be highest life expectancy before running the code?
+
+The helper function `ends_with()` can help us here.
+```{r GapLifeContinentArrange}
+gapminder_data %>%
+ filter(year==2007) %>%
+ group_by(continent) %>%
+ summarise(average= mean(lifeExp)) %>%
+ arrange(desc(average))
+```
+
+Notice there that we can use the column created the in the `summarize()` step ("average") later in the `arrange()` step. We also use the `desc()` function here to sort the values in a descending order so the largest values are on top. The default is to put the smallest values on top.
+
+
+## Bonus exercises
+
+> ## Exercise: Calculating percent
+>
+> What percentage of the population and CO2 emissions in the Americas does the United States make up? What percentage of the population and CO2 emission does North America make up? 
+>
+> > ## Solution
+> >
+> > Create a new variable using `mutate()` that calculates percentages for the pop and total variables.
+> >
+> > ```{r PopPercExercise}
+> > gapminder_co2 %>%
+> >   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
+> >   mutate(totalPercent = total/sum(total)*100,
+> >          popPercent = pop/sum(pop)*100)
+> > ```
+> >
+> > This table shows that the United states makes up 33% of the population of the Americas, but accounts for 77% of total emissions. Now let's take a look at population and emission for the two different continents: 
+> >
+> > ```{r}
+> > gapminder_co2 %>%
+> >   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south")) %>%
+> >   mutate(totalPercent = total/sum(total)*100,
+> >          popPercent = pop/sum(pop)*100) %>%
+> >   group_by(region) %>%
+> >   summarize(sumTotalPercent = sum(totalPercent),
+> >             sumPopPercent = sum(popPercent))
+> > ```
+> > 
+> {: .solution}
+{: .challenge}
+
+
+
+> ## Exercise: CO2 bar plot
+> Create a bar plot of the percent of emissions for each country, colored by north and south america (HINT: use geom_col())  
+> > ## Solution 
+> > ```{r}
+> > gapminder_co2 %>% ggplot(aes(x = country, y = total_emissionsPercent, fill = region)) +  
+> > geom_col()  
+> > ```
+> {: .solution}
+> 
+> Now rotate the x-labels by 90 degrees (if you don't remember how, google it again or look at our code from the ggplot lesson)  
+> 
+> > ## Solution 
+> > ```{r}
+> > gapminder_co2 %>% ggplot(aes(x = country, y = total_emissionsPercent, fill = region)) +  
+> > geom_col() +  
+> > theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) 
+> > ```
+> {: .solution}
+> 
+> Reorder the bars in descending order. **Hint:** try Googling how to use the `reorder()` function with ggplot.
+> > ## Solution 
+> > ```{r}
+> > gapminder_co2 %>% ggplot(aes(x = reorder(country, - total_emissionsPercent), y = total_emissionsPercent, fill = region)) +  
+> > geom_col() +  
+> > theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) 
+> > ```
+> {: .solution}
+> 
+> Practice making it look pretty! 
+{: .challenge}
+
+
+> ## Exercise: low emissions
+> Find the 3 countries with lowest per capita emissions. **Hint:** use the `arrange()` function. 
+> 
+> > ## Solution 
+> > ```{r} 
+> > gapminder_co2 %>% arrange(per_capita_emissions)  
+> > ```
+> {: .solution}
+> 
+> Create a bar chart for the per capita emissions for just those three countries. 
+> > ## Solution 
+> > ```{r} 
+> > gapminder_co2 %>% filter(country == "Haiti" | country == "Paraguay" | country == "Nicaragua") %>%  
+> > ggplot(aes(x = country, y = per_capita_emissions)) +  
+> > geom_col() 
+> > ```
+> {: .solution}
+> 
+> Reorder them in descending order. **Hint:** use the `reorder()` function. 
+> > ## Solution 
+> > ```{r} 
+> > gapminder_co2 %>% filter(country == "Haiti" | country == "Paraguay" | country == "Nicaragua") %>%  
+> > ggplot(aes(x = reorder(country, - per_capita_emissions), y = per_capita_emissions)) +  
+> > geom_col() 
 > > ```
 > {: .solution}
 {: .challenge}
