@@ -80,7 +80,7 @@ introductory R for plotting and data analysis, the Unix shell, version control
 with git, and GitHub.
 Our curriculum, which is hosted on GitHub
 (https://umcarpentries.github.io/curriculum/ TODO: change link after we rename),
-aims to teach novices how to use implement reproducible research practices to
+aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
