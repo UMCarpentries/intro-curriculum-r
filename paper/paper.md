@@ -75,24 +75,27 @@ bibliography: paper.bib
 # Summary
 
 Inspired by excellent material and pedagogy provided by the Carpentries
-[@wilson_software_2016], we developed a two-day workshop that teaches
+[@wilson_software_2016], we developed a two-day workshop curriculum that teaches
 introductory R for plotting and data analysis, the Unix shell, version control
 with git, and GitHub.
-Our curriculum, which is hosted on GitHub
+While the official Software Carpentry curriculum is extensive, we found
+that it contains too much content for the time allotted in a two-day workshop,
+and the independent nature of the lessons leaves learners confused about how to
+integrate the skills together in their own work.
+The new curriculum we developed, which is hosted on GitHub
 (https://umcarpentries.github.io/curriculum/ TODO: change link after we rename),
 aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
-This curriculum lowers the barrier for new instructors,
-as they do not have to develop their own curriculum or sift through extensive
-Carpentries lessons with too much content,
+This curriculum lowers the barrier for new instructors, as they do not have to
+develop their own curriculum or sift through extensive content,
 and provides a succinct resource for learners to reference both during and after
 the workshop.
 We developed this curriculum during a two-day sprint,
 successfully used the curriculum to host a two-day virtual workshop,
 and updated the material based on instructor and learner feedback.
-We hope that this curriculum will useful to other instructors interested in
+We hope that this curriculum will be useful to other instructors interested in
 teaching workshops with similar learning objectives.
 
 # Statement of Need
