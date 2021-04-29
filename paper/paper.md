@@ -101,13 +101,12 @@ The University of Michigan instance of the Carpentries has taught workshops
 using the curriculum created by the Carpentries organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
 using the Software Carpentry curriculum in particular.
-Some advantages are that it is modular,
-so workshop organizers can choose any programming language lesson (e.g. R or
-Python) to pair with lessons on the Unix shell and version control;
-it has been refined over years by many contributors and taught at workshops
-around the world; and
-it demonstrates good pedagogy for teaching beginner data science
-practitioners.
+Some advantages are that any programming language lesson (e.g. R or
+Python) can be paired with lessons on the Unix shell and version control;
+the lessons have been refined over years by many contributors and taught at
+workshops around the world; and
+the instructional design demonstrates good pedagogy for teaching beginner data
+science practitioners.
 
 However, we found that the curriculum did not meet all of our needs.
 The disadvantages that we found are:
