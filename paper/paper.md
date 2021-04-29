@@ -308,7 +308,7 @@ the National Science Foundation.
 # Author Contributions
 
 ZL and KLS contributed equally. ZL is first among the co-first authors because
-KLS threatened to reject all pull requests where ZL put KLS first. :) 😁
+KLS threatened to reject all pull requests where ZL put KLS first. :)
 
 PDS supervised the project.
 ZL and KLS organized the initial sprint, led the development of the curriculum,
