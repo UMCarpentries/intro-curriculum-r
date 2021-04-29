@@ -1,5 +1,5 @@
 ---
-title: 'An integrated workshop curriculum teaching computational skills for reproducible research'
+title: 'Developing and deploying an integrated workshop curriculum teaching computational skills for reproducible research'
 tags:
   - reproducible research
   - data science
@@ -88,10 +88,9 @@ aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
-This curriculum lowers the barrier to entry for new instructors, as they do not
-have to develop their own curriculum or sift through extensive content,
-and provides a succinct resource for learners to reference both during and after
-the workshop.
+Furthermore, this curriculum provides a succinct resource for learners to reference both during and after
+the workshop, and lowers the barrier to entry for new instructors as they do not
+have to develop their own curriculum or sift through extensive content.
 We developed this curriculum during a two-day sprint,
 successfully used the curriculum to host a two-day virtual workshop,
 and updated the material based on instructor and learner feedback.
@@ -112,17 +111,16 @@ the instructional design demonstrates good pedagogy for teaching beginner data
 science practitioners.
 
 However, we found that the curriculum did not meet all of our needs.
-The disadvantages that we found are:
-
-1. The modular nature of the curriculum means that each lesson is independent
+First, the modular nature of the curriculum means that each lesson is independent
 from the others, so it is not apparent to learners how to integrate all of the
-skills together for reproducible research projects;
-1. There is too much content for the time allotted in a two-day workshop, so
-workshops contain inconsistent content depending on who teaches, and new
+skills together for reproducible research projects.
+Additionally, the Carpentries material is more of a reference than a lesson plan as 
+there is too much content for the time allotted in a two-day workshop.
+Therefore, workshops contain inconsistent content depending on who teaches, and new
 instructors face an overwhelming amount of work to prepare for their first
-workshop; and
-1. Some lessons include niche content that we do not use ourselves in our
-research projects.
+workshop.
+Finally, some lessons include niche content that we do not feel is necessary to teach
+beginners as we do not use it ourselves in our research projects.
 
 We sought to create a new curriculum that would
 teach computational skills in an integrated manner to demonstrate the
@@ -163,7 +161,7 @@ the feedback.
 Community members continue to create issues, make edits, and review pull
 requests for the ongoing refinement of the curriculum.
 We have plans to teach more workshops with instructors who did not develop the
-curriculum in order to gather even more feedback.
+curriculum to gather even more feedback.
 
 ![The curriculum development framework.](development-framework.png)
 
@@ -230,7 +228,7 @@ Our modules and instructor suggestions are developed in the style of [Software C
 a summary of key points.
 1. The five core modules (2 to 6) are designed to be taught via live coding of
 the content to learners.
-This is a core feature of Carpentries lessons, and we believe it is an excellent
+This is a central feature of Carpentries lessons, and we believe it is an excellent
 way to learn how to program because it requires learners to follow along and
 encounter errors that they must debug along the way, fostering additional
 questions about the course content.
@@ -240,6 +238,8 @@ instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
 
+1. Each lesson builds off of others, with the goal of creating a final report 
+that can be shared with others. 
 1. We structured the curriculum such that it could be taught through an
 in-person or virtual workshop.
 1. We require learners to install all software before the workshop (as the
