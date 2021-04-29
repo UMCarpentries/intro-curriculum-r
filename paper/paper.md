@@ -243,8 +243,8 @@ in-person or virtual workshop.
 Carpentries also requires), and ask them to run an example script that tests
 whether everything is installed correctly.
 Learners must send screenshots of the script output to the workshop lead in
-advance. This insures that any installation issues can be addressed before the
-workshop begins.
+advance in order to attend. This insures that any installation issues can be
+addressed before the workshop begins.
 1. An extensive small group practice module towards the end of the workshop
 allows learners to more independently practice the skills they have learned
 throughout.
