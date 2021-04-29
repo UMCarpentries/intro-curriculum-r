@@ -193,7 +193,7 @@ Our curriculum consists of modules that cover setup, data analysis and
 visualization, version control, and writing reports.
 We also provide a goal for the workshop: to create a fictitious report for the
 United Nations on the relationship between gross domestic product (GDP), life
-expectancy, and CO<sub>2</sub> emissions.
+expectancy, and CO~2~ emissions.
 The modules are:
 
 0. Setup
