@@ -272,7 +272,8 @@ countries, all of whom provided very positive reviews of the workshop.
 ### Virtual Workshop Reflection
 
 We credit the success of our first virtual workshop in large part due to the
-curriculum structure and content, as well as the instructors.
+curriculum structure and content, as well as the instructors and helpers
+involved.
 However, we also believe that the following helped make the workshop as
 smooth as possible:
 
