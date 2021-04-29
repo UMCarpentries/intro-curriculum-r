@@ -114,7 +114,7 @@ However, we found that the curriculum did not meet all of our needs.
 First, the modular nature of the curriculum means that each lesson is independent
 from the others, so it is not apparent to learners how to integrate all of the
 skills together for reproducible research projects.
-Additionally, the Carpentries material is more of a reference than a lesson plan as 
+Additionally, the Carpentries material is more of a reference than a lesson plan as
 there is too much content for the time allotted in a two-day workshop.
 Therefore, workshops contain inconsistent content depending on who teaches, and new
 instructors face an overwhelming amount of work to prepare for their first
@@ -238,8 +238,8 @@ instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
 
-1. Each lesson builds off of others, with the goal of creating a final report 
-that can be shared with others. 
+1. Each lesson builds off of others, with the goal of creating a final report
+that can be shared with others.
 1. We structured the curriculum such that it could be taught through an
 in-person or virtual workshop.
 1. We require learners to install all software before the workshop (as the
@@ -308,7 +308,7 @@ the National Science Foundation.
 # Author Contributions
 
 ZL and KLS contributed equally. ZL is first among the co-first authors because
-KLS threatened to reject all pull requests where ZL put KLS first.
+KLS threatened to reject all pull requests where ZL put KLS first. :) 😁
 
 PDS supervised the project.
 ZL and KLS organized the initial sprint, led the development of the curriculum,
