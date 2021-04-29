@@ -233,7 +233,7 @@ way to learn how to program because it requires learners to follow along and
 encounter errors that they must debug along the way, fostering additional
 questions about the course content.
 1. We incorporate formative assessments in the form of short practice exercises
-throughout each lesson so that learners can practice what they have learned an
+throughout each lesson so that learners can practice what they have learned and
 instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
