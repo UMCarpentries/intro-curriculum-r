@@ -1,5 +1,5 @@
 ---
-title: 'An integrated workshop curriculum teaching computational skills for reproducible research'
+title: 'Developing and deploying an integrated workshop curriculum teaching computational skills for reproducible research'
 tags:
   - reproducible research
   - data science
@@ -111,7 +111,7 @@ the instructional design demonstrates good pedagogy for teaching beginner data
 science practitioners.
 
 However, we found that the curriculum did not meet all of our needs.
-First, we found that the modular nature of the curriculum means that each lesson is independent
+First, the modular nature of the curriculum means that each lesson is independent
 from the others, so it is not apparent to learners how to integrate all of the
 skills together for reproducible research projects.
 Additionally, the Carpentries material is more of a reference than a lesson plan as 
@@ -161,7 +161,7 @@ the feedback.
 Community members continue to create issues, make edits, and review pull
 requests for the ongoing refinement of the curriculum.
 We have plans to teach more workshops with instructors who did not develop the
-curriculum in order to gather even more feedback.
+curriculum to gather even more feedback.
 
 ![The curriculum development framework.](development-framework.png)
 
@@ -228,7 +228,7 @@ Our modules and instructor suggestions are developed in the style of [Software C
 a summary of key points.
 1. The five core modules (2 to 6) are designed to be taught via live coding of
 the content to learners.
-This is a core feature of Carpentries lessons, and we believe it is an excellent
+This is a central feature of Carpentries lessons, and we believe it is an excellent
 way to learn how to program because it requires learners to follow along and
 encounter errors that they must debug along the way, fostering additional
 questions about the course content.
@@ -238,6 +238,8 @@ instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
 
+1. Each lesson builds off of others, with the goal of creating a final report 
+that can be shared with others. 
 1. We structured the curriculum such that it could be taught through an
 in-person or virtual workshop.
 1. We require learners to install all software before the workshop (as the
