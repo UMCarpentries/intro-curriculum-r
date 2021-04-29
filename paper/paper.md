@@ -18,34 +18,34 @@ authors:
     affiliation: 2
   - name: Dana King
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Catherine Barnier
     orcid:
     affiliation: 1
   - name: Matthew Flickinger
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Jule Krüger
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Courtney Armour
     orcid:
     affiliation: 2
   - name: Maya Lapp
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Jason Tallant
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Rucheng Diao
     orcid:
     affiliation: 1
   - name: Bennet Fauber
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Shelly Johnson
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Morgan Oneka
     orcid:
     affiliation: 1
@@ -66,18 +66,22 @@ affiliations:
     index: 1
   - name: Department of Microbiology & Immunology, University of Michigan
     index: 2
+  - name: TODO
+    index: 3
 date: 27 Apr. 2021
 bibliography: paper.bib
 ---
 
 # Summary
 
-Building off of excellent material and pedagogy provided by the Carpentries
+Inspired by excellent material and pedagogy provided by the Carpentries
 [@wilson_software_2016], we developed a two-day workshop that teaches
 introductory R for plotting and data analysis, the Unix shell, version control
 with git, and GitHub.
-Our curriculum, which is hosted on GitHub (https://umcarpentries.github.io/curriculum/ TODO: change link after we rename),
-aims to teach novices how to use programming to perform data analysis.
+Our curriculum, which is hosted on GitHub
+(https://umcarpentries.github.io/curriculum/ TODO: change link after we rename),
+aims to teach novices how to use implement reproducible research practices to
+perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
 This curriculum lowers the barrier for new instructors,
@@ -96,15 +100,13 @@ teaching workshops with similar learning objectives.
 The University of Michigan instance of the Carpentries has taught workshops
 using the curriculum created by the Carpentries organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
-using the Carpentries curriculum.
-Some advantages that we found are:
-
-1. It is modular, so workshop organizers can choose any programming language
-lesson (e.g. R or Python) to pair with lessons on the Unix shell and version
-control;
-1. It has been refined over years by many contributors and taught at workshops
+using the Software Carpentry curriculum in particular.
+Some advantages are that it is modular,
+so workshop organizers can choose any programming language lesson (e.g. R or
+Python) to pair with lessons on the Unix shell and version control;
+it has been refined over years by many contributors and taught at workshops
 around the world; and
-1. It demonstrates good pedagogy for teaching beginner data science
+it demonstrates good pedagogy for teaching beginner data science
 practitioners.
 
 However, we found that the curriculum did not meet all of our needs.
@@ -191,7 +193,7 @@ Our curriculum consists of modules that cover setup, data analysis and
 visualization, version control, and writing reports.
 We also provide a goal for the workshop: to create a fictitious report for the
 United Nations on the relationship between gross domestic product (GDP), life
-expectancy, and CO2 emissions.
+expectancy, and CO<sub>2</sub> emissions.
 The modules are:
 
 0. Setup
@@ -220,7 +222,7 @@ learners can continue to get help and learn more after the workshop ends.
 ## Instructional Design
 <!-- teaching philosophy / pedagogy -->
 
-Our modules and instructor suggestions are developed in the style of the Carpentries:
+Our modules and instructor suggestions are developed in the style of [Software Carpentry](https://software-carpentry.org/):
 
 1. Each module contains learning objectives at the beginning of each lesson and
 a summary of key points.
@@ -242,13 +244,14 @@ in-person or virtual workshop.
 Carpentries also requires), and ask them to run an example script that tests
 whether everything is installed correctly.
 Learners must send screenshots of the script output to the workshop lead in
-advance so that any installation issues can be addressed before the workshop
-begins.
+advance. This insures that any installation issues can be addressed before the
+workshop begins.
 1. An extensive small group practice module towards the end of the workshop
 allows learners to more independently practice the skills they have learned
 throughout.
 1. The workshop concludes with a recap of what was covered and resources
-available for learners to continue learning and getting help down the line.
+available for learners to continue learning and getting help as their skills
+develop.
 
 ## Pilot Workshop
 <!-- experience of use -->
@@ -259,16 +262,15 @@ the workshop to assist with learner questions and technical issues.
 We also used the "sticky note" system where learners can indicate their progress
 on exercises and requests for help by using different colored sticky notes.
 As the workshop was virtual, we used Zoom reaction icons as sticky notes.
-We had thirty-nine learners of various skill levels from countries
-worldwide, all of whom provided very positive reviews of the
-workshop.
+We had thirty-nine learners of various skill levels from several different
+countries, all of whom provided very positive reviews of the workshop.
 
 <!-- TODO: follow-up with SWC on whether we can use our surveys -->
 
 ### Virtual Workshop Reflection
 
 We credit the success of our first virtual workshop in large part due to the
-curriculum structure and content, as well as the awesome instructors.
+curriculum structure and content, as well as the instructors.
 However, we also believe that the following helped make the workshop as
 smooth as possible:
 
@@ -291,7 +293,7 @@ We thank the learners who participated in the workshop.
 
 # Funding
 
-Salary support for PDS came from NIH grant 1R01CA215574.
+Salary support for PDS came from NIH grant R01CA215574.
 KLS received support from the NIH Training Program in Bioinformatics (T32
 GM070449).
 ZL received support from the National Science Foundation Graduate Research
