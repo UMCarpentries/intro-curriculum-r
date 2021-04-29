@@ -83,7 +83,7 @@ that it contains too much content for the time allotted in a two-day workshop,
 and the independent nature of the lessons leaves learners confused about how to
 integrate the skills together in their own work.
 The new curriculum we developed, which is hosted on GitHub
-(https://umcarpentries.github.io/curriculum/ TODO: change link after we rename),
+(https://umcarpentries.github.io/intro-curriculum-r/),
 aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
@@ -142,14 +142,14 @@ During the sprint, we met virtually to discuss our goals, then broke up into
 teams to work on individual lessons before coming back together to review our
 progress.
 We hosted the curriculum in a public GitHub repository
-(https://github.com/umcarpentries/curriculum TODO: change link after we rename) to facilitate
+(https://github.com/umcarpentries/intro-curriculum-r) to facilitate
 collaborative work and peer review using issues, branches, and pull requests.
 Under this model, a team member creates or edits content in a new branch to
 resolve an issue,
 then creates a pull request and asks for review from another team member,
 who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website which
-hosts the polished curriculum (https://umcarpentries.github.io/curriculum/ TODO: change link after we rename).
+hosts the polished curriculum (https://umcarpentries.github.io/intro-curriculum-r/).
 This model ensures that at least two pairs of eyes view the changes before they
 can be included in the curriculum, which reduces mistakes and contributes to
 better quality content.
