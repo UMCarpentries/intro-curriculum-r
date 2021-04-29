@@ -111,17 +111,16 @@ the instructional design demonstrates good pedagogy for teaching beginner data
 science practitioners.
 
 However, we found that the curriculum did not meet all of our needs.
-The disadvantages that we found are:
-
-1. The modular nature of the curriculum means that each lesson is independent
+First, we found that the modular nature of the curriculum means that each lesson is independent
 from the others, so it is not apparent to learners how to integrate all of the
-skills together for reproducible research projects;
-1. There is too much content for the time allotted in a two-day workshop, so
-workshops contain inconsistent content depending on who teaches, and new
+skills together for reproducible research projects.
+Additionally, the Carpentries material is more of a reference than a lesson plan as 
+there is too much content for the time allotted in a two-day workshop.
+Therefore, workshops contain inconsistent content depending on who teaches, and new
 instructors face an overwhelming amount of work to prepare for their first
-workshop; and
-1. Some lessons include niche content that we do not use ourselves in our
-research projects.
+workshop.
+Finally, some lessons include niche content that we do not feel is necessary to teach
+beginners as we do not use it ourselves in our research projects.
 
 We sought to create a new curriculum that would
 teach computational skills in an integrated manner to demonstrate the
