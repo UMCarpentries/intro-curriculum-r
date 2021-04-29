@@ -88,8 +88,8 @@ aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
-This curriculum lowers the barrier for new instructors, as they do not have to
-develop their own curriculum or sift through extensive content,
+This curriculum lowers the barrier to entry for new instructors, as they do not
+have to develop their own curriculum or sift through extensive content,
 and provides a succinct resource for learners to reference both during and after
 the workshop.
 We developed this curriculum during a two-day sprint,
