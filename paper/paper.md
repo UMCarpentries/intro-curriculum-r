@@ -1,5 +1,5 @@
 ---
-title: 'An integrated workshop curriculum teaching computational skills for reproducible research'
+title: 'Developing and deploying an integrated workshop curriculum teaching computational skills for reproducible research'
 tags:
   - reproducible research
   - data science
@@ -18,34 +18,34 @@ authors:
     affiliation: 2
   - name: Dana King
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Catherine Barnier
     orcid:
     affiliation: 1
   - name: Matthew Flickinger
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Jule Krüger
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Courtney Armour
     orcid:
     affiliation: 2
   - name: Maya Lapp
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Jason Tallant
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Rucheng Diao
     orcid:
     affiliation: 1
   - name: Bennet Fauber
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Shelly Johnson
     orcid:
-    affiliation:
+    affiliation: 3
   - name: Morgan Oneka
     orcid:
     affiliation: 1
@@ -66,29 +66,35 @@ affiliations:
     index: 1
   - name: Department of Microbiology & Immunology, University of Michigan
     index: 2
+  - name: TODO
+    index: 3
 date: 27 Apr. 2021
 bibliography: paper.bib
 ---
 
 # Summary
 
-Building off of excellent material and pedagogy provided by the Carpentries
-[@wilson_software_2016], we developed a two-day workshop that teaches
+Inspired by excellent material and pedagogy provided by the Carpentries
+[@wilson_software_2016], we developed a two-day workshop curriculum that teaches
 introductory R for plotting and data analysis, the Unix shell, version control
 with git, and GitHub.
-Our curriculum, which is hosted on GitHub (https://umcarpentries.github.io/curriculum/ TODO: change link after we rename),
-aims to teach novices how to use programming to perform data analysis.
+While the official Software Carpentry curriculum is extensive, we found
+that it contains too much content for the time allotted in a two-day workshop,
+and the independent nature of the lessons leaves learners confused about how to
+integrate the skills together in their own work.
+The new curriculum we developed, which is hosted on GitHub
+(https://umcarpentries.github.io/curriculum/ TODO: change link after we rename),
+aims to teach novices how to implement reproducible research practices to
+perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
-This curriculum lowers the barrier for new instructors,
-as they do not have to develop their own curriculum or sift through extensive
-Carpentries lessons with too much content,
-and provides a succinct resource for learners to reference both during and after
-the workshop.
+Furthermore, this curriculum provides a succinct resource for learners to reference both during and after
+the workshop, and lowers the barrier to entry for new instructors as they do not
+have to develop their own curriculum or sift through extensive content.
 We developed this curriculum during a two-day sprint,
 successfully used the curriculum to host a two-day virtual workshop,
 and updated the material based on instructor and learner feedback.
-We hope that this curriculum will useful to other instructors interested in
+We hope that this curriculum will be useful to other instructors interested in
 teaching workshops with similar learning objectives.
 
 # Statement of Need
@@ -96,29 +102,25 @@ teaching workshops with similar learning objectives.
 The University of Michigan instance of the Carpentries has taught workshops
 using the curriculum created by the Carpentries organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
-using the Carpentries curriculum.
-Some advantages that we found are:
-
-1. It is modular, so workshop organizers can choose any programming language
-lesson (e.g. R or Python) to pair with lessons on the Unix shell and version
-control;
-1. It has been refined over years by many contributors and taught at workshops
-around the world; and
-1. It demonstrates good pedagogy for teaching beginner data science
-practitioners.
+using the Software Carpentry curriculum in particular.
+Some advantages are that any programming language lesson (e.g. R or
+Python) can be paired with lessons on the Unix shell and version control;
+the lessons have been refined over years by many contributors and taught at
+workshops around the world; and
+the instructional design demonstrates good pedagogy for teaching beginner data
+science practitioners.
 
 However, we found that the curriculum did not meet all of our needs.
-The disadvantages that we found are:
-
-1. The modular nature of the curriculum means that each lesson is independent
+First, the modular nature of the curriculum means that each lesson is independent
 from the others, so it is not apparent to learners how to integrate all of the
-skills together for reproducible research projects;
-1. There is too much content for the time allotted in a two-day workshop, so
-workshops contain inconsistent content depending on who teaches, and new
+skills together for reproducible research projects.
+Additionally, the Carpentries material is more of a reference than a lesson plan as 
+there is too much content for the time allotted in a two-day workshop.
+Therefore, workshops contain inconsistent content depending on who teaches, and new
 instructors face an overwhelming amount of work to prepare for their first
-workshop; and
-1. Some lessons include niche content that we do not use ourselves in our
-research projects.
+workshop.
+Finally, some lessons include niche content that we do not feel is necessary to teach
+beginners as we do not use it ourselves in our research projects.
 
 We sought to create a new curriculum that would
 teach computational skills in an integrated manner to demonstrate the
@@ -159,7 +161,7 @@ the feedback.
 Community members continue to create issues, make edits, and review pull
 requests for the ongoing refinement of the curriculum.
 We have plans to teach more workshops with instructors who did not develop the
-curriculum in order to gather even more feedback.
+curriculum to gather even more feedback.
 
 ![The curriculum development framework.](development-framework.png)
 
@@ -191,7 +193,7 @@ Our curriculum consists of modules that cover setup, data analysis and
 visualization, version control, and writing reports.
 We also provide a goal for the workshop: to create a fictitious report for the
 United Nations on the relationship between gross domestic product (GDP), life
-expectancy, and CO2 emissions.
+expectancy, and CO~2~ emissions.
 The modules are:
 
 0. Setup
@@ -220,13 +222,13 @@ learners can continue to get help and learn more after the workshop ends.
 ## Instructional Design
 <!-- teaching philosophy / pedagogy -->
 
-Our modules and instructor suggestions are developed in the style of the Carpentries:
+Our modules and instructor suggestions are developed in the style of [Software Carpentry](https://software-carpentry.org/):
 
 1. Each module contains learning objectives at the beginning of each lesson and
 a summary of key points.
 1. The five core modules (2 to 6) are designed to be taught via live coding of
 the content to learners.
-This is a core feature of Carpentries lessons, and we believe it is an excellent
+This is a central feature of Carpentries lessons, and we believe it is an excellent
 way to learn how to program because it requires learners to follow along and
 encounter errors that they must debug along the way, fostering additional
 questions about the course content.
@@ -236,19 +238,22 @@ instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
 
+1. Each lesson builds off of others, with the goal of creating a final report 
+that can be shared with others. 
 1. We structured the curriculum such that it could be taught through an
 in-person or virtual workshop.
 1. We require learners to install all software before the workshop (as the
 Carpentries also requires), and ask them to run an example script that tests
 whether everything is installed correctly.
 Learners must send screenshots of the script output to the workshop lead in
-advance so that any installation issues can be addressed before the workshop
-begins.
+advance in order to attend. This insures that any installation issues can be
+addressed before the workshop begins.
 1. An extensive small group practice module towards the end of the workshop
 allows learners to more independently practice the skills they have learned
 throughout.
 1. The workshop concludes with a recap of what was covered and resources
-available for learners to continue learning and getting help down the line.
+available for learners to continue learning and getting help as their skills
+develop.
 
 ## Pilot Workshop
 <!-- experience of use -->
@@ -259,16 +264,16 @@ the workshop to assist with learner questions and technical issues.
 We also used the "sticky note" system where learners can indicate their progress
 on exercises and requests for help by using different colored sticky notes.
 As the workshop was virtual, we used Zoom reaction icons as sticky notes.
-We had thirty-nine learners of various skill levels from countries
-worldwide, all of whom provided very positive reviews of the
-workshop.
+We had thirty-nine learners of various skill levels from several different
+countries, all of whom provided very positive reviews of the workshop.
 
 <!-- TODO: follow-up with SWC on whether we can use our surveys -->
 
 ### Virtual Workshop Reflection
 
 We credit the success of our first virtual workshop in large part due to the
-curriculum structure and content, as well as the awesome instructors.
+curriculum structure and content, as well as the instructors and helpers
+involved.
 However, we also believe that the following helped make the workshop as
 smooth as possible:
 
@@ -291,7 +296,7 @@ We thank the learners who participated in the workshop.
 
 # Funding
 
-Salary support for PDS came from NIH grant 1R01CA215574.
+Salary support for PDS came from NIH grant R01CA215574.
 KLS received support from the NIH Training Program in Bioinformatics (T32
 GM070449).
 ZL received support from the National Science Foundation Graduate Research
