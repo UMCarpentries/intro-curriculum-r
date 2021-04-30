@@ -40,9 +40,6 @@ authors:
   - name: Rucheng Diao
     orcid: 0000-0002-2932-6755
     affiliation: 1
-  - name: Bennet Fauber
-    orcid:
-    affiliation: 3
   - name: Shelly Johnson
     orcid:
     affiliation: 3
