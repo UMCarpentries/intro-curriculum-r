@@ -83,7 +83,7 @@ that it contains too much content for the time allotted in a two-day workshop,
 and the independent nature of the lessons leaves learners confused about how to
 integrate the skills together in their own work.
 The new curriculum we developed, which is hosted on GitHub
-(https://umcarpentries.github.io/intro-curriculum-r/),
+(https://umcarpentries.org/intro-curriculum-r/),
 aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
@@ -147,7 +147,7 @@ resolve an issue,
 then creates a pull request and asks for review from another team member,
 who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website which
-hosts the polished curriculum (https://umcarpentries.github.io/intro-curriculum-r/).
+hosts the polished curriculum (https://umcarpentries.org/intro-curriculum-r/).
 This model ensures that at least two pairs of eyes view the changes before they
 can be included in the curriculum, which reduces mistakes and contributes to
 better quality content.
