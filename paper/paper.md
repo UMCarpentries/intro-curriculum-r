@@ -74,7 +74,7 @@ bibliography: paper.bib
 
 # Summary
 
-Inspired by excellent material and pedagogy provided by the Carpentries
+Inspired by well-established material and pedagogy provided by the Carpentries
 [@wilson_software_2016], we developed a two-day workshop curriculum that teaches
 introductory R for plotting and data analysis, the Unix shell, version control
 with git, and GitHub.
@@ -131,7 +131,7 @@ and reduce the burden for new instructors to get involved.
 
 # Collaborative Curriculum Development
 
-We drew on the expertise of the vibrant Carpentries community at the
+We drew on the expertise of the Carpentries community at the
 University of Michigan to develop a custom curriculum that would meet the needs
 of our learners (Figure 1).
 We planned a two-day sprint, where members of our community worked
@@ -228,7 +228,7 @@ Our modules and instructor suggestions are developed in the style of [Software C
 a summary of key points.
 1. The five core modules (2 to 6) are designed to be taught via live coding of
 the content to learners.
-This is a central feature of Carpentries lessons, and we believe it is an excellent
+This is a central feature of Carpentries lessons, and we believe it is a great
 way to learn how to program because it requires learners to follow along and
 encounter errors that they must debug along the way, fostering additional
 questions about the course content.
