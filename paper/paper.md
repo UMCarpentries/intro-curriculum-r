@@ -312,7 +312,7 @@ KLS threatened to reject all pull requests where ZL put KLS first. :)
 PDS supervised the project.
 ZL and KLS organized the initial sprint, led the development of the curriculum,
 and drafted the manuscript.
-ZL, KLS, JK, and ML instructed at the first pilot workshop
+ZL, KLS, JK, and MML instructed at the first pilot workshop
 while CA, JMA, ST, SKL, SJ, and CB assisted learners.
 All authors contributed to the development of the curriculum.
 
