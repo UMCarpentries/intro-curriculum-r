@@ -65,7 +65,7 @@ affiliations:
     index: 2
   - name: TODO
     index: 3
-  - name: independent educator
+  - name: Independent educator
     index: 4
 date: 27 Apr. 2021
 bibliography: paper.bib
