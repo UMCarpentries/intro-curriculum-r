@@ -31,9 +31,9 @@ authors:
   - name: Courtney Armour
     orcid:
     affiliation: 2
-  - name: Maya Lapp
-    orcid:
-    affiliation: 3
+  - name: Maya M. Lapp
+    orcid: 0000-0002-8249-1186 
+    affiliation: 4
   - name: Jason Tallant
     orcid:
     affiliation: 3
@@ -65,6 +65,8 @@ affiliations:
     index: 2
   - name: TODO
     index: 3
+  - name: independent educator
+    index: 4
 date: 27 Apr. 2021
 bibliography: paper.bib
 ---
