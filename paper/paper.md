@@ -162,7 +162,7 @@ requests for the ongoing refinement of the curriculum.
 We have plans to teach more workshops with instructors who did not develop the
 curriculum to gather even more feedback.
 
-![The curriculum development framework.](development-framework.png)
+![The curriculum development framework. Created with BioRender.com.](development-framework.png)
 
 # Curriculum
 
@@ -172,7 +172,7 @@ We aim to teach our learners not only the basics of performing data analysis,
 but also to provide them with a framework to perform rigorous reproducible
 research that can easily be shared with others.
 
-![Curriculum overview.](curriculum-overview.png)
+![Curriculum overview. Created with BioRender.com.](curriculum-overview.png)
 
 ## Learning Objectives
 
