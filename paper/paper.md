@@ -150,6 +150,8 @@ This model ensures that at least two pairs of eyes view the changes before they
 can be included in the curriculum, which reduces mistakes and contributes to
 better quality content.
 
+![The curriculum development framework. Created with BioRender.com.](development-framework.png)
+
 Following the sprint, contributors finalized edits and continued to review each
 others' pull requests to complete the alpha version of our curriculum.
 Next, we hosted a workshop for instructors to pilot the curriculum.
@@ -160,8 +162,6 @@ Community members continue to create issues, make edits, and review pull
 requests for ongoing refinement of the curriculum.
 We have plans to teach more workshops with instructors who did not develop the
 curriculum to gather even more feedback.
-
-![The curriculum development framework. Created with BioRender.com.](development-framework.png)
 
 # Curriculum
 
