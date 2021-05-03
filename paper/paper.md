@@ -49,8 +49,8 @@ authors:
   - name: Sarah Tomkovich
     orcid:
     affiliation: 2
-  - name: Jacqueline Moltzau
-    orcid:
+  - name: Jacqueline Moltzau Anderson
+    orcid: 0000-0003-1398-5980
     affiliation: 2
   - name: Sarah K. Lucas
     orcid:
@@ -71,7 +71,7 @@ bibliography: paper.bib
 
 # Summary
 
-Inspired by well-established material and pedagogy provided by the Carpentries
+Inspired by well-established material and pedagogy provided by The Carpentries
 [@wilson_software_2016], we developed a two-day workshop curriculum that teaches
 introductory R for plotting and data analysis, the Unix shell, version control
 with git, and GitHub.
@@ -96,8 +96,8 @@ teaching workshops with similar learning objectives.
 
 # Statement of Need
 
-The University of Michigan instance of the Carpentries has taught workshops
-using the curriculum created by the Carpentries organization since 2015.
+The University of Michigan instance of The Carpentries has taught workshops
+using the curriculum created by The Carpentries organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
 using the Software Carpentry curriculum in particular.
 Some advantages are that any programming language lesson (e.g. R or
@@ -111,7 +111,7 @@ However, we found that the curriculum did not meet all of our needs.
 First, the modular nature of the curriculum means that each lesson is independent
 from the others, so it is not apparent to learners how to integrate all of the
 skills together for reproducible research projects.
-Additionally, the Carpentries material is more of a reference than a lesson plan as
+Additionally, The Carpentries material is more of a reference than a lesson plan as
 there is too much content for the time allotted in a two-day workshop.
 Therefore, workshops contain inconsistent content depending on who teaches, and new
 instructors face an overwhelming amount of work to prepare for their first
@@ -122,13 +122,13 @@ beginners as we do not use it ourselves in our research projects.
 We sought to create a new curriculum that would
 teach computational skills in an integrated manner to demonstrate the
 reproducible research workflows we use in our own work,
-utilize the same inclusive pedagogy refined by the Carpentries,
+utilize the same inclusive pedagogy refined by The Carpentries,
 and contain an appropriate amount of content to deliver consistent workshops
 and reduce the burden for new instructors to get involved.
 
 # Collaborative Curriculum Development
 
-We drew on the expertise of the Carpentries community at the
+We drew on the expertise of The Carpentries community at the
 University of Michigan to develop a custom curriculum that would meet the needs
 of our learners (Figure 1).
 We planned a two-day sprint, where members of our community worked
@@ -256,7 +256,7 @@ develop.
 <!-- experience of use -->
 
 We piloted our curriculum during a virtual two-day Software Carpentry workshop.
-In line with the Carpentries style, we had four instructors and six helpers at
+In line with The Carpentries style, we had four instructors and six helpers at
 the workshop to assist with learner questions and technical issues.
 We also used the "sticky note" system where learners can indicate their progress
 on exercises and requests for help by using different colored sticky notes.
@@ -284,7 +284,7 @@ covered in the main room.
 
 # Acknowledgements
 
-We thank the Carpentries organization for their workshop protocols and
+We thank The Carpentries organization for their workshop protocols and
 open-source Software Carpentry curriculum, upon which this curriculum is based.
 
 We thank Victoria Alden and Scott Martin for assisting us in organizing and
@@ -311,7 +311,7 @@ PDS supervised the project.
 ZL and KLS organized the initial sprint, led the development of the curriculum,
 and drafted the manuscript.
 ZL, KLS, JK, and ML instructed at the first pilot workshop
-while CA, JM, ST, SKL, SJ, and CB assisted learners.
+while CA, JMA, ST, SKL, SJ, and CB assisted learners.
 All authors contributed to the development of the curriculum.
 
 # Conflicts of Interest
