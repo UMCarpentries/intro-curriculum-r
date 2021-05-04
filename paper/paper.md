@@ -239,7 +239,7 @@ We also incorporate a few additional key components into the curriculum:
 1. Each lesson builds off of others, with the goal of creating a final report
 that can be shared with others.
 1. We structured the curriculum such that it could be taught through an
-in-person or virtual workshop.
+in-person or virtual workshop. Virtual workshops are sometimes necessary, as during the COVID-19 pandemic, but are also useful to allow people from a variety of geographic locations to instruct and attend. 
 1. We require learners to install all software before the workshop (as The
 Carpentries also requires), and ask them to run an example script that tests
 whether everything is installed correctly.
