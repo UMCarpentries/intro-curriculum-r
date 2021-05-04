@@ -108,17 +108,14 @@ workshops around the world, and
 the instructional design demonstrates good pedagogy for teaching beginner data
 science practitioners.
 
-However, we found that the curriculum did not meet all of our needs.
-First, the modular nature of the curriculum means that each lesson is independent
-from the others, so it is not apparent to learners how to integrate all of the
-skills together for reproducible research projects.
-Additionally, The Carpentries material is more of a reference than a lesson plan as
+However, The Carpentries material is more of a reference than a lesson plan as
 there is too much content for the time allotted in a two-day workshop.
 Therefore, workshops contain inconsistent content depending on who teaches, and new
 instructors face an overwhelming amount of work to prepare for their first
 workshop.
-Finally, some lessons include niche content that we do not feel is necessary to teach
-beginners as we do not use it ourselves in our research projects.
+Furthermore, the modular nature of the curriculum means that each lesson is independent
+from the others, so it is not apparent to learners how to integrate all of the
+skills together for reproducible research projects.
 
 We sought to create a new curriculum that would
 teach computational skills in an integrated manner to demonstrate the
