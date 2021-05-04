@@ -75,13 +75,13 @@ bibliography: paper.bib
 
 Inspired by well-established material and pedagogy provided by The Carpentries
 [@wilson_software_2016], we developed a two-day workshop curriculum that teaches
-introductory R for plotting and data analysis, the Unix shell, version control
-with git, and GitHub.
+introductory R for plotting and data analysis using the tidyverse
+[@wickham_welcome_2019], the Unix shell, version control with git, and GitHub.
 While the official Software Carpentry curriculum is extensive, we found
 that it contains too much content for the time allotted in a two-day workshop,
 and the independent nature of the lessons leaves learners confused about how to
 integrate the skills together in their own work.
-The new curriculum we developed (https://umcarpentries.org/intro-curriculum-r/), which is hosted on GitHub,
+The new curriculum we developed (https://umcarpentries.org/intro-curriculum-r/)
 aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
@@ -192,14 +192,16 @@ visualization, version control, sharing code, and writing reports.
 We also provide a goal for the workshop: to create a fictitious report for the
 United Nations on the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
+The R programming lessons take a "tidyverse first" approach
+[@robinson_teach_2017] so learners can meet this goal.
 The modules are:
 
 0. Setup
 1. Welcome
-1. R for plotting (uses the tidyverse R package [@wickham_welcome_2019])
+1. R for plotting (uses the tidyverse R packages)
 1. The Unix shell
 1. Git and GitHub
-1. R for data analysis (uses the tidyverse R package [@wickham_welcome_2019])
+1. R for data analysis (uses the tidyverse R packages)
 1. Writing reports in R markdown (uses the rmarkdown R package [@xie_r_2018])
 1. Group practice exercises
 1. Where to go from here
