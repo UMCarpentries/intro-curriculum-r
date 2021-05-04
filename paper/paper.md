@@ -75,13 +75,13 @@ bibliography: paper.bib
 
 Inspired by well-established material and pedagogy provided by The Carpentries
 [@wilson_software_2016], we developed a two-day workshop curriculum that teaches
-introductory R for plotting and data analysis, the Unix shell, version control
-with git, and GitHub.
+introductory R for plotting and data analysis using the tidyverse
+[@wickham_welcome_2019], the Unix shell, version control with git, and GitHub.
 While the official Software Carpentry curriculum is extensive, we found
 that it contains too much content for the time allotted in a two-day workshop,
 and the independent nature of the lessons leaves learners confused about how to
 integrate the skills together in their own work.
-The new curriculum we developed (https://umcarpentries.org/intro-curriculum-r/), which is hosted on GitHub,
+The new curriculum we developed (https://umcarpentries.org/intro-curriculum-r/)
 aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
@@ -130,8 +130,8 @@ and reduce the burden for new instructors to get involved.
 # Collaborative Curriculum Development
 
 We drew on the expertise of The Carpentries community at the
-University of Michigan to develop a custom curriculum that would meet the needs
-of our learners (Figure 1).
+University of Michigan to develop a custom curriculum that would meet our goals
+(Figure 1).
 We planned a two-day sprint, where members of our community worked
 collaboratively to create an initial draft of the content.
 During the sprint, we met virtually to discuss our goals, then broke up into
@@ -192,14 +192,16 @@ visualization, version control, sharing code, and writing reports.
 We also provide a goal for the workshop: to create a fictitious report for the
 United Nations on the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
+The R programming lessons take a "tidyverse first" approach
+[@robinson_teach_2017] so learners can meet this goal.
 The modules are:
 
 0. Setup
 1. Welcome
-1. R for plotting (uses the tidyverse R package [@wickham_welcome_2019])
+1. R for plotting (uses the tidyverse R packages)
 1. The Unix shell
 1. Git and GitHub
-1. R for data analysis (uses the tidyverse R package [@wickham_welcome_2019])
+1. R for data analysis (uses the tidyverse R packages)
 1. Writing reports in R markdown (uses the rmarkdown R package [@xie_r_2018])
 1. Group practice exercises
 1. Where to go from here
@@ -257,14 +259,18 @@ develop.
 <!-- experience of use -->
 
 We piloted our curriculum during a virtual two-day Software Carpentry workshop.
-In line with The Carpentries style, we had four instructors and six helpers at
+In line with The Carpentries recommendations
+[@the_carpentries_carpentries_2018], we had four instructors and six helpers at
 the workshop to assist with learner questions and technical issues.
-We also used the "sticky note" system where learners can indicate their progress
-on exercises and requests for help by using different colored sticky notes.
-As the workshop was virtual, we used Zoom reaction icons as sticky notes.
-We had 39 learners of various skill levels from several different
+We also used the "sticky note" system for formative assessment, where learners
+indicate their progress on exercises and request for help by using different
+colored sticky notes [@becker_responding_2016; @the_carpentries_live_2018].
+As the workshop was virtual, we used Zoom reaction icons as virtual sticky
+notes, with the red X reaction to ask for help and the green checkmark to
+indicate that they successfully completed the exercise at hand.
+We had thirty-nine learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
-By the end of the workshop learners on average felt more confident using programming to work with data, writing programs, overcoming problems while programming, and search for answers to technical questions online (n = 14 survey respondents; pre- and post-workshop surveys).
+By the end of the workshop learners on average felt more confident writing programs, using programming to work with data, overcoming problems while programming, and searching for answers to technical questions online (n = 14 survey respondents; pre- and post-workshop surveys).
 All attendees who filled out the post-workshop survey (n = 19) would also recommend the workshop to others.
 
 ### Virtual Workshop Reflection
