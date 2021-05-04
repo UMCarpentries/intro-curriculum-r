@@ -286,12 +286,14 @@ covered in the main room.
 
 # Acknowledgements
 
-We thank The Carpentries organization for their workshop protocols and
-open-source Software Carpentry curriculum, upon which this curriculum is based.
+We thank The Carpentries organization for providing instructor training,
+workshop protocols, and the open-source Software Carpentry curriculum, upon
+which this curriculum is based. We also thank them for allowing us to use the
+pre- and post-workshop survey results in this manuscript.
 
 We thank Victoria Alden and Scott Martin for assisting us in organizing and
 advertising our workshop.
-We thank the learners who participated in the workshop.
+We thank the learners who participated in the workshop, provided feedback, and completed the surveys.
 
 # Funding
 
