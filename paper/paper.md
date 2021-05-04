@@ -50,7 +50,7 @@ authors:
     orcid: 0000-0003-1398-5980
     affiliation: 2
   - name: Sarah K. Lucas
-    orcid:
+    orcid: 0000-0003-1676-5801
     affiliation: 2
   - name: Patrick D. Schloss^[corresponding author]
     orcid: 0000-0002-6935-4275
@@ -241,7 +241,7 @@ in-person or virtual workshop. Virtual workshops are sometimes necessary, as dur
 Carpentries also requires), and ask them to run an example script that tests
 whether everything is installed correctly.
 Learners must send screenshots of the script output to the workshop lead in
-advance in order to attend. This insures that any installation issues can be
+advance in order to attend. This ensures that any installation issues can be
 addressed before the workshop begins.
 1. An extensive small group practice module towards the end of the workshop
 allows learners to more independently practice the skills they have learned
