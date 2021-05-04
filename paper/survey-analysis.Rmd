@@ -1,0 +1,63 @@
+---
+title: "Survey results"
+author: "Zena Lapp"
+date: "5/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+theme_set(theme_bw() + theme(strip.background = element_rect(fill="white",linetype='blank'), text=element_text(size=15)))
+
+pre_survey <- sapply(list.files('data', 'pre_workshop', full.names = TRUE), read_csv) %>% bind_cols()
+post_survey <- sapply(list.files('data', 'post_workshop', full.names = TRUE), read_csv) %>% bind_cols()
+```
+
+```{r}
+names(pre_survey)
+names(post_survey)
+```
+
+```{r}
+table(post_survey$recommendation_score)
+summary(post_survey$recommendation_score)
+```
+
+
+```{r}
+dat_wide <- full_join(pre_survey %>% select(learner_id, starts_with('skill')),
+          post_survey %>% select(learner_id, starts_with('skill')), 
+          by = 'learner_id'
+)
+
+dat_long <- bind_rows(pre_survey %>% select(starts_with('skill')) %>% mutate(survey = 'pre'),
+          post_survey %>% select(starts_with('skill')) %>% mutate(survey = 'post') 
+) %>% 
+  pivot_longer(cols = c(starts_with('skill')))
+```
+
+```{r}
+mean(dat_wide$skill_confidence_programming.y - dat_wide$skill_confidence_programming.x, na.rm = TRUE)
+mean(dat_wide$skill_write_program.y - dat_wide$skill_write_program.x, na.rm = TRUE)
+mean(dat_wide$skill_overcome_problem.y - dat_wide$skill_overcome_problem.x, na.rm = TRUE)
+mean(dat_wide$skill_search_answers.y - dat_wide$skill_search_answers.x, na.rm = TRUE)
+```
+
+
+```{r}
+dat_long %>% 
+  mutate(
+    survey = ifelse(survey == 'pre', 'Pre-workshop', 'Post-workshop'),
+    survey = factor(survey, levels = c('Pre-workshop','Post-workshop')),
+    name = gsub('skill_','',name)
+    ) %>% 
+  ggplot(aes(fill = survey, y = value)) + geom_histogram(position='identity',alpha=0.5, bins = 5) + facet_wrap(~name) #+
+  # ggplot(aes(fill = survey, y = value)) + geom_bar(position='dodge') + facet_wrap(~name) #+
+  #labs(x = 'Survey', y = 'Perceived skill level')
+```
+

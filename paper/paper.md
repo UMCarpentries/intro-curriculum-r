@@ -270,8 +270,8 @@ notes, with the red X reaction to ask for help and the green checkmark to
 indicate that they successfully completed the exercise at hand.
 We had thirty-nine learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
-
-<!-- TODO: follow-up with SWC on whether we can use our surveys -->
+By the end of the workshop learners on average felt more confident writing programs, using programming to work with data, overcoming problems while programming, and searching for answers to technical questions online (n = 14 survey respondents; pre- and post-workshop surveys).
+All attendees who filled out the post-workshop survey (n = 19) would also recommend the workshop to others.
 
 ### Virtual Workshop Reflection
 
