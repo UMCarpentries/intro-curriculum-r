@@ -107,7 +107,6 @@ the lessons have been refined over years by many contributors and taught at
 workshops around the world, and
 the instructional design demonstrates good pedagogy for teaching beginner data
 science practitioners.
-
 However, The Carpentries material is more of a reference than a lesson plan as
 there is too much content for the time allotted in a two-day workshop.
 Therefore, workshops contain inconsistent content depending on who teaches, and new
