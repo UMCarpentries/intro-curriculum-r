@@ -130,8 +130,8 @@ and reduce the burden for new instructors to get involved.
 # Collaborative Curriculum Development
 
 We drew on the expertise of The Carpentries community at the
-University of Michigan to develop a custom curriculum that would meet the needs
-of our learners (Figure 1).
+University of Michigan to develop a custom curriculum that would meet our goals
+(Figure 1).
 We planned a two-day sprint, where members of our community worked
 collaboratively to create an initial draft of the content.
 During the sprint, we met virtually to discuss our goals, then broke up into
@@ -257,11 +257,15 @@ develop.
 <!-- experience of use -->
 
 We piloted our curriculum during a virtual two-day Software Carpentry workshop.
-In line with The Carpentries style, we had four instructors and six helpers at
+In line with The Carpentries recommendations
+[@the_carpentries_carpentries_2018], we had four instructors and six helpers at
 the workshop to assist with learner questions and technical issues.
-We also used the "sticky note" system where learners can indicate their progress
-on exercises and requests for help by using different colored sticky notes.
-As the workshop was virtual, we used Zoom reaction icons as sticky notes.
+We also used the "sticky note" system for formative assessment, where learners
+indicate their progress on exercises and request for help by using different
+colored sticky notes [@becker_responding_2016; @the_carpentries_live_2018].
+As the workshop was virtual, we used Zoom reaction icons as virtual sticky
+notes, with the red X reaction to ask for help and the green checkmark to
+indicate that they successfully completed the exercise at hand.
 We had thirty-nine learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
 
