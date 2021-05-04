@@ -40,9 +40,6 @@ authors:
   - name: Rucheng Diao
     orcid: 0000-0002-2932-6755
     affiliation: 1
-  - name: Shelly Johnson
-    orcid:
-    affiliation: 3
   - name: Morgan Oneka
     orcid:
     affiliation: 1
@@ -295,7 +292,8 @@ which this curriculum is based. We also thank them for allowing us to use the
 pre- and post-workshop survey results in this manuscript.
 
 We thank Victoria Alden and Scott Martin for assisting us in organizing and
-advertising our workshop.
+advertising our pilot workshop.
+We also thank Shelly Johnson for volunteering as a helper at the workshop.
 
 We thank the learners who participated in the workshop, provided feedback, and completed the surveys.
 
@@ -319,7 +317,7 @@ PDS supervised the project.
 ZL and KLS organized the initial sprint, led the development of the curriculum,
 and drafted the manuscript.
 ZL, KLS, JK, and MML instructed at the first pilot workshop
-while CRA, JMA, ST, SKL, SJ, and CB assisted learners.
+while CRA, JMA, ST, SKL, and CB assisted learners.
 All authors contributed to the development of the curriculum.
 
 # Conflicts of Interest
