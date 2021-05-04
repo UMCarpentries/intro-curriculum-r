@@ -28,8 +28,8 @@ authors:
   - name: Jule Krüger
     orcid:
     affiliation: 3
-  - name: Courtney Armour
-    orcid:
+  - name: Courtney R. Armour
+    orcid: 0000-0002-5250-1224
     affiliation: 2
   - name: Maya M. Lapp
     orcid: 0000-0002-8249-1186 
@@ -317,7 +317,7 @@ PDS supervised the project.
 ZL and KLS organized the initial sprint, led the development of the curriculum,
 and drafted the manuscript.
 ZL, KLS, JK, and MML instructed at the first pilot workshop
-while CA, JMA, ST, SKL, SJ, and CB assisted learners.
+while CRA, JMA, ST, SKL, SJ, and CB assisted learners.
 All authors contributed to the development of the curriculum.
 
 # Conflicts of Interest
