@@ -23,8 +23,8 @@ authors:
     orcid: 0000-0001-7074-401
     affiliation: 1
   - name: Matthew Flickinger
-    orcid:
-    affiliation: 3
+    orcid: 0000-0002-8528-8925
+    affiliation: 5
   - name: Jule Krüger
     orcid:
     affiliation: 3
@@ -67,6 +67,8 @@ affiliations:
     index: 3
   - name: Independent educator
     index: 4
+  - name: Department of Biostatistics, University of Michigan
+    index: 5
 date: 27 Apr. 2021
 bibliography: paper.bib
 ---
