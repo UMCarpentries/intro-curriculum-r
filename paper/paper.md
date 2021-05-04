@@ -262,10 +262,10 @@ the workshop to assist with learner questions and technical issues.
 We also used the "sticky note" system where learners can indicate their progress
 on exercises and requests for help by using different colored sticky notes.
 As the workshop was virtual, we used Zoom reaction icons as sticky notes.
-We had thirty-nine learners of various skill levels from several different
+We had 39 learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
-
-<!-- TODO: follow-up with SWC on whether we can use our surveys -->
+By the end of the workshop learners on average felt more confident using programming to work with data, writing programs, overcoming problems while programming, and search for answers to technical questions online (n = 14 survey respondents; pre- and post-workshop surveys).
+All attendees who filled out the post-workshop survey (n = 19) would also recommend the workshop to others.
 
 ### Virtual Workshop Reflection
 
