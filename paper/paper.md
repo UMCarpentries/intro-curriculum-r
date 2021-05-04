@@ -282,7 +282,8 @@ smooth as possible:
 1. We suggested that learners have Zoom and RStudio (or the Unix shell) open side-by-side on their computer to minimize toggling between different panels.
 1. We used Slack for communication among instructors and helpers, as well as between helpers and learners. 
 Learners asked questions in a group Slack channel where helpers could respond.
-This allowed us to answer the vast majority of learner questions and bugs quickly, clearly, and efficiently without disrupting the lesson or moving the learner to a breakout room. 
+This allowed us to answer the vast majority of learner questions and bugs quickly, clearly, and efficiently without disrupting the lesson or moving the learner to a breakout room.
+Furthermore, Slack worked much better than the Zoom chat as questions can be answered in threads, are visible to all learners regardless of whether they are connected to Zoom at the time, and  don't get lost as easily.  
 1. When a learner needed more help than was possible on Slack, a helper and the
 learner entered a breakout room together to troubleshoot.
 However, we tried to minimize this option as then the learner misses content
