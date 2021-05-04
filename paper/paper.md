@@ -81,8 +81,7 @@ While the official Software Carpentry curriculum is extensive, we found
 that it contains too much content for the time allotted in a two-day workshop,
 and the independent nature of the lessons leaves learners confused about how to
 integrate the skills together in their own work.
-The new curriculum we developed, which is hosted on GitHub
-(https://umcarpentries.org/intro-curriculum-r/),
+The new curriculum we developed (https://umcarpentries.org/intro-curriculum-r/), which is hosted on GitHub,
 aims to teach novices how to implement reproducible research practices to
 perform data analysis.
 It emphasizes the iterative nature of coding and data analysis through
@@ -103,9 +102,9 @@ using the curriculum created by The Carpentries organization since 2015.
 In that time, our instructors have found several advantages and disadvantages to
 using the Software Carpentry curriculum in particular.
 Some advantages are that any programming language lesson (e.g. R or
-Python) can be paired with lessons on the Unix shell and version control;
+Python) can be paired with lessons on the Unix shell and version control,
 the lessons have been refined over years by many contributors and taught at
-workshops around the world; and
+workshops around the world, and
 the instructional design demonstrates good pedagogy for teaching beginner data
 science practitioners.
 
@@ -151,6 +150,8 @@ This model ensures that at least two pairs of eyes view the changes before they
 can be included in the curriculum, which reduces mistakes and contributes to
 better quality content.
 
+![The curriculum development framework. Created with BioRender.com.](development-framework.png)
+
 Following the sprint, contributors finalized edits and continued to review each
 others' pull requests to complete the alpha version of our curriculum.
 Next, we hosted a workshop for instructors to pilot the curriculum.
@@ -158,11 +159,9 @@ We collected feedback from the learners and instructors at the end of the pilot
 workshop, then held a smaller half-day sprint to revise the curriculum based on
 the feedback.
 Community members continue to create issues, make edits, and review pull
-requests for the ongoing refinement of the curriculum.
+requests for ongoing refinement of the curriculum.
 We have plans to teach more workshops with instructors who did not develop the
 curriculum to gather even more feedback.
-
-![The curriculum development framework.](development-framework.png)
 
 # Curriculum
 
@@ -172,7 +171,7 @@ We aim to teach our learners not only the basics of performing data analysis,
 but also to provide them with a framework to perform rigorous reproducible
 research that can easily be shared with others.
 
-![Curriculum overview.](curriculum-overview.png)
+![Curriculum overview. Created with BioRender.com.](curriculum-overview.png)
 
 ## Learning Objectives
 
@@ -189,7 +188,7 @@ themselves any additional coding skills that they will need in the future.
 ## Course Content
 
 Our curriculum consists of modules that cover setup, data analysis and
-visualization, version control, and writing reports.
+visualization, version control, sharing code, and writing reports.
 We also provide a goal for the workshop: to create a fictitious report for the
 United Nations on the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
@@ -241,7 +240,7 @@ We also incorporate a few additional key components into the curriculum:
 that can be shared with others.
 1. We structured the curriculum such that it could be taught through an
 in-person or virtual workshop.
-1. We require learners to install all software before the workshop (as the
+1. We require learners to install all software before the workshop (as The
 Carpentries also requires), and ask them to run an example script that tests
 whether everything is installed correctly.
 Learners must send screenshots of the script output to the workshop lead in
@@ -293,6 +292,7 @@ pre- and post-workshop survey results in this manuscript.
 
 We thank Victoria Alden and Scott Martin for assisting us in organizing and
 advertising our workshop.
+
 We thank the learners who participated in the workshop, provided feedback, and completed the surveys.
 
 # Funding
