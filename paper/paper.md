@@ -244,8 +244,7 @@ Learners must send screenshots of the script output to the workshop lead in
 advance in order to attend. This ensures that any installation issues can be
 addressed before the workshop begins.
 1. An extensive small group practice module towards the end of the workshop
-allows learners to more independently practice the skills they have learned
-throughout.
+allows learners to more independently practice the skills they have learned.
 1. The workshop concludes with a recap of what was covered and resources
 available for learners to continue learning and getting help as their skills
 develop.
