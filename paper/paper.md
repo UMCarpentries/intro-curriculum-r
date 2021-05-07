@@ -26,8 +26,8 @@ authors:
     orcid: 0000-0002-8528-8925
     affiliation: 5
   - name: Jule Krüger
-    orcid:
-    affiliation: 3
+    orcid: 0000-0002-2814-137X
+    affiliation: 6
   - name: Courtney R. Armour
     orcid: 0000-0002-5250-1224
     affiliation: 2
@@ -66,6 +66,8 @@ affiliations:
     index: 4
   - name: Department of Biostatistics, University of Michigan
     index: 5
+  - name: Center for Political Studies, Institute for Social Research, University of Michigan
+    index: 6
 date: 27 Apr. 2021
 bibliography: paper.bib
 ---
@@ -236,7 +238,7 @@ We also incorporate a few additional key components into the curriculum:
 1. Each lesson builds off of others, with the goal of creating a final report
 that can be shared with others.
 1. We structured the curriculum such that it could be taught through an
-in-person or virtual workshop. Virtual workshops are sometimes necessary, as during the COVID-19 pandemic, but are also useful to allow people from a variety of geographic locations to instruct and attend. 
+in-person or virtual workshop. Virtual workshops are sometimes necessary, as during the COVID-19 pandemic, but are also useful to allow people from a variety of geographic locations to instruct and attend.
 1. We require learners to install all software before the workshop (as The
 Carpentries also requires), and ask them to run an example script that tests
 whether everything is installed correctly.
@@ -276,7 +278,7 @@ However, we also believe that the following helped make the workshop as
 smooth as possible:
 
 1. We suggested that learners have Zoom and RStudio (or the Unix shell) open side-by-side on their computer to minimize toggling between different panels.
-1. We used Slack for communication among instructors and helpers, as well as between helpers and learners. 
+1. We used Slack for communication among instructors and helpers, as well as between helpers and learners.
 Learners asked questions in a group Slack channel where helpers could respond.
 This allowed us to answer the vast majority of learner questions and bugs quickly, clearly, and efficiently without disrupting the lesson or moving the learner to a breakout room.
 Furthermore, Slack worked much better than the Zoom chat as questions can be answered in threads, are visible to all learners regardless of whether they are connected to Zoom at the time, and  don't get lost as easily.  
