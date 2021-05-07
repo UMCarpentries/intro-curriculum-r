@@ -17,7 +17,7 @@ authors:
     orcid: 0000-0001-9359-5194
     affiliation: 2
   - name: Dana King
-    orcid:
+    orcid: 0000-0003-4635-5272
     affiliation: 3
   - name: Catherine Barnier
     orcid: 0000-0001-7074-401
@@ -60,7 +60,7 @@ affiliations:
     index: 1
   - name: Department of Microbiology & Immunology, University of Michigan
     index: 2
-  - name: TODO
+  - name: BRCF Bioinformatics Core, University of Michigan
     index: 3
   - name: Department of Biostatistics, University of Michigan
     index: 4
