@@ -295,6 +295,7 @@ We thank The Carpentries organization for providing instructor training,
 workshop protocols, and the open-source Software Carpentry curriculum, upon
 which this curriculum is based. We also thank them for allowing us to use the
 pre- and post-workshop survey results in this manuscript.
+The Carpentries is a fiscally sponsored project of Community Initiatives, a registered 501(c)3 non-profit organisation based in California, USA.
 
 We thank Victoria Alden and Scott Martin for assisting us in organizing and
 advertising our pilot workshop.
