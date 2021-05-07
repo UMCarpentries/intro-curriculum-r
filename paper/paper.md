@@ -24,19 +24,19 @@ authors:
     affiliation: 1
   - name: Matthew Flickinger
     orcid: 0000-0002-8528-8925
-    affiliation: 5
+    affiliation: 4
   - name: Jule Krüger
     orcid: 0000-0002-2814-137X
-    affiliation: 6
+    affiliation: 5
   - name: Courtney R. Armour
     orcid: 0000-0002-5250-1224
     affiliation: 2
   - name: Maya M. Lapp
     orcid: 0000-0002-8249-1186 
-    affiliation: 4
+    affiliation: 6
   - name: Jason Tallant
     orcid:
-    affiliation: 3
+    affiliation: 7
   - name: Rucheng Diao
     orcid: 0000-0002-2932-6755
     affiliation: 1
@@ -62,12 +62,14 @@ affiliations:
     index: 2
   - name: TODO
     index: 3
-  - name: Independent educator
-    index: 4
   - name: Department of Biostatistics, University of Michigan
-    index: 5
+    index: 4
   - name: Center for Political Studies, Institute for Social Research, University of Michigan
+    index: 5
+  - name: Independent educator
     index: 6
+  - name: TODO
+    index: 7
 date: 27 Apr. 2021
 bibliography: paper.bib
 ---
