@@ -35,7 +35,7 @@ authors:
     orcid: 0000-0002-8249-1186 
     affiliation: 6
   - name: Jason Tallant
-    orcid:
+    orcid: 0000-0003-4790-8772
     affiliation: 7
   - name: Rucheng Diao
     orcid: 0000-0002-2932-6755
@@ -68,7 +68,7 @@ affiliations:
     index: 5
   - name: Independent educator
     index: 6
-  - name: TODO
+  - name: Biological Station, University of Michigan
     index: 7
 date: 27 Apr. 2021
 bibliography: paper.bib
