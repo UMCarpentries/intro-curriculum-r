@@ -78,7 +78,7 @@ bibliography: paper.bib
 
 Inspired by well-established material and pedagogy provided by The Carpentries
 [@wilson_software_2016], we developed a two-day workshop curriculum that teaches
-introductory R for plotting and data analysis using the tidyverse
+introductory R programming for managing, analyzing, plotting and reporting data using the R tidyverse
 [@wickham_welcome_2019], the Unix shell, version control with git, and GitHub.
 While the official Software Carpentry curriculum is well-thought-out and comprehensive, we found
 that it contains too much content for  a two-day workshop.
@@ -87,8 +87,8 @@ integrate the newly acquired programming skills  in their own work.
 We developed a new curriculum  (https://umcarpentries.org/intro-curriculum-r/) in response that
 aims to teach novices how to implement reproducible research principles in
 in their data analytic practice.
-It emphasizes the iterative nature of coding and data analysis through
-integrated live coding lessons and practice exercises.
+To emphasize the iterative nature of coding and data analysis 
+we integrated live coding lessons with individual-level and group-based practice exercises.
 Finally, our new curriculum serves as a succinct resource material that learners can reference both during and after
 the workshop. It also lowers the entry barrier for new instructors as they do not
 have to develop their own teaching materials or sift through extensive content.
@@ -100,7 +100,7 @@ teaching workshops with similar learning objectives.
 
 # Statement of Need
 
-The University of Michigan instance of The Carpentries has taught workshops
+Since 2015 until recently, the University of Michigan instance of The Carpentries taught workshops
 using a curriculum originally created by The Carpentries organization.
 In that time, our instructors found several advantages and disadvantages to
 using the original Software Carpentry curriculum.
