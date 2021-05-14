@@ -80,58 +80,58 @@ Inspired by well-established material and pedagogy provided by The Carpentries
 [@wilson_software_2016], we developed a two-day workshop curriculum that teaches
 introductory R for plotting and data analysis using the tidyverse
 [@wickham_welcome_2019], the Unix shell, version control with git, and GitHub.
-While the official Software Carpentry curriculum is extensive, we found
-that it contains too much content for the time allotted in a two-day workshop,
-and the independent nature of the lessons leaves learners confused about how to
-integrate the skills together in their own work.
-The new curriculum we developed (https://umcarpentries.org/intro-curriculum-r/)
-aims to teach novices how to implement reproducible research practices to
-perform data analysis.
+While the official Software Carpentry curriculum is well-thought-out and comprehensive, we found
+that it contains too much content for  a two-day workshop.
+We also felt that the independent nature of the lessons left learners confused about how to
+integrate the newly acquired programming skills  in their own work.
+We developed a new curriculum  (https://umcarpentries.org/intro-curriculum-r/) in response that
+aims to teach novices how to implement reproducible research principles in
+in their data analytic practice.
 It emphasizes the iterative nature of coding and data analysis through
 integrated live coding lessons and practice exercises.
-Furthermore, this curriculum provides a succinct resource for learners to reference both during and after
-the workshop, and lowers the barrier to entry for new instructors as they do not
-have to develop their own curriculum or sift through extensive content.
+Finally, our new curriculum serves as a succinct resource material that learners can reference both during and after
+the workshop. It also lowers the entry barrier for new instructors as they do not
+have to develop their own teaching materials or sift through extensive content.
 We developed this curriculum during a two-day sprint,
-successfully used the curriculum to host a two-day virtual workshop,
+successfully used the curriculum to host a two-day virtual workshop with almost 40 participants,
 and updated the material based on instructor and learner feedback.
-We hope that this curriculum will be useful to other instructors interested in
+We hope that our new curriculum will prove useful to future instructors interested in
 teaching workshops with similar learning objectives.
 
 # Statement of Need
 
 The University of Michigan instance of The Carpentries has taught workshops
-using the curriculum created by The Carpentries organization since 2015.
-In that time, our instructors have found several advantages and disadvantages to
-using the Software Carpentry curriculum.
-Some advantages are that any programming language lesson (e.g. R or
-Python) can be paired with lessons on the Unix shell and version control,
-the lessons have been refined over years by many contributors and taught at
+using a curriculum originally created by The Carpentries organization.
+In that time, our instructors found several advantages and disadvantages to
+using the original Software Carpentry curriculum.
+Some of the advantages were that any programming language lesson (e.g., R or
+Python) could be paired with lessons on the Unix shell or version control,
+that lessons had been refined by many contributors over the years  and taught at
 workshops around the world, and
-the instructional design demonstrates good pedagogy for teaching beginner data
-science practitioners.
-However, The Carpentries material is more of a reference than a lesson plan as
-there is too much content for the time allotted in a two-day workshop.
-Therefore, workshops contain inconsistent content depending on who teaches, and new
-instructors face an overwhelming amount of work to prepare for their first
+that the instructional design demonstrated good pedagogy for teaching data
+science practitioners at the beginners level.
+However, The Carpentries material was designed more as a reference material rather than a lesson plan. 
+There was too much content for the time available during a two-day workshop.
+As a result, workshops taught with this material were inconsistent  depending on who was teaching, while new
+instructors faced an overwhelming amount of work to prepare for their first
 workshop.
-Furthermore, the modular nature of the curriculum means that each lesson is independent
-from the others, so it is not apparent to learners how to integrate all of the
-skills together for reproducible research projects.
+Furthermore, the modular nature of the curriculum meant that each lesson was independent
+from the others, so it was not apparent to learners how all of the skills could be integrated
+for the purpose of a reproducible research project.
 
-We sought to create a new curriculum that would
-teach computational skills in an integrated manner to demonstrate the
+Given these constraints, we sought to create a new curriculum that would allow us to
+teach computational skills in an integrated manner, demonstrate the
 reproducible research workflows we use in our own work,
-utilize the same inclusive pedagogy refined by The Carpentries,
-and contain an appropriate amount of content to deliver consistent workshops
-and reduce the burden for new instructors to get involved.
+deliver an appropriate and consistent amount of content,
+that also reduces the burden for new instructors to get involved,
+all the while maintaining the same inclusive pedagogy that has been refined by The Carpentries organization.
 
 # Collaborative Curriculum Development
 
 We drew on the expertise of The Carpentries community at the
 University of Michigan to develop a custom curriculum that would meet our goals
 (Figure 1).
-We planned a two-day sprint, where members of our community worked
+To start, we organized a two-day sprint, where members of our community worked
 collaboratively to create an initial draft of the content.
 During the sprint, we met virtually to discuss our goals, then broke up into
 teams to work on individual lessons before coming back together to review our
@@ -143,10 +143,10 @@ Under this model, a team member creates or edits content in a new branch to
 resolve an issue,
 then creates a pull request and asks for review from another team member,
 who finally merges the changes into the default branch.
-GitHub pages automatically uses the default branch to build a website which
-hosts the polished curriculum (https://umcarpentries.org/intro-curriculum-r/).
-This model ensures that at least two pairs of eyes view the changes before they
-can be included in the curriculum, which reduces mistakes and contributes to
+GitHub pages automatically uses the default branch to build a website that would allow us to
+host the polished curriculum (https://umcarpentries.org/intro-curriculum-r/).
+Our collaborative model ensured that at least two pairs of eyes viewed any changes before they
+could be included in the curriculum.  This strategy helped us reduce mistakes and create 
 better quality content.
 
 ![The curriculum development framework. Created with BioRender.com.](development-framework.png)
@@ -157,18 +157,18 @@ Next, we hosted a workshop for instructors to pilot the curriculum.
 We collected feedback from the learners and instructors at the end of the pilot
 workshop, then held a smaller half-day sprint to revise the curriculum based on
 the feedback.
-Community members continue to create issues, make edits, and review pull
-requests for ongoing refinement of the curriculum.
-We have plans to teach more workshops with instructors who did not develop the
-curriculum to gather even more feedback.
+At current, our community members are continuously able to create issues, make edits, and review pull
+requests to keep refining the curriculum for future use.
+We are planning more workshops with new instructors who were not involved in the original curriculum development
+ to gather their unique feedback.
 
 # Curriculum
 
 Our curriculum is tailored to people with no prior coding experience who want to
-learn how to use programming to perform data analysis (Figure 2).
-We aim to teach our learners not only the basics of performing data analysis,
-but also to provide them with a framework to perform rigorous reproducible
-research that can easily be shared with others.
+learn how to use R programming for data analysis, visualization and the reporting of results (Figure 2).
+Not only do we aim to teach our learners the basics of performing empirical data analysis.
+We also seek to provide a rigorous framework for adhering to reproducible
+research principles that enable researchers to easily share their empirical work with others.
 
 ![Curriculum overview. Created with BioRender.com.](curriculum-overview.png)
 
@@ -178,22 +178,23 @@ The key learning objectives for our curriculum are:
 
 1. Create clear and informative data visualizations in R, starting with messy data.
 1. Perform version control using the Unix shell and git.
-1. Create reproducible reports using R markdown.
+1. Create reproducible reports using R Markdown.
 1. Share code with others on GitHub.
 
-We believe these skills provide a solid foundation from which learners can teach
-themselves any additional coding skills that they will need in the future.
+We believe these skills provide learners with a solid foundation from which they can teach
+themselves any additional coding skills for future use.
 
 ## Course Content
 
-Our curriculum consists of modules that cover setup, data analysis and
-visualization, version control, sharing code, and writing reports.
-We also provide a goal for the workshop: to create a fictitious report for the
-United Nations on the relationship between gross domestic product (GDP), life
+Our curriculum consists of nine modules that cover software setup, data analysis and
+visualization, version control, sharing code, and writing reports which we outline in more detail  below.
+We also set an overall goal for the workshop to make the content substantively interesting 
+as well as relatable to a wide audience regardless of their original academic discipline or professional practice. Specifically, we task our learners with producing a fictitious report to the
+United Nations that examines the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
 The R programming lessons take a "tidyverse first" approach
 [@robinson_teach_2017] so learners can meet this goal.
-The modules are:
+The nine curriculum modules are:
 
 0. Setup
 1. Welcome
@@ -201,22 +202,22 @@ The modules are:
 1. The Unix shell
 1. Git and GitHub
 1. R for data analysis (uses the tidyverse R packages)
-1. Writing reports in R markdown (uses the rmarkdown R package [@xie_r_2018])
+1. Writing reports in R Markdown (uses the rmarkdown R package [@xie_r_2018])
 1. Group practice exercises
 1. Where to go from here
 
-Each lesson builds on the previous lessons.
+Each lesson builds on the previous ones.
 The Unix shell, git, and GitHub are introduced using the files generated in the
 R for plotting lesson.
 The lesson content for subsequent modules is then intermittently committed and
 pushed to GitHub.
-The written report combines all of the skills learned previously to write a
-report that one could share with the United Nations.
-Then, the learners have a chance to put everything they have learned into
-practice by working in small groups on practice problems that cover the course
+The `Writing reports in R Markdown' lesson combines all of the skills learned previously to produce a
+report (as a pdf, Word, or html document) that one could share with the United Nations.
+Next, learners get a chance to put everything they have learned into
+practice by forming small groups and working on practice problems that cover the entire course
 content.
-Finally, we end with a short module recapping what the workshop covered and how
-learners can continue to get help and learn more after the workshop ends.
+The workshop completes with a short module recapping everything that the curriculum covered as well as offering suggestions on how
+learners can continue to get help and keep learning once the workshop ends.
 
 ## Instructional Design
 <!-- teaching philosophy / pedagogy -->
@@ -228,11 +229,12 @@ a summary of key points.
 1. The five core modules (2 to 6) are designed to be taught via live coding of
 the content to learners.
 This is a central feature of Carpentries lessons, and we believe it is a great
-way to learn how to program because it requires learners to follow along and
+way to learn how to program. It requires learners to follow along and
 encounter errors that they must debug along the way, fostering additional
-questions about the course content.
+questions about the course content. It also leads to instructors making mistakes 
+and then demonstrating how to deal with them in an ad hoc and iterative manner.
 1. We incorporate formative assessments in the form of short practice exercises
-throughout each lesson so that learners can practice what they have learned and
+throughout each lesson such that learners can practice what they have learned, while 
 instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
@@ -265,11 +267,11 @@ indicate their progress on exercises and request for help by using different
 colored sticky notes [@becker_responding_2016; @the_carpentries_live_2018].
 As the workshop was virtual, we used Zoom reaction icons as virtual sticky
 notes, with the red X reaction to ask for help and the green checkmark to
-indicate that they successfully completed the exercise at hand.
+indicate that an exercise was successfully completed.
 We had thirty-nine learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
-By the end of the workshop learners on average felt more confident writing programs, using programming to work with data, overcoming problems while programming, and searching for answers to technical questions online (n = 14 survey respondents; pre- and post-workshop surveys).
-All attendees who filled out the post-workshop survey (n = 19) would also recommend the workshop to others.
+By the end of the workshop, learners on average felt more confident writing programs, using programming to work with data, overcoming problems while programming, and searching for answers to technical questions online (n = 14 survey respondents; pre- and post-workshop surveys).
+All attendees who filled out the post-workshop survey (n = 19) would  recommend the workshop to others.
 
 ### Virtual Workshop Reflection
 
@@ -282,11 +284,11 @@ smooth as possible:
 1. We suggested that learners have Zoom and RStudio (or the Unix shell) open side-by-side on their computer to minimize toggling between different panels.
 1. We used Slack for communication among instructors and helpers, as well as between helpers and learners.
 Learners asked questions in a group Slack channel where helpers could respond.
-This allowed us to answer the vast majority of learner questions and bugs quickly, clearly, and efficiently without disrupting the lesson or moving the learner to a breakout room.
-Furthermore, Slack worked much better than the Zoom chat as questions can be answered in threads, are visible to all learners regardless of whether they are connected to Zoom at the time, and  don't get lost as easily.  
-1. When a learner needed more help than was possible on Slack, a helper and the
-learner entered a breakout room together to troubleshoot.
-However, we tried to minimize this option as then the learner misses content
+This allowed us to answer the vast majority of learner questions and bugs quickly, clearly, and efficiently without disrupting the lesson or moving the learner to a Zoom breakout room.
+Furthermore, Slack worked much better than the Zoom chat as questions could be answered in threads, were preserved and visible to all learners regardless of whether they were connected to Zoom at the time, and therefore  didn't get lost as easily.  
+1. Whenever a learner needed more help than was possible on Slack, a helper and the
+learner entered a Zoom breakout room together to troubleshoot.
+However, we tried to minimize this option as much as possible to prevent the learner from missing content
 covered in the main room.
 
 # Acknowledgements
