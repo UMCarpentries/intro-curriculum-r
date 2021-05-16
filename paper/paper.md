@@ -87,7 +87,7 @@ integrate the newly acquired programming skills  in their own work.
 We developed a new curriculum  (https://umcarpentries.org/intro-curriculum-r/) in response that
 aims to teach novices how to implement reproducible research principles in
 in their data analytic practice.
-To emphasize the iterative nature of coding and data analysis 
+To emphasize the iterative nature of coding and data analysis
 we integrated live coding lessons with individual-level and group-based practice exercises.
 Finally, our new curriculum serves as a succinct resource material that learners can reference both during and after
 the workshop. It also lowers the entry barrier for new instructors as they do not
@@ -110,7 +110,7 @@ that lessons had been refined by many contributors over the years  and taught at
 workshops around the world, and
 that the instructional design demonstrated good pedagogy for teaching data
 science practitioners at the beginners level.
-However, The Carpentries material was designed more as a reference material rather than a lesson plan. 
+However, The Carpentries material was designed more as a reference material rather than a lesson plan.
 There was too much content for the time available during a two-day workshop.
 As a result, workshops taught with this material were inconsistent  depending on who was teaching, while new
 instructors faced an overwhelming amount of work to prepare for their first
@@ -146,7 +146,7 @@ who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website that would allow us to
 host the polished curriculum (https://umcarpentries.org/intro-curriculum-r/).
 Our collaborative model ensured that at least two pairs of eyes viewed any changes before they
-could be included in the curriculum.  This strategy helped us reduce mistakes and create 
+could be included in the curriculum.  This strategy helped us reduce mistakes and create
 better quality content.
 
 ![The curriculum development framework. Created with BioRender.com.](development-framework.png)
@@ -188,7 +188,7 @@ themselves any additional coding skills for future use.
 
 Our curriculum consists of nine modules that cover software setup, data analysis and
 visualization, version control, sharing code, and writing reports which we outline in more detail  below.
-We also set an overall goal for the workshop to make the content substantively interesting 
+We also set an overall goal for the workshop to make the content substantively interesting
 as well as relatable to a wide audience regardless of their original academic discipline or professional practice. Specifically, we task our learners with producing a fictitious report to the
 United Nations that examines the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
@@ -231,10 +231,10 @@ the content to learners.
 This is a central feature of Carpentries lessons, and we believe it is a great
 way to learn how to program. It requires learners to follow along and
 encounter errors that they must debug along the way, fostering additional
-questions about the course content. It also leads to instructors making mistakes 
+questions about the course content. It also leads to instructors making mistakes
 and then demonstrating how to deal with them in an ad hoc and iterative manner.
 1. We incorporate formative assessments in the form of short practice exercises
-throughout each lesson such that learners can practice what they have learned, while 
+throughout each lesson such that learners can practice what they have learned, while
 instructors can gauge learner understanding of the material.
 
 We also incorporate a few additional key components into the curriculum:
@@ -299,9 +299,11 @@ which this curriculum is based. We also thank them for allowing us to use the
 pre- and post-workshop survey results in this manuscript.
 The Carpentries is a fiscally sponsored project of Community Initiatives, a registered 501(c)3 non-profit organisation based in California, USA.
 
-We thank Victoria Alden and Scott Martin for assisting us in organizing and
-advertising our pilot workshop.
-We also thank Shelly Johnson for volunteering as a helper at the workshop.
+We are grateful to Victoria Alden and Scott Martin for assisting us in
+organizing and advertising our pilot workshop.
+We thank Shelly Johnson for volunteering as a helper at the workshop and
+contributing to the setup instructions.
+We also thank Bennet Fauber for contributing to the setup instructions.
 
 We thank the learners who participated in the workshop, provided feedback, and completed the surveys.
 
