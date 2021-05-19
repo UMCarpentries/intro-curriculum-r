@@ -193,7 +193,7 @@ and relatable to a wide audience regardless of their original academic disciplin
 United Nations that examines the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
 The R programming lessons take a "tidyverse first" approach
-[@robinson_teach_2017] so learners can meet this goal.
+[@robinson_teach_2017] to effectively and efficiently teach learners powerful tools for plotting and data analysis.
 The nine curriculum modules are:
 
 0. Setup
