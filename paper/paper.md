@@ -236,6 +236,13 @@ and then demonstrating how to deal with them in an ad hoc and iterative manner.
 1. We incorporate formative assessments in the form of short practice exercises
 throughout each lesson such that learners can practice what they have learned, while
 instructors can gauge learner understanding of the material.
+1. We use the "sticky note" system for formative assessment, where learners
+indicate their progress on exercises and request help by using different
+colored sticky notes [@becker_responding_2016; @the_carpentries_live_2018].
+At virtual workshops, we use Zoom reaction icons as virtual sticky
+notes, with the red X reaction to ask for help and the green checkmark to
+indicate that an exercise was successfully completed.
+1. We have several helpers attend each workshop to address learner questions and technical issues.
 
 We also incorporated a few additional key components into the curriculum:
 
@@ -262,12 +269,6 @@ We piloted our curriculum during a virtual two-day Software Carpentry workshop.
 In line with The Carpentries recommendations
 [@the_carpentries_carpentries_2018], we had four instructors and six helpers at
 the workshop to assist with learner questions and technical issues.
-We also used the "sticky note" system for formative assessment, where learners
-indicate their progress on exercises and request help by using different
-colored sticky notes [@becker_responding_2016; @the_carpentries_live_2018].
-As the workshop was virtual, we used Zoom reaction icons as virtual sticky
-notes, with the red X reaction to ask for help and the green checkmark to
-indicate that an exercise was successfully completed.
 We had thirty-nine learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
 By the end of the workshop, learners on average felt more confident writing programs, using programming to work with data, overcoming problems while programming, and searching for answers to technical questions online (n = 14 survey respondents; data from Carpentries pre- and post-workshop surveys).
