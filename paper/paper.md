@@ -78,12 +78,13 @@ bibliography: paper.bib
 
 Inspired by well-established material and pedagogy provided by The Carpentries
 [@wilson_software_2016], we developed a two-day workshop curriculum that teaches
-introductory R programming for managing, analyzing, plotting and reporting data using packages from the tidyverse
-[@wickham_welcome_2019], the Unix shell, version control with git, and GitHub.
+introductory R programming for managing, analyzing, plotting and reporting data
+using packages from the tidyverse [@wickham_welcome_2019], the Unix shell,
+version control with git, and GitHub.
 While the official Software Carpentry curriculum is comprehensive, we found
 that it contains too much content for  a two-day workshop.
-We also felt that the independent nature of the lessons left learners confused about how to
-integrate the newly acquired programming skills in their own work.
+We also felt that the independent nature of the lessons left learners confused
+about how to integrate the newly acquired programming skills in their own work.
 Thus, we developed a new curriculum
 (https://umcarpentries.org/intro-curriculum-r/) that aims to teach novices how
 to implement reproducible research principles in their own data analysis.
@@ -107,24 +108,24 @@ using the original Software Carpentry curriculum.
 Some of the advantages were that any programming language lesson (e.g., R or
 Python) could be paired with lessons on the Unix shell and version control,
 lessons had been refined by many contributors over the years and taught at
-workshops around the world, and
-the instructional design demonstrated good pedagogy for teaching novice data
-science practitioners.
-However, The Carpentries material was designed more as a reference material rather than a lesson plan,
-and thus there was too much content for the time available during a two-day workshop.
-As a result, workshops taught with this material were inconsistent  depending on who was teaching, and new
-instructors faced an overwhelming amount of work to prepare for their first
-workshop.
-Furthermore, the modular nature of the curriculum meant that each lesson was independent
-from the others, so it was not apparent to learners how all of the skills could be integrated
-for the purpose of a reproducible research project.
+workshops around the world, and the instructional design demonstrated good
+pedagogy for teaching novice data science practitioners.
+However, The Carpentries material was designed more as a reference material
+rather than a lesson plan, and thus there was too much content for the time
+available during a two-day workshop.
+As a result, workshops taught with this material were inconsistent  depending on
+who was teaching, and new instructors faced an overwhelming amount of work to
+prepare for their first workshop.
+Furthermore, the modular nature of the curriculum meant that each lesson was
+independent from the others, so it was not apparent to learners how all of the
+skills could be integrated for the purpose of a reproducible research project.
 
-Given these constraints, we sought to create a new curriculum that would allow us to
-teach computational skills in an integrated manner, demonstrate the
-reproducible research workflows we use in our own work,
-deliver an appropriate and consistent amount of content,
-and reduce the burden for new instructors to get involved,
-all while maintaining the same inclusive pedagogy that has been refined by The Carpentries organization.
+Given these constraints, we sought to create a new curriculum that would allow
+us to teach computational skills in an integrated manner, demonstrate the
+reproducible research workflows we use in our own work, deliver an appropriate
+and consistent amount of content, and reduce the burden for new instructors to
+get involved, all while maintaining the same inclusive pedagogy that has been
+refined by The Carpentries organization.
 
 # Collaborative Curriculum Development
 
@@ -143,11 +144,12 @@ Under this model, a team member creates or edits content in a new branch to
 resolve an issue,
 then creates a pull request and asks for review from another team member,
 who finally merges the changes into the default branch.
-GitHub pages automatically uses the default branch to build a website that would allow us to
-host the polished curriculum (https://umcarpentries.org/intro-curriculum-r/).
-Our collaborative model ensured that at least two pairs of eyes viewed any changes before they
-could be included in the curriculum. This strategy helped us reduce mistakes and create
-better quality content.
+GitHub pages automatically uses the default branch to build a website that would
+allow us to host the polished curriculum
+(https://umcarpentries.org/intro-curriculum-r/).
+Our collaborative model ensured that at least two pairs of eyes viewed any
+changes before they could be included in the curriculum.
+This strategy helped us reduce mistakes and create better quality content.
 
 ![The curriculum development framework. Created with BioRender.com.](development-framework.png)
 
@@ -155,20 +157,22 @@ Following the sprint, contributors finalized edits and continued to review each
 others' pull requests to complete the alpha version of our curriculum.
 Next, we hosted a workshop for instructors to pilot the curriculum.
 We collected feedback from the learners and instructors at the end of the pilot
-workshop and then held a smaller half-day sprint to revise the curriculum based on
-the feedback.
-Currently, our community members are continuously able to create issues, make edits, and review pull
-requests to keep refining the curriculum for future use.
-We are planning more workshops with new instructors who were not involved in the original curriculum development
- to gather their feedback.
+workshop and then held a smaller half-day sprint to revise the curriculum based
+on the feedback.
+Currently, our community members are continuously able to create issues, make
+edits, and review pull requests to keep refining the curriculum for future use.
+We are planning more workshops with new instructors who were not involved in the
+original curriculum development to gather their feedback.
 
 # Curriculum
 
 Our curriculum is tailored to people with no prior coding experience who want to
-learn how to use R programming for data analysis, visualization and the reporting of results (Figure 2).
-Not only do we aim to teach our learners the basics of performing empirical data analysis,
-we also seek to provide a rigorous framework for adhering to reproducible
-research principles that enable researchers to easily share their empirical work with others.
+learn how to use R programming for data analysis, visualization and the
+reporting of results (Figure 2).
+Not only do we aim to teach our learners the basics of performing empirical data
+analysis, we also seek to provide a rigorous framework for adhering to
+reproducible research principles that enable researchers to easily share their
+empirical work with others.
 
 ![Curriculum overview. Created with BioRender.com.](curriculum-overview.png)
 
@@ -181,19 +185,23 @@ The key learning objectives for our curriculum are:
 1. Create reproducible reports using R Markdown.
 1. Share code with others on GitHub.
 
-We believe these skills provide learners with a solid foundation from which they can teach
-themselves any additional coding skills for future use.
+We believe these skills provide learners with a solid foundation from which they
+can teach themselves any additional coding skills for future use.
 
 ## Course Content
 
-Our curriculum consists of nine modules that cover software setup, data analysis and
-visualization in R, version control, sharing code, and writing reproducible reports (see below for more details).
+Our curriculum consists of nine modules that cover software setup, data analysis
+and visualization in R, version control, sharing code, and writing reproducible
+reports (see below for more details).
 The R programming lessons take a "tidyverse first" approach
-[@robinson_teach_2017] to effectively and efficiently teach learners powerful tools for plotting and data analysis.
-We also set an overall goal for the workshop to make the content substantively interesting
-and relatable to a wide audience regardless of their original academic discipline or professional practice. Specifically, we task our learners with producing a fictitious report to the
-United Nations that examines the relationship between gross domestic product (GDP), life
-expectancy, and CO~2~ emissions.
+[@robinson_teach_2017] to effectively and efficiently teach learners powerful
+tools for plotting and data analysis.
+We also set an overall goal for the workshop to make the content substantively
+interesting and relatable to a wide audience regardless of their original
+academic discipline or professional practice.
+Specifically, we task our learners with producing a fictitious report to the
+United Nations that examines the relationship between gross domestic product
+(GDP), life expectancy, and CO~2~ emissions.
 The nine curriculum modules are:
 
 0. Setup
@@ -211,18 +219,19 @@ The Unix shell, git, and GitHub are introduced using the files generated in the
 R for plotting lesson.
 The lesson content for subsequent modules is then intermittently committed and
 pushed to GitHub.
-The `Writing reports in R Markdown' lesson combines all of the skills learned previously to produce a
-report that one could share with the United Nations.
-Next, learners put everything they have learned into
-practice by forming small groups and working on practice problems that cover the entire course
-content.
-The workshop completes with a short module recapping everything that the curriculum covered as well as offering suggestions on how
-learners can continue to get help and keep learning once the workshop ends.
+The `Writing reports in R Markdown' lesson combines all of the skills learned
+previously to produce a report that one could share with the United Nations.
+Next, learners put everything they have learned into practice by forming small
+groups and working on practice problems that cover the entire course content.
+The workshop completes with a short module recapping everything that the
+curriculum covered as well as offering suggestions on how learners can continue
+to get help and keep learning once the workshop ends.
 
 ## Instructional Design
 <!-- teaching philosophy / pedagogy -->
 
-Our modules and teaching suggestions are developed in the style of [Software Carpentry](https://software-carpentry.org/):
+Our modules and teaching suggestions are developed in the style of [Software
+Carpentry](https://software-carpentry.org/):
 
 1. Each module contains learning objectives at the beginning of each lesson and
 a summary of key points at the end.
@@ -271,8 +280,12 @@ In line with The Carpentries recommendations
 the workshop to assist with learner questions and technical issues.
 We had thirty-nine learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
-By the end of the workshop, learners on average felt more confident writing programs, using programming to work with data, overcoming problems while programming, and searching for answers to technical questions online (n = 14 survey respondents; data from Carpentries pre- and post-workshop surveys).
-All attendees who filled out the post-workshop survey (n = 19) would recommend the workshop to others.
+By the end of the workshop, learners on average felt more confident writing
+programs, using programming to work with data, overcoming problems while
+programming, and searching for answers to technical questions online (n = 14
+survey respondents; data from Carpentries pre- and post-workshop surveys).
+All attendees who filled out the post-workshop survey (n = 19) would recommend
+the workshop to others.
 
 ### Virtual Workshop Reflection
 
@@ -298,7 +311,8 @@ We thank The Carpentries organization for providing instructor training,
 workshop protocols, and the open-source Software Carpentry curriculum upon
 which this curriculum is based. We also thank them for allowing us to use the
 pre- and post-workshop survey results in this manuscript.
-The Carpentries is a fiscally sponsored project of Community Initiatives, a registered 501(c)3 non-profit organisation based in California, USA.
+The Carpentries is a fiscally sponsored project of Community Initiatives, a
+registered 501(c)3 non-profit organisation based in California, USA.
 
 We are grateful to Victoria Alden and Scott Martin for assisting us in
 organizing and advertising our pilot workshop.
@@ -306,7 +320,8 @@ We thank Shelly Johnson for volunteering as a helper at the workshop and
 contributing to the setup instructions.
 We also thank Bennet Fauber for contributing to the setup instructions.
 
-We thank the learners who participated in the workshop, provided feedback, and completed the surveys.
+We thank the learners who participated in the workshop, provided feedback, and
+completed the surveys.
 
 # Funding
 
