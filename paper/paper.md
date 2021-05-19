@@ -221,7 +221,7 @@ learners can continue to get help and keep learning once the workshop ends.
 ## Instructional Design
 <!-- teaching philosophy / pedagogy -->
 
-Our modules and instructor suggestions are developed in the style of [Software Carpentry](https://software-carpentry.org/):
+Our modules and teaching suggestions are developed in the style of [Software Carpentry](https://software-carpentry.org/):
 
 1. Each module contains learning objectives at the beginning of each lesson and
 a summary of key points at the end.
