@@ -84,24 +84,19 @@ While the official Software Carpentry curriculum is comprehensive, we found
 that it contains too much content for  a two-day workshop.
 We also felt that the independent nature of the lessons left learners confused about how to
 integrate the newly acquired programming skills in their own work.
-Thus, we developed a new curriculum (https://umcarpentries.org/intro-curriculum-r/) that
-aims to teach novices how to implement reproducible research principles in
-in their own data analysis.
-<<<
-It emphasizes the iterative nature of coding and data analysis through
-integrated live coding lessons and practice exercises.
-===
-To emphasize the iterative nature of coding and data analysis
-we integrated live coding lessons with individual-level and group-based practice exercises.
-<<<
-Our new curriculum also serves as a succinct resource material that learners can reference both during and after
-the workshop. Moreover, it lowers the entry barrier for new instructors as they do not
+Thus, we developed a new curriculum
+(https://umcarpentries.org/intro-curriculum-r/) that aims to teach novices how
+to implement reproducible research principles in their own data analysis.
+The curriculum integrates live coding lessons with individual-level and
+group-based practice exercises, and also serves as a succinct resource material
+that learners can reference both during and after the workshop.
+Moreover, it lowers the entry barrier for new instructors as they do not
 have to develop their own teaching materials or sift through extensive content.
-We developed this curriculum during a two-day sprint,
-successfully used it to host a two-day virtual workshop with almost 40 participants,
-and updated the material based on instructor and learner feedback.
-We hope that our new curriculum will prove useful to future instructors interested in
-teaching workshops with similar learning objectives.
+We developed this curriculum during a two-day sprint, successfully used it to
+host a two-day virtual workshop with almost 40 participants, and updated the
+material based on instructor and learner feedback.
+We hope that our new curriculum will prove useful to future instructors
+interested in teaching workshops with similar learning objectives.
 
 # Statement of Need
 
@@ -192,13 +187,17 @@ themselves any additional coding skills for future use.
 ## Course Content
 
 Our curriculum consists of nine modules that cover software setup, data analysis and
+<<<<<<< HEAD
 visualization, version control, sharing code, and writing reports (see below for more details).
+=======
+visualization in R, version control, sharing code, and writing reproducible reports (see below for more details).
+The R programming lessons take a "tidyverse first" approach
+[@robinson_teach_2017] to effectively and efficiently teach learners powerful tools for plotting and data analysis.
+>>>>>>> 3ef13c99b2197b712b4755f7f4246829eeadb9c5
 We also set an overall goal for the workshop to make the content substantively interesting
 and relatable to a wide audience regardless of their original academic discipline or professional practice. Specifically, we task our learners with producing a fictitious report to the
 United Nations that examines the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
-The R programming lessons take a "tidyverse first" approach
-[@robinson_teach_2017] to effectively and efficiently teach learners powerful tools for plotting and data analysis.
 The nine curriculum modules are:
 
 0. Setup
@@ -217,7 +216,7 @@ R for plotting lesson.
 The lesson content for subsequent modules is then intermittently committed and
 pushed to GitHub.
 The `Writing reports in R Markdown' lesson combines all of the skills learned previously to produce a
-report (as a pdf, Word, or html document) that one could share with the United Nations.
+report that one could share with the United Nations.
 Next, learners put everything they have learned into
 practice by forming small groups and working on practice problems that cover the entire course
 content.
@@ -227,7 +226,7 @@ learners can continue to get help and keep learning once the workshop ends.
 ## Instructional Design
 <!-- teaching philosophy / pedagogy -->
 
-Our modules and instructor suggestions are developed in the style of [Software Carpentry](https://software-carpentry.org/):
+Our modules and teaching suggestions are developed in the style of [Software Carpentry](https://software-carpentry.org/):
 
 1. Each module contains learning objectives at the beginning of each lesson and
 a summary of key points at the end.
