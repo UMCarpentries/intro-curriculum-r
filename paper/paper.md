@@ -87,8 +87,13 @@ integrate the newly acquired programming skills in their own work.
 Thus, we developed a new curriculum (https://umcarpentries.org/intro-curriculum-r/) that
 aims to teach novices how to implement reproducible research principles in
 in their own data analysis.
+<<<
+It emphasizes the iterative nature of coding and data analysis through
+integrated live coding lessons and practice exercises.
+===
 To emphasize the iterative nature of coding and data analysis
 we integrated live coding lessons with individual-level and group-based practice exercises.
+<<<
 Our new curriculum also serves as a succinct resource material that learners can reference both during and after
 the workshop. Moreover, it lowers the entry barrier for new instructors as they do not
 have to develop their own teaching materials or sift through extensive content.
@@ -110,7 +115,7 @@ lessons had been refined by many contributors over the years and taught at
 workshops around the world, and
 the instructional design demonstrated good pedagogy for teaching novice data
 science practitioners.
-However, The Carpentries material was designed more as a reference material rather than a lesson plan, 
+However, The Carpentries material was designed more as a reference material rather than a lesson plan,
 and thus there was too much content for the time available during a two-day workshop.
 As a result, workshops taught with this material were inconsistent  depending on who was teaching, and new
 instructors faced an overwhelming amount of work to prepare for their first
@@ -187,7 +192,7 @@ themselves any additional coding skills for future use.
 ## Course Content
 
 Our curriculum consists of nine modules that cover software setup, data analysis and
-visualization, version control, sharing code, and writing reports (see below for more details). 
+visualization, version control, sharing code, and writing reports (see below for more details).
 We also set an overall goal for the workshop to make the content substantively interesting
 and relatable to a wide audience regardless of their original academic discipline or professional practice. Specifically, we task our learners with producing a fictitious report to the
 United Nations that examines the relationship between gross domestic product (GDP), life
@@ -198,10 +203,10 @@ The nine curriculum modules are:
 
 0. Setup
 1. Welcome
-1. R for plotting (uses the tidyverse R packages)
+1. R for plotting (uses the tidyverse R packages [@wickham_welcome_2019])
 1. The Unix shell
 1. Git and GitHub
-1. R for data analysis (uses the tidyverse R packages)
+1. R for data analysis (uses the tidyverse R packages [@wickham_welcome_2019])
 1. Writing reports in R Markdown (uses the rmarkdown R package [@xie_r_2018])
 1. Group practice exercises
 1. Where to go from here
@@ -282,7 +287,7 @@ involved.
 However, we also believe that the following helped make the workshop as
 smooth as possible:
 
-1. We suggested that learners have Zoom and RStudio (or the Unix shell) open side-by-side on their computer to minimize toggling between different panels.
+1. We suggested that learners have Zoom and RStudio (or the Unix shell) open side-by-side on their computer to minimize toggling between different windows [@chen_online_2020].
 1. We used Slack for communication among instructors and helpers, as well as between helpers and learners.
 Learners asked questions in a group Slack channel where helpers could respond.
 This allowed us to address the vast majority of learner questions and bugs quickly, clearly, and efficiently without disrupting the lesson or moving the learner to a Zoom breakout room.
