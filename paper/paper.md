@@ -85,11 +85,10 @@ that it contains too much content for  a two-day workshop.
 We also felt that the independent nature of the lessons left learners confused about how to
 integrate the newly acquired programming skills in their own work.
 Thus, we developed a new curriculum (https://umcarpentries.org/intro-curriculum-r/) that
-aims to teach novices how to implement reproducible research principles in
+aims to teach novices how to implement reproducible research principles
 in their own data analysis.
-To emphasize the iterative nature of coding and data analysis
-we integrated live coding lessons with individual-level and group-based practice exercises.
-Our new curriculum also serves as a succinct resource material that learners can reference both during and after
+The curriculum integrates live coding lessons with individual-level and group-based practice exercises,
+and also serves as a succinct resource material that learners can reference both during and after
 the workshop. Moreover, it lowers the entry barrier for new instructors as they do not
 have to develop their own teaching materials or sift through extensive content.
 We developed this curriculum during a two-day sprint,
