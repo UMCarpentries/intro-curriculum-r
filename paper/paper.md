@@ -211,7 +211,7 @@ R for plotting lesson.
 The lesson content for subsequent modules is then intermittently committed and
 pushed to GitHub.
 The `Writing reports in R Markdown' lesson combines all of the skills learned previously to produce a
-report (as a pdf, Word, or html document) that one could share with the United Nations.
+report that one could share with the United Nations.
 Next, learners put everything they have learned into
 practice by forming small groups and working on practice problems that cover the entire course
 content.
