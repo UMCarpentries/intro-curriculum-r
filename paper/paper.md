@@ -83,36 +83,36 @@ introductory R programming for managing, analyzing, plotting and reporting data 
 While the official Software Carpentry curriculum is well-thought-out and comprehensive, we found
 that it contains too much content for  a two-day workshop.
 We also felt that the independent nature of the lessons left learners confused about how to
-integrate the newly acquired programming skills  in their own work.
-We developed a new curriculum  (https://umcarpentries.org/intro-curriculum-r/) in response that
+integrate the newly acquired programming skills in their own work.
+Thus, we developed a new curriculum (https://umcarpentries.org/intro-curriculum-r/) that
 aims to teach novices how to implement reproducible research principles in
-in their data analytic practice.
+in their own data analysis.
 To emphasize the iterative nature of coding and data analysis
 we integrated live coding lessons with individual-level and group-based practice exercises.
-Finally, our new curriculum serves as a succinct resource material that learners can reference both during and after
-the workshop. It also lowers the entry barrier for new instructors as they do not
+Our new curriculum also serves as a succinct resource material that learners can reference both during and after
+the workshop. Moreover, it lowers the entry barrier for new instructors as they do not
 have to develop their own teaching materials or sift through extensive content.
 We developed this curriculum during a two-day sprint,
-successfully used the curriculum to host a two-day virtual workshop with almost 40 participants,
+successfully used it to host a two-day virtual workshop with almost 40 participants,
 and updated the material based on instructor and learner feedback.
 We hope that our new curriculum will prove useful to future instructors interested in
 teaching workshops with similar learning objectives.
 
 # Statement of Need
 
-Since 2015 until recently, the University of Michigan instance of The Carpentries taught workshops
-using a curriculum originally created by The Carpentries organization.
+For the past five years, the University of Michigan instance of The Carpentries taught workshops
+using versions of curriculum originally created by The Carpentries organization.
 In that time, our instructors found several advantages and disadvantages to
 using the original Software Carpentry curriculum.
 Some of the advantages were that any programming language lesson (e.g., R or
-Python) could be paired with lessons on the Unix shell or version control,
-that lessons had been refined by many contributors over the years  and taught at
+Python) could be paired with lessons on the Unix shell and version control,
+lessons had been refined by many contributors over the years and taught at
 workshops around the world, and
-that the instructional design demonstrated good pedagogy for teaching data
-science practitioners at the beginners level.
-However, The Carpentries material was designed more as a reference material rather than a lesson plan.
-There was too much content for the time available during a two-day workshop.
-As a result, workshops taught with this material were inconsistent  depending on who was teaching, while new
+the instructional design demonstrated good pedagogy for teaching novice data
+science practitioners.
+However, The Carpentries material was designed more as a reference material rather than a lesson plan, 
+and thus there was too much content for the time available during a two-day workshop.
+As a result, workshops taught with this material were inconsistent  depending on who was teaching, and new
 instructors faced an overwhelming amount of work to prepare for their first
 workshop.
 Furthermore, the modular nature of the curriculum meant that each lesson was independent
@@ -123,8 +123,8 @@ Given these constraints, we sought to create a new curriculum that would allow u
 teach computational skills in an integrated manner, demonstrate the
 reproducible research workflows we use in our own work,
 deliver an appropriate and consistent amount of content,
-that also reduces the burden for new instructors to get involved,
-all the while maintaining the same inclusive pedagogy that has been refined by The Carpentries organization.
+and reduce the burden for new instructors to get involved,
+all while maintaining the same inclusive pedagogy that has been refined by The Carpentries organization.
 
 # Collaborative Curriculum Development
 
@@ -146,7 +146,7 @@ who finally merges the changes into the default branch.
 GitHub pages automatically uses the default branch to build a website that would allow us to
 host the polished curriculum (https://umcarpentries.org/intro-curriculum-r/).
 Our collaborative model ensured that at least two pairs of eyes viewed any changes before they
-could be included in the curriculum.  This strategy helped us reduce mistakes and create
+could be included in the curriculum. This strategy helped us reduce mistakes and create
 better quality content.
 
 ![The curriculum development framework. Created with BioRender.com.](development-framework.png)
@@ -155,19 +155,19 @@ Following the sprint, contributors finalized edits and continued to review each
 others' pull requests to complete the alpha version of our curriculum.
 Next, we hosted a workshop for instructors to pilot the curriculum.
 We collected feedback from the learners and instructors at the end of the pilot
-workshop, then held a smaller half-day sprint to revise the curriculum based on
+workshop and then held a smaller half-day sprint to revise the curriculum based on
 the feedback.
-At current, our community members are continuously able to create issues, make edits, and review pull
+Currently, our community members are continuously able to create issues, make edits, and review pull
 requests to keep refining the curriculum for future use.
 We are planning more workshops with new instructors who were not involved in the original curriculum development
- to gather their unique feedback.
+ to gather their feedback.
 
 # Curriculum
 
 Our curriculum is tailored to people with no prior coding experience who want to
 learn how to use R programming for data analysis, visualization and the reporting of results (Figure 2).
-Not only do we aim to teach our learners the basics of performing empirical data analysis.
-We also seek to provide a rigorous framework for adhering to reproducible
+Not only do we aim to teach our learners the basics of performing empirical data analysis,
+we also seek to provide a rigorous framework for adhering to reproducible
 research principles that enable researchers to easily share their empirical work with others.
 
 ![Curriculum overview. Created with BioRender.com.](curriculum-overview.png)
@@ -187,9 +187,9 @@ themselves any additional coding skills for future use.
 ## Course Content
 
 Our curriculum consists of nine modules that cover software setup, data analysis and
-visualization, version control, sharing code, and writing reports which we outline in more detail  below.
+visualization, version control, sharing code, and writing reports (see below for more details). 
 We also set an overall goal for the workshop to make the content substantively interesting
-as well as relatable to a wide audience regardless of their original academic discipline or professional practice. Specifically, we task our learners with producing a fictitious report to the
+and relatable to a wide audience regardless of their original academic discipline or professional practice. Specifically, we task our learners with producing a fictitious report to the
 United Nations that examines the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
 The R programming lessons take a "tidyverse first" approach
@@ -213,7 +213,7 @@ The lesson content for subsequent modules is then intermittently committed and
 pushed to GitHub.
 The `Writing reports in R Markdown' lesson combines all of the skills learned previously to produce a
 report (as a pdf, Word, or html document) that one could share with the United Nations.
-Next, learners get a chance to put everything they have learned into
+Next, learners put everything they have learned into
 practice by forming small groups and working on practice problems that cover the entire course
 content.
 The workshop completes with a short module recapping everything that the curriculum covered as well as offering suggestions on how
@@ -225,7 +225,7 @@ learners can continue to get help and keep learning once the workshop ends.
 Our modules and instructor suggestions are developed in the style of [Software Carpentry](https://software-carpentry.org/):
 
 1. Each module contains learning objectives at the beginning of each lesson and
-a summary of key points.
+a summary of key points at the end.
 1. The five core modules (2 to 6) are designed to be taught via live coding of
 the content to learners.
 This is a central feature of Carpentries lessons, and we believe it is a great
@@ -237,17 +237,17 @@ and then demonstrating how to deal with them in an ad hoc and iterative manner.
 throughout each lesson such that learners can practice what they have learned, while
 instructors can gauge learner understanding of the material.
 
-We also incorporate a few additional key components into the curriculum:
+We also incorporated a few additional key components into the curriculum:
 
-1. Each lesson builds off of others, with the goal of creating a final report
+1. Each lesson builds off of previous lessons, with the goal of creating a final report
 that can be shared with others.
 1. We structured the curriculum such that it could be taught through an
 in-person or virtual workshop. Virtual workshops are sometimes necessary, as during the COVID-19 pandemic, but are also useful to allow people from a variety of geographic locations to instruct and attend.
-1. We require learners to install all software before the workshop (as The
-Carpentries also requires), and ask them to run an example script that tests
+1. We not only require learners to install all software before the workshop (as The
+Carpentries also requires), but also ask them to run an example script that tests
 whether everything is installed correctly.
-Learners must send screenshots of the script output to the workshop lead in
-advance in order to attend. This ensures that any installation issues can be
+To attend the workshop, learners must send screenshots of the script output to the workshop lead in
+advance. This ensures that any installation issues can be
 addressed before the workshop begins.
 1. An extensive small group practice module towards the end of the workshop
 allows learners to more independently practice the skills they have learned.
@@ -263,15 +263,15 @@ In line with The Carpentries recommendations
 [@the_carpentries_carpentries_2018], we had four instructors and six helpers at
 the workshop to assist with learner questions and technical issues.
 We also used the "sticky note" system for formative assessment, where learners
-indicate their progress on exercises and request for help by using different
+indicate their progress on exercises and request help by using different
 colored sticky notes [@becker_responding_2016; @the_carpentries_live_2018].
 As the workshop was virtual, we used Zoom reaction icons as virtual sticky
 notes, with the red X reaction to ask for help and the green checkmark to
 indicate that an exercise was successfully completed.
 We had thirty-nine learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
-By the end of the workshop, learners on average felt more confident writing programs, using programming to work with data, overcoming problems while programming, and searching for answers to technical questions online (n = 14 survey respondents; pre- and post-workshop surveys).
-All attendees who filled out the post-workshop survey (n = 19) would  recommend the workshop to others.
+By the end of the workshop, learners on average felt more confident writing programs, using programming to work with data, overcoming problems while programming, and searching for answers to technical questions online (n = 14 survey respondents; data from Carpentries pre- and post-workshop surveys).
+All attendees who filled out the post-workshop survey (n = 19) would recommend the workshop to others.
 
 ### Virtual Workshop Reflection
 
@@ -284,8 +284,8 @@ smooth as possible:
 1. We suggested that learners have Zoom and RStudio (or the Unix shell) open side-by-side on their computer to minimize toggling between different panels.
 1. We used Slack for communication among instructors and helpers, as well as between helpers and learners.
 Learners asked questions in a group Slack channel where helpers could respond.
-This allowed us to answer the vast majority of learner questions and bugs quickly, clearly, and efficiently without disrupting the lesson or moving the learner to a Zoom breakout room.
-Furthermore, Slack worked much better than the Zoom chat as questions could be answered in threads, were preserved and visible to all learners regardless of whether they were connected to Zoom at the time, and therefore  didn't get lost as easily.  
+This allowed us to address the vast majority of learner questions and bugs quickly, clearly, and efficiently without disrupting the lesson or moving the learner to a Zoom breakout room.
+Furthermore, Slack worked much better than the Zoom chat as questions could be answered in threads, were preserved and visible to all learners regardless of whether they were connected to Zoom at the time, and didn't get lost as easily.  
 1. Whenever a learner needed more help than was possible on Slack, a helper and the
 learner entered a Zoom breakout room together to troubleshoot.
 However, we tried to minimize this option as much as possible to prevent the learner from missing content
@@ -294,7 +294,7 @@ covered in the main room.
 # Acknowledgements
 
 We thank The Carpentries organization for providing instructor training,
-workshop protocols, and the open-source Software Carpentry curriculum, upon
+workshop protocols, and the open-source Software Carpentry curriculum upon
 which this curriculum is based. We also thank them for allowing us to use the
 pre- and post-workshop survey results in this manuscript.
 The Carpentries is a fiscally sponsored project of Community Initiatives, a registered 501(c)3 non-profit organisation based in California, USA.
