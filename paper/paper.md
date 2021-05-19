@@ -78,9 +78,9 @@ bibliography: paper.bib
 
 Inspired by well-established material and pedagogy provided by The Carpentries
 [@wilson_software_2016], we developed a two-day workshop curriculum that teaches
-introductory R programming for managing, analyzing, plotting and reporting data using the R tidyverse
+introductory R programming for managing, analyzing, plotting and reporting data using packages from the tidyverse
 [@wickham_welcome_2019], the Unix shell, version control with git, and GitHub.
-While the official Software Carpentry curriculum is well-thought-out and comprehensive, we found
+While the official Software Carpentry curriculum is comprehensive, we found
 that it contains too much content for  a two-day workshop.
 We also felt that the independent nature of the lessons left learners confused about how to
 integrate the newly acquired programming skills in their own work.
@@ -193,7 +193,7 @@ and relatable to a wide audience regardless of their original academic disciplin
 United Nations that examines the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
 The R programming lessons take a "tidyverse first" approach
-[@robinson_teach_2017] so learners can meet this goal.
+[@robinson_teach_2017] to effectively and efficiently teach learners powerful tools for plotting and data analysis.
 The nine curriculum modules are:
 
 0. Setup
