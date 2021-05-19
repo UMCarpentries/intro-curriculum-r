@@ -187,13 +187,13 @@ themselves any additional coding skills for future use.
 ## Course Content
 
 Our curriculum consists of nine modules that cover software setup, data analysis and
-visualization, version control, sharing code, and writing reports (see below for more details). 
+visualization in R, version control, sharing code, and writing reproducible reports (see below for more details). 
+The R programming lessons take a "tidyverse first" approach
+[@robinson_teach_2017] to effectively and efficiently teach learners powerful tools for plotting and data analysis.
 We also set an overall goal for the workshop to make the content substantively interesting
 and relatable to a wide audience regardless of their original academic discipline or professional practice. Specifically, we task our learners with producing a fictitious report to the
 United Nations that examines the relationship between gross domestic product (GDP), life
 expectancy, and CO~2~ emissions.
-The R programming lessons take a "tidyverse first" approach
-[@robinson_teach_2017] to effectively and efficiently teach learners powerful tools for plotting and data analysis.
 The nine curriculum modules are:
 
 0. Setup
