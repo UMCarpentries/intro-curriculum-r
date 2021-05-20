@@ -220,7 +220,8 @@ pushed to GitHub.
 The 'Writing reports in R Markdown' lesson combines all of the skills learned
 previously to produce a report that one could share with the United Nations.
 Next, learners put everything they have learned into practice by forming small
-groups and working on practice problems that cover the entire course content.
+groups and working on practice problems that cover the entire course content
+ (["Integrating it all together: Paired exercise"](https://umcarpentries.org/intro-curriculum-r/05-r-markdown/index.html#integrating-it-all-together-paired-exercise)).
 The workshop completes with a short module recapping everything that the
 curriculum covered as well as offering suggestions on how learners can continue
 to get help and keep learning once the workshop ends.
