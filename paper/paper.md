@@ -89,7 +89,7 @@ Thus, we developed a new curriculum
 (https://umcarpentries.org/intro-curriculum-r/) that aims to teach novices how
 to implement reproducible research principles in their own data analysis.
 The curriculum integrates live coding lessons with individual-level and
-group-based practice exercises, and also serves as a succinct resource material
+group-based practice exercises, and also serves as a succinct resource 
 that learners can reference both during and after the workshop.
 Moreover, it lowers the entry barrier for new instructors as they do not
 have to develop their own teaching materials or sift through extensive content.
@@ -101,7 +101,7 @@ interested in teaching workshops with similar learning objectives.
 
 # Statement of Need
 
-For the past five years, the University of Michigan instance of The Carpentries taught workshops
+For the past five years, the University of Michigan instance of The Carpentries has taught workshops
 using versions of curriculum originally created by The Carpentries organization.
 In that time, our instructors found several advantages and disadvantages to
 using the original Software Carpentry curriculum.
@@ -110,8 +110,7 @@ Python) could be paired with lessons on the Unix shell and version control,
 lessons had been refined by many contributors over the years and taught at
 workshops around the world, and the instructional design demonstrated good
 pedagogy for teaching novice data science practitioners.
-However, The Carpentries material was designed more as a reference material
-rather than a lesson plan, and thus there was too much content for the time
+However, The Carpentries materials have evolved from lesson plans to reference materials, and thus there was too much content for the time
 available during a two-day workshop.
 As a result, workshops taught with this material were inconsistent  depending on
 who was teaching, and new instructors faced an overwhelming amount of work to
@@ -140,12 +139,11 @@ progress.
 We hosted the curriculum in a public GitHub repository
 (https://github.com/umcarpentries/intro-curriculum-r) to facilitate
 collaborative work and peer review using issues, branches, and pull requests.
-Under this model, a team member creates or edits content in a new branch to
+Under this model, a team member created or edited content in a new branch to
 resolve an issue,
-then creates a pull request and asks for review from another team member,
-who finally merges the changes into the default branch.
-GitHub pages automatically uses the default branch to build a website that would
-allow us to host the polished curriculum
+then created a pull request and asked for review from another team member,
+who finally merged the changes into the default branch.
+GitHub pages automatically uses the default branch to build a website that allows us to host the polished curriculum
 (https://umcarpentries.org/intro-curriculum-r/).
 Our collaborative model ensured that at least two pairs of eyes viewed any
 changes before they could be included in the curriculum.
@@ -219,10 +217,11 @@ The Unix shell, git, and GitHub are introduced using the files generated in the
 R for plotting lesson.
 The lesson content for subsequent modules is then intermittently committed and
 pushed to GitHub.
-The `Writing reports in R Markdown' lesson combines all of the skills learned
+The 'Writing reports in R Markdown' lesson combines all of the skills learned
 previously to produce a report that one could share with the United Nations.
 Next, learners put everything they have learned into practice by forming small
-groups and working on practice problems that cover the entire course content.
+groups and working on practice problems that cover the entire course content
+ (["Integrating it all together: Paired exercise"](https://umcarpentries.org/intro-curriculum-r/05-r-markdown/index.html#integrating-it-all-together-paired-exercise)).
 The workshop completes with a short module recapping everything that the
 curriculum covered as well as offering suggestions on how learners can continue
 to get help and keep learning once the workshop ends.
@@ -255,19 +254,19 @@ indicate that an exercise was successfully completed.
 
 We also incorporated a few additional key components into the curriculum:
 
-1. Each lesson builds off of previous lessons, with the goal of creating a final report
+1. Each lesson built off of previous lessons, with the goal of creating a final report
 that can be shared with others.
 1. We structured the curriculum such that it could be taught through an
 in-person or virtual workshop. Virtual workshops are sometimes necessary, as during the COVID-19 pandemic, but are also useful to allow people from a variety of geographic locations to instruct and attend.
-1. We not only require learners to install all software before the workshop (as The
-Carpentries also requires), but also ask them to run an example script that tests
+1. We not only required learners to install all software before the workshop (as The
+Carpentries also requires), but also asked them to run an example script that tests
 whether everything is installed correctly.
-To attend the workshop, learners must send screenshots of the script output to the workshop lead in
-advance. This ensures that any installation issues can be
-addressed before the workshop begins.
+To attend the workshop, learners were required to send screenshots of the script output to the workshop lead in
+advance. We withheld the login details for the workshop until we received the screenshot. This ensured that any installation issues could be
+addressed before the workshop began.
 1. An extensive small group practice module towards the end of the workshop
-allows learners to more independently practice the skills they have learned.
-1. The workshop concludes with a recap of what was covered and resources
+allowed learners to more independently practice the skills they have learned.
+1. The workshop concluded with a recap of what was covered and resources
 available for learners to continue learning and getting help as their skills
 develop.
 
@@ -325,7 +324,7 @@ completed the surveys.
 
 # Funding
 
-Salary support for PDS came from NIH grant R01CA215574.
+Salary support for PDS came from NIH grants R01CA215574 and U01AI124255.
 KLS received support from the NIH Training Program in Bioinformatics (T32
 GM070449).
 ZL received support from the National Science Foundation Graduate Research
