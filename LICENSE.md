@@ -1,9 +1,23 @@
 ---
+layout: page
 title: "Licenses"
 ---
+
+The majority of the instructional material and code in this repository is
+new, original work created by the U-M Carpentries instance and is made available
+under the licenses described below.
+Parts of some of the material and code are inspired by or derived from Software
+Carpentry lessons with substantial modifications, which are Copyright © Software
+Carpentry under the [Creative Commons Attribution][cc-by-human] and
+[MIT][mit-license] licenses.
+The scaffolding of this repository is derived from
+[The Carpentries Lesson Example](https://github.com/carpentries/lesson-example);
+their material and code are also made available under the
+[CC BY 4.0 and MIT licenses](https://github.com/carpentries/lesson-example/blob/gh-pages/LICENSE.md).
+
 ## Instructional Material
 
-All Software Carpentry, Data Carpentry, and Library Carpentry instructional material is
+All U-M Carpentries instructional material is
 made available under the [Creative Commons Attribution
 license][cc-by-human]. The following is a human-readable summary of
 (and not a substitute for) the [full legal text of the CC BY 4.0
@@ -21,13 +35,12 @@ license terms.
 
 Under the following terms:
 
-* **Attribution**---You must give appropriate credit (mentioning that
-  your work is derived from work that is Copyright © Software
-  Carpentry and, where practical, linking to
-  http://software-carpentry.org/), provide a [link to the
-  license][cc-by-human], and indicate if changes were made. You may do
-  so in any reasonable manner, but not in any way that suggests the
-  licensor endorses you or your use.
+* **Attribution**---You must give appropriate credit (mentioning that your work
+  is derived from work that is Copyright © U-M Carpentries and, where practical,
+  linking to https://umcarpentries.org/), provide a [link to the
+  license][cc-by-human], and indicate if changes were made. You may do so in any
+  reasonable manner, but not in any way that suggests the licensor endorses you
+  or your use.
 
 **No additional restrictions**---You may not apply legal terms or
 technological measures that legally restrict others from doing
@@ -46,7 +59,7 @@ Notices:
 ## Software
 
 Except where otherwise noted, the example programs and other software
-provided by Software Carpentry and Data Carpentry are made available under the
+provided by U-M Carpentries are made available under the
 [OSI][osi]-approved
 [MIT license][mit-license].
 
