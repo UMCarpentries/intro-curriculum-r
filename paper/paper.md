@@ -32,7 +32,7 @@ authors:
     orcid: 0000-0002-5250-1224
     affiliation: 2
   - name: Maya M. Lapp
-    orcid: 0000-0002-8249-1186 
+    orcid: 0000-0002-8249-1186
     affiliation: 6
   - name: Jason Tallant
     orcid: 0000-0003-4790-8772
