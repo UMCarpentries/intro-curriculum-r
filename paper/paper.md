@@ -20,7 +20,7 @@ authors:
     orcid: 0000-0003-4635-5272
     affiliation: 3
   - name: Catherine Barnier
-    orcid: 0000-0001-7074-401
+    orcid: 0000-0001-7074-4011
     affiliation: 1
   - name: Matthew Flickinger
     orcid: 0000-0002-8528-8925
