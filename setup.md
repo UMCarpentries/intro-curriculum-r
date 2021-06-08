@@ -193,12 +193,6 @@ DOWNLOAD RSTUDIO FOR MAC button. Double-click the downloaded installer.  It will
 the Applications folder and an icon for the RStudio app.  Drag the RStudio icon into the
 Applications folder.
 
-### Download the data and validation scripts
-
-Get the zip file.  Save to Desktop and unzip, will create a new folder called `un-report`.
-
-TODO:  Create the zip file, add URL and other instructions.
-
 ## Linux
 
 ### Installing R
