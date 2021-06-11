@@ -6,7 +6,7 @@ tags:
   - R
   - git
   - Unix shell
-authors:
+author:
   - name: Zena Lapp^[co-first author]
     orcid: 0000-0003-4674-2176
     affiliation: 1
@@ -85,11 +85,12 @@ While the official Software Carpentry curriculum is comprehensive, we found
 that it contains too much content for  a two-day workshop.
 We also felt that the independent nature of the lessons left learners confused
 about how to integrate the newly acquired programming skills in their own work.
-Thus, we developed a new curriculum
-(https://umcarpentries.org/intro-curriculum-r/) that aims to teach novices how
-to implement reproducible research principles in their own data analysis.
+Thus, we developed
+[a new curriculum](https://umcarpentries.org/intro-curriculum-r/)
+that aims to teach novices how to implement reproducible research principles in
+their own data analysis.
 The curriculum integrates live coding lessons with individual-level and
-group-based practice exercises, and also serves as a succinct resource 
+group-based practice exercises, and also serves as a succinct resource
 that learners can reference both during and after the workshop.
 Moreover, it lowers the entry barrier for new instructors as they do not
 have to develop their own teaching materials or sift through extensive content.
