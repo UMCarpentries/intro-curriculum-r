@@ -6,7 +6,7 @@ tags:
   - R
   - git
   - Unix shell
-author:
+authors:
   - name: Zena Lapp^[co-first author]
     orcid: 0000-0003-4674-2176
     affiliation: 1
