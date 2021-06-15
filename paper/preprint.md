@@ -296,7 +296,7 @@ survey respondents; see Figure 3).
 All attendees who filled out the post-workshop survey (n = 19) would recommend
 the workshop to others.
 
-![Pre- and post-workshop survey results](survey-results.png)
+![Pre- and post-workshop survey results.](survey-results.png)
 
 ### Virtual Workshop Reflection
 
