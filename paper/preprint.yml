@@ -1,0 +1,82 @@
+---
+title: 'Developing and deploying an integrated workshop curriculum teaching computational skills for reproducible research'
+tags:
+  - reproducible research
+  - data science
+  - R
+  - git
+  - Unix shell
+author:
+  - Zena Lapp:
+      orcid: 0000-0003-4674-2176
+      institute: 1
+      equal_contributor: "yes"
+  - Kelly L. Sovacool:
+      orcid: 0000-0003-3283-829X
+      institute: 1  
+      equal_contributor: "yes"
+  - Nick Lesniak:
+      orcid: 0000-0001-9359-5194
+      institute: 2
+  - Dana King:
+      orcid: 0000-0003-4635-5272
+      institute: 3
+  - Catherine Barnier:
+      orcid: 0000-0001-7074-4011
+      institute: 1
+  - Matthew Flickinger:
+      orcid: 0000-0002-8528-8925
+      institute: 4
+  - Jule Krüger:
+      orcid: 0000-0002-2814-137X
+      institute: 5
+  - Courtney R. Armour:
+      orcid: 0000-0002-5250-1224
+      institute: 2
+  - Maya M. Lapp:
+      orcid: 0000-0002-8249-1186
+      institute: 6
+  - Jason Tallant:
+      orcid: 0000-0003-4790-8772
+      institute: 7
+  - Rucheng Diao:
+      orcid: 0000-0002-2932-6755
+      institute: 1
+  - Morgan Oneka:
+      orcid: 0000-0002-9672-0445
+      institute: 1
+  - Sarah Tomkovich:
+      orcid: 0000-0003-1638-5307
+      institute: 2
+  - Jacqueline Moltzau Anderson:
+      orcid: 0000-0003-1398-5980
+      institute: 2
+  - Sarah K. Lucas:
+      orcid: 0000-0003-1676-5801
+      institute: 2
+  - Patrick D. Schloss:
+      orcid: 0000-0002-6935-4275
+      email: pschloss@umich.edu
+      institute: 2
+      correspondence: "yes"
+institute:
+  - 1:
+      name: Department of Computational Medicine & Bioinformatics, University of Michigan
+  - 2:
+      name: Department of Microbiology & Immunology, University of Michigan
+  - 3:
+      name: BRCF Bioinformatics Core, University of Michigan
+  - 4:
+      name: Department of Biostatistics, University of Michigan
+  - 5:
+      name: Center for Political Studies, Institute for Social Research, University of Michigan
+  - 6:
+      name: Independent educator
+  - 7:
+      name: Biological Station, University of Michigan
+date: 27 Apr. 2021
+bibliography: paper.bib
+link-citations: true
+project:
+    github-url: https://github.com/umcarpentries/intro-curriculum-r
+---
