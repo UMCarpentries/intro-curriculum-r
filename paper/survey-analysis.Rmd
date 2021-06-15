@@ -10,12 +10,22 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+library(here)
 library(tidyverse)
 
-theme_set(theme_bw() + theme(strip.background = element_rect(fill="white",linetype='blank'), text=element_text(size=15)))
+theme_set(theme_bw() + theme(
+  strip.background = element_rect(fill = "white", linetype = 'blank'),
+  text = element_text(size = 15)
+))
 
-pre_survey <- sapply(list.files('data', 'pre_workshop', full.names = TRUE), read_csv) %>% bind_cols()
-post_survey <- sapply(list.files('data', 'post_workshop', full.names = TRUE), read_csv) %>% bind_cols()
+pre_survey <-
+  sapply(list.files(here('paper', 'data'), 'pre_workshop', full.names = TRUE), 
+         read_csv) %>% 
+  bind_cols()
+post_survey <-
+  sapply(list.files(here('paper', 'data'), 'post_workshop', full.names = TRUE),
+         read_csv) %>% 
+  bind_cols()
 ```
 
 ```{r}

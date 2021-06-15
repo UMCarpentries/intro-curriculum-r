@@ -288,12 +288,16 @@ In line with The Carpentries recommendations
 the workshop to assist with learner questions and technical issues.
 We had thirty-nine learners of various skill levels from several different
 countries, all of whom provided very positive reviews of the workshop.
+To assess the effectiveness of the workshop, learners were asked to complete a
+pre- and post-workshop survey administered by the Carpentries.
 By the end of the workshop, learners on average felt more confident writing
 programs, using programming to work with data, overcoming problems while
 programming, and searching for answers to technical questions online (n = 14
-survey respondents; data from Carpentries pre- and post-workshop surveys).
+survey respondents; see Figure 3).
 All attendees who filled out the post-workshop survey (n = 19) would recommend
 the workshop to others.
+
+![Pre- and post-workshop survey results](survey-results.png)
 
 ### Virtual Workshop Reflection
 
