@@ -76,7 +76,6 @@ institute:
       name: Biological Station, University of Michigan
 date: 27 Apr. 2021
 bibliography: paper.bib
-csl: apa.csl
 link-citations: true
 project:
     github-url: https://github.com/umcarpentries/intro-curriculum-r
