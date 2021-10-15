@@ -431,7 +431,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (2): country, continent
 > dbl (4): year, pop, lifeExp, gdpPercap
