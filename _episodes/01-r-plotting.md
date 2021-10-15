@@ -168,17 +168,17 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ───────────────────────────────────────────────── tidyverse 1.3.0 ──
+── Attaching packages ───────────────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
 
 
 ~~~
-✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-✔ tibble  3.0.6     ✔ dplyr   1.0.4
-✔ tidyr   1.1.2     ✔ stringr 1.4.0
-✔ readr   1.4.0     ✔ forcats 0.5.1
+✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+✔ tibble  3.1.5     ✔ dplyr   1.0.7
+✔ tidyr   1.1.4     ✔ stringr 1.4.0
+✔ readr   2.0.2     ✔ forcats 0.5.1
 ~~~
 {: .output}
 
@@ -259,15 +259,26 @@ gapminder_1997 <- read_csv("gapminder_1997.csv")
 {: .language-r}
 
 ~~~
+Rows: 142 Columns: 5
+~~~
+{: .output}
 
+
+
+~~~
 ── Column specification ──────────────────────────────────────────────────────────────────
-cols(
-  country = col_character(),
-  pop = col_double(),
-  continent = col_character(),
-  lifeExp = col_double(),
-  gdpPercap = col_double()
-)
+Delimiter: ","
+chr (2): country, continent
+dbl (3): pop, lifeExp, gdpPercap
+~~~
+{: .output}
+
+
+
+~~~
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ~~~
 {: .output}
 
@@ -353,7 +364,7 @@ read_csv()
 
 
 ~~~
-Error in read_delimited(file, tokenizer, col_names = col_names, col_types = col_types, : argument "file" is missing, with no default
+Error in vroom::vroom(file, delim = ",", col_names = col_names, col_types = col_types, : argument "file" is missing, with no default
 ~~~
 {: .error}
 
@@ -381,7 +392,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "2021-02-05"
+[1] "2021-10-14"
 ~~~
 {: .output}
 
@@ -395,7 +406,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
+[1] "/Users/cgates/git/2021-10-18-UM-SWC-Lessons/_episodes_rmd"
 ~~~
 {: .output}
 
@@ -404,49 +415,37 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > ~~~
 >  Sys.Date()  # outputs the current date
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> [1] "2021-02-05"
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 >  getwd()     # outputs our current working directory (folder)
+> ```
+> {: .callout}
+> 
+> While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together:
 > ~~~
 > {: .language-r}
 > 
 > 
 > 
 > ~~~
-> [1] "/Users/kelly/projects/carpentries/umswc-curriculum/_episodes_rmd"
+> Error: attempt to use zero-length variable name
 > ~~~
-> {: .output}
-{: .callout}
-
-While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together:
-
+> {: .error}
 
 ~~~
 sum(5, 6)
+```
+
+> ## Exercise: Learning more about functions
+> Look up the function `round`. What does it do? What will you get as output for the following lines of code?
+>
 ~~~
 {: .language-r}
 
 
 
 ~~~
-[1] 11
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
-
-> ## Exercise: Learning more about functions
-> Look up the function `round`. What does it do? What will you get as output for the following lines of code?
->
+{: .error}
 > 
 > ~~~
 > round(3.1415)
@@ -469,22 +468,33 @@ read_csv(file = 'gapminder_1997.csv')
 {: .language-r}
 
 ~~~
-
-── Column specification ──────────────────────────────────────────────────────────────────
-cols(
-  country = col_character(),
-  pop = col_double(),
-  continent = col_character(),
-  lifeExp = col_double(),
-  gdpPercap = col_double()
-)
+Rows: 142 Columns: 5
 ~~~
 {: .output}
 
 
 
 ~~~
-# A tibble: 142 x 5
+── Column specification ──────────────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): country, continent
+dbl (3): pop, lifeExp, gdpPercap
+~~~
+{: .output}
+
+
+
+~~~
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+~~~
+{: .output}
+
+
+
+~~~
+# A tibble: 142 × 5
    country           pop continent lifeExp gdpPercap
    <chr>           <dbl> <chr>       <dbl>     <dbl>
  1 Afghanistan  22227415 Asia         41.8      635.
@@ -692,6 +702,19 @@ There are also lots of other fun options:
 > > ~~~
 > > #install.packages("wesanderson") # install package from GitHub
 > > library(wesanderson)
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > Error in library(wesanderson): there is no package called 'wesanderson'
+> > ~~~
+> > {: .error}
+> > 
+> > 
+> > 
+> > ~~~
 > > ggplot(data = gapminder_1997) +
 > > aes(x = gdpPercap) +
 > > labs(x = "GDP Per Capita") +
@@ -704,7 +727,12 @@ There are also lots of other fun options:
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-01-Color-1.png" title="plot of chunk Color" alt="plot of chunk Color" width="612" style="display: block; margin: auto;" />
+> > 
+> > 
+> > ~~~
+> > Error in wes_palette("Cavalcanti1"): could not find function "wes_palette"
+> > ~~~
+> > {: .error}
 > > {: .source}
 > {: .solution}
 {: .challenge}
@@ -809,16 +837,26 @@ To start, we will read in the data without using the interactive RStudio file na
 
 
 ~~~
+Rows: 1704 Columns: 6
+~~~
+{: .output}
 
+
+
+~~~
 ── Column specification ──────────────────────────────────────────────────────────────────
-cols(
-  country = col_character(),
-  year = col_double(),
-  pop = col_double(),
-  continent = col_character(),
-  lifeExp = col_double(),
-  gdpPercap = col_double()
-)
+Delimiter: ","
+chr (2): country, continent
+dbl (4): year, pop, lifeExp, gdpPercap
+~~~
+{: .output}
+
+
+
+~~~
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ~~~
 {: .output}
 
@@ -1488,84 +1526,71 @@ animatedHansPlot
 
 
 ~~~
-Rendering [--------------------------------------------] at 2.1 fps ~ eta: 48s
-Rendering [>-------------------------------------------] at 1.9 fps ~ eta: 1m
-Rendering [=>------------------------------------------] at 1.9 fps ~ eta: 1m
-Rendering [==>-----------------------------------------] at 1.9 fps ~ eta: 1m
-Rendering [==>-----------------------------------------] at 1.9 fps ~ eta: 49s
-Rendering [===>----------------------------------------] at 1.9 fps ~ eta: 49s
-Rendering [===>----------------------------------------] at 1.9 fps ~ eta: 48s
-Rendering [===>----------------------------------------] at 1.8 fps ~ eta: 49s
-Rendering [====>---------------------------------------] at 1.9 fps ~ eta: 48s
-Rendering [====>---------------------------------------] at 1.9 fps ~ eta: 47s
-Rendering [=====>--------------------------------------] at 1.9 fps ~ eta: 46s
-Rendering [=====>--------------------------------------] at 1.9 fps ~ eta: 45s
-Rendering [======>-------------------------------------] at 1.9 fps ~ eta: 45s
-Rendering [======>-------------------------------------] at 1.9 fps ~ eta: 44s
-Rendering [======>-------------------------------------] at 1.9 fps ~ eta: 43s
-Rendering [=======>------------------------------------] at 1.9 fps ~ eta: 42s
-Rendering [========>-----------------------------------] at 1.9 fps ~ eta: 41s
-Rendering [=========>----------------------------------] at 1.9 fps ~ eta: 40s
-Rendering [==========>---------------------------------] at 1.9 fps ~ eta: 39s
-Rendering [==========>---------------------------------] at 1.9 fps ~ eta: 38s
-Rendering [===========>--------------------------------] at 1.9 fps ~ eta: 38s
-Rendering [===========>--------------------------------] at 1.9 fps ~ eta: 37s
-Rendering [============>-------------------------------] at 1.9 fps ~ eta: 37s
-Rendering [============>-------------------------------] at 1.9 fps ~ eta: 36s
-Rendering [=============>------------------------------] at 1.9 fps ~ eta: 36s
-Rendering [=============>------------------------------] at 1.9 fps ~ eta: 35s
-Rendering [==============>-----------------------------] at 1.9 fps ~ eta: 35s
-Rendering [==============>-----------------------------] at 1.9 fps ~ eta: 34s
-Rendering [===============>----------------------------] at 1.9 fps ~ eta: 33s
-Rendering [================>---------------------------] at 1.9 fps ~ eta: 32s
-Rendering [=================>--------------------------] at 1.9 fps ~ eta: 31s
-Rendering [=================>--------------------------] at 1.9 fps ~ eta: 30s
-Rendering [==================>-------------------------] at 1.9 fps ~ eta: 30s
-Rendering [==================>-------------------------] at 1.9 fps ~ eta: 29s
-Rendering [===================>------------------------] at 1.9 fps ~ eta: 29s
-Rendering [===================>------------------------] at 1.9 fps ~ eta: 28s
-Rendering [====================>-----------------------] at 1.9 fps ~ eta: 28s
-Rendering [====================>-----------------------] at 1.9 fps ~ eta: 27s
-Rendering [=====================>----------------------] at 1.9 fps ~ eta: 27s
-Rendering [=====================>----------------------] at 1.9 fps ~ eta: 26s
-Rendering [======================>---------------------] at 1.9 fps ~ eta: 25s
-Rendering [=======================>--------------------] at 1.9 fps ~ eta: 24s
-Rendering [========================>-------------------] at 1.9 fps ~ eta: 23s
-Rendering [========================>-------------------] at 1.9 fps ~ eta: 22s
-Rendering [=========================>------------------] at 1.9 fps ~ eta: 22s
-Rendering [=========================>------------------] at 1.9 fps ~ eta: 21s
-Rendering [==========================>-----------------] at 1.9 fps ~ eta: 20s
-Rendering [===========================>----------------] at 1.9 fps ~ eta: 19s
-Rendering [============================>---------------] at 1.9 fps ~ eta: 18s
-Rendering [============================>---------------] at 1.9 fps ~ eta: 17s
-Rendering [=============================>--------------] at 1.9 fps ~ eta: 17s
-Rendering [=============================>--------------] at 1.9 fps ~ eta: 16s
-Rendering [==============================>-------------] at 1.9 fps ~ eta: 16s
-Rendering [==============================>-------------] at 1.9 fps ~ eta: 15s
-Rendering [===============================>------------] at 1.9 fps ~ eta: 15s
-Rendering [===============================>------------] at 1.9 fps ~ eta: 14s
-Rendering [================================>-----------] at 1.9 fps ~ eta: 14s
-Rendering [================================>-----------] at 1.9 fps ~ eta: 13s
-Rendering [=================================>----------] at 1.9 fps ~ eta: 12s
-Rendering [=================================>----------] at 1.9 fps ~ eta: 11s
-Rendering [==================================>---------] at 1.9 fps ~ eta: 11s
-Rendering [==================================>---------] at 1.9 fps ~ eta: 10s
-Rendering [===================================>--------] at 1.9 fps ~ eta: 10s
-Rendering [===================================>--------] at 1.9 fps ~ eta: 9s
-Rendering [====================================>-------] at 1.9 fps ~ eta: 9s
-Rendering [====================================>-------] at 1.9 fps ~ eta: 8s
-Rendering [=====================================>------] at 1.9 fps ~ eta: 7s
-Rendering [======================================>-----] at 1.9 fps ~ eta: 6s
-Rendering [=======================================>----] at 1.9 fps ~ eta: 5s
-Rendering [=======================================>----] at 1.9 fps ~ eta: 4s
-Rendering [========================================>---] at 1.9 fps ~ eta: 4s
-Rendering [========================================>---] at 1.9 fps ~ eta: 3s
-Rendering [=========================================>--] at 1.9 fps ~ eta: 3s
-Rendering [=========================================>--] at 1.9 fps ~ eta: 2s
-Rendering [==========================================>-] at 1.9 fps ~ eta: 2s
-Rendering [==========================================>-] at 1.9 fps ~ eta: 1s
-Rendering [===========================================>] at 1.9 fps ~ eta: 1s
-Rendering [============================================] at 1.9 fps ~ eta: 0s
+Rendering [--------------------------------------------] at 3.2 fps ~ eta: 31s
+Rendering [>-------------------------------------------] at 3.1 fps ~ eta: 31s
+Rendering [=>------------------------------------------] at 3.1 fps ~ eta: 31s
+Rendering [==>-----------------------------------------] at 3.1 fps ~ eta: 31s
+Rendering [==>-----------------------------------------] at 3.1 fps ~ eta: 30s
+Rendering [===>------------------------------------------] at 3 fps ~ eta: 30s
+Rendering [====>-----------------------------------------] at 3 fps ~ eta: 30s
+Rendering [====>-----------------------------------------] at 3 fps ~ eta: 29s
+Rendering [=====>----------------------------------------] at 3 fps ~ eta: 29s
+Rendering [======>---------------------------------------] at 3 fps ~ eta: 28s
+Rendering [=======>--------------------------------------] at 3 fps ~ eta: 28s
+Rendering [=======>--------------------------------------] at 3 fps ~ eta: 27s
+Rendering [========>-------------------------------------] at 3 fps ~ eta: 27s
+Rendering [=========>------------------------------------] at 3 fps ~ eta: 27s
+Rendering [=========>------------------------------------] at 3 fps ~ eta: 26s
+Rendering [==========>-----------------------------------] at 3 fps ~ eta: 26s
+Rendering [===========>----------------------------------] at 3 fps ~ eta: 25s
+Rendering [===========>--------------------------------] at 2.9 fps ~ eta: 25s
+Rendering [============>-------------------------------] at 2.9 fps ~ eta: 24s
+Rendering [=============>------------------------------] at 2.9 fps ~ eta: 24s
+Rendering [=============>------------------------------] at 2.9 fps ~ eta: 23s
+Rendering [==============>-----------------------------] at 2.9 fps ~ eta: 23s
+Rendering [==============>-----------------------------] at 2.9 fps ~ eta: 22s
+Rendering [===============>----------------------------] at 2.9 fps ~ eta: 22s
+Rendering [================>---------------------------] at 2.9 fps ~ eta: 21s
+Rendering [=================>--------------------------] at 2.9 fps ~ eta: 21s
+Rendering [=================>--------------------------] at 2.9 fps ~ eta: 20s
+Rendering [==================>-------------------------] at 2.9 fps ~ eta: 20s
+Rendering [==================>-------------------------] at 2.9 fps ~ eta: 19s
+Rendering [===================>------------------------] at 2.9 fps ~ eta: 19s
+Rendering [====================>-----------------------] at 2.9 fps ~ eta: 18s
+Rendering [=====================>----------------------] at 2.9 fps ~ eta: 18s
+Rendering [=====================>----------------------] at 2.9 fps ~ eta: 17s
+Rendering [======================>---------------------] at 2.9 fps ~ eta: 17s
+Rendering [======================>---------------------] at 2.9 fps ~ eta: 16s
+Rendering [=======================>--------------------] at 2.9 fps ~ eta: 16s
+Rendering [========================>-------------------] at 2.9 fps ~ eta: 15s
+Rendering [=========================>------------------] at 2.8 fps ~ eta: 15s
+Rendering [=========================>------------------] at 2.8 fps ~ eta: 14s
+Rendering [==========================>-----------------] at 2.8 fps ~ eta: 14s
+Rendering [==========================>-----------------] at 2.8 fps ~ eta: 13s
+Rendering [===========================>----------------] at 2.8 fps ~ eta: 13s
+Rendering [============================>---------------] at 2.8 fps ~ eta: 12s
+Rendering [=============================>--------------] at 2.8 fps ~ eta: 11s
+Rendering [==============================>-------------] at 2.8 fps ~ eta: 11s
+Rendering [==============================>-------------] at 2.8 fps ~ eta: 10s
+Rendering [===============================>------------] at 2.8 fps ~ eta: 10s
+Rendering [================================>-----------] at 2.8 fps ~ eta: 9s
+Rendering [================================>-----------] at 2.8 fps ~ eta: 8s
+Rendering [=================================>----------] at 2.8 fps ~ eta: 8s
+Rendering [==================================>---------] at 2.8 fps ~ eta: 7s
+Rendering [===================================>--------] at 2.8 fps ~ eta: 7s
+Rendering [===================================>--------] at 2.8 fps ~ eta: 6s
+Rendering [====================================>-------] at 2.8 fps ~ eta: 6s
+Rendering [====================================>-------] at 2.8 fps ~ eta: 5s
+Rendering [=====================================>------] at 2.8 fps ~ eta: 5s
+Rendering [======================================>-----] at 2.8 fps ~ eta: 4s
+Rendering [=======================================>----] at 2.8 fps ~ eta: 4s
+Rendering [=======================================>----] at 2.8 fps ~ eta: 3s
+Rendering [========================================>---] at 2.8 fps ~ eta: 2s
+Rendering [=========================================>--] at 2.8 fps ~ eta: 2s
+Rendering [=========================================>--] at 2.8 fps ~ eta: 1s
+Rendering [==========================================>-] at 2.8 fps ~ eta: 1s
+Rendering [===========================================>] at 2.8 fps ~ eta: 0s
+Rendering [============================================] at 2.8 fps ~ eta: 0s
 ~~~
 {: .output}
 
@@ -1598,7 +1623,19 @@ mapdata <- map_data("world") %>%
   mutate(region = recode(region,
                          USA="United States",
                          UK="United Kingdom"))
+~~~
+{: .language-r}
 
+
+
+~~~
+Error: The `maps` package is required for `map_data()`
+~~~
+{: .error}
+
+
+
+~~~
 #install.packages("mapproj")
 gapminder_1997 %>%
   ggplot() +
@@ -1609,7 +1646,12 @@ gapminder_1997 %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-mapPlots-1.png" title="plot of chunk mapPlots" alt="plot of chunk mapPlots" width="612" style="display: block; margin: auto;" />
+
+
+~~~
+Error in is.data.frame(map): object 'mapdata' not found
+~~~
+{: .error}
 
 Notice that this map helps to show that we actually have some gaps in the data. We are missing observations for counties like Russia and many countries in central Africa. Thus, it's important to acknowledge that any patterns or trends we see in the data might not apply to those regions.
 
