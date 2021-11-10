@@ -92,7 +92,7 @@ When you’re following along in the lesson, don’t type the prompt when typing
 To make the prompt the same for all of us, run this command:
 
 ```
-PS1=’$ ‘
+PS1='$ '
 ```
 {: .language-bash}
 
@@ -159,7 +159,7 @@ This error message tells us the command we tried to run, `ks`, is not a command 
 ## Man and Help
 _[Back to top](#contents)_
 
-Now that we know how to list files with `ls`, we can learn how to look up the manual pages for unix shell commands. If you want to learn more about a command we can use `man` to look up its manual page. which will open with `ls`. We can navigate the man page to view the description of a command and its options. For example, if you want to know more about the navigation options of `ls` you can type `man ls` on the command line.
+Now that we know how to list files with `ls`, we can learn how to look up the manual pages for unix shell commands. If you want to learn more about a command, we can use `man` to look up its manual page. We can navigate the man page to view the description of a command and its options. For example, if you want to know more about the navigation options of `ls` you can type `man ls` on the command line.
 
 ```
 man ls
