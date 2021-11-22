@@ -104,3 +104,6 @@ highlighter: rouge
 plugins:
   - jekyll-redirect-from
   - jekyll-paginate
+
+# Custom UM Carpentries settings
+markdown: GFM

@@ -90,8 +90,8 @@ To make your life in R easier, there is a great (and free!) program called RStud
 > {: .solution}
 {: challenge}
 
-> ## Tidyverse vs Base R
-> If you've used R before, you may have learned commands that are different than the ones we will be using during this workshop. We will be focusing on functions from the [Tidyverse](https://www.tidyverse.org/). The "tidyverse" is a collection of R packages that have been designed to work well together and offer many convenient features that do not come with a fresh install of R (aka "base R"). These packages are very popular and have a lot of developer support including many staff members from RStudio. These functions generally help you to write code that is easier to read and maintain. We believe learning these tools will help you become more productive more quickly.
+> ## The tidyverse vs Base R
+> If you've used R before, you may have learned commands that are different than the ones we will be using during this workshop. We will be focusing on functions from the [tidyverse](https://www.tidyverse.org/). The "tidyverse" is a collection of R packages that have been designed to work well together and offer many convenient features that do not come with a fresh install of R (aka "base R"). These packages are very popular and have a lot of developer support including many staff members from RStudio. These functions generally help you to write code that is easier to read and maintain. We believe learning these tools will help you become more productive more quickly.
 {: .callout}
 
 
@@ -170,7 +170,11 @@ library(tidyverse)
 
 > ## What's with all those messages???
 >
+<<<<<<< HEAD
+> When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. The `tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
+=======
 > When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson]({{ page.root }}/04-r-data-analysis/)).
+>>>>>>> main
 
 > The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that:
 >
@@ -203,7 +207,11 @@ We will import a subsetted file from the gapminder dataset called `gapminder_199
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
+![]({{ page.root }}/fig/r-plotting/import_data.png)
+
 The file is located in the main directory, click the "Browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
+
+![]({{ page.root }}/fig/r-plotting/import_data_file.png)
 
 We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
 
@@ -329,13 +337,16 @@ Do all functions need arguments? Let's test some other functions:
   getwd()
 ```
 
+<<<<<<< HEAD
+=======
 > ## Comments
 > Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do:
-> ```{r FunctionsComments}
+> ```{r FunctionsComments1}
 >  Sys.Date()  # outputs the current date
 >  getwd()     # outputs our current working directory (folder)
 > ```
 {: .callout}
+>>>>>>> main
 
 While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together:
 
@@ -353,7 +364,7 @@ sum(5, 6)
 > {: .source}
 >
 > > ## Solution
-> > `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.141)
+> > `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.142)
 > {: .solution}
 {: .challenge}
 
@@ -393,6 +404,17 @@ Sometimes it is helpful - or even necessary - to include the argument name, but 
 > > One way is using the `read_excel` function in the `readxl` package. There are other ways, but this is our preferred method because the output will be the same as the output of `read_csv`.
 > {: .solution}
 {: .challenge}
+
+> ## Comments
+> Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do:
+> ```{r FunctionsComments2}
+>  Sys.Date()  # outputs the current date
+>  getwd()     # outputs our current working directory (folder)
+>  sum(5, 6)   # adds numbers
+>  read_csv(file = 'gapminder_1997.csv') # reads in csv file
+>```
+{: .callout}
+
 
 # Creating our first plot
 _[Back to top](#contents)_
@@ -627,7 +649,7 @@ gapminder_data <- read_csv("data/gapminder_data.csv")
 
 > ## Exercise: Read in your own data
 >
-> What argument (including file path) should be provided in the below code to read in the full dataset?
+> What argument should be provided in the below code to read in the full dataset?
 >
 > ```{r ImportFullData, eval = FALSE}
 > gapminder_data <- read_csv()
@@ -654,7 +676,7 @@ Notice that this dataset has an additional column `year` compared to the smaller
 > Now that we have the full dataset read into our R session, let's plot the data placing our new `year` variable on the x axis and life expectancy on the y axis. We've provided the code below. Notice that we've collapsed the plotting function options and left off some of the labels so there's not as much code to work with.
 > Before running the code, read through it and see if you can predict what the plot output will look like. Then run the code and check to see if you were right!
 >
-> ```{r PlotFullGapminder, eval = FALSE}
+> ```{r PlotFullGapminder}
 >  ggplot(data = gapminder_data) +
 >  aes(x=year, y=lifeExp, color=continent) +
 >  geom_point()
@@ -662,7 +684,7 @@ Notice that this dataset has an additional column `year` compared to the smaller
 >
 {: .challenge}
 
-Hmm, the plot we created in the last challenge isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
+Hmm, the plot we created in the last exercise isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
 
 Let's review the columns and the types of data stored in our dataset to decide how we should group things together. To get an overview of our data object, we can look at the structure of `gapminder_data` using the `str()` function.
 ```{r DataExploration, eval=FALSE}
@@ -683,7 +705,7 @@ If your columns are stored as character values but you need factors for plotting
 
 Our plot has a lot of points in columns which makes it hard to see trends over time. A better way to view the data showing changes over time is to use a [line plot](http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization). Let's try changing the geom to a line and see what happens.
 
-```{r GapMinderLinePlotBad, eval=FALSE}
+```{r GapMinderLinePlotBad}
   ggplot(data = gapminder_data) +
   aes(x = year, y = lifeExp, color = continent) +
     geom_line()
@@ -691,7 +713,7 @@ Our plot has a lot of points in columns which makes it hard to see trends over t
 
 Hmm. This doesn't look right. By setting the color value, we got a line for each continent, but we really wanted a line for each country. We need to tell ggplot that we want to connect the values for each `country` value instead. To do this, we need to use the `group=` aesthetic.
 
-```{r GapMinderLinePlot, eval=FALSE}
+```{r GapMinderLinePlot}
   ggplot(data = gapminder_data) +
   aes(x = year, y = lifeExp, group = country, color = continent) +
     geom_line()
@@ -831,14 +853,14 @@ Let's say we want to spice up our plot a bit by adding some color. Maybe we want
 ```{r GapViolinColor}
 ggplot(data = gapminder_1997) +
   aes(x = continent, y = lifeExp) +
-  geom_violin(color="darkolivegreen")
+  geom_violin(color="pink")
 ```
 Well, that didn't get all that colorful. That's because objects like these violins have two different parts that have a color: the shape outline, and the inner part of the shape. For geoms that have an inner part, you change the fill color with `fill=` rather than `color=`, so let's try that instead
 
 ```{r GapViolinFill}
 ggplot(data = gapminder_1997) +
   aes(x = continent, y = lifeExp) +
-  geom_violin(fill="darkolivegreen")
+  geom_violin(fill="pink")
 ```
 
 That's some plot now isn't it! Compare this to what you see when you map the fill property to your data rather than setting a specific value.
@@ -973,7 +995,6 @@ ggplot(gapminder_1997) +
 ```
 
 Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
->>>>>>> gh-pages
 
 ## Saving plots
 _[Back to top](#contents)_
@@ -1056,7 +1077,7 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 
 
 
-# <p style="color:blue">Bonus topics!</p>
+# Bonus topics! 
 
 # Creating complex plots
 
@@ -1117,7 +1138,7 @@ library(gifski)
  staticHansPlot
 ```
 
-Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot.
+Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot. (Note that this might not show up as animated here on the website.) <!-- TODO: see if it works or not. -->
 
 ```{r hansGraphAnimated}
 animatedHansPlot <- staticHansPlot +
@@ -1147,6 +1168,7 @@ The `ggplot` library also has useful functions to draw your data on a map. There
 
 ```{r mapPlots}
 # make sure names of countries match between the map info and the data
+# NOTE: we haven't learned how to modify the data in this way yet, but we'll learn about that in the next lesson. Just take for granted that it works for now :)
 mapdata <- map_data("world") %>%
   mutate(region = recode(region,
                          USA="United States",
