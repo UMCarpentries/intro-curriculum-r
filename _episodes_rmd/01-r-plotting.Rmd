@@ -352,7 +352,7 @@ sum(5, 6)
 > {: .source}
 >
 > > ## Solution
-> > `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.141)
+> > `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.142)
 > {: .solution}
 {: .challenge}
 
