@@ -5,6 +5,7 @@ on:
       - gh-pages
       - main
   pull_request: []
+
 jobs:
   build-website:
     if: ${{ !endsWith(github.repository, '/styles') }}
@@ -90,33 +91,15 @@ jobs:
       - name: Render the markdown and confirm that the site can be built
         run: make site
 
-      - name: Checkout github pages
-        if: ${{ github.event_name == 'push' && steps.check-rmd.outputs.count != 0 && github.ref != 'refs/heads/gh-pages'}}
-        uses: actions/checkout@master
-        with:
-          ref: gh-pages
-          path: gh-pages
-
       - name: Commit and Push
-        if: ${{ github.event_name == 'push' && steps.check-rmd.outputs.count != 0 && github.ref != 'refs/heads/gh-pages'}}
         run: |
-          # clean up gh-pages
-          cd gh-pages
-          git rm -rf .           # remove all previous files
-          git restore --staged . # remove things from the stage
-          cd ..
-          # copy everything into gh-pages site
-          cp -r `ls -A | grep -v 'gh-pages' | grep -v '.git' | grep -v '.bundle/' | grep -v '_site'` gh-pages
-          # move into gh-pages, add, commit, and push
-          cd gh-pages
           # setup git
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add -A .
-          git commit --allow-empty -m "[Github Actions] render website (via ${{ github.sha }})"
-          git push origin gh-pages
+          git commit --allow-empty -m "🤖 render website (via ${{ github.sha }})"
+          git push
           # return
-          cd ..
 
       - run: make lesson-check-all
         if: always()
