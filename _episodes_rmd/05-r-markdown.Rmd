@@ -239,10 +239,11 @@ When we knit this again, our plot is back!
 
 Before we finalize our report, let's look at a few other cool features. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
 
-First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values.
+First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values:
 
-```{r data_summary, echo = FALSE, message = FALSE}
+```{r data_summary, message = FALSE}
 gapminder_1997 <- read_csv("data/gapminder_1997.csv")
+
 nCountries <- gapminder_1997 %>%
   select(country) %>%
   n_distinct()
@@ -284,20 +285,27 @@ Columns are separated by the pipe key <kbd>|</kbd> located above <kbd>Enter</kbd
 When we knit the report again, the code above will render like this:
 ![]({{ page.root }}/fig/r-markdown/table_format.png)
 
-```
+Here's the text that we need to include to creata summary table of our data:
+
+```{r}
+cat('```
 |Summary of Data|
 |------|------|
 |Number of Countries|`r nCountries`|
 |Minimum GDP per capita|`r minGDP`|
 |Maximum GDP per capita|`r maxGDP`|
 
+```')
 ```
+
+
 This will render like this:
+
 ![]({{ page.root }}/fig/r-markdown/table_fillin.png)
 
-This is useful if we are reporting a few values, but can get tedious for larger tables. Another way we can add tables to our reports is using an R function called `kable()`. Since this is an R function, we will use it within a code chunk. We can give the `kable()` function a data table and it will format it to a nice looking table in the report. For example, we could use the following code to generate a table of all the countries in Oceania.
+This is useful if we are reporting a few values, but can get tedious for larger tables. Another way we can add tables to our reports is using an R function called `kable()`. Since this is an R function, we will use it within a code chunk. We can give the `kable()` function a data table and it will format it to a nice looking table in the report. For example, we could use the following code to generate a table of all the countries in Oceania:
 
-```{r,comment=NA,echo=F,collapse=T}
+```{r,comment=NA, collapse=T}
 gapminder_1997 %>%
   filter(continent == "Oceania") %>%
   knitr::kable()
@@ -307,9 +315,6 @@ gapminder_1997 %>%
   # will not have a noticable effect but is useful to know about in the case there
   # are two packages with a function by the same name.
 ```
-
-Which will render like this:
-![]({{ page.root }}/fig/r-markdown/kable_table.png)
 
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
