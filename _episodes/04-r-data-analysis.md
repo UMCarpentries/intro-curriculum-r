@@ -11,8 +11,8 @@ questions:
 - "How can I combine two datasets from different sources?"
 - "How can data tidying facilitate answering analysis questions?"
 objectives:
-- "To become familiar with the functions of the `dplyr` package."
-- "To be able to use `dplyr` to prepare data for analysis."
+- "To become familiar with the functions of the `dplyr` and `tidyr` packages."
+- "To be able to use `dplyr` and `tidyr` to prepare data for analysis."
 - "To be able to combine two different data sources using joins."
 - "To be able to create plots and summary tables to answer analysis questions."
 keypoints:
@@ -76,7 +76,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
@@ -93,7 +93,7 @@ library(tidyverse)
 
 
 ~~~
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -121,7 +121,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -190,7 +190,7 @@ gapminder_data %>% summarize(averageLifeExp=mean(lifeExp))
  
 This line of code will do the exact same thing as our first summary command, but the piping function tells R to use the `gapminder_data` dataframe as the first argument in the next function.
 
-This lets us "chain" together multiple functions, which will be helpful later.
+This lets us "chain" together multiple functions, which will be helpful later. Note that the pipe (`%>%`) is a bit different from using the ggplot plus (`+`). Pipes take the output from the left side and use it as input to the right side. Plusses layer on additional information (right side) to a preexisting plot (left side). 
  
 We can also add an <kdb>Enter</kdb> to make it look nicer:  
 
@@ -384,7 +384,9 @@ gapminder_data %>%
 ~~~
 {: .output}
 
-The `group_by()` function expects you to pass in the name of a column (or multiple columns separated by comma) in your data.
+The `group_by()` function expects you to pass in the name of a column (or multiple columns separated by comma) in your data. 
+
+Note that you might get a message about the summarize function regrouping the output by 'year'. This simply indicates what the function is grouping by. 
 
 > ## Exercise: Grouping the data
 >
@@ -774,7 +776,7 @@ Before we move on to more data cleaning, let's create the final gapminder datafr
 > > 
 > > 
 > > ~~~
-> > ── Column specification ────────────────────────────────────────────────────────
+> > ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 > > Delimiter: ","
 > > chr (2): country, continent
 > > dbl (4): year, pop, lifeExp, gdpPercap
@@ -870,7 +872,7 @@ Rows: 2133 Columns: 7
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (7): T24, CO2 emission estimates, ...3, ...4, ...5, ...6, ...7
 ~~~
@@ -931,7 +933,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): ...2, Series, Footnotes, Source
 dbl (3): Region/Country/Area, Year, Value
@@ -972,11 +974,11 @@ Now we get a similar Warning message as before, but the outputted table looks be
 > **Warnings and Errors: **It's important to differentiate between Warnings and Errors in R. A warning tells us, "you might want to know about this issue, but R still did what you asked". An error tells us, "there's something wrong with your code or your data and R didn't do what you asked". You need to fix any errors that arise. Warnings, are probably best to resolve or at least understand why they are coming up.
 {.callout}
 
-We can resolve this warning by telling `read_csv()` what the column names should be with the `col_names()` argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings.
+We can resolve this warning by telling `read_csv()` what the column names should be with the `col_names()` argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings. Let's also save this dataframe to `co2_emissions_dirty` so that we don't have to read it in every time we want to clean it even more.
 
 
 ~~~
-read_csv("data/co2-un-data.csv", skip=2,
+co2_emissions_dirty <- read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
 ~~~
 {: .language-r}
@@ -991,7 +993,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1006,6 +1008,13 @@ dbl (3): region, year, value
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ~~~
 {: .output}
+
+
+
+~~~
+co2_emissions_dirty
+~~~
+{: .language-r}
 
 
 
@@ -1056,7 +1065,7 @@ dbl (3): region, year, value
 > 
 > 
 > ~~~
-> ── Column specification ────────────────────────────────────────────────────────
+> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -1107,7 +1116,7 @@ dbl (3): region, year, value
 > 
 > 
 > ~~~
-> ── Column specification ────────────────────────────────────────────────────────
+> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -1152,37 +1161,10 @@ We previously saw how we can subset columns from a data frame using the select f
 > > Solution: 
 > > 
 > > ~~~
-> > read_csv("data/co2-un-data.csv", skip=2,
-> >          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> > co2_emissions_dirty %>%
 > >   select(country, year, series, value)
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Rows: 2132 Columns: 7
-> > ~~~
-> > {: .output}
-> > 
-> > 
-> > 
-> > ~~~
-> > ── Column specification ────────────────────────────────────────────────────────
-> > Delimiter: ","
-> > chr (4): country, series, footnotes, source
-> > dbl (3): region, year, value
-> > ~~~
-> > {: .output}
-> > 
-> > 
-> > 
-> > ~~~
-> > 
-> > ℹ Use `spec()` to retrieve the full column specification for this data.
-> > ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-> > ~~~
-> > {: .output}
 > > 
 > > 
 > > 
@@ -1210,39 +1192,12 @@ The series column has two methods of quantifying CO2 emissions - "Emissions (tho
 
 
 ~~~
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+co2_emissions_dirty %>% 
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emissions",
                          "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emissions"))
 ~~~
 {: .language-r}
-
-
-
-~~~
-Rows: 2132 Columns: 7
-~~~
-{: .output}
-
-
-
-~~~
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (4): country, series, footnotes, source
-dbl (3): region, year, value
-~~~
-{: .output}
-
-
-
-~~~
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-~~~
-{: .output}
 
 
 
@@ -1268,40 +1223,13 @@ Recall that we'd like to have separate columns for the two ways that we CO2 emis
 
 
 ~~~
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+co2_emissions_dirty %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
                          "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
   pivot_wider(names_from=series, values_from=value)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Rows: 2132 Columns: 7
-~~~
-{: .output}
-
-
-
-~~~
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (4): country, series, footnotes, source
-dbl (3): region, year, value
-~~~
-{: .output}
-
-
-
-~~~
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-~~~
-{: .output}
 
 
 
@@ -1331,8 +1259,7 @@ Excellent! The last step before we can join this data frame is to get the most d
 > 
 > 
 > ~~~
-> read_csv("data/co2-un-data.csv", skip=2,
->         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> co2_emissions_dirty %>%
 >  select(country, year, series, value) %>%
 >  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
 >                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
@@ -1340,32 +1267,6 @@ Excellent! The last step before we can join this data frame is to get the most d
 >  count(year)
 > ~~~
 > {: .language-r}
-> 
-> 
-> 
-> ~~~
-> Rows: 2132 Columns: 7
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> ── Column specification ────────────────────────────────────────────────────────
-> Delimiter: ","
-> chr (4): country, series, footnotes, source
-> dbl (3): region, year, value
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> 
-> ℹ Use `spec()` to retrieve the full column specification for this data.
-> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-> ~~~
-> {: .output}
 > 
 > 
 > 
@@ -1394,8 +1295,7 @@ Excellent! The last step before we can join this data frame is to get the most d
 > > Solution: 
 > > 
 > > ~~~
-> > read_csv("data/co2-un-data.csv", skip=2,
-> >         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> > co2_emissions_dirty %>%
 > >  select(country, year, series, value) %>%
 > >  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
 > >                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
@@ -1404,32 +1304,6 @@ Excellent! The last step before we can join this data frame is to get the most d
 > >  select(-year)
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Rows: 2132 Columns: 7
-> > ~~~
-> > {: .output}
-> > 
-> > 
-> > 
-> > ~~~
-> > ── Column specification ────────────────────────────────────────────────────────
-> > Delimiter: ","
-> > chr (4): country, series, footnotes, source
-> > dbl (3): region, year, value
-> > ~~~
-> > {: .output}
-> > 
-> > 
-> > 
-> > ~~~
-> > 
-> > ℹ Use `spec()` to retrieve the full column specification for this data.
-> > ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-> > ~~~
-> > {: .output}
 > > 
 > > 
 > > 
@@ -1454,12 +1328,11 @@ Excellent! The last step before we can join this data frame is to get the most d
 {: .challenge}
 
 
-Finally, let's go ahead and assign the output of this code chunk to a variable name:
+Finally, let's go ahead and assign the output of this code chunk, which is the cleaned dataframe, to a variable name:
 
 
 ~~~
-co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
-                          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+co2_emissions <- co2_emissions_dirty %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
                          "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
@@ -1468,32 +1341,6 @@ co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
   select(-year)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Rows: 2132 Columns: 7
-~~~
-{: .output}
-
-
-
-~~~
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (4): country, series, footnotes, source
-dbl (3): region, year, value
-~~~
-{: .output}
-
-
-
-~~~
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-~~~
-{: .output}
 
 > **Looking at your data:** You can get a look at your data-cleaning hard work by navigating to the **Environment** tab in RStudio and clicking the table icon next to the variable name. Notice when we do this, RStudio automatically runs the `View()` command. We've made a lot of progress!
 {.callout}
@@ -1523,7 +1370,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1547,13 +1394,13 @@ The dplyr package has a number of tools for joining data frames together dependi
 
 In an "inner join", the new data frame only has those rows where the same key is found in both data frames. This is a very commonly used join.
 
-![](04-r-data-analysis-assets/join-inner.png)
+![]({{ page.root }}/fig/r-data-analysis/join-inner.png)
 
 > ## Bonus: Other dplyr join functions 
 >
 > Outer joins and can be performed using `left_join()`, `right_join()`, and `full_join()`. In a "left join", if the key is present in the left hand data frame, it will appear in the output, even if it is not found in the the right hand data frame. For a right join, the opposite is true. For a full join, all possible keys are included in the output data frame.
 > 
-> ![](04-r-data-analysis-assets/join-outer.png)
+> ![]({{ page.root }}/fig/r-data-analysis/join-outer.png)
 {: .solution}
 
 Let's give the `inner_join()` function a try.
@@ -1680,7 +1527,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1746,7 +1593,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1788,7 +1635,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap

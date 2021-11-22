@@ -159,18 +159,13 @@ This error message tells us the command we tried to run, `ks`, is not a command 
 ## Man and Help
 _[Back to top](#contents)_
 
-Now that we know how to list files with `ls`, we can learn how to look up the manual pages for unix shell commands. If you want to learn more about a command, we can use `man` to look up its manual page. We can navigate the man page to view the description of a command and its options. For example, if you want to know more about the navigation options of `ls` you can type `man ls` on the command line.
+Often we'll want to learn more about how to use a certain command such as `ls`. There are several different ways you can 
+learn more about a specific command. 
 
-```
-man ls
-```
-{: .language-bash}
+Some commands have additional information that can be found by using the `-h` or `--help`
+flags. This will print brief documentation for the command:
 
 ![]({{ page.root }}/fig/unix-shell/man_ls.png)
-
-On the manual page for `ls`, we see a section titled **options**. These options, also called **flags**, allow us to customize how `ls` runs.
-
-One very helpful flag that is available for any command is `-h or --help` which will print brief documentation for the command.
 
 ```
 man -h
@@ -180,6 +175,32 @@ man --help
 
 ![]({{ page.root }}/fig/unix-shell/man_help.png)
 
+Other commands, such as `ls`, don't have help flags, but have manual pages with more information. We can navigate 
+the manual page using the `man` command to view the description of a command and its options. For example, 
+if you want to know more about the navigation options of `ls` you can type `man ls` on the command line:
+
+```
+man ls
+```
+{: .language-bash}
+
+On the manual page for `ls`, we see a section titled **options**. These options, also called **flags**, are similar to arguments in R functions, and allow us to customize how `ls` runs.
+
+To get out of the man page, click `q`.
+
+Sometimes, commands will have multiple flags that we want to use at the same time. For example, 
+`ls` has a flag `-F` that displays a slash after all directories, as well as a flag `-a` that
+includes hidden files and directories (ones that begin with a `.`). There are two ways to run 
+`ls` using both of these flags:
+
+```
+ls -F -a
+ls -Fa
+```
+{: .language-bash}
+
+Note that when we run the `-a` command, we see a `.` and a `..` in the directory. The `.` corresponds to the current directory we are in and the `..` corresponds to the directory directly above us in the directory tree. We'll learn more about why this is useful in a bit.
+
 > ## Using the Manual Pages
 >
 > Use `man` to open the manual for the command `ls`.
@@ -187,18 +208,16 @@ man --help
 > What flags would you use to...
 > 1. Print files in order of size?
 > 2. Print files in order of the last time they were edited?
-> 3. Print hidden files (files that begin with `.`)?
-> 4. Print more information about the files?
-> 5. Print more information about the files with unit suffixes?
-> 6. Print files in order of size AND also print more information about the files?
+> 3. Print more information about the files?
+> 4. Print more information about the files with unit suffixes?
+> 5. Print files in order of size AND also print more information about the files?
 >
 > > ## Solution
 > > 1. `ls -S`
 > > 2. `ls -t`
-> > 3. `ls -a`
-> > 4. `ls -l`
-> > 5. `ls -lh`
-> > 6. `ls -lS`
+> > 3. `ls -l`
+> > 4. `ls -lh`
+> > 5. `ls -lS`
 >
 > {: .solution}
 {: .challenge}
@@ -541,6 +560,19 @@ gdp_population.R
 
 There it is!
 
+> ## Creating directories and moving files
+>
+> Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
+> > ## Solution
+> > From the `un-report` directory:
+> >  ```
+> > mkdir data
+> > mv gapminder_data.csv data
+> > mv gapminder_1997.csv data
+> > ```
+> {: .solution}
+{: .challenge}
+
 Okay, now we have the code and data in the right place. But we have several figures that should still be in their own directory.
 
 First, let’s make a `figures` directory:
@@ -622,50 +654,43 @@ This output shows each directory name, followed by its contents on the next line
 > {: .solution}
 {: .challenge}
 
-> ## Creating directories and moving files
->
-> Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
-> > ## Solution
-> > From the `un-report` directory:
-> >  ```
-> > mkdir data
-> > mv gapminder_data.csv data
-> > mv gapminder_1997.csv data
-> > ```
-> {: .solution}
-{: .challenge}
-
 ## Viewing Files
 _[Back to top](#contents)_
 
 To view and navigate the contents of a file we can use the command `less`. This will open a full screen view of the file.
 
-Here is what we should expect to see when running the command `less` on our `gapminder_data.csv` file:
+For instance, we can run the command `less` on our `gapminder_data.csv` file:
+
+```
+less data/gapminder_data.csv
+```
 
 ![]({{ page.root }}/fig/unix-shell/less_example.png)
 
+To navigate, press `spacebar` to scroll to the next page and `b` to scroll up to the previous page. You can also use the up and down arrows to scroll line-by-line. Note that `less` defaults to line wrapping, meaning that any lines longer than the width of the screen will be wrapped to the next line. To exit less, press the letter `q`.
+
+One particularly useful flag for `less` is `-S` which cuts off really long lines (rather than having the text wrap around):
+
+```
+less -S data/gapminder_data.csv
+```
+
 To navigate, press `spacebar` to scroll to the next page and `b` to scroll up to the previous page. You can also use the up and down arrows to scroll line-by-line. Note that `less` defaults to line wrapping, meaning that any lines longer than the width of the screen will be wrapped to the next line, (to disable this use the option `-S` when running `less`, ex `less -S file.txt`). To exit less, press the letter `q`.
 
-We should note that not all file types can be viewed with `less`. While we can open PDFs and excel spreadsheets easily with programs on our computer, `less` doesn't render them well on the command line. For example, if we try to less a .pdf file we will see a warning.
+Note that not all file types can be viewed with `less`. While we can open PDFs and excel spreadsheets easily with programs on our computer, `less` doesn't render them well on the command line. For example, if we try to less a .pdf file we will see a warning.
 
 ```
-less file.pdf
+less figures/awesome_plot.jpg
 ```
-{: .language-bash}
+
 ```
-file.pdf may be a binary file.  See it anyway?
+figures/awesome_plot.jpg may be a binary file.  See it anyway?
 ```
 {: .output}
 
-If we say "yes", less will render the file but it will appear as a seemingly random display of characters that wont make much sense to us.
+If we say "yes", less will render the file but it will appear as a seemingly random display of characters that won't make much sense to us.
 
 ![]({{ page.root }}/fig/unix-shell/less_pdf_example.png)
-
-Sometimes, commands will have multiple flags that we want to use at the same time. For example, `less` has a flag `-w` which highlights unread text, and `-S` which cuts off really long lines (rather than having the text wrap around). There are two ways to run `less` using both of these flags:
-
-`less -w -S [FILE]`
-
-`less -wS [FILE]`
 
 ## Editing Files
 _[Back to top](#contents)_

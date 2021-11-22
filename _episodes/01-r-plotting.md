@@ -86,8 +86,8 @@ To make your life in R easier, there is a great (and free!) program called RStud
 > {: .solution}
 {: challenge}
 
-> ## Tidyverse vs Base R
-> If you've used R before, you may have learned commands that are different than the ones we will be using during this workshop. We will be focusing on functions from the [Tidyverse](https://www.tidyverse.org/). The "tidyverse" is a collection of R packages that have been designed to work well together and offer many convenient features that do not come with a fresh install of R (aka "base R"). These packages are very popular and have a lot of developer support including many staff members from RStudio. These functions generally help you to write code that is easier to read and maintain. We believe learning these tools will help you become more productive more quickly.
+> ## The tidyverse vs Base R
+> If you've used R before, you may have learned commands that are different than the ones we will be using during this workshop. We will be focusing on functions from the [tidyverse](https://www.tidyverse.org/). The "tidyverse" is a collection of R packages that have been designed to work well together and offer many convenient features that do not come with a fresh install of R (aka "base R"). These packages are very popular and have a lot of developer support including many staff members from RStudio. These functions generally help you to write code that is easier to read and maintain. We believe learning these tools will help you become more productive more quickly.
 {: .callout}
 
 
@@ -169,7 +169,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
@@ -186,7 +186,7 @@ library(tidyverse)
 
 
 ~~~
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -194,7 +194,11 @@ library(tidyverse)
 
 > ## What's with all those messages???
 >
+<<<<<<< HEAD
+> When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. The `tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
+=======
 > When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson]({{ page.root }}/04-r-data-analysis/)).
+>>>>>>> main
 
 > The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that:
 >
@@ -227,7 +231,11 @@ We will import a subsetted file from the gapminder dataset called `gapminder_199
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
+![]({{ page.root }}/fig/r-plotting/import_data.png)
+
 The file is located in the main directory, click the "Browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
+
+![]({{ page.root }}/fig/r-plotting/import_data_file.png)
 
 We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
 
@@ -267,7 +275,7 @@ Rows: 142 Columns: 5
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (3): pop, lifeExp, gdpPercap
@@ -407,10 +415,12 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/home/runner/work/intro-curriculum-r/intro-curriculum-r/_episodes_rmd"
+[1] "/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd"
 ~~~
 {: .output}
 
+<<<<<<< HEAD
+=======
 > ## Comments
 > Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do:
 > 
@@ -436,10 +446,11 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "/home/runner/work/intro-curriculum-r/intro-curriculum-r/_episodes_rmd"
+> [1] "/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd"
 > ~~~
 > {: .output}
 {: .callout}
+>>>>>>> main
 
 While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together:
 
@@ -468,7 +479,7 @@ sum(5, 6)
 > {: .source}
 >
 > > ## Solution
-> > `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.141)
+> > `round` rounds a number. By default, it rounds it to zero digits (in our example above, to 3). If you give it a second number, it rounds it to that number of digits (in our example above, to 3.142)
 > {: .solution}
 {: .challenge}
 
@@ -488,7 +499,7 @@ Rows: 142 Columns: 5
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (3): pop, lifeExp, gdpPercap
@@ -554,18 +565,35 @@ Sometimes it is helpful - or even necessary - to include the argument name, but 
 > {: .solution}
 {: .challenge}
 
-# Creating our first plot
-_[Back to top](#contents)_
-
-We will be using the `ggplot2` package today to make our plots. This is a very powerful package that creates professional looking plots and is one of the reasons people like using R so much. All plots made using the `ggplot2` package start by calling the `ggplot()` function. So in the tab you created for the `gdp_population.R` file, type the following:
-
+> ## Comments
+> Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do:
+> 
+> ~~~
+>  Sys.Date()  # outputs the current date
+>  getwd()     # outputs our current working directory (folder)
+>  sum(5, 6)   # adds numbers
+>  read_csv(file = 'gapminder_1997.csv') # reads in csv file
+> ```
+> {: .callout}
+> 
+> 
+> # Creating our first plot
+> _[Back to top](#contents)_
+> 
+> We will be using the `ggplot2` package today to make our plots. This is a very powerful package that creates professional looking plots and is one of the reasons people like using R so much. All plots made using the `ggplot2` package start by calling the `ggplot()` function. So in the tab you created for the `gdp_population.R` file, type the following:
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error: attempt to use zero-length variable name
+> ~~~
+> {: .error}
 
 ~~~
 ggplot(data=gapminder_1997)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-ggplotDataOnly-1.png" title="plot of chunk ggplotDataOnly" alt="plot of chunk ggplotDataOnly" width="612" style="display: block; margin: auto;" />
+```
 
 To run code that you've typed in the editor, you have a few options. Remember that the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard. This will run the line of code that currently contains your cursor or any highlighted code.
 
@@ -578,29 +606,39 @@ So we've made a plot object, now we need to start telling it what we actually wa
 To create our plot, we need to map variables from our `gapminder_1997` object to ggplot aesthetics using the `aes()` function. Since we have already told `ggplot` that we are using the data in the `gapminder_1997` object, we can access the columns of `gapminder_1997` using the object's column names. (Remember, R is case-sensitive, so we have to be careful to match the column names exactly!)
 
 We are interested in whether there is a relationship between GDP and life expectancy, so let's start by telling our plot object that we want to map our GDP values to the x axis of our plot. We do this by adding (`+`) information to our plot object. Add this new line to your code and run both lines by highlighting them and pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard:
+~~~
+{: .language-r}
 
+
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-ggplotX-1.png" title="plot of chunk ggplotX" alt="plot of chunk ggplotX" width="612" style="display: block; margin: auto;" />
+```
 
 Note that we've added this new function call to a second line just to make it easier to read. To do this we make sure that the `+` is at the end of the first line otherwise R will assume your command ends when it starts the next row. The `+` sign indicates not only that we are adding information, but to continue on to the next line of code.
 
 Observe that our **Plot** window is no longer a grey square. We now see that we've mapped the `gdpPercap` column to the x axis of our plot. Note that that column name isn't very pretty as an x-axis label, so let's add the `labs()` function to make a nicer label for the x axis
+~~~
+{: .language-r}
 
+
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 ggplot(data = gapminder_1997) +
   aes(x = gdpPercap) +
   labs(x = "GDP Per Capita")
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-FirstPlotAddXLabel-1.png" title="plot of chunk FirstPlotAddXLabel" alt="plot of chunk FirstPlotAddXLabel" width="612" style="display: block; margin: auto;" />
+```
 
 OK. That looks better. 
 
@@ -615,6 +653,15 @@ OK. That looks better.
 >
 >
 > > ## Solution
+~~~
+{: .language-r}
+
+
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 > > 
 > > ~~~
 > > ggplot(data = gapminder_1997) +
@@ -622,16 +669,21 @@ OK. That looks better.
 > >   labs(x = "GDP Per Capita") +
 > >   aes(y = lifeExp) +
 > >   labs(y = "Life Expectancy")
+> > ```
+> > {: .source}
+> > > {: .solution}
+> > {: .challenge}
+> > 
+> > Excellent. We've now told our plot object where the x and y values are coming from and what they stand for. But we haven't told our object how we want it to draw the data. There are many different plot types (bar charts, scatter plots, histograms, etc). We tell our plot object what to draw by adding a "geometry" ("geom" for short) to our object. We will talk about many different geometries today, but for our first plot, let's draw our data using the "points" geometry for each value in the data set. To do this, we add `geom_point()` to our plot object:
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-01-FirstPlotAddY-1.png" title="plot of chunk FirstPlotAddY" alt="plot of chunk FirstPlotAddY" width="612" style="display: block; margin: auto;" />
-> > {: .source}
-> {: .solution}
-{: .challenge}
-
-Excellent. We've now told our plot object where the x and y values are coming from and what they stand for. But we haven't told our object how we want it to draw the data. There are many different plot types (bar charts, scatter plots, histograms, etc). We tell our plot object what to draw by adding a "geometry" ("geom" for short) to our object. We will talk about many different geometries today, but for our first plot, let's draw our data using the "points" geometry for each value in the data set. To do this, we add `geom_point()` to our plot object:
-
+> > 
+> > 
+> > ~~~
+> > Error: attempt to use zero-length variable name
+> > ~~~
+> > {: .error}
 
 ~~~
 ggplot(data = gapminder_1997) +
@@ -640,13 +692,18 @@ ggplot(data = gapminder_1997) +
   aes(y = lifeExp) +
   labs(y = "Life Expectancy") +
   geom_point()
+```
+
+Now we're really getting somewhere. It finally looks like a proper plot!  We can now see a trend in the data. It looks like countries with a larger GDP tend to have a higher life expectancy. Let's add a title to our plot to make that clearer. Again, we will use the `labs()` function, but this time we will use the `title =` argument.
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-FirstPlotAddPoints-1.png" title="plot of chunk FirstPlotAddPoints" alt="plot of chunk FirstPlotAddPoints" width="612" style="display: block; margin: auto;" />
 
-Now we're really getting somewhere. It finally looks like a proper plot!  We can now see a trend in the data. It looks like countries with a larger GDP tend to have a higher life expectancy. Let's add a title to our plot to make that clearer. Again, we will use the `labs()` function, but this time we will use the `title =` argument.
 
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 ggplot(data = gapminder_1997) +
@@ -656,13 +713,18 @@ ggplot(data = gapminder_1997) +
   labs(y = "Life Expectancy") +
   geom_point() +
   labs(title = "Do people in wealthy countries live longer?")
+```
+
+No one can deny we've made a very handsome plot! But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data in the `gapminder_1997` object that we haven't used yet. Maybe we are curious if the different continents show different patterns in GDP and life expectancy. One thing we could do is use a different color for each of the continents. To map the continent of each point to a color, we will again use the `aes()` function:
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-FirstPlotAddTitle-1.png" title="plot of chunk FirstPlotAddTitle" alt="plot of chunk FirstPlotAddTitle" width="612" style="display: block; margin: auto;" />
 
-No one can deny we've made a very handsome plot! But now looking at the data, we might be curious about learning more about the points that are the extremes of the data. We know that we have two more pieces of data in the `gapminder_1997` object that we haven't used yet. Maybe we are curious if the different continents show different patterns in GDP and life expectancy. One thing we could do is use a different color for each of the continents. To map the continent of each point to a color, we will again use the `aes()` function:
 
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 ggplot(data = gapminder_1997) +
@@ -673,13 +735,18 @@ ggplot(data = gapminder_1997) +
   geom_point() +
   labs(title = "Do people in wealthy countries live longer?") +
   aes(color = continent)
+```
+
+Here we can see that in 1997 the African countries had much lower life expectancy than many other continents. Notice that when we add a mapping for color, ggplot automatically provided a legend for us. It took care of assigning different colors to each of our unique values of the `continent` variable. (Note that when we mapped the x and y values, those drew the actual axis labels, so in a way the axes are like the legends for the x and y values). The colors that ggplot uses are determined by the color "scale". Each aesthetic value we can supply (x, y, color, etc) has a corresponding scale. Let's change the colors to make them a bit prettier.
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-FirstPlotAddColor-1.png" title="plot of chunk FirstPlotAddColor" alt="plot of chunk FirstPlotAddColor" width="612" style="display: block; margin: auto;" />
 
-Here we can see that in 1997 the African countries had much lower life expectancy than many other continents. Notice that when we add a mapping for color, ggplot automatically provided a legend for us. It took care of assigning different colors to each of our unique values of the `continent` variable. (Note that when we mapped the x and y values, those drew the actual axis labels, so in a way the axes are like the legends for the x and y values). The colors that ggplot uses are determined by the color "scale". Each aesthetic value we can supply (x, y, color, etc) has a corresponding scale. Let's change the colors to make them a bit prettier.
 
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 ggplot(data = gapminder_1997) +
@@ -691,10 +758,7 @@ ggplot(data = gapminder_1997) +
   labs(title = "Do people in wealthy countries live longer?") +
   aes(color = continent) +
   scale_color_brewer(palette = "Set1")
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-FirstPlotAddColorScale-1.png" title="plot of chunk FirstPlotAddColorScale" alt="plot of chunk FirstPlotAddColorScale" width="612" style="display: block; margin: auto;" />
+```
 
 The `scale_color_brewer()` function is just one of many you can use to change colors. There are bunch of "palettes" that are build in. You can view them all by running `RColorBrewer::display.brewer.all()` or check out the [Color Brewer website](https://colorbrewer2.org/) for more info about choosing plot colors.
 
@@ -711,23 +775,19 @@ There are also lots of other fun options:
 >
 > > ## Solution
 > > You can use RColorBrewer::display.brewer.all() to pick a color palette. As a bonus, you can also use one of the packages listed above. Here's an example:
+~~~
+{: .language-r}
+
+
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 > > 
 > > ~~~
 > > #install.packages("wesanderson") # install package from GitHub
 > > library(wesanderson)
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in library(wesanderson): there is no package called 'wesanderson'
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > ggplot(data = gapminder_1997) +
 > > aes(x = gdpPercap) +
 > > labs(x = "GDP Per Capita") +
@@ -737,21 +797,21 @@ There are also lots of other fun options:
 > > labs(title = "Do people in wealthy countries live longer?") +
 > > aes(color = continent) +
 > > scale_color_manual(values = wes_palette('Cavalcanti1'))
+> > ```
+> > {: .source}
+> > > {: .solution}
+> > {: .challenge}
+> > 
+> > Since we have the data for the population of each country, we might be curious what effect population might have on life expectancy and GDP per capita. Do you think larger countries will have a longer or shorter life expectancy? Let's find out by mapping the population of each country to the size of our points.
 > > ~~~
 > > {: .language-r}
 > > 
 > > 
 > > 
 > > ~~~
-> > Error in wes_palette("Cavalcanti1"): could not find function "wes_palette"
+> > Error: attempt to use zero-length variable name
 > > ~~~
 > > {: .error}
-> > {: .source}
-> {: .solution}
-{: .challenge}
-
-Since we have the data for the population of each country, we might be curious what effect population might have on life expectancy and GDP per capita. Do you think larger countries will have a longer or shorter life expectancy? Let's find out by mapping the population of each country to the size of our points.
-
 
 ~~~
 ggplot(data = gapminder_1997) +
@@ -764,13 +824,18 @@ ggplot(data = gapminder_1997) +
   aes(color = continent) +
   scale_color_brewer(palette = "Set1") +
   aes(size = pop)
+```
+
+There doesn't seem to be a very strong association with population size. We can see two very large countries with relatively low GDP per capita (but since the per capita value is already divided by the total population, there is some problems with separating those two values). We got another legend here for size which is nice, but the values look a bit ugly in scientific notation. Let's divide all the values by 1,000,000 and label our legend "Population (in millions)"
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-FirstPlotAddSize-1.png" title="plot of chunk FirstPlotAddSize" alt="plot of chunk FirstPlotAddSize" width="612" style="display: block; margin: auto;" />
 
-There doesn't seem to be a very strong association with population size. We can see two very large countries with relatively low GDP per capita (but since the per capita value is already divided by the total population, there is some problems with separating those two values). We got another legend here for size which is nice, but the values look a bit ugly in scientific notation. Let's divide all the values by 1,000,000 and label our legend "Population (in millions)"
 
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 ggplot(data = gapminder_1997) +
@@ -784,10 +849,7 @@ ggplot(data = gapminder_1997) +
   scale_color_brewer(palette = "Set1") +
   aes(size = pop/1000000) +
   labs(size = "Population (in millions)")
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-FirstPlotAddPop-1.png" title="plot of chunk FirstPlotAddPop" alt="plot of chunk FirstPlotAddPop" width="612" style="display: block; margin: auto;" />
+```
 
 This works because you can treat the columns in the aesthetic mappings just like any other variables and can use functions to transform or change them at plot time rather than having to transform your data first.
 
@@ -799,6 +861,15 @@ Good work! Take a moment to appreciate what a cool plot you made with a few line
 >
 > > ## Solution
 > > You'll want to use the `aes` aesthetic function to change the shape:
+~~~
+{: .language-r}
+
+
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 > > 
 > > ~~~
 > > ggplot(data = gapminder_1997) +
@@ -813,16 +884,21 @@ Good work! Take a moment to appreciate what a cool plot you made with a few line
 > >   aes(size = pop/1000000) +
 > >   labs(size = "Population (in millions)") +
 > >   aes(shape = continent)
+> > ```
+> > {: .source}
+> > > {: .solution}
+> > {: .challenge}
+> > 
+> > For our first plot we added each line of code one at a time so you could see the exact affect it had on the output. But when you start to make a bunch of plots, we can actually combine many of these steps so you don't have to type as much. For example, you can collect all the `aes()` statements and all the `labs()` together. A more condensed version of the exact same plot would look like this:
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-01-Shape-1.png" title="plot of chunk Shape" alt="plot of chunk Shape" width="612" style="display: block; margin: auto;" />
-> > {: .source}
-> {: .solution}
-{: .challenge}
-
-For our first plot we added each line of code one at a time so you could see the exact affect it had on the output. But when you start to make a bunch of plots, we can actually combine many of these steps so you don't have to type as much. For example, you can collect all the `aes()` statements and all the `labs()` together. A more condensed version of the exact same plot would look like this:
-
+> > 
+> > 
+> > ~~~
+> > Error: attempt to use zero-length variable name
+> > ~~~
+> > {: .error}
 
 ~~~
 ggplot(data = gapminder_1997) +
@@ -831,10 +907,7 @@ ggplot(data = gapminder_1997) +
   scale_color_brewer(palette = "Set1") +
   labs(x = "GDP Per Capita", y = "Life Expectancy",
     title = "Do people in wealthy countries live longer?", size = "Population (in millions)")
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-01-FirstPlotCondensed-1.png" title="plot of chunk FirstPlotCondensed" alt="plot of chunk FirstPlotCondensed" width="612" style="display: block; margin: auto;" />
+```
 
 # Plotting for data exploration
 _[Back to top](#contents)_
@@ -847,36 +920,20 @@ _[Back to top](#contents)_
 In the first plot, we looked at a smaller slice of a large dataset. To gain a better understanding of the kinds of patterns we might observe in our own data, we will now use the full dataset, which is stored in a file called "gapminder_data.csv".
 
 To start, we will read in the data without using the interactive RStudio file navigation.
-
-
 ~~~
-Rows: 1704 Columns: 6
-~~~
-{: .output}
+{: .language-r}
 
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (2): country, continent
-dbl (4): year, pop, lifeExp, gdpPercap
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
-
-
+{: .error}
 
 ~~~
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
-
-> ## Exercise: Read in your own data
->
-> What argument (including file path) should be provided in the below code to read in the full dataset?
->
+{: .error}
 > 
 > ~~~
 > gapminder_data <- read_csv()
@@ -915,10 +972,17 @@ Notice that this dataset has an additional column `year` compared to the smaller
 >  geom_point()
 > ~~~
 > {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
+> ~~~
+> {: .error}
 >
 {: .challenge}
 
-Hmm, the plot we created in the last challenge isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
+Hmm, the plot we created in the last exercise isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
 
 Let's review the columns and the types of data stored in our dataset to decide how we should group things together. To get an overview of our data object, we can look at the structure of `gapminder_data` using the `str()` function.
 
@@ -949,6 +1013,13 @@ Our plot has a lot of points in columns which makes it hard to see trends over t
 ~~~
 {: .language-r}
 
+
+
+~~~
+Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
+~~~
+{: .error}
+
 Hmm. This doesn't look right. By setting the color value, we got a line for each continent, but we really wanted a line for each country. We need to tell ggplot that we want to connect the values for each `country` value instead. To do this, we need to use the `group=` aesthetic.
 
 
@@ -958,6 +1029,13 @@ Hmm. This doesn't look right. By setting the color value, we got a line for each
     geom_line()
 ~~~
 {: .language-r}
+
+
+
+~~~
+Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
+~~~
+{: .error}
 
 Sometimes plots like this are called "spaghetti plots" because all the lines look like a bunch of wet noodles.
 
@@ -973,7 +1051,12 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-01-gapminderMoreLines-1.png" title="plot of chunk gapminderMoreLines" alt="plot of chunk gapminderMoreLines" width="612" style="display: block; margin: auto;" />
+> > 
+> > 
+> > ~~~
+> > Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
+> > ~~~
+> > {: .error}
 > > (China and India are the two Asian countries that have experienced massive population growth from 1952-2007.)
 > {: .solution}
 {: .challenge}
@@ -1141,7 +1224,7 @@ Let's say we want to spice up our plot a bit by adding some color. Maybe we want
 ~~~
 ggplot(data = gapminder_1997) +
   aes(x = continent, y = lifeExp) +
-  geom_violin(color="darkolivegreen")
+  geom_violin(color="pink")
 ~~~
 {: .language-r}
 
@@ -1152,7 +1235,7 @@ Well, that didn't get all that colorful. That's because objects like these violi
 ~~~
 ggplot(data = gapminder_1997) +
   aes(x = continent, y = lifeExp) +
-  geom_violin(fill="darkolivegreen")
+  geom_violin(fill="pink")
 ~~~
 {: .language-r}
 
@@ -1341,7 +1424,6 @@ ggplot(gapminder_1997) +
 <img src="../fig/rmd-01-GapFacetGrid-1.png" title="plot of chunk GapFacetGrid" alt="plot of chunk GapFacetGrid" width="612" style="display: block; margin: auto;" />
 
 Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
->>>>>>> gh-pages
 
 ## Saving plots
 _[Back to top](#contents)_
@@ -1449,7 +1531,7 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 
 
 
-# <p style="color:blue">Bonus topics!</p>
+# Bonus topics! 
 
 # Creating complex plots
 
@@ -1482,7 +1564,12 @@ library(gifski)
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-01-hansGraphStaticSolution-1.png" title="plot of chunk hansGraphStaticSolution" alt="plot of chunk hansGraphStaticSolution" width="612" style="display: block; margin: auto;" />
+> > 
+> > 
+> > ~~~
+> > Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
+> > ~~~
+> > {: .error}
 >{: .solution}
 
 > **Part 2:**
@@ -1497,12 +1584,29 @@ library(gifski)
 > >  scale_color_brewer(palette = "Set1") +
 > >  labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
 > > theme_classic()
+> > ~~~
+> > {: .language-r}
 > > 
+> > 
+> > 
+> > ~~~
+> > Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
+> > ~~~
+> > {: .error}
+> > 
+> > 
+> > 
+> > ~~~
 > > staticHansPlot
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-01-hansGraphStaticPrettySolution-1.png" title="plot of chunk hansGraphStaticPrettySolution" alt="plot of chunk hansGraphStaticPrettySolution" width="612" style="display: block; margin: auto;" />
+> > 
+> > 
+> > ~~~
+> > Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
+> > ~~~
+> > {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -1514,26 +1618,60 @@ library(gifski)
   scale_color_brewer(palette = "Set1") +
   labs(x = "GDP Per Capita", y = "Life Expectancy", color= "Continent", size="Population (in millions)")+
  theme_classic()
+~~~
+{: .language-r}
 
+
+
+~~~
+Error in ggplot(data = gapminder_data): object 'gapminder_data' not found
+~~~
+{: .error}
+
+
+
+~~~
  staticHansPlot
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-hansGraphStatic-1.png" title="plot of chunk hansGraphStatic" alt="plot of chunk hansGraphStatic" width="612" style="display: block; margin: auto;" />
 
-Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot.
+
+~~~
+Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
+~~~
+{: .error}
+
+Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot. (Note that this might not show up as animated here on the website.) <!-- TODO: see if it works or not. -->
 
 
 ~~~
 animatedHansPlot <- staticHansPlot +
   transition_states(year,  transition_length = 1, state_length = 1)+
   ggtitle("{closest_state}")
+~~~
+{: .language-r}
 
+
+
+~~~
+Error in eval(expr, envir, enclos): object 'staticHansPlot' not found
+~~~
+{: .error}
+
+
+
+~~~
 animatedHansPlot
 ~~~
 {: .language-r}
 
-<img src="fig/rmd-01-hansGraphAnimated-1.gif" title="plot of chunk hansGraphAnimated" alt="plot of chunk hansGraphAnimated" style="display: block; margin: auto;" />
+
+
+~~~
+Error in eval(expr, envir, enclos): object 'animatedHansPlot' not found
+~~~
+{: .error}
 
 Awesome! This is looking sweet! Let's make sure we understand the code above:
 1. The first argument of the `transition_states()` function tells `ggplot()` which variable should be different in each frame of our animation: in this case, we want each frame to be a different `year`.
@@ -1551,6 +1689,13 @@ anim_save("hansAnimatedPlot.gif",
 ~~~
 {: .language-r}
 
+
+
+~~~
+Error: The animation object does not specify a save_animation method
+~~~
+{: .error}
+
 ## Map plots
 
 The `ggplot` library also has useful functions to draw your data on a map. There are lots of different ways to draw maps but here's a quick example using the gampminder data. Here we will plot each country with a color indicating the life expectancy in 1997.
@@ -1558,6 +1703,7 @@ The `ggplot` library also has useful functions to draw your data on a map. There
 
 ~~~
 # make sure names of countries match between the map info and the data
+# NOTE: we haven't learned how to modify the data in this way yet, but we'll learn about that in the next lesson. Just take for granted that it works for now :)
 mapdata <- map_data("world") %>%
   mutate(region = recode(region,
                          USA="United States",
