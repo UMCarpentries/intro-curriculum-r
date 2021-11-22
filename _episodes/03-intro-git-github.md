@@ -350,7 +350,7 @@ $ git status
 ```
 {: .language-bash}
 ```
-On branch master
+On branch main
 
 No commits yet
 
@@ -505,7 +505,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 
 No commits yet
 
@@ -535,7 +535,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 
 No commits yet
 
@@ -558,7 +558,7 @@ $ git commit -m "Start notes on analysis"
 {: .language-bash}
 
 ```
-[master (root-commit) f22b25e] Start notes on analysis
+[main (root-commit) f22b25e] Start notes on analysis
  1 file changed, 1 insertion(+)
  create mode 100644 notes.txt
 ```
@@ -588,7 +588,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 nothing to commit, working directory clean
 ```
 {: .output}
@@ -654,7 +654,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -717,7 +717,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -739,7 +739,7 @@ $ git commit -m "Add information on points"
 {: .language-bash}
 
 ```
-[master 34961b1] Add information on points
+[main 34961b1] Add information on points
  1 file changed, 1 insertion(+)
 ```
 {: .output}
@@ -867,7 +867,7 @@ $ git commit -m "Add note about point color"
 {: .language-bash}
 
 ```
-[master 005937f] Add note about point color
+[main 005937f] Add note about point color
  1 file changed, 1 insertion(+)
 ```
 {: .output}
@@ -880,7 +880,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 nothing to commit, working directory clean
 ```
 {: .output}
@@ -974,7 +974,7 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 > You can also combine the `--oneline` option with others. One useful
 > combination adds `--graph` to display the commit history as a text-based
 > graph and to indicate which commits are associated with the
-> current `HEAD`, the current branch `master`, or
+> current `HEAD`, the current branch `main`, or
 > [other Git references][git-references]:
 >
 > ```
@@ -982,7 +982,7 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 > ```
 > {: .language-bash}
 > ```
-> * 005937f (HEAD -> master) Add note about point color
+> * 005937f (HEAD -> main) Add note about point color
 > * 34961b1 Add information on points
 > * f22b25e Start notes on analysis
 > ```
@@ -1147,7 +1147,7 @@ repository (`git commit`):
 > > ```
 > > {: .language-bash}
 > > ```
-> > [master cc127c2]
+> > [main cc127c2]
 > >  Note plans to start a draft manuscript
 > >  2 files changed, 2 insertions(+)
 > >  create mode 100644 manuscript.txt
@@ -1388,7 +1388,7 @@ Systems like Git allow us to move work between any two repositories. In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop. Most programmers use hosting
 services like [GitHub](https://github.com), [Bitbucket](https://bitbucket.org) or
-[GitLab](https://gitlab.com/) to hold those master copies.
+[GitLab](https://gitlab.com/) to hold those main copies.
 
 Let's start by sharing the changes we've made to our current project with the
 world. Log in to GitHub, then click on the icon in the top right corner to
@@ -1512,7 +1512,7 @@ Finally, press the "Generate" button on the bottom. You will see your token in a
 Now that we've set up the remote server information and have generated a personal access token, we are ready to send our data to GitHub. This command will push the changes from our local repository to the repository on GitHub:
 
 ```
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 
@@ -1527,7 +1527,7 @@ Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
 To https://github.com/USERNAME/un-report.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 ```
 {: .output}
 
@@ -1541,19 +1541,19 @@ Our local and remote repositories are now in this state:
 > option is synonymous with the `--set-upstream-to` option for the `git branch`
 > command, and is used to associate the current branch with a remote branch so
 > that the `git pull` command can be used without any arguments. To do this,
-> simply use `git push -u origin master` once the remote has been set up.
+> simply use `git push -u origin main` once the remote has been set up.
 {: .callout}
 
 We can pull changes from the remote repository to the local one as well:
 
 ```
-$ git pull origin master
+$ git pull origin main
 ```
 {: .language-bash}
 
 ```
 From https://github.com/USERNAME/un-report
- * branch            master     -> FETCH_HEAD
+ * branch            main     -> FETCH_HEAD
 Already up-to-date.
 ```
 {: .output}
@@ -1622,7 +1622,7 @@ GitHub, though, this command would download them to our local repository.
 > > repository to your local repository, Git detects that they have histories that do not share a
 > > common origin and refuses to merge.
 > > ```
-> > $ git pull origin master
+> > $ git pull origin main
 > > ```
 > > {: .language-bash}
 > >
@@ -1633,8 +1633,8 @@ GitHub, though, this command would download them to our local repository.
 > > remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
 > > From https://github.com/USERNAME/un-report
-> >  * branch            master     -> FETCH_HEAD
-> >  * [new branch]      master     -> origin/master
+> >  * branch            main     -> FETCH_HEAD
+> >  * [new branch]      main     -> origin/main
 > > fatal: refusing to merge unrelated histories
 > > ```
 > > {: .output}
@@ -1643,13 +1643,13 @@ GitHub, though, this command would download them to our local repository.
 > > Be careful when you use this option and carefully examine the contents of local and remote
 > > repositories before merging.
 > > ```
-> > $ git pull --allow-unrelated-histories origin master
+> > $ git pull --allow-unrelated-histories origin main
 > > ```
 > > {: .language-bash}
 > >
 > > ```
 > > From https://github.com/USERNAME/un-report
-> >  * branch            master     -> FETCH_HEAD
+> >  * branch            main     -> FETCH_HEAD
 > > Merge made by the 'recursive' strategy.
 > > notes.txt | 1 +
 > > 1 file changed, 1 insertion(+)
@@ -1732,7 +1732,7 @@ $ git commit -m "List dependencies"
 Then push the change to the *Owner's repository* on GitHub:
 
 ```
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 
@@ -1744,7 +1744,7 @@ Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/USERNAME/un-report.git
-   9272da5..29aba7c  master -> master
+   9272da5..29aba7c  main -> main
 ```
 {: .output}
 
@@ -1759,7 +1759,7 @@ Collaborator.
 To download the Collaborator's changes from GitHub, the Owner now enters:
 
 ```
-$ git pull origin master
+$ git pull origin main
 ```
 {: .language-bash}
 
@@ -1770,8 +1770,8 @@ remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 From https://github.com/USERNAME/un-report
- * branch            master     -> FETCH_HEAD
-   9272da5..29aba7c  master     -> origin/master
+ * branch            main     -> FETCH_HEAD
+   9272da5..29aba7c  main     -> origin/main
 Updating 9272da5..29aba7c
 Fast-forward
  notes.txt | 1 +
@@ -2064,7 +2064,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -2120,7 +2120,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
@@ -2174,7 +2174,7 @@ $ git checkout HEAD notes.txt
 >
 > The "detached HEAD" is like "look, but don't touch" here,
 > so you shouldn't make any changes in this state.
-> After investigating your repo's past state, reattach your `HEAD` with `git checkout master`.
+> After investigating your repo's past state, reattach your `HEAD` with `git checkout main`.
 {: .callout}
 
 It's important to remember that
