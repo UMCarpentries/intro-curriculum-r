@@ -341,7 +341,7 @@ Do all functions need arguments? Let's test some other functions:
 =======
 > ## Comments
 > Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do:
-> ```{r FunctionsComments}
+> ```{r FunctionsComments1}
 >  Sys.Date()  # outputs the current date
 >  getwd()     # outputs our current working directory (folder)
 > ```
@@ -407,7 +407,7 @@ Sometimes it is helpful - or even necessary - to include the argument name, but 
 
 > ## Comments
 > Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do:
-> ```{r FunctionsComments}
+> ```{r FunctionsComments2}
 >  Sys.Date()  # outputs the current date
 >  getwd()     # outputs our current working directory (folder)
 >  sum(5, 6)   # adds numbers
