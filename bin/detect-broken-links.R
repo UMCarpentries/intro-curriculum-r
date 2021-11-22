@@ -75,13 +75,14 @@ crawl_pages <- function(seed_url, root_url=base_url(seed_url), delay=.5) {
   results
 }
 
-url <- "https://umcarpentries.org/intro-curriculum-r/00-intro/index.html"#"https://umcarpentries.org/intro-curriculum-r/00-intro/index.html"
-all_links <- crawl_pages(url)
-bad_links <- all_links %>% filter(result != "OK")
+detect_broken_links <- function(url) {
+  all_links <- crawl_pages(url)
+  broken_links <- all_links %>% filter(result != "OK")
 
-if (nrow(bad_links) == 0) {
-  message("✅ All links are OK!")
-} else {
-  print(bad_links)
-  stop(paste("❗️ Detected bad links, see above for details."))
+  if (nrow(broken_links) == 0) {
+    message("✅ All links are OK!")
+  } else {
+    print(broken_links)
+    stop(paste("❗️ Detected broken links, see above for details."))
+  }
 }
