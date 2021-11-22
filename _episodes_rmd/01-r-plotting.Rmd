@@ -1058,7 +1058,7 @@ ggsave("awesome_violin_plot.jpg", plot = violin_plot, width=6, height=4)
 
 
 
-# <p style="color:blue">Bonus topics!</p>
+# Bonus topics! 
 
 # Creating complex plots
 
