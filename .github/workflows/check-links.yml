@@ -8,7 +8,7 @@ on:
 #    - cron: '15 17 * * 1'
 
 jobs:
-  build-website:
+  check-links:
     runs-on: ubuntu-latest
     defaults:
       run:
