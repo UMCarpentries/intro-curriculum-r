@@ -62,7 +62,7 @@ In R Markdown, you can incorporate ordinary text (ex. experimental methods, anal
 _[Back to top](#contents)_
 
 To get started, let's use the Unix Shell to create a directory within `un-report` called `reports` where we will write our reports to the UN.
-First, open the Unix Shell and `cd` to `un-report`
+First, open the Unix Shell and `cd` to `un-report`:
 
 ~~~
 pwd
@@ -74,6 +74,8 @@ mkdir reports
 /home/USERNAME/Desktop/un-report/reports/
 ~~~
 {: .output}
+
+Note that there is an option to use the terminal from R Studio (tab next to Console), but on Windows computers this terminal might not be a Unix Shell. 
 
 
 ## Creating an R Markdown file
