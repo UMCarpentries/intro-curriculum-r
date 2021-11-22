@@ -111,7 +111,7 @@ gapminder_data %>% summarize(averageLifeExp=mean(lifeExp))
  
 This line of code will do the exact same thing as our first summary command, but the piping function tells R to use the `gapminder_data` dataframe as the first argument in the next function.
 
-This lets us "chain" together multiple functions, which will be helpful later.
+This lets us "chain" together multiple functions, which will be helpful later. Note that the pipe (`%>%`) is a bit different from using the ggplot plus (`+`). Pipes take the output from the left side and use it as input to the right side. Plusses layer on additional information (right side) to a preexisting plot (left side). 
  
 We can also add an <kdb>Enter</kdb> to make it look nicer:  
 ```{r AvgLifeExpWithPipe2}
