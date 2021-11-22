@@ -40,7 +40,7 @@ There are many local opportunities at the University of Michigan or around the A
 
 * [Software Carpentry Workshops](https://umswc.github.io/workshops/)
     - We're always looking for more helpers & instructors!
-* [CoderSpaces](https://datascience.isr.umich.edu/)
+* [CoderSpaces](https://datascience.isr.umich.edu/events/coderspaces/)
 * [Data Analysis Networking Group (_DANG!_)](https://um-dang.github.io/)
 * [CSCAR consulting](https://cscar.research.umich.edu/) and [workshops](https://cscar.research.umich.edu/events/category/workshops/)
 * [Local meetup groups](https://www.meetup.com/topics/computer-programming/us/mi/ann_arbor/)
