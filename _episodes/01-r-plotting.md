@@ -169,7 +169,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
@@ -186,7 +186,7 @@ library(tidyverse)
 
 
 ~~~
-── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -267,7 +267,7 @@ Rows: 142 Columns: 5
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (3): pop, lifeExp, gdpPercap
@@ -407,7 +407,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd"
+[1] "/home/runner/work/intro-curriculum-r/intro-curriculum-r/_episodes_rmd"
 ~~~
 {: .output}
 
@@ -436,7 +436,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd"
+> [1] "/home/runner/work/intro-curriculum-r/intro-curriculum-r/_episodes_rmd"
 > ~~~
 > {: .output}
 {: .callout}
@@ -488,7 +488,7 @@ Rows: 142 Columns: 5
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (3): pop, lifeExp, gdpPercap
@@ -857,7 +857,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1532,92 +1532,6 @@ animatedHansPlot <- staticHansPlot +
 animatedHansPlot
 ~~~
 {: .language-r}
-
-
-
-~~~
-Rendering [--------------------------------------------] at 1.3 fps ~ eta: 1m
-Rendering [>-------------------------------------------] at 1.3 fps ~ eta: 1m
-Rendering [>-------------------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [=>--------------------------------------------] at 1 fps ~ eta: 2m
-Rendering [==>-------------------------------------------] at 1 fps ~ eta: 2m
-Rendering [==>-----------------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [===>----------------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [====>---------------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [=====>--------------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [======>-------------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [======>-------------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [=======>------------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [========>-----------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [=========>----------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [==========>---------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [==========>---------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [===========>--------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [============>-------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [=============>------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [==============>-------------------------------] at 1 fps ~ eta: 1m
-Rendering [===============>------------------------------] at 1 fps ~ eta: 1m
-Rendering [================>-----------------------------] at 1 fps ~ eta: 1m
-Rendering [=================>----------------------------] at 1 fps ~ eta: 1m
-Rendering [==================>---------------------------] at 1 fps ~ eta: 1m
-Rendering [===================>--------------------------] at 1 fps ~ eta: 1m
-Rendering [====================>-------------------------] at 1 fps ~ eta: 1m
-Rendering [===================>-----------------------] at 0.98 fps ~ eta: 1m
-Rendering [===================>-----------------------] at 0.97 fps ~ eta: 1m
-Rendering [====================>----------------------] at 0.97 fps ~ eta: 1m
-Rendering [====================>----------------------] at 0.95 fps ~ eta: 1m
-Rendering [=====================>---------------------] at 0.94 fps ~ eta: 1m
-Rendering [=====================>---------------------] at 0.95 fps ~ eta: 1m
-Rendering [======================>--------------------] at 0.94 fps ~ eta: 50s
-Rendering [======================>--------------------] at 0.95 fps ~ eta: 49s
-Rendering [=======================>-------------------] at 0.94 fps ~ eta: 48s
-Rendering [=======================>-------------------] at 0.94 fps ~ eta: 47s
-Rendering [========================>------------------] at 0.93 fps ~ eta: 46s
-Rendering [========================>------------------] at 0.92 fps ~ eta: 46s
-Rendering [=========================>------------------] at 0.9 fps ~ eta: 46s
-Rendering [=========================>-----------------] at 0.89 fps ~ eta: 45s
-Rendering [=========================>-----------------] at 0.88 fps ~ eta: 44s
-Rendering [==========================>----------------] at 0.88 fps ~ eta: 43s
-Rendering [==========================>----------------] at 0.88 fps ~ eta: 42s
-Rendering [===========================>---------------] at 0.88 fps ~ eta: 41s
-Rendering [===========================>---------------] at 0.88 fps ~ eta: 40s
-Rendering [===========================>---------------] at 0.88 fps ~ eta: 39s
-Rendering [============================>--------------] at 0.87 fps ~ eta: 38s
-Rendering [============================>--------------] at 0.87 fps ~ eta: 37s
-Rendering [=============================>-------------] at 0.86 fps ~ eta: 36s
-Rendering [=============================>-------------] at 0.86 fps ~ eta: 35s
-Rendering [==============================>------------] at 0.86 fps ~ eta: 34s
-Rendering [==============================>------------] at 0.87 fps ~ eta: 32s
-Rendering [==============================>------------] at 0.87 fps ~ eta: 31s
-Rendering [===============================>-----------] at 0.87 fps ~ eta: 30s
-Rendering [===============================>-----------] at 0.87 fps ~ eta: 29s
-Rendering [================================>----------] at 0.87 fps ~ eta: 28s
-Rendering [================================>----------] at 0.87 fps ~ eta: 26s
-Rendering [=================================>---------] at 0.87 fps ~ eta: 25s
-Rendering [=================================>---------] at 0.87 fps ~ eta: 24s
-Rendering [=================================>---------] at 0.88 fps ~ eta: 23s
-Rendering [==================================>--------] at 0.87 fps ~ eta: 22s
-Rendering [==================================>--------] at 0.88 fps ~ eta: 21s
-Rendering [===================================>-------] at 0.87 fps ~ eta: 20s
-Rendering [===================================>-------] at 0.85 fps ~ eta: 19s
-Rendering [====================================>------] at 0.85 fps ~ eta: 18s
-Rendering [====================================>------] at 0.85 fps ~ eta: 17s
-Rendering [====================================>------] at 0.84 fps ~ eta: 15s
-Rendering [=====================================>-----] at 0.84 fps ~ eta: 14s
-Rendering [=====================================>-----] at 0.84 fps ~ eta: 13s
-Rendering [======================================>----] at 0.84 fps ~ eta: 12s
-Rendering [======================================>----] at 0.84 fps ~ eta: 11s
-Rendering [=======================================>---] at 0.84 fps ~ eta: 10s
-Rendering [=======================================>---] at 0.84 fps ~ eta: 8s
-Rendering [=======================================>---] at 0.84 fps ~ eta: 7s
-Rendering [========================================>--] at 0.84 fps ~ eta: 6s
-Rendering [========================================>--] at 0.84 fps ~ eta: 5s
-Rendering [=========================================>-] at 0.84 fps ~ eta: 4s
-Rendering [=========================================>-] at 0.84 fps ~ eta: 2s
-Rendering [==========================================>] at 0.84 fps ~ eta: 1s
-Rendering [===========================================] at 0.84 fps ~ eta: 0s
-~~~
-{: .output}
 
 <img src="fig/rmd-01-hansGraphAnimated-1.gif" title="plot of chunk hansGraphAnimated" alt="plot of chunk hansGraphAnimated" style="display: block; margin: auto;" />
 

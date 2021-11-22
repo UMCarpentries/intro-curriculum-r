@@ -76,7 +76,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
@@ -93,7 +93,7 @@ library(tidyverse)
 
 
 ~~~
-── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -121,7 +121,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -774,7 +774,7 @@ Before we move on to more data cleaning, let's create the final gapminder datafr
 > > 
 > > 
 > > ~~~
-> > ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> > ── Column specification ────────────────────────────────────────────────────────
 > > Delimiter: ","
 > > chr (2): country, continent
 > > dbl (4): year, pop, lifeExp, gdpPercap
@@ -870,7 +870,7 @@ Rows: 2133 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (7): T24, CO2 emission estimates, ...3, ...4, ...5, ...6, ...7
 ~~~
@@ -931,7 +931,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): ...2, Series, Footnotes, Source
 dbl (3): Region/Country/Area, Year, Value
@@ -991,7 +991,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1056,7 +1056,7 @@ dbl (3): region, year, value
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -1107,7 +1107,7 @@ dbl (3): region, year, value
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -1168,7 +1168,7 @@ We previously saw how we can subset columns from a data frame using the select f
 > > 
 > > 
 > > ~~~
-> > ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> > ── Column specification ────────────────────────────────────────────────────────
 > > Delimiter: ","
 > > chr (4): country, series, footnotes, source
 > > dbl (3): region, year, value
@@ -1228,7 +1228,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1287,7 +1287,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1351,7 +1351,7 @@ Excellent! The last step before we can join this data frame is to get the most d
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): country, series, footnotes, source
 > dbl (3): region, year, value
@@ -1415,7 +1415,7 @@ Excellent! The last step before we can join this data frame is to get the most d
 > > 
 > > 
 > > ~~~
-> > ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> > ── Column specification ────────────────────────────────────────────────────────
 > > Delimiter: ","
 > > chr (4): country, series, footnotes, source
 > > dbl (3): region, year, value
@@ -1479,7 +1479,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1523,7 +1523,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1680,7 +1680,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1746,7 +1746,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1788,7 +1788,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
