@@ -1,11 +1,12 @@
 name: Website
 on:
-  push:
-    branches:
-      - test-actions
+  pull_request:
+    - gh-pages
+    - main
+
 jobs:
   build-website:
-    if: github.repository != 'carpentries/styles' && (github.repository_owner == 'UMSWC' || github.repository_owner == 'swcarpentry' || github.repository_owner == 'datacarpentry' || github.repository_owner == 'librarycarpentry' || github.repository_owner == 'carpentries')
+    if: github.repository != 'carpentries/styles' && (github.repository_owner == 'UMCarpentries' || github.repository_owner == 'swcarpentry' || github.repository_owner == 'datacarpentry' || github.repository_owner == 'librarycarpentry' || github.repository_owner == 'carpentries')
     runs-on: ubuntu-latest
     defaults:
       run:
