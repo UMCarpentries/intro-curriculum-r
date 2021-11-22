@@ -78,7 +78,7 @@ Since then, I’ve learned that it’s just another way to navigate your compute
 For instance, you can use it to combine existing tools into a pipeline to automate analyses, you can write a script to do things for you and improve reproducibility, you can interact with remote machines and supercomputers that are far away from you, and sometimes it’s the only option for the program you want to run.
 
 We’re going to use it to:
-1. Organize our R code and plots from the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html).
+1. Organize our R code and plots from the [R plotting lesson]({{ page.root }}/01-r-plotting/).
 1. Perform version control using git during the rest of the workshop.
 
 ## What the Shell looks like
@@ -420,7 +420,7 @@ pwd
 ## Working with files and directories
 _[Back to top](#contents)_
 
-Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson](https://umswc.github.io/curriculum/01-r-plotting/index.html)
+Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson]({{ page.root }}/01-r-plotting/)
 You might ask: why would I use the command line when I could just use the GUI?
 My best response is that if you ever need to use a high-performance computing cluster (such as Great Lakes at the University of Michigan), you’ll have no other option.
 You might also come to like it more than clicking around to get places once you get comfortable, because it’s a lot faster!

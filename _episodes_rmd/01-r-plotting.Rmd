@@ -33,6 +33,7 @@ knitr_fig_path("01-")
 set.seed(20210109)
 ```
 
+
 ### Contents
 1. [Introduction to R and RStudio](#introduction-to-r-and-rstudio)
 1. [Loading and reviewing data](#loading-and-reviewing-data)
@@ -66,7 +67,7 @@ _[Back to top](#contents)_
 In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP).
 To test this hypothesis, we'll need two things: data and a platform to analyze the data.
 
-You already [downloaded the data](setup_instructions). But what platform will we use to analyze the data? We have many options!
+You already [downloaded the data]({{ page.root }}/setup/). But what platform will we use to analyze the data? We have many options!
 
 We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexibility, and don't easily allow for things that are critical to ["reproducible" research](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285), like easily sharing the steps used to explore and make changes to the original data.
 
@@ -78,9 +79,9 @@ Instead, we'll use a programming language to test our hypothesis. Today we will 
 >
 {: .solution}
 
-To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up](setup_instructions) for this workshop.
+To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up]({{ page.root }}/setup/) for this workshop.
 
-To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up](setup_instructions). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
+To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up]({{ page.root }}/setup/). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
 > Bonus Exercise: Can you think of a reason you might not want to use RStudio?
 >
@@ -169,7 +170,11 @@ library(tidyverse)
 
 > ## What's with all those messages???
 >
+<<<<<<< HEAD
 > When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. The `tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
+=======
+> When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson]({{ page.root }}/04-r-data-analysis/)).
+>>>>>>> main
 
 > The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that:
 >
@@ -189,7 +194,7 @@ library(tidyverse)
 >
 > You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2", "Data Transformation with dplyr", "R Markdown Cheat Sheet", and "R Markdown Reference Guide".
 >
-> For things that aren't on the cheat sheets, [Google is your best friend](../_episodes/06-conclusion.md). Even expert coders use Google when they're stuck or trying something new!
+> For things that aren't on the cheat sheets, [Google is your best friend]({{ page.root }}/06-conclusion/). Even expert coders use Google when they're stuck or trying something new!
 >
 {: .testimonial}
 
@@ -332,6 +337,16 @@ Do all functions need arguments? Let's test some other functions:
   getwd()
 ```
 
+<<<<<<< HEAD
+=======
+> ## Comments
+> Sometimes you may want to write comments in your code to help you remember what your code is doing, but you don't want R to think these comments are a part of the code you want to evaluate. That's where **comments** come in! Anything after a `#` symbol in your code will be ignored by R. For example, let's say we wanted to make a note of what each of the functions we just used do:
+> ```{r FunctionsComments}
+>  Sys.Date()  # outputs the current date
+>  getwd()     # outputs our current working directory (folder)
+> ```
+{: .callout}
+>>>>>>> main
 
 While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together:
 
@@ -1180,5 +1195,6 @@ _[Back to top](#contents)_
 - Facets: Dividing your data into non-overlapping groups and making a small plot for each subgroup
 - Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
 - Factor: a way of storing data to let R know the values are discrete so they get special treatment
+
 
 

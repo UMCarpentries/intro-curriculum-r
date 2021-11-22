@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Software Carpentry"
+title: "Introduction to the Workshop"
 teaching: 15
 exercises: 0
 questions: 
