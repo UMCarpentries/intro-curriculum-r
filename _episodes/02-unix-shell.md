@@ -168,7 +168,7 @@ man ls
 
 ![]({{ page.root }}/fig/unix-shell/man_ls.png)
 
-On the manual page for `ls`, we see a section titled **options**. These options, also called **flags**, allow us to customize how `ls` runs.
+On the manual page for `ls`, we see a section titled **options**. These options, also called **flags**, are similar to arguments in R functions, and allow us to customize how `ls` runs.
 
 One very helpful flag that is available for any command is `-h or --help` which will print brief documentation for the command.
 
