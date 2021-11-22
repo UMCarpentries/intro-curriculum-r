@@ -571,7 +571,7 @@ _[Back to top](#contents)_
 
 > ## Solution
 > ```{r}
-> rnd <- read_csv('data/rnd-un-data.csv', skip = 1) %>% rename(country=X2) %>% rename_all(tolower)
+> rnd <- read_csv('data/rnd-un-data.csv', skip = 1) %>% rename(country='...2') %>% rename_all(tolower)
 > ```
 {: .solution}
 
@@ -663,7 +663,15 @@ pivot_wider(names_from=series, values_from=value)
 > ```
 {: .solution}
 
-[9] You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both CO2 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
+[9] **BONUS:** After merging the data sets, there is some missing data. How many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive observation in a plot and/or summary statistic? (e.g.,  `ggplot` removes `NA`s but stat functions (e.g., `median()`) often ask for specific input regarding how to deal with `NA`s).
+
+> ## Solution
+> ```{r}
+> co2_rnd %>% summarize_all(funs(sum(is.na(.))))
+> ```
+{: .solution}
+
+[10] You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both CO2 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
 
 > ## Solution
 > ```{r}
@@ -671,7 +679,7 @@ pivot_wider(names_from=series, values_from=value)
 > ```
 {: .solution}
 
-[10] How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
+[11] How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
 
 > ## Solution
 > ```{r}
@@ -682,7 +690,7 @@ pivot_wider(names_from=series, values_from=value)
 #### Plotting with the CO2 and R&D datasets together
 _[Back to top](#contents)_
 
-[11] Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
+[12] Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
 
 > ## Solution
 > ```{r}
@@ -694,7 +702,7 @@ _[Back to top](#contents)_
 {: .solution}
 
 
-[12] Next, facet the above plot by year.
+[13] Next, facet the above plot by year.
 
 > ## Solution
 > ```{r}
@@ -706,7 +714,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-[13] Identify the countries that have five time points for both C02 emissions and R&D.
+[14] Identify the countries that have five time points for both C02 emissions and R&D.
 
 > ## Solution
 > ```{r}
@@ -733,12 +741,19 @@ _[Back to top](#contents)_
 
 [15] For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries  are there for each value within the range? (e.g., x countries have two different years and y have five  years)
 
-[16] After merging the data sets, there is some missing data. How many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive observation in a plot and/or summary statistic? (e.g.,  `ggplot` removes `NA`s but stat functions (e.g., `median()`) often ask for specific input regarding how to deal with `NA`s).
+> ## Solution
+> ```{r}
+> rnd %>% 
+>  group_by(country) %>% 
+>  summarize(year_count = n()) %>% 
+>  group_by(year_count) %>% 
+>  summarize(country_count = n())
+> ```
+{: .solution}
 
-[17] What countries have the highest and lowest data availabilities? (How would you measure data availability?)
 
-[18] Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
+[16] Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
 
-[19] For a specific continent (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
-
-[20] Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
+> ## Solution
+> Use the info from the R markdown lesson to create a pretty report. 
+{: .solution}
