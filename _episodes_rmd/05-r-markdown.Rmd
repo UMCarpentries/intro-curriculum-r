@@ -542,7 +542,7 @@ This dataset has information on the gross domestic expenditure on research and d
 
 _Data:_ Gross domestic expenditure on research and development (R & D)
 
-_Data source:_ [UN data](data.un.org), under "Science and technology"
+_Data source:_ [UN data](http://data.un.org), under "Science and technology"
 
 _Data path:_ `data/SYB63_286_202009_GDP_on_RnD.csv`
 
