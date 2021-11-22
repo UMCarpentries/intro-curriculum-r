@@ -560,13 +560,13 @@ The dplyr package has a number of tools for joining data frames together dependi
 
 In an "inner join", the new data frame only has those rows where the same key is found in both data frames. This is a very commonly used join.
 
-![](04-r-data-analysis-assets/join-inner.png)
+![]({{ page.root }}/fig/r-data-analysis/join-inner.png)
 
 > ## Bonus: Other dplyr join functions 
 >
 > Outer joins and can be performed using `left_join()`, `right_join()`, and `full_join()`. In a "left join", if the key is present in the left hand data frame, it will appear in the output, even if it is not found in the the right hand data frame. For a right join, the opposite is true. For a full join, all possible keys are included in the output data frame.
 > 
-> ![](04-r-data-analysis-assets/join-outer.png)
+> ![]({{ page.root }}/fig/r-data-analysis/join-outer.png)
 {: .solution}
 
 Let's give the `inner_join()` function a try.
