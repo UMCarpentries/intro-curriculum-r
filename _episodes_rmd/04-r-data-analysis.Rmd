@@ -430,11 +430,12 @@ Now we get a similar Warning message as before, but the outputted table looks be
 > **Warnings and Errors: **It's important to differentiate between Warnings and Errors in R. A warning tells us, "you might want to know about this issue, but R still did what you asked". An error tells us, "there's something wrong with your code or your data and R didn't do what you asked". You need to fix any errors that arise. Warnings, are probably best to resolve or at least understand why they are coming up.
 {.callout}
 
-We can resolve this warning by telling `read_csv()` what the column names should be with the `col_names()` argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings.
+We can resolve this warning by telling `read_csv()` what the column names should be with the `col_names()` argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings. Let's also save this dataframe to `co2_emissions_dirty` so that we don't have to read it in every time we want to clean it even more.
 
 ```{r CleanEmissionsColNames1}
-read_csv("data/co2-un-data.csv", skip=2,
+co2_emissions_dirty <- read_csv("data/co2-un-data.csv", skip=2,
          col_names=c("region", "country", "year", "series", "value", "footnotes", "source"))
+co2_emissions_dirty
 ```
 
 > ## Bonus: Another way to deal with this error
@@ -461,8 +462,8 @@ We previously saw how we can subset columns from a data frame using the select f
 > 
 > > Solution: 
 > > ```{r CleanEmissionsSelect}
-> > read_csv("data/co2-un-data.csv", skip=2,
-> >          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> > 
+> > co2_emissions_dirty %>%
 > >   select(country, year, series, value)
 > > ```
 > {: .solution}
@@ -471,8 +472,7 @@ We previously saw how we can subset columns from a data frame using the select f
 The series column has two methods of quantifying CO2 emissions - "Emissions (thousand metric tons of carbon dioxide)" and "Emissions per capita (metric tons of carbon dioxide)". Those are long titles that we'd like to shorten to make them easier to work with. We can shorten them to "total_emissions" and "per_capita_emissions" using the recode function. We need to do this within the mutate function where we will mutate the series column. The syntax in the recode function is to tell recode which column we want to recode and then what the old value (e.g. "Emissions (thousand metric tons of carbon dioxide)") should equal after recoding (e.g. "total").
 
 ```{r CleanEmissionsMutateRecode}
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+co2_emissions_dirty %>% 
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emissions",
                          "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emissions"))
@@ -481,8 +481,7 @@ read_csv("data/co2-un-data.csv", skip=2,
 Recall that we'd like to have separate columns for the two ways that we CO2 emissions data. To achieve this, we'll use the pivot_wider function that we saw previously. The columns we want to spread out are series (i.e. names_from) and value (i.e. values_from).
 
 ```{r CleanEmissionsPivotWider}
-read_csv("data/co2-un-data.csv", skip=2,
-         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+co2_emissions_dirty %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
                          "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
@@ -496,8 +495,7 @@ Excellent! The last step before we can join this data frame is to get the most d
 > We want to make sure we pick a year that is close to 2005, but also a year that has a decent amount of data to work with. One useful tool is the `count()` function, which will tell us how many times a value is repeated in a column of a data frame. Let's use this function on the year column to see which years we have data for and to tell us whether we have a good number of countries represented in that year.
 > 
 > ```{r CleanEmissionsyearCountryCount}
-> read_csv("data/co2-un-data.csv", skip=2,
->         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> co2_emissions_dirty %>%
 >  select(country, year, series, value) %>%
 >  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
 >                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
@@ -514,8 +512,7 @@ Excellent! The last step before we can join this data frame is to get the most d
 > 
 > > Solution: 
 > > ```{r CleanEmissionsByYear}
-> > read_csv("data/co2-un-data.csv", skip=2,
-> >         col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+> > co2_emissions_dirty %>%
 > >  select(country, year, series, value) %>%
 > >  mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total",
 > >                         "Emissions per capita (metric tons of carbon dioxide)" = "per_capita")) %>%
@@ -527,11 +524,10 @@ Excellent! The last step before we can join this data frame is to get the most d
 {: .challenge}
 
 
-Finally, let's go ahead and assign the output of this code chunk to a variable name:
+Finally, let's go ahead and assign the output of this code chunk, which is the cleaned dataframe, to a variable name:
 
 ```{r AssignCleanEmissions}
-co2_emissions <- read_csv("data/co2-un-data.csv", skip=2,
-                          col_names=c("region", "country", "year", "series", "value", "footnotes", "source")) %>%
+co2_emissions <- co2_emissions_dirty %>%
   select(country, year, series, value) %>%
   mutate(series = recode(series, "Emissions (thousand metric tons of carbon dioxide)" = "total_emission",
                          "Emissions per capita (metric tons of carbon dioxide)" = "per_capita_emission")) %>%
