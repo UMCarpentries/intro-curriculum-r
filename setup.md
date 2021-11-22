@@ -144,7 +144,7 @@ Terminal, try one of the following:
 * In Finder, select the Go menu, then select Utilities. Locate Terminal in the Utilities folder and open it.
 * Use the Mac ‘Spotlight’ computer search function. Search for: Terminal and press Return.
 
-To see which Unix shell your Mac is running, type echo $SHELL in your terminal window.
+To see which Unix shell your Mac is running, type `echo $SHELL` in your terminal window.
 
 ### Installing Git
 
