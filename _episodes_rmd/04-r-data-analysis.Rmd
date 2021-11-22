@@ -357,7 +357,7 @@ Before we move on to more data cleaning, let's create the final gapminder datafr
 > Read in the `gapminder_data.csv` file, filter out the year 2007 and the continent "Americas." Then drop the `year` and `continent` columns from the dataframe. Then save the new dataframe into a variable called `gapminder_data_2007`. 
 > 
 > > Solution: 
-> > ```{r LoadGapminder2007}
+> > ```{r LoadGapminder2007_solution}
 > > gapminder_data_2007 <- read_csv("data/gapminder_data.csv") %>%
 > >   filter(year == 2007 & continent == "Americas") %>%
 > >   select(-year, -continent)
