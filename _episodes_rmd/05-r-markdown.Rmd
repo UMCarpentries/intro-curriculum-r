@@ -140,7 +140,7 @@ All code chunks have this format:
 cat('```{r}\n# Your code here\n```')
 ```
 
-All of the code is enclosed in 3 backticks (`r cat('```')`), and the `{r}` part indicates that it's a chunk of R code.
+All of the code is enclosed in 3 back ticks (`r cat("\x60\x60\x60")`), and the `{r}` part indicates that it's a chunk of R code.
 
 You can also include other information within the curly brackets to indicate different information about that code chunk.
 For instance, the first code block is named "setup", and `include=FALSE` prevents code and results from showing up in the output file.
