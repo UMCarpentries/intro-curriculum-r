@@ -834,14 +834,14 @@ Let's say we want to spice up our plot a bit by adding some color. Maybe we want
 ```{r GapViolinColor}
 ggplot(data = gapminder_1997) +
   aes(x = continent, y = lifeExp) +
-  geom_violin(color="darkolivegreen")
+  geom_violin(color="pink")
 ```
 Well, that didn't get all that colorful. That's because objects like these violins have two different parts that have a color: the shape outline, and the inner part of the shape. For geoms that have an inner part, you change the fill color with `fill=` rather than `color=`, so let's try that instead
 
 ```{r GapViolinFill}
 ggplot(data = gapminder_1997) +
   aes(x = continent, y = lifeExp) +
-  geom_violin(fill="darkolivegreen")
+  geom_violin(fill="pink")
 ```
 
 That's some plot now isn't it! Compare this to what you see when you map the fill property to your data rather than setting a specific value.
