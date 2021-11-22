@@ -1,8 +1,11 @@
 name: check-links
 
 on:
-  schedule:
-    - cron: '15 17 * * 1'
+  push:
+    branches:
+      - "iss-152"
+#  schedule:
+#    - cron: '15 17 * * 1'
 
 jobs:
   build-website:
