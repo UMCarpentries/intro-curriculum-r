@@ -21,13 +21,17 @@ jobs:
           fetch-depth: 0
 
       - name: Set up R
-        if: steps.check-rmd.outputs.count != 0
         uses: r-lib/actions/setup-r@master
         with:
           r-version: 'release'
 
       - name: Install needed packages
-        if: steps.check-rmd.outputs.count != 0
         run: |
           install.packages(c('rvest', 'purr', 'dplyr', 'httr'))
+        shell: Rscript {0}
+
+      - name: Check URL links
+        run: |
+          source("bin/detect-broken-links.R")
+          detect_broken_links("https://umcarpentries.org/intro-curriculum-r")
         shell: Rscript {0}
