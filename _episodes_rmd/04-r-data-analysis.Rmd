@@ -9,8 +9,8 @@ questions:
 - "How can I combine two datasets from different sources?"
 - "How can data tidying facilitate answering analysis questions?"
 objectives:
-- "To become familiar with the functions of the `dplyr` package."
-- "To be able to use `dplyr` to prepare data for analysis."
+- "To become familiar with the functions of the `dplyr` and `tidyr` packages."
+- "To be able to use `dplyr` and `tidyr` to prepare data for analysis."
 - "To be able to combine two different data sources using joins."
 - "To be able to create plots and summary tables to answer analysis questions."
 keypoints:
