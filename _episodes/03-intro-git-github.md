@@ -1426,9 +1426,8 @@ $ git init
 ```
 {: .language-bash}
 
-If you remember back to the earlier [lesson]({{ page.root }}/04-changes/) where we added and
-committed our earlier work on `notes.txt`, we had a diagram of the local repository
-which looked like this:
+If you remember back to when we added and committed our earlier work on
+`notes.txt`, we had a diagram of the local repository which looked like this:
 
 ![The Local Repository with Git Staging Area]({{ page.root }}/fig/git/git-staging-area.svg)
 

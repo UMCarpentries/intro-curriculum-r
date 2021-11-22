@@ -217,7 +217,7 @@ first, we will check the status of our repository with the `git status`. This wi
 Next, we will add the new files that we want tracked by git up with `git add <filename(s)>`.  This adds any file(s) we list to version control.  
 Then we commit the file or changes with `git commit -m "<your commit message>"` and we add a message with the commit to describe the changes you are committing and it adds them to the git log.  
 Now, we can push those changes from our local computer to our github repo with `git push`. This will upload the changes to the git directory on the remote server.  
-If you don't remember how to do this, you can review the [git lesson](_episodes/03-intro-git-github.md).
+If you don't remember how to do this, you can review the [git lesson]({{ page.root }}/03-intro-git-github/).
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
 
@@ -542,7 +542,7 @@ This dataset has information on the gross domestic expenditure on research and d
 
 _Data:_ Gross domestic expenditure on research and development (R & D)
 
-_Data source:_ [UN data](data.un.org), under "Science and technology"
+_Data source:_ [UN data](http://data.un.org), under "Science and technology"
 
 _Data path:_ `data/SYB63_286_202009_GDP_on_RnD.csv`
 
@@ -644,7 +644,7 @@ Now we're going to work with the CO2 and R&D datasets together.
 
 Unfortunately, we don't have the exact same dates for all of them.
 
-1. First, read in the CO2 dataset. You can use the code from the [R for data analysis](_episodes/04-r-data-analysis.md) lesson to clean the CO2 data.
+1. First, read in the CO2 dataset. You can use the code from the [R for data analysis]({{ page.root }}/04-r-data-analysis/) lesson to clean the CO2 data.
 
 > ## Solution
 > ```{r}

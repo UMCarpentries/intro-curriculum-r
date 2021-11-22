@@ -9,9 +9,9 @@ install_required_packages <- function(lib = NULL, repos = getOption("repos", def
     c("rprojroot", "desc", "remotes", "renv"),
     rownames(installed.packages(lib.loc = lib))
   )
-
-  install.packages(missing_pkgs, lib = lib, repos = repos)
-
+  if (length(missing_pkgs) > 0) {
+    install.packages(missing_pkgs, lib = lib, repos = "https://cran.rstudio.com/")
+  }
 }
 
 find_root <- function() {

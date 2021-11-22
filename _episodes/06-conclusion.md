@@ -40,7 +40,7 @@ There are many local opportunities at the University of Michigan or around the A
 
 * [Software Carpentry Workshops](https://umswc.github.io/workshops/)
     - We're always looking for more helpers & instructors!
-* [CoderSpaces](https://datascience.isr.umich.edu/), [CoderSpaces Slack Space](https://join.slack.com/t/umcoderspaces/signup)
+* [CoderSpaces](https://datascience.isr.umich.edu/events/coderspaces/)
 * [Data Analysis Networking Group (_DANG!_)](https://um-dang.github.io/)
 * [CSCAR consulting](https://cscar.research.umich.edu/) and [workshops](https://cscar.research.umich.edu/events/category/workshops/)
 * [Local meetup groups](https://www.meetup.com/topics/computer-programming/us/mi/ann_arbor/)
@@ -102,7 +102,7 @@ In the following, we list some strategies and resources we find useful. As you m
 ### R Markdown
 
 * [Getting started with R Markdown Online Tutorial](https://rmarkdown.rstudio.com/lesson-1.html)
-* [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+* [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/blob/main/rmarkdown-2.0.pdf)
 * [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 
 ### Free learning platforms available at U-M
