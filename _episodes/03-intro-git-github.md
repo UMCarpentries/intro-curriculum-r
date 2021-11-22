@@ -1814,6 +1814,8 @@ GitHub) are back in sync!
 > >
 > > On GitHub, the Collaborator can go to the repository and click on
 > > "commits" to view the most recent commits pushed to the repository.
+> >
+> > ![github-commits]({{ page.root }}/fig/git/commits.png)
 > {: .solution}
 {: .challenge}
 
@@ -1822,10 +1824,14 @@ GitHub) are back in sync!
 > The Collaborator has some questions about one line change made by the Owner and
 > has some suggestions to propose.
 >
-> With GitHub, it is possible to comment the diff of a commit. Over the line of
-> code to comment, a blue comment icon appears to open a comment window.
+> With GitHub, it is possible to comment the diff of a commit. From the main 
+> repository page, click on "commits", and click on a recent commit. Hover your 
+> mouse over a line of code, and a blue plus icon will appear to open a comment 
+> window.
 >
-> The Collaborator posts comments and suggestions using GitHub interface.
+> The Collaborator posts comments and suggestions using the GitHub interface.
+>
+> ![comment-icon](https://docs.github.com/assets/images/help/commits/hover-comment-icon.gif)
 {: .challenge}
 
 > ## Version History, Backup, and Version Control
