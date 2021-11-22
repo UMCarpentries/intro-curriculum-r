@@ -23,6 +23,10 @@ keypoints:
 
 ---
 
+<!-- Begin Link shortcuts -->
+[setup_instructions]: http://umcarpentries.github.io/intro-curriculum-r/setup.html
+<!-- End Link shortuts -->
+
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("01-")
@@ -32,6 +36,7 @@ knitr_fig_path("01-")
 # prevents jitter plots from changing
 set.seed(20210109)
 ```
+
 
 ### Contents
 1. [Introduction to R and RStudio](#introduction-to-r-and-rstudio)
@@ -1172,5 +1177,6 @@ _[Back to top](#contents)_
 - Facets: Dividing your data into non-overlapping groups and making a small plot for each subgroup
 - Layer: Each ggplot is made up of one or more layers. Each layer contains one geometry and may also contain custom aesthetic mappings and private data
 - Factor: a way of storing data to let R know the values are discrete so they get special treatment
+
 
 
