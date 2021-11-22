@@ -1,0 +1,30 @@
+name: check-links
+
+on:
+  schedule:
+    - cron: '15 17 * * 1'
+
+jobs:
+  build-website:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+
+      - name: Checkout the lesson
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up R
+        if: steps.check-rmd.outputs.count != 0
+        uses: r-lib/actions/setup-r@master
+        with:
+          r-version: 'release'
+
+      - name: Install needed packages
+        if: steps.check-rmd.outputs.count != 0
+        run: |
+          install.packages(c('rvest', 'purr', 'dplyr', 'httr'))
+        shell: Rscript {0}
