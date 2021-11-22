@@ -102,7 +102,7 @@ In the following, we list some strategies and resources we find useful. As you m
 ### R Markdown
 
 * [Getting started with R Markdown Online Tutorial](https://rmarkdown.rstudio.com/lesson-1.html)
-* [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+* [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/blob/main/rmarkdown-2.0.pdf)
 * [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 
 ### Free learning platforms available at U-M
