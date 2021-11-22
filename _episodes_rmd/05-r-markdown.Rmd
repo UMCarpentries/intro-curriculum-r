@@ -372,12 +372,14 @@ If you don't already have your partner's GitHub repo cloned from the git/GitHub 
 The way you will collaborate with each other is as follows:
 1. For each exercise, both people will be thinking about how to answer the question, but only one person will be writing the code.
 This is called _paired programming_.
-1. Once you have completed an exercise, the person working on the exercise will add, commit, and push the changes to GitHub.
+1. Once you have completed 3 exercises, the person working on the exercises will add, commit, and push the changes to GitHub.
 1. Then the other person will pull the changes from GitHub.
 1. The person who pulled changes will code for the next exercise.
 1. Repeat the process for as many exercises as you can finish in the remaining time.
+
 Don't worry if you don't finish all of the exercises, and it's not a race between groups!
 This is just a way for you to practice what you've learned.
+Also, you can switch off more or less frequently depending on how much you want to practice pushing and pulling to/from GitHub.
 
 **One note:** It may be helpful to copy and paste the questions into the R Markdown file as you go.
 
@@ -386,7 +388,7 @@ _[Back to top](#contents)_
 
 First we're going to start out with a few questions about the gapminder dataset.
 
-1. The very first step is to read in the gapminder dataset, so don't forget! Also load the `tidyverse` package.
+[1] The very first step is to read in the gapminder dataset, so do that first! Also load the `tidyverse` package.
 
 > ## Solution
 > ```{r}
@@ -398,7 +400,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 #### Investigating population over time.
 _[Back to top](#contents)_
 
-2. Make a scatter plot of year vs. population, separated into a plot for each contient. **HINT:** you can use `facet_wrap(vars(column_name))` to separate into different plots based on that column.
+[2] Make a scatter plot of year vs. population, separated into a plot for each contient. **Hint:** you can use `facet_wrap(vars(column_name))` to separate into different plots based on that column.
 
 > ## Solution
 > ```{r}
@@ -408,15 +410,15 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-3. It seems like there are 2 outliers - which countries are those?
+[3] It seems like there are 2 outliers - which countries are those?
 
 > ## Solution
->```{r}
+> ```{r}
 > gapminder %>% filter(pop > 1e9) %>% select(country) %>% unique()
 > ```
 {: .solution}
 
-4. Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries.
+[4] Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries.
 
 > ## Solution
 > ```{r}
@@ -430,7 +432,7 @@ _[Back to top](#contents)_
 ##### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
-5. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do this!
+[5] In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do this!
 
 > Solution
 > ```{r}
@@ -441,7 +443,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-6. It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? HINT: This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
+[6] It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? **Hint:**  This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
 
 > ## Solution
 > ```{r}
@@ -455,7 +457,7 @@ _[Back to top](#contents)_
 #### Looking into life expectancy a bit more.
 _[Back to top](#contents)_
 
-7. What country had the highest life expectancy in 1982? **Hint:** use the `slice_max()` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
+[7] What country had the highest life expectancy in 1982? **Hint:** use the `slice_max()` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
 
 > ## Solution
 > ```{r,comment=NA,echo=F,collapse=T}
@@ -463,7 +465,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-8. Now, do the same thing but for all years! *HINT:* Use the `group_by()` function.
+[8] Now, do the same thing but for all years! **Hint:** Use the `group_by()` function.
 
 > ## Solution
 > ```{r}
@@ -471,7 +473,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-9. Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
+[9] Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
 
 > ## Solution
 > ```{r,comment=NA,echo=F,collapse=T}
@@ -485,7 +487,7 @@ _[Back to top](#contents)_
 ##### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
-10. What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
+[10] What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
 
 > ## Solution
 > ```{r}
@@ -493,7 +495,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-11. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text, too. Feel free to change the theme if you'd like.
+[11] Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text, too. Feel free to change the theme if you'd like.
 
 > ## Solution
 > ```{r,comment=NA,echo=F,collapse=T}
@@ -507,7 +509,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-12. Which country has had the greatest increase in life expectancy from 1952 to 2007? **HINT:** You might want to use the `pivot_wider()` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy.
+[12] Which country has had the greatest increase in life expectancy from 1952 to 2007? **Hint:** You might want to use the `pivot_wider()` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy.
 
 > ## Solution
 > ```{r,comment=NA,echo=F,collapse=T}
@@ -515,7 +517,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-13. What countries had a decrease in life expectancy from 1952 to 2007?
+[13] What countries had a decrease in life expectancy from 1952 to 2007?
 
 > ## Solution
 > ```{r,comment=NA,echo=F,collapse=T}
@@ -565,7 +567,7 @@ Region/Country/Area,,Year,Series,Value,Footnotes,Source
 #### Reading in and cleaning the data
 _[Back to top](#contents)_
 
-1. First, read in the data. Note that you need to skip the first line of the file because that's just a title for the whole dataset (see above). Also rename the columns to something more informative (as you learned, there are lots of ways to do this, and different preferences - feel free to use whichever method you want!).
+[1] First, read in the data. Note that you need to skip the first line of the file because that's just a title for the whole dataset (see above). Also rename the columns to something more informative (as you learned, there are lots of ways to do this, and different preferences - feel free to use whichever method you want!).
 
 > ## Solution
 > ```{r}
@@ -573,7 +575,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-2. Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
+[2] Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
 
 > ## Solution
 > ```{r}
@@ -588,7 +590,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-3. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This should give you the following columns: country name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
+[3] Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This should give you the following columns: country name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
 
 > ## Solution
 > ```{r}
@@ -603,7 +605,7 @@ Now we have our data set up in a way that makes it easier to work with. Feel fre
 #### Plotting with the R & D dataset
 _[Back to top](#contents)_
 
-1. Plot the distribution of percent expenditure using a histogram. Observe the range and how heavy the "tails" are. **Note:** You will likely get a note and a warning. Feel free to change the number of bins as the note describes. Why do you get warnings? (Hint: Look at the column you're plotting.). **Bonus:** Plot the same exact data in a way in which you don't get warnings.
+[4] Plot the distribution of percent expenditure using a histogram. Observe the range and how heavy the "tails" are. **Note:** You will likely get a note and a warning. Feel free to change the number of bins as the note describes. Why do you get warnings? (Hint: Look at the column you're plotting.). **Bonus:** Plot the same exact data in a way in which you don't get warnings.
 
 > ## Solution
 > ```{r}
@@ -612,7 +614,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-2. Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want.
+[5] Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want.
 
 > ## Solution
 > ```{r}
@@ -622,7 +624,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-3. Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
+[6] Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
 
 > ## Solution
 > ```{r}
@@ -639,7 +641,7 @@ Now we're going to work with the CO2 and R&D datasets together.
 
 Unfortunately, we don't have the exact same dates for all of them.
 
-1. First, read in the CO2 dataset. You can use the code from the [R for data analysis](_episodes/04-r-data-analysis.md) lesson to clean the CO2 data.
+[7] First, read in the CO2 dataset. You can use the code from the [R for data analysis](_episodes/04-r-data-analysis.md) lesson to clean the CO2 data.
 
 > ## Solution
 > ```{r}
@@ -653,7 +655,7 @@ pivot_wider(names_from=series, values_from=value)
 > ```
 {: .solution}
 
-2. Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D.
+[8] Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D.
 
 > ## Solution
 > ```{r}
@@ -661,7 +663,7 @@ pivot_wider(names_from=series, values_from=value)
 > ```
 {: .solution}
 
-3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both CO2 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
+[9] You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both CO2 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
 
 > ## Solution
 > ```{r}
@@ -669,7 +671,7 @@ pivot_wider(names_from=series, values_from=value)
 > ```
 {: .solution}
 
-4. How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
+[10] How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
 
 > ## Solution
 > ```{r}
@@ -680,7 +682,7 @@ pivot_wider(names_from=series, values_from=value)
 #### Plotting with the CO2 and R&D datasets together
 _[Back to top](#contents)_
 
-1. Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
+[11] Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
 
 > ## Solution
 > ```{r}
@@ -692,7 +694,7 @@ _[Back to top](#contents)_
 {: .solution}
 
 
-2. Next, facet the above plot by year.
+[12] Next, facet the above plot by year.
 
 > ## Solution
 > ```{r}
@@ -704,7 +706,7 @@ _[Back to top](#contents)_
 > ```
 {: .solution}
 
-3. Identify the countries that have five time points for both C02 emissions and R&D.
+[13] Identify the countries that have five time points for both C02 emissions and R&D.
 
 > ## Solution
 > ```{r}
@@ -714,7 +716,7 @@ _[Back to top](#contents)_
 
 **BONUS**
 
-4. For three of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINTS:** Use `pivot_longer` to get the data in the right format. Search the internet for how you can use `%in%`. Also remember the  `c()` function from earlier in the workshop that can be used to combine values into a vector or list.
+[14] For three of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINTS:** Use `pivot_longer` to get the data in the right format. Search the internet for how you can use `%in%`. Also remember the  `c()` function from earlier in the workshop that can be used to combine values into a vector or list.
 
 > ## Solution
 > ```{r}
@@ -729,14 +731,14 @@ _[Back to top](#contents)_
 #### Bonus questions
 _[Back to top](#contents)_
 
-5. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries  are there for each value within the range? (e.g., x countries have two different years and y have five  years)
+[15] For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries  are there for each value within the range? (e.g., x countries have two different years and y have five  years)
 
-6. After merging the data sets, there is some missing data. How many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive observation in a plot and/or summary statistic? (e.g.,  `ggplot` removes `NA`s but stat functions (e.g., `median()`) often ask for specific input regarding how to deal with `NA`s).
+[16] After merging the data sets, there is some missing data. How many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive observation in a plot and/or summary statistic? (e.g.,  `ggplot` removes `NA`s but stat functions (e.g., `median()`) often ask for specific input regarding how to deal with `NA`s).
 
-7. What countries have the highest and lowest data availabilities? (How would you measure data availability?)
+[17] What countries have the highest and lowest data availabilities? (How would you measure data availability?)
 
-8. Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
+[18] Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
 
-9. For a specific continent (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
+[19] For a specific continent (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
 
-10. Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
+[20] Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
