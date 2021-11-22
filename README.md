@@ -56,7 +56,7 @@ For a typical 2-day workshop. Can be modified for different workshop formats.
 |   | Title | Source File |
 |---|-------|-------------|
 | **Day 1** |   |
-| 09:00 | Welcome to the workshop | `_episodes/00-welcome.md` |
+| 09:00 | Welcome to the workshop | `_episodes/00-intro.md` |
 | 09:15 | **R for Plotting** | `_episodes_rmd/01-r-plotting.Rmd` |
 | 10:30 | Break |  |
 | 10:45 | **R for Plotting (Continued)** | continuation of `01-r-plotting` |

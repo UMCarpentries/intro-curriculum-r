@@ -48,7 +48,7 @@ Recall that our  goal is to generate a report to the United Nations on how a cou
 ## What is R Markdown and why use it?
 _[Back to top](#contents)_
 
-We're going to learn a way to create a report in R using something called R Markdown. R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures. R Markdown enables you to "render"  report of our analysis and results into an html, PDF or Word file that you can share with others. 
+We're going to learn a way to create a report in R using something called R Markdown. R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures. R Markdown enables you to "render" a report of our analysis and results into an html, PDF or Word file that you can share with others. 
 
 Combining Markdown and R code in the same document allows you to integrate the text of the report, the code you used, and your figures, tables, and other output into one document. The text can be your introduction, description of the research design and  experimental methods, your analysis and discussion of the results, the conclusion, or whatever else you want to include. R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, or keeping a computational notebook of your work. (If you are familiar with Jupyter notebooks in the Python programming environment, R Markdown is  R's equivalent of a Jupyter notebook.)
 
@@ -150,7 +150,7 @@ All code chunks have this format:
 ~~~
 {: .output}
 
-All of the code is enclosed in 3 backticks (`cat('```')`), and the `{r}` part indicates that it's a chunk of R code.
+All of the code is enclosed in 3 backticks (`r cat('```')`), and the `{r}` part indicates that it's a chunk of R code.
 
 You can also include other information within the curly brackets to indicate different information about that code chunk.
 For instance, the first code block is named "setup", and `include=FALSE` prevents code and results from showing up in the output file.
@@ -186,7 +186,7 @@ Now it will assume all of your relative paths for reading and writing files are 
 
 Now that we have that set up, let's start on the report!
 
-We're going to use the code you generated yesterday to plot GDP vs. Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to load the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference.
+We're going to use the code you generated yesterday to plot GDP vs. Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to load the needed packages. You could also include this in the previous setup chunk, it's up to your personal preference.
 
 
 ~~~
@@ -230,7 +230,7 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .output}
 
-Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd> button in the top left of the screen.
+Now we can knit our document to see how our report looks! Use the <kbd>knit</kbd> button in the top left of the screen.
 
 ![]({{ page.root }}/fig/r-markdown/first_report_render.png)
 
@@ -239,7 +239,7 @@ Amazing! We've created a report! Let's push this to GitHub to make sure we prese
 Now, all we need to do is commit our new report to git version control and update our remote repository using Git.
 
 Returning to the command line, 
-First, we will check the status of our repository with the `git status`. This will tell us which files just changed.  
+first, we will check the status of our repository with the `git status`. This will tell us which files just changed.  
 Next, we will add the new files that we want tracked by git up with `git add <filename(s)>`.  This adds any file(s) we list to version control.  
 Then we commit the file or changes with `git commit -m "<your commit message>"` and we add a message with the commit to describe the changes you are committing and it adds them to the git log.  
 Now, we can push those changes from our local computer to our github repo with `git push`. This will upload the changes to the git directory on the remote server.  
@@ -315,7 +315,7 @@ In addition to reporting specific values in the text, we may also want to show a
 |row 1, column1|row 1, column 2|
 |row 2, column1|row 2, column 2|
 ```
-Columns are separated by the pipe key <kbd>|</kbd> located above <kbd>Enter</kbd> on the keyboard. The dashes distinguish the header row from the rest of the table. This header could be a name for each column or a Header for the whole table. Now that we know the basic structure we can fill in our table. This is how we could present the same numbers from the previous paragraph as a table instead, again using in-line code.
+Columns are separated by the pipe key <kbd>|</kbd> located above <kbd>Enter</kbd> on the keyboard. The dashes distinguish the header row from the rest of the table. This header could be a name for each column or a header for the whole table. Now that we know the basic structure we can fill in our table. This is how we could present the same numbers from the previous paragraph as a table instead, again using in-line code.
 When we knit the report again, the code above will render like this:
 ![]({{ page.root }}/fig/r-markdown/table_format.png)
 
@@ -854,7 +854,7 @@ Unfortunately, we don't have the exact same dates for all of them.
 > {: .output}
 {: .solution}
 
-3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both C02 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
+3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both CO2 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
 
 > ## Solution
 > 

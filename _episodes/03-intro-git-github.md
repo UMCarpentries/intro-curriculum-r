@@ -195,7 +195,7 @@ $ git config --global core.editor "nano -w"
 {: .language-bash}
 
 If you have a different preferred text editor, it is possible to reconfigure the text editor for Git to other editors whenever you want to change it.
-Vim is the default editor. If did not change your editor and stuck in this editor, the following instructions will help you exit.
+Vim is the default editor. If you did not change your editor and are stuck in Vim, the following instructions will help you exit.
 
 > ## Exiting Vim
 >
@@ -1685,7 +1685,7 @@ then enter your partner's username.
 
 To accept access to the Owner's repo, the Collaborator
 needs to go to [https://github.com/notifications](https://github.com/notifications).
-Once there she can accept access to the Owner's repo.
+Once there they can accept access to the Owner's repo.
 
 Next, the Collaborator needs to download a copy of the Owner's repository to her
  machine. This is called "cloning a repo". To clone the Owner's repo into
@@ -1698,7 +1698,7 @@ $ git clone https://github.com/USERNAME/un-report.git ~/Desktop/USERNAME-un-repo
 
 Replace `USERNAME` with the Owner's username.
 
-The Collaborator can now make a change in her clone of the Owner's repository,
+The Collaborator can now make a change in their clone of the Owner's repository,
 exactly the same way as we've been doing before:
 
 ```

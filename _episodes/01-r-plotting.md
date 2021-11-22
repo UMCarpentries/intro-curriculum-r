@@ -275,7 +275,7 @@ You should now have a line of text in your code file that started with `gapminde
 
 What if we want to run this command from our code file?
 
-In order to run code that you've typed in the editor, you have a few options. We can click <kbd>Run</kbd> again from the right side of the **Editor** tab but the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard.
+In order to run code that you've typed in the editor, you have a few options. We can click <kbd>Run</kbd> again from the right side of the **Editor** tab but the quickest way to run the code is by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on your keyboard (<kbd>Cmd</kbd>+<kbd>Enter</kbd> on Mac).
 
 This will run the line of code that currently contains your cursor and will move your cursor to the next line. Note that when Rstudio runs your code, it basically just copies your code from the **Editor** window to the **Console** window, just like what happened when we selected <kbd>Run Selected Line(s)</kbd>.
 
@@ -709,7 +709,7 @@ There are also lots of other fun options:
 > {: .solution}
 {: .challenge}
 
-Since we have the data for the population of each country, we might be curious what effect population might have on life expectancy and GDP per capita. Do you think larger countires will have a longer or shorter life expectancy? Let's find out by mapping the population of each country to the size of our points.
+Since we have the data for the population of each country, we might be curious what effect population might have on life expectancy and GDP per capita. Do you think larger countries will have a longer or shorter life expectancy? Let's find out by mapping the population of each country to the size of our points.
 
 
 ~~~
@@ -803,7 +803,7 @@ Many datasets are much more complex than the example we used for the first plot.
 ## Importing datasets
 _[Back to top](#contents)_
 
-In the first plot, we looked at a smaller slice of a large dataset. To gain a better understanding of the kinds of patterns we might observe in our own data, we will now use the full dataset, which is stored in a called "gapminder_data.csv".
+In the first plot, we looked at a smaller slice of a large dataset. To gain a better understanding of the kinds of patterns we might observe in our own data, we will now use the full dataset, which is stored in a file called "gapminder_data.csv".
 
 To start, we will read in the data without using the interactive RStudio file navigation.
 
@@ -923,7 +923,7 @@ Sometimes plots like this are called "spaghetti plots" because all the lines loo
 > > {: .language-r}
 > > 
 > > <img src="../fig/rmd-01-gapminderMoreLines-1.png" title="plot of chunk gapminderMoreLines" alt="plot of chunk gapminderMoreLines" width="612" style="display: block; margin: auto;" />
-> > (China and India are the two Asian countries that have experience massive population growth from 1952-2007.)
+> > (China and India are the two Asian countries that have experienced massive population growth from 1952-2007.)
 > {: .solution}
 {: .challenge}
 
@@ -952,8 +952,8 @@ We've previously used the discrete values of the `continent` column to color in 
 
 This type of visualization makes it easy to compare the range and spread of values across groups. The "middle" 50% of the data is located inside the box and outliers that are far away from the central mass of the data are drawn as points.
 
-> ## Bonus Exercise:
-> Take a look a the ggplot cheat sheet. Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other functions.
+> ## Bonus Exercise: Other discrete geoms
+> Take a look a the ggplot [cheat sheet](https://ggplot2.tidyverse.org/). Find all the geoms listed under "Discrete X, Continuous Y". Try replacing `geom_boxplot` with one of these other functions.
 >
 > > ## Example solution
 > > 
@@ -1197,7 +1197,7 @@ ggplot(gapminder_1997) +
 Try different values like 5 or 50 to see how the plot changes.
 
 > ## Bonus Exercise: One variable plots
-> Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot cheat sheet. Note that we used `lifeExp` here which has continuous values. If you want to try the discrete options, try mapping `continent` to x instead.
+> Rather than a histogram, choose one of the other geometries listed under "One Variable" plots on the ggplot [cheat sheet](https://ggplot2.tidyverse.org/). Note that we used `lifeExp` here which has continuous values. If you want to try the discrete options, try mapping `continent` to x instead.
 >
 > > ## Example solution
 > > 
@@ -1420,9 +1420,6 @@ library(gifski)
 > ## Exercise: Reviewing how to create a scatter plot
 > **Part 1:**
 > Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time, lets put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
->
-> **Part 1:**
-> Let's start by creating a static plot using `ggplot()`, as we've been doing so far. This time let's put `log(gdpPercap)` on the x-axis, to help spread out our data points, and life expectancy on our y-axis. Also map the point size to the population of the country, and the color of the points to the continent.
 >
 > > ## Solution
 > >
