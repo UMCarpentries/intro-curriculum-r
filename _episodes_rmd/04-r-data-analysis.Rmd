@@ -216,7 +216,9 @@ gapminder_data %>%
   summarize(average=mean(lifeExp))
 ```
 
-The `group_by()` function expects you to pass in the name of a column (or multiple columns separated by comma) in your data.
+The `group_by()` function expects you to pass in the name of a column (or multiple columns separated by comma) in your data. 
+
+Note that you might get a message about the summarize function regrouping the output by 'year'. This simply indicates what the function is grouping by. 
 
 > ## Exercise: Grouping the data
 >
