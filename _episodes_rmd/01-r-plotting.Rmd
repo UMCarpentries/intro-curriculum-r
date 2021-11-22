@@ -657,7 +657,7 @@ Notice that this dataset has an additional column `year` compared to the smaller
 > Now that we have the full dataset read into our R session, let's plot the data placing our new `year` variable on the x axis and life expectancy on the y axis. We've provided the code below. Notice that we've collapsed the plotting function options and left off some of the labels so there's not as much code to work with.
 > Before running the code, read through it and see if you can predict what the plot output will look like. Then run the code and check to see if you were right!
 >
-> ```{r PlotFullGapminder, eval = FALSE}
+> ```{r PlotFullGapminder}
 >  ggplot(data = gapminder_data) +
 >  aes(x=year, y=lifeExp, color=continent) +
 >  geom_point()
@@ -665,7 +665,7 @@ Notice that this dataset has an additional column `year` compared to the smaller
 >
 {: .challenge}
 
-Hmm, the plot we created in the last challenge isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
+Hmm, the plot we created in the last exercise isn't very clear. What's going on? Since the dataset is more complex, the plotting options we used for the smaller dataset aren't as useful for interpreting these data. Luckily, we can add additional attributes to our plots that will make patterns more apparent. For example, we can generate a different type of plot - perhaps a line plot - and assign attributes for columns where we might expect to see patterns.
 
 Let's review the columns and the types of data stored in our dataset to decide how we should group things together. To get an overview of our data object, we can look at the structure of `gapminder_data` using the `str()` function.
 ```{r DataExploration, eval=FALSE}
@@ -686,7 +686,7 @@ If your columns are stored as character values but you need factors for plotting
 
 Our plot has a lot of points in columns which makes it hard to see trends over time. A better way to view the data showing changes over time is to use a [line plot](http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization). Let's try changing the geom to a line and see what happens.
 
-```{r GapMinderLinePlotBad, eval=FALSE}
+```{r GapMinderLinePlotBad}
   ggplot(data = gapminder_data) +
   aes(x = year, y = lifeExp, color = continent) +
     geom_line()
@@ -694,7 +694,7 @@ Our plot has a lot of points in columns which makes it hard to see trends over t
 
 Hmm. This doesn't look right. By setting the color value, we got a line for each continent, but we really wanted a line for each country. We need to tell ggplot that we want to connect the values for each `country` value instead. To do this, we need to use the `group=` aesthetic.
 
-```{r GapMinderLinePlot, eval=FALSE}
+```{r GapMinderLinePlot}
   ggplot(data = gapminder_data) +
   aes(x = year, y = lifeExp, group = country, color = continent) +
     geom_line()
