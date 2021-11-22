@@ -338,7 +338,7 @@ Do all functions need arguments? Let's test some other functions:
 > ```{r FunctionsComments}
 >  Sys.Date()  # outputs the current date
 >  getwd()     # outputs our current working directory (folder)
->```
+> ```
 {: .callout}
 
 While some functions, like those above, don't need any arguments, in other functions we may want to use multiple arguments. When we're using multiple arguments, we separate the arguments with commas. For example, we can use the `sum()` function to add numbers together:
