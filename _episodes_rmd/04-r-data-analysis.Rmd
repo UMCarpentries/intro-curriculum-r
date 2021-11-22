@@ -1,4 +1,4 @@
-  ---
+---
 title: "R for Data Analysis"
 source: Rmd
 teaching: 150
@@ -357,7 +357,7 @@ Before we move on to more data cleaning, let's create the final gapminder datafr
 > Read in the `gapminder_data.csv` file, filter out the year 2007 and the continent "Americas." Then drop the `year` and `continent` columns from the dataframe. Then save the new dataframe into a variable called `gapminder_data_2007`. 
 > 
 > > Solution: 
-> > ```{r LoadGapminder2007}
+> > ```{r LoadGapminder2007_solution}
 > > gapminder_data_2007 <- read_csv("data/gapminder_data.csv") %>%
 > >   filter(year == 2007 & continent == "Americas") %>%
 > >   select(-year, -continent)
@@ -655,7 +655,7 @@ One last thing! What if we're interested in distinguishing between countries in 
 
 We can create a grouping variable using `mutate()` combined with an `if_else()` function - a very useful pairing.  
  
-```{r GapRegion}  
+```{r GapRegion1}  
 gapminder_co2 %>%  
 mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south"))  
 ```  
@@ -718,7 +718,7 @@ For the second question, we want to create two groups - Canada, the United State
 
 We can create a grouping variable using `mutate()` combined with an `if_else()` function - a very useful pairing.
 
-```{r GapRegion}
+```{r GapRegion2}
 gapminder_co2 %>%
   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south"))
 ```
