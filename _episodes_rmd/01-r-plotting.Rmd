@@ -194,7 +194,7 @@ library(tidyverse)
 >
 > You can also find them in RStudio by going to the "Help" menu and selecting "Cheat Sheets". The two that will be most helpful in this workshop are "Data Visualization with ggplot2", "Data Transformation with dplyr", "R Markdown Cheat Sheet", and "R Markdown Reference Guide".
 >
-> For things that aren't on the cheat sheets, [Google is your best friend](../_episodes/06-conclusion.md). Even expert coders use Google when they're stuck or trying something new!
+> For things that aren't on the cheat sheets, [Google is your best friend]({{ page.root }}/06-conclusion/). Even expert coders use Google when they're stuck or trying something new!
 >
 {: .testimonial}
 
