@@ -655,7 +655,7 @@ One last thing! What if we're interested in distinguishing between countries in 
 
 We can create a grouping variable using `mutate()` combined with an `if_else()` function - a very useful pairing.  
  
-```{r GapRegion}  
+```{r GapRegion1}  
 gapminder_co2 %>%  
 mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south"))  
 ```  
@@ -718,7 +718,7 @@ For the second question, we want to create two groups - Canada, the United State
 
 We can create a grouping variable using `mutate()` combined with an `if_else()` function - a very useful pairing.
 
-```{r GapRegion}
+```{r GapRegion2}
 gapminder_co2 %>%
   mutate(region = if_else(country == "Canada" | country == "United States" | country == "Mexico", "north", "south"))
 ```
