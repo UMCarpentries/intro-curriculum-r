@@ -89,8 +89,8 @@ To make your life in R easier, there is a great (and free!) program called RStud
 > {: .solution}
 {: challenge}
 
-> ## Tidyverse vs Base R
-> If you've used R before, you may have learned commands that are different than the ones we will be using during this workshop. We will be focusing on functions from the [Tidyverse](https://www.tidyverse.org/). The "tidyverse" is a collection of R packages that have been designed to work well together and offer many convenient features that do not come with a fresh install of R (aka "base R"). These packages are very popular and have a lot of developer support including many staff members from RStudio. These functions generally help you to write code that is easier to read and maintain. We believe learning these tools will help you become more productive more quickly.
+> ## The tidyverse vs Base R
+> If you've used R before, you may have learned commands that are different than the ones we will be using during this workshop. We will be focusing on functions from the [tidyverse](https://www.tidyverse.org/). The "tidyverse" is a collection of R packages that have been designed to work well together and offer many convenient features that do not come with a fresh install of R (aka "base R"). These packages are very popular and have a lot of developer support including many staff members from RStudio. These functions generally help you to write code that is easier to read and maintain. We believe learning these tools will help you become more productive more quickly.
 {: .callout}
 
 
@@ -169,7 +169,7 @@ library(tidyverse)
 
 > ## What's with all those messages???
 >
-> When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. `Tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
+> When you loaded the `tidyverse` package, you probably got a message like the one we got above. Don't panic! These messages are just giving you more information about what happened when you loaded `tidyverse`. The `tidyverse` is actually a collection of several different packages, so the first section of the message tells us what packages were installed when we loaded `tidyverse` (these include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which you'll be introduced to tomorrow in the [R for Data Analysis lesson](05-r-markdown.Rmd)).
 
 > The second section of messages gives a list of "conflicts." Sometimes, the same function name will be used in two different packages, and R has to decide which function to use. For example, our message says that:
 >
@@ -202,7 +202,11 @@ We will import a subsetted file from the gapminder dataset called `gapminder_199
 
 In RStudio select "File" > "Import Dataset" > "From Text (readr)".
 
+![]({{ page.root }}/fig/r-plotting/import_data.png)
+
 The file is located in the main directory, click the "Browse" button and select the file named `gapminder_1997.csv`. A preview of the data will appear in the window. You can see there are a lot of Import Options listed, but R has chosen the correct defaults for this particular file.
+
+![]({{ page.root }}/fig/r-plotting/import_data_file.png)
 
 We can see in that box that our data will be imported with the Name: "gapminder_1997". Also note that this screen will show you all the code that will be run when you import your data in the lower right "Code Preview". Since everything looks good, click the "Import" button to bring your data into R.
 
