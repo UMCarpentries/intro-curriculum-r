@@ -1119,7 +1119,7 @@ library(gifski)
  staticHansPlot
 ```
 
-Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot.
+Ok, now we're getting somewhere! But right now we're plotting all of the years of our dataset on one plot - now we want to animate the plot so each year shows up on its own. This is where `gganimate` comes in! We want to add the `transition_states()` function to our plot. (Note that this might not show up as animated here on the website.) <!-- TODO: see if it works or not. -->
 
 ```{r hansGraphAnimated}
 animatedHansPlot <- staticHansPlot +
