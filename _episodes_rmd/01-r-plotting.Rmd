@@ -1149,6 +1149,7 @@ The `ggplot` library also has useful functions to draw your data on a map. There
 
 ```{r mapPlots}
 # make sure names of countries match between the map info and the data
+# NOTE: we haven't learned how to modify the data in this way yet, but we'll learn about that in the next lesson. Just take for granted that it works for now :)
 mapdata <- map_data("world") %>%
   mutate(region = recode(region,
                          USA="United States",
