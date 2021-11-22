@@ -976,7 +976,6 @@ ggplot(gapminder_1997) +
 ```
 
 Unlike the `facet_wrap` output where each box got its own x and y axis, with `facet_grid()`, there is only one x axis along the bottom.
->>>>>>> gh-pages
 
 ## Saving plots
 _[Back to top](#contents)_
