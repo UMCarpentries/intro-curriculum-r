@@ -630,7 +630,7 @@ gapminder_data <- read_csv("data/gapminder_data.csv")
 
 > ## Exercise: Read in your own data
 >
-> What argument (including file path) should be provided in the below code to read in the full dataset?
+> What argument should be provided in the below code to read in the full dataset?
 >
 > ```{r ImportFullData, eval = FALSE}
 > gapminder_data <- read_csv()
