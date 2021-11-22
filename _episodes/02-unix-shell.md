@@ -560,6 +560,19 @@ gdp_population.R
 
 There it is!
 
+> ## Creating directories and moving files
+>
+> Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
+> > ## Solution
+> > From the `un-report` directory:
+> >  ```
+> > mkdir data
+> > mv gapminder_data.csv data
+> > mv gapminder_1997.csv data
+> > ```
+> {: .solution}
+{: .challenge}
+
 Okay, now we have the code and data in the right place. But we have several figures that should still be in their own directory.
 
 First, let’s make a `figures` directory:
@@ -638,19 +651,6 @@ This output shows each directory name, followed by its contents on the next line
 > > 3. `ethane.pdb methane.pdb`
 > > 4. None. None of the files end in only `ane`. This would have listed files if `ls *ane*` were used instead.
 > > 5. `pentane.pdb propane.pdb`
-> {: .solution}
-{: .challenge}
-
-> ## Creating directories and moving files
->
-> Create a `data` directory and move `gapminder_data.csv` and `gapminder_1997.csv` into the newly created `data` directory.
-> > ## Solution
-> > From the `un-report` directory:
-> >  ```
-> > mkdir data
-> > mv gapminder_data.csv data
-> > mv gapminder_1997.csv data
-> > ```
 > {: .solution}
 {: .challenge}
 
