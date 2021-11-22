@@ -24,21 +24,21 @@ check_page_links <- function(page, base="", seen=data.frame(url=character(0)), d
   page_ids <- page %>% html_nodes("*[id]") %>% html_attr("id") %>% paste0("#", .)
   page_hrefs <- page %>% html_nodes("a") %>% html_attr("href") %>% unique()
   grep_filter <- function(x, pattern, negate=FALSE, ...) x[grepl(pattern, x,)!=negate]
-  links <- page_hrefs %>% 
-    grep_filter("^(#|mailto)", negate=TRUE) %>% 
-    tibble(href=.) %>% 
+  links <- page_hrefs %>%
+    grep_filter("^(#|mailto)", negate=TRUE) %>%
+    tibble(href=.) %>%
     mutate(url = url_absolute(href, base=base))
-  new_links <- links %>% 
-    anti_join(seen %>% select(-any_of("href")) %>% filter(!is.na(url)), by="url") %>% 
+  new_links <- links %>%
+    anti_join(seen %>% select(-any_of("href")) %>% filter(!is.na(url)), by="url") %>%
     mutate(status=polite_GET_status(url, delay=delay),
      result = case_when(status==200~"OK", status==404~"Not Found", TRUE~"Error"))
-  seen_links <- links %>% 
+  seen_links <- links %>%
     inner_join(seen %>% select(-any_of("href")) %>% filter(!is.na(url)), by="url")
   dups <- function(x) unique(x[duplicated(x)])
   dup_paged_ids <- dups(page_ids)
-  anchors <- page_hrefs %>% 
-    grep_filter("^#") %>% 
-    tibble(href=.) %>% 
+  anchors <- page_hrefs %>%
+    grep_filter("^#") %>%
+    tibble(href=.) %>%
     mutate(result = case_when(
       href %in% dup_paged_ids ~ "Duplicate ID",
       href %in% page_ids ~ "OK",
@@ -48,10 +48,10 @@ check_page_links <- function(page, base="", seen=data.frame(url=character(0)), d
 
 crawl_pages <- function(seed_url, root_url=base_url(seed_url), delay=.5) {
   page <- read_html(seed_url)
-  results <- check_page_links(page, base=seed_url, delay=delay) %>% 
+  results <- check_page_links(page, base=seed_url, delay=delay) %>%
     mutate(page=seed_url)
 
-  filter_children <- function(x, parent) { unique(x[which(startsWith(x, parent))]) }  
+  filter_children <- function(x, parent) { unique(x[which(startsWith(x, parent))]) }
   scanned <- seed_url
   toscan <- setdiff(filter_children(results$url, root_url), scanned)
   seen <- results %>% select(url, status, result) %>% unique()
@@ -59,12 +59,12 @@ crawl_pages <- function(seed_url, root_url=base_url(seed_url), delay=.5) {
     url <- toscan[1]
     page <- possibly(read_html,otherwise=NULL)(url)
     if (!is.null(page)) {
-      pageresults <- check_page_links(page, base=url, seen=seen, delay=delay) %>% 
+      pageresults <- check_page_links(page, base=url, seen=seen, delay=delay) %>%
         mutate(page=.env$url)
-      
+
       candidates <- filter_children(pageresults %>% filter(status==200) %>% pull(url), root_url)
       toscan <- append(toscan, setdiff(setdiff(candidates, scanned), toscan))
-      
+
       results <- results %>% bind_rows(pageresults)
       seen <- results %>% select(url, status, result) %>% unique()
     }
@@ -75,6 +75,13 @@ crawl_pages <- function(seed_url, root_url=base_url(seed_url), delay=.5) {
   results
 }
 
-url <- "https://umcarpentries.org/intro-curriculum-r/index.html"
+url <- "https://umcarpentries.org/intro-curriculum-r/00-intro/index.html"#"https://umcarpentries.org/intro-curriculum-r/00-intro/index.html"
 all_links <- crawl_pages(url)
-all_links %>% filter(result != "OK")
+bad_links <- all_links %>% filter(result != "OK")
+
+if (nrow(bad_links) == 0) {
+  message("✅ All links are OK!")
+} else {
+  print(bad_links)
+  stop(paste("❗️ Detected bad links, see above for details."))
+}
