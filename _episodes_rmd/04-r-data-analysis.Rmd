@@ -1,4 +1,4 @@
-  ---
+---
 title: "R for Data Analysis"
 source: Rmd
 teaching: 150
