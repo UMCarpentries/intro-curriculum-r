@@ -2,7 +2,11 @@ name: Website
 on:
   push:
     branches:
-      - test-actions
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build-website:
     if: github.repository != 'carpentries/styles' && (github.repository_owner == 'UMSWC' || github.repository_owner == 'swcarpentry' || github.repository_owner == 'datacarpentry' || github.repository_owner == 'librarycarpentry' || github.repository_owner == 'carpentries')
