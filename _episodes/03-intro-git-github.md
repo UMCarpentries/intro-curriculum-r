@@ -1215,170 +1215,6 @@ repository (`git commit`):
 
 {% include links.md %}
 
-## Undoing changes
-_[Back to top](#contents)_
-
-> ## Reverting a Commit
->
-> Jennifer is collaborating on her Python script with her colleagues and
-> realizes her last commit to the project's repository contained an error and
-> she wants to undo it.  `git revert [erroneous commit ID]` will create a new
-> commit that reverses Jennifer's erroneous commit. Therefore `git revert` is
-> different to `git checkout [commit ID]` because `git checkout` returns the
-> files within the local repository to a previous state, whereas `git revert`
-> reverses changes committed to the local and project repositories.  
-> Below are the right steps and explanations for Jennifer to use `git revert`,
-> what is the missing command in step 1 below?
->
-> 1. `________ # Look at the git history of the project to find the commit ID`
->
-> 2. Copy the ID (the first few characters of the ID, e.g. 0b1d055).
->
-> 3. `git revert [commit ID]`
->
-> 4. Type in the new commit message.
->
-> 5. Save and close
->
-> > ## Solution
-> >
-> > Use `git log` to look at the git history to find the commit ID.
-> {: .solution}
-{: .challenge}
-
-> ## Understanding Workflow and History
->
-> What is the output of the last command in
->
-> ```
-> $ echo "Here are my notes from the workshop." > notes.txt
-> $ git add notes.txt
-> $ echo "I learned the unix shell, git & github, and the R programming language." >> notes.txt
-> $ git commit -m "Create workshop notes"
-> $ git checkout HEAD notes.txt
-> $ cat notes.txt #this will print the contents of notes.txt to the screen
-> ```
-> {: .language-bash}
->
-> 1. ```
->    I learned the unix shell, git & github, and the R programming language.
->    ```
->    {: .output}
-> 2. ```
->    Here are my notes from the workshop.
->    ```
->    {: .output}
-> 3. ```
->    Here are my notes from the workshop.
->    I learned the unix shell, git & github, and the R programming language.
->    ```
->    {: .output}
-> 4. ```
->    Error because you have changed notes.txt without committing the changes
->    ```
->    {: .output}
->
-> > ## Solution
-> >
-> > The answer is 2.
-> >
-> > The command `git add notes.txt` places the current version of `notes.txt` into the staging area.
-> > The changes to the file from the second `echo` command are only applied to the working copy,
-> > not the version in the staging area.
-> >
-> > So, when `git commit -m "Create workshop notes"` is executed,
-> > the version of `notes.txt` committed to the repository is the one from the staging area and
-> > has only one line.
-> >  
-> >  At this time, the working copy still has the second line (and
-> >  `git status` will show that the file is modified). However, `git checkout HEAD notes.txt`
-> >  replaces the working copy with the most recently committed version of `notes.txt`.
-> >  
-> >  So, `cat notes.txt` will output
-> >  ```
-> >  Here are my notes from the workshop..
-> >  ```
-> > {: .output}
-> {: .solution}
-{: .challenge}
-
-> ## Checking Understanding of `git diff`
->
-> Consider this command: `git diff HEAD~3 notes.txt`. What do you predict this command
-> will do if you execute it? What happens when you do execute it? Why?
->
-> > ## Solution
-> > The diff will show the difference between the current version of notes.txt
-> > and the version that existed 3 commits ago.
-> {: .solution}
->
-> Try another command, `git diff [ID] notes.txt`, where [ID] is replaced with
-> the unique identifier for your most recent commit. What do you think will happen,
-> and what does happen?
->
-> > ## Solution
-> >
-> > The diff will show the difference between the current version of notes.txt
-> > and the version that exited in the commit from [ID].
-> {: .solution}
-{: .challenge}
-
-> ## Getting Rid of Staged Changes
->
-> `git checkout` can be used to restore a previous commit when unstaged changes have
-> been made, but will it also work for changes that have been staged but not committed?
-> Make a change to `notes.txt`, add that change, and use `git checkout` to see if
-> you can remove your change.
->
-> > ## Solution
-> >
-> > `git checkout notes.txt` does not work for this purpose.
-> > Instead, use the restore command with the staged flag:
-> > `git restore --staged notes.txt`
-> {: .solution}
-{: .challenge}
-
-> ## Explore and Summarize Histories
->
-> Exploring history is an important part of Git, and often it is a challenge to find
-> the right commit ID, especially if the commit is from several months ago.
->
-> Imagine the `analysis` project has more than 50 files.
-> You would like to find a commit that modifies some specific text in `notes.txt`.
-> When you type `git log`, a very long list appeared.
-> How can you narrow down the search?
->
-> Recall that the `git diff` command allows us to explore one specific file,
-> e.g., `git diff notes.txt`. We can apply a similar idea here.
->
-> ```
-> $ git log notes.txt
-> ```
-> {: .language-bash}
->
-> Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
-> How can you search through these files?
->
-> Both `git diff` and `git log` are very useful and they summarize a different part of the history
-> for you.
-> Is it possible to combine both? Let's try the following:
->
-> ```
-> $ git log --patch notes.txt
-> ```
-> {: .language-bash}
->
-> You should get a long list of output, and you should be able to see both commit messages and
-> the difference between each commit.
->
-> Question: What does the following command do?
->
-> ```
-> $ git log --patch HEAD~9 *.txt
-> ```
-> {: .language-bash}
-{: .challenge}
-
 ## Intro to GitHub
 _[Back to top](#contents)_
 
@@ -1893,6 +1729,7 @@ GitHub) are back in sync!
 _[Back to top](#contents)_
 
 - [Exploring History](#exploring-history)
+- [Undoing Changes](#undoing-changes)
 
 ### Exploring history
 
@@ -2262,6 +2099,171 @@ moving backward and forward in time becomes much easier.
 > > have made to those files!
 > > As discussed above, you are left in a *detached* `HEAD` state, and you don't want to be there.
 > {: .solution}
+{: .challenge}
+
+
+## Undoing changes
+_[Back to top](#contents)_
+
+> ## Reverting a Commit
+>
+> Jennifer is collaborating on her Python script with her colleagues and
+> realizes her last commit to the project's repository contained an error and
+> she wants to undo it.  `git revert [erroneous commit ID]` will create a new
+> commit that reverses Jennifer's erroneous commit. Therefore `git revert` is
+> different to `git checkout [commit ID]` because `git checkout` returns the
+> files within the local repository to a previous state, whereas `git revert`
+> reverses changes committed to the local and project repositories.  
+> Below are the right steps and explanations for Jennifer to use `git revert`,
+> what is the missing command in step 1 below?
+>
+> 1. `________ # Look at the git history of the project to find the commit ID`
+>
+> 2. Copy the ID (the first few characters of the ID, e.g. 0b1d055).
+>
+> 3. `git revert [commit ID]`
+>
+> 4. Type in the new commit message.
+>
+> 5. Save and close
+>
+> > ## Solution
+> >
+> > Use `git log` to look at the git history to find the commit ID.
+> {: .solution}
+{: .challenge}
+
+> ## Understanding Workflow and History
+>
+> What is the output of the last command in
+>
+> ```
+> $ echo "Here are my notes from the workshop." > notes.txt
+> $ git add notes.txt
+> $ echo "I learned the unix shell, git & github, and the R programming language." >> notes.txt
+> $ git commit -m "Create workshop notes"
+> $ git checkout HEAD notes.txt
+> $ cat notes.txt #this will print the contents of notes.txt to the screen
+> ```
+> {: .language-bash}
+>
+> 1. ```
+>    I learned the unix shell, git & github, and the R programming language.
+>    ```
+>    {: .output}
+> 2. ```
+>    Here are my notes from the workshop.
+>    ```
+>    {: .output}
+> 3. ```
+>    Here are my notes from the workshop.
+>    I learned the unix shell, git & github, and the R programming language.
+>    ```
+>    {: .output}
+> 4. ```
+>    Error because you have changed notes.txt without committing the changes
+>    ```
+>    {: .output}
+>
+> > ## Solution
+> >
+> > The answer is 2.
+> >
+> > The command `git add notes.txt` places the current version of `notes.txt` into the staging area.
+> > The changes to the file from the second `echo` command are only applied to the working copy,
+> > not the version in the staging area.
+> >
+> > So, when `git commit -m "Create workshop notes"` is executed,
+> > the version of `notes.txt` committed to the repository is the one from the staging area and
+> > has only one line.
+> >  
+> >  At this time, the working copy still has the second line (and
+> >  `git status` will show that the file is modified). However, `git checkout HEAD notes.txt`
+> >  replaces the working copy with the most recently committed version of `notes.txt`.
+> >  
+> >  So, `cat notes.txt` will output
+> >  ```
+> >  Here are my notes from the workshop..
+> >  ```
+> > {: .output}
+> {: .solution}
+{: .challenge}
+
+> ## Checking Understanding of `git diff`
+>
+> Consider this command: `git diff HEAD~3 notes.txt`. What do you predict this command
+> will do if you execute it? What happens when you do execute it? Why?
+>
+> > ## Solution
+> > The diff will show the difference between the current version of notes.txt
+> > and the version that existed 3 commits ago.
+> {: .solution}
+>
+> Try another command, `git diff [ID] notes.txt`, where [ID] is replaced with
+> the unique identifier for your most recent commit. What do you think will happen,
+> and what does happen?
+>
+> > ## Solution
+> >
+> > The diff will show the difference between the current version of notes.txt
+> > and the version that exited in the commit from [ID].
+> {: .solution}
+{: .challenge}
+
+> ## Getting Rid of Staged Changes
+>
+> `git checkout` can be used to restore a previous commit when unstaged changes have
+> been made, but will it also work for changes that have been staged but not committed?
+> Make a change to `notes.txt`, add that change, and use `git checkout` to see if
+> you can remove your change.
+>
+> > ## Solution
+> >
+> > `git checkout notes.txt` does not work for this purpose.
+> > Instead, use the restore command with the staged flag:
+> > `git restore --staged notes.txt`
+> {: .solution}
+{: .challenge}
+
+> ## Explore and Summarize Histories
+>
+> Exploring history is an important part of Git, and often it is a challenge to find
+> the right commit ID, especially if the commit is from several months ago.
+>
+> Imagine the `analysis` project has more than 50 files.
+> You would like to find a commit that modifies some specific text in `notes.txt`.
+> When you type `git log`, a very long list appeared.
+> How can you narrow down the search?
+>
+> Recall that the `git diff` command allows us to explore one specific file,
+> e.g., `git diff notes.txt`. We can apply a similar idea here.
+>
+> ```
+> $ git log notes.txt
+> ```
+> {: .language-bash}
+>
+> Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
+> How can you search through these files?
+>
+> Both `git diff` and `git log` are very useful and they summarize a different part of the history
+> for you.
+> Is it possible to combine both? Let's try the following:
+>
+> ```
+> $ git log --patch notes.txt
+> ```
+> {: .language-bash}
+>
+> You should get a long list of output, and you should be able to see both commit messages and
+> the difference between each commit.
+>
+> Question: What does the following command do?
+>
+> ```
+> $ git log --patch HEAD~9 *.txt
+> ```
+> {: .language-bash}
 {: .challenge}
 
 
