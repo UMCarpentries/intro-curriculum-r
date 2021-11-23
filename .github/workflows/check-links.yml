@@ -33,5 +33,5 @@ jobs:
       - name: Check URL links
         run: |
           source("bin/detect-broken-links.R")
-          detect_broken_links("https://umcarpentries.org/intro-curriculum-r")
+          detect_broken_links("https://umcarpentries.org/intro-curriculum-r/00-intro/index.html")
         shell: Rscript {0}
