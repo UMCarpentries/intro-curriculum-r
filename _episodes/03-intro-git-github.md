@@ -350,7 +350,7 @@ $ git status
 ```
 {: .language-bash}
 ```
-On branch master
+On branch main
 
 No commits yet
 
@@ -505,7 +505,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 
 No commits yet
 
@@ -535,7 +535,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 
 No commits yet
 
@@ -558,7 +558,7 @@ $ git commit -m "Start notes on analysis"
 {: .language-bash}
 
 ```
-[master (root-commit) f22b25e] Start notes on analysis
+[main (root-commit) f22b25e] Start notes on analysis
  1 file changed, 1 insertion(+)
  create mode 100644 notes.txt
 ```
@@ -588,7 +588,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 nothing to commit, working directory clean
 ```
 {: .output}
@@ -654,7 +654,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -717,7 +717,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -739,7 +739,7 @@ $ git commit -m "Add information on points"
 {: .language-bash}
 
 ```
-[master 34961b1] Add information on points
+[main 34961b1] Add information on points
  1 file changed, 1 insertion(+)
 ```
 {: .output}
@@ -867,7 +867,7 @@ $ git commit -m "Add note about point color"
 {: .language-bash}
 
 ```
-[master 005937f] Add note about point color
+[main 005937f] Add note about point color
  1 file changed, 1 insertion(+)
 ```
 {: .output}
@@ -880,7 +880,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 nothing to commit, working directory clean
 ```
 {: .output}
@@ -974,7 +974,7 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 > You can also combine the `--oneline` option with others. One useful
 > combination adds `--graph` to display the commit history as a text-based
 > graph and to indicate which commits are associated with the
-> current `HEAD`, the current branch `master`, or
+> current `HEAD`, the current branch `main`, or
 > [other Git references][git-references]:
 >
 > ```
@@ -982,7 +982,7 @@ Date:   Thu Aug 22 09:51:46 2020 -0400
 > ```
 > {: .language-bash}
 > ```
-> * 005937f (HEAD -> master) Add note about point color
+> * 005937f (HEAD -> main) Add note about point color
 > * 34961b1 Add information on points
 > * f22b25e Start notes on analysis
 > ```
@@ -1147,7 +1147,7 @@ repository (`git commit`):
 > > ```
 > > {: .language-bash}
 > > ```
-> > [master cc127c2]
+> > [main cc127c2]
 > >  Note plans to start a draft manuscript
 > >  2 files changed, 2 insertions(+)
 > >  create mode 100644 manuscript.txt
@@ -1215,170 +1215,6 @@ repository (`git commit`):
 
 {% include links.md %}
 
-## Undoing changes
-_[Back to top](#contents)_
-
-> ## Reverting a Commit
->
-> Jennifer is collaborating on her Python script with her colleagues and
-> realizes her last commit to the project's repository contained an error and
-> she wants to undo it.  `git revert [erroneous commit ID]` will create a new
-> commit that reverses Jennifer's erroneous commit. Therefore `git revert` is
-> different to `git checkout [commit ID]` because `git checkout` returns the
-> files within the local repository to a previous state, whereas `git revert`
-> reverses changes committed to the local and project repositories.  
-> Below are the right steps and explanations for Jennifer to use `git revert`,
-> what is the missing command in step 1 below?
->
-> 1. `________ # Look at the git history of the project to find the commit ID`
->
-> 2. Copy the ID (the first few characters of the ID, e.g. 0b1d055).
->
-> 3. `git revert [commit ID]`
->
-> 4. Type in the new commit message.
->
-> 5. Save and close
->
-> > ## Solution
-> >
-> > Use `git log` to look at the git history to find the commit ID.
-> {: .solution}
-{: .challenge}
-
-> ## Understanding Workflow and History
->
-> What is the output of the last command in
->
-> ```
-> $ echo "Here are my notes from the workshop." > notes.txt
-> $ git add notes.txt
-> $ echo "I learned the unix shell, git & github, and the R programming language." >> notes.txt
-> $ git commit -m "Create workshop notes"
-> $ git checkout HEAD notes.txt
-> $ cat notes.txt #this will print the contents of notes.txt to the screen
-> ```
-> {: .language-bash}
->
-> 1. ```
->    I learned the unix shell, git & github, and the R programming language.
->    ```
->    {: .output}
-> 2. ```
->    Here are my notes from the workshop.
->    ```
->    {: .output}
-> 3. ```
->    Here are my notes from the workshop.
->    I learned the unix shell, git & github, and the R programming language.
->    ```
->    {: .output}
-> 4. ```
->    Error because you have changed notes.txt without committing the changes
->    ```
->    {: .output}
->
-> > ## Solution
-> >
-> > The answer is 2.
-> >
-> > The command `git add notes.txt` places the current version of `notes.txt` into the staging area.
-> > The changes to the file from the second `echo` command are only applied to the working copy,
-> > not the version in the staging area.
-> >
-> > So, when `git commit -m "Create workshop notes"` is executed,
-> > the version of `notes.txt` committed to the repository is the one from the staging area and
-> > has only one line.
-> >  
-> >  At this time, the working copy still has the second line (and
-> >  `git status` will show that the file is modified). However, `git checkout HEAD notes.txt`
-> >  replaces the working copy with the most recently committed version of `notes.txt`.
-> >  
-> >  So, `cat notes.txt` will output
-> >  ```
-> >  Here are my notes from the workshop..
-> >  ```
-> > {: .output}
-> {: .solution}
-{: .challenge}
-
-> ## Checking Understanding of `git diff`
->
-> Consider this command: `git diff HEAD~3 notes.txt`. What do you predict this command
-> will do if you execute it? What happens when you do execute it? Why?
->
-> > ## Solution
-> > The diff will show the difference between the current version of notes.txt
-> > and the version that existed 3 commits ago.
-> {: .solution}
->
-> Try another command, `git diff [ID] notes.txt`, where [ID] is replaced with
-> the unique identifier for your most recent commit. What do you think will happen,
-> and what does happen?
->
-> > ## Solution
-> >
-> > The diff will show the difference between the current version of notes.txt
-> > and the version that exited in the commit from [ID].
-> {: .solution}
-{: .challenge}
-
-> ## Getting Rid of Staged Changes
->
-> `git checkout` can be used to restore a previous commit when unstaged changes have
-> been made, but will it also work for changes that have been staged but not committed?
-> Make a change to `notes.txt`, add that change, and use `git checkout` to see if
-> you can remove your change.
->
-> > ## Solution
-> >
-> > `git checkout notes.txt` does not work for this purpose.
-> > Instead, use the restore command with the staged flag:
-> > `git restore --staged notes.txt`
-> {: .solution}
-{: .challenge}
-
-> ## Explore and Summarize Histories
->
-> Exploring history is an important part of Git, and often it is a challenge to find
-> the right commit ID, especially if the commit is from several months ago.
->
-> Imagine the `analysis` project has more than 50 files.
-> You would like to find a commit that modifies some specific text in `notes.txt`.
-> When you type `git log`, a very long list appeared.
-> How can you narrow down the search?
->
-> Recall that the `git diff` command allows us to explore one specific file,
-> e.g., `git diff notes.txt`. We can apply a similar idea here.
->
-> ```
-> $ git log notes.txt
-> ```
-> {: .language-bash}
->
-> Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
-> How can you search through these files?
->
-> Both `git diff` and `git log` are very useful and they summarize a different part of the history
-> for you.
-> Is it possible to combine both? Let's try the following:
->
-> ```
-> $ git log --patch notes.txt
-> ```
-> {: .language-bash}
->
-> You should get a long list of output, and you should be able to see both commit messages and
-> the difference between each commit.
->
-> Question: What does the following command do?
->
-> ```
-> $ git log --patch HEAD~9 *.txt
-> ```
-> {: .language-bash}
-{: .challenge}
-
 ## Intro to GitHub
 _[Back to top](#contents)_
 
@@ -1388,7 +1224,7 @@ Systems like Git allow us to move work between any two repositories. In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop. Most programmers use hosting
 services like [GitHub](https://github.com), [Bitbucket](https://bitbucket.org) or
-[GitLab](https://gitlab.com/) to hold those master copies.
+[GitLab](https://gitlab.com/) to hold those main copies.
 
 Let's start by sharing the changes we've made to our current project with the
 world. Log in to GitHub, then click on the icon in the top right corner to
@@ -1426,9 +1262,8 @@ $ git init
 ```
 {: .language-bash}
 
-If you remember back to the earlier [lesson]({{ page.root }}/04-changes/) where we added and
-committed our earlier work on `notes.txt`, we had a diagram of the local repository
-which looked like this:
+If you remember back to when we added and committed our earlier work on
+`notes.txt`, we had a diagram of the local repository which looked like this:
 
 ![The Local Repository with Git Staging Area]({{ page.root }}/fig/git/git-staging-area.svg)
 
@@ -1513,7 +1348,7 @@ Finally, press the "Generate" button on the bottom. You will see your token in a
 Now that we've set up the remote server information and have generated a personal access token, we are ready to send our data to GitHub. This command will push the changes from our local repository to the repository on GitHub:
 
 ```
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 
@@ -1528,7 +1363,7 @@ Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
 To https://github.com/USERNAME/un-report.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 ```
 {: .output}
 
@@ -1542,19 +1377,19 @@ Our local and remote repositories are now in this state:
 > option is synonymous with the `--set-upstream-to` option for the `git branch`
 > command, and is used to associate the current branch with a remote branch so
 > that the `git pull` command can be used without any arguments. To do this,
-> simply use `git push -u origin master` once the remote has been set up.
+> simply use `git push -u origin main` once the remote has been set up.
 {: .callout}
 
 We can pull changes from the remote repository to the local one as well:
 
 ```
-$ git pull origin master
+$ git pull origin main
 ```
 {: .language-bash}
 
 ```
 From https://github.com/USERNAME/un-report
- * branch            master     -> FETCH_HEAD
+ * branch            main     -> FETCH_HEAD
 Already up-to-date.
 ```
 {: .output}
@@ -1623,7 +1458,7 @@ GitHub, though, this command would download them to our local repository.
 > > repository to your local repository, Git detects that they have histories that do not share a
 > > common origin and refuses to merge.
 > > ```
-> > $ git pull origin master
+> > $ git pull origin main
 > > ```
 > > {: .language-bash}
 > >
@@ -1634,8 +1469,8 @@ GitHub, though, this command would download them to our local repository.
 > > remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
 > > From https://github.com/USERNAME/un-report
-> >  * branch            master     -> FETCH_HEAD
-> >  * [new branch]      master     -> origin/master
+> >  * branch            main     -> FETCH_HEAD
+> >  * [new branch]      main     -> origin/main
 > > fatal: refusing to merge unrelated histories
 > > ```
 > > {: .output}
@@ -1644,13 +1479,13 @@ GitHub, though, this command would download them to our local repository.
 > > Be careful when you use this option and carefully examine the contents of local and remote
 > > repositories before merging.
 > > ```
-> > $ git pull --allow-unrelated-histories origin master
+> > $ git pull --allow-unrelated-histories origin main
 > > ```
 > > {: .language-bash}
 > >
 > > ```
 > > From https://github.com/USERNAME/un-report
-> >  * branch            master     -> FETCH_HEAD
+> >  * branch            main     -> FETCH_HEAD
 > > Merge made by the 'recursive' strategy.
 > > notes.txt | 1 +
 > > 1 file changed, 1 insertion(+)
@@ -1733,7 +1568,7 @@ $ git commit -m "List dependencies"
 Then push the change to the *Owner's repository* on GitHub:
 
 ```
-$ git push origin master
+$ git push origin main
 ```
 {: .language-bash}
 
@@ -1745,7 +1580,7 @@ Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/USERNAME/un-report.git
-   9272da5..29aba7c  master -> master
+   9272da5..29aba7c  main -> main
 ```
 {: .output}
 
@@ -1760,7 +1595,7 @@ Collaborator.
 To download the Collaborator's changes from GitHub, the Owner now enters:
 
 ```
-$ git pull origin master
+$ git pull origin main
 ```
 {: .language-bash}
 
@@ -1771,8 +1606,8 @@ remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 From https://github.com/USERNAME/un-report
- * branch            master     -> FETCH_HEAD
-   9272da5..29aba7c  master     -> origin/master
+ * branch            main     -> FETCH_HEAD
+   9272da5..29aba7c  main     -> origin/main
 Updating 9272da5..29aba7c
 Fast-forward
  notes.txt | 1 +
@@ -1815,6 +1650,8 @@ GitHub) are back in sync!
 > >
 > > On GitHub, the Collaborator can go to the repository and click on
 > > "commits" to view the most recent commits pushed to the repository.
+> >
+> > ![github-commits]({{ page.root }}/fig/git/commits.png)
 > {: .solution}
 {: .challenge}
 
@@ -1823,10 +1660,14 @@ GitHub) are back in sync!
 > The Collaborator has some questions about one line change made by the Owner and
 > has some suggestions to propose.
 >
-> With GitHub, it is possible to comment the diff of a commit. Over the line of
-> code to comment, a blue comment icon appears to open a comment window.
+> With GitHub, it is possible to comment the diff of a commit. From the main 
+> repository page, click on "commits", and click on a recent commit. Hover your 
+> mouse over a line of code, and a blue plus icon will appear to open a comment 
+> window.
 >
-> The Collaborator posts comments and suggestions using GitHub interface.
+> The Collaborator posts comments and suggestions using the GitHub interface.
+>
+> ![comment-icon](https://docs.github.com/assets/images/help/commits/hover-comment-icon.gif)
 {: .challenge}
 
 > ## Version History, Backup, and Version Control
@@ -1888,6 +1729,7 @@ GitHub) are back in sync!
 _[Back to top](#contents)_
 
 - [Exploring History](#exploring-history)
+- [Undoing Changes](#undoing-changes)
 
 ### Exploring history
 
@@ -2065,7 +1907,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -2121,7 +1963,7 @@ $ git status
 {: .language-bash}
 
 ```
-On branch master
+On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
@@ -2175,7 +2017,7 @@ $ git checkout HEAD notes.txt
 >
 > The "detached HEAD" is like "look, but don't touch" here,
 > so you shouldn't make any changes in this state.
-> After investigating your repo's past state, reattach your `HEAD` with `git checkout master`.
+> After investigating your repo's past state, reattach your `HEAD` with `git checkout main`.
 {: .callout}
 
 It's important to remember that
@@ -2257,6 +2099,171 @@ moving backward and forward in time becomes much easier.
 > > have made to those files!
 > > As discussed above, you are left in a *detached* `HEAD` state, and you don't want to be there.
 > {: .solution}
+{: .challenge}
+
+
+## Undoing changes
+_[Back to top](#contents)_
+
+> ## Reverting a Commit
+>
+> Jennifer is collaborating on her Python script with her colleagues and
+> realizes her last commit to the project's repository contained an error and
+> she wants to undo it.  `git revert [erroneous commit ID]` will create a new
+> commit that reverses Jennifer's erroneous commit. Therefore `git revert` is
+> different to `git checkout [commit ID]` because `git checkout` returns the
+> files within the local repository to a previous state, whereas `git revert`
+> reverses changes committed to the local and project repositories.  
+> Below are the right steps and explanations for Jennifer to use `git revert`,
+> what is the missing command in step 1 below?
+>
+> 1. `________ # Look at the git history of the project to find the commit ID`
+>
+> 2. Copy the ID (the first few characters of the ID, e.g. 0b1d055).
+>
+> 3. `git revert [commit ID]`
+>
+> 4. Type in the new commit message.
+>
+> 5. Save and close
+>
+> > ## Solution
+> >
+> > Use `git log` to look at the git history to find the commit ID.
+> {: .solution}
+{: .challenge}
+
+> ## Understanding Workflow and History
+>
+> What is the output of the last command in
+>
+> ```
+> $ echo "Here are my notes from the workshop." > notes.txt
+> $ git add notes.txt
+> $ echo "I learned the unix shell, git & github, and the R programming language." >> notes.txt
+> $ git commit -m "Create workshop notes"
+> $ git checkout HEAD notes.txt
+> $ cat notes.txt #this will print the contents of notes.txt to the screen
+> ```
+> {: .language-bash}
+>
+> 1. ```
+>    I learned the unix shell, git & github, and the R programming language.
+>    ```
+>    {: .output}
+> 2. ```
+>    Here are my notes from the workshop.
+>    ```
+>    {: .output}
+> 3. ```
+>    Here are my notes from the workshop.
+>    I learned the unix shell, git & github, and the R programming language.
+>    ```
+>    {: .output}
+> 4. ```
+>    Error because you have changed notes.txt without committing the changes
+>    ```
+>    {: .output}
+>
+> > ## Solution
+> >
+> > The answer is 2.
+> >
+> > The command `git add notes.txt` places the current version of `notes.txt` into the staging area.
+> > The changes to the file from the second `echo` command are only applied to the working copy,
+> > not the version in the staging area.
+> >
+> > So, when `git commit -m "Create workshop notes"` is executed,
+> > the version of `notes.txt` committed to the repository is the one from the staging area and
+> > has only one line.
+> >  
+> >  At this time, the working copy still has the second line (and
+> >  `git status` will show that the file is modified). However, `git checkout HEAD notes.txt`
+> >  replaces the working copy with the most recently committed version of `notes.txt`.
+> >  
+> >  So, `cat notes.txt` will output
+> >  ```
+> >  Here are my notes from the workshop..
+> >  ```
+> > {: .output}
+> {: .solution}
+{: .challenge}
+
+> ## Checking Understanding of `git diff`
+>
+> Consider this command: `git diff HEAD~3 notes.txt`. What do you predict this command
+> will do if you execute it? What happens when you do execute it? Why?
+>
+> > ## Solution
+> > The diff will show the difference between the current version of notes.txt
+> > and the version that existed 3 commits ago.
+> {: .solution}
+>
+> Try another command, `git diff [ID] notes.txt`, where [ID] is replaced with
+> the unique identifier for your most recent commit. What do you think will happen,
+> and what does happen?
+>
+> > ## Solution
+> >
+> > The diff will show the difference between the current version of notes.txt
+> > and the version that exited in the commit from [ID].
+> {: .solution}
+{: .challenge}
+
+> ## Getting Rid of Staged Changes
+>
+> `git checkout` can be used to restore a previous commit when unstaged changes have
+> been made, but will it also work for changes that have been staged but not committed?
+> Make a change to `notes.txt`, add that change, and use `git checkout` to see if
+> you can remove your change.
+>
+> > ## Solution
+> >
+> > `git checkout notes.txt` does not work for this purpose.
+> > Instead, use the restore command with the staged flag:
+> > `git restore --staged notes.txt`
+> {: .solution}
+{: .challenge}
+
+> ## Explore and Summarize Histories
+>
+> Exploring history is an important part of Git, and often it is a challenge to find
+> the right commit ID, especially if the commit is from several months ago.
+>
+> Imagine the `analysis` project has more than 50 files.
+> You would like to find a commit that modifies some specific text in `notes.txt`.
+> When you type `git log`, a very long list appeared.
+> How can you narrow down the search?
+>
+> Recall that the `git diff` command allows us to explore one specific file,
+> e.g., `git diff notes.txt`. We can apply a similar idea here.
+>
+> ```
+> $ git log notes.txt
+> ```
+> {: .language-bash}
+>
+> Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
+> How can you search through these files?
+>
+> Both `git diff` and `git log` are very useful and they summarize a different part of the history
+> for you.
+> Is it possible to combine both? Let's try the following:
+>
+> ```
+> $ git log --patch notes.txt
+> ```
+> {: .language-bash}
+>
+> You should get a long list of output, and you should be able to see both commit messages and
+> the difference between each commit.
+>
+> Question: What does the following command do?
+>
+> ```
+> $ git log --patch HEAD~9 *.txt
+> ```
+> {: .language-bash}
 {: .challenge}
 
 
