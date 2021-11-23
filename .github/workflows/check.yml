@@ -2,7 +2,7 @@ name: Check
 on: [push, pull_request]
 
 jobs:
-  check-website:
+  check:
     if: ${{ !endsWith(github.repository, '/styles') }}
     runs-on: ubuntu-20.04
     env:

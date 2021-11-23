@@ -1,11 +1,12 @@
 name: Website
 on:
-  pull_request:
+  push:
     branches:
-      - gh-pages
+      - !gh-pages
+  pull_request: []
 
 jobs:
-  build-website:
+  build:
     if: ${{ !endsWith(github.repository, '/styles') }}
     runs-on: ubuntu-20.04
     env:
