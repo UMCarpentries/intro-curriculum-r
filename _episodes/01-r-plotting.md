@@ -169,7 +169,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ─────────────────────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
@@ -186,7 +186,7 @@ library(tidyverse)
 
 
 ~~~
-── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -275,7 +275,7 @@ Rows: 142 Columns: 5
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (3): pop, lifeExp, gdpPercap
@@ -415,7 +415,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd"
+[1] "/Users/zenalapp/Desktop/intro-curriculum-r/_episodes_rmd"
 ~~~
 {: .output}
 
@@ -446,7 +446,7 @@ Do all functions need arguments? Let's test some other functions:
 > 
 > 
 > ~~~
-> [1] "/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd"
+> [1] "/Users/zenalapp/Desktop/intro-curriculum-r/_episodes_rmd"
 > ~~~
 > {: .output}
 {: .callout}
@@ -499,7 +499,7 @@ Rows: 142 Columns: 5
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (3): pop, lifeExp, gdpPercap
@@ -1708,19 +1708,7 @@ mapdata <- map_data("world") %>%
   mutate(region = recode(region,
                          USA="United States",
                          UK="United Kingdom"))
-~~~
-{: .language-r}
 
-
-
-~~~
-Error: The `maps` package is required for `map_data()`
-~~~
-{: .error}
-
-
-
-~~~
 #install.packages("mapproj")
 gapminder_1997 %>%
   ggplot() +
@@ -1734,9 +1722,11 @@ gapminder_1997 %>%
 
 
 ~~~
-Error in is.data.frame(map): object 'mapdata' not found
+Error: The `mapproj` package is required for `coord_map()`
 ~~~
 {: .error}
+
+<img src="../fig/rmd-01-mapPlots-1.png" title="plot of chunk mapPlots" alt="plot of chunk mapPlots" width="612" style="display: block; margin: auto;" />
 
 Notice that this map helps to show that we actually have some gaps in the data. We are missing observations for counties like Russia and many countries in central Africa. Thus, it's important to acknowledge that any patterns or trends we see in the data might not apply to those regions.
 

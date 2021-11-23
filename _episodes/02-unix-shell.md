@@ -61,7 +61,7 @@ TO-DOs:
 
 
 
-## Introducing the Shell
+# Introducing the Shell
 _[Back to top](#contents)_
 
 ## Motivation
@@ -218,7 +218,6 @@ Note that when we run the `-a` command, we see a `.` and a `..` in the directory
 > > 3. `ls -l`
 > > 4. `ls -lh`
 > > 5. `ls -lS`
->
 > {: .solution}
 {: .challenge}
 
@@ -417,7 +416,7 @@ pwd
 > {: .solution}
 {: .challenge}
 
-## Working with files and directories
+# Working with files and directories
 _[Back to top](#contents)_
 
 Now that we know how to move around your computer using the command line, our next step is to organize the project that we started in the [R plotting lesson]({{ page.root }}/01-r-plotting/)
@@ -728,7 +727,7 @@ Great! Now as an exercise we can change the paths to write out figures.
 > {: .solution}
 {: .challenge}
 
-## Glossary of terms
+# Glossary of terms
 _[Back to top](#contents)_
 
 - root: the very top of the file system tree
