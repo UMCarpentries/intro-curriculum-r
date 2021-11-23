@@ -1,11 +1,8 @@
-name: Website
-on:
-  pull_request:
-    branches:
-      - gh-pages
+name: Check
+on: [push, pull_request]
 
 jobs:
-  build-website:
+  check-website:
     if: ${{ !endsWith(github.repository, '/styles') }}
     runs-on: ubuntu-20.04
     env:
@@ -34,9 +31,11 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip setuptools wheel pyyaml==5.3.1 requests
 
-        uses: actions/checkout@v2
+      - name: Checkout the lesson
+        uses: actions/checkout@master
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Look for R-markdown files
         id: check-rmd
@@ -75,6 +74,7 @@ jobs:
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
+
       - name: Install system dependencies for R packages
         if: steps.check-rmd.outputs.count != 0
         run: |
@@ -86,8 +86,5 @@ jobs:
       - name: Render the markdown and confirm that the site can be built
         run: make site
 
-      - name: Push
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
+      - run: make lesson-check-all
+        if: always()
