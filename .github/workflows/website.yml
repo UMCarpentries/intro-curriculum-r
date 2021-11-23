@@ -1,10 +1,10 @@
 name: Website
 on:
-  pull_request:
+  push:
     branches:
-      - main
       - gh-pages
-
+      - main
+  pull_request: []
 jobs:
   build-website:
     if: ${{ !endsWith(github.repository, '/styles') }}
@@ -16,11 +16,6 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -39,6 +34,12 @@ jobs:
       - name: Install Python modules
         run: |
           python3 -m pip install --upgrade pip setuptools wheel pyyaml==5.3.1 requests
+
+      - name: Checkout the lesson
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Look for R-markdown files
         id: check-rmd
@@ -77,6 +78,7 @@ jobs:
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
+
       - name: Install system dependencies for R packages
         if: steps.check-rmd.outputs.count != 0
         run: |
@@ -88,15 +90,33 @@ jobs:
       - name: Render the markdown and confirm that the site can be built
         run: make site
 
+      - name: Checkout github pages
+        if: ${{ github.event_name == 'push' && steps.check-rmd.outputs.count != 0 && github.ref != 'refs/heads/gh-pages'}}
+        uses: actions/checkout@master
+        with:
+          ref: gh-pages
+          path: gh-pages
+
       - name: Commit and Push
+        if: ${{ github.event_name == 'push' && steps.check-rmd.outputs.count != 0 && github.ref != 'refs/heads/gh-pages'}}
         run: |
+          # clean up gh-pages
+          cd gh-pages
+          git rm -rf .           # remove all previous files
+          git restore --staged . # remove things from the stage
+          cd ..
+          # copy everything into gh-pages site
+          cp -r `ls -A | grep -v 'gh-pages' | grep -v '.git' | grep -v '.bundle/' | grep -v '_site'` gh-pages
+          # move into gh-pages, add, commit, and push
+          cd gh-pages
           # setup git
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add -A .
-          git commit --allow-empty -m "🤖 render website (via ${{ github.sha }})"
-          git push
+          git commit --allow-empty -m "[Github Actions] render website (via ${{ github.sha }})"
+          git push origin gh-pages
           # return
+          cd ..
 
       - run: make lesson-check-all
         if: always()
