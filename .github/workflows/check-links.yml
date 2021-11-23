@@ -23,7 +23,7 @@ jobs:
       - name: Set up R
         uses: r-lib/actions/setup-r@master
         with:
-          r-version: 'release'
+          r-version: 'oldrel'
 
       - name: Install needed packages
         run: |
