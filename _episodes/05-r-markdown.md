@@ -329,20 +329,6 @@ Here's the text that we need to include to creata summary table of our data:
 
 
 ~~~
-cat('```
-|Summary of Data|
-|------|------|
-|Number of Countries|`r nCountries`|
-|Minimum GDP per capita|`r minGDP`|
-|Maximum GDP per capita|`r maxGDP`|
-
-```')
-~~~
-{: .language-r}
-
-
-
-~~~
 ```
 |Summary of Data|
 |------|------|
@@ -363,9 +349,13 @@ This is useful if we are reporting a few values, but can get tedious for larger 
 
 
 ~~~
+# load library
+library(knitr)
+
+# print kable
 gapminder_1997 %>%
   filter(continent == "Oceania") %>%
-  knitr::kable()
+  kable()
 ~~~
 {: .language-r}
 
@@ -376,17 +366,6 @@ gapminder_1997 %>%
 |Australia   | 18565243|Oceania   |   78.83|  26997.94|
 |New Zealand |  3676187|Oceania   |   77.55|  21050.41|
 
-
-
-~~~
-  # kable is from the knitr package. Since we are only using this one function we
-  # can call it directly from the package with :: instead of using library(knitr)
-  # which will load in all the functions. Either method of accessing the function
-  # will not have a noticable effect but is useful to know about in the case there
-  # are two packages with a function by the same name.
-~~~
-{: .language-r}
-
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
 ## Formatting
@@ -396,7 +375,7 @@ We now know how to create a report with R Markdown. Maybe we also want to format
 Markdown is a very simple programming language when it comes to syntax.
 Let's try to figure out some syntax together. Suppose we wanted to create sections in our report.
 
-> ## Exercise: R Markdown headers
+> ## R Markdown headers
 > Try googling how to create sections by using headers and subheaders using R Markdown. What do you find?
 >
 > > ## Solution
@@ -406,7 +385,7 @@ Let's try to figure out some syntax together. Suppose we wanted to create sectio
 
 OK, now that we know how to make headers, let's practice some more Markdown syntax.
 
-> ## Exercise: R Markdown syntax
+> ## R Markdown syntax
 > Go ahead and do some online searches on how to do the following:
 > * create a bullet point list with three items
 > * as the first item, write the name of your currently favorite programming language in bold
@@ -479,7 +458,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (2): country, continent
 > dbl (4): year, pop, lifeExp, gdpPercap
@@ -554,7 +533,7 @@ _[Back to top](#contents)_
 
 [5] In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do this!
 
-> Solution
+> ## Solution
 > 
 > ~~~
 > gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop)) +
@@ -773,7 +752,7 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -897,7 +876,7 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): country, series, footnotes, source
 > dbl (3): region, year, value

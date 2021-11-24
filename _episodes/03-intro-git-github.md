@@ -26,7 +26,7 @@ keypoints:
 1. [Intro to GitHub](#intro-to-github)
 1. [Collaborating with GitHub](#collaborating-with-github)
 1. [BONUS](#bonus)
-1. [Glossary of terms](#glossary)
+<!--1. [Glossary of terms](#glossary)-->
 
 ## Background
 _[Back to top](#contents)_
@@ -166,7 +166,6 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 > it may cause unexpected issues when editing a file on different machines.
 > Though it is beyond the scope of this lesson, you can read more about this issue
 > [in the Pro Git book](https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_core_autocrlf).
-{: .callout}
 >
 > You can change the way Git recognizes and encodes line endings
 > using the `core.autocrlf` command to `git config`.
@@ -186,6 +185,7 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 > ```
 > {: .language-bash}
 >
+{: .callout}
 
 Riley also has to set their favorite text editor, nano.
 
@@ -274,17 +274,17 @@ $ /home/USERNAME/Desktop/un-report
 
 > To get back to your `un-report` directory you can use the following command:
 >
->Mac/git-bash:
->```
->cd ~/Desktop/un-report
->```
->{: .language-bash}
+> Mac/git-bash:
+> ```
+> cd ~/Desktop/un-report
+> ```
+> {: .language-bash}
 >
 > On Windows' Unix subsystem for Linux:
->```
->cd c/USERNAME/Desktop/un-report
->```
->{: .language-bask}
+> ```
+> cd c/USERNAME/Desktop/un-report
+> ```
+> {: .language-bask}
 {: .callout}
 
 What is currently in our directory?
@@ -2266,7 +2266,7 @@ _[Back to top](#contents)_
 > {: .language-bash}
 {: .challenge}
 
-
+<!-- TODO: fill in this glossary https://github.com/UMCarpentries/intro-curriculum-r/issues/83
 ## Glossary
 
 Commands:
@@ -2275,3 +2275,4 @@ Commands:
 
 Terms:
 - branch -
+-->

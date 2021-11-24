@@ -13,7 +13,7 @@ The curriculum is developed for complete beginners interested in
 learning reproducible data science techniques and integrates instruction 
 of R for data cleaning, analysis, and visualization; the Unix shell; and 
 git and GitHub. For more details, please see 
-[Introduction to the Workshop](https://umcarpentries.org/intro-curriculum-r/00-welcome/index.html). 
+[Introduction to the Workshop](https://umcarpentries.org/intro-curriculum-r/00-intro/index.html). 
 
 If you are interested in contributing to the curriculum, please read over 
 [The Carpentries Curriculum Development Handbook](https://carpentries.github.io/curriculum-development/) 
