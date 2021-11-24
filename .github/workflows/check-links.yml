@@ -27,7 +27,7 @@ jobs:
 
       - name: Install needed packages
         run: |
-          install.packages(c('rvest', 'purrr', 'dplyr', 'httr'))
+          install.packages(c('rvest', 'purrr', 'dplyr', 'httr', 'readr'))
         shell: Rscript {0}
 
       - name: Check URL links
