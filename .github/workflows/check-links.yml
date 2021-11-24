@@ -1,11 +1,8 @@
 name: check-links
 
 on:
-  push:
-    branches:
-      - "iss-152"
-#  schedule:
-#    - cron: '15 17 * * 1'
+  schedule:
+    - cron: '0 0 * * 1' # at midnight every Monday https://crontab.guru/
 
 jobs:
   check-links:
