@@ -1,4 +1,4 @@
-# U-M SWC Curriculum
+# U-M Carpentries R Curriculum
 
 [![Build](https://github.com/UMCarpentries/intro-curriculum-r/actions/workflows/website.yml/badge.svg)](https://github.com/UMCarpentries/intro-curriculum-r/actions/workflows/website.yml)
 [![License](https://img.shields.io/badge/License-MIT%2BCC--BY-blue)](LICENSE.md)
