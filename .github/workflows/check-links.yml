@@ -21,9 +21,9 @@ jobs:
           fetch-depth: 0
 
       - name: Set up R
-        uses: r-lib/actions/setup-r@master
+        uses: r-lib/actions/setup-r@v1
         with:
-          r-version: 'oldrel'
+          r-version: 'release'
 
       - name: Install needed packages
         run: |
