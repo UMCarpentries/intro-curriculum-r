@@ -46,8 +46,8 @@ and to meet some of our community members.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.com/umswc/curriculum>,
-    which can be viewed at <https://umswc.github.io/curriculum>.
+    please work in <https://github.com/UMCarpentries/intro-curriculum-r>,
+    which can be viewed at <https://UMCarpentries.github.io/intro-curriculum-r>.
 
 2.  If you wish to change the example lesson,
     please work in <https://github.com/carpentries/lesson-example>,

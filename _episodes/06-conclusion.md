@@ -38,7 +38,7 @@ There are many local opportunities at the University of Michigan or around the A
 
 ### Get help and connect
 
-* [Software Carpentry Workshops](https://umswc.github.io/workshops/)
+* [Software Carpentry Workshops](https://UMCarpentries.org/workshops/)
     - We're always looking for more helpers & instructors!
 * [CoderSpaces](https://datascience.isr.umich.edu/events/coderspaces/)
 * [Data Analysis Networking Group (_DANG!_)](https://um-dang.github.io/)
