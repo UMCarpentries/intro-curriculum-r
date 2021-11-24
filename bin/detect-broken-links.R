@@ -81,16 +81,18 @@ detect_broken_links <- function(url, output_filename = 'broken_links.tsv') {
   broken_links <- all_links %>% filter(result != "OK")
   num_broken <- nrow(broken_links)
   if (num_broken == 0) {
-    message(paste0("✅ All links are OK! (n=", num_links, ")"))
+    message(paste0("✅ All links are OK! (n=",
+                   num_links,
+                   ")"))
   } else {
     readr::write_tsv(broken_links, output_filename)
     stop(
       paste(
         "❗️ Detected",
         num_broken,
-        "broken links out of ", 
-        num_links, 
-        " total, see the file for details:",
+        "broken links out of",
+        num_links,
+        "total, see the file for details:",
         output_filename
       )
     )
