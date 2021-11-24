@@ -77,17 +77,20 @@ crawl_pages <- function(seed_url, root_url=base_url(seed_url), delay=.5) {
 
 detect_broken_links <- function(url, output_filename = 'broken_links.tsv') {
   all_links <- crawl_pages(url)
+  num_links <- nrow(all_links)
   broken_links <- all_links %>% filter(result != "OK")
-  num_broken = nrow(broken_links)
+  num_broken <- nrow(broken_links)
   if (num_broken == 0) {
-    message("✅ All links are OK!")
+    message(paste0("✅ All links are OK! (n=", num_links, ")"))
   } else {
     readr::write_tsv(broken_links, output_filename)
     stop(
       paste(
         "❗️ Detected",
         num_broken,
-        "broken links, see the file for details:",
+        "broken links out of ", 
+        num_links, 
+        " total, see the file for details:",
         output_filename
       )
     )
