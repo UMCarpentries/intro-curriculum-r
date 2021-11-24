@@ -33,5 +33,12 @@ jobs:
       - name: Check URL links
         run: |
           source("bin/detect-broken-links.R")
-          detect_broken_links("https://umcarpentries.org/intro-curriculum-r/00-intro/index.html")
+          detect_broken_links("https://umcarpentries.org/intro-curriculum-r/00-intro/index.html",
+            output_filename = "broken_links.tsv")
         shell: Rscript {0}
+
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: broken-links
+          path: broken_links.tsv

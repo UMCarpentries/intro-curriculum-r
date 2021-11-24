@@ -75,14 +75,21 @@ crawl_pages <- function(seed_url, root_url=base_url(seed_url), delay=.5) {
   results
 }
 
-detect_broken_links <- function(url) {
+detect_broken_links <- function(url, output_filename = 'broken_links.tsv') {
   all_links <- crawl_pages(url)
   broken_links <- all_links %>% filter(result != "OK")
-
-  if (nrow(broken_links) == 0) {
+  num_broken = nrow(broken_links)
+  if (num_broken == 0) {
     message("✅ All links are OK!")
   } else {
-    print(broken_links)
-    stop(paste("❗️ Detected broken links, see above for details."))
+    readr::write_tsv(broken_links, output_filename)
+    stop(
+      paste(
+        "❗️ Detected",
+        num_broken,
+        "broken links, see the file for details:",
+        output_filename
+      )
+    )
   }
 }
