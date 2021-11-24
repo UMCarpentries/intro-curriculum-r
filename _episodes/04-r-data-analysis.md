@@ -76,7 +76,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ─────────────────────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
@@ -93,7 +93,7 @@ library(tidyverse)
 
 
 ~~~
-── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -121,7 +121,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -214,7 +214,7 @@ Using the *pipe operator* `%>%` and enter command makes our code more readable. 
 
 Since we use the pipe operator so often, there is a keyboard shortcut for it in RStudio. You can press <kdb>Ctrl</kdb>+<kdb>Shift</kdb>+<kdb>M<kdb> on Windows or <kdb>Cmd<kdb>+<kdb>Shift<kdb>+<kdb>M<kdb> on a Mac.
 
-> Helpful hint: Saving a new dataframe
+> ## Pro tip: Saving a new dataframe
 > Notice that when we run the following code, we are not actually saving a new variable: 
 > 
 > ~~~
@@ -252,7 +252,7 @@ Well, remember the dataset contains rows from many different years and many diff
 
 Use `summarize()` to find the most recent year in the data set. We can use the `max()` function to return the maximum value.
 
-> ## Exercise: Practice using the `%>%` to summarize data
+> ## Practice using the `%>%` to summarize data
 >
 > Find the mean population using the piping function.
 >
@@ -298,7 +298,7 @@ gapminder_data %>%
 ~~~
 {: .output}
 
-> ## Exercise: Filtering the dataset
+> ## Filtering the dataset
 >
 > What is the average GDP per capita for the first year in the dataset? *Hint: the column headers identified by `read_csv()` showed us there was a column called gdpPercap in the dataset*
 >
@@ -388,7 +388,7 @@ The `group_by()` function expects you to pass in the name of a column (or multip
 
 Note that you might get a message about the summarize function regrouping the output by 'year'. This simply indicates what the function is grouping by. 
 
-> ## Exercise: Grouping the data
+> ## Grouping the data
 >
 > Try calculating the average life expectancy by continent.
 >
@@ -483,10 +483,10 @@ gapminder_data %>%
 
 This will add a new column called "gdp" to our data. We use the column names as if they were regular values that we want to perform mathematical operations on and provide the name in front of an equals sign like we have done with `summarize()`
 
-> Exercise: `mutate()`
+> ## `mutate()`
 > We can also multiply by constants or other numbers using mutate - remember how in the plotting lesson we made a plot with population in millions? Try making a new column for this dataframe called popInMillions that is the population in million. 
 > 
-> > Solution: 
+> > ## Solution: 
 > > 
 > > ~~~
 > > gapminder_data %>%  
@@ -579,10 +579,10 @@ gapminder_data %>%
 ~~~
 {: .output}
 
-> Exercise: selecting columns 
+> ## selecting columns 
 > Create a dataframe with only the `country`, `continent`, `year`, and `lifeExp` columns. 
 > 
-> > Solution: 
+> > ## Solution: 
 > > There are multiple ways to do this exercise. Here are two different possibilities. 
 > > 
 > > 
@@ -673,7 +673,7 @@ gapminder_data %>%
 > {: .output}
 > This returns just the three columns we are interested in. 
 >
-> > ## Exercise: Using `select()` with a helper function
+> > ## Using `select()` with a helper function
 > >
 > > Find a helper function on the help page that will choose all the columns that have "p" as their last letter (ie: "pop","lifeExp","gdpPerCap")
 > >
@@ -754,10 +754,10 @@ Notice here that we tell `pivot_wider()` which columns to pull the names we wish
 
 Before we move on to more data cleaning, let's create the final gapminder dataframe we will be working with for the rest of the lesson! 
 
-> Exercise: final Americas 2007 gapminder dataset
+> ## final Americas 2007 gapminder dataset
 > Read in the `gapminder_data.csv` file, filter out the year 2007 and the continent "Americas." Then drop the `year` and `continent` columns from the dataframe. Then save the new dataframe into a variable called `gapminder_data_2007`. 
 > 
-> > Solution: 
+> > ## Solution: 
 > > 
 > > ~~~
 > > gapminder_data_2007 <- read_csv("data/gapminder_data.csv") %>%
@@ -776,7 +776,7 @@ Before we move on to more data cleaning, let's create the final gapminder datafr
 > > 
 > > 
 > > ~~~
-> > ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> > ── Column specification ────────────────────────────────────────────────────────────────────────
 > > Delimiter: ","
 > > chr (2): country, continent
 > > dbl (4): year, pop, lifeExp, gdpPercap
@@ -872,7 +872,7 @@ Rows: 2133 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (7): T24, CO2 emission estimates, ...3, ...4, ...5, ...6, ...7
 ~~~
@@ -933,7 +933,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): ...2, Series, Footnotes, Source
 dbl (3): Region/Country/Area, Year, Value
@@ -993,7 +993,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1065,7 +1065,7 @@ co2_emissions_dirty
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -1116,7 +1116,7 @@ co2_emissions_dirty
 > 
 > 
 > ~~~
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+> ── Column specification ────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -1155,10 +1155,10 @@ co2_emissions_dirty
 
 We previously saw how we can subset columns from a data frame using the select function. There are a lot of columns with extraneous information in this dataset, let's subset out the columns we are interested in. 
 
-> Exercise: reviewing selecting columns
+> ## reviewing selecting columns
 > Select the country, year, series, and value columns from our dataset. 
 > 
-> > Solution: 
+> > ## Solution: 
 > > 
 > > ~~~
 > > co2_emissions_dirty %>%
@@ -1289,10 +1289,10 @@ Excellent! The last step before we can join this data frame is to get the most d
 {: .solution}
 
 
-> Exercise: 
+> ## 
 > Filter out data from 2005 and then drop the year column. (Since we will have only data from one year, it is now irrelevant.)
 > 
-> > Solution: 
+> > ## Solution: 
 > > 
 > > ~~~
 > > co2_emissions_dirty %>%
@@ -1370,7 +1370,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1527,7 +1527,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1593,7 +1593,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1635,7 +1635,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1852,9 +1852,9 @@ We see that although Canada, the United States, and Mexico account for close to 
 ## Finishing with Git and GitHub
 Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and push our changes to GitHub again - do you remember how?
 
-> ## Exercise: changing directories
+> ## changing directories
 > Print your current working directory and list the items in the directory to check where you are. If you are not in the un-report directory, navigate there. 
-> > Solution: 
+> > ## Solution: 
 > > ```
 > > pwd  
 > > ls 
@@ -1864,11 +1864,11 @@ Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and p
 > {: .solution}
 {: .challenge}
 
-> ## Exercise: reviewing git and GitHub
+> ## reviewing git and GitHub
 > 
 > Pull to make sure our local repository is up to date. Then add, commit, and push your commits to GitHub. Don't forget to check your git status periodically to make sure everything is going as expected! 
 > 
-> > Solution: 
+> > ## Solution: 
 > > ```
 > > git status 
 > > git pull
@@ -1918,7 +1918,7 @@ Notice there that we can use the column created the in the `summarize()` step ("
 
 ## Bonus exercises
 
-> ## Exercise: Calculating percent
+> ## Calculating percent
 >
 > What percentage of the population and CO2 emissions in the Americas does the United States make up? What percentage of the population and CO2 emission does North America make up? 
 >
@@ -1985,7 +1985,7 @@ Notice there that we can use the column created the in the `summarize()` step ("
 
 
 
-> ## Exercise: CO2 bar plot
+> ## CO2 bar plot
 > Create a bar plot of the percent of emissions for each country, colored by north and south america (HINT: use geom_col())  
 > > ## Solution 
 > > 
@@ -2050,7 +2050,7 @@ Notice there that we can use the column created the in the `summarize()` step ("
 {: .challenge}
 
 
-> ## Exercise: low emissions
+> ## low emissions
 > Find the 3 countries with lowest per capita emissions. **Hint:** use the `arrange()` function. 
 > 
 > > ## Solution 
