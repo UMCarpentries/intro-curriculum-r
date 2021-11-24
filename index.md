@@ -6,11 +6,19 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 
 {% include gh_variables.html %}
 
-For guidelines on how to develop curriculum content, please visit [The Carpentries Curriculum Development Handbook](https://carpentries.github.io/curriculum-development/).
+This is a custom curriculum developed by the University of Michigan 
+Carpentries instance. It is in the `alpha` stage of development. 
 
-For guidelines on how to help improve our lessons and this template,
-please see [the contribution guidelines][contributing];
-for guidelines on how to set up your machine to preview changes locally,
+The curriculum is developed for complete beginners interested in 
+learning reproducible data science techniques and integrates instruction 
+of R for data cleaning, analysis, and visualization; the Unix shell; and 
+git and GitHub. For more details, please see 
+[Introduction to the Workshop](https://umcarpentries.org/intro-curriculum-r/00-intro/index.html). 
+
+If you are interested in contributing to the curriculum, please read over 
+[The Carpentries Curriculum Development Handbook](https://carpentries.github.io/curriculum-development/) 
+and [our contribution guidelines][contributing]. If you would like to set 
+up your machine to preview changes locally,
 please see [the setup instructions]({{ page.root }}{% link setup.md %}).
 
 {% include links.md %}

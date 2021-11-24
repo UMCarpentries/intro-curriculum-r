@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Software Carpentry"
+title: "Introduction to the Workshop"
 teaching: 15
 exercises: 0
 questions: 
@@ -13,6 +13,7 @@ objectives:
 keypoints: 
 - "We follow The Carpentries Code of Conduct."
 - "Our goal is to generate a shareable and reproducible report by the end of the workshop."
+- "This lesson content is targeted to absolute beginners with no coding experience."
 ---
 
 
@@ -20,6 +21,10 @@ keypoints:
 
 The Carpentries is a global organization whose mission is to teach researchers, and others, the basics of coding so that you can use it in your own work. 
 We believe everyone can learn to code, and that a lot of you will find it very useful for things such as data analysis and plotting.
+
+Our workshops are targeted to absolute beginners, and we expect that you have zero coding experience coming in. 
+That being said, you're welcome to attend a workshop if you already have a coding background but want to learn more!
+
 To provide an inclusive learning environment, we follow The Carpentries [Code of Conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html). 
 We expect that instructors, helpers, and learners abide by this code of conduct, including practicing the following behaviors:
 

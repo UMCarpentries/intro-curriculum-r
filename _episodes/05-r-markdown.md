@@ -23,9 +23,13 @@ keypoints:
 
 
 
+
+
+
+
 ### Contents
+1. [What is R Markdown and why use it?](#why-use-r-markdown?)
 1. [Creating a reports directory](#creating-a-reports-directory)
-1. [Why use R Markdown?](#why-use-r-markdown?)
 1. [Creating an R Markdown file](#creating-an-r-markdown-file)
 1. [Basic components of R Markdown](#basic-components-of-r-markdown)
     + [Header](#header)
@@ -35,14 +39,24 @@ keypoints:
 1. [Formatting](#formatting)
 1. [Integrating it all together: Paired exercise](#integrating-it-all-together-paired-exercise)
 
-Recall that our  goal is to generate a report on how a country's life expectancy is related to GDP.
+Recall that our  goal is to generate a report to the United Nations on how a country's life expectancy is related to GDP.
+
+> ## Discusion
+> How do you usually share data analyses with your collaborators? Many people share them through a Word or PDF document, a spreadsheet, slides, a  graphic, etc.
+{: .discussion}
+
+## What is R Markdown and why use it?
+_[Back to top](#contents)_
+
+In R Markdown, you can incorporate ordinary text (ex. experimental methods, analysis and discussion of results) alongside code and figures! (Some people write entire manuscripts in R Markdown.) This is useful for writing reproducible reports and publications, sharing work with collaborators, writing up homework, and keeping a bioinformatics notebook. Because the code is emedded in the document, the tables and figures are *reproducible*. Anyone can run the code and get the same results. If you find an error or want to add more to the report, you can just re-run the document and you'll have updated tables and figures! This concept of combining text and code is called "literate programming". To do this we use R Markdown, which combines Markdown (renders plain text) with R. You can output an html, PDF, or Word document that you can share with others. In fact, this webpage is an example of a rendered R markdown file!
+
+(If you are familiar with Jupyter notebooks in the Python programming environment, R Markdown is  R's equivalent of a Jupyter notebook.)
 
 ## Creating a reports directory
 _[Back to top](#contents)_
 
-
-Let's start by using the Unix Shell to create a directory within `un-report` called `reports` where we will write our reports to the UN.
-First, open the Unix Shell and `cd` to `un-report`
+To get started, let's use the Unix Shell to create a directory within `un-report` called `reports` where we will write our reports to the UN.
+First, open the Unix Shell and `cd` to `un-report`:
 
 ~~~
 pwd
@@ -55,23 +69,8 @@ mkdir reports
 ~~~
 {: .output}
 
+Note that there is an option to use the terminal from R Studio (tab next to Console), but on Windows computers this terminal might not be a Unix Shell. 
 
-> ## Discusion
-> How do you usually share data analyses with your collaborators? Many people share them through a Word document, a spreadsheet, slides, a  graphic, etc.
-{: .discussion}
-
-## Why use R Markdown?
-_[Back to top](#contents)_
-
-We're going to learn a way to create a report in R using something called R Markdown.
-This allows you to integrate the text of the report, the code you used, and your figures and other output into one document, which you can then "render" into a html, PDF or Word file and share with others.
-The text can be experimental methods, an analysis and discussion of the results, or whatever else you want to include.
-We call  reports *reproducible*  when the code is embedded in the document and anyone can take the report and re-run the code to get the same output.
-R Markdown reports can be used for many different things, including reproducible analysis reports, publication, sharing work with collaborators, writing up homework, or keeping a computational notebook of your work.
-If you're writing a publication or sharing results with collaborators who won't be interested in seeing that nitty-gritty part of your work, you can  hide the code in the final, rendered output file while keeping it in the R Markdown file for your own record.
-Writing reports with R Markdown is also useful because if you find an error or want to modify the text or a figure later on, you can simply change the code and re-run the R Markdown file to get the updated output!
-
-R Markdown combines Markdown (which renders plain text) with R code, which you can use to do data analysis and make figures.
 
 ## Creating an R Markdown file
 _[Back to top](#contents)_
@@ -118,6 +117,15 @@ The next section is a *code chunk*, or embedded R code, that sets up options for
 
 ~~~
 ```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("..")
+```
+~~~
+{: .output}
+
+
+
+~~~
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ~~~
@@ -133,7 +141,7 @@ All code chunks have this format:
 ~~~
 {: .output}
 
-All of the code is enclosed in 3 backticks (`cat('```')`), and the `{r}` part indicates that it's a chunk of R code.
+All of the code is enclosed in 3 back ticks (), and the `{r}` part indicates that it's a chunk of R code.
 
 You can also include other information within the curly brackets to indicate different information about that code chunk.
 For instance, the first code block is named "setup", and `include=FALSE` prevents code and results from showing up in the output file.
@@ -169,7 +177,7 @@ Now it will assume all of your relative paths for reading and writing files are 
 
 Now that we have that set up, let's start on the report!
 
-We're going to use the code you generated yesterday to plot GDP vs. Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to load the needed packages. You could also include this in the previous setup chunck, it's up to your personal preference.
+We're going to use the code you generated yesterday to plot GDP vs. Life Expectancy to include in the report. Recall that we needed a couple R packages to generate these plots. We can create a new code chunk to load the needed packages. You could also include this in the previous setup chunk, it's up to your personal preference.
 
 
 ~~~
@@ -190,7 +198,7 @@ Now, since we want to show our results comparing GDP and life expectancy by coun
 
 ~~~
 ```{r data}
-gapminder_1997 <- read.csv("./data/gapminder_1997.csv")
+gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 ```
 ~~~
 {: .output}
@@ -213,24 +221,23 @@ ggplot(data = gapminder_1997) +
 ~~~
 {: .output}
 
-Now we can knit our document to see how our report looks! Use the <kbd>knit<kbd> button in the top left of the screen.
+Now we can knit our document to see how our report looks! Use the <kbd>knit</kbd> button in the top left of the screen.
 
-![](../fig/r-markdown/first_report_render.png)
+![]({{ page.root }}/fig/r-markdown/first_report_render.png)
 
 Amazing! We've created a report! Let's push this to GitHub to make sure we preserve this document.
 
-Now, all we need to do is commit our new report to git version control and update our remote repository using Git.
+Returning to the command line:
 
-Returning to the command line, type
-`git status` ##to get an idea of which files just changed
-`git add <filename(s)>` ##to add any file(s) that you just created and that you would like to version control
-`git commit -m "<your commit message>"` ##to describe the changes you are just committing and add them to the git log
-`git push` ##to upload your changes to the git directory on the remote server
-
+1. Check the status of our repository with the `git status`. This will tell us which files just changed.  
+1. Add the new files that we want tracked by git up with `git add <filename(s)>`.  This adds any file(s) we list to version control.  
+1. Commit the file or changes with `git commit -m "<your commit message>"` and add a message with the commit to describe the changes you are committing and it adds them to the git log.  
+1. Push those changes from our local computer to our github repo with `git push`. This will upload the changes to the git directory on the remote server.  
+If you don't remember how to do this, you can review the [git lesson]({{ page.root }}/03-intro-git-github.md).
 
 It's looking pretty good, but there seem to be a few extra bits that we don't need in the report. For example, the report shows that we load the tidyverse package and the accompanying messages.
 
-![](../fig/r-markdown/tidyverse_messages.png)
+![]({{ page.root }}/fig/r-markdown/tidyverse_messages.png)
 
 To get rid of this, we can revise our packages code chunk by adding `include=FALSE` just like in the setup chunk to prevent code and messages in this chunk from showing up in our report.
 
@@ -244,7 +251,7 @@ library(tidyverse)
 
 We can also see the code that was used to generate the plot. Depending on the purpose and audience for your report, you may want to include the code. If you don't want the code to appear, how can you prevent it? What happens if we add `include=FALSE` to the plot code chunk, too? Try rendering the R Markdown report with this change.
 
-![](../fig/r-markdown/includeFalse.png)
+![]({{ page.root }}/fig/r-markdown/includeFalse.png)
 
 Oops! Now the plot doesn't show up in our report at all. This is because setting `include=FALSE` prevents anything in the code chunk from appearing in the report. Instead we can add `echo=FALSE`  to tell this code chunk that we don't want to see the code but just the output.
 
@@ -266,40 +273,98 @@ ggplot(data = gapminder_1997) +
 
 When we knit this again, our plot is back!
 
-![](../fig/r-markdown/echoFalse.png)
+![]({{ page.root }}/fig/r-markdown/echoFalse.png)
 
-Before we finalize our report, let's look at one more cool feature. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
+Before we finalize our report, let's look at a few other cool features. Sometimes, you want to describe your data or results (like our plot) to the audience in text but the data and results may still change as you work things out. R Markdown offers an easy way to do this dynamically, so that the text updates as your data or results change. Here is how to do this.
 
-First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values.
+First, let's create a code chunk that summarizes features of our data that we can use to describe our plot to  our audience. Note that we set `include=FALSE` because we only want this step to happen in the background. For our purposes, we will calculate how many countries were included in the analysis, as well as the minimum and maximum GDP per capita values:
 
 
 ~~~
-```{r data_summary, include=FALSE}
+gapminder_1997 <- read_csv("data/gapminder_1997.csv")
 
-  nCountries <- length(unique(gapminder_1997$country)) 
+nCountries <- gapminder_1997 %>%
+  select(country) %>%
+  n_distinct()
 
-  minGDP <- round(min(gapminder_1997$gdpPercap), digits=0) 
+minGDP <- gapminder_1997 %>%
+  summarise(round(min(gdpPercap))) %>%
+  pull()
 
-  maxGDP <- round(max(gapminder_1997$gdpPercap), digits=0)
-```
+maxGDP <- gapminder_1997 %>%
+  summarise(round(max(gdpPercap))) %>%
+  pull()
 ~~~
-{: .output}
+{: .language-r}
 
 Now, all we need to do is reference the values we just computed to describe our
 plot. To do this, we enclose each value in one set of backticks 
-(`` `r some_R_variable_name` ``), while the ``r`` part 
-once again indicates that it's a chunk of R code. When we knit our report, R will
+(`` `r some_R_variable_name ` ``), while the ``r`` part once again
+indicates that it's a chunk of R code. When we knit our report, R will
 automatically fill in the values we just created in the above code chunk. Note
 that R will automatically update these values every time our data might change
 (if we were to decide to drop or add countries to this  analysis, for example).
 
 ```
-The above plot shows the relationship between GDP per capita and life expectancy 
-for a total of `r nCountries` countries. For this set of countries, 
+The above plot shows the relationship between GDP per capita and life expectancy
+for a total of `r nCountries ` countries. For this set of countries,
 economic wealth ranged from a minimum of USD `r minGDP`
 to a maximum of USD `r maxGDP` per capita.
 ```
 {: .code}
+
+In addition to reporting specific values in the text, we may also want to show a table of values. With R Markdown there are multiple ways to product tables. One way to generate smaller tables is manually. Using a special format we can generate a table in our output. Note that this does not get generated in a code chunk because it is markdown formatting not R code.
+
+```
+|HEADER 1|HEADER 2|
+|-------------|-------------|
+|row 1, column1|row 1, column 2|
+|row 2, column1|row 2, column 2|
+```
+Columns are separated by the pipe key <kbd>|</kbd> located above <kbd>Enter</kbd> on the keyboard. The dashes distinguish the header row from the rest of the table. This header could be a name for each column or a header for the whole table. Now that we know the basic structure we can fill in our table. This is how we could present the same numbers from the previous paragraph as a table instead, again using in-line code.
+When we knit the report again, the code above will render like this:
+![]({{ page.root }}/fig/r-markdown/table_format.png)
+
+Here's the text that we need to include to creata summary table of our data:
+
+
+~~~
+```
+|Summary of Data|
+|------|------|
+|Number of Countries|`r nCountries`|
+|Minimum GDP per capita|`r minGDP`|
+|Maximum GDP per capita|`r maxGDP`|
+
+```
+~~~
+{: .output}
+
+
+This will render like this:
+
+![]({{ page.root }}/fig/r-markdown/table_fillin.png)
+
+This is useful if we are reporting a few values, but can get tedious for larger tables. Another way we can add tables to our reports is using an R function called `kable()`. Since this is an R function, we will use it within a code chunk. We can give the `kable()` function a data table and it will format it to a nice looking table in the report. For example, we could use the following code to generate a table of all the countries in Oceania. The rendered version should look almost exactly as it does on this webpage. 
+
+
+~~~
+# load library
+library(knitr)
+
+# print kable
+gapminder_1997 %>%
+  filter(continent == "Oceania") %>%
+  kable()
+~~~
+{: .language-r}
+
+
+
+|country     |      pop|continent | lifeExp| gdpPercap|
+|:-----------|--------:|:---------|-------:|---------:|
+|Australia   | 18565243|Oceania   |   78.83|  26997.94|
+|New Zealand |  3676187|Oceania   |   77.55|  21050.41|
 
 Now that we have a report we are happy with, let's push the changes to GitHub.
 
@@ -310,7 +375,7 @@ We now know how to create a report with R Markdown. Maybe we also want to format
 Markdown is a very simple programming language when it comes to syntax.
 Let's try to figure out some syntax together. Suppose we wanted to create sections in our report.
 
-> ## Exercise: R Markdown headers
+> ## R Markdown headers
 > Try googling how to create sections by using headers and subheaders using R Markdown. What do you find?
 >
 > > ## Solution
@@ -320,7 +385,7 @@ Let's try to figure out some syntax together. Suppose we wanted to create sectio
 
 OK, now that we know how to make headers, let's practice some more Markdown syntax.
 
-> ## Exercise: R Markdown syntax
+> ## R Markdown syntax
 > Go ahead and do some online searches on how to do the following:
 > * create a bullet point list with three items
 > * as the first item, write the name of your currently favorite programming language in bold
@@ -357,12 +422,14 @@ If you don't already have your partner's GitHub repo cloned from the git/GitHub 
 The way you will collaborate with each other is as follows:
 1. For each exercise, both people will be thinking about how to answer the question, but only one person will be writing the code.
 This is called _paired programming_.
-1. Once you have completed an exercise, the person working on the exercise will add, commit, and push the changes to GitHub.
+1. Once you have completed 3 exercises, the person working on the exercises will add, commit, and push the changes to GitHub.
 1. Then the other person will pull the changes from GitHub.
 1. The person who pulled changes will code for the next exercise.
 1. Repeat the process for as many exercises as you can finish in the remaining time.
+
 Don't worry if you don't finish all of the exercises, and it's not a race between groups!
 This is just a way for you to practice what you've learned.
+Also, you can switch off more or less frequently depending on how much you want to practice pushing and pulling to/from GitHub.
 
 **One note:** It may be helpful to copy and paste the questions into the R Markdown file as you go.
 
@@ -371,44 +438,12 @@ _[Back to top](#contents)_
 
 First we're going to start out with a few questions about the gapminder dataset.
 
-1. The very first step is to read in the gapminder dataset, so don't forget! Also load the `tidyverse` package.
+[1] The very first step is to read in the gapminder dataset, so do that first! Also load the `tidyverse` package.
 
 > ## Solution
 > 
 > ~~~
 > library(tidyverse)
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> ── Attaching packages ───────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-> ✔ tibble  3.0.4     ✔ dplyr   1.0.2
-> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-> ✔ readr   1.4.0     ✔ forcats 0.5.0
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> ── Conflicts ──────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-> ✖ dplyr::filter() masks stats::filter()
-> ✖ dplyr::lag()    masks stats::lag()
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
 > gapminder <- read_csv('data/gapminder_data.csv')
 > ~~~
 > {: .language-r}
@@ -416,16 +451,26 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > 
 > ~~~
+> Rows: 1704 Columns: 6
+> ~~~
+> {: .output}
 > 
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────
-> cols(
->   country = col_character(),
->   year = col_double(),
->   pop = col_double(),
->   continent = col_character(),
->   lifeExp = col_double(),
->   gdpPercap = col_double()
-> )
+> 
+> 
+> ~~~
+> ── Column specification ────────────────────────────────────────────────────────────────────────
+> Delimiter: ","
+> chr (2): country, continent
+> dbl (4): year, pop, lifeExp, gdpPercap
+> ~~~
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> 
+> ℹ Use `spec()` to retrieve the full column specification for this data.
+> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 > ~~~
 > {: .output}
 {: .solution}
@@ -433,7 +478,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 #### Investigating population over time.
 _[Back to top](#contents)_
 
-2. Make a scatter plot of year vs. population, separated into a plot for each contient. **HINT:** you can use `facet_wrap(vars(column_name))` to separate into different plots based on that column.
+[2] Make a scatter plot of year vs. population, separated into a plot for each contient. **Hint:** you can use `facet_wrap(vars(column_name))` to separate into different plots based on that column.
 
 > ## Solution
 > 
@@ -444,31 +489,31 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-3. It seems like there are 2 outliers - which countries are those?
+[3] It seems like there are 2 outliers - which countries are those?
 
 > ## Solution
->
->~~~
+> 
+> ~~~
 > gapminder %>% filter(pop > 1e9) %>% select(country) %>% unique()
->~~~
->{: .language-r}
->
->
->
->~~~
-># A tibble: 2 x 1
->  country
->  <chr>  
->1 China  
->2 India  
->~~~
->{: .output}
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> # A tibble: 2 × 1
+>   country
+>   <chr>  
+> 1 China  
+> 2 India  
+> ~~~
+> {: .output}
 {: .solution}
 
-4. Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries.
+[4] Plot year vs. population separated into a plot for each continent but excluding the 2 outlier countries.
 
 > ## Solution
 > 
@@ -479,16 +524,16 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
 ##### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
-5. In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do this!
+[5] In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do this!
 
-> Solution
+> ## Solution
 > 
 > ~~~
 > gapminder %>% filter(country != 'China' & country != 'India') %>% ggplot(aes(x=year,y=pop)) +
@@ -498,10 +543,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-6. It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? HINT: This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
+[6] It's hard to see which country is which here. Can you change the scatter plot to a line plot so we can get a better sense of trends over time? **Hint:**  This website has more information: https://www.r-graph-gallery.com/line-chart-several-groups-ggplot2.html
 
 > ## Solution
 > 
@@ -513,18 +558,18 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 #### Looking into life expectancy a bit more.
 _[Back to top](#contents)_
 
-7. What country had the highest life expectancy in 1982? **Hint:** use the `slice_max()` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
+[7] What country had the highest life expectancy in 1982? **Hint:** use the `slice_max()` function to get the row for a maximum value in a dataset. You can use `?slice_max` and/or the internet to learn more about how to use the function.
 
 > ## Solution
 > 
 > ~~~
-> # A tibble: 1 x 6
+> # A tibble: 1 × 6
 >   country  year       pop continent lifeExp gdpPercap
 >   <chr>   <dbl>     <dbl> <chr>       <dbl>     <dbl>
 > 1 Japan    1982 118454974 Asia         77.1    19384.
@@ -532,7 +577,7 @@ _[Back to top](#contents)_
 > {: .output}
 {: .solution}
 
-8. Now, do the same thing but for all years! *HINT:* Use the `group_by()` function.
+[8] Now, do the same thing but for all years! **Hint:** Use the `group_by()` function.
 
 > ## Solution
 > 
@@ -544,7 +589,7 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> # A tibble: 12 x 3
+> # A tibble: 12 × 3
 > # Groups:   year [12]
 >    country  year lifeExp
 >    <chr>   <dbl>   <dbl>
@@ -564,16 +609,16 @@ _[Back to top](#contents)_
 > {: .output}
 {: .solution}
 
-9. Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
+[9] Make a boxplot for the life expectancies of the countries in Asia for each year (year is the x axis, life expectancy is the y axis). Also fix the x and y axis labels.
 
 > ## Solution
-> <img src="../fig/rmd-05-unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 ##### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
-10. What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
+[10] What are the outliers in life expectancy in Asia for each year (lower life expectancy)?
 
 > ## Solution
 > 
@@ -585,7 +630,7 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> # A tibble: 12 x 6
+> # A tibble: 12 × 6
 > # Groups:   year [12]
 >    country      year      pop continent lifeExp gdpPercap
 >    <chr>       <dbl>    <dbl> <chr>       <dbl>     <dbl>
@@ -605,18 +650,18 @@ _[Back to top](#contents)_
 > {: .output}
 {: .solution}
 
-11. Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text, too. Feel free to change the theme if you'd like.
+[11] Make a boxplot for the life expectancies of the countries over time for each continent. Try to fix the x and y axis labels and text, too. Feel free to change the theme if you'd like.
 
 > ## Solution
-> <img src="../fig/rmd-05-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-12. Which country has had the greatest increase in life expectancy from 1952 to 2007? **HINT:** You might want to use the `pivot_wider()` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy.
+[12] Which country has had the greatest increase in life expectancy from 1952 to 2007? **Hint:** You might want to use the `pivot_wider()` function to get your data in a format with columns for: country, 1952 life expectancy, 2007 life expectancy, and the difference between 2007 and 1992 life expectancy.
 
 > ## Solution
 > 
 > ~~~
-> # A tibble: 1 x 4
+> # A tibble: 1 × 4
 >   country `1952` `2007`  diff
 >   <chr>    <dbl>  <dbl> <dbl>
 > 1 Oman      37.6   75.6  38.1
@@ -624,12 +669,12 @@ _[Back to top](#contents)_
 > {: .output}
 {: .solution}
 
-13. What countries had a decrease in life expectancy from 1952 to 2007?
+[13] What countries had a decrease in life expectancy from 1952 to 2007?
 
 > ## Solution
 > 
 > ~~~
-> # A tibble: 2 x 4
+> # A tibble: 2 × 4
 >   country   `1952` `2007`  diff
 >   <chr>      <dbl>  <dbl> <dbl>
 > 1 Swaziland   41.4   39.6 -1.79
@@ -652,7 +697,7 @@ This dataset has information on the gross domestic expenditure on research and d
 
 _Data:_ Gross domestic expenditure on research and development (R & D)
 
-_Data source:_ [UN data](data.un.org), under "Science and technology"
+_Data source:_ [UN data](http://data.un.org), under "Science and technology"
 
 _Data path:_ `data/SYB63_286_202009_GDP_on_RnD.csv`
 
@@ -680,41 +725,51 @@ Region/Country/Area,,Year,Series,Value,Footnotes,Source
 #### Reading in and cleaning the data
 _[Back to top](#contents)_
 
-1. First, read in the data. Note that you need to skip the first line of the file because that's just a title for the whole dataset (see above). Also rename the columns to something more informative (as you learned, there are lots of ways to do this, and different preferences - feel free to use whichever method you want!).
+[1] First, read in the data. Note that you need to skip the first line of the file because that's just a title for the whole dataset (see above). Also rename the columns to something more informative (as you learned, there are lots of ways to do this, and different preferences - feel free to use whichever method you want!).
 
 > ## Solution
 > 
 > ~~~
-> rnd <- read_csv('data/rnd-un-data.csv', skip = 1) %>% rename(country=X2) %>% rename_all(tolower)
+> rnd <- read_csv('data/rnd-un-data.csv', skip = 1) %>% rename(country='...2') %>% rename_all(tolower)
 > ~~~
 > {: .language-r}
 > 
 > 
 > 
 > ~~~
-> Warning: Missing column names filled in: 'X2' [2]
+> New names:
+> * `` -> ...2
 > ~~~
-> {: .warning}
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> Rows: 2420 Columns: 7
+> ~~~
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> ── Column specification ────────────────────────────────────────────────────────────────────────
+> Delimiter: ","
+> chr (4): ...2, Series, Footnotes, Source
+> dbl (3): Region/Country/Area, Year, Value
+> ~~~
+> {: .output}
 > 
 > 
 > 
 > ~~~
 > 
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────
-> cols(
->   `Region/Country/Area` = col_double(),
->   X2 = col_character(),
->   Year = col_double(),
->   Series = col_character(),
->   Value = col_double(),
->   Footnotes = col_character(),
->   Source = col_character()
-> )
+> ℹ Use `spec()` to retrieve the full column specification for this data.
+> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 > ~~~
 > {: .output}
 {: .solution}
 
-2. Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
+[2] Next, take a look at the `series` column (or whatever you renamed it to), and make the titles shorter and with no spaces to make them easier to work with.
 
 > ## Solution
 > 
@@ -731,7 +786,7 @@ _[Back to top](#contents)_
 > {: .language-r}
 {: .solution}
 
-3. Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This should give you the following columns: country name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
+[3] Next, make a column for each of the data types in the `series` column (or whatever you renamed it to). This should give you the following columns: country name, year, expenditure in general, % of funds from business, % of funds from government, % of funds from higher ed, % of funds from non-profit, % of funds from abroad, % of funds from non-specified sources.
 
 > ## Solution
 > 
@@ -748,7 +803,7 @@ Now we have our data set up in a way that makes it easier to work with. Feel fre
 #### Plotting with the R & D dataset
 _[Back to top](#contents)_
 
-1. Plot the distribution of percent expenditure using a histogram. Observe the range and how heavy the "tails" are. **Note:** You will likely get a note and a warning. Feel free to change the number of bins as the note describes. Why do you get warnings? (Hint: Look at the column you're plotting.). **Bonus:** Plot the same exact data in a way in which you don't get warnings.
+[4] Plot the distribution of percent expenditure using a histogram. Observe the range and how heavy the "tails" are. **Note:** You will likely get a note and a warning. Feel free to change the number of bins as the note describes. Why do you get warnings? (Hint: Look at the column you're plotting.). **Bonus:** Plot the same exact data in a way in which you don't get warnings.
 
 > ## Solution
 > 
@@ -758,10 +813,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-2. Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want.
+[5] Plot the expenditure by year (discrete x vs continuous y) using a scatter plot. Feel free to try to make the plot more legible if you want.
 
 > ## Solution
 > 
@@ -772,10 +827,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-3. Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
+[6] Plot the expenditure by year (discrete x vs continuous y) using a violin plot or a boxplot.
 
 > ## Solution
 > 
@@ -786,7 +841,7 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 ### Combining the CO2 and R&D datasets
@@ -796,7 +851,7 @@ Now we're going to work with the CO2 and R&D datasets together.
 
 Unfortunately, we don't have the exact same dates for all of them.
 
-1. First, read in the CO2 dataset. You can use the code from the [R for data analysis](_episodes/04-r-data-analysis.md) lesson to clean the CO2 data.
+[7] First, read in the CO2 dataset. You can use the code from the [R for data analysis]({{ page.root }}/04-r-data-analysis.md) lesson to clean the CO2 data.
 
 > ## Solution
 > 
@@ -814,22 +869,31 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > 
 > ~~~
+> Rows: 2132 Columns: 7
+> ~~~
+> {: .output}
 > 
-> ── Column specification ──────────────────────────────────────────────────────────────────────────────────
-> cols(
->   region = col_double(),
->   country = col_character(),
->   year = col_double(),
->   series = col_character(),
->   value = col_double(),
->   footnotes = col_character(),
->   source = col_character()
-> )
+> 
+> 
+> ~~~
+> ── Column specification ────────────────────────────────────────────────────────────────────────
+> Delimiter: ","
+> chr (4): country, series, footnotes, source
+> dbl (3): region, year, value
+> ~~~
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> 
+> ℹ Use `spec()` to retrieve the full column specification for this data.
+> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 > ~~~
 > {: .output}
 {: .solution}
 
-2. Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D.
+[8] Merge the CO2 dataset and the R&D dataset together. Keep only the following colums: country, year, total CO2 emissions, CO2 emissions per capita, and percent of GDP used for R&D.
 
 > ## Solution
 > 
@@ -846,7 +910,46 @@ Unfortunately, we don't have the exact same dates for all of them.
 > {: .output}
 {: .solution}
 
-3. You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both C02 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
+[9] **BONUS:** After merging the data sets, there is some missing data. How many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive observation in a plot and/or summary statistic? (e.g.,  `ggplot` removes `NA`s but stat functions (e.g., `median()`) often ask for specific input regarding how to deal with `NA`s).
+
+> ## Solution
+> 
+> ~~~
+> co2_rnd %>% summarize_all(funs(sum(is.na(.))))
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Warning: `funs()` was deprecated in dplyr 0.8.0.
+> Please use a list of either functions or lambdas: 
+> 
+>   # Simple named list: 
+>   list(mean = mean, median = median)
+> 
+>   # Auto named with `tibble::lst()`: 
+>   tibble::lst(mean, median)
+> 
+>   # Using lambdas
+>   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
+> This warning is displayed once every 8 hours.
+> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+> ~~~
+> {: .warning}
+> 
+> 
+> 
+> ~~~
+> # A tibble: 1 × 5
+>   country  year total per_capita gdp_pct
+>     <int> <int> <int>      <int>   <int>
+> 1       0     0   274        274     880
+> ~~~
+> {: .output}
+{: .solution}
+
+[10] You might have noticed that we don't have both CO2 data _and_ R&D data for all years. Filter the merged dataset so that you only keep country/year combinations that have both CO2 and R&D data (i.e., only keep rows for which CO2 and R&D values are not missing). **HINT:** Search the internet for the use of `is.na()` and ! (the "not operator") to help you here.
 
 > ## Solution
 > 
@@ -856,7 +959,7 @@ Unfortunately, we don't have the exact same dates for all of them.
 > {: .language-r}
 {: .solution}
 
-4. How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
+[11] How many countries per year do you have after filtering? **HINT:** You can use `summarize(count=n())` to help you out.
 
 > ## Solution
 > 
@@ -868,14 +971,7 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > 
 > ~~~
-> `summarise()` ungrouping output (override with `.groups` argument)
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> # A tibble: 5 x 2
+> # A tibble: 5 × 2
 >    year count
 >   <dbl> <int>
 > 1  2005    83
@@ -890,7 +986,7 @@ Unfortunately, we don't have the exact same dates for all of them.
 #### Plotting with the CO2 and R&D datasets together
 _[Back to top](#contents)_
 
-1. Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
+[12] Plot R&D expenditure vs. CO2 emission for each country using a scatter plot. You can choose total or per-capita CO2 emissions, or both. Make sure you have informative x and y axis labels.
 
 > ## Solution
 > 
@@ -902,11 +998,11 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
-2. Next, facet the above plot by year.
+[13] Next, facet the above plot by year.
 
 > ## Solution
 > 
@@ -919,10 +1015,10 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
-3. Identify the countries that have five time points for both C02 emissions and R&D.
+[14] Identify the countries that have five time points for both C02 emissions and R&D.
 
 > ## Solution
 > 
@@ -934,14 +1030,7 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> `summarise()` ungrouping output (override with `.groups` argument)
-> ~~~
-> {: .output}
-> 
-> 
-> 
-> ~~~
-> # A tibble: 3 x 2
+> # A tibble: 3 × 2
 >   country    count
 >   <chr>      <int>
 > 1 Azerbaijan     5
@@ -953,7 +1042,7 @@ _[Back to top](#contents)_
 
 **BONUS**
 
-4. For three of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINTS:** Use `pivot_longer` to get the data in the right format. Search the internet for how you can use `%in%`. Also remember the  `c()` function from earlier in the workshop that can be used to combine values into a vector or list.
+[14] For three of the countries you identified, plot the Percent of GDP spent on R&D and the per-capita CO2 emissions over time on the same plot. Color the two different values differently. **HINTS:** Use `pivot_longer` to get the data in the right format. Search the internet for how you can use `%in%`. Also remember the  `c()` function from earlier in the workshop that can be used to combine values into a vector or list.
 
 > ## Solution
 > 
@@ -965,22 +1054,52 @@ _[Back to top](#contents)_
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-05-unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-05-unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="612" style="display: block; margin: auto;" />
 {: .solution}
 
 
 #### Bonus questions
 _[Back to top](#contents)_
 
-5. For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries  are there for each value within the range? (e.g., x countries have two different years and y have five  years)
+[15] For the R&D dataset, each country can have data for one or multiple years. What is the range of numbers of yearly data points for each country, and how many countries  are there for each value within the range? (e.g., x countries have two different years and y have five  years)
 
-6. After merging the data sets, there is some missing data. How many `NA`s are present in each data column for the R&D data set? How may these missing data affect our intuitive observation in a plot and/or summary statistic? (e.g.,  `ggplot` removes `NA`s but stat functions (e.g., `median()`) often ask for specific input regarding how to deal with `NA`s).
+> ## Solution
+> 
+> ~~~
+> rnd %>% 
+>  group_by(country) %>% 
+>  summarize(year_count = n()) %>% 
+>  group_by(year_count) %>% 
+>  summarize(country_count = n())
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> # A tibble: 13 × 2
+>    year_count country_count
+>         <int>         <int>
+>  1          1            16
+>  2          2            17
+>  3          3            14
+>  4          4            22
+>  5          5            33
+>  6          6            17
+>  7          7            13
+>  8          8             4
+>  9          9             7
+> 10         10             1
+> 11         11             1
+> 12         12             2
+> 13         13             1
+> ~~~
+> {: .output}
+{: .solution}
 
-7. What countries have the highest and lowest data availabilities? (How would you measure data availability?)
 
-8. Add in the gapminder dataset and color the scatter plots we made above by continent, also facet by continent.
+[16] Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
 
-9. For a specific continent (e.g. Europe), show the importance of business and government funding for R&D. Do this using a stacked bar plot.
-
-10. Create an R Markdown report with some of the information from these exercises. Decide exactly what you want to focus your report on, and then also perform additional analyses to include in your report. Also make sure your figures are legible and understandable!
-
+> ## Solution
+> Use the info from the R markdown lesson to create a pretty report. 
+{: .solution}
