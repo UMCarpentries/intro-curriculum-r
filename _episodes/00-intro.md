@@ -75,11 +75,11 @@ generated the results discussed within them.
 
 The programs to be introduced are:
 
-1. [_R, RStudio_](https://umswc.github.io/curriculum/01-r-plotting/index.html), and [_R Markdown_](https://umswc.github.io/curriculum/05-r-markdown/index.html): a statistical analysis and data management program, a graphical interface to it, and a method for writing reproducible reports. 
+1. [_R, RStudio_]({{ page.root }}/01-r-plotting), and [_R Markdown_]({{ page.root }}/05-r-markdown): a statistical analysis and data management program, a graphical interface to it, and a method for writing reproducible reports. 
 We'll use it to manage data and make pretty plots!
-1. [_Git_](https://umswc.github.io/curriculum/03-intro-git-github/index.html): a program to help you keep track of changes to your programs over time.
-1. [_GitHub_](https://umswc.github.io/curriculum/03-intro-git-github/index.html#intro-to-github): a web application that makes sharing your programs and working on them with others much easier. It can also be used to generate a citable reference to your computer code.
-1. [_The Unix shell (command line)_](https://umswc.github.io/curriculum/02-unix-shell/index.html): A tool that is extremely useful for managing both data and program files and chaining together discrete steps in your workflow
+1. [_Git_]({{ page.root }}/03-intro-git-github): a program to help you keep track of changes to your programs over time.
+1. [_GitHub_]({{ page.root }}/03-intro-git-github/index.html#intro-to-github): a web application that makes sharing your programs and working on them with others much easier. It can also be used to generate a citable reference to your computer code.
+1. [_The Unix shell (command line)_]({{ page.root }}/02-unix-shell): A tool that is extremely useful for managing both data and program files and chaining together discrete steps in your workflow
 (automation).
 
 We will not try to make you an expert or even proficient with any of them, but we

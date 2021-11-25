@@ -1,0 +1,41 @@
+name: check-links
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # at midnight every Monday https://crontab.guru/
+
+jobs:
+  check-links:
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+
+      - name: Checkout the lesson
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: 'release'
+
+      - name: Install needed packages
+        run: |
+          install.packages(c('rvest', 'purrr', 'dplyr', 'httr', 'readr'))
+        shell: Rscript {0}
+
+      - name: Check URL links
+        run: |
+          source("bin/detect-broken-links.R")
+          detect_broken_links("https://umcarpentries.org/intro-curriculum-r/index.html",
+            output_filename = "broken_links.tsv")
+        shell: Rscript {0}
+
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: broken-links
+          path: broken_links.tsv

@@ -26,7 +26,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("04-")
 ```
 
-### Contents {#contents}
+### Contents
 
 1.  [Getting started](#getting-started)
     -   [Loading in the data](#loading-in-the-data)
@@ -40,9 +40,9 @@ knitr_fig_path("04-")
 3.  [Cleaning up data](#cleaning-up-data)
 4.  [Joining data frames](#joining-data-frames)
 5.  [Analyzing combined data](#analyzing-combined-data)
-6.  [Putting it all together](#putting-it-all-together)
+6.  [Finishing with Git and GitHub](#Finishing-with-Git-and-GitHub)
 
-# Getting Started {#getting-started}
+# Getting Started
 
 First, navigate to the un-reports directory however you'd like and open `un-report.Rproj`.
 This should open the un-report R project in RStudio.
@@ -52,7 +52,7 @@ Yesterday we spent a lot of time making plots in R using the ggplot2 package. Vi
 
 First, we will create a new RScript file for our work. Open RStudio. Choose "File" \> "New File" \> "RScript". We will save this file as `un_data_analysis.R`
 
-### Loading in the data {#loading-in-the-data}
+### Loading in the data
 
 We will start by importing the complete gapminder dataset that we used yesterday into our fresh new R session. Yesterday we did this using a "point-and-click" commands. Today let's type them into the console ourselves: `gapminder_data <- read_csv("data/gapminder_data.csv")`
 
@@ -409,7 +409,7 @@ git push
 git status
 ``` 
 
-# Cleaning up data {#cleaning-up-data}
+# Cleaning up data
 
 [*Back to top*](#contents)
 
@@ -542,7 +542,7 @@ co2_emissions <- co2_emissions_dirty %>%
 > **Looking at your data:** You can get a look at your data-cleaning hard work by navigating to the **Environment** tab in RStudio and clicking the table icon next to the variable name. Notice when we do this, RStudio automatically runs the `View()` command. We've made a lot of progress!
 {.callout}
 
-# Joining data frames {#joining-data-frames}
+# Joining data frames
 
 [*Back to top*](#contents)
 
@@ -668,7 +668,7 @@ write_csv(gapminder_co2, "data/gapminder_co2.csv")
 
 Great - Now we can move on to the analysis! 
 
-# Analyzing combined data {#analyzing-combined-data}
+# Analyzing combined data
 
 [*Back to top*](#contents)
 
@@ -740,6 +740,7 @@ We see that although Canada, the United States, and Mexico account for close to 
 
 
 ## Finishing with Git and GitHub
+
 Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and push our changes to GitHub again - do you remember how?
 
 > ## changing directories
