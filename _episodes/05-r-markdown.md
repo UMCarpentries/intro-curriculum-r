@@ -28,7 +28,7 @@ keypoints:
 
 
 ### Contents
-1. [What is R Markdown and why use it?](#why-use-r-markdown?)
+1. [What is R Markdown and why use it?](#why-use-r-markdown)
 1. [Creating a reports directory](#creating-a-reports-directory)
 1. [Creating an R Markdown file](#creating-an-r-markdown-file)
 1. [Basic components of R Markdown](#basic-components-of-r-markdown)
@@ -45,7 +45,7 @@ Recall that our  goal is to generate a report to the United Nations on how a cou
 > How do you usually share data analyses with your collaborators? Many people share them through a Word or PDF document, a spreadsheet, slides, a  graphic, etc.
 {: .discussion}
 
-## What is R Markdown and why use it?
+## What is R Markdown and why use it? {##why-use-r-markdown}
 _[Back to top](#contents)_
 
 In R Markdown, you can incorporate ordinary text (ex. experimental methods, analysis and discussion of results) alongside code and figures! (Some people write entire manuscripts in R Markdown.) This is useful for writing reproducible reports and publications, sharing work with collaborators, writing up homework, and keeping a bioinformatics notebook. Because the code is emedded in the document, the tables and figures are *reproducible*. Anyone can run the code and get the same results. If you find an error or want to add more to the report, you can just re-run the document and you'll have updated tables and figures! This concept of combining text and code is called "literate programming". To do this we use R Markdown, which combines Markdown (renders plain text) with R. You can output an html, PDF, or Word document that you can share with others. In fact, this webpage is an example of a rendered R markdown file!
@@ -417,7 +417,7 @@ Only one of the people in your pair is going to create the R Markdown file. The 
 
 **For the person who is going to collaborate with the host of the R Markdown file:**
 
-If you don't already have your partner's GitHub repo cloned from the git/GitHub lesson, clone their repo to your Desktop under the name `USERNAME-un-report`. If you don't remember how to do this, you can review the [git lesson](_episodes/03-intro-git-github.md).
+If you don't already have your partner's GitHub repo cloned from the git/GitHub lesson, clone their repo to your Desktop under the name `USERNAME-un-report`. If you don't remember how to do this, you can review the [git lesson]({{ page.root }}/03-intro-git-github).
 
 The way you will collaborate with each other is as follows:
 1. For each exercise, both people will be thinking about how to answer the question, but only one person will be writing the code.
@@ -458,7 +458,7 @@ First we're going to start out with a few questions about the gapminder dataset.
 > 
 > 
 > ~~~
-> ── Column specification ────────────────────────────────────────────────────────────────────────
+> ── Column specification ─────────────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (2): country, continent
 > dbl (4): year, pop, lifeExp, gdpPercap
@@ -528,7 +528,7 @@ _[Back to top](#contents)_
 {: .solution}
 
 
-##### Bonus questions: come back to these if you have time at the end
+#### Bonus questions: come back to these if you have time at the end
 _[Back to top](#contents)_
 
 [5] In the plot above, the years look kind of messy. Can you rotate the x axis text 90 degrees so that the years are more readable? Feel free to search the internet if you don't know how to do this!
@@ -752,7 +752,7 @@ _[Back to top](#contents)_
 > 
 > 
 > ~~~
-> ── Column specification ────────────────────────────────────────────────────────────────────────
+> ── Column specification ─────────────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -851,7 +851,7 @@ Now we're going to work with the CO2 and R&D datasets together.
 
 Unfortunately, we don't have the exact same dates for all of them.
 
-[7] First, read in the CO2 dataset. You can use the code from the [R for data analysis]({{ page.root }}/04-r-data-analysis.md) lesson to clean the CO2 data.
+[7] First, read in the CO2 dataset. You can use the code from the [R for data analysis]({{ page.root }}/04-r-data-analysis) lesson to clean the CO2 data.
 
 > ## Solution
 > 
@@ -876,7 +876,7 @@ Unfortunately, we don't have the exact same dates for all of them.
 > 
 > 
 > ~~~
-> ── Column specification ────────────────────────────────────────────────────────────────────────
+> ── Column specification ─────────────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): country, series, footnotes, source
 > dbl (3): region, year, value

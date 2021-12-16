@@ -8,17 +8,29 @@ base_url <- Vectorize(function(url) {
   httr::build_url(r)
 }, USE.NAMES = FALSE)
 
-polite_GET_status <- function(urls, delay = 1) {
+get_page <- function(url, include_content = FALSE) {
+  page <- list(status = 999, url = url)
+  resp <- possibly(~httr::GET(.x), otherwise = NULL)(url)
+  if (!is.null(resp)) {
+    page$status <- httr::status_code(resp)
+    page$url <- resp$url
+    if (include_content) {
+      page$content <- httr::content(resp, type = "text/html", encoding = "UTF-8")
+    }
+  }
+  page
+}
+
+polite_GET_status <- function(urls, delay = .5) {
   statuses <- rep(0, length(urls))
-  safe_status <- possibly(~ httr::status_code(httr::GET(.x)), otherwise = 999)
   for (i in seq_along(urls)) {
-    statuses[i] <- safe_status(urls[i])
+    statuses[i] <- get_page(urls[i])$status
     Sys.sleep(delay)
   }
   statuses
 }
 
-check_page_links <- function(page, base = "", seen = data.frame(url = character(0)), delay = 1) {
+check_page_links <- function(page, base = "", seen = data.frame(url = character(0)), delay = .5) {
   stopifnot(inherits(page, "xml_node"))
   stopifnot("url" %in% names(seen))
   page_ids <- page %>%
@@ -56,7 +68,10 @@ check_page_links <- function(page, base = "", seen = data.frame(url = character(
 }
 
 crawl_pages <- function(seed_url, root_url = base_url(seed_url), delay = .5) {
-  page <- read_html(seed_url)
+  resp <- get_page(seed_url, include_content = TRUE)
+  page <- resp$content
+  seed_url <- resp$url
+
   results <- check_page_links(page, base = seed_url, delay = delay) %>%
     mutate(page = seed_url)
 
@@ -70,12 +85,23 @@ crawl_pages <- function(seed_url, root_url = base_url(seed_url), delay = .5) {
     unique()
   while (length(toscan) > 0) {
     url <- toscan[1]
-    page <- possibly(read_html, otherwise = NULL)(url)
+    toscan <- toscan[-1]
+    resp <- get_page(url, include_content = TRUE)
+    page <- resp$content
     if (!is.null(page)) {
+      if (url != resp$url) {
+        url <- resp$url
+        if (url %in% c(toscan, scanned)) {
+          toscan <- setdiff(toscan, url)
+          next;
+        }
+      }
+
       pageresults <- check_page_links(page, base = url, seen = seen, delay = delay) %>%
         mutate(page = .env$url)
 
       candidates <- filter_children(pageresults %>% filter(status == 200) %>% pull(url), root_url)
+      scanned <- c(scanned, url)
       toscan <- append(toscan, setdiff(setdiff(candidates, scanned), toscan))
 
       results <- results %>% bind_rows(pageresults)
@@ -83,8 +109,6 @@ crawl_pages <- function(seed_url, root_url = base_url(seed_url), delay = .5) {
         select(url, status, result) %>%
         unique()
     }
-    toscan <- toscan[-1]
-    scanned <- c(scanned, url)
     Sys.sleep(delay)
   }
   results

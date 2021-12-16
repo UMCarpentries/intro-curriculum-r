@@ -40,7 +40,7 @@ keypoints:
     + [Importing datasets](#importing-datasets)
     + [Discrete plots](#discrete-plots)
     + [Layers](#layers)
-    + [Color vs. Fill](#color-vs.-fill)
+    + [Color vs. Fill](#color-vs-fill)
     + [Univariate plots](#univariate-plots)
     + [Plot themes](#plot-themes)
     + [Facets](#facets)
@@ -64,7 +64,7 @@ _[Back to top](#contents)_
 In this session we will be testing the hypothesis that a country's life expectancy is related to the total value of its finished goods and services, also known as the Gross Domestic Product (GDP).
 To test this hypothesis, we'll need two things: data and a platform to analyze the data.
 
-You already [downloaded the data]({{ page.root }}/setup/). But what platform will we use to analyze the data? We have many options!
+You already [downloaded the data]({{ page.root }}/setup.html). But what platform will we use to analyze the data? We have many options!
 
 We could try to use a spreadsheet program like Microsoft Excel or Google sheets that have limited access, less flexibility, and don't easily allow for things that are critical to ["reproducible" research](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285), like easily sharing the steps used to explore and make changes to the original data.
 
@@ -76,9 +76,9 @@ Instead, we'll use a programming language to test our hypothesis. Today we will 
 >
 {: .solution}
 
-To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up]({{ page.root }}/setup/) for this workshop.
+To run R, all you really need is the R program, which is available for computers running the Windows, Mac OS X, or Linux operating systems. You downloaded R while getting [set up]({{ page.root }}/setup.html) for this workshop.
 
-To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up]({{ page.root }}/setup/). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
+To make your life in R easier, there is a great (and free!) program called RStudio that you also downloaded and used during [set up]({{ page.root }}/setup.html). As we work today, we'll use features that are available in RStudio for writing and running code, managing projects, installing packages, getting help, and much more. It is important to remember that R and RStudio are different, but complementary programs. You need R to use RStudio.
 
 > Bonus Exercise: Can you think of a reason you might not want to use RStudio?
 >
@@ -174,7 +174,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
@@ -184,14 +184,14 @@ library(tidyverse)
 ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
 ✔ tibble  3.1.6     ✔ dplyr   1.0.7
 ✔ tidyr   1.1.4     ✔ stringr 1.4.0
-✔ readr   2.1.0     ✔ forcats 0.5.1
+✔ readr   2.1.1     ✔ forcats 0.5.1
 ~~~
 {: .output}
 
 
 
 ~~~
-── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -206,7 +206,7 @@ library(tidyverse)
 > message tells us what packages were installed when we loaded `tidyverse` (these
 > include `ggplot2`, which we'll be using a lot in this lesson, and `dyplr`, which
 > you'll be introduced to tomorrow in the 
-> [R for Data Analysis lesson](05-r-markdown.Rmd)).
+> [R for Data Analysis lesson]({{ page.root }}/05-r-markdown)).
 >
 > The second section of messages gives a list of "conflicts." Sometimes, the
 > same function name will be used in two different packages, and R has to decide
@@ -288,7 +288,7 @@ Rows: 142 Columns: 5
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (3): pop, lifeExp, gdpPercap
@@ -425,7 +425,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "2021-11-23"
+[1] "2021-12-16"
 ~~~
 {: .output}
 
@@ -439,7 +439,7 @@ Do all functions need arguments? Let's test some other functions:
 
 
 ~~~
-[1] "/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd"
+[1] "/Users/kelly/projects/carpentries/mrflick-curriculum/_episodes_rmd"
 ~~~
 {: .output}
 
@@ -495,7 +495,7 @@ Rows: 142 Columns: 5
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (3): pop, lifeExp, gdpPercap
@@ -576,7 +576,7 @@ Sometimes it is helpful - or even necessary - to include the argument name, but 
 > 
 > 
 > ~~~
-> [1] "2021-11-23"
+> [1] "2021-12-16"
 > ~~~
 > {: .output}
 > 
@@ -590,7 +590,7 @@ Sometimes it is helpful - or even necessary - to include the argument name, but 
 > 
 > 
 > ~~~
-> [1] "/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd"
+> [1] "/Users/kelly/projects/carpentries/mrflick-curriculum/_episodes_rmd"
 > ~~~
 > {: .output}
 > 
@@ -618,7 +618,7 @@ Sometimes it is helpful - or even necessary - to include the argument name, but 
 > 
 > 
 > ~~~
-> Error: 'gapminder_1997.csv' does not exist in current working directory ('/Users/kelly/projects/carpentries/intro-curriculum-r/_episodes_rmd').
+> Error: 'gapminder_1997.csv' does not exist in current working directory ('/Users/kelly/projects/carpentries/mrflick-curriculum/_episodes_rmd').
 > ~~~
 > {: .error}
 {: .callout}
@@ -1021,7 +1021,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1302,7 +1302,7 @@ Both `geom_violin` and `geom_jitter` will inherit the default values of `aes(con
 {: .solution}
 
 
-## Color vs. Fill
+## Color vs. Fill 
 _[Back to top](#contents)_
 
 Let's say we want to spice up our plot a bit by adding some color. Maybe we want our violin color to a fancy color like "darkolivegreen." We can do this by explicitly setting the color aesthetic inside the `geom_violin` function. Note that because we are assigning a color directly and not using any values from our data to do so, we do not need to use the `aes()` mapping function. Let's try it out:
@@ -1717,85 +1717,87 @@ animatedHansPlot
 
 
 ~~~
-Rendering [----------------------------------------------] at 1 fps ~ eta: 2m
-Rendering [>------------------------------------------] at 0.98 fps ~ eta: 2m
-Rendering [>------------------------------------------] at 0.84 fps ~ eta: 2m
-Rendering [=>-----------------------------------------] at 0.94 fps ~ eta: 2m
-Rendering [=>--------------------------------------------] at 1 fps ~ eta: 2m
+Rendering [--------------------------------------------] at 1.2 fps ~ eta: 1m
+Rendering [>-------------------------------------------] at 1.1 fps ~ eta: 1m
+Rendering [=>------------------------------------------] at 1.1 fps ~ eta: 1m
 Rendering [==>-----------------------------------------] at 1.1 fps ~ eta: 1m
 Rendering [===>----------------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [===>----------------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [====>---------------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [=====>--------------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [=====>--------------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [======>-------------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [=======>------------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [========>-----------------------------------] at 1.2 fps ~ eta: 1m
-Rendering [=========>----------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [==========>---------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [===========>--------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [============>-------------------------------] at 1.1 fps ~ eta: 1m
-Rendering [=============>--------------------------------] at 1 fps ~ eta: 1m
-Rendering [==============>-------------------------------] at 1 fps ~ eta: 1m
-Rendering [===============>------------------------------] at 1 fps ~ eta: 1m
-Rendering [===============>----------------------------] at 1.1 fps ~ eta: 1m
-Rendering [================>---------------------------] at 1.1 fps ~ eta: 1m
-Rendering [=================>--------------------------] at 1.1 fps ~ eta: 1m
-Rendering [==================>-------------------------] at 1.1 fps ~ eta: 1m
-Rendering [===================>------------------------] at 1.1 fps ~ eta: 1m
-Rendering [===================>------------------------] at 1.1 fps ~ eta: 49s
-Rendering [====================>-----------------------] at 1.1 fps ~ eta: 48s
-Rendering [====================>-----------------------] at 1.1 fps ~ eta: 47s
-Rendering [=====================>----------------------] at 1.1 fps ~ eta: 46s
-Rendering [=====================>----------------------] at 1.1 fps ~ eta: 45s
-Rendering [=====================>----------------------] at 1.1 fps ~ eta: 44s
-Rendering [======================>---------------------] at 1.1 fps ~ eta: 43s
-Rendering [======================>---------------------] at 1.1 fps ~ eta: 42s
-Rendering [=======================>--------------------] at 1.1 fps ~ eta: 42s
-Rendering [========================>-------------------] at 1.1 fps ~ eta: 41s
-Rendering [========================>-------------------] at 1.1 fps ~ eta: 40s
-Rendering [=========================>------------------] at 1.1 fps ~ eta: 39s
-Rendering [=========================>------------------] at 1.1 fps ~ eta: 38s
-Rendering [=========================>------------------] at 1.1 fps ~ eta: 37s
-Rendering [==========================>-----------------] at 1.1 fps ~ eta: 36s
-Rendering [==========================>-----------------] at 1.1 fps ~ eta: 35s
-Rendering [===========================>----------------] at 1.1 fps ~ eta: 34s
-Rendering [===========================>----------------] at 1.1 fps ~ eta: 33s
-Rendering [============================>---------------] at 1.1 fps ~ eta: 32s
-Rendering [============================>---------------] at 1.1 fps ~ eta: 31s
-Rendering [=============================>--------------] at 1.1 fps ~ eta: 30s
-Rendering [=============================>--------------] at 1.1 fps ~ eta: 29s
-Rendering [==============================>-------------] at 1.1 fps ~ eta: 28s
-Rendering [================================>-------------] at 1 fps ~ eta: 28s
-Rendering [================================>-------------] at 1 fps ~ eta: 27s
-Rendering [=================================>------------] at 1 fps ~ eta: 26s
-Rendering [=================================>------------] at 1 fps ~ eta: 25s
-Rendering [=================================>------------] at 1 fps ~ eta: 24s
-Rendering [==================================>-----------] at 1 fps ~ eta: 23s
-Rendering [=================================>----------] at 1.1 fps ~ eta: 22s
-Rendering [=================================>----------] at 1.1 fps ~ eta: 21s
-Rendering [==================================>---------] at 1.1 fps ~ eta: 20s
-Rendering [==================================>---------] at 1.1 fps ~ eta: 19s
-Rendering [===================================>--------] at 1.1 fps ~ eta: 18s
-Rendering [===================================>--------] at 1.1 fps ~ eta: 17s
-Rendering [====================================>-------] at 1.1 fps ~ eta: 16s
-Rendering [====================================>-------] at 1.1 fps ~ eta: 15s
-Rendering [====================================>-------] at 1.1 fps ~ eta: 14s
-Rendering [=====================================>------] at 1.1 fps ~ eta: 13s
-Rendering [=====================================>------] at 1.1 fps ~ eta: 12s
-Rendering [======================================>-----] at 1.1 fps ~ eta: 11s
-Rendering [======================================>-----] at 1.1 fps ~ eta: 10s
-Rendering [=======================================>----] at 1.1 fps ~ eta: 9s
-Rendering [=======================================>----] at 1.1 fps ~ eta: 8s
-Rendering [=======================================>----] at 1.1 fps ~ eta: 7s
-Rendering [========================================>---] at 1.1 fps ~ eta: 6s
-Rendering [========================================>---] at 1.1 fps ~ eta: 5s
-Rendering [=========================================>--] at 1.1 fps ~ eta: 5s
-Rendering [=========================================>--] at 1.1 fps ~ eta: 4s
-Rendering [==========================================>-] at 1.1 fps ~ eta: 3s
-Rendering [==========================================>-] at 1.1 fps ~ eta: 2s
-Rendering [===========================================>] at 1.1 fps ~ eta: 1s
-Rendering [============================================] at 1.1 fps ~ eta: 0s
+Rendering [====>-----------------------------------------] at 1 fps ~ eta: 1m
+Rendering [====>--------------------------------------] at 0.98 fps ~ eta: 2m
+Rendering [====>--------------------------------------] at 0.98 fps ~ eta: 1m
+Rendering [=====>-------------------------------------] at 0.97 fps ~ eta: 2m
+Rendering [=====>-------------------------------------] at 0.93 fps ~ eta: 2m
+Rendering [=====>-------------------------------------] at 0.94 fps ~ eta: 2m
+Rendering [======>------------------------------------] at 0.89 fps ~ eta: 2m
+Rendering [======>------------------------------------] at 0.85 fps ~ eta: 2m
+Rendering [=======>-----------------------------------] at 0.82 fps ~ eta: 2m
+Rendering [========>----------------------------------] at 0.82 fps ~ eta: 2m
+Rendering [=========>---------------------------------] at 0.82 fps ~ eta: 2m
+Rendering [=========>---------------------------------] at 0.83 fps ~ eta: 2m
+Rendering [==========>--------------------------------] at 0.83 fps ~ eta: 2m
+Rendering [==========>--------------------------------] at 0.84 fps ~ eta: 1m
+Rendering [===========>-------------------------------] at 0.84 fps ~ eta: 1m
+Rendering [===========>-------------------------------] at 0.85 fps ~ eta: 1m
+Rendering [============>------------------------------] at 0.86 fps ~ eta: 1m
+Rendering [=============>-----------------------------] at 0.86 fps ~ eta: 1m
+Rendering [==============>----------------------------] at 0.87 fps ~ eta: 1m
+Rendering [==============>----------------------------] at 0.86 fps ~ eta: 1m
+Rendering [===============>---------------------------] at 0.85 fps ~ eta: 1m
+Rendering [================>--------------------------] at 0.86 fps ~ eta: 1m
+Rendering [=================>-------------------------] at 0.86 fps ~ eta: 1m
+Rendering [==================>------------------------] at 0.84 fps ~ eta: 1m
+Rendering [==================>------------------------] at 0.85 fps ~ eta: 1m
+Rendering [===================>-----------------------] at 0.85 fps ~ eta: 1m
+Rendering [====================>----------------------] at 0.85 fps ~ eta: 1m
+Rendering [=====================>---------------------] at 0.85 fps ~ eta: 1m
+Rendering [=====================>---------------------] at 0.86 fps ~ eta: 1m
+Rendering [======================>--------------------] at 0.85 fps ~ eta: 1m
+Rendering [======================>--------------------] at 0.84 fps ~ eta: 1m
+Rendering [=======================>-------------------] at 0.84 fps ~ eta: 1m
+Rendering [========================>------------------] at 0.83 fps ~ eta: 1m
+Rendering [========================>------------------] at 0.82 fps ~ eta: 1m
+Rendering [========================>------------------] at 0.82 fps ~ eta: 50s
+Rendering [=========================>-----------------] at 0.82 fps ~ eta: 49s
+Rendering [=========================>-----------------] at 0.82 fps ~ eta: 47s
+Rendering [==========================>----------------] at 0.82 fps ~ eta: 46s
+Rendering [==========================>----------------] at 0.82 fps ~ eta: 45s
+Rendering [===========================>---------------] at 0.82 fps ~ eta: 44s
+Rendering [===========================>---------------] at 0.82 fps ~ eta: 43s
+Rendering [===========================>---------------] at 0.82 fps ~ eta: 42s
+Rendering [============================>--------------] at 0.82 fps ~ eta: 40s
+Rendering [============================>--------------] at 0.82 fps ~ eta: 39s
+Rendering [=============================>-------------] at 0.83 fps ~ eta: 38s
+Rendering [=============================>-------------] at 0.82 fps ~ eta: 37s
+Rendering [==============================>------------] at 0.82 fps ~ eta: 35s
+Rendering [==============================>------------] at 0.82 fps ~ eta: 34s
+Rendering [==============================>------------] at 0.82 fps ~ eta: 33s
+Rendering [===============================>-----------] at 0.82 fps ~ eta: 32s
+Rendering [===============================>-----------] at 0.82 fps ~ eta: 30s
+Rendering [================================>----------] at 0.82 fps ~ eta: 29s
+Rendering [================================>----------] at 0.82 fps ~ eta: 28s
+Rendering [=================================>---------] at 0.81 fps ~ eta: 27s
+Rendering [=================================>---------] at 0.81 fps ~ eta: 26s
+Rendering [==================================>---------] at 0.8 fps ~ eta: 25s
+Rendering [===================================>--------] at 0.8 fps ~ eta: 24s
+Rendering [==================================>--------] at 0.81 fps ~ eta: 22s
+Rendering [====================================>-------] at 0.8 fps ~ eta: 21s
+Rendering [===================================>-------] at 0.81 fps ~ eta: 20s
+Rendering [====================================>------] at 0.81 fps ~ eta: 19s
+Rendering [====================================>------] at 0.81 fps ~ eta: 17s
+Rendering [====================================>------] at 0.81 fps ~ eta: 16s
+Rendering [=====================================>-----] at 0.81 fps ~ eta: 15s
+Rendering [=====================================>-----] at 0.81 fps ~ eta: 14s
+Rendering [======================================>----] at 0.81 fps ~ eta: 12s
+Rendering [======================================>----] at 0.81 fps ~ eta: 11s
+Rendering [=======================================>---] at 0.82 fps ~ eta: 10s
+Rendering [=======================================>---] at 0.82 fps ~ eta: 9s
+Rendering [=======================================>---] at 0.81 fps ~ eta: 7s
+Rendering [=========================================>--] at 0.8 fps ~ eta: 6s
+Rendering [=========================================>--] at 0.8 fps ~ eta: 5s
+Rendering [==========================================>-] at 0.8 fps ~ eta: 4s
+Rendering [==========================================>-] at 0.8 fps ~ eta: 2s
+Rendering [===========================================>] at 0.8 fps ~ eta: 1s
+Rendering [============================================] at 0.8 fps ~ eta: 0s
 ~~~
 {: .output}
 
