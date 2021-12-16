@@ -25,7 +25,7 @@ keypoints:
 
 
 
-### Contents {#contents}
+### Contents
 
 1.  [Getting started](#getting-started)
     -   [Loading in the data](#loading-in-the-data)
@@ -39,9 +39,9 @@ keypoints:
 3.  [Cleaning up data](#cleaning-up-data)
 4.  [Joining data frames](#joining-data-frames)
 5.  [Analyzing combined data](#analyzing-combined-data)
-6.  [Putting it all together](#putting-it-all-together)
+6.  [Finishing with Git and GitHub](#Finishing-with-Git-and-GitHub)
 
-# Getting Started {#getting-started}
+# Getting Started
 
 First, navigate to the un-reports directory however you'd like and open `un-report.Rproj`.
 This should open the un-report R project in RStudio.
@@ -51,7 +51,7 @@ Yesterday we spent a lot of time making plots in R using the ggplot2 package. Vi
 
 First, we will create a new RScript file for our work. Open RStudio. Choose "File" \> "New File" \> "RScript". We will save this file as `un_data_analysis.R`
 
-### Loading in the data {#loading-in-the-data}
+### Loading in the data
 
 We will start by importing the complete gapminder dataset that we used yesterday into our fresh new R session. Yesterday we did this using a "point-and-click" commands. Today let's type them into the console ourselves: `gapminder_data <- read_csv("data/gapminder_data.csv")`
 
@@ -76,7 +76,7 @@ library(tidyverse)
 
 
 ~~~
-── Attaching packages ─────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
 ~~~
 {: .output}
 
@@ -86,14 +86,14 @@ library(tidyverse)
 ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
 ✔ tibble  3.1.6     ✔ dplyr   1.0.7
 ✔ tidyr   1.1.4     ✔ stringr 1.4.0
-✔ readr   2.1.0     ✔ forcats 0.5.1
+✔ readr   2.1.1     ✔ forcats 0.5.1
 ~~~
 {: .output}
 
 
 
 ~~~
-── Conflicts ────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ~~~
@@ -121,7 +121,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -754,7 +754,7 @@ Notice here that we tell `pivot_wider()` which columns to pull the names we wish
 
 Before we move on to more data cleaning, let's create the final gapminder dataframe we will be working with for the rest of the lesson! 
 
-> ## final Americas 2007 gapminder dataset
+> ## Final Americas 2007 gapminder dataset
 > Read in the `gapminder_data.csv` file, filter out the year 2007 and the continent "Americas." Then drop the `year` and `continent` columns from the dataframe. Then save the new dataframe into a variable called `gapminder_data_2007`. 
 > 
 > > ## Solution: 
@@ -776,7 +776,7 @@ Before we move on to more data cleaning, let's create the final gapminder datafr
 > > 
 > > 
 > > ~~~
-> > ── Column specification ────────────────────────────────────────────────────────────────────────
+> > ── Column specification ─────────────────────────────────────────────────────────────────────────────────
 > > Delimiter: ","
 > > chr (2): country, continent
 > > dbl (4): year, pop, lifeExp, gdpPercap
@@ -836,7 +836,7 @@ git push
 git status
 ``` 
 
-# Cleaning up data {#cleaning-up-data}
+# Cleaning up data
 
 [*Back to top*](#contents)
 
@@ -872,7 +872,7 @@ Rows: 2133 Columns: 7
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (7): T24, CO2 emission estimates, ...3, ...4, ...5, ...6, ...7
 ~~~
@@ -933,7 +933,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): ...2, Series, Footnotes, Source
 dbl (3): Region/Country/Area, Year, Value
@@ -971,7 +971,8 @@ dbl (3): Region/Country/Area, Year, Value
 
 Now we get a similar Warning message as before, but the outputted table looks better.
 
-> **Warnings and Errors: **It's important to differentiate between Warnings and Errors in R. A warning tells us, "you might want to know about this issue, but R still did what you asked". An error tells us, "there's something wrong with your code or your data and R didn't do what you asked". You need to fix any errors that arise. Warnings, are probably best to resolve or at least understand why they are coming up.
+> ## Warnings and Errors
+> It's important to differentiate between Warnings and Errors in R. A warning tells us, "you might want to know about this issue, but R still did what you asked". An error tells us, "there's something wrong with your code or your data and R didn't do what you asked". You need to fix any errors that arise. Warnings, are probably best to resolve or at least understand why they are coming up.
 {.callout}
 
 We can resolve this warning by telling `read_csv()` what the column names should be with the `col_names()` argument where we give it the column names we want within the c() function separated by commas. If we do this, then we need to set skip to 2 to also skip the column headings. Let's also save this dataframe to `co2_emissions_dirty` so that we don't have to read it in every time we want to clean it even more.
@@ -993,7 +994,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1065,7 +1066,7 @@ co2_emissions_dirty
 > 
 > 
 > ~~~
-> ── Column specification ────────────────────────────────────────────────────────────────────────
+> ── Column specification ─────────────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -1116,7 +1117,7 @@ co2_emissions_dirty
 > 
 > 
 > ~~~
-> ── Column specification ────────────────────────────────────────────────────────────────────────
+> ── Column specification ─────────────────────────────────────────────────────────────────────────────────
 > Delimiter: ","
 > chr (4): ...2, Series, Footnotes, Source
 > dbl (3): Region/Country/Area, Year, Value
@@ -1155,7 +1156,7 @@ co2_emissions_dirty
 
 We previously saw how we can subset columns from a data frame using the select function. There are a lot of columns with extraneous information in this dataset, let's subset out the columns we are interested in. 
 
-> ## reviewing selecting columns
+> ## Reviewing selecting columns
 > Select the country, year, series, and value columns from our dataset. 
 > 
 > > ## Solution: 
@@ -1289,7 +1290,7 @@ Excellent! The last step before we can join this data frame is to get the most d
 {: .solution}
 
 
-> ## 
+> ## Filtering rows and removing columns
 > Filter out data from 2005 and then drop the year column. (Since we will have only data from one year, it is now irrelevant.)
 > 
 > > ## Solution: 
@@ -1345,7 +1346,7 @@ co2_emissions <- co2_emissions_dirty %>%
 > **Looking at your data:** You can get a look at your data-cleaning hard work by navigating to the **Environment** tab in RStudio and clicking the table icon next to the variable name. Notice when we do this, RStudio automatically runs the `View()` command. We've made a lot of progress!
 {.callout}
 
-# Joining data frames {#joining-data-frames}
+# Joining data frames
 
 [*Back to top*](#contents)
 
@@ -1370,7 +1371,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1527,7 +1528,7 @@ Rows: 2132 Columns: 7
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (4): country, series, footnotes, source
 dbl (3): region, year, value
@@ -1593,7 +1594,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1635,7 +1636,7 @@ Rows: 1704 Columns: 6
 
 
 ~~~
-── Column specification ────────────────────────────────────────────────────────────────────────
+── Column specification ─────────────────────────────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
@@ -1717,7 +1718,7 @@ write_csv(gapminder_co2, "data/gapminder_co2.csv")
 
 Great - Now we can move on to the analysis! 
 
-# Analyzing combined data {#analyzing-combined-data}
+# Analyzing combined data
 
 [*Back to top*](#contents)
 
@@ -1850,6 +1851,7 @@ We see that although Canada, the United States, and Mexico account for close to 
 
 
 ## Finishing with Git and GitHub
+
 Awesome work! Let's make sure it doesn't go to waste. Time to add, commit, and push our changes to GitHub again - do you remember how?
 
 > ## changing directories
