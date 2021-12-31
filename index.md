@@ -6,8 +6,11 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 
 {% include gh_variables.html %}
 
-This is a custom curriculum developed by the University of Michigan 
-Carpentries instance.
+This is a custom curriculum developed by the University of Michigan Carpentries instance. 
+While it is based on The Carpentries curriculum and teaching practices, 
+it is not officially overseen by The Carpentries organization. 
+We welcome any feedback or questions to us through 
+[GitHub](https://github.com/UMCarpentries/intro-curriculum-r). 
 
 The curriculum is developed for complete beginners interested in 
 learning reproducible data science techniques and integrates instruction 
