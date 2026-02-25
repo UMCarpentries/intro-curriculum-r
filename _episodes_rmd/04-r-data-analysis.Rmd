@@ -92,7 +92,7 @@ Now we have the tools necessary to work through this lesson.
 
 [*Back to top*](#contents)
 
-Let's say we would like to know what is the mean (average) life expecteny in the dataset. R has a built in function function called `mean()` that will calculate this value for us. We can apply that function to our lifeExp column using the `summarize()` function. Here's what that looks like:
+Let's say we would like to know what is the mean (average) life expectancy in the dataset. R has a built in function function called `mean()` that will calculate this value for us. We can apply that function to our lifeExp column using the `summarize()` function. Here's what that looks like:
 ```{r AvgLifeExp}
 summarize(gapminder_data, averageLifeExp=mean(lifeExp))
 ```
